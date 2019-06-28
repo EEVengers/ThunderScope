@@ -1,2 +1,2 @@
 # TODO
-- One board has a nonworking USB3 chip (Aleksa has)
+-Aleksa has all the things on Signal "Note to Self""
