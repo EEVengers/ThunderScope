@@ -189,7 +189,7 @@ F91 "~PGA_CS_2" O L 2900 1600 60
 F92 "~PGA_CS_1" O L 2900 1500 60 
 $EndSheet
 $Comp
-L conn:USB3_B J1
+L Digital-Interface-rescue:USB3_B-conn J1
 U 1 1 5C279B49
 P 10450 2950
 F 0 "J1" H 10050 3550 50  0000 L CNN
@@ -200,7 +200,7 @@ F 3 "" H 10600 3050 50  0000 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L conn:Barrel_Jack J3
+L Digital-Interface-rescue:Barrel_Jack-conn J3
 U 1 1 5C279CFE
 P 10750 4650
 F 0 "J3" H 10750 4860 50  0000 C CNN
@@ -211,7 +211,7 @@ F 3 "" H 10800 4610 50  0001 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L DSO:FX18-80P-0.8SH J2
+L Digital-Interface-rescue:FX18-80P-0.8SH-DSO J2
 U 1 1 5C279F53
 P 1800 4200
 F 0 "J2" H 1850 6200 50  0000 C CNN
@@ -625,7 +625,7 @@ F 3 "" H 10400 4950 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L DSO:+VUSB #PWR034
+L Digital-Interface-rescue:+VUSB-DSO #PWR034
 U 1 1 5C4419E9
 P 9850 2450
 F 0 "#PWR034" H 9850 2300 50  0001 C CNN
@@ -690,7 +690,7 @@ FE_SDA
 Text Label 2400 2100 0    60   ~ 0
 ~PLL_LE
 $Comp
-L ESD_Protection:TPD2EUSB30 U1
+L Digital-Interface-rescue:TPD2EUSB30-ESD_Protection U1
 U 1 1 5C4F443B
 P 7450 1150
 F 0 "U1" H 7450 1500 50  0000 C CNN
@@ -736,7 +736,7 @@ SSRX+
 Text Label 10900 1150 2    60   ~ 0
 SSRX-
 $Comp
-L DSO:TPS54294 U3
+L Digital-Interface-rescue:TPS54294-DSO U3
 U 1 1 5C579864
 P 8750 4950
 F 0 "U3" H 9050 5550 60  0000 C CNN
@@ -1667,7 +1667,7 @@ Wire Wire Line
 	10200 4550 10200 4450
 Connection ~ 10200 4550
 $Comp
-L conn:TEST_1P MH1
+L Digital-Interface-rescue:TEST_1P-conn MH1
 U 1 1 5C656B50
 P 900 7350
 F 0 "MH1" H 900 7550 50  0000 C CNN
@@ -1678,7 +1678,7 @@ F 3 "" H 1100 7350 50  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L conn:TEST_1P MH2
+L Digital-Interface-rescue:TEST_1P-conn MH2
 U 1 1 5C658AC7
 P 1400 7350
 F 0 "MH2" H 1400 7550 50  0000 C CNN
@@ -1689,7 +1689,7 @@ F 3 "" H 1600 7350 50  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L conn:TEST_1P MH3
+L Digital-Interface-rescue:TEST_1P-conn MH3
 U 1 1 5C659190
 P 1900 7350
 F 0 "MH3" H 1900 7550 50  0000 C CNN
@@ -1700,7 +1700,7 @@ F 3 "" H 2100 7350 50  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L conn:TEST_1P MH4
+L Digital-Interface-rescue:TEST_1P-conn MH4
 U 1 1 5C65919E
 P 2400 7350
 F 0 "MH4" H 2400 7550 50  0000 C CNN
@@ -1713,7 +1713,7 @@ $EndComp
 Wire Wire Line
 	1500 2500 750  2500
 $Comp
-L ESD_Protection:TPD2EUSB30 U2
+L Digital-Interface-rescue:TPD2EUSB30-ESD_Protection U2
 U 1 1 5C699991
 P 8850 1150
 F 0 "U2" H 8850 1500 50  0000 C CNN
@@ -1741,7 +1741,7 @@ Wire Wire Line
 Wire Wire Line
 	8450 1150 8200 1150
 $Comp
-L ESD_Protection:TPD2EUSB30 U10
+L Digital-Interface-rescue:TPD2EUSB30-ESD_Protection U10
 U 1 1 5C699DE3
 P 10250 1150
 F 0 "U10" H 10250 1500 50  0000 C CNN
@@ -1825,7 +1825,7 @@ SSTX-
 Text Label 6850 3800 0    60   ~ 0
 SSTX+
 $Comp
-L conn:TEST_1P TP1
+L Digital-Interface-rescue:TEST_1P-conn TP1
 U 1 1 5C7E2003
 P 6900 4550
 F 0 "TP1" H 6900 4750 50  0000 C CNN
@@ -1836,7 +1836,7 @@ F 3 "" H 7100 4550 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L conn:TEST_1P TP3
+L Digital-Interface-rescue:TEST_1P-conn TP3
 U 1 1 5C7E6152
 P 6900 5850
 F 0 "TP3" H 6900 6050 50  0000 C CNN
@@ -1847,7 +1847,7 @@ F 3 "" H 7100 5850 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L conn:TEST_1P TP2
+L Digital-Interface-rescue:TEST_1P-conn TP2
 U 1 1 5C7E7CF5
 P 7600 5300
 F 0 "TP2" H 7600 5500 50  0000 C CNN

@@ -15,7 +15,7 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L DSO:USB2422 U9
+L Digital-Interface-rescue:USB2422-DSO U9
 U 1 1 5C279213
 P 6050 4200
 F 0 "U9" H 5400 5500 60  0000 C CNN
@@ -130,7 +130,7 @@ F 3 "" H 3600 4900 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L DSO:Crystal_GND24_Alt Y3
+L Digital-Interface-rescue:Crystal_GND24_Alt-DSO Y3
 U 1 1 5C443753
 P 3600 4600
 F 0 "Y3" H 3550 4800 50  0000 L CNN
@@ -537,9 +537,11 @@ Wire Wire Line
 Wire Wire Line
 	8100 4350 8100 4250
 $Comp
-L DSO:+VUSB #PWR0177
+L Digital-Interface-rescue:+VUSB-DSO #PWR0177
 U 1 1 5C464EC3
 P 2800 3600
+AR Path="/5C464EC3" Ref="#PWR0177"  Part="1" 
+AR Path="/5C278D86/5C464EC3" Ref="#PWR0177"  Part="1" 
 F 0 "#PWR0177" H 2800 3450 50  0001 C CNN
 F 1 "+VUSB" H 2800 3740 50  0000 C CNN
 F 2 "" H 2800 3600 50  0001 C CNN

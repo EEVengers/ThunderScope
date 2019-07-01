@@ -15,7 +15,7 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L DSO:FT2232H-56Q U5
+L Digital-Interface-rescue:FT2232H-56Q-DSO U5
 U 1 1 5C2792BC
 P 5900 3150
 F 0 "U5" H 5500 4500 60  0000 C CNN
@@ -37,7 +37,7 @@ F 3 "" H 4300 6600 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L DSO:Crystal_GND24_Alt Y2
+L Digital-Interface-rescue:Crystal_GND24_Alt-DSO Y2
 U 1 1 5C464745
 P 4300 6300
 F 0 "Y2" H 4250 6500 50  0000 L CNN
@@ -165,7 +165,7 @@ Wire Wire Line
 Wire Wire Line
 	3850 5400 3950 5400
 $Comp
-L DSO:93LCxxB_Alt U6
+L Digital-Interface-rescue:93LCxxB_Alt-DSO U6
 U 1 1 5C466378
 P 4250 5300
 F 0 "U6" H 4100 5650 50  0000 C CNN
@@ -923,9 +923,11 @@ F 3 "" H 7600 5700 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L DSO:+VUSB #PWR0112
+L Digital-Interface-rescue:+VUSB-DSO #PWR0112
 U 1 1 5C49AF48
 P 7600 4800
+AR Path="/5C49AF48" Ref="#PWR0112"  Part="1" 
+AR Path="/5C278E87/5C49AF48" Ref="#PWR0112"  Part="1" 
 F 0 "#PWR0112" H 7600 4650 50  0001 C CNN
 F 1 "+VUSB" H 7600 4940 50  0000 C CNN
 F 2 "" H 7600 4800 50  0001 C CNN

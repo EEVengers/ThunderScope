@@ -15,7 +15,7 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L DSO:FT601Q U4
+L Digital-Interface-rescue:FT601Q-DSO U4
 U 1 1 5C2792F5
 P 5750 3850
 F 0 "U4" H 5300 6600 60  0000 C CNN
@@ -141,7 +141,7 @@ F 3 "" H 4100 6800 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L DSO:Crystal_GND24_Alt Y1
+L Digital-Interface-rescue:Crystal_GND24_Alt-DSO Y1
 U 1 1 5C4D6878
 P 4100 6500
 F 0 "Y1" H 4050 6700 50  0000 L CNN
@@ -229,9 +229,11 @@ F 3 "" H 3350 5650 50  0001 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L DSO:+VUSB #PWR063
+L Digital-Interface-rescue:+VUSB-DSO #PWR063
 U 1 1 5C4D8007
 P 3350 4750
+AR Path="/5C4D8007" Ref="#PWR063"  Part="1" 
+AR Path="/5C278DEE/5C4D8007" Ref="#PWR063"  Part="1" 
 F 0 "#PWR063" H 3350 4600 50  0001 C CNN
 F 1 "+VUSB" H 3350 4890 50  0000 C CNN
 F 2 "" H 3350 4750 50  0001 C CNN

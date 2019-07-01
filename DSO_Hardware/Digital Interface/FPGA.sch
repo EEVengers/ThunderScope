@@ -1998,4 +1998,6 @@ Wire Wire Line
 	6300 3550 6450 3550
 Text Notes 7650 800  0    60   ~ 0
 TMS & TDO Swapped in Rev1
+Text Notes 9050 3600 0    60   ~ 0
+Pin 60 is Duplicated\nBoth M1 & D2A+ on same pin\nUsed 1k pulldown on Rev.1
 $EndSCHEMATC
