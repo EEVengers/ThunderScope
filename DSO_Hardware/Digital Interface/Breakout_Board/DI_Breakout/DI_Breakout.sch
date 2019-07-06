@@ -293,23 +293,23 @@ F 3 "" H 4350 1750 60  0001 C CNN
 	1    4400 1750
 	1    0    0    -1  
 $EndComp
-Text Label 4500 3900 2    50   ~ 0
+Text Label 4500 4100 2    50   ~ 0
 FE_SDIO
-Text Label 4500 3800 2    50   ~ 0
+Text Label 4500 4000 2    50   ~ 0
 FE_SCLK
 Text Label 4500 3400 2    50   ~ 0
 ~ADC_CS
-Text Label 4500 4300 2    50   ~ 0
+Text Label 4500 3900 2    50   ~ 0
 ~PGA_CS_1
-Text Label 4500 4200 2    50   ~ 0
+Text Label 4500 3800 2    50   ~ 0
 ~PGA_CS_2
-Text Label 4500 4100 2    50   ~ 0
-~PGA_CS_3
-Text Label 4500 4000 2    50   ~ 0
-~PGA_CS_4
 Text Label 4500 3700 2    50   ~ 0
-FE_SCL
+~PGA_CS_3
 Text Label 4500 3600 2    50   ~ 0
+~PGA_CS_4
+Text Label 4500 4300 2    50   ~ 0
+FE_SCL
+Text Label 4500 4200 2    50   ~ 0
 FE_SDA
 Text Label 4500 3300 2    50   ~ 0
 ADC_PLL_SDIO
@@ -324,9 +324,9 @@ Text Label 4500 3500 2    50   ~ 0
 Text Label 4500 3000 2    50   ~ 0
 ADC_PD
 Wire Wire Line
-	4500 3800 3750 3800
+	4500 4000 3750 4000
 Wire Wire Line
-	4500 3900 3750 3900
+	4500 4100 3750 4100
 Wire Wire Line
 	4500 3200 3750 3200
 Wire Wire Line
@@ -356,34 +356,34 @@ $EndComp
 $Comp
 L Device:R R3
 U 1 1 5D11785B
-P 4800 3700
-F 0 "R3" V 4750 3550 50  0000 C CNN
-F 1 "10k" V 4800 3700 50  0000 C CNN
-F 2 "Capacitor_SMD:C_0402_1005Metric" V 4730 3700 50  0001 C CNN
-F 3 "~" H 4800 3700 50  0001 C CNN
-	1    4800 3700
+P 4800 4300
+F 0 "R3" V 4750 4150 50  0000 C CNN
+F 1 "10k" V 4800 4300 50  0000 C CNN
+F 2 "Capacitor_SMD:C_0402_1005Metric" V 4730 4300 50  0001 C CNN
+F 3 "~" H 4800 4300 50  0001 C CNN
+	1    4800 4300
 	0    -1   -1   0   
 $EndComp
 $Comp
 L Device:R R9
 U 1 1 5D119E74
-P 5150 4000
-F 0 "R9" V 5100 3850 50  0000 C CNN
-F 1 "10k" V 5150 4000 50  0000 C CNN
-F 2 "Capacitor_SMD:C_0402_1005Metric" V 5080 4000 50  0001 C CNN
-F 3 "~" H 5150 4000 50  0001 C CNN
-	1    5150 4000
+P 5150 3600
+F 0 "R9" V 5100 3450 50  0000 C CNN
+F 1 "10k" V 5150 3600 50  0000 C CNN
+F 2 "Capacitor_SMD:C_0402_1005Metric" V 5080 3600 50  0001 C CNN
+F 3 "~" H 5150 3600 50  0001 C CNN
+	1    5150 3600
 	0    -1   -1   0   
 $EndComp
 $Comp
 L Device:R R8
 U 1 1 5D11A265
-P 5150 3600
-F 0 "R8" V 5100 3450 50  0000 C CNN
-F 1 "10k" V 5150 3600 50  0000 C CNN
-F 2 "Capacitor_SMD:C_0402_1005Metric" V 5080 3600 50  0001 C CNN
-F 3 "~" H 5150 3600 50  0001 C CNN
-	1    5150 3600
+P 5150 4200
+F 0 "R8" V 5100 4050 50  0000 C CNN
+F 1 "10k" V 5150 4200 50  0000 C CNN
+F 2 "Capacitor_SMD:C_0402_1005Metric" V 5080 4200 50  0001 C CNN
+F 3 "~" H 5150 4200 50  0001 C CNN
+	1    5150 4200
 	0    -1   -1   0   
 $EndComp
 $Comp
@@ -409,50 +409,50 @@ F 3 "~" H 5150 3000 50  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 Wire Wire Line
-	3750 4300 4650 4300
+	3750 3900 4650 3900
 Wire Wire Line
-	3750 4200 5000 4200
+	3750 3800 5000 3800
 $Comp
 L Device:R R10
 U 1 1 5D119B56
-P 5150 4200
-F 0 "R10" V 5100 4000 50  0000 C CNN
-F 1 "10k" V 5150 4200 50  0000 C CNN
-F 2 "Capacitor_SMD:C_0402_1005Metric" V 5080 4200 50  0001 C CNN
-F 3 "~" H 5150 4200 50  0001 C CNN
-	1    5150 4200
+P 5150 3800
+F 0 "R10" V 5100 3600 50  0000 C CNN
+F 1 "10k" V 5150 3800 50  0000 C CNN
+F 2 "Capacitor_SMD:C_0402_1005Metric" V 5080 3800 50  0001 C CNN
+F 3 "~" H 5150 3800 50  0001 C CNN
+	1    5150 3800
 	0    -1   -1   0   
 $EndComp
 $Comp
 L Device:R R4
 U 1 1 5D117BFC
-P 4800 4100
-F 0 "R4" V 4750 3950 50  0000 C CNN
-F 1 "10k" V 4800 4100 50  0000 C CNN
-F 2 "Capacitor_SMD:C_0402_1005Metric" V 4730 4100 50  0001 C CNN
-F 3 "~" H 4800 4100 50  0001 C CNN
-	1    4800 4100
+P 4800 3700
+F 0 "R4" V 4750 3550 50  0000 C CNN
+F 1 "10k" V 4800 3700 50  0000 C CNN
+F 2 "Capacitor_SMD:C_0402_1005Metric" V 4730 3700 50  0001 C CNN
+F 3 "~" H 4800 3700 50  0001 C CNN
+	1    4800 3700
 	0    -1   -1   0   
 $EndComp
 $Comp
 L Device:R R5
 U 1 1 5D117FDD
-P 4800 4300
-F 0 "R5" V 4750 4150 50  0000 C CNN
-F 1 "10k" V 4800 4300 50  0000 C CNN
-F 2 "Capacitor_SMD:C_0402_1005Metric" V 4730 4300 50  0001 C CNN
-F 3 "~" H 4800 4300 50  0001 C CNN
-	1    4800 4300
+P 4800 3900
+F 0 "R5" V 4750 3750 50  0000 C CNN
+F 1 "10k" V 4800 3900 50  0000 C CNN
+F 2 "Capacitor_SMD:C_0402_1005Metric" V 4730 3900 50  0001 C CNN
+F 3 "~" H 4800 3900 50  0001 C CNN
+	1    4800 3900
 	0    -1   -1   0   
 $EndComp
-Wire Wire Line
-	3750 4100 4650 4100
-Wire Wire Line
-	3750 4000 5000 4000
 Wire Wire Line
 	3750 3700 4650 3700
 Wire Wire Line
 	3750 3600 5000 3600
+Wire Wire Line
+	3750 4300 4650 4300
+Wire Wire Line
+	3750 4200 5000 4200
 Wire Wire Line
 	3750 3500 4650 3500
 Wire Wire Line
@@ -475,8 +475,7 @@ $EndComp
 Wire Wire Line
 	5500 2800 5500 3000
 Wire Wire Line
-	5300 3600 5500 3600
-Connection ~ 5500 3600
+	5300 4200 5500 4200
 Wire Wire Line
 	4950 3100 5500 3100
 Connection ~ 5500 3100
@@ -643,53 +642,18 @@ Wire Wire Line
 NoConn ~ 7450 4450
 NoConn ~ 7450 4550
 $Comp
-L Mechanical:MountingHole H2
-U 1 1 5D07671E
-P 4550 6100
-F 0 "H2" H 4650 6146 50  0000 L CNN
-F 1 "MountingHole" H 4650 6055 50  0000 L CNN
-F 2 "MountingHole:MountingHole_2.7mm_M2.5_ISO14580_Pad" H 4550 6100 50  0001 C CNN
-F 3 "~" H 4550 6100 50  0001 C CNN
-	1    4550 6100
-	1    0    0    -1  
-$EndComp
-$Comp
-L Mechanical:MountingHole H4
-U 1 1 5D0772AE
-P 5300 6100
-F 0 "H4" H 5400 6146 50  0000 L CNN
-F 1 "MountingHole" H 5400 6055 50  0000 L CNN
-F 2 "MountingHole:MountingHole_2.7mm_M2.5_ISO14580_Pad" H 5300 6100 50  0001 C CNN
-F 3 "~" H 5300 6100 50  0001 C CNN
-	1    5300 6100
-	1    0    0    -1  
-$EndComp
-$Comp
-L Mechanical:MountingHole H3
-U 1 1 5D07AA3E
-P 5300 5750
-F 0 "H3" H 5400 5796 50  0000 L CNN
-F 1 "MountingHole" H 5400 5705 50  0000 L CNN
-F 2 "MountingHole:MountingHole_2.7mm_M2.5_ISO14580_Pad" H 5300 5750 50  0001 C CNN
-F 3 "~" H 5300 5750 50  0001 C CNN
-	1    5300 5750
-	1    0    0    -1  
-$EndComp
-$Comp
 L Mechanical:MountingHole H1
 U 1 1 5D077742
-P 4550 5750
-F 0 "H1" H 4650 5796 50  0000 L CNN
-F 1 "MountingHole" H 4650 5705 50  0000 L CNN
-F 2 "MountingHole:MountingHole_2.7mm_M2.5_ISO14580_Pad" H 4550 5750 50  0001 C CNN
-F 3 "~" H 4550 5750 50  0001 C CNN
-	1    4550 5750
+P 4200 6000
+F 0 "H1" H 4300 6046 50  0000 L CNN
+F 1 "MountingHole" H 4300 5955 50  0000 L CNN
+F 2 "MountingHole:MountingHole_2.7mm_M2.5_ISO14580_Pad" H 4200 6000 50  0001 C CNN
+F 3 "~" H 4200 6000 50  0001 C CNN
+	1    4200 6000
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	5500 3600 5500 3700
-Wire Wire Line
-	4950 3700 5500 3700
+	4950 4300 5500 4300
 Wire Wire Line
 	5500 3100 5500 3250
 Wire Wire Line
@@ -706,32 +670,18 @@ F 3 "" H 5700 4400 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	4950 4300 5500 4300
+	4950 3900 5500 3900
 Wire Wire Line
-	5500 4300 5500 4200
-Connection ~ 5500 3700
+	5300 3800 5500 3800
 Wire Wire Line
-	5300 4200 5500 4200
-Connection ~ 5500 4200
+	4950 3700 5500 3700
 Wire Wire Line
-	5500 4200 5500 4100
-Wire Wire Line
-	4950 4100 5500 4100
-Connection ~ 5500 4100
-Wire Wire Line
-	5500 4100 5500 4000
-Wire Wire Line
-	5300 4000 5500 4000
-Connection ~ 5500 4000
-Wire Wire Line
-	5500 4000 5500 3700
+	5300 3600 5500 3600
 Wire Wire Line
 	5700 3400 5700 4400
 Wire Wire Line
 	4950 3500 5500 3500
 Connection ~ 5500 3500
-Wire Wire Line
-	5500 3500 5500 3600
 $Comp
 L Device:R R11
 U 1 1 5D1D24C6
@@ -755,4 +705,32 @@ Wire Wire Line
 Connection ~ 4900 3400
 Wire Wire Line
 	4900 3400 5000 3400
+Connection ~ 5500 4200
+Wire Wire Line
+	5500 4200 5500 4300
+Wire Wire Line
+	5500 3500 5500 3600
+Connection ~ 5500 3600
+Wire Wire Line
+	5500 3600 5500 3700
+Connection ~ 5500 3700
+Wire Wire Line
+	5500 3700 5500 3800
+Connection ~ 5500 3800
+Wire Wire Line
+	5500 3800 5500 3900
+Connection ~ 5500 3900
+Wire Wire Line
+	5500 3900 5500 4200
+$Comp
+L Mechanical:MountingHole H2
+U 1 1 5D07671E
+P 5000 6000
+F 0 "H2" H 5100 6046 50  0000 L CNN
+F 1 "MountingHole" H 5100 5955 50  0000 L CNN
+F 2 "MountingHole:MountingHole_2.7mm_M2.5_ISO14580_Pad" H 5000 6000 50  0001 C CNN
+F 3 "~" H 5000 6000 50  0001 C CNN
+	1    5000 6000
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC

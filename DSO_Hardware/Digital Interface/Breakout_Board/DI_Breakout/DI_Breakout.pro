@@ -1,4 +1,4 @@
-update=Tue 25 Jun 2019 08:11:14 PM EDT
+update=Fri 05 Jul 2019 10:03:08 PM EDT
 version=1
 last_client=kicad
 [general]
@@ -35,7 +35,7 @@ dPairWidth1=0.2
 dPairGap1=0.25
 dPairViaGap1=0.25
 SilkLineWidth=0.12
-SilkTextSizeV=1
+SilkTextSizeV=0.7999999999999999
 SilkTextSizeH=1
 SilkTextSizeThickness=0.15
 SilkTextItalic=0
@@ -227,8 +227,19 @@ Enabled=0
 [pcbnew/Netclasses]
 [pcbnew/Netclasses/Default]
 Name=Default
-Clearance=0.1524
+Clearance=0.1778
 TrackWidth=0.1524
+ViaDiameter=0.508
+ViaDrill=0.254
+uViaDiameter=0.3
+uViaDrill=0.1
+dPairWidth=0.2
+dPairGap=0.25
+dPairViaGap=0.25
+[pcbnew/Netclasses/1]
+Name=PWR
+Clearance=0.1778
+TrackWidth=0.2032
 ViaDiameter=0.508
 ViaDrill=0.254
 uViaDiameter=0.3
