@@ -20,10 +20,19 @@ Since the ADC samples at 13 bits internally and provides a software configurable
 The next step for the front end will be to design a JFET buffer with level shifting for the PGA, a good starting point would be the circuit shown in page 34 of the [LMH6518 Datasheet](http://www.ti.com/lit/ds/symlink/lmh6518.pdf). Then a new single board front end can be designed and tested with the PGA and buffer circuit. Once this front end is fully tested and working, a new front end design can be made with further emphasis on lowering BOM cost by replacing the LMH6518 with a discrete or opamp-based solution. 
 
 ### [ADC](DSO_Hardware/ADC) and PLL
-The [HMCAD1511](https://www.analog.com/media/en/technical-documentation/data-sheets/hmcad1511.pdf) ADC converts the input signal to digital at a rate determined by the input clock. Currently, the clock will be provided externally until the PLL is designed and fitted on the ADC board. 
+The [HMCAD1511](https://www.analog.com/media/en/technical-documentation/data-sheets/hmcad1511.pdf) ADC converts the input signal to digital at a rate determined by the input clock. Currently, the clock will be provided externally until the PLL is designed and fitted on the ADC board. Current implementation is untested until ADC interface HDL is written for the FPGA.
+
+#### Issues
+1. Pulldown on CS pin should be a pullup
+2. Pullup on PD pin should be a pulldown
 
 ### [Digital Interface](DSO_Hardware/Digital_Interface)
-The high-speed digital outputs are converted by the FPGA from 8 serial data pairs and 2 clocking pairs to a 32-bit parallel interface used by the USB3 controller IC. This IC then transfers the ADC data over to the PC for processing and display.  
+The 8 serial data pairs and 2 clocking pairs from the ADC are routed to the [Spartan-6](https://www.xilinx.com/products/silicon-devices/fpga/spartan-6.html#documentation) FPGA to be deserialized to a 32-bit parallel interface used by the [FT601](https://www.ftdichip.com/Support/Documents/DataSheets/ICs/DS_FT600Q-FT601Q%20IC%20Datasheet.pdf) USB 3 controller IC. This IC then transfers the ADC data over to the PC for processing and display. The [FT2232H](https://www.ftdichip.com/Support/Documents/DataSheets/ICs/DS_FT2232H.pdf), which uses USB 2, is connected through a USB hub and provides JTAG programming for the FPGA on channel A and an 8-bit parallel bus to communicate to the FPGA on channel B. Through logic on the FPGA, this 8-bit parallel bus can be used to send SPI and I2C data to the rest of the oscilliscope.
+
+#### Issues
+1. TMS & TDO are swapped (fixed on all dev units)
+2. M1 configuration pin not connected to ground due to duplicate pin in symbol (1k pulldown installed on all dev units)
+
 ___
 ## Firmware
 ### Setup
