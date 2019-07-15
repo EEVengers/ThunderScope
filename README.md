@@ -45,7 +45,7 @@ In the new terminal tab, run:
 
 ```
 init
-jtagspi_init 0 bscan_spi_xc6slx4.bit    (or bscan_spi_xc6slx4_new.bit)
+jtagspi_init 0 bscan_spi_xc6slx4.bit    (or bscan_spi_xc6slx4_OLD.bit)
 jtagspi_program blink_top.bin 0x0
 fpga_program
 shutdown
