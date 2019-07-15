@@ -36,7 +36,20 @@ The 8 serial data pairs and 2 clocking pairs from the ADC are routed to the [Spa
 ___
 ## Firmware
 ### Setup
-#### Programming the FPGA
-Use [papillio loader](http://www.papilio.cc/index.php?n=Papilio.PapilioLoaderV2)
+To program the FPGA, use [papillio loader](http://www.papilio.cc/index.php?n=Papilio.PapilioLoaderV2) or [OpenOCD](http://openocd.org/). For Windows, papillio loader should be a smooth install, then use the GUI to upload to the FPGA. On Linux or Mac, build either one from source.
+
+For OpenOCD:
+Run `openocd -f xc6_openocd.cfg` in a folder with the cfg file, the bin file you wish to upload and the bscan bit file. 
+Then open a new terminal tab and run `telnet 127.0.0.1 4444` 
+In the new terminal tab, run:
+
+```
+init
+jtagspi_init 0 bscan_spi_xc6slx4.bit    (or bscan_spi_xc6slx4_OLD.bit)
+jtagspi_program blink_top.bin 0x0
+fpga_program
+shutdown
+```
+
 ___
 ## Software
