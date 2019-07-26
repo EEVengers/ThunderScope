@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1DCD2FA822EB63EF0007F762 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1DCD2FA722EB63EF0007F762 /* main.cpp */; };
+		1DCD2FB222EBB4AE0007F762 /* libftd3xx.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DCD2FB122EBB4AE0007F762 /* libftd3xx.dylib */; settings = {ATTRIBUTES = (Required, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +26,9 @@
 /* Begin PBXFileReference section */
 		1DCD2FA422EB63EF0007F762 /* Scope */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Scope; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DCD2FA722EB63EF0007F762 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		1DCD2FAE22EB6CFE0007F762 /* ftd3xx.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ftd3xx.h; sourceTree = "<group>"; };
+		1DCD2FAF22EB6E540007F762 /* common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = common.h; sourceTree = "<group>"; };
+		1DCD2FB122EBB4AE0007F762 /* libftd3xx.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libftd3xx.dylib; path = ../../../../../../../../../../usr/local/lib/libftd3xx.dylib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +36,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1DCD2FB222EBB4AE0007F762 /* libftd3xx.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -43,6 +48,7 @@
 			children = (
 				1DCD2FA622EB63EF0007F762 /* Scope */,
 				1DCD2FA522EB63EF0007F762 /* Products */,
+				1DCD2FB022EBB4AE0007F762 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,8 +64,18 @@
 			isa = PBXGroup;
 			children = (
 				1DCD2FA722EB63EF0007F762 /* main.cpp */,
+				1DCD2FAE22EB6CFE0007F762 /* ftd3xx.h */,
+				1DCD2FAF22EB6E540007F762 /* common.h */,
 			);
 			path = Scope;
+			sourceTree = "<group>";
+		};
+		1DCD2FB022EBB4AE0007F762 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1DCD2FB122EBB4AE0007F762 /* libftd3xx.dylib */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -241,6 +257,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X2V72RSF6P;
+				OTHER_LDFLAGS = "-L/usr/local/lib";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -250,6 +267,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X2V72RSF6P;
+				OTHER_LDFLAGS = "-L/usr/local/lib";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
