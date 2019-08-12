@@ -1,13 +1,13 @@
 //
-//  DataTransferThread.hpp
+//  EVDataTransferThread.hpp
 //  Scope
 //
 //  Created by Daniel Vasile on 2019-07-30.
 //  Copyright © 2019 EEVengers. All rights reserved.
 //
 
-#ifndef DataTransferThread_hpp
-#define DataTransferThread_hpp
+#ifndef EVDataTransferThread_hpp
+#define EVDataTransferThread_hpp
 
 #include "EVLibrary.h"
 
@@ -19,6 +19,6 @@
  * @return
  * Nothing
  */
-void SuperSpeedFIFOBridgeHandler(FT_HANDLE SuperSpeedFIFOBridgeHandle, UCHAR **buffers);
+void SuperSpeedFIFOBridgeHandler(FT_HANDLE SuperSpeedFIFOBridgeHandle, UCHAR buffers[NUM_FTDI_DATA_BUFFERS][FTDI_DATA_BUFFER_SZIE]);
 
-#endif /* DataTransferThread_hpp */
+#endif /* EVDataTransferThread_hpp */

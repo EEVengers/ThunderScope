@@ -1,12 +1,12 @@
 //
-//  SuperSpeedFIFIOBridge.cpp
+//  EVSuperSpeedFIFIOBridge.cpp
 //  Scope
 //
 //  Created by Daniel Vasile on 2019-07-30.
 //  Copyright © 2019 EEVengers. All rights reserved.
 //
 
-#include "SuperSpeedFIFIOBridge.hpp"
+#include "EVSuperSpeedFIFIOBridge.hpp"
 
 /*
  * Used To Get A Handle To The FTDI SuperSpeed FIFO Bridge

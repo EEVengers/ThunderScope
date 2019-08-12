@@ -13,5 +13,11 @@
 #include <chrono>
 #include <iostream>
 #include "ftd3xx.h"
+#include <assert.h>
+
+#define NUM_FTDI_DATA_BUFFERS (3)
+#define FTDI_DATA_BUFFER_SZIE (8 * 1024)
+
+extern volatile bool programClosing;
 
 #endif /* EVLibrary_h */
