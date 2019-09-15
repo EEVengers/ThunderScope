@@ -14,14 +14,17 @@ wire d_ready;
 
 reg d_ready_q;
 reg[31:0] piso;
-reg[5:0] bit_counter; 
+reg[5:0] bit_counter;
+reg[1:0] clk_counter; 
+reg clk_stb;
 
 //Serial clock enabled when data begins to transmit 
 //Disabled when we transmit the correct number of bits 
 assign ser_clk_en = d_ready_q & ~bit_counter[5];
 
 //Mux to turn on or off serial clock based on enable signal
-assign ser_clk = (ser_clk_en) ? (clk_32) : (1'b0);
+//Serial clock is system clock divided by 4
+assign ser_clk = (ser_clk_en) ? (clk_counter[1]) : (1'b0);
 
 //Data is last bit of shift register
 assign ser_out = piso[31];
@@ -34,24 +37,32 @@ assign led = bit_counter[3:0];
 
 always @ (posedge clk_32)
 begin
-	//Flop delay for load pulse
-	d_ready_q <= d_ready;
 	
-	//PISO shift register
-	if (d_load)
-		piso <= d_out;
-	else
-		piso <= {piso[30:0],1'b0}; 
-end
-
-//Count out bits sent on edge where data is clocked by slave
-//In this case,the negative edge
-always @ (negedge clk_32)
-begin
-	if (d_load)
-		bit_counter <= 6'b000000;
-	else if (ser_clk_en)
-		bit_counter <= bit_counter + 1'b1;
+	//Increment clk counter
+	clk_counter <= clk_counter + 1'b1;
+	//Generate clk strobe signal once per counter cycle (/4)
+	clk_stb <= (clk_counter==2'b00);
+	
+	if(clk_stb)
+	begin
+		//Flop delay for load pulse
+		d_ready_q <= d_ready;
+		
+		//PISO shift register & counter for number of bits sent
+		if (d_load)
+		begin
+			piso <= d_out;
+			bit_counter <= 6'b000000;
+		end
+		else if (ser_clk_en)
+		begin
+			bit_counter <= bit_counter + 1'b1;
+			piso <= {piso[30:0],1'b0}; 
+		end
+		else
+			piso <= 32'h00000000;
+	end
+	
 end
 
 //Call FT2_Read as a submodule

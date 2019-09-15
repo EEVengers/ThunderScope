@@ -14,10 +14,10 @@ module FT2_Read(
 assign wr_n_out = 1'b1;
 
 //Declare regs
+reg[1:0] counter;
 reg[3:0] rd_delay;
 assign read_data = rd_delay[2];
-reg[1:0] counter;
-assign inc_counter = rd_delay[3];
+assign rd_stb = rd_delay[2] & ~rd_delay[3];
 
 //Pull rd_n low when rxf_n goes low (transfer starts)
 //Pull rd_n high when data is read (transfer ends)
@@ -27,11 +27,9 @@ always @(posedge clk)
 begin
  //read_data is inverted rd_n signal delayed by two cycles
  rd_delay <= {rd_delay[2:0],~rd_n_out};
-end 
-
-//Data latched and fed through demux to fill 32 bits
-always @(posedge read_data) 
-begin
+ if (rd_stb)
+ begin
+ counter <= counter + 1'b1;
 	case (counter)
 		2'b00 : d_out[31:24] <= d_in[7:0];
 		2'b01 : d_out[23:16] <= d_in[7:0];
@@ -40,11 +38,7 @@ begin
 	endcase
 	//d_ready is when counter is about to overflow back to 0
 	d_ready <= &counter;
-end
-
-always @(posedge inc_counter) 
-begin
-counter <= counter + 1'b1;
-end
+ end
+end 
 
 endmodule
