@@ -54,12 +54,16 @@ shutdown
 ___
 ## Software
 
-###WIP
+### WIP
 Andrew: Writing this late, it might be complete but this is my disclaimer in case I happen to have forgotten something, this will be removed when I'm certain the instructions below are sufficient.
 
-We are using react and electron for our desktop app. The main dependency to be able to build and test it is npm. This is a package manager for Node.js, which itself is a JavaScript runtime used by React. Installing npm is different for reach platform, `npmjs.com` will have platform specific instructions. These will always include installing Node.js as well.
+We are using React and Electron for our desktop app. The main dependency to be able to build and test it is npm. This is a package manager for Node.js, which itself is a JavaScript runtime used by React. Installing npm is different for reach platform, `npmjs.com` will have platform specific instructions. These will always include installing Node.js as well.
 
-Once you have npm installed, you can `cd scopeview` and then run:
+Once you have npm installed, you can:
+```
+cd EEVengers/DSO_Software/scopeview
+```
+Then use:
 ```
 npm run start
 ```
@@ -67,17 +71,17 @@ After you see the app start up in your browser, use:
 ```
 npm run electron-start
 ```
-This should display the app in its own electron window.
+This should display the app in its own Electron window.
 
 Curious souls can go into the package.json file to see exactly what these scripts do.
 
-The `electron-dev` command is a WIP script which aims to wait for react to start, not open it in your browser and instead only open it in an electron instance. This will be much more dev friendly.
+The `electron-dev` command is a WIP script which aims to wait for React to start, not open it in your browser and instead only open it in an Electron instance. This will be much more dev friendly.
 
 If you want to build for distribution run:
 ```
 npm run electron-pack
 ```
-This will build the application for Linux, Mac and Windows. This is actually a single command that runs `electron-builder -lmw` for you. You can confirm this in package.json as well. If you want to build only for your platform in order to test for development, and save time instead of building all three, you can manually use:
+This will build the application for Linux, Mac and Windows. This is a single command that runs `electron-builder -lmw` for you. You can confirm this in package.json as well. If you want to build only for your platform in order to test for development, and save time instead of building all three, you can manually use:
 ```
 electron-builder
 ```
@@ -85,4 +89,4 @@ This will build for your current platform.
 
 The scopeview directory has a `build` and a `dist` folder. The `build` folder is environment specific and contains build information. The `dist` folder is where finished builds for the desired platforms will go.
 
-These folders will naturally be environment specific and are quite heavy. In fact, *if you commit them to your branch, you will no longer be able to push your changes to GitHub.com*. Delete them before you commit, you can always generate them again next time you run the commands above. We should discuss possibly .gitignore-ing them.
+These folders will naturally be environment specific and are quite heavy. In fact, **if you commit them to your branch, you will no longer be able to push your changes to GitHub.com**. Delete them before you commit, you can always generate them again next time you run the commands above. We should discuss possibly .gitignore-ing them.
