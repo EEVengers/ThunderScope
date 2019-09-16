@@ -92,6 +92,7 @@ The scopeview directory will now have a `build` and a `dist` folder. The `build`
 These folders will naturally be environment specific and are quite large. In fact, **if you commit them to your branch, you will no longer be able to push your changes to GitHub.com**. Delete them before you commit, you can always generate them again next time you run the commands above. We should discuss possibly .gitignore-ing them.
 
 Useful Links: (list of bookmarks for my reference, can be ignored by everyone else but anyone curious enough can peruse)
+
 [Getting Started with React and Electron](https://medium.com/@brockhoff/using-electron-with-react-the-basics-e93f9761f86f)
 
 [More In-Depth Info About Preparing Distribution Ready JSON](https://getstream.io/blog/takeaways-on-building-a-react-based-app-with-electron/)
