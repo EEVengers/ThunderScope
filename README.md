@@ -74,7 +74,6 @@ Then you will want to grab all the dependencies before you can actually do anyth
 ```
 yarn
 ```
-While you are in the `scopeview` directory.
 
 Then use:
 ```
