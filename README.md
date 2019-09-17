@@ -57,12 +57,28 @@ ___
 ### WIP
 Andrew: Writing this late, it might be complete but this is my disclaimer in case I happen to have forgotten something, this will be removed when I'm certain the instructions below are sufficient.
 
-We are using React and Electron for our desktop app. The main dependency to be able to build and test it is npm. This is a package manager for Node.js, which itself is a JavaScript runtime used by React. Installing npm is different for reach platform, `npmjs.com` will have platform specific instructions. These will always include installing Node.js as well.
+We are using React and Electron for our desktop app. The main dependency to be able to build and test it is Node.js, which includes npm. npm is a package manager for Node.js, which itself is a JavaScript runtime used by React. Installing Node.js is different for reach platform, go to:
+```
+nodejs.org
+```
+for platform specific instructions. These will always include installing npm as well.
 
-Once you have npm installed, you can:
+You will also want to grab Yarn as well. Go to:
+```
+yarnpkg.com
+```
+for platform specific instructions.
+
+Once you have Node.js, npm and yarn installed, you can:
 ```
 cd EEVengers/DSO_Software/scopeview
 ```
+Then you will want to grab all the dependencies before you can actually do anything. Dependencies are not uploaded to git and must be grabbed individually by each person. Do to this simply use:
+```
+yarn
+```
+While you are in the `scopeview` directory.
+
 Then use:
 ```
 npm run start
