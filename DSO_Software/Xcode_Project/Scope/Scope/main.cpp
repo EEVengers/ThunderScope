@@ -9,12 +9,13 @@
 #include "EVLibrary.h"
 #include "EVSuperSpeedFIFIOBridge.hpp"
 #include "EVDataTransferThread.hpp"
-#include "EVGUI.hpp"
 #include "EVDigitalProcessing.hpp"
 
 #define FIFO_SUPER_SPEED_BRIDGE_NAME "FTDI SuperSpeed-FIFO Bridge"
 
 volatile bool programClosing;
+
+/* TODO Get Aleska His 4 channels to text file thingy */
 
 int main(int argc, char *argv[])
 {
@@ -37,8 +38,6 @@ int main(int argc, char *argv[])
     std::cout << "Joined FTDI Thread" << std::endl;
     digitalProcessingThread.join();
     std::cout << "Joined Digital Processing Thread" << std::endl;
-    GUIThread.join();
-    std::cout << "Joined GUI Thread" << std::endl;
     
 //    FT_Close(superSuperFIFOBridgeHandle);
     
