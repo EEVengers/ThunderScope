@@ -30,8 +30,6 @@ int main(int argc, char *argv[])
     
     std::thread ftdiHandlerThread(SuperSpeedFIFOBridgeHandler,superSuperFIFOBridgeHandle,dataBuffers);
     std::thread digitalProcessingThread(DigitalProcessingMain);
-    std::thread GUIThread(GUIMain, argc, argv);
-
     
     programClosing = true;
     ftdiHandlerThread.join();
