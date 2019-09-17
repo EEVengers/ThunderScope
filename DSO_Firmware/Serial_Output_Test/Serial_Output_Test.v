@@ -6,7 +6,7 @@ module Serial_Output_Test(
 	 output ft2_wr_n_out,
 	 output reg ser_out,
 	 output reg ser_clk,
-	 output [3:0] led
+	 output reg cs_n
 	 );
 
 
@@ -21,9 +21,6 @@ reg[1:0] clk_counter;
 wire[31:0] d_out;
 wire d_ready;
 
-//Debug LEDs
-assign led[3:0] = bit_counter[3:0];
-
 always @ (posedge clk_32)
 begin
 	case (state)
@@ -34,31 +31,32 @@ begin
 				bit_counter <= 6'b000000;
 				clk_counter <= 2'b00;
 			end
-			else
+			else begin
 				state <= IDLE;
+				ser_clk <= 1'b1;
+				cs_n <= 1'b1;
+			end
 		SEND: 
-			begin
-				clk_counter <= clk_counter + 1'b1;	
+			if (bit_counter[5] & clk_counter==2'b00) begin
+				state <= IDLE;
+				ser_out <= 1'b0;
+				cs_n <= 1'b1;
+			end 
+			
+			else begin
+				state <= SEND;
+				clk_counter <= clk_counter + 1'b1;				
+				ser_clk <= clk_counter[1];
+				cs_n <= 1'b0;
 				
-				if (bit_counter[5] & clk_counter==2'b00) begin
-					state <= IDLE;
-					ser_out <= 1'b0;
-				end 
+				if (clk_counter==2'b00) begin
+					piso <= {piso[30:0],1'b0}; 
+					ser_out <= piso[31];	
+				end
 				
-				else begin
-					state <= SEND;
-					ser_clk <= ~clk_counter[1];
-					
-					if (clk_counter==2'b00) begin
-						piso <= {piso[30:0],1'b0}; 
-						ser_out <= piso[31];
-						
-					end
-					else if (clk_counter==2'b10)
-						bit_counter <= bit_counter + 1'b1;
-
-				end			
-			end		
+				if (clk_counter==2'b10)
+					bit_counter <= bit_counter + 1'b1;
+			end				
 	endcase
 end
 
