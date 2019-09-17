@@ -69,7 +69,7 @@ yarnpkg.com
 ```
 for platform specific instructions.
 
-Once you have Node.js, npm and yarn installed, you can:
+Once you have Node.js, npm and Yarn installed, you can:
 ```
 cd EEVengers/DSO_Software/scopeview
 ```
