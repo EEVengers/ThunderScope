@@ -92,7 +92,7 @@ The `electron-dev` command is a WIP script which aims to wait for React to start
 
 If you want to build for distribution run:
 ```
-npm run electron-pack
+yarn electron-pack
 ```
 This will build the application for Linux, Mac and Windows. This is a single command that runs `electron-builder -lmw` for you. You can confirm this in package.json as well. If you want to build only for your platform in order to test for development, and save time instead of building all three, you can manually use:
 ```
