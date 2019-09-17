@@ -78,11 +78,11 @@ While you are in the `scopeview` directory.
 
 Then use:
 ```
-npm run start
+yarn start
 ```
 After you see the app start up in your browser, use:
 ```
-npm run electron-start
+yarn electron-start
 ```
 This should display the app in its own Electron window.
 
