@@ -54,9 +54,6 @@ shutdown
 ___
 ## Software
 
-### WIP
-Andrew: Writing this late, it might be complete but this is my disclaimer in case I happen to have forgotten something, this will be removed when I'm certain the instructions below are sufficient.
-
 We are using React and Electron for our desktop app. The main dependency to be able to build and test it is Node.js, which includes npm. npm is a package manager for Node.js, which itself is a JavaScript runtime used by React. Installing Node.js is different for reach platform, go to:
 ```
 nodejs.org
