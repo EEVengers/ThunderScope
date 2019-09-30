@@ -1,0 +1,19 @@
+NET "clk" TNM_NET = clk;
+TIMESPEC TS_clk = PERIOD "clk" 32 MHz HIGH 50%;
+
+NET "clk" LOC = P87 | IOSTANDARD = LVTTL;
+
+NET "ft2_data<0>" LOC = P104 | IOSTANDARD = LVTTL;
+NET "ft2_data<1>" LOC = P102 | IOSTANDARD = LVTTL;
+NET "ft2_data<2>" LOC = P101 | IOSTANDARD = LVTTL;
+NET "ft2_data<3>" LOC = P100 | IOSTANDARD = LVTTL;
+NET "ft2_data<4>" LOC = P99 | IOSTANDARD = LVTTL;
+NET "ft2_data<5>" LOC = P98 | IOSTANDARD = LVTTL;
+NET "ft2_data<6>" LOC = P97 | IOSTANDARD = LVTTL;
+NET "ft2_data<7>" LOC = P95 | IOSTANDARD = LVTTL;
+
+NET "rxf_n_in" LOC = P94 | IOSTANDARD = LVTTL;
+NET "txe_n_in" LOC = P93 | IOSTANDARD = LVTTL;
+
+NET "rd_n_out" LOC = P92 | IOSTANDARD = LVTTL;
+NET "wr_n_out" LOC = P88 | IOSTANDARD = LVTTL;
