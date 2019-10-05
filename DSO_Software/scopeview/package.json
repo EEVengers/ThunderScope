@@ -1,16 +1,21 @@
 {
-  "name": "scopeview",
+  "name": "scopesight",
   "author": "EEVengers",
   "description": "App for an Oscilloscope",
   "version": "0.1.0",
-  "main": "public/electron.js",
+  "main": "public/electron.tsx",
   "homepage": "./",
   "private": true,
   "dependencies": {
-    "electron-is-dev": "^1.1.0",
+    "@types/jest": "24.0.18",
+    "@types/node": "12.7.8",
+    "@types/react": "16.9.3",
+    "@types/react-dom": "16.9.1",
     "react": "^16.10.1",
     "react-dom": "^16.10.1",
-    "react-scripts": "3.1.2"
+    "react-scripts": "3.1.2",
+    "electron-is-dev": "^1.1.0",
+    "typescript": "3.6.3"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -42,7 +47,7 @@
     "electron-builder": "^21.2.0"
   },
   "build": {
-    "appId": "com.EEVengers.scopeview",
+    "appId": "com.EEVengers.scopesight",
     "files": [
       "build/**/*",
       "node_modules/**/*"
