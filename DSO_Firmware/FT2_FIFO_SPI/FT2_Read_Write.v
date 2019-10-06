@@ -65,12 +65,11 @@ module FT2_Read_Write(
 				begin
 					state <= RXF_WAIT; 
 					read_data <= ft2_data;
-				end
-			RXF_WAIT:
-				if (~rxf_sync[1]) begin
-					state <= IDLE;
 					data_ready <= 1'b1;
 				end
+			RXF_WAIT:
+				if (~rxf_sync[1])
+					state <= IDLE;
 				else 
 					state <= RXF_WAIT;
 		endcase

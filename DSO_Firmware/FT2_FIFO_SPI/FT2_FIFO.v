@@ -7,7 +7,7 @@ module FT2_FIFO(
 		input rd_en,
 		input[7:0] wr_data,
 		output reg full,
-		output reg empty,
+		output reg empty = 1'b1,
 		output reg[7:0] rd_data
     );
 
@@ -22,9 +22,7 @@ wire[10:0] nxt_read;
 assign nxt_read = rd_addr + 1'b1;
 
 always @(posedge clk) begin
-	if (wr_en)
 		mem[wr_addr] <= wr_data;
-	if (rd_en)
 		rd_data <= mem[rd_addr];
 end
 

@@ -21,3 +21,7 @@ NET "ft2_wr_n" LOC = P88 | IOSTANDARD = LVTTL;
 NET "fe_sdo" LOC = P82 | IOSTANDARD = LVTTL;
 NET "fe_sclk" LOC = P81 | IOSTANDARD = LVTTL;
 NET "fe_cs" LOC = P115 | IOSTANDARD = LVTTL;
+
+NET "fifo_empty" LOC = P114 | IOSTANDARD = LVTTL;
+NET "fifo_wr_en" LOC = P112 | IOSTANDARD = LVTTL;
+NET "fifo_rd_en" LOC = P111 | IOSTANDARD = LVTTL;
