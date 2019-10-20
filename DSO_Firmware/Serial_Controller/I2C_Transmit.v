@@ -38,7 +38,6 @@ module I2C_Transmit(
 	end
 	
 	always @ (posedge clk) begin
-		data_req <= 1'b0;
 		done <= 1'b0;
 		case (state)
 			IDLE:
@@ -52,8 +51,10 @@ module I2C_Transmit(
 					sda <= 1'b1;
 				end
 			START:
-				if (data_req)
+				if (data_req) begin
 					piso <= data;
+					data_req <= 1'b0;
+				end
 				else if (clk_stb) begin
 					state <= SEND;
 					clk_counter <= 5'h00;
@@ -87,8 +88,10 @@ module I2C_Transmit(
 					scl <= 1'b1;
 				end
 			ACK_SEND:
-				if (data_req)
+				if (data_req) begin
 					piso <= data;
+					data_req <= 1'b0;
+				end
 				else if (clk_stb) begin
 					state <= SEND;
 					clk_counter <= 5'h00;

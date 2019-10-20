@@ -21,7 +21,6 @@ module SPI_Transmit(
 	reg[5:0] clk_counter; //clk_counter[5:2] is number of bits sent, since 4 clks/bit
 
 	always @ (posedge clk) begin
-		data_req <= 1'b0;
 		sclk <= 1'b1;
 		cs <= 1'b1;
 		done <= 1'b0;
@@ -35,6 +34,7 @@ module SPI_Transmit(
 					state <= IDLE;
 			READ:
 				begin
+					data_req <= 1'b0;
 					state <= SEND;
 					piso <= data;
 					clk_counter <= 6'h00;

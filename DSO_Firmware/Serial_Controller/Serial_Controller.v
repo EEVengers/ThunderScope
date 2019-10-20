@@ -1,9 +1,12 @@
 `timescale 1ns / 1ps
 
+//TODO: Add comments!
+
 module Serial_Controller(
     input clk,
 	 input ft2_rxf_n,
-	 input[7:0] ft2_data,
+	 input ft2_txe_n,
+	 inout[7:0] ft2_data,
 	 output ft2_rd_n,
 	 output ft2_wr_n,
 	 output fe_sda,					//I2C Data
@@ -19,74 +22,68 @@ module Serial_Controller(
     );
 
 
-wire data_ready;
-wire fifo_full_n;
-wire status_wr_en;
-wire[7:0] status_data;
-wire sdo, sclk, cs;
-wire spi_done;
-wire i2c_done;
-wire fifo_full;
-wire data_sent;
 wire[7:0] fifo_wr_data;
 wire[7:0] fifo_rd_data; 
-
-assign data_ready = ~fifo_empty;
-assign fifo_full_n = ~fifo_full;
-
-reg[2:0] mux_control;
-reg spi_en, i2c_en;
+wire sdo, sclk, cs;
+wire spi_done, i2c_done;
+wire fifo_full;
+wire data_sent;
+wire i2c_data_req, spi_data_req;
 
 parameter[2:0] IDLE = 3'b000,
 					CONTROL_BYTE = 3'b001,
 					TRANSMIT_WAIT = 3'b010,
 					TRANSMIT = 3'b011,
+					
 					SEND_STATUS = 3'b100;
 					
-reg[2:0] state;
+reg[2:0] state = IDLE;
+reg[2:0] mux_control;
 reg rst;
 reg fifo_rd_en;
 reg status_wr_en;
 reg[7:0] status_byte;
-wire data_sent;
+reg en, spi_en, i2c_en;
+reg sys_data_req;
 
 always @(posedge clk) begin
 	rst <= 1'b0;
-	spi_en <= 1'b0;
+	en <= 1'b0;
 	
 	case (state)
 		IDLE: 
 			if (~fifo_empty) begin
 				state <= CONTROL_BYTE;
-				fifo_rd_en <= 1'b1;
+				sys_data_req <= 1'b1;
 			end
 			else
 				state <= IDLE;
 		CONTROL_BYTE:
 			if (&fifo_rd_data[7:3]) begin
 				state <= TRANSMIT_WAIT;
-				fifo_rd_en <= 1'b0;
+				sys_data_req <= 1'b0;
+				mux_control <= fifo_rd_data[2:0];
 			end
 			else begin
 				state <= IDLE;
-				fifo_rd_en <= 1'b0;
+				sys_data_req <= 1'b0;
 				rst <= 1'b1;
 			end
 		TRANSMIT_WAIT:
 			if (~fifo_empty) begin
 				state <= TRANSMIT;
-				spi_en <= 1'b1;
+				en <= 1'b1;
 			end
 			else
 				state <= TRANSMIT_WAIT;
 		TRANSMIT:
-			if (fifo_full) begin
+			if (fifo_full) begin			//TODO: Empty the FIFO at a rate slower than PC sends data then send error code
 				state <= SEND_STATUS;
 				status_byte <= 8'h66; //asci 'f' ...press f to pay respects to the fifo buffer
 				status_wr_en <= 1'b1;
 				rst <= 1'b1;
 			end
-			else if (spi_done) begin
+			else if (spi_done | i2c_done) begin
 				state <= SEND_STATUS;
 				status_byte <= 8'h24; //asci '$' ...it prints money when it works!
 				status_wr_en <= 1'b1;
@@ -109,29 +106,31 @@ begin
 	adc_rst_n = 1'b1;
 	adc_pd = 1'b0;
 	
-	spi_en = (~&mux_control);
-	i2c_en = (&mux_control);
+	fifo_rd_en = sys_data_req | i2c_data_req | spi_data_req;
+	
+	spi_en = (~&mux_control) ? (en) : (1'b0);
+	i2c_en = (&mux_control) ? (en) : (1'b0);
 	
 	fe_sdo = (mux_control[2]) ? (1'b0) : (sdo);
 	fe_sclk = (mux_control[2]) ? (1'b1) : (sclk);
 	
-	adc_pll_sdo = (mux_control[2]) ? (sdo) : (1'b0);
-	adc_pll_sclk = (mux_control[2]) ? (sclk) : (1'b1);
+	case(mux_control) // fe_cs demux
+		3'b000: fe_cs = {cs,1'b1,1'b1,1'b1};
+		3'b001: fe_cs = {1'b1,cs,1'b1,1'b1};
+		3'b010: fe_cs = {1'b1,1'b1,cs,1'b1};		
+		3'b011: fe_cs = {1'b1,1'b1,1'b1,cs};
+		default: fe_cs = 4'b1111;
+	endcase
 	
-	if (~mux_control[2])
-		case(mux_control[1:0]) // fe_cs demux
-			2'b00: fe_cs = {cs,1'b1,1'b1,1'b1};
-			2'b01: fe_cs = {1'b1,cs,1'b1,1'b1};
-			2'b10: fe_cs = {1'b1,1'b1,cs,1'b1};		
-			2'b11: fe_cs = {1'b1,1'b1,1'b1,cs};
-		endcase
-	else 
-		fe_cs = 4'b1111;
+	adc_pll_sdo = (mux_control[2:1] == 2'b10) ? (sdo) : (1'b0);
+	adc_pll_sclk = (mux_control[2:1] == 2'b10) ? (sclk) : (1'b1);
 	
 	if (mux_control[2:1]==2'b10)
 		adc_pll_cs = (mux_control[0]) ? ({{1'b1,cs}}) : ({cs,1'b1});
 	else
 		adc_pll_cs = 2'b11;
+	
+	//TODO: Add program flash SPI muxes
 	
 end
 
@@ -139,9 +138,9 @@ end
 I2C_Transmit 	I2C_Transmit( 
 .clk				(clk),
 .data				(fifo_rd_data),
-.data_ready		(data_ready),
+.data_ready		(~fifo_empty),
 .en				(i2c_en),
-.data_req		(fifo_rd_en),
+.data_req		(i2c_data_req),
 .sda				(fe_sda),
 .scl				(fe_scl),
 .done				(i2c_done)
@@ -150,9 +149,9 @@ I2C_Transmit 	I2C_Transmit(
 SPI_Transmit 	SPI_Transmit(
 .clk				(clk),
 .data				(fifo_rd_data),
-.data_ready		(data_ready),
+.data_ready		(~fifo_empty),
 .en				(spi_en),
-.data_req		(fifo_rd_en),
+.data_req		(spi_data_req),
 .sdo				(sdo),
 .sclk				(sclk),
 .cs				(cs),
@@ -174,9 +173,9 @@ FT2_Read_Write	FT2_Read_Write(
 .clk				(clk),
 .ft2_txe_n		(ft2_txe_n),
 .ft2_rxf_n		(ft2_rxf_n),
-.rd_en			(fifo_full_n),
+.rd_en			(~fifo_full),
 .wr_en			(status_wr_en),
-.write_data		(status_data),
+.write_data		(status_byte),
 .ft2_data		(ft2_data),
 .ft2_rd_n		(ft2_rd_n),
 .ft2_wr_n		(ft2_wr_n),
