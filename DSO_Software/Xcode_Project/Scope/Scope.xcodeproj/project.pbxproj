@@ -13,6 +13,7 @@
 		1D39342B22FB22400097D2E8 /* libftd3xx.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DCD2FB122EBB4AE0007F762 /* libftd3xx.dylib */; };
 		1D39342D22FB22470097D2E8 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D39342C22FB22470097D2E8 /* OpenGL.framework */; };
 		1D39342E22FB26F90097D2E8 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D39342922FB1EFE0097D2E8 /* GLUT.framework */; };
+		1DAA89BA236290E400E0F9D6 /* EVLibrary.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1DAA89B9236290E400E0F9D6 /* EVLibrary.cpp */; };
 		1DCD2FA822EB63EF0007F762 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1DCD2FA722EB63EF0007F762 /* main.cpp */; };
 /* End PBXBuildFile section */
 
@@ -38,6 +39,7 @@
 		1D39342422F9D1C70097D2E8 /* EVDigitalProcessing.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = EVDigitalProcessing.hpp; sourceTree = "<group>"; };
 		1D39342922FB1EFE0097D2E8 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
 		1D39342C22FB22470097D2E8 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		1DAA89B9236290E400E0F9D6 /* EVLibrary.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = EVLibrary.cpp; sourceTree = "<group>"; };
 		1DCD2FA422EB63EF0007F762 /* Scope */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Scope; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DCD2FA722EB63EF0007F762 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		1DCD2FAE22EB6CFE0007F762 /* ftd3xx.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ftd3xx.h; sourceTree = "<group>"; };
@@ -86,6 +88,7 @@
 				1D39341F22F10BAF0097D2E8 /* EVDataTransferThread.cpp */,
 				1D39342022F10BAF0097D2E8 /* EVDataTransferThread.hpp */,
 				1D39342222F10DEE0097D2E8 /* EVLibrary.h */,
+				1DAA89B9236290E400E0F9D6 /* EVLibrary.cpp */,
 				1D39342322F9D1C70097D2E8 /* EVDigitalProcessing.cpp */,
 				1D39342422F9D1C70097D2E8 /* EVDigitalProcessing.hpp */,
 			);
@@ -159,6 +162,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1DAA89BA236290E400E0F9D6 /* EVLibrary.cpp in Sources */,
 				1D39341E22F108620097D2E8 /* EVSuperSpeedFIFIOBridge.cpp in Sources */,
 				1D39342522F9D1C70097D2E8 /* EVDigitalProcessing.cpp in Sources */,
 				1DCD2FA822EB63EF0007F762 /* main.cpp in Sources */,

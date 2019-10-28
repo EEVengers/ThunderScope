@@ -18,7 +18,7 @@
  * @return
  * 0 on success
  */
-int InitFTDISuperSpeedChip(FT_HANDLE *deviceHandle);
+void InitFTDISuperSpeedChip(FT_HANDLE *deviceHandle);
 
 
 

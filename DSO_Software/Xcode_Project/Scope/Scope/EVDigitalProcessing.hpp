@@ -11,12 +11,24 @@
 
 #include "EVLibrary.h"
 
-/*
- * Digital Proccessing Main That Deals With all triggering and wave functions
- *
- *
- *
- */
-void DigitalProcessingMain();
+class DigitalProcessor
+{
+public:
+    DigitalProcessor();
+    
+    void Test();
+    EVSharedCache* cache;
+
+    ~DigitalProcessor();
+    
+private:
+    
+    void WriteToCSV(const unsigned char* buff, const unsigned int size, const char* filename);
+    
+protected:
+    
+    
+    
+};
 
 #endif /* EVDigitalProcessing_hpp */
