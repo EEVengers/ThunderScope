@@ -47,7 +47,7 @@ module SPI_Transmit(
 					sdo <= 1'b0;
 					done <= 1'b1;
 				end
-				else if (clk_counter[4:0]==5'b11110 & data_ready) begin
+				else if (clk_counter[4:0]==5'b11110 & data_ready & en) begin
 					state <= READ;
 					data_req <= 1'b1;
 					cs <= 1'b0;

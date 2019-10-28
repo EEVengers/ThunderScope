@@ -61,7 +61,7 @@ module I2C_Transmit(
 					sda <= 1'b0;
 				end
 			SEND: 
-				if (clk_counter[4] & clk_stb & data_ready) begin
+				if (clk_counter[4] & clk_stb & data_ready & en) begin
 					state <= ACK_SEND;
 					data_req <= 1'b1;
 					scl <= 1'b0;

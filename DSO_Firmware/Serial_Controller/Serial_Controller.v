@@ -34,11 +34,12 @@ parameter[2:0] IDLE = 3'b000,
 					CONTROL_BYTE = 3'b001,
 					TRANSMIT_WAIT = 3'b010,
 					TRANSMIT = 3'b011,
-					
-					SEND_STATUS = 3'b100;
+					SEND_STATUS = 3'b100,
+					ERROR = 3'b101;
 					
 reg[2:0] state = IDLE;
 reg[2:0] mux_control;
+reg[2:0] err_counter;
 reg rst;
 reg fifo_rd_en;
 reg status_wr_en;
@@ -48,7 +49,6 @@ reg sys_data_req;
 
 always @(posedge clk) begin
 	rst <= 1'b0;
-	en <= 1'b0;
 	
 	case (state)
 		IDLE: 
@@ -65,9 +65,9 @@ always @(posedge clk) begin
 				mux_control <= fifo_rd_data[2:0];
 			end
 			else begin
-				state <= IDLE;
+				state <= ERROR;
+				err_counter <= 3'b000;
 				sys_data_req <= 1'b0;
-				rst <= 1'b1;
 			end
 		TRANSMIT_WAIT:
 			if (~fifo_empty) begin
@@ -77,16 +77,16 @@ always @(posedge clk) begin
 			else
 				state <= TRANSMIT_WAIT;
 		TRANSMIT:
-			if (fifo_full) begin			//TODO: Empty the FIFO at a rate slower than PC sends data then send error code
-				state <= SEND_STATUS;
-				status_byte <= 8'h66; //asci 'f' ...press f to pay respects to the fifo buffer
-				status_wr_en <= 1'b1;
-				rst <= 1'b1;
+			if (fifo_full) begin
+				state <= ERROR;
+				err_counter <= 3'b000;
+				en <= 1'b0;
 			end
 			else if (spi_done | i2c_done) begin
 				state <= SEND_STATUS;
-				status_byte <= 8'h24; //asci '$' ...it prints money when it works!
+				status_byte <= 8'h24; 	//asci '$' ...it prints money when it works!
 				status_wr_en <= 1'b1;
+				en <= 1'b0;
 			end
 			else
 				state <= TRANSMIT;
@@ -97,6 +97,21 @@ always @(posedge clk) begin
 			end
 			else
 				state <= SEND_STATUS;
+		ERROR:
+			if (fifo_empty) begin
+				state <= SEND_STATUS;
+				status_byte <= 8'h66; 	//asci 'f' ...press f to pay respects to the fifo buffer
+				status_wr_en <= 1'b1;
+				rst <= 1'b1;
+			end
+			else if (&err_counter) begin
+				state <= ERROR;
+				sys_data_req <= 1'b1;
+			end
+			else begin
+				state <= ERROR;
+				err_counter <= err_counter + 1'b1;
+			end
 	endcase
 end
 
