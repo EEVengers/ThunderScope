@@ -11,14 +11,52 @@
 
 #include "EVLibrary.h"
 
+enum CopyFuncs
+{
+    digitalProcessorFunc
+};
+
 /*
- *
- * @params
- * FT_HANDLE SuperSpeedFIFODridgeHandle - A Handle to the Super Speed FIFO Bridge that is opened using InitFTDISuperSpeedChip()
- * UCHAR **buffers - A 2D array that contains NUM_BUFFERS buffers of size BUFFER_SIZE
- * @return
- * Nothing
+ Container class that encapsulates all data transfers that occur in this program.
+ FTDIChip -> DataHandler
+ DataHandler -> DigitalProcessingHandler
+ DigitalProcessingHandler -> Electron app
  */
-void SuperSpeedFIFOBridgeHandler(FT_HANDLE SuperSpeedFIFOBridgeHandle, UCHAR buffers[NUM_FTDI_DATA_BUFFERS][FTDI_DATA_BUFFER_SZIE]);
+class DataTransferHandler
+{
+    public:
+    
+    DataTransferHandler();
+    
+    void StartFTDITransferThread();
+    void SetFTDITransferCopyFunction();
+    void SetCopyFunc(CopyFuncs Func);
+    
+    EVSharedCache* processingThreadSharedCache;
+    
+    ~DataTransferHandler();
+        
+    private:
+    
+    static void FTDITransferThread(DataTransferHandler* handler);
+    
+    FT_HANDLE superSpeedFIFOBridgeHandle;
+    
+    void (*CopyFunc)(unsigned char* buff, unsigned int& idx, unsigned int size, void* obj);
+    
+    unsigned char* dataBuffer;
+    
+    bool closeFTDIDataTransferThread;
+    bool closeDigitalProcessingTransferThread;
+    bool closeElectronTransferThread;
+    std::thread superSpeedFTDITransferThread;
+    std::thread digitalProcessingTransferThread;
+    std::thread electronTransferThread;
+    
+        
+    protected:
+    std::mutex lock;
+    
+};
 
 #endif /* EVDataTransferThread_hpp */
