@@ -3,9 +3,12 @@
 module FT6_Write (
 	 input ft6_clk,
 	 input ft6_txe_n,
+	 input fifo_empty,
+	 input[31:0] fifo_data,
 	 output[3:0] ft6_be,
 	 output reg [31:0] ft6_data,
-	 output reg ft6_wr_n
+	 output reg ft6_wr_n,
+	 output fifo_rd_en
     );
 
 reg[7:0] counter;
@@ -17,7 +20,8 @@ parameter[1:0]	IDLE 			= 2'b00,
 							
 reg [1:0] state = IDLE;
 
-assign ft6_be = 4'b1111;
+assign ft6_be = {4{~fifo_empty}};
+assign fifo_rd_en = ~ft6_wr_n & ~fifo_empty;
 
 always @(posedge ft6_clk) begin
 	ft6_wr_n <= 1'b1;
@@ -38,9 +42,8 @@ always @(posedge ft6_clk) begin
 			end
 		WR_DATA:
 			if (~ft6_txe_n) begin
-				counter <= counter + 1'b1;
 				ft6_wr_n <= 1'b0;
-				ft6_data[31:0] <= {4{counter[7:0]}};
+				ft6_data[31:0] <= fifo_data;
 				state <= WR_DATA;
 			end
 			else

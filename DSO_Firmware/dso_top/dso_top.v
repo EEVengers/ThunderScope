@@ -31,69 +31,48 @@ module dso_top(
 	 output[3:0] led
    );
 	
-	wire clk0;
-	wire ser_stb;
 	wire divclk;
-	wire[7:0] fclk_deser;
 	wire[63:0] data_deser;	
 	
-	reg state;
-	reg bitslip;
-	reg[3:0] count;
+	wire adc_fifo_full;
+	wire adc_fifo_empty;
+	wire adc_fifo_rd_en;
+	wire[31:0] adc_fifo_data;
 	
-	always @(posedge divclk) begin
-		if (state == 0) begin
-   		if (fclk_deser != 8'h0f) begin
-     	   	bitslip <= 1'b1 ;					// bitslip needed
-     	   	state <= 1 ;
-     	   	count <= 4'b0000 ;
-     	 	end
-		end
-   	else if (state == 1) begin
-     	   bitslip <= 1'b0 ;						// bitslip low
-     	   count <= count + 4'b0001 ;
-   		if (count == 4'b1111) begin
-     	   		state <= 0;
-     	   end
-     	end
-	end 
+	assign led = {adc_fifo_full,1'b0,adc_fifo_empty,1'b0};
 	
-	assign led = {4{data_deser == 64'hf0f0f0f0f0f0f0f0}};
-	
-	serdes_clocking serdes_clocking (
+	serdes serdes (
 	.adc_lclk_p		(adc_lclk_p),
 	.adc_lclk_n		(adc_lclk_n),
-	.clk0				(clk0),
-	.ser_stb			(ser_stb),
-	.divclk			(divclk)
-	);
-	
-	fclk_serdes fclk_serdes (
 	.adc_fclk_p		(adc_fclk_p),
 	.adc_fclk_n		(adc_fclk_n),
-	.clk0				(clk0),
-	.divclk			(divclk),
-	.ser_stb			(ser_stb),
-	.bitslip			(bitslip),
-	.fclk_deser		(fclk_deser) 
-	);
-	
-	data_serdes data_serdes (
 	.adc_data_p		(adc_data_p),
 	.adc_data_n		(adc_data_n),
-	.clk0				(clk0),
 	.divclk			(divclk),
-	.ser_stb			(ser_stb),
-	.bitslip			(bitslip),
 	.data_deser		(data_deser)
+	);
+	
+	fifo_generator_v9_3 adc_fifo (
+   .rst(1'b0),
+   .wr_clk(divclk), 
+   .rd_clk(ft6_clk), 
+   .din(data_deser), 
+   .wr_en(~adc_fifo_full),	//add a state machine to deal with fifo full
+   .rd_en(adc_fifo_rd_en), 
+   .dout(adc_fifo_data), 
+   .full(adc_fifo_full),
+   .empty(adc_fifo_empty) 
 	);
 	
 	FT6_Write	FT6_Write (
 	.ft6_clk		(ft6_clk),
 	.ft6_txe_n	(ft6_txe_n),
+	.fifo_empty	(adc_fifo_empty),
+	.fifo_data	(adc_fifo_data),
 	.ft6_be		(ft6_be),
 	.ft6_data	(ft6_data),
-	.ft6_wr_n	(ft6_wr_n)
+	.ft6_wr_n	(ft6_wr_n),
+	.fifo_rd_en	(adc_fifo_rd_en)
 	);
 	
 	Serial_Controller Serial_Controller (
