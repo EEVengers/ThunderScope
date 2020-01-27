@@ -1,0 +1,140 @@
+VCCAUX = 3.3;
+
+net "divclk" 	period = 47.5 MHz ;
+
+NET "clk" TNM_NET = "clk";
+TIMESPEC TS_clk = PERIOD "clk" 32 MHz HIGH 50%;
+
+NET "clk" LOC = P87 | IOSTANDARD = LVTTL;
+
+//FT2 I/O
+//----------------------------------------------------------------------
+
+NET "ft2_data<0>" LOC = P104 | IOSTANDARD = LVTTL;
+NET "ft2_data<1>" LOC = P102 | IOSTANDARD = LVTTL;
+NET "ft2_data<2>" LOC = P101 | IOSTANDARD = LVTTL;
+NET "ft2_data<3>" LOC = P100 | IOSTANDARD = LVTTL;
+NET "ft2_data<4>" LOC = P99 | IOSTANDARD = LVTTL;
+NET "ft2_data<5>" LOC = P98 | IOSTANDARD = LVTTL;
+NET "ft2_data<6>" LOC = P97 | IOSTANDARD = LVTTL;
+NET "ft2_data<7>" LOC = P95 | IOSTANDARD = LVTTL;
+
+NET "ft2_rxf_n" LOC = P94 | IOSTANDARD = LVTTL;
+NET "ft2_txe_n" LOC = P93 | IOSTANDARD = LVTTL;
+
+NET "ft2_rd_n" LOC = P92 | IOSTANDARD = LVTTL;
+NET "ft2_wr_n" LOC = P88 | IOSTANDARD = LVTTL;
+
+//Serial & Low Speed I/O
+//----------------------------------------------------------------------
+
+NET "fe_sda" LOC = P84 | IOSTANDARD = LVTTL;
+NET "fe_scl" LOC = P85 | IOSTANDARD = LVTTL;
+
+NET "fe_sdo" LOC = P82 | IOSTANDARD = LVTTL;
+NET "fe_sclk" LOC = P81 | IOSTANDARD = LVTTL;
+NET "fe_cs<0>" LOC = P115 | IOSTANDARD = LVTTL;
+NET "fe_cs<1>" LOC = P114 | IOSTANDARD = LVTTL;
+NET "fe_cs<2>" LOC = P112 | IOSTANDARD = LVTTL;
+NET "fe_cs<3>" LOC = P111 | IOSTANDARD = LVTTL;
+
+NET "adc_pll_sdo" LOC = P79 | IOSTANDARD = LVTTL;
+NET "adc_pll_sclk" LOC = P78 | IOSTANDARD = LVTTL;
+NET "adc_pll_cs<0>" LOC = P80 | IOSTANDARD = LVTTL;
+NET "adc_pll_cs<1>" LOC = P83 | IOSTANDARD = LVTTL;
+
+NET "adc_rst_n" LOC = P75 | IOSTANDARD = LVTTL;
+NET "adc_pd" LOC = P74 | IOSTANDARD = LVTTL;
+
+//FT6 I/O
+//----------------------------------------------------------------------
+
+NET "ft6_clk" TNM_NET = "ft6_clk";
+TIMESPEC TS_ft6_clk = PERIOD "ft6_clk" 100 MHz HIGH 50%;
+
+NET "ft6_clk" LOC = P124 | IOSTANDARD = LVTTL;
+
+NET "ft6_data<0>" LOC = P26 | IOSTANDARD = LVTTL;
+NET "ft6_data<1>" LOC = P24 | IOSTANDARD = LVTTL;
+NET "ft6_data<2>" LOC = P23 | IOSTANDARD = LVTTL;
+NET "ft6_data<3>" LOC = P22 | IOSTANDARD = LVTTL;
+NET "ft6_data<4>" LOC = P21 | IOSTANDARD = LVTTL;
+NET "ft6_data<5>" LOC = P17 | IOSTANDARD = LVTTL;
+NET "ft6_data<6>" LOC = P16 | IOSTANDARD = LVTTL;
+NET "ft6_data<7>" LOC = P15 | IOSTANDARD = LVTTL;
+NET "ft6_data<8>" LOC = P14 | IOSTANDARD = LVTTL;
+NET "ft6_data<9>" LOC = P12 | IOSTANDARD = LVTTL;
+NET "ft6_data<10>" LOC = P11 | IOSTANDARD = LVTTL;
+NET "ft6_data<11>" LOC = P10 | IOSTANDARD = LVTTL;
+NET "ft6_data<12>" LOC = P9 | IOSTANDARD = LVTTL;
+NET "ft6_data<13>" LOC = P8 | IOSTANDARD = LVTTL;
+NET "ft6_data<14>" LOC = P7 | IOSTANDARD = LVTTL;
+NET "ft6_data<15>" LOC = P6 | IOSTANDARD = LVTTL;
+NET "ft6_data<16>" LOC = P5 | IOSTANDARD = LVTTL;
+NET "ft6_data<17>" LOC = P2 | IOSTANDARD = LVTTL;
+NET "ft6_data<18>" LOC = P1 | IOSTANDARD = LVTTL;
+NET "ft6_data<19>" LOC = P143 | IOSTANDARD = LVTTL;
+NET "ft6_data<20>" LOC = P142 | IOSTANDARD = LVTTL;
+NET "ft6_data<21>" LOC = P141 | IOSTANDARD = LVTTL;
+NET "ft6_data<22>" LOC = P140 | IOSTANDARD = LVTTL;
+NET "ft6_data<23>" LOC = P139 | IOSTANDARD = LVTTL;
+NET "ft6_data<24>" LOC = P138 | IOSTANDARD = LVTTL;
+NET "ft6_data<25>" LOC = P137 | IOSTANDARD = LVTTL;
+NET "ft6_data<26>" LOC = P134 | IOSTANDARD = LVTTL;
+NET "ft6_data<27>" LOC = P133 | IOSTANDARD = LVTTL;
+NET "ft6_data<28>" LOC = P132 | IOSTANDARD = LVTTL;
+NET "ft6_data<29>" LOC = P131 | IOSTANDARD = LVTTL;
+NET "ft6_data<30>" LOC = P127 | IOSTANDARD = LVTTL;
+NET "ft6_data<31>" LOC = P126 | IOSTANDARD = LVTTL;
+
+NET "ft6_be<0>" LOC = P123 | IOSTANDARD = LVTTL;
+NET "ft6_be<1>" LOC = P121 | IOSTANDARD = LVTTL;
+NET "ft6_be<2>" LOC = P120 | IOSTANDARD = LVTTL;
+NET "ft6_be<3>" LOC = P119 | IOSTANDARD = LVTTL;
+
+NET "ft6_txe_n" LOC = P118 | IOSTANDARD = LVTTL;
+NET "ft6_wr_n" LOC = P116 | IOSTANDARD = LVTTL;
+
+//ADC Differential I/O
+//----------------------------------------------------------------------
+
+NET "adc_lclk_p" TNM_NET = "adc_lclk_p";
+TIMESPEC TS_adc_lclk_p = PERIOD "adc_lclk_p" 5.263 ns HIGH 50%;
+
+NET "adc_lclk_p" LOC = P56 | IOSTANDARD = LVDS_33 | DIFF_TERM = TRUE;
+NET "adc_lclk_n" LOC = P55 | IOSTANDARD = LVDS_33 | DIFF_TERM = TRUE;
+
+NET "adc_fclk_p" LOC = P51 | IOSTANDARD = LVDS_33 | DIFF_TERM = TRUE;
+NET "adc_fclk_n" LOC = P50 | IOSTANDARD = LVDS_33 | DIFF_TERM = TRUE;
+
+NET "adc_data_p<0>" LOC = P67 | IOSTANDARD = LVDS_33 | DIFF_TERM = TRUE;
+NET "adc_data_n<0>" LOC = P66 | IOSTANDARD = LVDS_33 | DIFF_TERM = TRUE;
+
+NET "adc_data_p<1>" LOC = P62 | IOSTANDARD = LVDS_33 | DIFF_TERM = TRUE;
+NET "adc_data_n<1>" LOC = P61 | IOSTANDARD = LVDS_33 | DIFF_TERM = TRUE;
+
+NET "adc_data_p<2>" LOC = P60 | IOSTANDARD = LVDS_33 | DIFF_TERM = TRUE;
+NET "adc_data_n<2>" LOC = P59 | IOSTANDARD = LVDS_33 | DIFF_TERM = TRUE;
+
+NET "adc_data_p<3>" LOC = P58 | IOSTANDARD = LVDS_33 | DIFF_TERM = TRUE;
+NET "adc_data_n<3>" LOC = P57 | IOSTANDARD = LVDS_33 | DIFF_TERM = TRUE;
+
+NET "adc_data_p<4>" LOC = P48 | IOSTANDARD = LVDS_33 | DIFF_TERM = TRUE;
+NET "adc_data_n<4>" LOC = P47 | IOSTANDARD = LVDS_33 | DIFF_TERM = TRUE;
+
+NET "adc_data_p<5>" LOC = P46 | IOSTANDARD = LVDS_33 | DIFF_TERM = TRUE;
+NET "adc_data_n<5>" LOC = P45 | IOSTANDARD = LVDS_33 | DIFF_TERM = TRUE;
+
+NET "adc_data_p<6>" LOC = P44 | IOSTANDARD = LVDS_33 | DIFF_TERM = TRUE;
+NET "adc_data_n<6>" LOC = P43 | IOSTANDARD = LVDS_33 | DIFF_TERM = TRUE;
+
+NET "adc_data_p<7>" LOC = P41 | IOSTANDARD = LVDS_33 | DIFF_TERM = TRUE;
+NET "adc_data_n<7>" LOC = P40 | IOSTANDARD = LVDS_33 | DIFF_TERM = TRUE;
+
+//LEDs
+//----------------------------------------------------------------------
+
+NET "led<0>" LOC = P35 | IOSTANDARD = LVTTL;
+NET "led<1>" LOC = P34 | IOSTANDARD = LVTTL;
+NET "led<2>" LOC = P33 | IOSTANDARD = LVTTL;
+NET "led<3>" LOC = P32 | IOSTANDARD = LVTTL;
