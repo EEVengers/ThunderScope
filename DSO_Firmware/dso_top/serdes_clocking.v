@@ -36,7 +36,7 @@ module serdes_clocking(
 	
 	PLL_BASE #(
       .BANDWIDTH				("OPTIMIZED"),  			// "high", "low" or "optimized"
-		.COMPENSATION			("SOURCE_SYNCHRONOUS"),	// "SOURCE_SYNCHRONOUS"
+		.COMPENSATION			("SYSTEM_SYNCHRONOUS"),	// "SYSTEM_SYNCHRONOUS attempts to compensate all clock delay for 0 hold time"
       .CLKFBOUT_MULT			(2),      					// multiplication factor for all output clocks, 2 for DDR
       .CLKFBOUT_PHASE		(0.0),     					// phase shift (degrees) of all output clocks
 		.DIVCLK_DIVIDE			(1),        				// division factor for all clocks (1 to 52)
