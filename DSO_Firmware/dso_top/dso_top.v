@@ -39,6 +39,12 @@ module dso_top(
 	wire adc_fifo_rd_en;
 	wire[31:0] adc_fifo_data;
 	
+	wire fe_sda_buf;
+	wire fe_scl_buf;
+	
+	assign fe_sda = (fe_sda_buf) ? (1'bz) : (1'b0);
+	assign fe_scl = (fe_scl_buf) ? (1'bz) : (1'b0);
+	
 	assign led = {adc_fifo_full,1'b0,adc_fifo_empty,1'b0};
 	
 	serdes serdes (
@@ -82,8 +88,8 @@ module dso_top(
 	.ft2_data		(ft2_data),
 	.ft2_rd_n		(ft2_rd_n),
 	.ft2_wr_n		(ft2_wr_n),
-	.fe_sda			(fe_sda),					
-	.fe_scl			(fe_scl),					
+	.fe_sda			(fe_sda_buf),					
+	.fe_scl			(fe_scl_buf),					
 	.fe_sdo			(fe_sdo),				
 	.fe_sclk			(fe_sclk),				
 	.fe_cs			(fe_cs),
