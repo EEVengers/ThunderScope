@@ -54,6 +54,10 @@ shutdown
 ___
 ## Software
 
+THIS IS ALL OUT OF DATE FOLLOW NONE OF THIS UNTIL ANDREW REWRITES IT
+BEWARE THERE BE DRAGONS
+WE DO NOT GO TO SOFTWADOR
+
 Note: Currently two identical apps exist, scopeview which uses JavaScript and scopesight which uses TypeScript. We're looking at most likely going with TypeScript, however I'd like more input from the team regarding any preferences they might have.
 
 We are using React and Electron for our desktop app. The main dependency to be able to build and test it is Node.js, which includes npm. npm is a package manager for Node.js, which itself is a JavaScript runtime used by React. Installing Node.js is different for reach platform, go to:
