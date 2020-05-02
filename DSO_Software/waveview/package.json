@@ -1,0 +1,58 @@
+{
+  "name": "waveview",
+  "author": "EEVengers",
+  "description": "An App for an Oscilloscope",
+  "version": "0.1.0",
+  "license": "MIT",
+  "main": "public/electron.js",
+  "homepage": "./",
+  "private": true,
+  "dependencies": {
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.5.0",
+    "@testing-library/user-event": "^7.2.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-scripts": "3.4.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "electron-start": "electron .",
+    "preelectron-pack": "npm run build",
+    "electron-pack": "electron-builder -lmw"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "electron": "^8.2.5",
+    "electron-builder": "^22.6.0"
+  },
+  "build": {
+    "appId": "com.EEVengers.waveview",
+    "productName": "WaveView",
+    "copyright": "Copyright © 2020 ${author}",
+    "files": [
+      "build/**/*",
+      "node_modules/**/*"
+    ],
+    "directories": {
+      "buildResources": "assets"
+    }
+  }
+}
