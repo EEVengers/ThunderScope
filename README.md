@@ -114,3 +114,9 @@ Useful Links: (list of bookmarks for my reference, can be ignored by everyone el
 [Building React with Electron](https://medium.com/@kitze/%EF%B8%8F-from-react-to-an-electron-app-ready-for-production-a0468ecb1da3)
 
 [Consider Yarn Instead of npm](https://yarnpkg.com/lang/en/)
+
+More things:
+
+[Link 1](https://medium.com/@tarkus/how-to-call-c-c-code-from-node-js-86a773033892)
+[Link 2](https://medium.com/@atulanand94/beginners-guide-to-writing-nodejs-addons-using-c-and-n-api-node-addon-api-9b3b718a9a7f)
+[The best of links](https://github.com/yhirose/react-typescript-electron-sample-with-create-react-app-and-electron-builder)
