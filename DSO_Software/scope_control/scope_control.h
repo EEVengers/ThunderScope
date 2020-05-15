@@ -7,14 +7,15 @@ class scope_control
 {
   private:
     scope_serial *ser;
+
     const unsigned char io_dir_init [6] = {0xFF,0x44,0x8C,0x00,0x00,0x00};
     const unsigned char io_out_init [6] = {0xFF,0x44,0x84,0x00,0x00,0x00};
     unsigned char io_out [6];
     //DAC Addressing not implemented yet, only one FE w/ addr 0x18 exists
-    const unsigned char dac_init [4][4] = {{0xFF,0x18,0x07,0x03},
-                                           {0xFF,0x18,0x07,0x03},
-                                           {0xFF,0x18,0x07,0x03},
-                                           {0xFF,0x18,0x07,0x03}};            
+    const unsigned char dac_init [4][4] = {{0xFF,0x18,0x07,0x00},
+                                           {0xFF,0x18,0x07,0x00},
+                                           {0xFF,0x18,0x07,0x00},
+                                           {0xFF,0x18,0x07,0x00}};            
     unsigned char dac [4][4];
 
     const unsigned char pga_init [4][4] = {{0xFB,0x00,0x04,0x0A},
@@ -38,13 +39,18 @@ class scope_control
     unsigned char adc_chnum_clkdiv [4];
     unsigned char adc_in_sel_12 [4];
     unsigned char adc_in_sel_34 [4];
+
+    int num_ch_on;
+    bool ch_is_on [4];
+
+    int adc_ch_cfg();
     
   public:
     scope_control();
     ~scope_control();
     int configure_serial(char* path);
-    int boot ();
-    int load_default ();
+    int boot();
+    int load_default();
     int ch_on(int ch_num);
     int ch_off(int ch_num);
     int dc_cpl(int ch_num);

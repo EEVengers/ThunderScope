@@ -60,8 +60,7 @@ int scope_serial::send_command(unsigned char* command, int len){
   write(serial_port, command, len);
 
   // Allocate memory for read buffer, set size according to your needs
-  char read_buf;
-  memset(&read_buf, '\0', sizeof(read_buf));
+  char read_buf = 0;
 
   // Read bytes. The behaviour of read() (e.g. does it block?,
   // how long does it block for?) depends on the configuration
