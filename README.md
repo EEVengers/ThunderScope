@@ -54,58 +54,42 @@ shutdown
 ___
 ## Software
 
-Note: Currently two identical apps exist, scopeview which uses JavaScript and scopesight which uses TypeScript. We're looking at most likely going with TypeScript, however I'd like more input from the team regarding any preferences they might have.
-
-We are using React and Electron for our desktop app. The main dependency to be able to build and test it is Node.js, which includes npm. npm is a package manager for Node.js, which itself is a JavaScript runtime used by React. Installing Node.js is different for reach platform, go to:
+We are using React with TypeScript and Electron for our desktop app. The main dependency to be able to build and test it is Node.js, which includes npm. npm is a package manager for Node.js, which itself is a JavaScript runtime used by React. Installing Node.js is different for reach platform, go to:
 ```
 nodejs.org
 ```
 for platform specific instructions. These will always include installing npm as well.
 
-You will also want to grab Yarn as well. Go to:
+Once you have Node.js and npm installed, you can:
 ```
-yarnpkg.com
-```
-for platform specific instructions.
-
-Once you have Node.js, npm and Yarn installed, you can:
-```
-cd EEVengers/DSO_Software/scopeview
+cd EEVengers/DSO_Software/waveview
 ```
 Then you will want to grab all the dependencies before you can actually do anything. Dependencies are not uploaded to git and must be grabbed individually by each person. Do to this simply use:
 ```
-yarn
+npm install
 ```
+This will get everything and place it inside the node_modules folder.
 
-Then use:
+We have two main scripts that you should use. For development work, use:
 ```
-yarn start
+npm run electron-dev
 ```
-After you see the app start up in your browser, use:
-```
-yarn electron-start
-```
-This should display the app in its own Electron window.
+This will open up the app in a dev environment, with hot reloading supported. The built in chrome dev tools have the react dev tools installed and your terminal will be watching the process, so all of the dev tools are at your disposal.
 
-Curious souls can go into the package.json file to see exactly what these scripts do.
+For distribution, we have:
+```
+npm run electron-build
+```
+This will make a distribution ready bundle suitable for your current platform. If you ever need to build another platform's bundle, contact Andrew.
 
-The `electron-dev` command is a WIP script which aims to wait for React to start, not open it in your browser and instead only open it in an Electron instance. This will be much more dev friendly.
-
-If you want to build for distribution run:
-```
-yarn electron-pack
-```
-This will build the application for Linux, Mac and Windows. This is a single command that runs `electron-builder -lmw` for you. You can confirm this in package.json as well. If you want to build only for your platform in order to test for development, and save time instead of building all three, you can manually use:
-```
-electron-builder
-```
-This will build for your current platform.
+Curious souls can go into the package.json file to see exactly what these scripts do, but careful.
+Once you stare into the void, so too does the void stare into you.
 
 The scopeview directory will now have a `build` and a `dist` folder. The `build` folder is environment specific and contains build information. The `dist` folder is where finished builds for the desired platforms will go.
 
-These folders will naturally be environment specific and are quite large. In fact, **if you commit them to your branch, you will no longer be able to push your changes to GitHub.com**. Delete them before you commit, you can always generate them again next time you run the commands above. We should discuss possibly .gitignore-ing them.
+These folders will naturally be environment specific and are quite large. In fact, **if you commit them to your branch, you will no longer be able to push your changes to GitHub.com**. Feel free to .gitignore them.
 
-Useful Links: (list of bookmarks for my reference, can be ignored by everyone else but anyone curious enough can peruse)
+Useful Links: (list of bookmarks for Andrew's reference, can be ignored by everyone else but anyone curious enough can peruse)
 
 [Getting Started with React and Electron](https://medium.com/@brockhoff/using-electron-with-react-the-basics-e93f9761f86f)
 
@@ -113,12 +97,8 @@ Useful Links: (list of bookmarks for my reference, can be ignored by everyone el
 
 [Building React with Electron](https://medium.com/@kitze/%EF%B8%8F-from-react-to-an-electron-app-ready-for-production-a0468ecb1da3)
 
-[Consider Yarn Instead of npm](https://yarnpkg.com/lang/en/)
+[N-API Link 1](https://medium.com/@tarkus/how-to-call-c-c-code-from-node-js-86a773033892)
 
-More things:
+[N-API Link 2](https://medium.com/@atulanand94/beginners-guide-to-writing-nodejs-addons-using-c-and-n-api-node-addon-api-9b3b718a9a7f)
 
-[Link 1](https://medium.com/@tarkus/how-to-call-c-c-code-from-node-js-86a773033892)
-
-[Link 2](https://medium.com/@atulanand94/beginners-guide-to-writing-nodejs-addons-using-c-and-n-api-node-addon-api-9b3b718a9a7f)
-
-[The best of links](https://github.com/yhirose/react-typescript-electron-sample-with-create-react-app-and-electron-builder)
+[TypeScript + Electron](https://github.com/yhirose/react-typescript-electron-sample-with-create-react-app-and-electron-builder)
