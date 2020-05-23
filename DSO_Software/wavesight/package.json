@@ -1,0 +1,73 @@
+{
+  "name": "wavesight",
+  "author": "EEVengers",
+  "description": "An App for an Oscilloscope",
+  "version": "0.1.0",
+  "license": "MIT",
+  "main": "build/electron/electron.js",
+  "homepage": "./",
+  "private": true,
+  "dependencies": {
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.5.0",
+    "@testing-library/user-event": "^7.2.1",
+    "@types/electron-devtools-installer": "^2.2.0",
+    "@types/jest": "^24.9.1",
+    "@types/node": "^12.12.38",
+    "@types/react": "^16.9.34",
+    "@types/react-dom": "^16.9.7",
+    "electron-devtools-installer": "^3.0.0",
+    "electron-is-dev": "^1.2.0",
+    "electron-reload": "^1.5.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-scripts": "3.4.1",
+    "typescript": "^3.7.5"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "electron-start": "electron .",
+    "preelectron-pack": "npm run build",
+    "electron-pack": "electron-builder -lmw",
+    "postinstall": "electron-builder install-app-deps",
+    "electron-dev": "concurrently \"BROWSER=none npm run start\" \"wait-on http://localhost:3000 && ./node_modules/.bin/tsc -p electron -w\" \"wait-on http://localhost:3000 && ./node_modules/.bin/tsc -p electron && electron .\"",
+    "electron-build": "npm run build && ./node_modules/.bin/tsc -p electron && electron-builder"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "concurrently": "^5.2.0",
+    "electron": "^8.2.5",
+    "electron-builder": "^22.6.0",
+    "wait-on": "^5.0.0"
+  },
+  "build": {
+    "extends": null,
+    "appId": "com.EEVengers.waveview",
+    "productName": "WaveView",
+    "copyright": "Copyright © 2020 ${author}",
+    "files": [
+      "build/**/*",
+      "node_modules/**/*"
+    ],
+    "directories": {
+      "buildResources": "assets"
+    }
+  }
+}
