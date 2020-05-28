@@ -62,7 +62,7 @@ for platform specific instructions. These will always include installing npm as 
 
 Once you have Node.js and npm installed, you can:
 ```
-cd EEVengers/DSO_Software/waveview
+cd DSO/Software/waveview
 ```
 Then you will want to grab all the dependencies before you can actually do anything. Dependencies are not uploaded to git and must be grabbed individually by each person. Do to this simply use:
 ```
