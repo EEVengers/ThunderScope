@@ -2,7 +2,7 @@
 Low-Cost Four Channel 1GSPS Oscilliscope using USB 3 Gen 2 (10Gbps) to stream data to PC for processing and display.
 ___
 ## Hardware
-![Picture](DSO_Hardware/Block_Diagram.png?raw=true "Block Diagram")
+![Picture](Hardware/Block_Diagram.png?raw=true "Block Diagram")
 
 ### [Front End](DSO_Hardware/FE)
 The analog front end of an oscilloscope should have an input impedance of 1MΩ in parallel with ~15pF. The front end must also take in *any* signal between *8 mV and 40 V peak to peak* and attuenuate or amplify it to fit the ADC's full-scale voltage (the max voltage it can read at its inputs), which for the HMCAD1511 ADC that we are using is software adjustable between 1.8 V to 2.2 V.
