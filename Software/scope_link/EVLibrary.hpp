@@ -42,7 +42,7 @@ enum EVErrorCodes
 
 class EVException: public std::exception
 {
-    
+
 public:
     const char* what;
     
@@ -69,12 +69,12 @@ public:
 class EVCacheCopySignal
 {
 public:
-    
+
     void Trigger();
     void Subscribe();
-    
+
 private:
-        
+
 protected:
 };
 
@@ -84,25 +84,25 @@ protected:
 
 class EVSharedCache
 {
-    
+
 public:
-    
+
     EVSharedCache(unsigned int cacheSize, unsigned int numCaches);
     ~EVSharedCache();
-    
+
     void SetWriteCache(const unsigned char* buff);
     void PartialSetWriteCache(const unsigned char* buff, unsigned int& idx, unsigned int size);
     int CopyReadCache(unsigned char* buff, unsigned int size);
-    
+
 private:
     std::mutex lock;
     unsigned char** caches;
     unsigned int cacheSize;
     unsigned int numCaches;
-    
+
     unsigned short writeCache;
     unsigned short readCache;
-    
+
     EVCacheCopySignal copySignal;
 };
 
@@ -111,10 +111,10 @@ private:
 /* EVMath Structs and Enums */
 
 struct DataPoint {
-    
+
     float time;
     float value;
-    
+
 };
 
 /* END OF EVMATH STRUCTS AND ENUMS*/
