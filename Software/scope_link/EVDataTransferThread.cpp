@@ -21,11 +21,11 @@ DataTransferHandler::DataTransferHandler()
 
         killFTDIDataTransferThread = true;
         InitFTDISuperSpeedChip(&superSpeedFIFOBridgeHandle); 
-       
+
         threadSharedCache = new EVSharedCache(MEDIUM_BUFF_SIZE,10);
- 
+
         CopyFunc = [](unsigned char* buff, unsigned int& idx, unsigned int size, void* obj){ return; };
-        
+
     } catch (EVException e) {
         std::cout << "DataTransferHandler:Constructor - " << e.what << std::endl;
         assert(false);
@@ -33,7 +33,7 @@ DataTransferHandler::DataTransferHandler()
         std::cout << "DataTransferHandler:Constructor - " << e.what() << std::endl;
         assert(false);
     }
-    
+
 }
 
 void DataTransferHandler::FTDITransferThread(DataTransferHandler* handler)
@@ -69,9 +69,9 @@ void DataTransferHandler::FTDITransferThread(DataTransferHandler* handler)
                 FT_ReleaseOverlapped(handler->superSpeedFIFOBridgeHandle, vOverlapped + i);
             }
             FT_Close(handler->superSpeedFIFOBridgeHandle);
-            EVLogger::Debug( (std::string("FTDI Transfer Thread failed to que up async read, error code ") + std::to_string(errorCode)).c_str() );
+            EVLogger::Debug( (std::string("FTDI Transfer Thread failed to queue up async read, error code ") + std::to_string(errorCode)).c_str() );
             assert(false);
-        } 
+        }
     }
 
     unsigned int idx = 0;

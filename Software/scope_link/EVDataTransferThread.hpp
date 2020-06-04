@@ -24,41 +24,42 @@ enum CopyFuncs
  */
 class DataTransferHandler
 {
-    public:
-    
+public:
+
     DataTransferHandler();
-    
+
     void StartFTDITransferThread();
     void SetFTDITransferCopyFunction();
     void SetCopyFunc(CopyFuncs Func);
     void StopThread();
-   
+
     unsigned int bytesRead;//used for testing
- 
+
     EVSharedCache* threadSharedCache;
-    
+
     ~DataTransferHandler();
-        
-    private:
-    
+
+private:
+
     static void FTDITransferThread(DataTransferHandler* handler);
-    
+
     FT_HANDLE superSpeedFIFOBridgeHandle;
-    
+
     void (*CopyFunc)(unsigned char* buff, unsigned int& idx, unsigned int size, void* obj);
-    
-    
+
+
     bool killFTDIDataTransferThread;
     bool killDigitalProcessingTransferThread;
     bool killElectronTransferThread;
 
     std::thread superSpeedFTDITransferThread;
-        
-    protected:
+
+protected:
+
     std::mutex lock;
 
     const static unsigned int numAsyncBuffers = 16;
-    
+
     unsigned char asyncDataBuffers[numAsyncBuffers][MEDIUM_BUFF_SIZE];
 };
 

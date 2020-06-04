@@ -8,7 +8,7 @@ CCFLAGS_super_fast = -std=c++17 -O3 -o
 soruce = main.cpp EVLibrary.cpp EVDataTransferThread.cpp EVDigitalProcessing.cpp EVMath.cpp EVSuperSpeedFIFOBridge.cpp EVTester.cpp
 lib = -L/usr/local/lib -lftd3xx -lstdc++
 lib_debug =
-target = scope 
+target = scope
 
 
 all: gen

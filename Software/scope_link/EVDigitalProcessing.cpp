@@ -26,7 +26,7 @@ void DigitalProcessor::risingEdgeTriggerMethod(DigitalProcessor* handler) {
     unsigned char* tempBuff = (unsigned char*)malloc(sizeof(unsigned char) * MEDIUM_BUFF_SIZE);
     //TODO -> Make the actual buffer size the size of the trigger window
     unsigned char* buff = (unsigned char*)malloc(sizeof(unsigned char) * MEDIUM_BUFF_SIZE * 8);    
-    
+
     while(!handler->killThread) {
 
         //wait for this thread's ID to be the one allowed to access the cache
@@ -37,8 +37,8 @@ void DigitalProcessor::risingEdgeTriggerMethod(DigitalProcessor* handler) {
                 return;
             }
             std::this_thread::sleep_for(std::chrono::microseconds(100));
-        }   
-        
+        }
+
         //copy until a trigger has been met
         while(1) {
             while(handler->cache->CopyReadCache(tempBuff,MEDIUM_BUFF_SIZE)) {
@@ -83,7 +83,7 @@ void DigitalProcessor::risingEdgeTriggerMethod(DigitalProcessor* handler) {
         free(points);
         free(interpolatedPoints);        
     }
-    
+
     free(tempBuff);
     free(buff);
 }

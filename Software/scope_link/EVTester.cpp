@@ -1,25 +1,22 @@
-
-
 #include "EVTester.hpp"
 #include "EVMath.hpp"
 #include "EVDigitalProcessing.hpp"
 #include "EVDataTransferThread.hpp"
 
 void TestSincInterpolation() {
-    
+
     int numInterpolatedPoints;
     int numOriginalPoints = 300;
     DataPoint* testPoints = (DataPoint*)malloc(numOriginalPoints * sizeof(DataPoint));
     std::ofstream myFile;
-    
- 
+
     for(int i = 0; i < numOriginalPoints; i++) {
-	    testPoints[i].value = sin(double(10 * i) * 0.05) + (2 * sin(double(3 * i) * 0.05));
-	    testPoints[i].time = double(10 * i) * 0.05;
+        testPoints[i].value = sin(double(10 * i) * 0.05) + (2 * sin(double(3 * i) * 0.05));
+        testPoints[i].time = double(10 * i) * 0.05;
     }
 
     DataPoint* points = SincInterpolate(testPoints, numOriginalPoints, &numInterpolatedPoints, 3, 20);
-    
+
     myFile.open("InterpolatedPoints.csv");
     for(int i = 0; i < numInterpolatedPoints; i++) {
         myFile << points[i].time;
@@ -31,10 +28,10 @@ void TestSincInterpolation() {
 
     myFile.open("OriginalValues.csv");
     for(int i = 0; i < numOriginalPoints; i++) {
-    	myFile << testPoints[i].time;
-	    myFile << ",";
-	    myFile << testPoints[i].value;
-	    myFile << "\n";
+        myFile << testPoints[i].time;
+        myFile << ",";
+        myFile << testPoints[i].value;
+        myFile << "\n";
     }
 
     myFile.close();
@@ -51,7 +48,7 @@ void TestDataThroughPut() {
     
     dataExchanger = new DataTransferHandler();
     dataExchanger->SetCopyFunc(DataTransferFullBuffRead);
-    
+
     for(int i = 0; i < numDigitalProcessors; i++) {
         digitalProcessor[i] = new DigitalProcessor();
         digitalProcessor[i]->SetSharedCache(dataExchanger->threadSharedCache);
@@ -67,7 +64,7 @@ void TestDataThroughPut() {
 
     //start the transfer thread
     dataExchanger->StartFTDITransferThread();
-    
+
     //run for 1 minute
     std::this_thread::sleep_for(std::chrono::seconds(60));
 
@@ -91,8 +88,4 @@ void TestDataThroughPut() {
     std::cout << "Bytes Read: " << bytesRead << "B" << std::endl;
     std::cout << "Bytes Processed: " << bytesProcessed << std::endl;
     std::cout << "B/s: " << bytesProcessed / 60 << std::endl;  
-
-    
 }
-
-

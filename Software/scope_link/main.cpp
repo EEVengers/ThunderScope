@@ -23,7 +23,7 @@ void run()
 }
 
 int parseCommandLineArgs(int argc, char** args) {
-    int flags = 0;    
+    int flags = 0;
 
     for(int i = 1; i < argc; i++) {
         if(std::string(args[i]) == "--TestSinc" || std::string(args[i]) == "-s") {
@@ -41,4 +41,3 @@ int main(int argc, char** args)
     parseCommandLineArgs(argc, args);
     return 0;
 }
-

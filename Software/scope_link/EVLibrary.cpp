@@ -26,7 +26,7 @@ EVException::EVException(int errorCode, const char* subSystem, const char* optio
         exceptionText += " - Optional Message: ";
         exceptionText += std::string(optionalMessage);
     }
-    
+
     what = exceptionText.c_str();
 }
 
@@ -93,7 +93,7 @@ EVSharedCache::EVSharedCache(unsigned int cacheSize, unsigned int numCaches)
     for(int i = 0; i < numCaches; i++) {
         caches[i] = (unsigned char*)malloc(sizeof(unsigned char*) * cacheSize);
     }
-    
+
     this->readCache = 0;
     this->writeCache = 0;
 }
@@ -101,7 +101,7 @@ EVSharedCache::EVSharedCache(unsigned int cacheSize, unsigned int numCaches)
 void EVSharedCache::SetWriteCache(const unsigned char* buff)
 {
     this->lock.lock();
-    
+
     //copy data
     for(int i = 0; i < cacheSize; i++)
     {
@@ -113,20 +113,20 @@ void EVSharedCache::SetWriteCache(const unsigned char* buff)
     } else {
         writeCache++;
     }
-    
+
     this->lock.unlock();
 }
 
 void EVSharedCache::PartialSetWriteCache(const unsigned char* buff, unsigned int &idx, unsigned int size) {
     if(idx + size > cacheSize) throw EVException(EVErrorCodeInvalidValue,"EVSharedCache::PartialSetWriteCache()",nullptr);
-    
+
     this->lock.lock();
-    
+
     for(int i = 0; i < size; i++) {
         caches[writeCache][idx + i] = buff[i];
     }
     idx += size;
-    
+
     //when this buffer is full
     if(idx == cacheSize) {
         //move onto next buffer
@@ -153,7 +153,7 @@ int EVSharedCache::CopyReadCache(unsigned char* buff, unsigned int size)
     }
 
     if(this->cacheSize < size) throw EVException(EVErrorCodeInvalidValue,"EVSharedCache::CopyReadCache",nullptr);
-    
+
     //copy data
     memcpy(buff,caches[readCache],size);
     //advance to next cache
@@ -162,9 +162,9 @@ int EVSharedCache::CopyReadCache(unsigned char* buff, unsigned int size)
     } else {
         readCache++;
     }
-    
+
     this->lock.unlock();
-    
+
     return 0;
 }
 
@@ -177,7 +177,3 @@ EVSharedCache::~EVSharedCache()
 }
 
 //---------------EVCacheCopySignal---------------
-
-
-
-

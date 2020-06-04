@@ -16,7 +16,7 @@ class DigitalProcessor
 {
 public:
     DigitalProcessor();
-    
+
     void SetSharedCache(EVSharedCache* cache);
     void StartRisingEdgeTriggerThread();
     unsigned int bytesProcessed; //Used for DataThroughPut Test
@@ -24,9 +24,9 @@ public:
     void StopThread();
 
     ~DigitalProcessor();
-    
+
 private:
-    
+
     void WriteToCSV(const unsigned char* buff, const unsigned int size, const char* filename);
     EVSharedCache* cache;
     int orderID;
@@ -37,9 +37,9 @@ private:
     std::thread processorThread;
     static void risingEdgeTriggerMethod(DigitalProcessor* handler);
     void startRisingEdgeTriggerThread();
-    
+
 protected:
-    
+
     static volatile int orderIDMax;
     static volatile int currentOrderID;
 
