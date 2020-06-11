@@ -21,7 +21,7 @@ module data_serdes(
 	
 	genvar i;
 	generate
-		for (i = 0 ; i < 8 ; i = i+1) begin : loop_br
+		for (i = 0 ; i < 4 ; i = i+1) begin : loop_br
 		
 			ISERDES2 #(
 			.DATA_WIDTH     	(8), 			
@@ -41,10 +41,10 @@ module data_serdes(
 			.SHIFTIN 		(),
 			.BITSLIP 		(bitslip),
 			.FABRICOUT 		(),
-			.Q4  				(data_deser[(8*i)+7]),
-			.Q3  				(data_deser[(8*i)+6]),
-			.Q2  				(data_deser[(8*i)+5]),
-			.Q1  				(data_deser[(8*i)+4]),
+			.Q4  				(data_deser[32+(8*i)+7]),
+			.Q3  				(data_deser[32+(8*i)+6]),
+			.Q2  				(data_deser[32+(8*i)+5]),
+			.Q1  				(data_deser[32+(8*i)+4]),
 			.DFB  			(),
 			.CFB0 			(),
 			.CFB1 			(),
@@ -69,6 +69,66 @@ module data_serdes(
 			.RST     		(1'b0),
 			.CLKDIV  		(divclk),
 			.SHIFTIN 		(data_cascade[i]),
+			.BITSLIP 		(bitslip),
+			.FABRICOUT 		(),
+			.Q4  				(data_deser[32+(8*i)+3]),
+			.Q3  				(data_deser[32+(8*i)+2]),
+			.Q2  				(data_deser[32+(8*i)+1]),
+			.Q1  				(data_deser[32+(8*i)+0]),
+			.DFB  			(),
+			.CFB0 			(),
+			.CFB1 			(),
+			.VALID 			(),
+			.INCDEC 			(),
+			.SHIFTOUT 		()
+			);
+			
+			ISERDES2 #(
+			.DATA_WIDTH     	(8), 			
+			.DATA_RATE      	("SDR"), 		
+			.BITSLIP_ENABLE 	("TRUE"), 		
+			.SERDES_MODE    	("MASTER"), 		
+			.INTERFACE_TYPE 	("RETIMED")
+			) 		
+			iserdes_m_br1 (
+			.D       		(adc_data[i+4]),
+			.CE0     		(1'b1),
+			.CLK0    		(clk0),
+			.CLK1    		(),
+			.IOCE    		(ser_stb),
+			.RST     		(1'b0),
+			.CLKDIV  		(divclk),
+			.SHIFTIN 		(),
+			.BITSLIP 		(bitslip),
+			.FABRICOUT 		(),
+			.Q4  				(data_deser[(8*i)+7]),
+			.Q3  				(data_deser[(8*i)+6]),
+			.Q2  				(data_deser[(8*i)+5]),
+			.Q1  				(data_deser[(8*i)+4]),
+			.DFB  			(),
+			.CFB0 			(),
+			.CFB1 			(),
+			.VALID    		(),
+			.INCDEC   		(),
+			.SHIFTOUT 		(data_cascade[i+4])
+			);
+
+			ISERDES2 #(
+			.DATA_WIDTH     	(8), 			
+			.DATA_RATE      	("SDR"), 		
+			.BITSLIP_ENABLE 	("TRUE"), 		
+			.SERDES_MODE    	("SLAVE"), 		
+			.INTERFACE_TYPE 	("RETIMED")
+			) 		
+			iserdes_s_br1 (
+			.D       		(),
+			.CE0     		(1'b1),
+			.CLK0    		(clk0),
+			.CLK1    		(),
+			.IOCE    		(ser_stb),
+			.RST     		(1'b0),
+			.CLKDIV  		(divclk),
+			.SHIFTIN 		(data_cascade[i+4]),
 			.BITSLIP 		(bitslip),
 			.FABRICOUT 		(),
 			.Q4  				(data_deser[(8*i)+3]),
