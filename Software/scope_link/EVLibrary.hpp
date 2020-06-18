@@ -16,6 +16,8 @@
 #include "ftd3xx.h"
 #include <assert.h>
 #include <math.h>
+#include <mutex>
+#include <cstring>
 
 //FTDI Define
 

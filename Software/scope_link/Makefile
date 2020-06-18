@@ -6,7 +6,7 @@ CCFLAGS_debug = -std=c++17 -g -o
 CCFLAGS_fast = -std=c++17 -O2 -o
 CCFLAGS_super_fast = -std=c++17 -O3 -o
 soruce = main.cpp EVLibrary.cpp EVDataTransferThread.cpp EVDigitalProcessing.cpp EVMath.cpp EVSuperSpeedFIFOBridge.cpp EVTester.cpp
-lib = -L/usr/local/lib -lftd3xx -lstdc++
+lib = -L/usr/local/lib -lftd3xx -lstdc++ -pthread -lm
 lib_debug =
 target = scope
 
