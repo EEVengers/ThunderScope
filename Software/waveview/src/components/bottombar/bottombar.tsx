@@ -1,11 +1,14 @@
 import React from 'react';
+import './bottombar.css';
 
-function BottomBar() {
+class BottomBar extends React.Component {
+  render() {
     return (
-        <div>
-            BottomBar Component
-        </div>
+      <div>
+        BottomBar Component
+      </div>
     )
+  }
 }
 
 export default BottomBar;
