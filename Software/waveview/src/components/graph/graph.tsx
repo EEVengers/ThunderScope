@@ -1,5 +1,6 @@
 import React from 'react';
 import './graph.css';
+import { data } from '../../testdata/sin10kHz_ratio12';
 import {
   FlexibleXYPlot,
   XAxis,
@@ -24,7 +25,7 @@ class Graph extends React.Component {
           />
           <LineSeries
             className="data-series"
-            data={[{x: 1, y: 3}, {x: 2, y: 5}, {x: 3, y: 15}, {x: 4, y: 12}]}
+            data={data}
           />
         </FlexibleXYPlot>
       </div>
