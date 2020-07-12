@@ -59,15 +59,15 @@ module dso_top(
 	);
 	
 	fifo_generator_v9_3 adc_fifo (
-   .rst(1'b0),
-   .wr_clk(divclk), 
-   .rd_clk(ft6_clk), 
-   .din(data_deser), 
-   .wr_en(~adc_fifo_full),	//add a state machine to deal with fifo full
-   .rd_en(adc_fifo_rd_en), 
-   .dout(adc_fifo_data), 
-   .full(adc_fifo_full),
-   .empty(adc_fifo_empty) 
+   	.rst(1'b0),
+   	.wr_clk(divclk), 
+   	.rd_clk(ft6_clk), 
+   	.din(data_deser), 
+   	.wr_en(~adc_fifo_full),	//add a state machine to deal with fifo full
+   	.rd_en(adc_fifo_rd_en), 
+   	.dout(adc_fifo_data), 
+   	.full(adc_fifo_full),
+  	.empty(adc_fifo_empty) 
 	);
 	
 	FT6_Write	FT6_Write (
