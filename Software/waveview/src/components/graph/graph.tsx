@@ -1,6 +1,6 @@
 import React from 'react';
 import './graph.css';
-import { data } from '../../testdata/sin1MHz_ratio12';
+import { data } from '../../testdata/sin1MHz';
 import {
   FlexibleXYPlot,
   XAxis,
