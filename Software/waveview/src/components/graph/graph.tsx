@@ -31,7 +31,7 @@ class Graph extends React.Component<IGraphProps,IGraphState> {
   componentDidMount() {
     this.timerID = window.setInterval(
       () => this.tick(),
-      100
+      16.67
     )
   }
 
