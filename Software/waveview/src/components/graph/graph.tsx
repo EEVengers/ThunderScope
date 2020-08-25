@@ -10,22 +10,22 @@ import {
   LineSeries
 } from 'react-vis';
 
-interface IGraphProps {
-}
-
 interface IGraphState {
   tickCount: number;
   curData: any[];
 }
 
+let initialState: IGraphState = {tickCount: 0, curData: []};
+
 //See https://stackoverflow.com/a/46987987
 //Stateful code adapted from https://reactjs.org/docs/state-and-lifecycle.html
-class Graph extends React.Component<IGraphProps,IGraphState> {
+class Graph extends React.Component {
   timerID: number = 0;
+  state: IGraphState
 
-  constructor(props: IGraphProps) {
+  constructor(props: any) {
     super(props);
-    this.state = {tickCount: 0, curData: []};
+    this.state = initialState;
   }
 
   componentDidMount() {
