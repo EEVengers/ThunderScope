@@ -61,7 +61,7 @@ class Graph extends React.Component {
           <HorizontalGridLines style={{stroke: '#4D4D4D'}} />
           <VerticalGridLines style={{stroke: '#4D4D4D'}} />
           <XAxis
-            title=""
+            title="X"
             hideTicks
           />
           <YAxis 
