@@ -25,12 +25,20 @@ void run()
 int parseCommandLineArgs(int argc, char** args) {
     int flags = 0;
 
-    for(int i = 1; i < argc; i++) {
-        if(std::string(args[i]) == "--TestSinc" || std::string(args[i]) == "-s") {
-            TestSincInterpolation();
-        } else if(std::string(args[i]) == "--TestDataThroughPut" || std::string(args[i]) == "-p") {
-            TestDataThroughPut();
+    if(argc > 1) {
+        for(int i = 1; i < argc; i++) {
+            if(std::string(args[i]) == "--TestSinc" || std::string(args[i]) == "-s") {
+                logger.Debug("Main:parseCommandLineArgs() - Testing Sinc Interpolation");
+                TestSincInterpolation();
+            } else if(std::string(args[i]) == "--TestDataThroughPut" || std::string(args[i]) == "-p") {
+                logger.Debug("Main:parseCommandLineArgs() - Testing Data ThroughPut");
+                TestDataThroughPut();
+            } else {
+                logger.Debug("Main:parseCommandLineArgs() - Invalid arguments. Use --TestSinc or --TestDataThroughPut");
+            }
         }
+    } else {
+        logger.Debug("Main:parseCommandLineArgs() - no arguments provided. Use --TestSinc or --TestDataThroughPut");
     }
 
     return flags;
