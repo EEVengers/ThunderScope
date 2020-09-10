@@ -57,11 +57,13 @@ class Graph extends React.Component {
   render() {
     return (
       <div className="graph_view">
-        <FlexibleXYPlot>
+        <FlexibleXYPlot
+          yDomain={[0, 300]}
+        >
           <HorizontalGridLines style={{stroke: '#4D4D4D'}} />
           <VerticalGridLines style={{stroke: '#4D4D4D'}} />
           <XAxis
-            title="X"
+            title=""
             hideTicks
           />
           <YAxis 
