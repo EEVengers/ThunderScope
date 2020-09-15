@@ -1,0 +1,156 @@
+;/*++
+;
+;Copyright (c) Xilinx  All rights reserved.
+;
+;   THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY
+;   KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+;   IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR
+;   PURPOSE.
+;
+;Module Name:
+;
+;    XDMA.inf
+;
+;Abstract:
+;    INF file for a XDMA device.
+;
+;--*/
+
+[Version]
+CatalogFile               = XDMA.cat
+Class                     = %ClassName% ;TODO use a different class - maybe "Memory Technology device" or "MultiFunction device"
+ClassGuid                 = {a3a4c1ce-5a80-452c-9b51-a98edd3378d1}
+DriverPackageDisplayName  = %XDMA.DRVDESC%
+DriverPackageType         = PlugAndPlay
+DriverVer                 = 11/22/2011,1.2
+Provider                  = %Companyname%
+Signature                 = "$WINDOWS NT$"
+
+[DestinationDirs]
+DefaultDestDir  = 12
+CoInstaller_CopyFiles = 11
+
+; ====================== Class Section ========================================
+[ClassInstall32]
+Addreg		= XDMA.ClassReg
+
+[XDMA.ClassReg]
+HKR,,,0,%ClassName%
+HKR,,Icon,,-5
+HKR,,DeviceCharacteristics,0x10001,0x100     ;Use same security checks on relative opens
+HKR,,Security,,"D:P(A;;GA;;;SY)(A;;GA;;;BA)(A;;GRGW;;;WD)" ;Allow generic all access to system, built-in Admin and World
+
+; ====================== Device Install Section ===============================
+[ControlFlags]
+ExcludeFromSelect = *
+
+[Manufacturer]
+%Companyname%=Xilinx,NT$ARCH$
+
+[SourceDisksFiles]
+XDMA.sys    = 1
+WdfCoInstaller$KMDFCOINSTALLERVERSION$.dll = 1 ; make sure the number matches with SourceDisksNames
+
+[SourceDisksNames]
+1="XDMA Install Disk",
+
+; For XP and later
+[Xilinx.NT$ARCH$]
+; DisplayName           Section			DeviceId
+; -----------           -------			--------
+%XDMA.DRVDESC%=			XDMA_Inst,		PCI\VEN_10ee&DEV_9011
+%XDMA.DRVDESC%=			XDMA_Inst,		PCI\VEN_10ee&DEV_9012
+%XDMA.DRVDESC%=			XDMA_Inst,		PCI\VEN_10ee&DEV_9014
+%XDMA.DRVDESC%=			XDMA_Inst,		PCI\VEN_10ee&DEV_9018
+%XDMA.DRVDESC%=			XDMA_Inst,		PCI\VEN_10ee&DEV_9021
+%XDMA.DRVDESC%=			XDMA_Inst,		PCI\VEN_10ee&DEV_9022
+%XDMA.DRVDESC%=			XDMA_Inst,		PCI\VEN_10ee&DEV_9024
+%XDMA.DRVDESC%=			XDMA_Inst,		PCI\VEN_10ee&DEV_9028
+%XDMA.DRVDESC%=			XDMA_Inst,		PCI\VEN_10ee&DEV_9031
+%XDMA.DRVDESC%=			XDMA_Inst,		PCI\VEN_10ee&DEV_9032
+%XDMA.DRVDESC%=			XDMA_Inst,		PCI\VEN_10ee&DEV_9034
+%XDMA.DRVDESC%=			XDMA_Inst,		PCI\VEN_10ee&DEV_9038
+%XDMA.DRVDESC%=			XDMA_Inst,		PCI\VEN_10ee&DEV_903f
+%XDMA.DRVDESC%=			XDMA_Inst,		PCI\VEN_10ee&DEV_8011
+%XDMA.DRVDESC%=			XDMA_Inst,		PCI\VEN_10ee&DEV_8012
+%XDMA.DRVDESC%=			XDMA_Inst,		PCI\VEN_10ee&DEV_8014
+%XDMA.DRVDESC%=			XDMA_Inst,		PCI\VEN_10ee&DEV_8018
+%XDMA.DRVDESC%=			XDMA_Inst,		PCI\VEN_10ee&DEV_8021
+%XDMA.DRVDESC%=			XDMA_Inst,		PCI\VEN_10ee&DEV_8022
+%XDMA.DRVDESC%=			XDMA_Inst,		PCI\VEN_10ee&DEV_8024
+%XDMA.DRVDESC%=			XDMA_Inst,		PCI\VEN_10ee&DEV_8028
+%XDMA.DRVDESC%=			XDMA_Inst,		PCI\VEN_10ee&DEV_8031
+%XDMA.DRVDESC%=			XDMA_Inst,		PCI\VEN_10ee&DEV_8032
+%XDMA.DRVDESC%=			XDMA_Inst,		PCI\VEN_10ee&DEV_8034
+%XDMA.DRVDESC%=			XDMA_Inst,		PCI\VEN_10ee&DEV_8038
+%XDMA.DRVDESC%=			XDMA_Inst,		PCI\VEN_10ee&DEV_7011
+%XDMA.DRVDESC%=			XDMA_Inst,		PCI\VEN_10ee&DEV_7012
+%XDMA.DRVDESC%=			XDMA_Inst,		PCI\VEN_10ee&DEV_7014
+%XDMA.DRVDESC%=			XDMA_Inst,		PCI\VEN_10ee&DEV_7018
+%XDMA.DRVDESC%=			XDMA_Inst,		PCI\VEN_10ee&DEV_7021
+%XDMA.DRVDESC%=			XDMA_Inst,		PCI\VEN_10ee&DEV_7022
+%XDMA.DRVDESC%=			XDMA_Inst,		PCI\VEN_10ee&DEV_7024
+%XDMA.DRVDESC%=			XDMA_Inst,		PCI\VEN_10ee&DEV_7028
+%XDMA.DRVDESC%=			XDMA_Inst,		PCI\VEN_10ee&DEV_7031
+%XDMA.DRVDESC%=			XDMA_Inst,		PCI\VEN_10ee&DEV_7032
+%XDMA.DRVDESC%=			XDMA_Inst,		PCI\VEN_10ee&DEV_7034
+%XDMA.DRVDESC%=			XDMA_Inst,		PCI\VEN_10ee&DEV_7038
+
+[XDMA_Inst.NT]
+CopyFiles   =	XDMA.CopyFiles
+
+[XDMA.CopyFiles]
+XDMA.sys
+
+; MSI/MSI-X support
+[XDMA_Inst.NT.HW]
+AddReg = XDMA.EnableMSI
+
+; 24 Interrupt resources are required - 16 for user events and 8 for dma channels
+[XDMA.EnableMSI]
+HKR,"Interrupt Management",,0x00000010
+HKR,"Interrupt Management\MessageSignaledInterruptProperties",,0x00000010
+HKR,"Interrupt Management\MessageSignaledInterruptProperties",MSISupported,0x00010001,1
+HKR,"Interrupt Management\MessageSignaledInterruptProperties",MessageNumberLimit,0x00010001,32
+
+
+[XDMA_Inst.NT.Services]
+AddService     = XDMA,0x00000002,XDMA_Service
+
+[XDMA_Service]
+DisplayName    = %XDMA.SVCDESC%
+ServiceType    = 1                  ; SERVICE_KERNEL_DRIVER
+StartType      = 3                  ; SERVICE_DEMAND_START
+ErrorControl   = 1                  ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\XDMA.sys
+AddReg         = XDMA_Inst.NT.Services.AddReg  ;Commented out for installer use, For debug include in build
+
+[XDMA_Inst.NT.Services.AddReg]
+HKR,Parameters,"POLL_MODE",0x00010001,0 ; set to 1 for hardware polling, default is 0 (interrupts)
+
+
+; ====================== WDF Coinstaller installation =========================
+
+[XDMA_Inst.NT.CoInstallers]
+AddReg         = CoInstaller_AddReg
+CopyFiles      = CoInstaller_CopyFiles
+
+[CoInstaller_AddReg]
+HKR,,CoInstallers32,0x00010000, "WdfCoInstaller$KMDFCOINSTALLERVERSION$.dll,WdfCoInstaller"
+
+[CoInstaller_CopyFiles]
+WdfCoInstaller$KMDFCOINSTALLERVERSION$.dll
+
+[XDMA_Inst.NT.Wdf]
+KmdfService    = XDMA, XDMA_wdfsect
+
+[XDMA_wdfsect]
+KmdfLibraryVersion = $KMDFVERSION$
+
+;======================= String Definitions ===================================
+[Strings]
+Companyname				= "Xilinx"
+ClassName				= "Xilinx Drivers"
+XDMA.SVCDESC			= "Xilinx DMA Driver Service"
+XDMA.DRVDESC			= "Xilinx DMA"
+DeviceDescription		= "Xilinx FPGA device"

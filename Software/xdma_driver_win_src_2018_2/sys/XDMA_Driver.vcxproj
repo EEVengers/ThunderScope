@@ -1,0 +1,434 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Win10_Debug|Win32">
+      <Configuration>Win10_Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Win10_Debug|x64">
+      <Configuration>Win10_Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Win10_Release|Win32">
+      <Configuration>Win10_Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Win10_Release|x64">
+      <Configuration>Win10_Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Win7_Debug|Win32">
+      <Configuration>Win7_Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Win7_Release|Win32">
+      <Configuration>Win7_Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Win7_Debug|x64">
+      <Configuration>Win7_Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Win7_Release|x64">
+      <Configuration>Win7_Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{C77CDE8B-790F-4413-A3FB-D413E7368FB5}</ProjectGuid>
+    <Keyword>MakeFileProj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
+    <ProjectName>XDMA_Driver</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Win7_Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Driver</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>WindowsKernelModeDriver10.0</PlatformToolset>
+    <TargetVersion>Windows7</TargetVersion>
+    <DriverTargetPlatform>Desktop</DriverTargetPlatform>
+    <SupportsPackaging>true</SupportsPackaging>
+    <DriverType>KMDF</DriverType>
+    <KMDF_VERSION_MAJOR>1</KMDF_VERSION_MAJOR>
+    <KMDF_VERSION_MINOR>11</KMDF_VERSION_MINOR>
+    <ALLOW_DATE_TIME>1</ALLOW_DATE_TIME>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Win10_Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Driver</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>WindowsKernelModeDriver10.0</PlatformToolset>
+    <TargetVersion>Windows10</TargetVersion>
+    <DriverTargetPlatform>Universal</DriverTargetPlatform>
+    <SupportsPackaging>
+    </SupportsPackaging>
+    <DriverType>KMDF</DriverType>
+    <KMDF_VERSION_MAJOR>
+    </KMDF_VERSION_MAJOR>
+    <KMDF_VERSION_MINOR>
+    </KMDF_VERSION_MINOR>
+    <ALLOW_DATE_TIME>1</ALLOW_DATE_TIME>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Win7_Release|Win32'" Label="Configuration">
+    <ConfigurationType>Driver</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>WindowsKernelModeDriver10.0</PlatformToolset>
+    <TargetVersion>Windows7</TargetVersion>
+    <DriverTargetPlatform>Desktop</DriverTargetPlatform>
+    <SupportsPackaging>true</SupportsPackaging>
+    <DriverType>KMDF</DriverType>
+    <KMDF_VERSION_MAJOR>1</KMDF_VERSION_MAJOR>
+    <KMDF_VERSION_MINOR>11</KMDF_VERSION_MINOR>
+    <ALLOW_DATE_TIME>1</ALLOW_DATE_TIME>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Win10_Release|Win32'" Label="Configuration">
+    <ConfigurationType>Driver</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>WindowsKernelModeDriver10.0</PlatformToolset>
+    <TargetVersion>Windows10</TargetVersion>
+    <DriverTargetPlatform>Universal</DriverTargetPlatform>
+    <DriverType>KMDF</DriverType>
+    <KMDF_VERSION_MINOR>
+    </KMDF_VERSION_MINOR>
+    <ALLOW_DATE_TIME>1</ALLOW_DATE_TIME>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Win7_Debug|x64'" Label="Configuration">
+    <ConfigurationType>Driver</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>WindowsKernelModeDriver10.0</PlatformToolset>
+    <TargetVersion>Windows7</TargetVersion>
+    <DriverTargetPlatform>Desktop</DriverTargetPlatform>
+    <SupportsPackaging>true</SupportsPackaging>
+    <DriverType>KMDF</DriverType>
+    <KMDF_VERSION_MAJOR>1</KMDF_VERSION_MAJOR>
+    <KMDF_VERSION_MINOR>11</KMDF_VERSION_MINOR>
+    <ALLOW_DATE_TIME>1</ALLOW_DATE_TIME>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Win10_Debug|x64'" Label="Configuration">
+    <ConfigurationType>Driver</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>WindowsKernelModeDriver10.0</PlatformToolset>
+    <TargetVersion>Windows10</TargetVersion>
+    <DriverTargetPlatform>Universal</DriverTargetPlatform>
+    <DriverType>KMDF</DriverType>
+    <KMDF_VERSION_MAJOR>
+    </KMDF_VERSION_MAJOR>
+    <KMDF_VERSION_MINOR>
+    </KMDF_VERSION_MINOR>
+    <ALLOW_DATE_TIME>1</ALLOW_DATE_TIME>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Win7_Release|x64'" Label="Configuration">
+    <ConfigurationType>Driver</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>WindowsKernelModeDriver10.0</PlatformToolset>
+    <TargetVersion>Windows7</TargetVersion>
+    <DriverTargetPlatform>Desktop</DriverTargetPlatform>
+    <SupportsPackaging>true</SupportsPackaging>
+    <DriverType>KMDF</DriverType>
+    <KMDF_VERSION_MAJOR>1</KMDF_VERSION_MAJOR>
+    <KMDF_VERSION_MINOR>11</KMDF_VERSION_MINOR>
+    <ALLOW_DATE_TIME>1</ALLOW_DATE_TIME>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Win10_Release|x64'" Label="Configuration">
+    <ConfigurationType>Driver</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>WindowsKernelModeDriver10.0</PlatformToolset>
+    <TargetVersion>Windows10</TargetVersion>
+    <DriverTargetPlatform>Universal</DriverTargetPlatform>
+    <DriverType>KMDF</DriverType>
+    <KMDF_VERSION_MINOR>
+    </KMDF_VERSION_MINOR>
+    <ALLOW_DATE_TIME>1</ALLOW_DATE_TIME>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Win7_Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Win10_Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Win7_Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Win10_Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Win7_Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Win10_Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Win7_Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Win10_Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Win7_Debug|Win32'">
+    <NMakeBuildCommandLine>all.bat</NMakeBuildCommandLine>
+    <NMakeCleanCommandLine>clean.bat</NMakeCleanCommandLine>
+    <NMakeReBuildCommandLine>all.bat</NMakeReBuildCommandLine>
+    <NMakePreprocessorDefinitions>WIN32;_DEBUG;$(NMakePreprocessorDefinitions)</NMakePreprocessorDefinitions>
+    <NMakeIncludeSearchPath>C:\workspace\windows\inc;C:\WinDDK\7600.16385.1\inc\ddk;C:\WinDDK\7600.16385.1\inc\wdf\kmdf\1.9;$(NMakeIncludeSearchPath)</NMakeIncludeSearchPath>
+    <Inf2CatVerbose>
+    </Inf2CatVerbose>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <OutDir>$(ProjectDir)..\build\$(Platform)\$(ProjectName)\$(ConfigurationName)\</OutDir>
+    <IntDir>$(ProjectDir)..\build_tmp\$(ProjectName)\$(Platform)\$(ConfigurationName)\</IntDir>
+    <TargetName>XDMA</TargetName>
+    <LibraryPath>$(ProjectDir)..\klibxdma\x64\Debug\;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Win10_Debug|Win32'">
+    <NMakeBuildCommandLine>all.bat</NMakeBuildCommandLine>
+    <NMakeCleanCommandLine>clean.bat</NMakeCleanCommandLine>
+    <NMakeReBuildCommandLine>all.bat</NMakeReBuildCommandLine>
+    <NMakePreprocessorDefinitions>WIN32;_DEBUG;$(NMakePreprocessorDefinitions)</NMakePreprocessorDefinitions>
+    <NMakeIncludeSearchPath>C:\workspace\windows\inc;C:\WinDDK\7600.16385.1\inc\ddk;C:\WinDDK\7600.16385.1\inc\wdf\kmdf\1.9;$(NMakeIncludeSearchPath)</NMakeIncludeSearchPath>
+    <Inf2CatVerbose />
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <OutDir>$(ProjectDir)..\build\$(Platform)\$(ProjectName)\$(ConfigurationName)\</OutDir>
+    <IntDir>$(ProjectDir)..\build_tmp\$(ProjectName)\$(Platform)\$(ConfigurationName)\</IntDir>
+    <TargetName>XDMA</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Win7_Release|Win32'">
+    <NMakeBuildCommandLine>all.bat</NMakeBuildCommandLine>
+    <NMakeCleanCommandLine>clean.bat</NMakeCleanCommandLine>
+    <NMakeReBuildCommandLine>all.bat</NMakeReBuildCommandLine>
+    <NMakePreprocessorDefinitions>WIN32;NDEBUG;$(NMakePreprocessorDefinitions)</NMakePreprocessorDefinitions>
+    <OutDir>$(ProjectDir)..\build\$(Platform)\$(ProjectName)\$(ConfigurationName)\</OutDir>
+    <IntDir>$(ProjectDir)..\build_tmp\$(ProjectName)\$(Platform)\$(ConfigurationName)\</IntDir>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <TargetName>XDMA</TargetName>
+    <LibraryPath>$(ProjectDir)..\klibxdma\x64\Debug\;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Win10_Release|Win32'">
+    <NMakeBuildCommandLine>all.bat</NMakeBuildCommandLine>
+    <NMakeCleanCommandLine>clean.bat</NMakeCleanCommandLine>
+    <NMakeReBuildCommandLine>all.bat</NMakeReBuildCommandLine>
+    <NMakePreprocessorDefinitions>WIN32;NDEBUG;$(NMakePreprocessorDefinitions)</NMakePreprocessorDefinitions>
+    <OutDir>$(ProjectDir)..\build\$(Platform)\$(ProjectName)\$(ConfigurationName)\</OutDir>
+    <IntDir>$(ProjectDir)..\build_tmp\$(ProjectName)\$(Platform)\$(ConfigurationName)\</IntDir>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <TargetName>XDMA</TargetName>
+    <LibraryPath>$(ProjectDir)..\klibxdma\x64\Debug\;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Win7_Debug|x64'">
+    <OutDir>$(ProjectDir)..\build\$(Platform)\$(ProjectName)\$(ConfigurationName)\</OutDir>
+    <IntDir>$(ProjectDir)..\build_tmp\$(ProjectName)\$(Platform)\$(ConfigurationName)\</IntDir>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <TargetName>XDMA</TargetName>
+    <LibraryPath>$(ProjectDir)..\klibxdma\x64\Debug\;$(LibraryPath)</LibraryPath>
+    <PostBuildEventUseInBuild>false</PostBuildEventUseInBuild>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Win10_Debug|x64'">
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <OutDir>$(ProjectDir)..\build\$(Platform)\$(ProjectName)\$(ConfigurationName)\</OutDir>
+    <IntDir>$(ProjectDir)..\build_tmp\$(ProjectName)\$(Platform)\$(ConfigurationName)\</IntDir>
+    <TargetName>XDMA</TargetName>
+    <ApiValidator_Enable>false</ApiValidator_Enable>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Win7_Release|x64'">
+    <OutDir>$(ProjectDir)..\build\$(Platform)\$(ProjectName)\$(ConfigurationName)\</OutDir>
+    <IntDir>$(ProjectDir)..\build_tmp\$(ProjectName)\$(Platform)\$(ConfigurationName)\</IntDir>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <TargetName>XDMA</TargetName>
+    <LibraryPath>$(ProjectDir)..\klibxdma\x64\Debug\;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Win10_Release|x64'">
+    <OutDir>$(ProjectDir)..\build\$(Platform)\$(ProjectName)\$(ConfigurationName)\</OutDir>
+    <IntDir>$(ProjectDir)..\build_tmp\$(ProjectName)\$(Platform)\$(ConfigurationName)\</IntDir>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <TargetName>XDMA</TargetName>
+    <LibraryPath>$(ProjectDir)..\klibxdma\x64\Debug\;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Win7_Debug|Win32'">
+    <ClCompile>
+      <WppEnabled>true</WppEnabled>
+      <EnablePREfast>true</EnablePREfast>
+      <WppScanConfigurationData>trace.h</WppScanConfigurationData>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level4</WarningLevel>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\libxdma;$(ProjectDir)..\inc;build_tmp\$(ConfigurationName)\$(Platform)\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <CompileAs>CompileAsC</CompileAs>
+      <WppRecorderEnabled>false</WppRecorderEnabled>
+    </ClCompile>
+    <MessageCompile />
+    <Link />
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Win10_Debug|Win32'">
+    <ClCompile>
+      <WppEnabled>true</WppEnabled>
+      <EnablePREfast>true</EnablePREfast>
+      <WppScanConfigurationData>trace.h</WppScanConfigurationData>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level4</WarningLevel>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\libxdma;$(ProjectDir)..\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <CompileAs>CompileAsC</CompileAs>
+      <WppRecorderEnabled>false</WppRecorderEnabled>
+    </ClCompile>
+    <MessageCompile />
+    <Link />
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Win7_Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level4</WarningLevel>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\libxdma;$(ProjectDir)..\inc;build_tmp\$(ConfigurationName)\$(Platform)\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <CompileAs>CompileAsC</CompileAs>
+      <EnablePREfast>true</EnablePREfast>
+      <WppRecorderEnabled>false</WppRecorderEnabled>
+    </ClCompile>
+    <Link />
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Win10_Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level4</WarningLevel>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\libxdma;$(ProjectDir)..\inc;build_tmp\$(ConfigurationName)\$(Platform)\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <CompileAs>CompileAsC</CompileAs>
+      <EnablePREfast>true</EnablePREfast>
+      <WppRecorderEnabled>false</WppRecorderEnabled>
+    </ClCompile>
+    <Link />
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Win7_Debug|x64'">
+    <ClCompile>
+      <WppEnabled>true</WppEnabled>
+      <DisableSpecificWarnings />
+      <WppAddControlGUID>
+      </WppAddControlGUID>
+      <WppModuleName>
+      </WppModuleName>
+      <WppGenerateUsingTemplateFile>
+      </WppGenerateUsingTemplateFile>
+      <WppScanConfigurationData>trace.h</WppScanConfigurationData>
+      <WarningLevel>Level4</WarningLevel>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\libxdma;$(ProjectDir)..\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <EnablePREfast>true</EnablePREfast>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <WppMinimalRebuildFromTracking>false</WppMinimalRebuildFromTracking>
+      <WppRecorderEnabled>false</WppRecorderEnabled>
+    </ClCompile>
+    <Link />
+    <Link>
+      <AdditionalDependencies>$(DDK_LIB_PATH)pshed.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <IgnoreSpecificDefaultLibraries>pshed.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+    </Link>
+    <PostBuildEvent>
+      <Command>call "C:\Users\eoghanm\Documents\xdma_build_scripts\restart_driver.bat"</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Win10_Debug|x64'">
+    <ClCompile>
+      <WppEnabled>true</WppEnabled>
+      <DisableSpecificWarnings>
+      </DisableSpecificWarnings>
+      <WppAddControlGUID>
+      </WppAddControlGUID>
+      <WppModuleName>
+      </WppModuleName>
+      <WppGenerateUsingTemplateFile>
+      </WppGenerateUsingTemplateFile>
+      <WppScanConfigurationData>trace.h</WppScanConfigurationData>
+      <EnablePREfast>true</EnablePREfast>
+      <MultiProcessorCompilation>
+      </MultiProcessorCompilation>
+      <WppRecorderEnabled>false</WppRecorderEnabled>
+      <WppMinimalRebuildFromTracking>true</WppMinimalRebuildFromTracking>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\libxdma;$(ProjectDir)..\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <MessageCompile>
+      <GenerateKernelModeLoggingMacros>true</GenerateKernelModeLoggingMacros>
+    </MessageCompile>
+    <MessageCompile>
+      <Verbose>true</Verbose>
+    </MessageCompile>
+    <Link>
+      <AdditionalLibraryDirectories>
+      </AdditionalLibraryDirectories>
+      <AdditionalDependencies>$(DDK_LIB_PATH)pshed.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalOptions>
+      </AdditionalOptions>
+      <IgnoreSpecificDefaultLibraries>pshed.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+    </Link>
+    <ProjectReference />
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Win7_Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level4</WarningLevel>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\libxdma;$(ProjectDir)..\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <CompileAs>CompileAsC</CompileAs>
+      <EnablePREfast>true</EnablePREfast>
+      <WppRecorderEnabled>false</WppRecorderEnabled>
+    </ClCompile>
+    <Link />
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Win10_Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level4</WarningLevel>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\libxdma;$(ProjectDir)..\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <CompileAs>CompileAsC</CompileAs>
+      <EnablePREfast>true</EnablePREfast>
+      <WppRecorderEnabled>false</WppRecorderEnabled>
+    </ClCompile>
+    <Link />
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="..\inc\xdma_public.h" />
+    <ClInclude Include="driver.h" />
+    <ClInclude Include="file_io.h" />
+    <ClInclude Include="trace.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <FilesToPackage Include="$(TargetPath)" Condition="'$(Configuration)|$(Platform)'=='Win7_Debug|Win32'">
+      <PackageRelativeDirectory>
+      </PackageRelativeDirectory>
+    </FilesToPackage>
+    <FilesToPackage Include="$(TargetPath)" Condition="'$(Configuration)|$(Platform)'=='Win10_Debug|Win32'">
+      <PackageRelativeDirectory>
+      </PackageRelativeDirectory>
+    </FilesToPackage>
+    <FilesToPackage Include="$(TargetPath)" Condition="'$(Configuration)|$(Platform)'=='Win7_Release|Win32'">
+      <PackageRelativeDirectory>
+      </PackageRelativeDirectory>
+    </FilesToPackage>
+    <FilesToPackage Include="$(TargetPath)" Condition="'$(Configuration)|$(Platform)'=='Win10_Release|Win32'">
+      <PackageRelativeDirectory>
+      </PackageRelativeDirectory>
+    </FilesToPackage>
+    <FilesToPackage Include="$(TargetPath)" Condition="'$(Configuration)|$(Platform)'=='Win7_Debug|x64'">
+      <PackageRelativeDirectory>
+      </PackageRelativeDirectory>
+    </FilesToPackage>
+    <FilesToPackage Include="$(TargetPath)" Condition="'$(Configuration)|$(Platform)'=='Win7_Release|x64'">
+      <PackageRelativeDirectory>
+      </PackageRelativeDirectory>
+    </FilesToPackage>
+    <FilesToPackage Include="$(TargetPath)" Condition="'$(Configuration)|$(Platform)'=='Win10_Release|x64'">
+      <PackageRelativeDirectory>
+      </PackageRelativeDirectory>
+    </FilesToPackage>
+    <FilesToPackage Include="$(TargetPath)" Condition="'$(Configuration)|$(Platform)'=='Win10_Debug|x64'">
+      <PackageRelativeDirectory>
+      </PackageRelativeDirectory>
+    </FilesToPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="driver.c" />
+    <ClCompile Include="file_io.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <Inf Include="XDMA.inx" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\libxdma\libxdma.vcxproj">
+      <Project>{8a516bcb-685a-4a46-a298-a477f804273a}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
