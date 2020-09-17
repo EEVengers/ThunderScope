@@ -36,8 +36,7 @@
     "electron-pack": "electron-builder -lmw",
     "postinstall": "electron-builder install-app-deps",
     "electron-dev": "concurrently \"BROWSER=none npm run start\" \"wait-on http://localhost:3000 && ./node_modules/.bin/tsc -p electron -w\" \"wait-on http://localhost:3000 && ./node_modules/.bin/tsc -p electron && electron .\"",
-    "electron-no-browser-win": "set \"BROWSER=none\" && call npm run start",
-    "electron-dev-win": "concurrently \"npm run electron-no-browser-win\" \"wait-on http://localhost:3000 && node_modules\\.bin\\tsc -p electron -w\" \"wait-on http://localhost:3000 && node_modules\\.bin\\tsc -p electron && electron %INIT_CWD%\"",
+    "electron-dev-win": "concurrently \"set BROWSER=none && call npm run start\" \"wait-on http://localhost:3000 && node_modules\\.bin\\tsc -p electron -w\" \"wait-on http://localhost:3000 && node_modules\\.bin\\tsc -p electron && electron %INIT_CWD%\"",
     "electron-build": "npm run build && ./node_modules/.bin/tsc -p electron && electron-builder",
     "electron-build-win": "npm run build && node_modules\\.bin\\tsc -p electron && electron-builder"
   },
