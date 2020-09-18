@@ -4,7 +4,7 @@ import './bottombar.css';
 class BottomBar extends React.Component {
   render() {
     return (
-      <div>
+      <div className="BottomBarComponent">
         BottomBar Component
       </div>
     )
