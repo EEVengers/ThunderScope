@@ -20,7 +20,6 @@ function App() {
           Sidebar
       </Sidebar>
     </div>
-    
   );
 }
 
