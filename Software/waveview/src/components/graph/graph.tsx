@@ -1,6 +1,6 @@
 import React from 'react';
 import './graph.css';
-import { data } from '../../testdata/sin1MHz_mod1000';
+import { data } from '../../testdata/sin1MHz';
 import {
   FlexibleXYPlot,
   XAxis,
@@ -18,6 +18,9 @@ interface IGraphState {
 let initialState: IGraphState = {tickCount: 0, curData: []};
 let yLimit = 300;
 let xLimit = 1000;
+
+var x0 = 0;
+var x1 = 0;
 
 //See https://stackoverflow.com/a/46987987
 //Stateful code adapted from https://reactjs.org/docs/state-and-lifecycle.html
@@ -59,11 +62,11 @@ class Graph extends React.Component {
   tick() {
     let tickCount = this.state.tickCount + 1;
     let seconds = Math.floor(tickCount/60) % Math.floor(data.length/xLimit);
-    let i0 = (seconds*xLimit);
-    let i1 = i0 + (Math.floor(xLimit*(tickCount % 60)/60));
+    x0 = (seconds*xLimit);
+    x1 = x0 + (Math.floor(xLimit*(tickCount % 60)/60));
     this.setState({
       tickCount: tickCount,
-      curData: data.slice(i0, i1)
+      curData: data.slice(x0, x1)
     })
   }
 
@@ -72,7 +75,7 @@ class Graph extends React.Component {
       <div className="graph_view">
         <FlexibleXYPlot
           yDomain={[0, yLimit]}
-          xDomain={[0, xLimit]}
+          xDomain={[x0, x0 + xLimit]}
         >
           <HorizontalGridLines style={{stroke: '#4D4D4D'}} />
           <VerticalGridLines style={{stroke: '#4D4D4D'}} />
