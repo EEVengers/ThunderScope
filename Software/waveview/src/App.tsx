@@ -10,15 +10,9 @@ function App() {
       <header 
         className="App-header">
       </header>
-      <Graph>
-          Some props to pass in
-      </Graph>
-      <BottomBar>
-          BottomBitch
-      </BottomBar>
-      <Sidebar>
-          Sidebar
-      </Sidebar>
+      <Graph />
+      <BottomBar />
+      <Sidebar />
     </div>
   );
 }

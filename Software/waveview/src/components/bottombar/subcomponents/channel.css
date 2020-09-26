@@ -3,13 +3,24 @@
   display: flex;
 }
 
-.ChannelComponent {
+.Channel1 {
   position: fixed;
   left: 0;
   bottom: 0;
   width: 15vw;
   height: 2vh;
   color: yellow;
+  background: black;
+  z-index: 1000;
+}
+
+.Channel2 {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 15vw;
+  height: 2vh;
+  color: blue;
   background: black;
   z-index: 1000;
 }
