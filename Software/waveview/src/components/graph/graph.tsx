@@ -9,7 +9,14 @@ import {
   LineSeries
 } from 'react-vis';
 
-function Graph(props: any) {
+interface IGraphProps {
+  yDomain: number[],
+  xDomain: number[],
+  dataSeries: any[][],
+  colorSeries: string[]
+}
+
+function Graph(props: IGraphProps) {
   return (
     <div className="graph_view">
       <FlexibleXYPlot
@@ -26,12 +33,18 @@ function Graph(props: any) {
           title="" 
           hideTicks
         />
-        <LineSeries
-          className="data-series"
-          data={props.data}
-          style={{fill:"none"}}
-          color="yellow"
-        />
+
+        {
+          props.dataSeries.map((data, index) => {
+            return <LineSeries
+              className="data-series"
+              data={data}
+              style={{fill:"none"}}
+              color={props.colorSeries[index]}
+            />
+          })
+        }
+
       </FlexibleXYPlot>
     </div>
   )

@@ -14,12 +14,20 @@ let initialState: IAppState = {tickCount: 0};
 class App extends React.Component {
   timerID: number = 0;
   state: IAppState;
-  points: TestPoints;
+  generatorList: TestPoints[];
+  channelList: {color: string, className:string}[];
   
   constructor(props: any) {
     super(props);
     this.state = initialState;
-    this.points = new TestPoints(1000, 300, "sinc");
+    this.generatorList = [
+      new TestPoints(1000, 300, "sinc"),
+      new TestPoints(1000, 300, "sine")
+    ];
+    this.channelList = [
+      {color: "yellow", className: "Channel1"},
+      {color: "magenta", className: "Channel2"}
+    ]
   }
 
   componentDidMount() {
@@ -35,7 +43,10 @@ class App extends React.Component {
 
   tick() {
     let tickCount = this.state.tickCount + 1;
-    this.points.update(tickCount);
+    for(let generator of this.generatorList)
+    {
+      generator.update(tickCount);
+    }
     this.setState({tickCount: tickCount});
   }
 
@@ -46,11 +57,12 @@ class App extends React.Component {
           className="App-header">
         </header>
         <Graph
-          yDomain={this.points.y.getDomain()}
-          xDomain={this.points.x.getDomain()}
-          data={this.points.getData()}
+          yDomain={this.generatorList[0].y.getDomain()}
+          xDomain={this.generatorList[0].x.getDomain()}
+          dataSeries={this.generatorList.map((gen, idx) => gen.getData())}
+          colorSeries={this.channelList.map((c, i) => c.color)}
           />
-        <BottomBar />
+        <BottomBar channelList={this.channelList}/>
         <Sidebar />
       </div>
       );
