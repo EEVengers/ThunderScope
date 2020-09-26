@@ -21,11 +21,11 @@ with open(sys.argv[1]) as f:
             continue
         int_x = int(row[0])
 #        if int_x % point_ratio == 0:
-        if int_x < 20000:
+        if int_x < 2000:
             if int_x > 0:
                     print(",")
-            #print("{x :", row[0], ", y:", row[1], "}", sep='', end='')
-            print("{x :", (int_x % 300), ", y:", row[1], "}", sep='', end='')
+            print("{x :", row[0], ", y:", row[1], "}", sep='', end='')
+            #print("{x :", (int_x % 300), ", y:", row[1], "}", sep='', end='')
 
 print("];")
 print("export { data };")

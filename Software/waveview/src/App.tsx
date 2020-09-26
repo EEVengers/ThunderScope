@@ -19,7 +19,7 @@ class App extends React.Component {
   constructor(props: any) {
     super(props);
     this.state = initialState;
-    this.points = new TestPoints();
+    this.points = new TestPoints(1000, 300, "sinc");
   }
 
   componentDidMount() {
