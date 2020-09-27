@@ -99,3 +99,7 @@ Useful Links: (list of bookmarks for Andrew's reference, can be ignored by every
 [N-API Link 2](https://medium.com/@atulanand94/beginners-guide-to-writing-nodejs-addons-using-c-and-n-api-node-addon-api-9b3b718a9a7f)
 
 [TypeScript + Electron](https://github.com/yhirose/react-typescript-electron-sample-with-create-react-app-and-electron-builder)
+
+[N-API Tutorial Part 1 - Node](https://medium.com/@gauriatiq/c-native-addon-independent-of-node-js-version-using-napi-node-addon-api-and-cmake-53315582cbd1)
+
+[N-API Tutorial Part 2 - Electron](https://medium.com/@gauriatiq/electron-app-with-c-back-end-as-native-addon-napi-c67867f4058)

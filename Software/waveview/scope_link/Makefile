@@ -7,7 +7,7 @@ EXE := $(BIN_DIR)/scope
 SRC := $(wildcard $(SRC_DIR)/*.cpp)
 OBJ := $(SRC:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
 
-CPPFLAGS := -Iinclude -MMD -MP -O3 -DBOOST_LOG_DYN_LINK -g
+CPPFLAGS := -Iinclude -MMD -MP -O3 -DBOOST_LOG_DYN_LINK -std=c++17
 CPPOPT   := -fopt-info-loop-optimized
 CPPMISS  := -fopt-info-vec-missed
 CFLAGS   := -Wall

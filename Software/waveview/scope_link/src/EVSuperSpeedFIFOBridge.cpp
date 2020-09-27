@@ -38,7 +38,7 @@ void InitFTDISuperSpeedChip(FT_HANDLE *deviceHandle) {
         INFO << "Devices found: " << numDevices;
     }
 
-    FT_DEVICE_LIST_INFO_NODE deviceInfoList[numDevices];
+    FT_DEVICE_LIST_INFO_NODE* deviceInfoList = (FT_DEVICE_LIST_INFO_NODE*)malloc(sizeof(FT_DEVICE_LIST_INFO_NODE) * numDevices);
 
     error = FT_GetDeviceInfoList(deviceInfoList, &numDevices);
     if(FT_OK != error) {
@@ -51,6 +51,8 @@ void InitFTDISuperSpeedChip(FT_HANDLE *deviceHandle) {
 
         if(std::string(deviceInfoList[i].Description) == std::string(FT601_CHIP_DESC)) {
             chipIdx = i;
+            std::cout << "Found Chip at idx: " << i << std::endl;
+            std::cout << "Chip Description: " << deviceInfoList[i].Description << std::endl;
         }
     }
     //if no scope USB transfer chip was found
@@ -58,7 +60,13 @@ void InitFTDISuperSpeedChip(FT_HANDLE *deviceHandle) {
         throw EVException(error,"EVSuperSpeedFIFOBridge:InitFTDISuperSpeedChip:Find_Chip_Idx");
     }
     
+    /* God I hate this shitty driver
     if(FT_OK != (error = FT_Create( (PVOID)chipIdx, (DWORD)FT_OPEN_BY_INDEX, deviceHandle))){
+        throw EVException(error,"EVSuperSpeedFIFOBRidge:InitFTDISuperSpeedChip:FT_Create");
+    }
+    */
+    
+    if(FT_OK != (error = FT_Create((PVOID)"EVScope USB Transfer Chip", (DWORD)FT_OPEN_BY_DESCRIPTION, deviceHandle))){
         throw EVException(error,"EVSuperSpeedFIFOBRidge:InitFTDISuperSpeedChip:FT_Create");
     }
 
@@ -86,7 +94,6 @@ void InitFTDISuperSpeedChip(FT_HANDLE *deviceHandle) {
 
     //reopen device since configuration causes a reset
     *deviceHandle = 0;
-    deviceInfoList[0] = {0};
     if(FT_OK != (error = FT_CreateDeviceInfoList(&numDevices))) {
         throw new EVException(error,"EVSuperSpeedFIFOBRidge:InitFTDISuperSpeedChip:FT_CreateDeviceInfoList");
     }
@@ -95,26 +102,24 @@ void InitFTDISuperSpeedChip(FT_HANDLE *deviceHandle) {
         error = EVErrorCodeInvalidValue;
         throw new EVException(error,"EVSuperSpeedFIFOBRidge:InitFTDISuperSpeedChip");
     }
-
-    FT_DEVICE_LIST_INFO_NODE _deviceInfoList[numDevices];
     
-    if(FT_OK != (error = FT_GetDeviceInfoList(_deviceInfoList, &numDevices))) {
-        throw new EVException(error,"EVSuperSpeedFIFOBRidge:InitFTDISuperSpeedChip:FT_GetDeviceInfoList");
+    if(FT_OK != (error = FT_GetDeviceInfoList(deviceInfoList, &numDevices))) {
+        throw new EVException(error,"EVSuperSpeedFIFOBRidge:InitFTDISuperSpeedChip:FT_GetDeviceInfoList on reconnect");
     }
 
     chipIdx = -1;
     //Find the index of the EVScope USB Transfer Chip
     for(unsigned int i = 0; i < numDevices; i++) {
-        if(std::string(_deviceInfoList[i].Description) == std::string(FT601_CHIP_DESC)) {
+        if(std::string(deviceInfoList[i].Description) == std::string(FT601_CHIP_DESC)) {
             chipIdx = i;
         }
     }
     //if no scope USB transfer chip was found
     if(chipIdx == -1) {
-        throw EVException(error,"EVSuperSpeedFIFOBridge:InitFTDISuperSpeedChip:Find_Chip_Idx");
+        throw EVException(error,"EVSuperSpeedFIFOBridge:InitFTDISuperSpeedChip:Find_Chip_Idx on reconnect");
     }
 
     if(FT_OK != (error = FT_Create( (PVOID)chipIdx, (DWORD)FT_OPEN_BY_INDEX, deviceHandle))){
-        throw EVException(error,"EVSuperSpeedFIFOBRidge:InitFTDISuperSpeedChip:FT_Create");
+        throw EVException(error,"EVSuperSpeedFIFOBRidge:InitFTDISuperSpeedChip:FT_Create on reconnect");
     }
 }
