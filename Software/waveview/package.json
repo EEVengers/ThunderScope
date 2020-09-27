@@ -24,7 +24,8 @@
     "react-dom": "^16.13.1",
     "react-scripts": "^3.4.3",
     "react-vis": "^1.11.7",
-    "typescript": "^3.9.7"
+    "typescript": "^3.9.7",
+    "node-addon-api": "^3.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -38,7 +39,8 @@
     "electron-dev": "concurrently \"BROWSER=none npm run start\" \"wait-on http://localhost:3000 && ./node_modules/.bin/tsc -p electron -w\" \"wait-on http://localhost:3000 && ./node_modules/.bin/tsc -p electron && electron .\"",
     "electron-dev-win": "concurrently \"set BROWSER=none && call npm run start\" \"wait-on http://localhost:3000 && node_modules\\.bin\\tsc -p electron -w\" \"wait-on http://localhost:3000 && node_modules\\.bin\\tsc -p electron && electron %INIT_CWD%\"",
     "electron-build": "npm run build && ./node_modules/.bin/tsc -p electron && electron-builder",
-    "electron-build-win": "npm run build && node_modules\\.bin\\tsc -p electron && electron-builder"
+    "electron-build-win": "npm run build && node_modules\\.bin\\tsc -p electron && electron-builder",
+    "install": "cmake-js compile"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -59,7 +61,8 @@
     "concurrently": "^5.3.0",
     "electron": "^8.5.1",
     "electron-builder": "^22.8.0",
-    "wait-on": "^5.2.0"
+    "wait-on": "^5.2.0",
+    "cmake-js": "^6.1.0"
   },
   "build": {
     "extends": null,
