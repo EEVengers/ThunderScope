@@ -1,7 +1,17 @@
 import React from 'react';
 import './channel.css';
 
-function Channel(props: any) {
+interface IChannelProps {
+  channelNumber: number
+  voltsPerDiv: number
+  voltageValue: number
+  voltageUnit: string
+  measurementType: string
+  channelClass: string
+  channelColor: string
+};
+
+function Channel(props: IChannelProps) {
   return (
     <div className={props.channelClass} style={{color:props.channelColor}}>
       <label>

@@ -4,8 +4,11 @@ import LargeButton from './subcomponents/largebutton';
 import './sidebar.css';
 
 class SideBar extends React.Component {
-
-  buttonList: {color: string, className: string, text: string}[];
+  buttonList: {
+    color: string, 
+    className: string, 
+    text: string
+  }[];
 
   constructor(props: any) {
     super(props);

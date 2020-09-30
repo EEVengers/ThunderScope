@@ -33,7 +33,6 @@ function Graph(props: IGraphProps) {
           title="" 
           hideTicks
         />
-
         {
           props.dataSeries.map((data, index) => {
             return <LineSeries

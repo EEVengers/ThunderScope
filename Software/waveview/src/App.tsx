@@ -12,10 +12,21 @@ interface IAppState {
 let initialState: IAppState = {tickCount: 0};
 
 class App extends React.Component {
-  timerID: number = 0;
   state: IAppState;
+  timerID: number = 0;
   generatorList: TestPoints[];
-  channelList: {color: string, className:string}[];
+  channelList: {
+    color: string, 
+    className:string
+  }[];
+  triggerInformation: {
+    channel: string, 
+    mode: string
+  };
+  timePerDivisionInformation: { 
+    timeValue: number, 
+    timeUnit: string 
+  }
   
   constructor(props: any) {
     super(props);
@@ -26,8 +37,18 @@ class App extends React.Component {
     ];
     this.channelList = [
       {color: "yellow", className: "Channel1"},
-      {color: "magenta", className: "Channel2"}
+      {color: "chartreuse", className: "Channel2"},
+      {color: "blue", className: "Channel3"},
+      {color: "red", className: "Channel4"}
     ]
+    this.triggerInformation = {
+      channel: "CH1",
+      mode: "RisingEdge"
+    }
+    this.timePerDivisionInformation = { 
+      timeValue: 10, 
+      timeUnit: "ns" 
+    }
   }
 
   componentDidMount() {
@@ -62,7 +83,11 @@ class App extends React.Component {
           dataSeries={this.generatorList.map((gen, idx) => gen.getData())}
           colorSeries={this.channelList.map((c, i) => c.color)}
           />
-        <BottomBar channelList={this.channelList}/>
+        <BottomBar 
+          channelList={this.channelList}
+          triggerInformation={this.triggerInformation}
+          timePerDivisionInformation={this.timePerDivisionInformation}
+          />
         <Sidebar />
       </div>
       );

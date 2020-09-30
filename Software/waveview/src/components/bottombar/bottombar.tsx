@@ -1,12 +1,25 @@
 import React from 'react';
 import Channel from './subcomponents/channel';
+import TimePerDivision from './subcomponents/timeperdivision';
+import Trigger from './subcomponents/trigger';
 import './bottombar.css';
 
-interface BottomBarProps {
-  channelList: any[]
+interface IBottomBarProps {
+  channelList: {
+    color: string, 
+    className: string
+  }[]
+  triggerInformation: {
+    channel: string, 
+    mode: string
+  };
+  timePerDivisionInformation: { 
+    timeValue: number, 
+    timeUnit: string 
+  }
 }
 
-function BottomBar(props: BottomBarProps) {
+function BottomBar(props: IBottomBarProps) {
   return (
     <div className="BottomBarComponent">
       {
@@ -24,6 +37,15 @@ function BottomBar(props: BottomBarProps) {
           )
         })
       }
+      <TimePerDivision 
+        timeValue={props.timePerDivisionInformation.timeValue}
+        timeUnit={props.timePerDivisionInformation.timeUnit}
+      />
+      <Trigger
+        channel={props.triggerInformation.channel}
+        mode={props.triggerInformation.mode}
+      />
+    
     </div>
   )
 }
