@@ -14,19 +14,19 @@ target = scope
 all: gen
 
 gen:
-	${CC} ${lib} ${CCFLAGS} ${target} ${soruce}
+	${CC} ${CCFLAGS} ${target} ${soruce} ${lib}
 	echo "Finished Making ${target}"
 
 debug:
-	${CC} ${lib} ${CCFLAGS_debug} ${target} ${soruce}
+	${CC} ${CCFLAGS_debug} ${target} ${soruce} ${lib}
 	@echo "Made Debug"
 
 fast:
-	${CC} ${lib} ${CCFLAGS_fast} ${target} ${soruce}
+	${CC} ${CCFLAGS_fast} ${target} ${soruce} ${lib}
 	@echo "Made Fast"
 
 super_fast:
-	${CC} ${lib} ${CCFLAGS_super_fast} ${target} ${soruce}
+	${CC} ${CCFLAGS_super_fast} ${target} ${soruce} ${lib}
 	@echo "Made Supra Fast"
 
 clean:
