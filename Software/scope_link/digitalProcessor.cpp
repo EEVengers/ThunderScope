@@ -6,7 +6,7 @@
 //  Copyright © 2019 EEVengers. All rights reserved.
 //
 
-#include "EVDigitalProcessing.hpp"
+#include "digitalProcessor.hpp"
 #include "EVMath.hpp"
 #include <fstream>
 

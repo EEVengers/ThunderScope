@@ -9,8 +9,8 @@
 #include "EVLibrary.hpp"
 #include "EVMath.hpp"
 #include "EVSuperSpeedFIFOBridge.hpp"
-#include "EVDataTransferThread.hpp"
-#include "EVDigitalProcessing.hpp"
+#include "dataTransferHandler.hpp"
+#include "digitalProcessor.hpp"
 #include "EVTester.hpp"
 
 #define FIFO_SUPER_SPEED_BRIDGE_NAME "FTDI SuperSpeed-FIFO Bridge"
