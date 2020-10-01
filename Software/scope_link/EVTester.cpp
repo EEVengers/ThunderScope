@@ -1,7 +1,7 @@
 #include "EVTester.hpp"
 #include "EVMath.hpp"
-#include "EVDigitalProcessing.hpp"
-#include "EVDataTransferThread.hpp"
+#include "digitalProcessor.hpp"
+#include "dataTransferHandler.hpp"
 
 void TestSincInterpolation() {
 
