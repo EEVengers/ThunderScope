@@ -1,34 +1,32 @@
-#Usage - Complies the Scope C project for MacOS currently and generates a program output to be used with the GUI Interface Program.
+CC := g++
 
-CC = gcc
-CCFLAGS = -std=c++17 -o
-CCFLAGS_debug = -std=c++17 -g -o 
-CCFLAGS_fast = -std=c++17 -O2 -o
-CCFLAGS_super_fast = -std=c++17 -O3 -o
-soruce = main.cpp EVLibrary.cpp dataTransferHandler.cpp digitalProcessor.cpp EVMath.cpp EVSuperSpeedFIFOBridge.cpp EVTester.cpp
-lib = -L/usr/local/lib -lftd3xx -lstdc++ -pthread -lm
-lib_debug =
-target = scope
+SRC_DIR := src
+OBJ_DIR := obj
+BIN_DIR := bin
 
+EXE := $(BIN_DIR)/scope
+SRC := $(wildcard $(SRC_DIR)/*.cpp)
+OBJ := $(SRC:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
 
-all: gen
+CPPFLAGS := -Iinclude -MMD -MP
+CFLAGS   := -Wall
+LDFLAGS  := -Llib
+LDLIBS   := -lm -lftd3xx -lstdc++ -pthread
 
-gen:
-	${CC} ${CCFLAGS} ${target} ${soruce} ${lib}
-	echo "Finished Making ${target}"
+.PHONY: all clean
 
-debug:
-	${CC} ${CCFLAGS_debug} ${target} ${soruce} ${lib}
-	@echo "Made Debug"
+all: $(EXE)
 
-fast:
-	${CC} ${CCFLAGS_fast} ${target} ${soruce} ${lib}
-	@echo "Made Fast"
+$(EXE): $(OBJ) | $(BIN_DIR)
+	$(CC) $(LDFLAGS) $^ $(LDLIBS) -o $@
 
-super_fast:
-	${CC} ${CCFLAGS_super_fast} ${target} ${soruce} ${lib}
-	@echo "Made Supra Fast"
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp | $(OBJ_DIR)
+	$(CC) $(CPPFLAGS) $(CFLAGS) -c $< -o $@
+
+$(BIN_DIR) $(OBJ_DIR):
+	mkdir -p $@
 
 clean:
-	rm ${target}
-	@echo "Cleaned This Mess"
+	@$(RM) -rv $(BIN_DIR) $(OBJ_DIR)
+
+-include $(OBJ:.o=.d)
