@@ -26,10 +26,10 @@ DataTransferHandler::DataTransferHandler()
 
         CopyFunc = [](unsigned char* buff, unsigned int& idx, unsigned int size, void* obj){ return; };
 
-    } catch (EVException e) {
-        std::cout << "DataTransferHandler:Constructor - " << e.what << std::endl;
+    } catch (EVException &e) {
+        std::cout << "DataTransferHandler:Constructor - " << e.what() << std::endl;
         assert(false);
-    } catch (std::exception e) {
+    } catch (std::exception &e) {
         std::cout << "DataTransferHandler:Constructor - " << e.what() << std::endl;
         assert(false);
     }
@@ -38,6 +38,21 @@ DataTransferHandler::DataTransferHandler()
 
 void DataTransferHandler::FTDITransferThread(DataTransferHandler* handler)
 {
+#ifdef ON_LINUX // Linux does not allow for async reads
+    unsigned int bytesReadFromPipe;
+    unsigned int idx = 0;
+    while(!handler->killFTDIDataTransferThread) {
+//    while (true) {
+        //read a chunck from the FTDI chip
+        handler->lock.lock();
+        auto errorCode = FT_ReadPipe(handler->superSpeedFIFOBridgeHandle,FTDI_FLAG_READ_CHIP_TO_COMPUTER,handler->asyncDataBuffers[0],MEDIUM_BUFF_SIZE,&bytesReadFromPipe,nullptr);
+        if(errorCode != 0 || bytesReadFromPipe != MEDIUM_BUFF_SIZE) throw EVException(errorCode,"DataTransferHandler:FTDITransferThread:FT_ReadPipe()");
+        //transfer chunck to shared cache
+        handler->CopyFunc(handler->asyncDataBuffers[0], idx, bytesReadFromPipe, (void*)handler);
+        handler->lock.unlock();
+        handler->bytesRead += bytesReadFromPipe;
+    }
+#else // Windows Implementation allows for overlapped async reads
     unsigned int bytesReadFromPipe;
     unsigned int errorCode;
     unsigned int asyncBytesRead[handler->numAsyncBuffers];
@@ -136,12 +151,13 @@ void DataTransferHandler::FTDITransferThread(DataTransferHandler* handler)
             idx = 0;
         }
     }
+#endif
 }
 
 void DataTransferHandler::StartFTDITransferThread()
 {
     if(!killFTDIDataTransferThread) {
-        throw EVException(EVErrorCodeServiceAlreadyRunning,"DataTransferHandler:StartFTDITransferThread",nullptr);
+        throw EVException(EVErrorCodeServiceAlreadyRunning,"DataTransferHandler:StartFTDITransferThread");
     }
     
     killFTDIDataTransferThread = false;
@@ -160,7 +176,7 @@ void DataTransferHandler::SetCopyFunc(CopyFuncs Func) {
             { ((DataTransferHandler*)obj)->threadSharedCache->SetWriteCache(buff); };
             break;
         default:
-            throw EVException(EVErrorCodeInvalidValue,"DataTransferHandler::SetCopyFunc()",nullptr);
+            throw EVException(EVErrorCodeInvalidValue,"DataTransferHandler::SetCopyFunc()");
             break;
     }
     lock.unlock();

@@ -19,41 +19,47 @@ void InitFTDISuperSpeedChip(FT_HANDLE *deviceHandle) {
     DWORD error;
     DWORD driverVersion;
     DWORD libraryVersion;
-    unsigned long chipIdx = -1;
+    long chipIdx = -1;
 
     //Get library version
     FT_GetLibraryVersion(&libraryVersion);
     EVLogger::Debug( (std::string("Library Version is: ") + std::to_string(libraryVersion)).c_str() );
 
     //check the driver for a super speed FIFO buffer, if it exists, open it and set its configuration.
-    if(FT_OK != (error = FT_CreateDeviceInfoList(&numDevices))) {
-        throw EVException(error,"EVSuperSpeedFIFOBRidge:InitFTDISuperSpeedChip:FT_CreateDeviceList()",nullptr);
+    error = FT_CreateDeviceInfoList(&numDevices);
+    if(FT_OK != error) {
+        throw EVException(error,"EVSuperSpeedFIFOBRidge:InitFTDISuperSpeedChip:FT_CreateDeviceList()");
     }
 
     if( numDevices == 0 ) {
         error = EVErrorCodeInvalidValue;
-        throw EVException(error,"EVSuperSpeedFIFOBRidge:InitFTDISuperSpeedChip",nullptr);
+        throw EVException(error,"EVSuperSpeedFIFOBRidge:InitFTDISuperSpeedChip. No devices found");
+    } else {
+        EVLogger::Debug( (std::string("Devices found: ") + std::to_string(numDevices)).c_str() );
     }
 
     FT_DEVICE_LIST_INFO_NODE deviceInfoList[numDevices];
 
-    if(FT_OK != (error = FT_GetDeviceInfoList(deviceInfoList, &numDevices))) {
-        throw EVException(error,"EVSuperSpeedFIFOBRidge:InitFTDISuperSpeedChip:FT_GetDeviceInfoList()",nullptr);
+    error = FT_GetDeviceInfoList(deviceInfoList, &numDevices);
+    if(FT_OK != error) {
+        throw EVException(error,"EVSuperSpeedFIFOBRidge:InitFTDISuperSpeedChip:FT_GetDeviceInfoList()");
     }
 
-    //Find the index of the EVScope USB Transfer Chip
-    for(int i = 0; i < numDevices; i++) {
+    //Find the index of the EVScope USB Transfer Chip base on the device description
+    for(unsigned int i = 0; i < numDevices; i++) {
+        std::cout << "Device description: " << std::string(deviceInfoList[i].Description) << std::endl;
+
         if(std::string(deviceInfoList[i].Description) == std::string(FT601_CHIP_DESC)) {
             chipIdx = i;
         }
     }
     //if no scope USB transfer chip was found
     if(chipIdx == -1) {
-        throw EVException(error,"EVSuperSpeedFIFOBridge:InitFTDISuperSpeedChip:Find_Chip_Idx",nullptr);
+        throw EVException(error,"EVSuperSpeedFIFOBridge:InitFTDISuperSpeedChip:Find_Chip_Idx");
     }
     
     if(FT_OK != (error = FT_Create( (PVOID)chipIdx, (DWORD)FT_OPEN_BY_INDEX, deviceHandle))){
-        throw EVException(error,"EVSuperSpeedFIFOBRidge:InitFTDISuperSpeedChip:FT_Create",nullptr);
+        throw EVException(error,"EVSuperSpeedFIFOBRidge:InitFTDISuperSpeedChip:FT_Create");
     }
 
     //Get Drvier Version for the FTDI chip
@@ -63,7 +69,7 @@ void InitFTDISuperSpeedChip(FT_HANDLE *deviceHandle) {
     //Set Channel Config to fifo600_mode and 100Mhz clk with appropiate flags
     FT_60XCONFIGURATION oldConfig, newConfig;
     if(FT_OK != (error = FT_GetChipConfiguration(*deviceHandle, &oldConfig))) {
-        throw EVException(error,"EVSuperSpeedFIFOBRidge:InitFTDISuperSpeedChip:FT_GetChipConfiguration",nullptr);
+        throw EVException(error,"EVSuperSpeedFIFOBRidge:InitFTDISuperSpeedChip:FT_GetChipConfiguration");
     }
     memcpy(&newConfig, &oldConfig, sizeof(FT_60XCONFIGURATION));
     newConfig.FIFOClock = CONFIGURATION_FIFO_CLK_100;
@@ -71,7 +77,7 @@ void InitFTDISuperSpeedChip(FT_HANDLE *deviceHandle) {
     newConfig.OptionalFeatureSupport |= CONFIGURATION_OPTIONAL_FEATURE_ENABLENOTIFICATIONMESSAGE_INCHALL | CONFIGURATION_OPTIONAL_FEATURE_DISABLECANCELSESSIONUNDERRUN | CONFIGURATION_OPTIONAL_FEATURE_DISABLEUNDERRUN_INCHALL;
     newConfig.ChannelConfig = CONFIGURATION_CHANNEL_CONFIG_1_INPIPE;
     if(FT_OK != (error = FT_SetChipConfiguration(*deviceHandle, &newConfig))) {
-        throw new EVException(error,"EVSuperSpeedFIFOBRidge:InitFTDISuperSpeedChip:FT_SetChipConfiguration",nullptr);
+        throw new EVException(error,"EVSuperSpeedFIFOBRidge:InitFTDISuperSpeedChip:FT_SetChipConfiguration");
     }
     FT_Close(*deviceHandle);
 
@@ -82,41 +88,33 @@ void InitFTDISuperSpeedChip(FT_HANDLE *deviceHandle) {
     *deviceHandle = 0;
     deviceInfoList[0] = {0};
     if(FT_OK != (error = FT_CreateDeviceInfoList(&numDevices))) {
-        throw new EVException(error,"EVSuperSpeedFIFOBRidge:InitFTDISuperSpeedChip:FT_CreateDeviceInfoList",nullptr);
+        throw new EVException(error,"EVSuperSpeedFIFOBRidge:InitFTDISuperSpeedChip:FT_CreateDeviceInfoList");
     }
 
     if( numDevices == 0 ) {
         error = EVErrorCodeInvalidValue;
-        throw new EVException(error,"EVSuperSpeedFIFOBRidge:InitFTDISuperSpeedChip",nullptr);
+        throw new EVException(error,"EVSuperSpeedFIFOBRidge:InitFTDISuperSpeedChip");
     }
 
     FT_DEVICE_LIST_INFO_NODE _deviceInfoList[numDevices];
     
     if(FT_OK != (error = FT_GetDeviceInfoList(_deviceInfoList, &numDevices))) {
-        throw new EVException(error,"EVSuperSpeedFIFOBRidge:InitFTDISuperSpeedChip:FT_GetDeviceInfoList",nullptr);
+        throw new EVException(error,"EVSuperSpeedFIFOBRidge:InitFTDISuperSpeedChip:FT_GetDeviceInfoList");
     }
 
     chipIdx = -1;
     //Find the index of the EVScope USB Transfer Chip
-    for(int i = 0; i < numDevices; i++) {
+    for(unsigned int i = 0; i < numDevices; i++) {
         if(std::string(_deviceInfoList[i].Description) == std::string(FT601_CHIP_DESC)) {
             chipIdx = i;
         }
     }
     //if no scope USB transfer chip was found
     if(chipIdx == -1) {
-        throw EVException(error,"EVSuperSpeedFIFOBridge:InitFTDISuperSpeedChip:Find_Chip_Idx",nullptr);
+        throw EVException(error,"EVSuperSpeedFIFOBridge:InitFTDISuperSpeedChip:Find_Chip_Idx");
     }
 
     if(FT_OK != (error = FT_Create( (PVOID)chipIdx, (DWORD)FT_OPEN_BY_INDEX, deviceHandle))){
-        throw EVException(error,"EVSuperSpeedFIFOBRidge:InitFTDISuperSpeedChip:FT_Create",nullptr);
-    }
-}
-
-//needs to be called before each FT_Create()
-void InitTransferParams() {
-    for(int i = 0; i < 3; i++) {
-        FT_TRANSFER_CONF config[1] = {0};
-
+        throw EVException(error,"EVSuperSpeedFIFOBRidge:InitFTDISuperSpeedChip:FT_Create");
     }
 }

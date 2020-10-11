@@ -25,7 +25,8 @@
 #define MEDIUM_BUFF_SIZE 8192
 #define LARGE_BUFF_SIZE 65536
 
-#define FT601_CHIP_DESC "EVScope USB Transfer Chip"
+//#define FT601_CHIP_DESC "EVScope USB Transfer Chip"
+#define FT601_CHIP_DESC "FTDI SuperSpeed-FIFO Bridge"
 
 //Flags
 #define DATATRANSFERTHREAD_FLAG_PRINT_TO_FILE (1 << 1)
@@ -44,11 +45,12 @@ enum EVErrorCodes
 
 class EVException: public std::exception
 {
+    std::string m_msg;
 
 public:
-    const char* what;
-    
-    EVException(int errorCode, const char* subSystem, const char* optionalMessage);
+    virtual const char * what() const throw();
+
+    EVException(int errorCode, const char* subSystem);
 };
 
 /* ERROR AND DEBUG LOGGING */

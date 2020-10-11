@@ -47,7 +47,6 @@ private:
 
     void (*CopyFunc)(unsigned char* buff, unsigned int& idx, unsigned int size, void* obj);
 
-
     bool killFTDIDataTransferThread;
     bool killDigitalProcessingTransferThread;
     bool killElectronTransferThread;
