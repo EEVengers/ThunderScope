@@ -90,7 +90,7 @@ void DigitalProcessor::risingEdgeTriggerMethod(DigitalProcessor* handler) {
 
 void DigitalProcessor::StartRisingEdgeTriggerThread() {
     if(!killThread) {
-        throw EVException(1,"DigitalProcessor:StartRisingEdgeTriggerThread() -> Thread Already Started",nullptr);
+        throw EVException(1,"DigitalProcessor:StartRisingEdgeTriggerThread() -> Thread Already Started");
     }
     killThread = false;
     processorThread = std::thread(risingEdgeTriggerMethod,this);

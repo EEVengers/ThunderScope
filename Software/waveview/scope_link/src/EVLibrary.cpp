@@ -16,18 +16,18 @@ EVLogger logger;
 //global classes defenitions
 
 //---------------EVException---------------
-EVException::EVException(int errorCode, const char* subSystem, const char* optionalMessage)
+EVException::EVException(int errorCode, const char* subSystem)
+    : m_msg(std::string("Exception with error code - ")
+            + std::to_string(errorCode)
+            + std::string(" - from SubSystem: ")
+            + std::string(subSystem)
+            )
 {
-    std::string exceptionText = "Exception with error code - ";
-    exceptionText += std::to_string(errorCode);
-    exceptionText += " - from SubSystem: ";
-    exceptionText += std::string(subSystem);
-    if(optionalMessage != nullptr) {
-        exceptionText += " - Optional Message: ";
-        exceptionText += std::string(optionalMessage);
-    }
+}
 
-    what = exceptionText.c_str();
+const char * EVException::what() const throw()
+{
+    return m_msg.c_str();
 }
 
 //---------------EVLogger---------------
@@ -85,12 +85,12 @@ void EVLogger::WriteToCSV(char* filename, unsigned char* buff, int buffSize, int
 
 EVSharedCache::EVSharedCache(unsigned int cacheSize, unsigned int numCaches)
 {
-    if(cacheSize == 0 || numCaches < 2) throw EVException(EVErrorCodeInvalidValue,"EVSharedCache::Constructor",nullptr);
+    if(cacheSize == 0 || numCaches < 2) throw EVException(EVErrorCodeInvalidValue,"EVSharedCache::Constructor");
     
     this->numCaches = numCaches;
     this->cacheSize = cacheSize;
     caches = (unsigned char**)malloc(sizeof(unsigned char**) * numCaches);
-    for(int i = 0; i < numCaches; i++) {
+    for(unsigned int i = 0; i < numCaches; i++) {
         caches[i] = (unsigned char*)malloc(sizeof(unsigned char*) * cacheSize);
     }
 
@@ -103,7 +103,7 @@ void EVSharedCache::SetWriteCache(const unsigned char* buff)
     this->lock.lock();
 
     //copy data
-    for(int i = 0; i < cacheSize; i++)
+    for(unsigned int i = 0; i < cacheSize; i++)
     {
         caches[writeCache][i] = buff[i];
     }
@@ -118,11 +118,11 @@ void EVSharedCache::SetWriteCache(const unsigned char* buff)
 }
 
 void EVSharedCache::PartialSetWriteCache(const unsigned char* buff, unsigned int &idx, unsigned int size) {
-    if(idx + size > cacheSize) throw EVException(EVErrorCodeInvalidValue,"EVSharedCache::PartialSetWriteCache()",nullptr);
+    if(idx + size > cacheSize) throw EVException(EVErrorCodeInvalidValue,"EVSharedCache::PartialSetWriteCache()");
 
     this->lock.lock();
 
-    for(int i = 0; i < size; i++) {
+    for(unsigned int i = 0; i < size; i++) {
         caches[writeCache][idx + i] = buff[i];
     }
     idx += size;
@@ -152,7 +152,7 @@ int EVSharedCache::CopyReadCache(unsigned char* buff, unsigned int size)
         return 1;
     }
 
-    if(this->cacheSize < size) throw EVException(EVErrorCodeInvalidValue,"EVSharedCache::CopyReadCache",nullptr);
+    if(this->cacheSize < size) throw EVException(EVErrorCodeInvalidValue,"EVSharedCache::CopyReadCache");
 
     //copy data
     memcpy(buff,caches[readCache],size);
@@ -170,7 +170,7 @@ int EVSharedCache::CopyReadCache(unsigned char* buff, unsigned int size)
 
 EVSharedCache::~EVSharedCache()
 {
-    for(int i = 0; i < numCaches; i++) {
+    for(unsigned int i = 0; i < numCaches; i++) {
         free(caches[i]);
     }
     free(caches);
