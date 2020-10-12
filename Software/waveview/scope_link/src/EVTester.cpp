@@ -84,9 +84,17 @@ void TestDataThroughPut() {
         bytesProcessed += digitalProcessor[i]->bytesProcessed;
         delete digitalProcessor[i];
     }
+
+    double readBps = ((double)bytesRead * S_TO_NS / timeElapsed.count());
+    double readGBps = (((double)bytesRead * S_TO_NS) / (timeElapsed.count() * GIB_TO_GB));
+    double processedBps = ((double)bytesProcessed / (timeElapsed.count()) * S_TO_NS);
+    double processedGBps = ((double)bytesProcessed / timeElapsed.count()) * ((double)S_TO_NS / GIB_TO_GB);
+
     std::cout << "Time Elapsed: " << timeElapsed.count() << " ns" << std::endl;  
-    std::cout << "Bytes Read: " << bytesRead << "B" << std::endl;
-    std::cout << "Bytes Processed: " << bytesProcessed << std::endl;
-    std::cout << "B/s: " << bytesProcessed / (timeElapsed.count()/S_TO_NS) << std::endl;  
-    std::cout << "GiB/s: " << (float)(bytesProcessed / GIB_TO_GB) / (timeElapsed.count()/S_TO_NS) << std::endl;  
+    std::cout << "Read B: " << bytesRead << "B" << std::endl;
+    std::cout << "Read B/s: " << readBps << std::endl;
+    std::cout << "Read GiB/s: " << readGBps << std::endl;
+    std::cout << "Processed B: " << bytesProcessed << std::endl;
+    std::cout << "Processed B/s: " << processedBps << std::endl;
+    std::cout << "Processed GiB/s: " << processedGBps << std::endl;
 }
