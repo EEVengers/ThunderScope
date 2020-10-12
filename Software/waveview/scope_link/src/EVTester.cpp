@@ -43,15 +43,15 @@ void TestDataThroughPut() {
     int numDigitalProcessors = 5;    
 
     //create a transfer thread and 3 risingEdgeTrigger DataProccessing Threads
-    DataTransferHandler* dataExchanger;
-    DigitalProcessor* digitalProcessor[numDigitalProcessors];
-    
-    dataExchanger = new DataTransferHandler();
-    dataExchanger->SetCopyFunc(DataTransferFullBuffRead);
 
+    DataTransferHandler dataExchanger;
+    dataExchanger.SetCopyFunc(DataTransferFullBuffRead);
+    std::thread handlerThread = std::thread(&DataTransferHandler::FTDITransferThread, &dataExchanger);
+
+    DigitalProcessor* digitalProcessor[numDigitalProcessors];
     for(int i = 0; i < numDigitalProcessors; i++) {
         digitalProcessor[i] = new DigitalProcessor();
-        digitalProcessor[i]->SetSharedCache(dataExchanger->threadSharedCache);
+        digitalProcessor[i]->SetSharedCache(dataExchanger.threadSharedCache);
     }
 
     //start a timer 
@@ -63,23 +63,23 @@ void TestDataThroughPut() {
     }
 
     //start the transfer thread
-    dataExchanger->StartFTDITransferThread();
+    dataExchanger.transferUnpause();
 
     //run for 1 minute
-    std::this_thread::sleep_for(std::chrono::seconds(20));
+    std::this_thread::sleep_for(std::chrono::seconds(TEST_RUN_TIME));
 
     //end process and print out Bytes processed / second
 
     for(int i = 0; i < numDigitalProcessors; i++) {
         digitalProcessor[i]->StopThread();
     }
-    dataExchanger->StopThread();
+    dataExchanger.stopHandler();
+    handlerThread.join();
     
     auto end = std::chrono::high_resolution_clock::now();
     auto timeElapsed = end - start;
 
-    bytesRead = dataExchanger->bytesRead;
-    delete dataExchanger;
+    bytesRead = dataExchanger.bytesRead;
     for(int i = 0; i < numDigitalProcessors; i++) {
         bytesProcessed += digitalProcessor[i]->bytesProcessed;
         delete digitalProcessor[i];
@@ -87,5 +87,6 @@ void TestDataThroughPut() {
     std::cout << "Time Elapsed: " << timeElapsed.count() << " ns" << std::endl;  
     std::cout << "Bytes Read: " << bytesRead << "B" << std::endl;
     std::cout << "Bytes Processed: " << bytesProcessed << std::endl;
-    std::cout << "B/s: " << bytesProcessed / 60 << std::endl;  
+    std::cout << "B/s: " << bytesProcessed / (timeElapsed.count()/S_TO_NS) << std::endl;  
+    std::cout << "GiB/s: " << (float)(bytesProcessed / GIB_TO_GB) / (timeElapsed.count()/S_TO_NS) << std::endl;  
 }
