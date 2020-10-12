@@ -1,5 +1,5 @@
 //
-//  EVLibrary.h
+//  EVLibrary.hpp
 //  Scope
 //
 //  Created by Daniel Vasile on 2019-07-30.
@@ -19,11 +19,22 @@
 #include <mutex>
 #include <cstring>
 
+#include "logger.hpp"
+
 //FTDI Define
 
-#define SMALL_BUFF_SIZE 1024
-#define MEDIUM_BUFF_SIZE 8192
-#define LARGE_BUFF_SIZE 65536
+// Buffer size in bytes
+#define BUFFER_1K   1024
+#define BUFFER_2K   2048
+#define BUFFER_4K   4096
+#define BUFFER_8K   8192
+#define BUFFER_16K  16384
+#define BUFFER_32K  32768
+#define BUFFER_64K  65536
+#define BUFFER_128K 131072
+#define BUFFER_256K 262144
+
+#define BUFFER_SIZE BUFFER_8K
 
 //#define FT601_CHIP_DESC "EVScope USB Transfer Chip"
 #define FT601_CHIP_DESC "FTDI SuperSpeed-FIFO Bridge"
@@ -53,18 +64,6 @@ public:
     EVException(int errorCode, const char* subSystem);
 };
 
-/* ERROR AND DEBUG LOGGING */
-
-class EVLogger
-{
-public:
-    static std::mutex lock;
-    static void Debug(const char* message);
-    static void Error(const char* message);
-    static void Critical(const char* message);
-    static void Warning(const char* message);
-    static void WriteToCSV(char* filename, unsigned char* buff, int buffSize, int numCols, char** colNames);
-};
 
 /* ERROR AND DEBUG LOGGING */
 
@@ -125,6 +124,5 @@ struct DataPoint {
 
 //global variables
 extern volatile bool programClosing;
-extern EVLogger logger;
 
 #endif /* EVLibrary_h */

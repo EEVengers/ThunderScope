@@ -11,7 +11,6 @@
 //global variable declerations
 volatile bool programClosing;
 std::mutex dataProcessingBufferLock;
-EVLogger logger;
 
 //global classes defenitions
 
@@ -22,64 +21,13 @@ EVException::EVException(int errorCode, const char* subSystem)
             + std::string(" - from SubSystem: ")
             + std::string(subSystem)
             )
-{
-}
+{}
 
 const char * EVException::what() const throw()
 {
     return m_msg.c_str();
 }
 
-//---------------EVLogger---------------
-std::mutex EVLogger::lock;
-
-void EVLogger::Debug(const char* message)
-{
-    lock.lock();
-    std::cout << message << std::endl;
-    lock.unlock();
-}
-
-void EVLogger::Error(const char* message)
-{
-    lock.lock();
-    std::cout << message << std::endl;
-    lock.unlock();
-
-}
-
-void EVLogger::Warning(const char* message)
-{
-    lock.lock();
-    std::cout << message << std::endl;
-    lock.unlock();
-
-}
-
-void EVLogger::Critical(const char* message)
-{
-    lock.lock();
-    std::cout << message << std::endl;
-    lock.unlock();
-}
-
-void EVLogger::WriteToCSV(char* filename, unsigned char* buff, int buffSize, int numCols, char** colNames)
-{
-    std::ofstream file;
-    file.open("filename");
-    for(int i = 0; i < numCols; i++) {
-        file << std::string(colNames[i]) << ",";
-    }
-
-    file << "\n";
-
-    for(int i = 0; i < buffSize; i += numCols) {
-        for(int q = 0; q < numCols; q++) {
-            file << buff[i + q] << ",";
-        }
-        file << "\n";
-    }
-}
 
 //---------------EVSharecCache---------------
 

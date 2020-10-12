@@ -23,9 +23,9 @@ DigitalProcessor::DigitalProcessor()
 }
 
 void DigitalProcessor::risingEdgeTriggerMethod(DigitalProcessor* handler) {
-    unsigned char* tempBuff = (unsigned char*)malloc(sizeof(unsigned char) * MEDIUM_BUFF_SIZE);
+    unsigned char* tempBuff = (unsigned char*)malloc(sizeof(unsigned char) * BUFFER_SIZE);
     //TODO -> Make the actual buffer size the size of the trigger window
-    unsigned char* buff = (unsigned char*)malloc(sizeof(unsigned char) * MEDIUM_BUFF_SIZE * 8);    
+    unsigned char* buff = (unsigned char*)malloc(sizeof(unsigned char) * BUFFER_SIZE * 8);    
 
     while(!handler->killThread) {
 
@@ -41,7 +41,7 @@ void DigitalProcessor::risingEdgeTriggerMethod(DigitalProcessor* handler) {
 
         //copy until a trigger has been met
         while(1) {
-            while(handler->cache->CopyReadCache(tempBuff,MEDIUM_BUFF_SIZE)) {
+            while(handler->cache->CopyReadCache(tempBuff,BUFFER_SIZE)) {
                 if(handler->killThread) {
                     free(tempBuff);
                     free(buff);
@@ -50,16 +50,16 @@ void DigitalProcessor::risingEdgeTriggerMethod(DigitalProcessor* handler) {
                 std::this_thread::sleep_for(std::chrono::microseconds(100));
             }
             //TODO add trigger logic
-            memcpy(buff,tempBuff,MEDIUM_BUFF_SIZE);
+            memcpy(buff,tempBuff,BUFFER_SIZE);
             break;
         }
 
         //copy the rest of the window
         for(int i = 1; i < 8; i++) {
-            while(handler->cache->CopyReadCache(tempBuff,MEDIUM_BUFF_SIZE)) {
+            while(handler->cache->CopyReadCache(tempBuff,BUFFER_SIZE)) {
                 std::this_thread::sleep_for(std::chrono::microseconds(100));
             }
-            memcpy(buff + (MEDIUM_BUFF_SIZE * i),tempBuff,MEDIUM_BUFF_SIZE);
+            memcpy(buff + (BUFFER_SIZE * i),tempBuff,BUFFER_SIZE);
         }
 
         //advance the orderID so the next thread gets access
@@ -71,15 +71,15 @@ void DigitalProcessor::risingEdgeTriggerMethod(DigitalProcessor* handler) {
         //sinc interpolate
 
         //**** TODO Actually implement a proper unsinged char scope value to voltage function *****
-        DataPoint* points = (DataPoint*)malloc(sizeof(DataPoint) * MEDIUM_BUFF_SIZE * 8);
+        DataPoint* points = (DataPoint*)malloc(sizeof(DataPoint) * BUFFER_SIZE * 8);
         DataPoint* interpolatedPoints;
-        for(int i = 0; i < MEDIUM_BUFF_SIZE * 8; i++) {
+        for(int i = 0; i < BUFFER_SIZE * 8; i++) {
             points[i] = DataPoint{ .time = static_cast<float>(i * 0.05), .value = static_cast<float>(buff[i]) };
         }
         int newBuffSize;
-        interpolatedPoints = SincInterpolate(points,MEDIUM_BUFF_SIZE,&newBuffSize,3,4);
+        interpolatedPoints = SincInterpolate(points,BUFFER_SIZE,&newBuffSize,3,4);
         //hand data to next step
-        handler->bytesProcessed += MEDIUM_BUFF_SIZE * 8;
+        handler->bytesProcessed += BUFFER_SIZE * 8;
         free(points);
         free(interpolatedPoints);        
     }

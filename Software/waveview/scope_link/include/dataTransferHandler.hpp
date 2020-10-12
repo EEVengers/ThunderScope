@@ -10,6 +10,7 @@
 #define EVDataTransferThread_hpp
 
 #include "EVLibrary.hpp"
+#include <atomic>
 
 enum CopyFuncs
 {
@@ -31,7 +32,13 @@ public:
     void StartFTDITransferThread();
     void SetFTDITransferCopyFunction();
     void SetCopyFunc(CopyFuncs Func);
-    void StopThread();
+    void stopHandler();
+
+    // Control the inner and outer transfer loops
+    void transferStop();
+    void transferStart();
+    void transferUnpause();
+    void transferPause();
 
     unsigned int bytesRead;//used for testing
 
@@ -39,19 +46,17 @@ public:
 
     ~DataTransferHandler();
 
+    void FTDITransferThread();
+
 private:
 
-    static void FTDITransferThread(DataTransferHandler* handler);
 
     FT_HANDLE superSpeedFIFOBridgeHandle;
 
     void (*CopyFunc)(unsigned char* buff, unsigned int& idx, unsigned int size, void* obj);
 
-    bool killFTDIDataTransferThread;
-    bool killDigitalProcessingTransferThread;
-    bool killElectronTransferThread;
-
-    std::thread superSpeedFTDITransferThread;
+    std::atomic<bool> stopTransfer;
+    std::atomic<bool> pauseTransfer;
 
 protected:
 
@@ -59,7 +64,7 @@ protected:
 
     const static unsigned int numAsyncBuffers = 16;
 
-    unsigned char asyncDataBuffers[numAsyncBuffers][MEDIUM_BUFF_SIZE];
+    unsigned char asyncDataBuffers[numAsyncBuffers][BUFFER_SIZE];
 };
 
 #endif /* EVDataTransferThread_hpp */
