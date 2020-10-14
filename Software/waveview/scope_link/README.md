@@ -7,6 +7,7 @@ You will need to download and install the D3XX ftdi drivers
     * Extract the files to the correct locations
     * Run the following commands
 ```
+
 sudo cp libftd3xx.so /usr/lib/
 sudo cp libftd3xx.so.0.5.21 /usr/lib/
 sudo cp 51-ftd3xx.rules /etc/udev/rules.d/
