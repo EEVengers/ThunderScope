@@ -6,25 +6,26 @@ import csv
 point_ratio=1
 
 if len(sys.argv) < 2:
-	print("Provide a filename argument")
-	exit()
+    print("Provide a filename argument")
+    exit()
 
 #if len(sys.argv) > 2:
-#	point_ratio = int(sys.argv[2])
+#    point_ratio = int(sys.argv[2])
 
 print("let data: any[] = [")
 
 with open(sys.argv[1]) as f:
-	r = csv.reader(f, delimiter=",")
-	for row in r:
-		if len(row) < 2:
-			continue
-		int_x = int(row[0])
-#		if int_x % point_ratio == 0:
-		if int_x < 2000:
-			if int_x > 0:
-				print(",")
-			print("{x :", row[0], ", y:", row[1], "}", sep='', end='')
+    r = csv.reader(f, delimiter=",")
+    for row in r:
+        if len(row) < 2:
+            continue
+        int_x = int(row[0])
+#        if int_x % point_ratio == 0:
+        if int_x < 2000:
+            if int_x > 0:
+                    print(",")
+            print("{x :", row[0], ", y:", row[1], "}", sep='', end='')
+            #print("{x :", (int_x % 300), ", y:", row[1], "}", sep='', end='')
 
 print("];")
 print("export { data };")

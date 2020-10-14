@@ -1,7 +1,7 @@
 #include "EVTester.hpp"
 #include "EVMath.hpp"
-#include "EVDigitalProcessing.hpp"
-#include "EVDataTransferThread.hpp"
+#include "digitalProcessor.hpp"
+#include "dataTransferHandler.hpp"
 
 void TestSincInterpolation() {
 
@@ -66,7 +66,7 @@ void TestDataThroughPut() {
     dataExchanger->StartFTDITransferThread();
 
     //run for 1 minute
-    std::this_thread::sleep_for(std::chrono::seconds(60));
+    std::this_thread::sleep_for(std::chrono::seconds(20));
 
     //end process and print out Bytes processed / second
 
@@ -84,7 +84,7 @@ void TestDataThroughPut() {
         bytesProcessed += digitalProcessor[i]->bytesProcessed;
         delete digitalProcessor[i];
     }
-    std::cout << "Time Elapsed: " << timeElapsed.count() << "ms" << std::endl;  
+    std::cout << "Time Elapsed: " << timeElapsed.count() << " ns" << std::endl;  
     std::cout << "Bytes Read: " << bytesRead << "B" << std::endl;
     std::cout << "Bytes Processed: " << bytesProcessed << std::endl;
     std::cout << "B/s: " << bytesProcessed / 60 << std::endl;  
