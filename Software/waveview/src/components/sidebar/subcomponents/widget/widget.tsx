@@ -1,14 +1,12 @@
 import React from 'react';
 import './widget.css';
 
-class Widget extends React.Component {
-  render() {
-    return (
-      <div>
-        Widget Component
-      </div>
-    )
-  }
+function Widget(props: any) {
+  return (
+    <div className={props.widgetClassName}>
+      {props.widgetTitle}
+    </div>
+  )
 }
 
 export default Widget;

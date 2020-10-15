@@ -46,9 +46,10 @@ class SideBar extends React.Component {
         {
           this.widgetList.map((w) => {
             return (
-              <Widget>
-
-              </Widget>
+              <Widget
+                widgetTitle = {w.title}
+                widgetClassName = {w.className}
+              />
             )
           })
         }
