@@ -1,33 +1,63 @@
 import React from 'react';
 
-function AdjustValueBlock(props: any) {
-  function handlePlusButtonClick() {
-    alert("Bitch Plus");
+interface IAdjustValueBlockProps {
+  value: number,
+  unit: string,
+  perUnit: string
+}
+
+interface IAdjustValueBlockState {
+  value: number,
+  unit: string,
+  perUnit: string
+}
+
+class AdjustValueBlock extends React.Component<IAdjustValueBlockProps, IAdjustValueBlockState> {
+
+  constructor(props: IAdjustValueBlockProps) {
+    super(props);
+    this.state = {
+      value: props.value,
+      unit: props.unit,
+      perUnit: props.perUnit
+    }
   }
 
-  function handleMinusButtonClick() {
-    alert("Bitch Minus");
+  handlePlusButtonClick() {
+    this.setState({
+      value: this.state.value + 1
+    });
+    this.forceUpdate();
   }
 
-  return (
-    <div className="AdjustValueBlockComponent">
-      <button 
-        className="PlusButton"
-        onClick={handlePlusButtonClick}>
-        +
-      </button>
-      <label 
-        className="Value"
-      >
-        10ns/div
-      </label>
-      <button 
-        className="MinusButton"
-        onClick={handleMinusButtonClick}>
-        -
-      </button>
-    </div>
-  )
+  handleMinusButtonClick() {
+    this.setState({
+      value: this.state.value - 1
+    });
+    this.forceUpdate();
+  }
+
+  render() {
+    return (
+      <div className="AdjustValueBlockComponent">
+        <button 
+          className="PlusButton"
+          onClick={() => this.handlePlusButtonClick}>
+          +
+        </button>
+        <label 
+          className="Value"
+        >
+          {this.state.value}{this.state.unit}{this.state.perUnit}
+        </label>
+        <button 
+          className="MinusButton"
+          onClick={() => this.handleMinusButtonClick}>
+          -
+        </button>
+      </div>
+    )
+  }
 }
 
 export default AdjustValueBlock;
