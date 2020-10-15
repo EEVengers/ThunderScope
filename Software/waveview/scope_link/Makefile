@@ -6,10 +6,10 @@ EXE := $(BIN_DIR)/scope
 SRC := $(wildcard $(SRC_DIR)/*.cpp)
 OBJ := $(SRC:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
 
-CPPFLAGS := -Iinclude -MMD -MP
+CPPFLAGS := -Iinclude -MMD -MP -std=c++17
 CFLAGS   := -Wall
 LDFLAGS  := -Llib
-LDLIBS   := -lm -lftd3xx -lstdc++ -pthread
+LDLIBS   := -lm -lftd3xx -lstdc++ -pthread 
 
 .PHONY: all clean
 

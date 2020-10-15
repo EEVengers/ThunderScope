@@ -46,6 +46,8 @@ int parseCommandLineArgs(int argc, char** args) {
 
 int main(int argc, char** args)
 {
-    parseCommandLineArgs(argc, args);
+    std::cout << "HELLO WORLD" << std::endl;
+    TestDataThroughPut();
+    //parseCommandLineArgs(argc, args);
     return 0;
 }

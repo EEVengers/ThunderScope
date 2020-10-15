@@ -39,7 +39,7 @@ DataTransferHandler::DataTransferHandler()
 void DataTransferHandler::FTDITransferThread(DataTransferHandler* handler)
 {
 #ifdef ON_LINUX // Linux does not allow for async reads
-    unsigned int bytesReadFromPipe;
+    unsigned int bytesReadFromPipe = 0;
     unsigned int idx = 0;
     while(!handler->killFTDIDataTransferThread) {
 //    while (true) {
@@ -53,8 +53,8 @@ void DataTransferHandler::FTDITransferThread(DataTransferHandler* handler)
         handler->bytesRead += bytesReadFromPipe;
     }
 #else // Windows Implementation allows for overlapped async reads
-    unsigned int bytesReadFromPipe;
-    unsigned int errorCode;
+    unsigned int bytesReadFromPipe = 0;
+    unsigned int errorCode = 0;
     unsigned int asyncBytesRead[handler->numAsyncBuffers];
     unsigned int copyIdx = 0;
     OVERLAPPED vOverlapped[handler->numAsyncBuffers];

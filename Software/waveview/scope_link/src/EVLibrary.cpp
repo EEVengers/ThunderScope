@@ -30,6 +30,10 @@ const char * EVException::what() const throw()
     return m_msg.c_str();
 }
 
+EVException::~EVException() _NOEXCEPT
+{
+}
+
 //---------------EVLogger---------------
 std::mutex EVLogger::lock;
 

@@ -19,20 +19,25 @@
 #include <mutex>
 #include <cstring>
 
+//LINUX VS WINDOWS
+#define ON_LINUX
+
 //FTDI Define
 
 #define SMALL_BUFF_SIZE 1024
 #define MEDIUM_BUFF_SIZE 8192
 #define LARGE_BUFF_SIZE 65536
 
-//#define FT601_CHIP_DESC "EVScope USB Transfer Chip"
-#define FT601_CHIP_DESC "FTDI SuperSpeed-FIFO Bridge"
+#define FT601_CHIP_DESC "EVScope USB Transfer Chip"
+//#define FT601_CHIP_DESC "FTDI SuperSpeed-FIFO Bridge"
 
 //Flags
 #define DATATRANSFERTHREAD_FLAG_PRINT_TO_FILE (1 << 1)
 #define DATATRANSFERTHREAD_FLAG_TREAT_CHANNELS_AS_ONE (1 << 2)
 
 #define FTDI_FLAG_READ_CHIP_TO_COMPUTER (0x82)
+
+int main(int argc, char** args);
 
 //global enums
 enum EVErrorCodes
@@ -43,7 +48,7 @@ enum EVErrorCodes
 };
 
 
-class EVException: public std::exception
+class EVException: std::exception
 {
     std::string m_msg;
 
@@ -51,6 +56,8 @@ public:
     virtual const char * what() const throw();
 
     EVException(int errorCode, const char* subSystem);
+    ~EVException() _NOEXCEPT;
+
 };
 
 /* ERROR AND DEBUG LOGGING */

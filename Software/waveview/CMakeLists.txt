@@ -7,12 +7,18 @@ set(CMAKE_CXX_STANDARD 17)
 # Comment out this line if you will try_compile with CMake's boost, for C team's consideration.
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+#add flag so that the project compiles for CMAKE
+add_definitions(-DCMAKE) 
+
 # Essential include files to build a node addon,
 # you should add this line in every CMake.js based project.
 include_directories(${CMAKE_JS_INC})
 
 # Declare the location of the source files
-file(GLOB SOURCE_FILES "cppsrc/*.cpp" "cppsrc/*.h")
+file(GLOB SOURCE_FILES "scope_link/src/*.cpp" "scope_link/include/*.hpp" "scope_link/include/*.h")
+
+#include ftdi driver library
+file(GLOB LIBRARIES "/usr/local/lib/libftd3xx.dylib")
 
 # This line tells CMake that we're building a shared library
 # from the above source files
@@ -24,7 +30,7 @@ set_target_properties(${PROJECT_NAME} PROPERTIES PREFIX "" SUFFIX ".node")
 
 # Essential library files to link to a node addon,
 # you should add this line in every CMake.js based project.
-target_link_libraries(${PROJECT_NAME} ${CMAKE_JS_LIB})
+target_link_libraries(${PROJECT_NAME} ${CMAKE_JS_LIB} ${LIBRARIES})
 
 # Include N-API wrappers
 execute_process(COMMAND node -p "require('node-addon-api').include"
