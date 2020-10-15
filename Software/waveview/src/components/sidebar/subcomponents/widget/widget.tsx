@@ -1,10 +1,17 @@
 import React from 'react';
 import './widget.css';
+import AdjustValueBlock from './adjustValueBlock';
 
 function Widget(props: any) {
+
   return (
     <div className={props.widgetClassName}>
-      {props.widgetTitle}
+      <div className="WidgetTitle">
+        {props.widgetTitle}
+      </div>
+        <AdjustValueBlock>
+
+        </AdjustValueBlock>
     </div>
   )
 }
