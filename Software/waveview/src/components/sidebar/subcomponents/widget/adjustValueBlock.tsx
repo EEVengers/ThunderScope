@@ -1,4 +1,5 @@
 import React from 'react';
+import './adjustValueBlock.css';
 
 interface IAdjustValueBlockProps {
   value: number,
@@ -42,17 +43,17 @@ class AdjustValueBlock extends React.Component<IAdjustValueBlockProps, IAdjustVa
       <div className="AdjustValueBlockComponent">
         <button 
           className="PlusButton"
-          onClick={() => this.handlePlusButtonClick}>
+          onClick={() => this.handlePlusButtonClick()}>
           +
         </button>
         <label 
-          className="Value"
+          className="AdjustValueBlockValue"
         >
           {this.state.value}{this.state.unit}{this.state.perUnit}
         </label>
         <button 
           className="MinusButton"
-          onClick={() => this.handleMinusButtonClick}>
+          onClick={() => this.handleMinusButtonClick()}>
           -
         </button>
       </div>
