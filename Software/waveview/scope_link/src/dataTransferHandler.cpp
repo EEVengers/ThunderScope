@@ -15,10 +15,16 @@
 #include "dataTransferHandler.hpp"
 #include "EVSuperSpeedFIFOBridge.hpp"
 
-DataTransferHandler::DataTransferHandler()
+DataTransferHandler::DataTransferHandler(boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> *outputQ)
 {
     pauseTransfer.store(true);
     stopTransfer.store(false);
+    threadExists.store(false);
+
+    assert(outputQ != NULL);
+    outputQueue = outputQ;
+
+    clearCount();
 
     try {
         InitFTDISuperSpeedChip(&superSpeedFIFOBridgeHandle); 
@@ -70,9 +76,12 @@ void DataTransferHandler::FTDITransferThread()
             //read a chunck from the FTDI chip
             lock.lock();
     
+            asyncDataBuffers[0] = bufferAllocator.allocate(1);
+            bufferAllocator.construct(asyncDataBuffers[0]);
+
             errorCode = FT_ReadPipe(superSpeedFIFOBridgeHandle,
                                     FTDI_FLAG_READ_CHIP_TO_COMPUTER,
-                                    asyncDataBuffers[0],
+                                    asyncDataBuffers[0]->data,
                                     BUFFER_SIZE,
                                     &bytesReadFromPipe,
                                     nullptr);
@@ -81,10 +90,18 @@ void DataTransferHandler::FTDITransferThread()
                 throw EVException(errorCode,"DataTransferHandler:FTDITransferThread:FT_ReadPipe()");
             }
     
+
             //transfer chunck to shared cache
-            CopyFunc(asyncDataBuffers[0], copyIdx, bytesReadFromPipe, (void*)this);
+//            CopyFunc(asyncDataBuffers[0]->data, copyIdx, bytesReadFromPipe, (void*)this);
+
+            count++;
+            outputQueue->push(asyncDataBuffers[0]);
+//            bufferAllocator.deallocate(asyncDataBuffers[0], 1);
+
             lock.unlock();
+
             bytesRead += bytesReadFromPipe;
+            bytesReadFromPipe = 0;
         }
 
         // Busy wait the for either unpausing or killing the thread
@@ -127,7 +144,7 @@ void DataTransferHandler::FTDITransferThread()
     for(unsigned int i = 0; i < numAsyncBuffers; i++) {
         errorCode = FT_ReadPipe(superSpeedFIFOBridgeHandle,
                                 0x82,
-                                &(asyncDataBuffers[i][0]),
+                                asyncDataBuffers[i]->data,
                                 BUFFER_SIZE,
                                 &(asyncBytesRead[i]),
                                 vOverlapped + i);
@@ -166,7 +183,7 @@ void DataTransferHandler::FTDITransferThread()
             //re-submit the transfer request for continous streaming
             errorCode = FT_ReadPipe(superSpeedFIFOBridgeHandle,
                                     0x82,
-                                    &(asyncDataBuffers[idx][0]),
+                                    asyncDataBuffers[idx]->data,
                                     BUFFER_SIZE,
                                     &(asyncBytesRead[idx]),
                                     vOverlapped + idx);
@@ -181,7 +198,7 @@ void DataTransferHandler::FTDITransferThread()
             }
             //submit data to shared cache
             lock.lock();
-            CopyFunc(asyncDataBuffers[idx],copyIdx, bytesReadFromPipe, (void*)this);
+            CopyFunc(asyncDataBuffers[idx]->data,copyIdx, bytesReadFromPipe, (void*)this);
             lock.unlock();
             //Keep trace of bytes transfered
             bytesRead += asyncBytesRead[idx];
@@ -194,12 +211,50 @@ void DataTransferHandler::FTDITransferThread()
 #endif
 }
 
-void DataTransferHandler::stopHandler() {
+void DataTransferHandler::createThread()
+{
+    const std::lock_guard<std::mutex> lock(lockThread);
+
+    // Check it thread created
+    // TODO Check if the output fifo exists
+    if (threadExists.load() == false) {
+        // create new thread
+        handlerThread = std::thread(&DataTransferHandler::FTDITransferThread, this);
+
+        // set thread exists flag
+        threadExists.store(true);
+    } else {
+        // Thread already created
+        throw EVException(10, "createThread(): Thread already created");
+    }
+
+}
+
+void DataTransferHandler::destroyThread()
+{
+    const std::lock_guard<std::mutex> lock(lockThread);
+
+    if (threadExists.load() == true) {
+        // Stop the transer and join thread
+        stopHandler();
+        handlerThread.join();
+
+        // clear thread exists flag
+        threadExists.store(false);
+    } else {
+        // Thread does not exist
+        throw EVException(10, "createThread(): thread does not exist");
+    }
+}
+
+void DataTransferHandler::stopHandler()
+{
     transferPause();
     transferStop();
 }
 
-void DataTransferHandler::SetCopyFunc(CopyFuncs Func) {
+void DataTransferHandler::SetCopyFunc(CopyFuncs Func)
+{
     lock.lock();
     switch(Func) {
         case DataTransferFullBuffRead:
@@ -222,4 +277,24 @@ DataTransferHandler::~DataTransferHandler()
     {
         FT_Close(superSpeedFIFOBridgeHandle);
     }
+}
+
+uint32_t DataTransferHandler::getCount()
+{
+    return count;
+}
+
+uint32_t DataTransferHandler::getCountBytes()
+{
+    return getCount() * BUFFER_SIZE;
+}
+
+void DataTransferHandler::setCount(uint32_t newCount)
+{
+    count = newCount;
+}
+
+void DataTransferHandler::clearCount()
+{
+    setCount(0);
 }

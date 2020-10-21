@@ -2,6 +2,8 @@
 #include "EVMath.hpp"
 #include "digitalProcessor.hpp"
 #include "dataTransferHandler.hpp"
+#include "processor.hpp"
+#include "trigger.hpp"
 
 void TestSincInterpolation() {
 
@@ -40,60 +42,88 @@ void TestSincInterpolation() {
 void TestDataThroughPut() {
     unsigned int bytesProcessed = 0;
     unsigned int bytesRead = 0;
-    int numDigitalProcessors = 5;    
+//    int numDigitalProcessors = 5;    
 
-    //create a transfer thread and 3 risingEdgeTrigger DataProccessing Threads
+    // Lock free queue of new data comming from FTDI through handler
+    boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> newDataQueue{1000};
+    boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> triggeredQueue{1000};
 
-    DataTransferHandler dataExchanger;
+    // Create all threads
+    DataTransferHandler dataExchanger(&newDataQueue);
     dataExchanger.SetCopyFunc(DataTransferFullBuffRead);
-    std::thread handlerThread = std::thread(&DataTransferHandler::FTDITransferThread, &dataExchanger);
+    dataExchanger.createThread();
+    std::cout << "Finished Creating dataExchanger" << std::endl;
 
-    DigitalProcessor* digitalProcessor[numDigitalProcessors];
-    for(int i = 0; i < numDigitalProcessors; i++) {
-        digitalProcessor[i] = new DigitalProcessor();
-        digitalProcessor[i]->SetSharedCache(dataExchanger.threadSharedCache);
-    }
+    Trigger trigger(&newDataQueue, &triggeredQueue, 128);
+    trigger.createThread();
+    std::cout << "Finished Creating trigger" << std::endl;
+
+//    Processor postProcessor(&newDataQueue);
+    Processor postProcessor(&triggeredQueue);
+    postProcessor.createThread();
+    std::cout << "Finished Creating postProcessor" << std::endl;
+
+    std::cout << "Starting Execution" << std::endl;
 
     //start a timer 
     auto start = std::chrono::high_resolution_clock::now();
 
-    //start the DataProcessing Threads
-    for(int i = 0; i < numDigitalProcessors; i++) {
-        digitalProcessor[i]->StartRisingEdgeTriggerThread();
-    }
-
-    //start the transfer thread
+    //start the transfer
     dataExchanger.transferUnpause();
 
-    //run for 1 minute
-    std::this_thread::sleep_for(std::chrono::seconds(TEST_RUN_TIME));
-
-    //end process and print out Bytes processed / second
-
-    for(int i = 0; i < numDigitalProcessors; i++) {
-        digitalProcessor[i]->StopThread();
+    //run transfer
+//    std::this_thread::sleep_for(std::chrono::seconds(TEST_RUN_TIME));
+    // Continue processing until all are triggered
+    while (!postProcessor.getWindowStatus()) {
+        std::this_thread::sleep_for(std::chrono::microseconds(100));
     }
-    dataExchanger.stopHandler();
-    handlerThread.join();
     
+    dataExchanger.stopHandler();
+
+    auto endTransfer = std::chrono::high_resolution_clock::now();
     auto end = std::chrono::high_resolution_clock::now();
+    auto endTrigger = std::chrono::high_resolution_clock::now();
+
+    auto timeElapsedTrigger = endTrigger - start;
+    auto timeElapsedTransfer = endTransfer - start;
     auto timeElapsed = end - start;
 
-    bytesRead = dataExchanger.bytesRead;
-    for(int i = 0; i < numDigitalProcessors; i++) {
-        bytesProcessed += digitalProcessor[i]->bytesProcessed;
-        delete digitalProcessor[i];
-    }
+    // Cleanup transfer handler thread
+    dataExchanger.destroyThread();
+    trigger.destroyThread();
+    postProcessor.destroyThread();
 
-    double readBps = ((double)bytesRead * S_TO_NS / timeElapsed.count());
-    double readGBps = (((double)bytesRead * S_TO_NS) / (timeElapsed.count() * GIB_TO_GB));
+    bytesRead = dataExchanger.getCountBytes();
+    bytesProcessed = postProcessor.getCountBytes();
+    uint32_t bytesTriggered = trigger.getCountBytes();
+
+    double readBps = ((double)bytesRead * S_TO_NS / timeElapsedTransfer.count());
+    double readGBps = (((double)bytesRead * S_TO_NS) / (timeElapsedTransfer.count() * GIB_TO_GB));
+    double triggeredBps = ((double)bytesTriggered * S_TO_NS / timeElapsedTrigger.count());
+    double triggeredGBps = (((double)bytesTriggered * S_TO_NS) / (timeElapsedTrigger.count() * GIB_TO_GB));
     double processedBps = ((double)bytesProcessed / (timeElapsed.count()) * S_TO_NS);
     double processedGBps = ((double)bytesProcessed / timeElapsed.count()) * ((double)S_TO_NS / GIB_TO_GB);
 
-    std::cout << "Time Elapsed: " << timeElapsed.count() << " ns" << std::endl;  
-    std::cout << "Read B: " << bytesRead << "B" << std::endl;
+    std::cout << "Handler Count: " << dataExchanger.getCount() << std::endl;
+    std::cout << "Trigger Count: " << trigger.getCount() << std::endl;
+    std::cout << "Processor Count: " << postProcessor.getCount() << std::endl;
+
+    std::cout << std::endl;
+
+    std::cout << "Time Elapsed Transfering: " << timeElapsedTransfer.count() << " ns" << std::endl;  
+    std::cout << "Read B: " << bytesRead << " B" << std::endl;
     std::cout << "Read B/s: " << readBps << std::endl;
     std::cout << "Read GiB/s: " << readGBps << std::endl;
+
+    std::cout << std::endl;
+
+    std::cout << "Time Elapsed: " << timeElapsed.count() << " ns" << std::endl;  
+    std::cout << "Triggered B: " << bytesTriggered << " B" << std::endl;
+    std::cout << "Triggered B/s: " << triggeredBps << std::endl;
+    std::cout << "Triggered GiB/s: " << triggeredGBps << std::endl;
+
+    std::cout << std::endl;
+
     std::cout << "Processed B: " << bytesProcessed << std::endl;
     std::cout << "Processed B/s: " << processedBps << std::endl;
     std::cout << "Processed GiB/s: " << processedGBps << std::endl;
