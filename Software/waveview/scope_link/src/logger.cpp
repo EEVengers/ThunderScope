@@ -45,8 +45,11 @@ void EVLogger::WriteToCSV(char* filename, unsigned char* buff, int buffSize, int
 {
     std::ofstream file;
     file.open("filename");
-    for(int i = 0; i < numCols; i++) {
-        file << std::string(colNames[i]) << ",";
+
+    if (colNames != NULL) {
+        for(int i = 0; i < numCols; i++) {
+            file << std::string(colNames[i]) << ",";
+        }
     }
 
     file << "\n";

@@ -11,6 +11,9 @@
 
 #include "EVLibrary.hpp"
 #include "EVMath.hpp"
+#include "common.hpp"
+#include <atomic>
+#include <boost/lockfree/queue.hpp>
 
 class DigitalProcessor
 {
@@ -23,20 +26,36 @@ public:
 
     void StopThread();
 
+    void createThread();
+    void destroyThread();
+
     ~DigitalProcessor();
 
 private:
-
     void WriteToCSV(const unsigned char* buff, const unsigned int size, const char* filename);
     EVSharedCache* cache;
     int orderID;
-    volatile bool killThread;
+
+    std::atomic<bool> killThread;
+    std::atomic<bool> threadExists;
+    std::atomic<bool> triggerMet;
+
+    int triggerLevel;
+    bool trigger[BUFFER_SIZE];
+
+    unsigned int windowIndex;
 
     //function and thread that will copy data from the shared cache, check for a rising edge and trigger on it.
     //Data will be sinc interpolated if needed.
     std::thread processorThread;
-    static void risingEdgeTriggerMethod(DigitalProcessor* handler);
+    void risingEdgeTriggerMethod();
     void startRisingEdgeTriggerThread();
+
+    void stopProcessor();
+
+    bool checkTrigger();
+
+    buffer *currentBuffer;
 
 protected:
 

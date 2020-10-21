@@ -11,6 +11,8 @@
 
 #include "EVLibrary.hpp"
 #include <atomic>
+#include <boost/lockfree/queue.hpp>
+#include "common.hpp"
 
 enum CopyFuncs
 {
@@ -27,18 +29,12 @@ class DataTransferHandler
 {
 public:
 
-    DataTransferHandler();
+    DataTransferHandler(boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> *outputQ);
 
     void StartFTDITransferThread();
     void SetFTDITransferCopyFunction();
     void SetCopyFunc(CopyFuncs Func);
     void stopHandler();
-
-    // Control the inner and outer transfer loops
-    void transferStop();
-    void transferStart();
-    void transferUnpause();
-    void transferPause();
 
     unsigned int bytesRead;//used for testing
 
@@ -46,10 +42,24 @@ public:
 
     ~DataTransferHandler();
 
-    void FTDITransferThread();
+    void createThread();
+    void destroyThread();
+
+    uint32_t getCount();
+    uint32_t getCountBytes();
+    void setCount(uint32_t);
+    void clearCount();
+
+    // Control the inner and outer transfer loops
+    void transferStop();
+    void transferStart();
+    void transferUnpause();
+    void transferPause();
 
 private:
+    boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> *outputQueue;
 
+    void FTDITransferThread();
 
     FT_HANDLE superSpeedFIFOBridgeHandle;
 
@@ -57,14 +67,20 @@ private:
 
     std::atomic<bool> stopTransfer;
     std::atomic<bool> pauseTransfer;
+    std::atomic<bool> threadExists;
+
+    std::thread handlerThread;
+
+    uint32_t count;
 
 protected:
 
     std::mutex lock;
+    std::mutex lockThread;
 
     const static unsigned int numAsyncBuffers = 16;
 
-    unsigned char asyncDataBuffers[numAsyncBuffers][BUFFER_SIZE];
+    buffer *asyncDataBuffers[numAsyncBuffers];
 };
 
 #endif /* EVDataTransferThread_hpp */

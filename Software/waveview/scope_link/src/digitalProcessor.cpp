@@ -19,19 +19,19 @@ volatile int DigitalProcessor::currentOrderID;
 
 DigitalProcessor::DigitalProcessor()
 {
-   killThread = true; 
+    windowIndex = 0;
+    killThread.store(true); 
 }
 
-void DigitalProcessor::risingEdgeTriggerMethod(DigitalProcessor* handler) {
+void DigitalProcessor::risingEdgeTriggerMethod() {
     unsigned char* tempBuff = (unsigned char*)malloc(sizeof(unsigned char) * BUFFER_SIZE);
     //TODO -> Make the actual buffer size the size of the trigger window
     unsigned char* buff = (unsigned char*)malloc(sizeof(unsigned char) * BUFFER_SIZE * 8);    
 
-    while(!handler->killThread) {
-
+    while(killThread.load() == false) {
         //wait for this thread's ID to be the one allowed to access the cache
-        while(DigitalProcessor::currentOrderID != handler->orderID) {
-            if(handler->killThread) {
+        while(DigitalProcessor::currentOrderID != orderID) {
+            if(killThread.load() == true) {
                 free(tempBuff);
                 free(buff);
                 return;
@@ -41,8 +41,8 @@ void DigitalProcessor::risingEdgeTriggerMethod(DigitalProcessor* handler) {
 
         //copy until a trigger has been met
         while(1) {
-            while(handler->cache->CopyReadCache(tempBuff,BUFFER_SIZE)) {
-                if(handler->killThread) {
+            while(cache->CopyReadCache(tempBuff,BUFFER_SIZE)) {
+                if(killThread.load() == true) {
                     free(tempBuff);
                     free(buff);
                     return;
@@ -56,7 +56,7 @@ void DigitalProcessor::risingEdgeTriggerMethod(DigitalProcessor* handler) {
 
         //copy the rest of the window
         for(int i = 1; i < 8; i++) {
-            while(handler->cache->CopyReadCache(tempBuff,BUFFER_SIZE)) {
+            while(cache->CopyReadCache(tempBuff,BUFFER_SIZE)) {
                 std::this_thread::sleep_for(std::chrono::microseconds(100));
             }
             memcpy(buff + (BUFFER_SIZE * i),tempBuff,BUFFER_SIZE);
@@ -79,7 +79,7 @@ void DigitalProcessor::risingEdgeTriggerMethod(DigitalProcessor* handler) {
         int newBuffSize;
         interpolatedPoints = SincInterpolate(points,BUFFER_SIZE,&newBuffSize,3,4);
         //hand data to next step
-        handler->bytesProcessed += BUFFER_SIZE * 8;
+        bytesProcessed += BUFFER_SIZE * 8;
         free(points);
         free(interpolatedPoints);        
     }
@@ -89,15 +89,15 @@ void DigitalProcessor::risingEdgeTriggerMethod(DigitalProcessor* handler) {
 }
 
 void DigitalProcessor::StartRisingEdgeTriggerThread() {
-    if(!killThread) {
+    if(killThread.load() == false) {
         throw EVException(1,"DigitalProcessor:StartRisingEdgeTriggerThread() -> Thread Already Started");
     }
-    killThread = false;
-    processorThread = std::thread(risingEdgeTriggerMethod,this);
+    killThread.store(false);
+    processorThread = std::thread(&DigitalProcessor::risingEdgeTriggerMethod, this);
 }
 
 void DigitalProcessor::StopThread() {
-    killThread = true;
+    killThread.store(true);
     if(processorThread.joinable()) {
         processorThread.join();
     }
@@ -105,6 +105,41 @@ void DigitalProcessor::StopThread() {
 
 void DigitalProcessor::SetSharedCache(EVSharedCache* cache) {
     this->cache = cache;
+}
+
+void DigitalProcessor::createThread()
+{
+    // Check it thread created
+    // TODO Check if the output fifo exists
+    if (threadExists.load() == false) {
+        // create new thread
+        processorThread = std::thread(&DigitalProcessor::risingEdgeTriggerMethod, this);
+
+        // set thread exists flag
+        threadExists.store(true);
+    } else {
+        // Thread already created
+        throw EVException(10, "createThread(): processor thread already created");
+    }
+}
+
+void DigitalProcessor::destroyThread()
+{
+    if (threadExists.load() == true) {
+        // Stop the transer and join thread
+        stopProcessor();
+        processorThread.join();
+
+        // clear thread exists flag
+        threadExists.store(false);
+    } else {
+        // Thread does not exist
+        throw EVException(10, "createThread(): thread does not exist");
+    }
+}
+
+void DigitalProcessor::stopProcessor()
+{
 }
 
 DigitalProcessor::~DigitalProcessor() {
