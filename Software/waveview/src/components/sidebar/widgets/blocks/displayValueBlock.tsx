@@ -6,18 +6,23 @@ interface IDisplayValueBlockProps {
   rightValue: string
 }
 
-interface IDisplayValueBlockState {
-  leftValue: string,
-  rightValue: string
+interface IBlockProps {
+  blockType: string,
+  data: object
 }
 
-class AdjustValueBlock extends React.Component<IDisplayValueBlockProps, IDisplayValueBlockState> {
+interface IBlockState {
+  blockType: string,
+  data: any
+}
 
-  constructor(props: IDisplayValueBlockProps) {
+class AdjustValueBlock extends React.Component<IBlockProps, IBlockState> {
+
+  constructor(props: IBlockProps) {
     super(props);
     this.state = {
-      leftValue: props.leftValue,
-      rightValue: props.rightValue
+      blockType: this.props.blockType,
+      data: this.props.data as IDisplayValueBlockProps
     }
   }
 
@@ -27,12 +32,12 @@ class AdjustValueBlock extends React.Component<IDisplayValueBlockProps, IDisplay
         <label
           className="DisplayValueBlockLeftValue"
         >
-          {this.state.leftValue}
+          {this.state.data.leftValue}
         </label>
         <label
           className="DisplayValueBlockRightValue"
         >
-          {this.state.rightValue}
+          {this.state.data.rightValue}
         </label>
         <div className="ClearBlock"></div> 
       </div>

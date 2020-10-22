@@ -1,19 +1,31 @@
 import React from 'react';
-import Search from './subcomponents/search';
-import LargeButton from './subcomponents/largebutton';
-import Widget from './subcomponents/widget/widget';
+import Search from './search';
+import LargeButton from './largebutton';
+import Widget from './widgets/widget';
 import './sidebar.css';
+import HorizontalData from './widgets/config/HorizontalWidget.json';
+import VerticalData from './widgets/config/VerticalWidget.json';
+import MeasurementsData from './widgets/config/MeasurementsWidget.json';
+
+interface IBlockProps {
+  blockType: string,
+  data: object
+}
+
+interface IButton {
+  color: string, 
+  className: string, 
+  text: string
+}
+
+interface IWidget {
+  title: string,
+  blocks: IBlockProps[]
+}
 
 class SideBar extends React.Component {
-  buttonList: {
-    color: string, 
-    className: string, 
-    text: string
-  }[];
-  widgetList: {
-    title: string,
-    className: string
-  }[];
+  buttonList: IButton[]
+  widgetList: IWidget[]
 
   constructor(props: any) {
     super(props);
@@ -22,10 +34,9 @@ class SideBar extends React.Component {
       {color: "yellow", className: "SingleButton", text: "Single"}
     ]
     this.widgetList = [
-      {title: "Horizontal", className: "HorizontalWidget"},
-      {title: "Vertical", className: "VerticalWidget"},
-      {title: "Measurements", className: "MeasurementWidget"}
-    ]
+      HorizontalData.widgets, 
+      VerticalData.widgets, 
+      MeasurementsData.widgets]
   }
 
   render() {
@@ -47,8 +58,8 @@ class SideBar extends React.Component {
           this.widgetList.map((w) => {
             return (
               <Widget
-                widgetTitle = {w.title}
-                widgetClassName = {w.className}
+                title= {w.title}
+                blocks = {w.blocks}
               />
             )
           })

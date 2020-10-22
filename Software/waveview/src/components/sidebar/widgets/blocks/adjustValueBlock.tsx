@@ -2,43 +2,61 @@ import React from 'react';
 import './adjustValueBlock.css';
 
 interface IAdjustValueBlockProps {
-  value: number,
-  unit: string,
-  perUnit: string
+  data: {
+    value: number,
+    unit: string,
+    perUnit: boolean
+  }
 }
 
-interface IAdjustValueBlockState {
-  value: number,
-  unit: string,
-  perUnit: string
+interface IBlockProps {
+  blockType: string,
+  data: object
 }
 
-class AdjustValueBlock extends React.Component<IAdjustValueBlockProps, IAdjustValueBlockState> {
+interface IBlockState {
+  blockType: string,
+  data: any
+}
 
-  constructor(props: IAdjustValueBlockProps) {
+class AdjustValueBlock extends React.Component<IBlockProps, IBlockState> {
+
+  constructor(props: IBlockProps) {
     super(props);
     this.state = {
-      value: props.value,
-      unit: props.unit,
-      perUnit: props.perUnit
+      blockType: this.props.blockType,
+      data: this.props.data as IAdjustValueBlockProps
     }
   }
 
   handlePlusButtonClick() {
     this.setState({
-      value: this.state.value + 1
+      data: {
+        value: this.state.data.value + 1
+      }
     });
     this.forceUpdate();
   }
 
   handleMinusButtonClick() {
     this.setState({
-      value: this.state.value - 1
+      data: {
+        value: this.state.data.value - 1
+      }
     });
     this.forceUpdate();
   }
 
   render() {
+    const showPerUnit = this.state.data.perUnit;
+    let perUnit;
+    if(showPerUnit == true) {
+      perUnit = "/div";
+    }
+    else{
+      perUnit = "";
+    }
+
     return (
       <div className="AdjustValueBlockComponent">
         <button 
@@ -49,7 +67,7 @@ class AdjustValueBlock extends React.Component<IAdjustValueBlockProps, IAdjustVa
         <label 
           className="AdjustValueBlockValue"
         >
-          {this.state.value}{this.state.unit}{this.state.perUnit}
+          {this.state.data.value}{this.state.data.unit}{perUnit}
         </label>
         <button 
           className="MinusButton"
