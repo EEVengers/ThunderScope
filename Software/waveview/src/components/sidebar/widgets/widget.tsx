@@ -1,14 +1,21 @@
 import React from 'react';
 import './widget.css';
+import BlockType from '../../../interfaces/sidebar/blockType';
+import BlockList from './blocks/blockList';
+import {IBlockProps} from '../../../interfaces/sidebar/blockInterfaces';
 import {IWidgetProps, IWidgetState} from '../../../interfaces/sidebar/sidebarInterfaces';
-import BlockFactory from './blocks/blockFactory';
-import AdjustChannelBlock from './blocks/adjustChannelBlock';
-import AdjustValueBlock from './blocks/adjustValueBlock';
-import DisplayValueBlock from './blocks/displayValueBlock';
 
-BlockFactory.register(AdjustChannelBlock.blocktype, AdjustChannelBlock);
-BlockFactory.register(AdjustValueBlock.blocktype, AdjustValueBlock);
-BlockFactory.register(DisplayValueBlock.blocktype, DisplayValueBlock);
+function create(blocktype: BlockType, props: IBlockProps) {
+  let c = BlockList[blocktype];
+  if(c == null) //Also catch undefined
+  {
+    return (<div />);
+  }
+  else
+  {
+    return React.createElement(c, props);
+  }
+}
 
 class Widget extends React.Component<IWidgetProps, IWidgetState> {
 
@@ -27,7 +34,7 @@ class Widget extends React.Component<IWidgetProps, IWidgetState> {
           {this.state.title}
         </div>
         {
-        this.state.blocks.map((b) =>  BlockFactory.create(b.blockType, {data: b.data}))
+        this.state.blocks.map((b) =>  create(b.blockType, {data: b.data}))
         }
       </div>
     )

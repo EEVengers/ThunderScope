@@ -1,10 +1,11 @@
 import { IWidget } from '../../../../interfaces/sidebar/sidebarInterfaces';
+import BlockType from '../../../../interfaces/sidebar/blockType';
 
 let HorizontalWidget : IWidget = {
   title: "Horizontal",
   blocks: [
     {
-      blockType: "AdjustValue",
+      blockType: BlockType.AdjustValue,
       data: {
         value: 10,
         unit: "ns",
@@ -12,7 +13,7 @@ let HorizontalWidget : IWidget = {
       }
     },
     {
-      blockType: "AdjustValue",
+      blockType: BlockType.AdjustValue,
       data: {
         value: -10,
         unit: "ms",

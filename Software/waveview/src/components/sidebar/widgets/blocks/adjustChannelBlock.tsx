@@ -1,10 +1,8 @@
 import React from 'react';
-import { IAdjustChannelBlockProps, IBlockState, IBlockProps } from '../../../../interfaces/sidebar/sidebarInterfaces';
+import { IAdjustChannelBlockProps, IBlockState, IBlockProps } from '../../../../interfaces/sidebar/blockInterfaces';
 import './adjustChannelBlock.css';
 
 class AdjustChannelBlock extends React.Component<IBlockProps, IBlockState> {
-  static blocktype: string = "AdjustChannel";
-
   constructor(props: IBlockProps) {
     super(props);
     this.state = {
