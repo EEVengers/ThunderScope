@@ -1,6 +1,6 @@
 import React from 'react';
 import './adjustValueBlock.css';
-import {IAdjustValueBlockProps, IBlockProps, IBlockState} from '../../interfaces/sidebarInterfaces';
+import {IAdjustValueBlockProps, IBlockProps, IBlockState} from '../../../../interfaces/sidebar/sidebarInterfaces';
 
 class AdjustValueBlock extends React.Component<IBlockProps, IBlockState> {
 
@@ -15,7 +15,9 @@ class AdjustValueBlock extends React.Component<IBlockProps, IBlockState> {
   handlePlusButtonClick() {
     this.setState({
       data: {
-        value: this.state.data.value + 1
+        value: this.state.data.value + 1,
+        unit: this.state.data.unit,
+        showPerDiv: this.state.data.showPerDiv
       }
     });
     this.forceUpdate();
@@ -24,38 +26,40 @@ class AdjustValueBlock extends React.Component<IBlockProps, IBlockState> {
   handleMinusButtonClick() {
     this.setState({
       data: {
-        value: this.state.data.value - 1
+        value: this.state.data.value - 1,
+        unit: this.state.data.unit,
+        showPerDiv: this.state.data.showPerDiv
       }
     });
     this.forceUpdate();
   }
 
+  // TODO: Could move the perDivisionText logic to a helper method
   render() {
-    const showPerUnit = this.state.data.perUnit;
-    let perUnit;
-    if(showPerUnit == true) {
-      perUnit = "/div";
+    let perDivisionText;
+    if(this.state.data.showPerDiv == true) {
+      perDivisionText = "/div";
     }
     else{
-      perUnit = "";
+      perDivisionText = "";
     }
 
     return (
       <div className="AdjustValueBlockComponent">
         <button 
-          className="PlusButton"
-          onClick={() => this.handlePlusButtonClick()}>
-          +
+          className="MinusButton"
+          onClick={() => this.handleMinusButtonClick()}>
+          -
         </button>
         <label 
           className="AdjustValueBlockValue"
         >
-          {this.state.data.value}{this.state.data.unit}{perUnit}
+          {this.state.data.value}{this.state.data.unit}{perDivisionText}
         </label>
         <button 
-          className="MinusButton"
-          onClick={() => this.handleMinusButtonClick()}>
-          -
+          className="PlusButton"
+          onClick={() => this.handlePlusButtonClick()}>
+          +
         </button>
       </div>
     )

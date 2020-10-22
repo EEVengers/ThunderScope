@@ -2,21 +2,8 @@ import React from 'react';
 import './widget.css';
 import AdjustValueBlock from './blocks/adjustValueBlock';
 import DisplayValueBlock from './blocks/displayValueBlock';
-
-interface IBlockProps {
-  blockType: string,
-  data: object
-}
-
-interface IWidgetProps {
-  title: string,
-  blocks: IBlockProps[]
-}
-
-interface IWidgetState {
-  title: string,
-  blocks: IBlockProps[]
-}
+import {IWidgetProps, IWidgetState} from '../../../interfaces/sidebar/sidebarInterfaces';
+import AdjustChannelBlock from './blocks/adjustChannelBlock';
 
 class Widget extends React.Component<IWidgetProps, IWidgetState> {
 
@@ -34,14 +21,36 @@ class Widget extends React.Component<IWidgetProps, IWidgetState> {
         <div className="WidgetTitle">
           {this.state.title}
         </div>
-          <AdjustValueBlock 
-            blockType={this.state.title}
-            data={this.state.blocks}
-          />
-          <DisplayValueBlock 
-            blockType={this.state.title}
-            data={this.state.blocks}
-          />
+        {
+        this.state.blocks.map((b) => {
+          switch (b.blockType) {
+            // TODO: Move this logic into a helper method
+            case "AdjustChannel":
+              return (
+                <AdjustChannelBlock
+                  blockType={b.blockType}
+                  data={b.data}
+                />
+              )
+            case "AdjustValue":
+              return (
+              <AdjustValueBlock 
+                blockType={b.blockType}
+                data={b.data}
+              />
+              )
+            case "DisplayValue":
+              return (
+              <DisplayValueBlock 
+                blockType={b.blockType}
+                data={b.data}
+              />
+              )
+            default:
+              return (<div />)
+          }
+        })
+        }
       </div>
     )
   }

@@ -29,8 +29,12 @@
     data: {
       value: number,
       unit: string,
-      perUnit: boolean
+      showPerDiv: boolean
     }
+  }
+
+  interface IAdjustChannelBlockProps {
+    channel: number
   }
 
   interface IButton {
@@ -52,5 +56,6 @@ export type {
   IBlockProps,
   IBlockState,
   IAdjustValueBlockProps,
-  IDisplayValueBlockProps
+  IDisplayValueBlockProps,
+  IAdjustChannelBlockProps
 }

@@ -6,7 +6,7 @@ import './sidebar.css';
 import HorizontalData from './widgets/config/HorizontalWidget.json';
 import VerticalData from './widgets/config/VerticalWidget.json';
 import MeasurementsData from './widgets/config/MeasurementsWidget.json';
-import {IButton, IWidget} from './interfaces/sidebarInterfaces';
+import {IButton, IWidget} from '../../interfaces/sidebar/sidebarInterfaces';
 
 class SideBar extends React.Component {
   buttonList: IButton[]
