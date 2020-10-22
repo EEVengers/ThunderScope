@@ -1,20 +1,6 @@
 import React from 'react';
 import './displayValueBlock.css';
-
-interface IDisplayValueBlockProps {
-  leftValue: string,
-  rightValue: string
-}
-
-interface IBlockProps {
-  blockType: string,
-  data: object
-}
-
-interface IBlockState {
-  blockType: string,
-  data: any
-}
+import {IDisplayValueBlockProps, IBlockProps, IBlockState} from '../../interfaces/sidebarInterfaces';
 
 class AdjustValueBlock extends React.Component<IBlockProps, IBlockState> {
 

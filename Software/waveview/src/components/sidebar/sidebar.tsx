@@ -6,22 +6,7 @@ import './sidebar.css';
 import HorizontalData from './widgets/config/HorizontalWidget.json';
 import VerticalData from './widgets/config/VerticalWidget.json';
 import MeasurementsData from './widgets/config/MeasurementsWidget.json';
-
-interface IBlockProps {
-  blockType: string,
-  data: object
-}
-
-interface IButton {
-  color: string, 
-  className: string, 
-  text: string
-}
-
-interface IWidget {
-  title: string,
-  blocks: IBlockProps[]
-}
+import {IButton, IWidget} from './interfaces/sidebarInterfaces';
 
 class SideBar extends React.Component {
   buttonList: IButton[]
