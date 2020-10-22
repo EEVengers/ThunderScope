@@ -3,11 +3,11 @@ import './adjustValueBlock.css';
 import {IAdjustValueBlockProps, IBlockProps, IBlockState} from '../../../../interfaces/sidebar/sidebarInterfaces';
 
 class AdjustValueBlock extends React.Component<IBlockProps, IBlockState> {
+  static blocktype: string = "AdjustValue";
 
   constructor(props: IBlockProps) {
     super(props);
     this.state = {
-      blockType: this.props.blockType,
       data: this.props.data as IAdjustValueBlockProps
     }
   }

@@ -2,12 +2,12 @@ import React from 'react';
 import './displayValueBlock.css';
 import {IDisplayValueBlockProps, IBlockProps, IBlockState} from '../../../../interfaces/sidebar/sidebarInterfaces';
 
-class AdjustValueBlock extends React.Component<IBlockProps, IBlockState> {
+class DisplayValueBlock extends React.Component<IBlockProps, IBlockState> {
+  static blocktype: string = "DisplayValue";
 
   constructor(props: IBlockProps) {
     super(props);
     this.state = {
-      blockType: this.props.blockType,
       data: this.props.data as IDisplayValueBlockProps
     }
   }
@@ -31,4 +31,4 @@ class AdjustValueBlock extends React.Component<IBlockProps, IBlockState> {
   }
 }
 
-export default AdjustValueBlock;
+export default DisplayValueBlock;

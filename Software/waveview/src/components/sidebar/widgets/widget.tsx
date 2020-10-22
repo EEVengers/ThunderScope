@@ -1,9 +1,14 @@
 import React from 'react';
 import './widget.css';
+import {IWidgetProps, IWidgetState} from '../../../interfaces/sidebar/sidebarInterfaces';
+import BlockFactory from './blocks/blockFactory';
+import AdjustChannelBlock from './blocks/adjustChannelBlock';
 import AdjustValueBlock from './blocks/adjustValueBlock';
 import DisplayValueBlock from './blocks/displayValueBlock';
-import {IWidgetProps, IWidgetState} from '../../../interfaces/sidebar/sidebarInterfaces';
-import AdjustChannelBlock from './blocks/adjustChannelBlock';
+
+BlockFactory.register(AdjustChannelBlock.blocktype, AdjustChannelBlock);
+BlockFactory.register(AdjustValueBlock.blocktype, AdjustValueBlock);
+BlockFactory.register(DisplayValueBlock.blocktype, DisplayValueBlock);
 
 class Widget extends React.Component<IWidgetProps, IWidgetState> {
 
@@ -22,34 +27,7 @@ class Widget extends React.Component<IWidgetProps, IWidgetState> {
           {this.state.title}
         </div>
         {
-        this.state.blocks.map((b) => {
-          switch (b.blockType) {
-            // TODO: Move this logic into a helper method
-            case "AdjustChannel":
-              return (
-                <AdjustChannelBlock
-                  blockType={b.blockType}
-                  data={b.data}
-                />
-              )
-            case "AdjustValue":
-              return (
-              <AdjustValueBlock 
-                blockType={b.blockType}
-                data={b.data}
-              />
-              )
-            case "DisplayValue":
-              return (
-              <DisplayValueBlock 
-                blockType={b.blockType}
-                data={b.data}
-              />
-              )
-            default:
-              return (<div />)
-          }
-        })
+        this.state.blocks.map((b) =>  BlockFactory.create(b.blockType, {data: b.data}))
         }
       </div>
     )

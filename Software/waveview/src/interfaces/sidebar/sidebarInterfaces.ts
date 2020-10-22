@@ -1,27 +1,30 @@
 // Widget Interfaces
   interface IWidget {
     title: string,
-    blocks: IBlockProps[]
+    blocks: IBlockTypedProps[]
   }
 
   interface IWidgetProps {
     title: string,
-    blocks: IBlockProps[]
+    blocks: IBlockTypedProps[]
   }
 
   interface IWidgetState {
     title: string,
-    blocks: IBlockProps[]
+    blocks: IBlockTypedProps[]
   }
 
 // Block Interfaces
-  interface IBlockProps {
+  interface IBlockTypedProps {
     blockType: string,
+    data: object
+  }
+
+  interface IBlockProps {
     data: object
   }
   
   interface IBlockState {
-    blockType: string,
     data: any
   }
 
@@ -53,6 +56,7 @@ export type {
   IWidget,
   IWidgetProps,
   IWidgetState,
+  IBlockTypedProps,
   IBlockProps,
   IBlockState,
   IAdjustValueBlockProps,
