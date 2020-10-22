@@ -3,9 +3,9 @@ import Search from './search';
 import LargeButton from './largebutton';
 import Widget from './widgets/widget';
 import './sidebar.css';
-import HorizontalData from './widgets/config/HorizontalWidget.json';
-import VerticalData from './widgets/config/VerticalWidget.json';
-import MeasurementsData from './widgets/config/MeasurementsWidget.json';
+import HorizontalData from './widgets/config/HorizontalWidget';
+import VerticalData from './widgets/config/VerticalWidget';
+import MeasurementsData from './widgets/config/MeasurementsWidget';
 import {IButton, IWidget} from '../../interfaces/sidebar/sidebarInterfaces';
 
 class SideBar extends React.Component {
@@ -19,9 +19,10 @@ class SideBar extends React.Component {
       {color: "yellow", className: "SingleButton", text: "Single"}
     ]
     this.widgetList = [
-      HorizontalData.widgets, 
-      VerticalData.widgets, 
-      MeasurementsData.widgets]
+      HorizontalData, 
+      VerticalData, 
+      MeasurementsData
+    ]
   }
 
   render() {
