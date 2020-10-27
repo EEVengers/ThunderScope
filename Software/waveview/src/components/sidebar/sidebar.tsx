@@ -1,14 +1,16 @@
 import React from 'react';
-import Search from './subcomponents/search';
-import LargeButton from './subcomponents/largebutton';
+import Search from './search';
+import LargeButton from './largebutton';
+import Widget from './widgets/widget';
 import './sidebar.css';
+import HorizontalData from './widgets/config/HorizontalWidget';
+import VerticalData from './widgets/config/VerticalWidget';
+import MeasurementsData from './widgets/config/MeasurementsWidget';
+import {IButton, IWidget} from '../../interfaces/sidebar/sidebarInterfaces';
 
 class SideBar extends React.Component {
-  buttonList: {
-    color: string, 
-    className: string, 
-    text: string
-  }[];
+  buttonList: IButton[]
+  widgetList: IWidget[]
 
   constructor(props: any) {
     super(props);
@@ -16,14 +18,17 @@ class SideBar extends React.Component {
       {color: "red", className: "StopButton", text: "Stop"},
       {color: "yellow", className: "SingleButton", text: "Single"}
     ]
+    this.widgetList = [
+      HorizontalData, 
+      VerticalData, 
+      MeasurementsData
+    ]
   }
 
   render() {
     return (
       <div className="SideBarComponent">
-        <Search>
-
-        </Search>
+        <Search />
         {
         this.buttonList.map((b) => {
           return (
@@ -34,7 +39,17 @@ class SideBar extends React.Component {
             />
           )
         })
-      }
+        }
+        {
+          this.widgetList.map((w) => {
+            return (
+              <Widget
+                title= {w.title}
+                blocks = {w.blocks}
+              />
+            )
+          })
+        }
       </div>
     )
   }
