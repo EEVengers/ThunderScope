@@ -1,5 +1,5 @@
-import { IWidget } from '../../../../interfaces/sidebar/sidebarInterfaces';
-import BlockType from '../../../../interfaces/sidebar/blockType';
+import { IWidget } from '../../../../interfaces/sidebar/widgets/sidebarInterfaces';
+import BlockType from '../../../../enums/sidebar/widgets/blockType';
 
 let MeasurementsWidget: IWidget =
 {

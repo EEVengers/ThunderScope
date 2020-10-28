@@ -1,6 +1,6 @@
 import React from 'react';
 import './adjustValueBlock.css';
-import {IAdjustValueBlockProps, IBlockProps, IBlockState} from '../../../../interfaces/sidebar/blockInterfaces';
+import {IAdjustValueBlockProps, IBlockProps, IBlockState} from '../../../../interfaces/sidebar/widgets/blockInterfaces';
 
 class AdjustValueBlock extends React.Component<IBlockProps, IBlockState> {
   constructor(props: IBlockProps) {

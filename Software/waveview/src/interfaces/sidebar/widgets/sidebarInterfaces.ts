@@ -1,4 +1,4 @@
-import BlockType from './blockType';
+import BlockType from '../../../enums/sidebar/widgets/blockType';
 
   interface IBlockTypedProps {
     blockType: BlockType,

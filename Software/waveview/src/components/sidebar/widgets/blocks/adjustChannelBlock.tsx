@@ -1,5 +1,5 @@
 import React from 'react';
-import { IAdjustChannelBlockProps, IBlockState, IBlockProps } from '../../../../interfaces/sidebar/blockInterfaces';
+import { IAdjustChannelBlockProps, IBlockState, IBlockProps } from '../../../../interfaces/sidebar/widgets/blockInterfaces';
 import './adjustChannelBlock.css';
 
 class AdjustChannelBlock extends React.Component<IBlockProps, IBlockState> {
