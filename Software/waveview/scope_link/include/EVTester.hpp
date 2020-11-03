@@ -10,4 +10,6 @@ void TestSincInterpolation();
 
 void TestDataThroughPut();
 
+void testTriggerThroughput();
+
 #endif /* EVTester_hpp */

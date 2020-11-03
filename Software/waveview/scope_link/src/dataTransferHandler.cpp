@@ -81,7 +81,7 @@ void DataTransferHandler::FTDITransferThread()
 
             errorCode = FT_ReadPipe(superSpeedFIFOBridgeHandle,
                                     FTDI_FLAG_READ_CHIP_TO_COMPUTER,
-                                    asyncDataBuffers[0]->data,
+                                    (unsigned char*)asyncDataBuffers[0]->data,
                                     BUFFER_SIZE,
                                     &bytesReadFromPipe,
                                     nullptr);

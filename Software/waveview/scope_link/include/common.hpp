@@ -9,15 +9,17 @@
 #define GIB_TO_GB 1073741824
 
 // Buffer size in bytes
-#define BUFFER_1K   1024
-#define BUFFER_2K   2048
-#define BUFFER_4K   4096
-#define BUFFER_8K   8192
-#define BUFFER_16K  16384
-#define BUFFER_32K  32768
-#define BUFFER_64K  65536
-#define BUFFER_128K 131072
-#define BUFFER_256K 262144
+#define BUFFER_1K    1024
+#define BUFFER_2K    2048
+#define BUFFER_4K    4096
+#define BUFFER_8K    8192
+#define BUFFER_16K   16384
+#define BUFFER_32K   32768
+#define BUFFER_64K   65536
+#define BUFFER_128K  131072
+#define BUFFER_256K  262144
+#define BUFFER_512K  524288
+#define BUFFER_1024K 1048576
 
 #define BUFFER_SIZE BUFFER_8K
 
@@ -28,7 +30,7 @@ extern uint32_t windowSize;
 
 struct buffer
 {
-    unsigned char data[BUFFER_SIZE];
+    int8_t data[BUFFER_SIZE];
 };
 
 extern boost::pool_allocator<buffer,

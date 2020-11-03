@@ -26,6 +26,14 @@ public:
 
     bool getWindowStatus();
 
+    void processorStop();
+    void processorStart();
+    void processorPause();
+    void processorUnpause();
+
+    std::chrono::high_resolution_clock::time_point getTimeFilled();
+    std::chrono::high_resolution_clock::time_point getTimeWritten();
+
     /* variables */
 
 private:
@@ -37,6 +45,9 @@ private:
 
     std::thread processorThread;
 
+    std::chrono::high_resolution_clock::time_point windowFilled;
+    std::chrono::high_resolution_clock::time_point windowWritten;
+
     uint32_t count;
     uint32_t countProcessed;
 
@@ -45,6 +56,7 @@ private:
     std::mutex lockThread;
 
     std::atomic<bool> stopTransfer;
+    std::atomic<bool> pauseTransfer;
     std::atomic<bool> threadExists;
     std::atomic<bool> windowStored;
 };
