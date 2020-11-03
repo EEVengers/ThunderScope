@@ -6,14 +6,15 @@
 #include <boost/lockfree/queue.hpp>
 #include <thread>
 #include "EVLibrary.hpp"
+#include <bitset>
 
 class Trigger
 {
 public:
-//    DigitalProcessor(boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> *inputQ, int level);
+    /* functions */
     Trigger(boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> *inputQ,
                      boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> *outputQ,
-                     int level);
+                     int8_t level);
 
     bool checkTrigger(buffer* currentBuffer);
 
@@ -27,21 +28,34 @@ public:
     void setCount(uint32_t);
     void clearCount();
 
+    void triggerStop();
+    void triggerStart();
+    void triggerPause();
+    void triggerUnpause();
+
+    /* variables */
+    std::chrono::high_resolution_clock::time_point getTimeTriggerd();
+
 private:
+    /* functions */
+
+    /* variables */
     boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> *inputQueue;
     boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> *outputQueue;
 
     std::thread triggerThread;
 
     int triggerLevel;
-    bool trigger[BUFFER_SIZE];
 
     uint32_t count;
     uint32_t countTriggered;
 
     std::mutex lockThread;
 
-    std::atomic<bool> stopTransfer;
+    std::chrono::high_resolution_clock::time_point endTrigger;
+
+    std::atomic<bool> stopTrigger;
+    std::atomic<bool> pauseTrigger;
     std::atomic<bool> triggerMet;
     std::atomic<bool> threadExists;
 };
