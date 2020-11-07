@@ -2,28 +2,31 @@ import { IWidget } from '../../../../interfaces/sidebar/widgets/sidebarInterface
 import BlockType from '../../../../enums/sidebar/widgets/blockType';
 
 let MeasurementsWidget: IWidget = {
-  "title": "Vertical",
-  "blocks": [
+  title: "Vertical",
+  blocks: [
     {
-      "blockType": BlockType.AdjustChannel,
-      "data": {
-        "channel": 1
+      blockType: BlockType.AdjustChannel,
+      data: {
+        channel: 1,
+        color: "yellow"
       }
     },
     {
-      "blockType": BlockType.AdjustValue,
-      "data": {
-        "value": 1,
-        "unit": "V",
-        "showPerDiv": true
+      blockType: BlockType.AdjustValue,
+      data: {
+        value: 1,
+        unit: "V",
+        showPerDiv: true,
+        color: "yellow"
       }
     },
     {
-      "blockType": BlockType.AdjustValue,
-      "data": {
-        "value": 0,
-        "unit": "mV",
-        "showPerDiv": false
+      blockType: BlockType.AdjustValue,
+      data: {
+        value: 0,
+        unit: "mV",
+        showPerDiv: false,
+        color: "yellow"
       }
     }
   ]

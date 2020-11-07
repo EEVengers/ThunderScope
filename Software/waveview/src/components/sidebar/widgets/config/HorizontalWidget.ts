@@ -9,7 +9,8 @@ let HorizontalWidget : IWidget = {
       data: {
         value: 10,
         unit: "ns",
-        showPerDiv: true
+        showPerDiv: true,
+        color: "white"
       }
     },
     {
@@ -17,7 +18,8 @@ let HorizontalWidget : IWidget = {
       data: {
         value: -10,
         unit: "ms",
-        showPerDiv: false
+        showPerDiv: false,
+        color: "white"
       }
     }
   ]

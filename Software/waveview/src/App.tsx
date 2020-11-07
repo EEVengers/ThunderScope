@@ -36,10 +36,10 @@ class App extends React.Component {
       new TestPoints(1000, 300, "sine")
     ];
     this.channelList = [
-      {color: "yellow", className: "Channel1"},
-      {color: "chartreuse", className: "Channel2"},
-      {color: "blue", className: "Channel3"},
-      {color: "red", className: "Channel4"}
+      {color: "#EBFF00", className: "Channel1"},
+      {color: "#00FF19", className: "Channel2"},
+      {color: "#0075FF", className: "Channel3"},
+      {color: "#FF0000", className: "Channel4"}
     ]
     this.triggerInformation = {
       channel: "CH1",

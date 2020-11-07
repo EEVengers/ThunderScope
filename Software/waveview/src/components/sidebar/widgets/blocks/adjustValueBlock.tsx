@@ -51,6 +51,7 @@ class AdjustValueBlock extends React.Component<IBlockProps, IBlockState> {
         </button>
         <label 
           className="AdjustValueBlockValue"
+          style={{color: this.state.data.color}}
         >
           {this.state.data.value}{this.state.data.unit}{perDivisionText}
         </label>

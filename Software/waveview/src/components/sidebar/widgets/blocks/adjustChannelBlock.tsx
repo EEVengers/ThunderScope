@@ -39,6 +39,7 @@ class AdjustChannelBlock extends React.Component<IBlockProps, IBlockState> {
         </button>
         <label 
           className="AdjustChannelBlockValue"
+          style={{color: this.state.data.color}}
         >
           CH{this.state.data.channel}
         </label>
