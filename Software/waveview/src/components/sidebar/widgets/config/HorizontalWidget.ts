@@ -1,5 +1,5 @@
-import { IWidget } from '../../../../interfaces/sidebar/sidebarInterfaces';
-import BlockType from '../../../../interfaces/sidebar/blockType';
+import { IWidget } from '../../../../interfaces/sidebar/widgets/sidebarInterfaces';
+import BlockType from '../../../../enums/sidebar/widgets/blockType';
 
 let HorizontalWidget : IWidget = {
   title: "Horizontal",
@@ -9,7 +9,8 @@ let HorizontalWidget : IWidget = {
       data: {
         value: 10,
         unit: "ns",
-        showPerDiv: true
+        showPerDiv: true,
+        color: "white"
       }
     },
     {
@@ -17,7 +18,8 @@ let HorizontalWidget : IWidget = {
       data: {
         value: -10,
         unit: "ms",
-        showPerDiv: false
+        showPerDiv: false,
+        color: "white"
       }
     }
   ]

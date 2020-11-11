@@ -1,6 +1,6 @@
 import React from 'react';
 import './displayValueBlock.css';
-import {IDisplayValueBlockProps, IBlockProps, IBlockState} from '../../../../interfaces/sidebar/blockInterfaces';
+import {IDisplayValueBlockProps, IBlockProps, IBlockState} from '../../../../interfaces/sidebar/widgets/blockInterfaces';
 
 class DisplayValueBlock extends React.Component<IBlockProps, IBlockState> {
   constructor(props: IBlockProps) {

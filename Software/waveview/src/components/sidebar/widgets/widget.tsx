@@ -1,9 +1,9 @@
 import React from 'react';
 import './widget.css';
-import BlockType from '../../../interfaces/sidebar/blockType';
+import BlockType from '../../../enums/sidebar/widgets/blockType';
 import BlockList from './blocks/blockList';
-import {IBlockProps} from '../../../interfaces/sidebar/blockInterfaces';
-import {IWidgetProps, IWidgetState} from '../../../interfaces/sidebar/sidebarInterfaces';
+import {IBlockProps} from '../../../interfaces/sidebar/widgets/blockInterfaces';
+import {IWidgetProps, IWidgetState} from '../../../interfaces/sidebar/widgets/sidebarInterfaces';
 
 function create(blocktype: BlockType, props: IBlockProps) {
   let c = BlockList[blocktype];

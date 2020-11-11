@@ -23,8 +23,20 @@ function Graph(props: IGraphProps) {
         yDomain={props.yDomain}
         xDomain={props.xDomain}
       >
-        <HorizontalGridLines style={{stroke: '#4D4D4D'}} />
-        <VerticalGridLines style={{stroke: '#4D4D4D'}} />
+        <HorizontalGridLines 
+          style={{stroke: '#4D4D4D'}}
+          left={0} 
+          top={0}
+          height={10000}
+          width={10000}
+        />
+        <VerticalGridLines 
+          style={{stroke: '#4D4D4D'}}
+          left={0} 
+          top={0}
+          height={10000}
+          width={10000}
+        />
         <XAxis
           title=""
           hideTicks

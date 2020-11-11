@@ -1,6 +1,6 @@
 import React from 'react';
-import {IBlockProps, IBlockState} from '../../../../interfaces/sidebar/blockInterfaces';
-import BlockType from '../../../../interfaces/sidebar/blockType';
+import {IBlockProps, IBlockState} from '../../../../interfaces/sidebar/widgets/blockInterfaces';
+import BlockType from '../../../../enums/sidebar/widgets/blockType';
 import AdjustChannelBlock from './adjustChannelBlock';
 import AdjustValueBlock from './adjustValueBlock';
 import DisplayValueBlock from './displayValueBlock';

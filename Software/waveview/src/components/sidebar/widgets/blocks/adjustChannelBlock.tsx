@@ -1,5 +1,5 @@
 import React from 'react';
-import { IAdjustChannelBlockProps, IBlockState, IBlockProps } from '../../../../interfaces/sidebar/blockInterfaces';
+import { IAdjustChannelBlockProps, IBlockState, IBlockProps } from '../../../../interfaces/sidebar/widgets/blockInterfaces';
 import './adjustChannelBlock.css';
 
 class AdjustChannelBlock extends React.Component<IBlockProps, IBlockState> {
@@ -39,6 +39,7 @@ class AdjustChannelBlock extends React.Component<IBlockProps, IBlockState> {
         </button>
         <label 
           className="AdjustChannelBlockValue"
+          style={{color: this.state.data.color}}
         >
           CH{this.state.data.channel}
         </label>
