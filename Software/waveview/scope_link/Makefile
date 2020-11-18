@@ -21,13 +21,6 @@ all: $(EXE)
 debug: CPPFLAGS += -g
 debug: $(EXE)
 
-linux: CPPFLAGS += -DON_LINUX
-linux: $(EXE)
-
-linuxdebug: CPPFLAGS += -DON_LINUX
-linuxdebug: debug
-
-
 $(EXE): $(OBJ) | $(BIN_DIR)
 	$(CC) $(LDFLAGS) $^ $(LDLIBS) -o $@
 

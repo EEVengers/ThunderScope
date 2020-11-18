@@ -35,6 +35,7 @@ public:
 
     /* variables */
     std::chrono::high_resolution_clock::time_point getTimeTriggerd();
+    uint32_t countTriggered;
 
 private:
     /* functions */
@@ -48,7 +49,6 @@ private:
     int triggerLevel;
 
     uint32_t count;
-    uint32_t countTriggered;
 
     std::mutex lockThread;
 
