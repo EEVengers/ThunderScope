@@ -1,15 +1,18 @@
-.Graph {
-  text-align: center;
-  display: flex;
-}
-
 .graph_view {
   position: fixed;
+  display: flex;
+  flex-direction: row;
   top: 0;
   left: 0;
   width: 85vw;;
   height: 98vh;
   background: #818181;
   z-index: 10;
+}
+
+.graph_sidebar {
+  position: relative;
+  background: #2E2E2E;
+  width: 1vw;
 }
 
