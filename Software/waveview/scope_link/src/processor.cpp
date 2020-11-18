@@ -41,7 +41,7 @@ void Processor::coreLoop()
                         windowFilled = std::chrono::high_resolution_clock::now();
                         // window is filled
                         writeToCsv(filename,
-                                   windowProcessed,
+                                   (char*) windowProcessed,
                                    windowSize * BUFFER_SIZE);
                         windowStored.store(true);
 
@@ -50,9 +50,7 @@ void Processor::coreLoop()
                     } else {
                         // window not filled
                         // Copy the buffer into the processed window
-                        for (uint32_t i = 0;
-                             i < BUFFER_SIZE;
-                             i++) {
+                        for (uint32_t i = 0; i < BUFFER_SIZE; i++) {
                             windowProcessed[countProcessed * BUFFER_SIZE + i] = currentBuffer->data[i];
                         }
                         countProcessed++;

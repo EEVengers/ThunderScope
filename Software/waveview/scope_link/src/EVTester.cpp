@@ -50,13 +50,13 @@ void testTriggerThroughput()
     // Create dummy buffer
     buffer* tempBuffer;
     std::srand(std::time(0));
-    for (int i = 0; i < testSize; i++) {
+    for (uint32_t i = 0; i < testSize; i++) {
         // initialize buffer
         tempBuffer = bufferAllocator.allocate(1);
         bufferAllocator.construct(tempBuffer);
 
         // fill buffer with random data
-        for (int j = 0; j < BUFFER_SIZE; j++) {
+        for (uint32_t j = 0; j < BUFFER_SIZE; j++) {
             tempBuffer->data[j] = std::rand();
         }
 
@@ -65,7 +65,7 @@ void testTriggerThroughput()
     }
 
     // Create trigger method
-    Trigger trigger(&newDataQueue, &newDataQueue, 128);
+    Trigger trigger(&newDataQueue, &newDataQueue, 127);
 
     // Create pointer to current buffer
     buffer *currentBuffer;
@@ -75,10 +75,12 @@ void testTriggerThroughput()
 
     // Run loop
     while (newDataQueue.pop(currentBuffer)) {
-        if (trigger.checkTrigger(currentBuffer)) {
-            count++;
-        }
+        trigger.checkTrigger(currentBuffer);
+//        if (trigger.checkTrigger(currentBuffer)) {
+//            count++;
+//        }
     }
+    count = trigger.countTriggered;
 
     // Take Timestamp
     auto end = std::chrono::high_resolution_clock::now();
@@ -129,6 +131,7 @@ void TestDataThroughPut()
 
     auto timeElapsedTransfer = endTransfer - startTransfer;
 
+    bytesRead = dataExchanger.bytesRead;
     double readBps = ((double)bytesRead * S_TO_NS / timeElapsedTransfer.count());
     double readGBps = (((double)bytesRead * S_TO_NS) / (timeElapsedTransfer.count() * GIB_TO_GB));
     std::cout << "Finished transfering" << std::endl;
@@ -144,7 +147,7 @@ void TestDataThroughPut()
     std::cout << std::endl << "Beggining Triggering Test" << std::endl;
 
     // create trigger thread
-    Trigger trigger(&newDataQueue, &triggeredQueue, 128);
+    Trigger trigger(&newDataQueue, &triggeredQueue, 127);
     trigger.createThread();
     std::cout << "Finished Creating trigger" << std::endl;
 

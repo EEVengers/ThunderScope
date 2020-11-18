@@ -14,7 +14,7 @@ boost::pool_allocator<int8_t,
 
 uint32_t windowSize = DEFAULT_WINDOW;
 
-uint32_t writeToCsv (char* filename, int8_t *data, uint32_t dataLength)
+uint32_t writeToCsv (char* filename, char* data, uint32_t dataLength)
 {
     std::ofstream file;
     file.open(filename);

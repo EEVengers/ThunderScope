@@ -21,7 +21,7 @@
 #define BUFFER_512K  524288
 #define BUFFER_1024K 1048576
 
-#define BUFFER_SIZE BUFFER_8K
+#define BUFFER_SIZE BUFFER_8K +1
 
 // Window size in buffers
 #define DEFAULT_WINDOW 1
@@ -44,5 +44,5 @@ extern boost::pool_allocator<int8_t,
     DEFAULT_WINDOW * BUFFER_SIZE, 0> windowAllocator;
 
 
-uint32_t writeToCsv (char* filename, int8_t *data, uint32_t dataLength);
+uint32_t writeToCsv (char* filename, char* data, uint32_t dataLength);
 #endif
