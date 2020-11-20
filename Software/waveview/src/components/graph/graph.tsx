@@ -19,6 +19,15 @@ interface IGraphProps {
 function Graph(props: IGraphProps) {
   return (
     <div className="graph_view">
+      <div 
+        className="graph_sidebar"
+      >
+        <p 
+          className = "graph_arrow"
+        >
+          &#x21b3;
+        </p>
+      </div>
       <FlexibleXYPlot
         yDomain={props.yDomain}
         xDomain={props.xDomain}
@@ -55,7 +64,6 @@ function Graph(props: IGraphProps) {
             />
           })
         }
-
       </FlexibleXYPlot>
     </div>
   )
