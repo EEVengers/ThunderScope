@@ -36,7 +36,7 @@ public:
     void SetCopyFunc(CopyFuncs Func);
     void stopHandler();
 
-    unsigned int bytesRead;//used for testing
+    uint64_t bytesRead;//used for testing
 
     EVSharedCache* threadSharedCache;
 
