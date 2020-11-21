@@ -76,10 +76,8 @@ void testTriggerThroughput()
     // Run loop
     while (newDataQueue.pop(currentBuffer)) {
         trigger.checkTrigger(currentBuffer);
-//        if (trigger.checkTrigger(currentBuffer)) {
-//            count++;
-//        }
     }
+
     count = trigger.countTriggered;
 
     // Take Timestamp
