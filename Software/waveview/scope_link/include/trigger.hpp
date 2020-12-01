@@ -13,10 +13,10 @@ class Trigger
 public:
     /* functions */
     Trigger(boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> *inputQ,
-                     boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> *outputQ,
-                     int8_t level);
+            boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> *outputQ,
+            int8_t level);
 
-    bool checkTrigger(buffer* currentBuffer);
+    void checkTrigger(buffer* currentBuffer);
 
     void coreLoop();
 
@@ -34,7 +34,6 @@ public:
     void triggerUnpause();
 
     /* variables */
-    std::chrono::high_resolution_clock::time_point getTimeTriggerd();
     uint32_t countTriggered;
 
 private:
@@ -51,8 +50,6 @@ private:
     uint32_t count;
 
     std::mutex lockThread;
-
-    std::chrono::high_resolution_clock::time_point endTrigger;
 
     std::atomic<bool> stopTrigger;
     std::atomic<bool> pauseTrigger;

@@ -30,12 +30,15 @@ int parseCommandLineArgs(int argc, char** args) {
             if(std::string(args[i]) == "--TestSinc" || std::string(args[i]) == "-s") {
                 logger.Debug("Main:parseCommandLineArgs() - Testing Sinc Interpolation");
                 TestSincInterpolation();
-            } else if(std::string(args[i]) == "--TestDataThroughput" || std::string(args[i]) == "-p") {
-                logger.Debug("Main:parseCommandLineArgs() - Testing Data Throughput");
-                TestDataThroughPut();
+//            } else if(std::string(args[i]) == "--TestDataThroughput" || std::string(args[i]) == "-p") {
+//                logger.Debug("Main:parseCommandLineArgs() - Testing Data Throughput");
+//                TestDataThroughPut();
             } else if(std::string(args[i]) == "--testTrigger" || std::string(args[i]) == "-t") {
                 logger.Debug("Main:parseCommandLineArgs() - Testing Trigger Throughput");
                 testTriggerThroughput();
+            } else if(std::string(args[i]) == "--t1") {
+                logger.Debug("Running Test 1");
+                test1();
             } else {
                 logger.Debug("Main:parseCommandLineArgs() - Invalid arguments. Use --TestSinc or --TestDataThroughPut");
             }

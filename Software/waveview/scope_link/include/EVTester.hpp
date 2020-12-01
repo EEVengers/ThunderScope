@@ -12,4 +12,6 @@ void TestDataThroughPut();
 
 void testTriggerThroughput();
 
+void test1();
+
 #endif /* EVTester_hpp */

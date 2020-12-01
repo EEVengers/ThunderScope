@@ -21,16 +21,18 @@
 #define BUFFER_512K  524288
 #define BUFFER_1024K 1048576
 
-#define BUFFER_SIZE BUFFER_8K +1
+#define BUFFER_SIZE BUFFER_8K
 
 // Window size in buffers
-#define DEFAULT_WINDOW 1
+#define DEFAULT_WINDOW 10
 
 extern uint32_t windowSize;
+extern uint32_t persistanceSize;
 
 struct buffer
 {
-    int8_t data[BUFFER_SIZE];
+    int8_t data[BUFFER_SIZE + 1];
+    uint64_t trigger[BUFFER_SIZE/64];
 };
 
 extern boost::pool_allocator<buffer,
@@ -44,5 +46,5 @@ extern boost::pool_allocator<int8_t,
     DEFAULT_WINDOW * BUFFER_SIZE, 0> windowAllocator;
 
 
-uint32_t writeToCsv (char* filename, char* data, uint32_t dataLength);
+uint32_t writeToCsv (char* filename, char* data, uint32_t row, uint32_t col);
 #endif
