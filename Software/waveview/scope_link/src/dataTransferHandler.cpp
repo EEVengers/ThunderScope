@@ -24,6 +24,8 @@ DataTransferHandler::DataTransferHandler(boost::lockfree::queue<buffer*, boost::
     assert(outputQ != NULL);
     outputQueue = outputQ;
 
+    bytesRead = 0;
+
     clearCount();
 
     try {
@@ -64,11 +66,9 @@ void DataTransferHandler::transferPause()
 
 void DataTransferHandler::FTDITransferThread()
 {
-    unsigned int bytesReadFromPipe = 0;
-    unsigned int errorCode;
-    unsigned int copyIdx = 0;
+    uint64_t bytesReadFromPipe = 0;
+    uint64_t errorCode;
 
-#ifdef ON_LINUX // Linux does not allow for async reads
     // Outerloop
     while(!stopTransfer.load()) {
         //Innerloop
@@ -83,32 +83,31 @@ void DataTransferHandler::FTDITransferThread()
                                     FTDI_FLAG_READ_CHIP_TO_COMPUTER,
                                     (unsigned char*)asyncDataBuffers[0]->data,
                                     BUFFER_SIZE,
-                                    &bytesReadFromPipe,
+                                    (uint32_t*)&bytesReadFromPipe,
                                     nullptr);
     
+            assert(bytesReadFromPipe == BUFFER_SIZE);
+            assert(errorCode == 0);
             if (errorCode != 0 || bytesReadFromPipe != BUFFER_SIZE) {
                 throw EVException(errorCode,"DataTransferHandler:FTDITransferThread:FT_ReadPipe()");
             }
     
-
-            //transfer chunck to shared cache
-//            CopyFunc(asyncDataBuffers[0]->data, copyIdx, bytesReadFromPipe, (void*)this);
-
             count++;
             outputQueue->push(asyncDataBuffers[0]);
-//            bufferAllocator.deallocate(asyncDataBuffers[0], 1);
-
-            lock.unlock();
 
             bytesRead += bytesReadFromPipe;
+
+            assert(bytesReadFromPipe == BUFFER_SIZE);
             bytesReadFromPipe = 0;
+
+            lock.unlock();
         }
 
         // Busy wait the for either unpausing or killing the thread
         std::this_thread::sleep_for(std::chrono::milliseconds(150));
     }
 
-#else // Windows Implementation allows for overlapped async reads
+/*
     unsigned int asyncBytesRead[numAsyncBuffers];
     OVERLAPPED vOverlapped[numAsyncBuffers];
 
@@ -208,7 +207,7 @@ void DataTransferHandler::FTDITransferThread()
             }
         }
     }
-#endif
+*/
 }
 
 void DataTransferHandler::createThread()

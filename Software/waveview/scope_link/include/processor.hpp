@@ -35,9 +35,14 @@ public:
     std::chrono::high_resolution_clock::time_point getTimeWritten();
 
     /* variables */
+    uint32_t windowCol;
+    uint32_t windowRow;
 
 private:
     /* functions */
+    void copyProcess(int8_t * src, int8_t * dst, uint32_t count);
+    void updateWindowSize(uint32_t newWinSize, uint32_t newPerSize);
+    uint32_t findNextTrigger(buffer *currentBuffer);
 
     /* variables */
     boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> *inputQueue;

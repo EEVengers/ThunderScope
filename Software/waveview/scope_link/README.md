@@ -29,6 +29,101 @@ Not quite sure what this does yet either
 ./scope --TestDataThrougput
 ```
 
+## Triggering and Post Processing plan
+The pipeline through the C++ side of things is broken up into several stages.
+These stages are:
+
+1. Transfer handler
+2. Triggering
+3. Post Processing
+
+### Transfer Handler
+The transfer handler will be a loop accepting data from the pcie/thunderbolt
+connection. It will take transfers in batches of `BUFFER_SIZE` and will need to
+keep track of the previous buffer's last sample and add it to the next buffer.
+This allows triggers between buffers to be also captured. Will have to think
+how this affects the post-processor.
+
+The buffers that this method gets are pushed onto a fifo lock free queue. I
+still need to look at making these into spsc (single producer single consumer)
+instead of the spmc (single producer multiple consumer) now that we are only
+doing single threaded processing (because each channel would need a thread and
+each stage in the pipeline multiplies the number of threads.)
+
+### Triggering
+The trigger loop will pop a buffer from its input queue and compute all triggers
+in it, including the additional edge position between the current buffer and the
+one before it.
+
+It computes the trigger with bitshifting. Each buffer is processed in 64 sample
+segments (more work can be done to try larger segments, but `uint64_t` was
+already available as a data type). Its computed by running a large bit shifting
+opperation where each trigger position is computed, shifted, and then ORed with
+the rest of the triggers in the segment.
+
+Once the triggers are computed, they are passed to a post-processing with the
+buffer for those respective triggers. No work is done beyond checking for
+triggers in this stage.
+
+### Post Processing
+This stage will be more complex than the previous stages. It needs to hold a
+persistance buffer. The persistance buffer will be a 2D array of processed
+samples. This can be later expanded to store unprocessed samples allowing the
+user to re-process a set of waveforms, but the basic implementation doesn't 
+need this feature.
+
+The core loop will pop a buffer from its input queue, find the earliest trigger
+for the buffer and begin copying and processing samples from that point into
+the persistance buffer.
+
+When a new trigger is found, it will take up a new row in the persistance array
+and begin copying in samples. Because a waveform can extend beyond the boundry
+of a single buffer (but will only include at most 2 buffers), the position of
+the most recent data added to a row will also need to be stored. When the next
+buffer arrives, the samples are coppied to incomplete waveform windows and
+additional triggers are checked for.
+
+A single data point will only appear in at most one window. If we say that there
+must be up to 64 samples before the next window can start, we can ignore
+checking the trigger `uint64_t` that the last sample in the window belongs to.
+
+Once a window is filled it can be pushed off to the graphing library or the
+graphing library can request all completed waveforms.
+
+TODO: I will need to check if it is faster to process the whole buffer or only
+the parts that we need. This depends on how simd reacts to variable start and
+end points within an array.
+
+TODO: Also look into if its faster to always take the hit on duplicating a full
+window of samples onto the prevous buffer or if its faster to post process 
+partial buffers. It may be harder to do more advanced interpolation without the
+full window available. The question here comes down to if its faster to always
+loose time copying samples or to sometimes have to do a partial interpolation.
+If the compiler cant optomize it well enough, it may be better to take the hit
+on every run.
+
+Also going to need a way to update the size of the persistance memory. This
+will need to use new and delete to dynamically create space, but this will be
+done only when we have stopped capturing data. The number of rows is equal to
+the number of persistant waveforms and the number of samples is equal to the
+window size.
+
+#### Steps
+1. Create persistance memory
+    1. make set and get WindowSize functions
+    2. make set and get persistance number functions
+    3. make create and destroy functions
+2. pop and store windowSize samples in persistance
+3. write persisance to file
+4. Graph that with GNUPlot
+5. Add trigger checking on new window (ignore the unfiled spaces)
+6. Add incomplete window filling
+
+
+### Graphing Handler
+This stage will be responsible for handling C++ side of the graphing. It will
+take in requests for samples and return the window of available samples
+
 ## Thoughts on Future Improvements
 ### Pre caim space in output queue
 This would allow us to multithread more easily without thinking about keeping
@@ -56,6 +151,10 @@ filled.
 
 Alternativly, we could pass the same queue to both stages of the pipeline and
 just flag the post-processing stage to start pulling from the queue.
+
+For waveform persistance, this isn't really an option as we still need to trigger
+on the incomming data until the whole persistance buffer is filled, at which point
+we can stop processing data all together.
 
 ### Signaling when adding to queue
 The overhead of a mutex might not be worth it. Will need to do analysis on
