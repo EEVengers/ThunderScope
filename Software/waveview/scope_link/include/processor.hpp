@@ -37,6 +37,8 @@ public:
     /* variables */
     uint32_t windowCol;
     uint32_t windowRow;
+    uint32_t bufferCol;
+    uint32_t t_64offset;
 
 private:
     /* functions */
