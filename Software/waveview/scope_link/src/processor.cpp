@@ -30,9 +30,12 @@ void Processor::copyProcess( int8_t * src, int8_t * dst, uint32_t count)
     // minimum of the remaining space in the window and the remaining samples
     // in the buffer
 
-    for (uint32_t i = 0; i < count; i++) {
-        dst[i] = src[i];
-        std::cout << i << "-" << (int)dst[i] << ",";
+    uint32_t i = 0;
+
+    for (i = 0; windowCol < count; windowCol++) {
+        *(dst + (windowCol + windowRow * windowSize)) = src[i];
+        std::cout << windowCol << "-" << (int)*(dst + (windowCol + windowRow * windowSize)) << ",";
+        i++;
     }
 
     std::cout << std::endl;
@@ -42,8 +45,8 @@ void Processor::copyProcess( int8_t * src, int8_t * dst, uint32_t count)
 uint32_t Processor::findNextTrigger( buffer *currentBuffer )
 {
     uint32_t t_offset = 0;
-    uint32_t t_64offset = 0;
-    for (t_64offset = 0;
+
+    for (;
          t_64offset < BUFFER_SIZE/64;
          t_64offset++) {
         if (currentBuffer->trigger[t_64offset] > 0) {
@@ -64,6 +67,9 @@ void Processor::coreLoop()
 
     windowCol = 0;
     windowRow = 0;
+    bufferCol = 0;
+
+    uint32_t copyCount = 0;
 
     // Outer loop
     while (stopTransfer.load() == false) {
@@ -71,32 +77,37 @@ void Processor::coreLoop()
         // Inner loop
         while (pauseTransfer.load() == false || windowStored.load() == false) {
             if (inputQueue->pop(currentBuffer)) {
+                // New buffer, reset variables
                 count++;
+                bufferCol = 0;
+                t_64offset = 0;
 
-                /*
-                // If not at the start of a windoW
-                if (windowCol != 0) {
-                //      copy from beginning of buffer until end of window
-                //      push window into next stage or just increment the row index
-                    bufferIndex += (windowSize - windowCol);
+                if (windowCol == 0) {
+                    // Not in partial window
+                    // Find the next trigger and start copying
+                    bufferCol = findNextTrigger( currentBuffer );
                 }
-                */
 
+                // Determin how much to copy. Min of:
+                // - remaining space in the window
+                // - remaining space in a buffer
+                copyCount = std::min(windowSize - windowCol, BUFFER_SIZE - bufferCol);
 
-                // Now at start of new window (possibly with buffer offset
-                // Check next trigger set > 0
-                //      Start copying until end or no more samples
-                //      If end, push window into next stage
+                std::cout << "bufferCol: " << bufferCol << std::endl;
+                std::cout << "copyCount: " << copyCount << std::endl;
 
+                // Copy samples into the window
                 if (windowRow < persistanceSize) {
-                    // Check the trigger
-                    std::cout << findNextTrigger( currentBuffer ) << std::endl;
-                    //currentBuffer->trigger[i]
+                    copyProcess(currentBuffer->data + bufferCol,
+                        windowProcessed,
+                        copyCount);
 
-                    copyProcess(currentBuffer->data,
-                        windowProcessed + (windowCol + windowRow * windowSize),
-                        windowSize);
-                    windowRow++;
+                    // Reset the window column if its past the end (when partial window coppied)
+                    if (windowCol == windowSize) {
+                        windowCol = 0;
+                        windowRow++;
+                    }
+
                 } else {
                     // Window persistance buffer filled
 
