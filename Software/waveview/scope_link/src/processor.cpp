@@ -23,24 +23,6 @@ Processor::Processor(boost::lockfree::queue<buffer*, boost::lockfree::fixed_size
     updateWindowSize(windowSize, persistanceSize);
 }
 
-void Processor::copyProcess( int8_t * src, int8_t * dst, uint32_t count)
-{
-    // TODO: Add actuall post processing into the loop
-    // Determin how many to count so we dont have to break out of a for loop
-    // minimum of the remaining space in the window and the remaining samples
-    // in the buffer
-
-    uint32_t i = 0;
-
-    for (i = 0; windowCol < count; windowCol++) {
-        *(dst + (windowCol + windowRow * windowSize)) = src[i];
-        std::cout << windowCol << "-" << (int)*(dst + (windowCol + windowRow * windowSize)) << ",";
-        i++;
-    }
-
-    std::cout << std::endl;
-}
-
 // Returns the offset of the next trigger in the current buffer
 uint32_t Processor::findNextTrigger( buffer *currentBuffer )
 {
@@ -98,9 +80,12 @@ void Processor::coreLoop()
 
                 // Copy samples into the window
                 if (windowRow < persistanceSize) {
-                    copyProcess(currentBuffer->data + bufferCol,
-                        windowProcessed,
-                        copyCount);
+                    std::memcpy(windowProcessed + (windowCol + windowRow * windowSize),
+                                currentBuffer->data + bufferCol,
+                                copyCount);
+
+                    bufferCol += copyCount;
+                    windowCol += copyCount;
 
                     // Reset the window column if its past the end (when partial window coppied)
                     if (windowCol == windowSize) {
