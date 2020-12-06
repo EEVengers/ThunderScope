@@ -24,9 +24,19 @@ Processor::Processor(boost::lockfree::queue<buffer*, boost::lockfree::fixed_size
 }
 
 // Returns the offset of the next trigger in the current buffer
-uint32_t Processor::findNextTrigger( buffer *currentBuffer )
+bool Processor::findNextTrigger(buffer *currentBuffer, uint32_t* p_bufCol)
 {
     uint32_t t_offset = 0;
+
+    // Find which 64 block the buffer is in
+    uint32_t t_64offset = (*p_bufCol % 64);
+
+    if (windowCol != 0) {
+        // Partialy filled window
+        *p_bufCol = 0;
+        std::cout << "Partial Window. bufferCol = 0" << std::endl;
+        return true;
+    }
 
     for (;
          t_64offset < BUFFER_SIZE/64;
@@ -37,9 +47,18 @@ uint32_t Processor::findNextTrigger( buffer *currentBuffer )
             break;
         }
     }
-    std::cout << "t_offset: " << t_offset;
-    std::cout << " t_64_offset: " << t_64offset << std::endl;
-    return ((t_offset) + (t_64offset * 64));
+
+    if (t_64offset >= BUFFER_SIZE/64) {
+        // No trigger found in buffer
+        *p_bufCol = BUFFER_SIZE;
+        std::cout << "End of buffer reached, go to next one" << std::endl;
+        return false;
+    } else {
+        *p_bufCol = ((t_offset) + (t_64offset * 64));
+        std::cout << "t_offset: " << t_offset;
+        std::cout << " t_64_offset: " << t_64offset << std::endl;
+        return true;
+    }
 }
 
 void Processor::coreLoop()
@@ -57,51 +76,64 @@ void Processor::coreLoop()
     while (stopTransfer.load() == false) {
 
         // Inner loop
-        while (pauseTransfer.load() == false || windowStored.load() == false) {
+        while (pauseTransfer.load() == false && windowStored.load() == false) {
             if (inputQueue->pop(currentBuffer)) {
+                std::cout << "New Buffer" << std::endl;
                 // New buffer, reset variables
                 count++;
                 bufferCol = 0;
-                t_64offset = 0;
 
-                if (windowCol == 0) {
-                    // Not in partial window
-                    // Find the next trigger and start copying
-                    bufferCol = findNextTrigger( currentBuffer );
-                }
+//                findNextTrigger( currentBuffer, &bufferCol);
+                // TODO: Reorganize the findowStored condition
+                //       It currently needs to find a trigger after the last trigger
+                //       needed (persistance full). Should detect this before hand
+                while (findNextTrigger( currentBuffer, &bufferCol) && !windowStored.load())
+                    {
 
-                // Determin how much to copy. Min of:
-                // - remaining space in the window
-                // - remaining space in a buffer
-                copyCount = std::min(windowSize - windowCol, BUFFER_SIZE - bufferCol);
+                    // Determin how much to copy. Min of:
+                    // - remaining space in the window
+                    // - remaining space in a buffer
+                    copyCount = std::min(windowSize - windowCol, BUFFER_SIZE - bufferCol);
 
-                std::cout << "bufferCol: " << bufferCol << std::endl;
-                std::cout << "copyCount: " << copyCount << std::endl;
+                    std::cout << "bufferCol: " << bufferCol << std::endl;
+                    std::cout << "copyCount: " << copyCount << std::endl;
 
-                // Copy samples into the window
-                if (windowRow < persistanceSize) {
-                    std::memcpy(windowProcessed + (windowCol + windowRow * windowSize),
-                                currentBuffer->data + bufferCol,
-                                copyCount);
+                    if (windowRow < persistanceSize) {
+                        // Copy samples into the window
+                        std::memcpy(windowProcessed + (windowCol + windowRow * windowSize),
+                                    currentBuffer->data + bufferCol,
+                                    copyCount);
 
-                    bufferCol += copyCount;
-                    windowCol += copyCount;
+                        bufferCol += copyCount;
+                        windowCol += copyCount;
 
-                    // Reset the window column if its past the end (when partial window coppied)
-                    if (windowCol == windowSize) {
-                        windowCol = 0;
-                        windowRow++;
+                        std::cout << "bufferCol: " << bufferCol << " windowCol: " << windowCol;
+                        std::cout << " windowSize: " << windowSize << std::endl;
+
+                        // Reset the window column if its past the end (when finished a window)
+                        if (windowCol == windowSize) {
+                            windowCol = 0;
+                            windowRow++;
+
+                            // Push it into the next 64 space so we don't trigger on the same twice
+                            bufferCol += 64;
+                            std::cout << "full window. windowCol: " << windowCol << std::endl;
+                        } else {
+                            // Partial window coppied
+                            std::cout << "partial window. windowCol: " << windowCol << std::endl;
+                        }
+
+                    } else {
+                        // Window persistance buffer filled
+                        std::cout << "Dumping to csv" << std::endl;
+
+                        writeToCsv(filename,
+                                   (char*)windowProcessed,
+                                   persistanceSize,
+                                   windowSize);
+
+                        windowStored.store(true);
                     }
-
-                } else {
-                    // Window persistance buffer filled
-
-                    writeToCsv(filename,
-                               (char*)windowProcessed,
-                               persistanceSize,
-                               windowSize);
-
-                    windowStored.store(true);
                 }
 
                 bufferAllocator.deallocate(currentBuffer, 1);

@@ -38,13 +38,12 @@ public:
     uint32_t windowCol;
     uint32_t windowRow;
     uint32_t bufferCol;
-    uint32_t t_64offset;
 
 private:
     /* functions */
     void copyProcess(int8_t * src, int8_t * dst, uint32_t count);
     void updateWindowSize(uint32_t newWinSize, uint32_t newPerSize);
-    uint32_t findNextTrigger(buffer *currentBuffer);
+    bool findNextTrigger(buffer *currentBuffer, uint32_t* p_column);
 
     /* variables */
     boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> *inputQueue;
