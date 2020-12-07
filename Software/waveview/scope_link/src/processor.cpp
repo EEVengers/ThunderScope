@@ -13,6 +13,7 @@ Processor::Processor(boost::lockfree::queue<buffer*, boost::lockfree::fixed_size
     clearCount();
     countProcessed = 0;
 
+    windowProcessed = NULL;
 //    windowProcessed = windowAllocator.allocate(windowSize * BUFFER_SIZE);
 
     threadExists.store(false);

@@ -39,6 +39,24 @@ void TestSincInterpolation()
     myFile.close();
 }
 
+bool loadFromFile ( char* filename, boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> *outputQ)
+{
+    std::ifstream stream;
+    stream.open(filename);
+
+    char delim = '\n';
+    std::string tmp;
+
+    while (std::getline(stream, tmp, delim)) {
+        std::cout << tmp << std::endl;
+        // TODO: Parse the line into a buffer
+        //       Probably use std::strtok
+    }
+
+
+    return true;
+}
+
 void testTriggerThroughput()
 {
     uint32_t testSize = 1000;
@@ -107,6 +125,10 @@ void test1()
     // Create dummy queue
     boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> newDataQueue{1000};
     boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> triggeredQueue{1000};
+
+    char filename[] = "dump.csv";
+
+    loadFromFile(filename, &newDataQueue);
 
     // Create dummy buffer and fill it
     buffer* tempBuffer;
