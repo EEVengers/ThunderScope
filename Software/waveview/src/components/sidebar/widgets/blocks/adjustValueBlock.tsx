@@ -35,7 +35,7 @@ class AdjustValueBlock extends React.Component<IBlockProps, IBlockState> {
   // TODO: Could move the perDivisionText logic to a helper method
   render() {
     let perDivisionText;
-    if(this.state.data.showPerDiv == true) {
+    if(this.state.data.showPerDiv === true) {
       perDivisionText = "/div";
     }
     else{
