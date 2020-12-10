@@ -4,6 +4,7 @@
 #include "dataTransferHandler.hpp"
 #include "processor.hpp"
 #include "trigger.hpp"
+#include <boost/tokenizer.hpp>
 
 void TestSincInterpolation()
 {
@@ -47,12 +48,40 @@ bool loadFromFile ( char* filename, boost::lockfree::queue<buffer*, boost::lockf
     char delim = '\n';
     std::string tmp;
 
-    while (std::getline(stream, tmp, delim)) {
-        std::cout << tmp << std::endl;
-        // TODO: Parse the line into a buffer
-        //       Probably use std::strtok
-    }
+    std::cout << "Loading from file " << filename << std::endl;
 
+    buffer* tempBuffer;
+    tempBuffer = bufferAllocator.allocate(1);
+    bufferAllocator.construct(tempBuffer);
+    uint32_t tmpBufPos = 0;
+
+    while (std::getline(stream, tmp, delim)) {
+//        std::cout << tmp << std::endl;
+
+        // Parse the line into a buffer
+        typedef boost::tokenizer<boost::char_separator<char>> tokenizer;
+        boost::char_separator<char> sep{","};
+        tokenizer tok{tmp, sep};
+        for (const auto &t : tok) {
+//            std::cout << t << '\n';
+
+            tempBuffer->data[tmpBufPos] = (int8_t)std::stoi(t);
+
+            tmpBufPos++;
+            if (tmpBufPos == BUFFER_SIZE) {
+                // Buffer is now full push it
+                outputQ->push(tempBuffer);
+
+                // Create a new one to fill
+                tempBuffer = bufferAllocator.allocate(1);
+                bufferAllocator.construct(tempBuffer);
+                tmpBufPos = 0;
+            }
+        }
+    }
+    // TODO: Handle unfinished buffer
+    // Probably just delete it
+    bufferAllocator.deallocate(tempBuffer, 1);
 
     return true;
 }
@@ -120,38 +149,18 @@ void testTriggerThroughput()
 
 void test1()
 {
-    uint32_t testSize = 1000;
 
     // Create dummy queue
     boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> newDataQueue{1000};
     boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> triggeredQueue{1000};
 
-    char filename[] = "dump.csv";
+    char filename[] = "test1.csv";
 
     loadFromFile(filename, &newDataQueue);
 
-    // Create dummy buffer and fill it
-    buffer* tempBuffer;
-    std::srand(std::time(0));
-    for (uint32_t i = 0; i < testSize; i++) {
-        // initialize buffer
-        tempBuffer = bufferAllocator.allocate(1);
-        bufferAllocator.construct(tempBuffer);
-
-        // fill buffer with random data
-        for (uint32_t j = 0; j < BUFFER_SIZE; j++) {
-//            tempBuffer->data[j] = (j + 65)% 256;
-            tempBuffer->data[j] = (j) % 256;
-//            tempBuffer->data[j] = std::rand();
-        }
-
-        // Push onto queue
-        newDataQueue.push(tempBuffer);
-    }
-
     // Create trigger method
-    Trigger trigger(&newDataQueue, &triggeredQueue, 66);
-//    Trigger trigger(&newDataQueue, &triggeredQueue, 127);
+    int8_t triggerLevel = 10;
+    Trigger trigger(&newDataQueue, &triggeredQueue, triggerLevel);
     trigger.createThread();
 
     // Create processor method
