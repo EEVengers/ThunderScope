@@ -100,10 +100,25 @@ void Processor::coreLoop()
                     std::cout << "copyCount: " << copyCount << std::endl;
 
                     if (windowRow < persistanceSize) {
+                        // print Data to copy
+                        std::cout << "Values to copy: ";
+                        for (uint32_t i = 0; i < copyCount; i++) {
+                            std::cout << (int)*(currentBuffer->data + bufferCol + i) << ", ";
+                        }
+                        std::cout << std::endl;
+
                         // Copy samples into the window
                         std::memcpy(windowProcessed + (windowCol + windowRow * windowSize),
-                                    currentBuffer->data + bufferCol,
+                                    (currentBuffer->data + bufferCol),
                                     copyCount);
+
+                        // print Data coppied
+                        std::cout << "Values Coppied: ";
+                        for (uint32_t i = 0; i < copyCount; i++) {
+                            std::cout << (int)*(windowProcessed +
+                                                (windowCol + windowRow * windowSize) + i) << ", ";
+                        }
+                        std::cout << std::endl;
 
                         bufferCol += copyCount;
                         windowCol += copyCount;
@@ -129,12 +144,14 @@ void Processor::coreLoop()
                         std::cout << "Dumping to csv" << std::endl;
 
                         writeToCsv(filename,
-                                   (char*)windowProcessed,
+                                   windowProcessed,
                                    persistanceSize,
                                    windowSize);
 
                         windowStored.store(true);
                     }
+
+                    std::cout << std::endl;
                 }
 
                 bufferAllocator.deallocate(currentBuffer, 1);

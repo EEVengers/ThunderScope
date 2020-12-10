@@ -15,17 +15,20 @@ boost::pool_allocator<int8_t,
 uint32_t windowSize = DEFAULT_WINDOW;
 uint32_t persistanceSize = 4;
 
-uint32_t writeToCsv (char* filename, char* data, uint32_t row, uint32_t col)
+uint32_t writeToCsv (char* filename, int8_t* data, uint32_t row, uint32_t col)
 {
     std::ofstream file;
     file.open(filename);
+
     uint32_t j = 0;
 
+    // Row
     for (uint32_t i = 0; i < row; i++ ) {
+        // Column
         for (j = 0; j < col - 1; j++ ) {
-            file << (int)data[j] << ",";
+            file << (int)*(data + (j + i * windowSize)) << ",";
         }
-        file << (int)data[j];
+        file << (int)(*data + (j + i * windowSize));
         file << std::endl;
     }
 
