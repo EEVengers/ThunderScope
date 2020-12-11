@@ -147,14 +147,12 @@ void testTriggerThroughput()
 }
 
 
-void test1()
+void test1(char * filename)
 {
 
     // Create dummy queue
     boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> newDataQueue{1000};
     boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> triggeredQueue{1000};
-
-    char filename[] = "test1.csv";
 
     loadFromFile(filename, &newDataQueue);
 
