@@ -27,10 +27,15 @@ Processor::Processor(boost::lockfree::queue<buffer*, boost::lockfree::fixed_size
 // Returns the offset of the next trigger in the current buffer
 bool Processor::findNextTrigger(buffer *currentBuffer, uint32_t* p_bufCol)
 {
+    std::cout << "p_bufCol: " << *p_bufCol << std::endl;
     uint32_t t_offset = 0;
 
     // Find which 64 block the buffer is in
-    uint32_t t_64offset = (*p_bufCol % 64);
+    uint32_t t_64offset = (*p_bufCol / 64);
+    std::cout << "p_bufCol: " << *p_bufCol;
+    std::cout << " t_offset: " << t_offset;
+    std::cout << " t_64offset: " << t_64offset;
+    std::cout << std::endl;
 
     if (windowCol != 0) {
         // Partialy filled window
@@ -45,6 +50,10 @@ bool Processor::findNextTrigger(buffer *currentBuffer, uint32_t* p_bufCol)
         if (currentBuffer->trigger[t_64offset] > 0) {
             // Found a trigger, find exact position
             t_offset = log2(currentBuffer->trigger[t_64offset]);
+            std::cout << "found Trigger in 64: " << t_64offset;
+            std::cout << " with val: " << currentBuffer->trigger[t_64offset];
+            std::cout << " t_offset: " << t_offset;
+            std::cout << std::endl;
             break;
         }
     }
@@ -77,89 +86,98 @@ void Processor::coreLoop()
     while (stopTransfer.load() == false) {
 
         // Inner loop
-        while (pauseTransfer.load() == false && windowStored.load() == false) {
-            if (inputQueue->pop(currentBuffer)) {
-                std::cout << "New Buffer" << std::endl;
-                // New buffer, reset variables
-                count++;
-                bufferCol = 0;
+        while (pauseTransfer.load() == false &&
+               windowStored.load() == false &&
+               inputQueue->pop(currentBuffer)) {
+
+            std::cout << std::endl << "*** New Buffer ***" <<std::endl << std::endl;
+            // New buffer, reset variables
+            count++;
+            bufferCol = 0;
 
 //                findNextTrigger( currentBuffer, &bufferCol);
-                // TODO: Reorganize the findowStored condition
-                //       It currently needs to find a trigger after the last trigger
-                //       needed (persistance full). Should detect this before hand
-                while (findNextTrigger( currentBuffer, &bufferCol) && !windowStored.load())
-                    {
+            // TODO: Reorganize the findowStored condition
+            //       It currently needs to find a trigger after the last trigger
+            //       needed (persistance full). Should detect this before hand
+            while (findNextTrigger( currentBuffer, &bufferCol) && !windowStored.load())
+                {
 
-                    // Determin how much to copy. Min of:
-                    // - remaining space in the window
-                    // - remaining space in a buffer
-                    copyCount = std::min(windowSize - windowCol, BUFFER_SIZE - bufferCol);
+                // Determin how much to copy. Min of:
+                // - remaining space in the window
+                // - remaining space in a buffer
+                copyCount = std::min(windowSize - windowCol, BUFFER_SIZE - bufferCol);
 
-                    std::cout << "bufferCol: " << bufferCol << std::endl;
-                    std::cout << "copyCount: " << copyCount << std::endl;
+                std::cout << "bufferCol: " << bufferCol << std::endl;
+                std::cout << "copyCount: " << copyCount << std::endl;
 
-                    if (windowRow < persistanceSize) {
-                        // print Data to copy
-                        std::cout << "Values to copy: ";
-                        for (uint32_t i = 0; i < copyCount; i++) {
-                            std::cout << (int)*(currentBuffer->data + bufferCol + i) << ", ";
-                        }
-                        std::cout << std::endl;
+                if (windowRow < persistanceSize) {
+                    // print Data to copy
+                    std::cout << "Values to copy: ";
+                    for (uint32_t i = 0; i < copyCount; i++) {
+                        std::cout << (int)*(currentBuffer->data + bufferCol + i) << ", ";
+                    }
+                    std::cout << std::endl;
 
-                        // Copy samples into the window
-                        std::memcpy(windowProcessed + (windowCol + windowRow * windowSize),
-                                    (currentBuffer->data + bufferCol),
-                                    copyCount);
+                    // Copy samples into the window
+                    std::memcpy(windowProcessed + (windowCol + windowRow * windowSize),
+                                (currentBuffer->data + bufferCol),
+                                copyCount);
 
-                        // print Data coppied
-                        std::cout << "Values Coppied: ";
-                        for (uint32_t i = 0; i < copyCount; i++) {
-                            std::cout << (int)*(windowProcessed +
-                                                (windowCol + windowRow * windowSize) + i) << ", ";
-                        }
-                        std::cout << std::endl;
+                    // print Data coppied
+                    std::cout << "Values Coppied: ";
+                    for (uint32_t i = 0; i < copyCount; i++) {
+                        std::cout << (int)*(windowProcessed +
+                                            (windowCol +
+                                             windowRow *
+                                             windowSize) + i);
+                        std::cout << ", ";
+                    }
+                    std::cout << std::endl;
 
-                        bufferCol += copyCount;
-                        windowCol += copyCount;
+                    bufferCol += copyCount;
+                    windowCol += copyCount;
 
-                        std::cout << "bufferCol: " << bufferCol << " windowCol: " << windowCol;
-                        std::cout << " windowSize: " << windowSize << std::endl;
+                    std::cout << "bufferCol: " << bufferCol; 
+                    std::cout << " windowCol: " << windowCol;
+                    std::cout << " windowSize: " << windowSize;
+                    std::cout << std::endl;
 
-                        // Reset the window column if its past the end (when finished a window)
-                        if (windowCol == windowSize) {
-                            windowCol = 0;
-                            windowRow++;
+                    // Reset the window column if its past the end
+                    // (when finished a window)
+                    if (windowCol == windowSize) {
+                        windowCol = 0;
+                        windowRow++;
 
-                            // Push it into the next 64 space so we don't trigger on the same twice
-                            bufferCol += 64;
-                            std::cout << "full window. windowCol: " << windowCol << std::endl;
-                        } else {
-                            // Partial window coppied
-                            std::cout << "partial window. windowCol: " << windowCol << std::endl;
-                        }
-
+                        // Push it into the next 64 space so we don't
+                        // trigger on the same twice
+                        bufferCol += 64;
+                        std::cout << "full window. windowCol: ";
+                        std::cout << windowCol << std::endl;
                     } else {
-                        // Window persistance buffer filled
-                        std::cout << "Dumping to csv" << std::endl;
-
-                        writeToCsv(filename,
-                                   windowProcessed,
-                                   persistanceSize,
-                                   windowSize);
-
-                        windowStored.store(true);
+                        // Partial window coppied
+                        std::cout << "partial window. windowCol: ";
+                        std::cout << windowCol << std::endl;
                     }
 
-                    std::cout << std::endl;
+                } else {
+                    // Window persistance buffer filled
+                    std::cout << "Dumping to csv" << std::endl;
+
+                    writeToCsv(filename,
+                               windowProcessed,
+                               persistanceSize,
+                               windowSize);
+
+                    windowStored.store(true);
                 }
 
-                bufferAllocator.deallocate(currentBuffer, 1);
-            } else {
-                // Queue empty, Sleep for a bit
-                std::this_thread::sleep_for(std::chrono::microseconds(100));
+                std::cout << std::endl;
             }
+
+            bufferAllocator.deallocate(currentBuffer, 1);
         }
+        // Queue empty, Sleep for a bit
+        std::this_thread::sleep_for(std::chrono::microseconds(100));
     }
 }
 
