@@ -26,22 +26,25 @@ int parseCommandLineArgs(int argc, char** args) {
     int flags = 0;
 
     if(argc > 1) {
-        for(int i = 1; i < argc; i++) {
-            if(std::string(args[i]) == "--TestSinc" || std::string(args[i]) == "-s") {
-                logger.Debug("Main:parseCommandLineArgs() - Testing Sinc Interpolation");
-                TestSincInterpolation();
+        if(std::string(args[1]) == "--TestSinc" || std::string(args[1]) == "-s") {
+            logger.Debug("Main:parseCommandLineArgs() - Testing Sinc Interpolation");
+            TestSincInterpolation();
 //            } else if(std::string(args[i]) == "--TestDataThroughput" || std::string(args[i]) == "-p") {
 //                logger.Debug("Main:parseCommandLineArgs() - Testing Data Throughput");
 //                TestDataThroughPut();
-            } else if(std::string(args[i]) == "--testTrigger" || std::string(args[i]) == "-t") {
-                logger.Debug("Main:parseCommandLineArgs() - Testing Trigger Throughput");
-                testTriggerThroughput();
-            } else if(std::string(args[i]) == "--t1") {
-                logger.Debug("Running Test 1");
-                test1();
+        } else if(std::string(args[1]) == "--testTrigger" || std::string(args[1]) == "-t") {
+            logger.Debug("Main:parseCommandLineArgs() - Testing Trigger Throughput");
+            testTriggerThroughput();
+        } else if(std::string(args[1]) == "--t1") {
+            logger.Debug("Running Test 1");
+            if (argc > 2) {
+                test1(args[2]);
             } else {
-                logger.Debug("Main:parseCommandLineArgs() - Invalid arguments. Use --TestSinc or --TestDataThroughPut");
+                char filename[] = "test1.csv";
+                test1(filename);
             }
+        } else {
+            logger.Debug("Main:parseCommandLineArgs() - Invalid arguments. Use --TestSinc or --TestDataThroughPut");
         }
     } else {
         logger.Debug("Main:parseCommandLineArgs() - no arguments provided. Use --TestSinc or --TestDataThroughPut");

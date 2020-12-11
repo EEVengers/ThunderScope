@@ -49,10 +49,12 @@ bool Processor::findNextTrigger(buffer *currentBuffer, uint32_t* p_bufCol)
          t_64offset++) {
         if (currentBuffer->trigger[t_64offset] > 0) {
             // Found a trigger, find exact position
-            t_offset = log2(currentBuffer->trigger[t_64offset]);
+            t_offset = (int)(log2(currentBuffer->trigger[t_64offset]));
             std::cout << "found Trigger in 64: " << t_64offset;
             std::cout << " with val: " << currentBuffer->trigger[t_64offset];
             std::cout << " t_offset: " << t_offset;
+            t_offset = (64 - 1) - t_offset;
+            std::cout << " t_64offset corrected: " << t_64offset;
             std::cout << std::endl;
             break;
         }

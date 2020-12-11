@@ -29,6 +29,22 @@ Not quite sure what this does yet either
 ./scope --TestDataThrougput
 ```
 
+## test1
+Takes a csv input (or defaults to test1.csv) and runs it through the pipeline.
+It will treat the csv as a continuous stream of samples and generate triggers,
+outputing a dump.csv file containing the triggered data.
+
+### test1.csv
+Tests that triggers can be found in multiple buffers. Does this by having a
+count from 0 to 255, then 31 * 256 0s in a row to push the next 0 - 255 count
+into the next buffer.
+
+### test2.csv
+Tests that the correct positing within a 64 bit space is computed. Does this by
+having 2 triggers right next to eachother.
+
+Pass condition is if the first one is captured, but the second is ignored.
+
 ## Triggering and Post Processing plan
 The pipeline through the C++ side of things is broken up into several stages.
 These stages are:
