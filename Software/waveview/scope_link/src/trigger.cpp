@@ -15,7 +15,9 @@ Trigger::Trigger(boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<fa
     triggerMet.store(false);
 }
 
+#ifdef DBG
 uint32_t temp = 0;
+#endif
 
 void Trigger::checkTrigger(buffer* currentBuffer)
 {
@@ -155,10 +157,12 @@ void Trigger::checkTrigger(buffer* currentBuffer)
                      ((uint64_t)((currentBuffer->data[i * 64 + 63] < triggerLevel) &&
                        (currentBuffer->data[i * 64 + 63 + 1] >= triggerLevel)) << 0);
 
+#ifdef DBG
         if (temp < 5) {
             std::cout << "Trigger index: " << i << " value: " << currentBuffer->trigger[i] << std::endl;
             temp++;
         }
+#endif
     }
 }
 
@@ -178,8 +182,6 @@ void Trigger::coreLoop()
 
             if(inputQueue->pop(currentBuffer)) {
                 count++;
-
-                // Was able to pop from the queue
 
                 // generate triggers on new data
                 checkTrigger(currentBuffer);
