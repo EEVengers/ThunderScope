@@ -56,14 +56,15 @@ bool loadFromFile ( char* filename, boost::lockfree::queue<buffer*, boost::lockf
     uint32_t tmpBufPos = 0;
 
     while (std::getline(stream, tmp, delim)) {
-//        std::cout << tmp << std::endl;
-
         // Parse the line into a buffer
         typedef boost::tokenizer<boost::char_separator<char>> tokenizer;
         boost::char_separator<char> sep{","};
         tokenizer tok{tmp, sep};
         for (const auto &t : tok) {
-//            std::cout << t << '\n';
+
+            if (std::stoi(t) > 127) {
+                std::cout << "Warning: Number greater than 127 is converted to negative" << std::endl;
+            }
 
             tempBuffer->data[tmpBufPos] = (int8_t)std::stoi(t);
 
@@ -79,8 +80,7 @@ bool loadFromFile ( char* filename, boost::lockfree::queue<buffer*, boost::lockf
             }
         }
     }
-    // TODO: Handle unfinished buffer
-    // Probably just delete it
+    // Deleted any partially filled buffer
     bufferAllocator.deallocate(tempBuffer, 1);
 
     return true;
@@ -166,14 +166,15 @@ void test1(char * filename)
     processor.createThread();
 
     // Start all methods
-    trigger.triggerUnpause();
     processor.processorUnpause();
+    trigger.triggerUnpause();
 
     // Wait until window if full
     while (processor.getWindowStatus() == false) {
         std::this_thread::sleep_for(std::chrono::microseconds(100));
     }
-    std::cout << "Test is done" << std::endl;
+
+    std::cout << std::endl << "Test is done. Performing Cleanup" << std::endl;
     trigger.destroyThread();
     processor.destroyThread();
 }
@@ -188,7 +189,7 @@ void TestDataThroughPut()
     boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> triggeredQueue{1000};
 
     // ****************** Transfering **********************
-    std::cout << std::endl << "Beggining Transfer Test" << std::endl;
+    std::cout << std::endl << "Beining Transfer Test" << std::endl;
 
     // create transfer thread
     DataTransferHandler dataExchanger(&newDataQueue);
