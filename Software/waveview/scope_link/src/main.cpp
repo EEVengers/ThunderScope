@@ -44,10 +44,10 @@ int parseCommandLineArgs(int argc, char** args) {
                 test1(filename);
             }
         } else {
-            logger.Debug("Main:parseCommandLineArgs() - Invalid arguments. Use --TestSinc or --TestDataThroughPut");
+            logger.Debug("Main:parseCommandLineArgs() - Invalid arguments. Use --t1 <filename.csv> or --TestSinc or --TestDataThroughPut");
         }
     } else {
-        logger.Debug("Main:parseCommandLineArgs() - no arguments provided. Use --TestSinc or --TestDataThroughPut");
+        logger.Debug("Main:parseCommandLineArgs() - Invalid arguments. Use --t1 <filename.csv> or --TestSinc or --TestDataThroughPut");
     }
 
     return flags;
