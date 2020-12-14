@@ -62,9 +62,15 @@ bool loadFromFile ( char* filename, boost::lockfree::queue<buffer*, boost::lockf
         tokenizer tok{tmp, sep};
         for (const auto &t : tok) {
 
-            if (std::stoi(t) > 127) {
-                std::cout << "Warning: Number greater than 127 is converted to negative" << std::endl;
+#ifdef DBG
+            if (std::stoi(t) > 255) {
+                std::cout << "Error: Number greater than 255" << std::endl;
+            } else if (std::stoi(t) > INT8_MAX) {
+                std::cout << "Error: Number greater than 127 is converted to negative" << std::endl;
+            } else if ((int8_t)std::stoi(t) < -128) {
+                std::cout << "Error: Number less than -128" << std::endl;
             }
+#endif
 
             tempBuffer->data[tmpBufPos] = (int8_t)std::stoi(t);
 

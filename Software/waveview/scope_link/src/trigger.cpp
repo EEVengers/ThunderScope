@@ -177,7 +177,7 @@ void Trigger::coreLoop()
         while (pauseTrigger.load() == false) {
             // Attempt to pop from the pueue
 #ifdef DBG
-            std::cout << "Trigger doing something" << std::endl;
+            std::cout << "Trigger loop running" << std::endl;
 #endif
 
             if(inputQueue->pop(currentBuffer)) {
