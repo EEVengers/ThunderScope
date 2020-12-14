@@ -15,7 +15,7 @@ class scope_control
     const unsigned char dac_init [4][4] = {{0xFF,0x18,0x07,0x00},
                                            {0xFF,0x18,0x07,0x00},
                                            {0xFF,0x18,0x07,0x00},
-                                           {0xFF,0x18,0x07,0x00}};            
+                                           {0xFF,0x18,0x07,0x00}};
     unsigned char dac [4][4];
 
     const unsigned char pga_init [4][4] = {{0xFB,0x00,0x04,0x0A},
@@ -29,7 +29,7 @@ class scope_control
     const unsigned char adc_active [4] = {0xFD,0x0F,0x00,0x00};
     const unsigned char adc_cgain_cfg [4] = {0xFD,0x33,0x00,0x00}; //db mode, fine gain off
     const unsigned char adc_cgain4 [4] = {0xFD,0x2A,0x55,0x55}; //9db gain in 4ch mode
-    const unsigned char adc_cgain12 [4] = {0xFD,0x2B,0x05,0x55}; //9db gain in 1&2ch mode 
+    const unsigned char adc_cgain12 [4] = {0xFD,0x2B,0x05,0x55}; //9db gain in 1&2ch mode
     //5db gain due to ADC HiZ input (not 100ohm diff)
 
     const unsigned char adc_chnum_clkdiv_init [4] = {0xFD,0x31,0x00,0x01};
@@ -40,11 +40,16 @@ class scope_control
     unsigned char adc_in_sel_12 [4];
     unsigned char adc_in_sel_34 [4];
 
+    const unsigned char pll_r_counter[4] = {0xFC,0x34,0x00,0x09};
+    const unsigned char pll_control[4] = {0xFC,0x0F,0xF9,0xA0};
+    const unsigned char pll_n_counter[4] = {0xFC,0x00,0x0F,0x16};
+
     int num_ch_on;
     bool ch_is_on [4];
 
     int adc_ch_cfg();
-    
+    void sleep_ms(int milliseconds);
+
   public:
     scope_control();
     ~scope_control();

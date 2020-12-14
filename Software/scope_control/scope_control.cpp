@@ -3,6 +3,14 @@
 #include <algorithm>
 #include <math.h>
 
+#ifdef WIN32
+#include <windows.h>
+#elif _POSIX_C_SOURCE >= 199309L
+#include <time.h>   // for nanosleep
+#else
+#include <unistd.h> // for usleep
+#endif
+
 scope_control::scope_control(){
   ser = new scope_serial;
 }
@@ -19,7 +27,7 @@ int scope_control::configure_serial(char* path){
 int scope_control::boot(){
 
   unsigned char io_dir [6];
-  unsigned char adc_temp [4];
+  unsigned char cmd_temp [4];
 
   std::copy(io_dir_init,io_dir_init+sizeof(io_dir_init),io_dir);
   std::copy(io_out_init,io_out_init+sizeof(io_out_init),io_out);
@@ -31,24 +39,36 @@ int scope_control::boot(){
   std::copy(&dac_init[0][0],&dac_init[0][0]+16,&dac[0][0]);
 
   //Reset ADC
-  std::copy(adc_reset,adc_reset+sizeof(adc_reset),adc_temp);
-  ser->send_command(adc_temp,sizeof(adc_temp));
+  std::copy(adc_reset,adc_reset+sizeof(adc_reset),cmd_temp);
+  ser->send_command(cmd_temp,sizeof(cmd_temp));
   //Power Down ADC
-  std::copy(adc_power_down,adc_power_down+sizeof(adc_power_down),adc_temp);
-  ser->send_command(adc_temp,sizeof(adc_temp));
+  std::copy(adc_power_down,adc_power_down+sizeof(adc_power_down),cmd_temp);
+  ser->send_command(cmd_temp,sizeof(cmd_temp));
   //Course Gain On
-  std::copy(adc_cgain_cfg,adc_cgain_cfg+sizeof(adc_cgain_cfg),adc_temp);
-  ser->send_command(adc_temp,sizeof(adc_temp));
+  std::copy(adc_cgain_cfg,adc_cgain_cfg+sizeof(adc_cgain_cfg),cmd_temp);
+  ser->send_command(cmd_temp,sizeof(cmd_temp));
   //Course Gain 4-CH set
-  std::copy(adc_cgain4,adc_cgain4+sizeof(adc_cgain4),adc_temp);
-  ser->send_command(adc_temp,sizeof(adc_temp));
+  std::copy(adc_cgain4,adc_cgain4+sizeof(adc_cgain4),cmd_temp);
+  ser->send_command(cmd_temp,sizeof(cmd_temp));
   //Course Gain 1-CH & 2-CH set
-  std::copy(adc_cgain12,adc_cgain12+sizeof(adc_cgain12),adc_temp);
-  ser->send_command(adc_temp,sizeof(adc_temp));
+  std::copy(adc_cgain12,adc_cgain12+sizeof(adc_cgain12),cmd_temp);
+  ser->send_command(cmd_temp,sizeof(cmd_temp));
 
   std::copy(adc_chnum_clkdiv_init,adc_chnum_clkdiv_init+sizeof(adc_chnum_clkdiv_init),adc_chnum_clkdiv);
   std::copy(adc_in_sel_12_init,adc_in_sel_12_init+sizeof(adc_in_sel_12_init),adc_in_sel_12);
   std::copy(adc_in_sel_34_init,adc_in_sel_34_init+sizeof(adc_in_sel_34_init),adc_in_sel_34);
+
+  //Program PLL R Counter
+  std::copy(pll_r_counter,pll_r_counter+sizeof(pll_r_counter),cmd_temp);
+  ser->send_command(cmd_temp,sizeof(cmd_temp));
+  //Program PLL Control Latch
+  std::copy(pll_control,pll_control+sizeof(pll_control),cmd_temp);
+  ser->send_command(cmd_temp,sizeof(cmd_temp));
+  //Wait 10 ms
+  sleep_ms(10);
+  //Program PLL N Counter
+  std::copy(pll_n_counter,pll_n_counter+sizeof(pll_n_counter),cmd_temp);
+  ser->send_command(cmd_temp,sizeof(cmd_temp));
 
   num_ch_on = 0;
   ch_is_on[0] = false;
@@ -64,10 +84,10 @@ int scope_control::load_default(){
 }
 
 int scope_control::ch_on(int ch_num){
-  
+
   if (ch_is_on[ch_num-1])
     return 0;             //Channel already on
-  
+
   num_ch_on++;
   ch_is_on[ch_num-1] = true;
 
@@ -76,7 +96,7 @@ int scope_control::ch_on(int ch_num){
   if (ch_num == 1)
     io_out[4] |= (1 << 7);
   else if (ch_num == 2)
-    io_out[4] |= (1 << 2);  
+    io_out[4] |= (1 << 2);
   else if (ch_num == 3)
     io_out[3] |= (1 << 5);
   else if (ch_num == 4)
@@ -92,10 +112,10 @@ int scope_control::ch_on(int ch_num){
 }
 
 int scope_control::ch_off(int ch_num){
- 
+
   if (!ch_is_on[ch_num-1])
     return 0;             //Channel already off
-  
+
   num_ch_on--;
   ch_is_on[ch_num-1] = false;
 
@@ -104,12 +124,12 @@ int scope_control::ch_off(int ch_num){
   if (ch_num == 1)
     io_out[4] &= ~(1 << 7);
   else if (ch_num == 2)
-    io_out[4] &= ~(1 << 2);  
+    io_out[4] &= ~(1 << 2);
   else if (ch_num == 3)
     io_out[3] &= ~(1 << 5);
   else if (ch_num == 4)
     io_out[3] &= ~(1 << 0);
-    
+
   ser->send_command(io_out,sizeof(io_out));
 
   return 1;
@@ -119,12 +139,12 @@ int scope_control::dc_cpl(int ch_num){
   if (ch_num == 1)
     io_out[5] |= (1 << 3);
   else if (ch_num == 2)
-    io_out[4] |= (1 << 6);  
+    io_out[4] |= (1 << 6);
   else if (ch_num == 3)
     io_out[4] |= (1 << 1);
   else if (ch_num == 4)
     io_out[3] |= (1 << 4);
-    
+
   ser->send_command(io_out,sizeof(io_out));
 
   return 1;
@@ -134,12 +154,12 @@ int scope_control::ac_cpl(int ch_num){
   if (ch_num == 1)
     io_out[5] &= ~(1 << 3);
   else if (ch_num == 2)
-    io_out[4] &= ~(1 << 6);  
+    io_out[4] &= ~(1 << 6);
   else if (ch_num == 3)
     io_out[4] &= ~(1 << 1);
   else if (ch_num == 4)
     io_out[3] &= ~(1 << 4);
-    
+
   ser->send_command(io_out,sizeof(io_out));
 
   return 1;
@@ -151,17 +171,17 @@ int scope_control::vdiv_set(int ch_num, int vdiv){
     if (ch_num == 1)
       io_out[5] |= (1 << 1);
     else if (ch_num == 2)
-      io_out[4] |= (1 << 4);  
+      io_out[4] |= (1 << 4);
     else if (ch_num == 3)
       io_out[3] |= (1 << 7);
     else if (ch_num == 4)
-      io_out[3] |= (1 << 2); 
+      io_out[3] |= (1 << 2);
   }
   else{                         //Attenuator relay off for lower v/divs
     if (ch_num == 1)
       io_out[5] &= ~(1 << 1);
     else if (ch_num == 2)
-      io_out[4] &= ~(1 << 4);  
+      io_out[4] &= ~(1 << 4);
     else if (ch_num == 3)
       io_out[3] &= ~(1 << 7);
     else if (ch_num == 4)
@@ -239,12 +259,12 @@ int scope_control::bw_set(int ch_num, int bw){
 }
 
 int scope_control::adc_ch_cfg(){
-  unsigned char adc_temp [4];
+  unsigned char cmd_temp [4];
   int i;
 
   if (num_ch_on == 0){
-    std::copy(adc_power_down,adc_power_down+sizeof(adc_power_down),adc_temp);
-    ser->send_command(adc_temp,sizeof(adc_temp));
+    std::copy(adc_power_down,adc_power_down+sizeof(adc_power_down),cmd_temp);
+    ser->send_command(cmd_temp,sizeof(cmd_temp));
 
     return 1;
   }
@@ -253,8 +273,8 @@ int scope_control::adc_ch_cfg(){
     adc_chnum_clkdiv[2] = 0x00;
 
     for (i=0; !ch_is_on[i]; i++);   //Find channel that is on
-    
-    adc_in_sel_12[3] = (2 << i);    //Set all 4 ADCs to sample that channel    
+
+    adc_in_sel_12[3] = (2 << i);    //Set all 4 ADCs to sample that channel
     adc_in_sel_12[2] = (2 << i);
     adc_in_sel_34[3] = (2 << i);
     adc_in_sel_34[2] = (2 << i);
@@ -283,16 +303,31 @@ int scope_control::adc_ch_cfg(){
     adc_in_sel_34[2] = (2 << 3);
   }
 
-  std::copy(adc_power_down,adc_power_down+sizeof(adc_power_down),adc_temp);
-  ser->send_command(adc_temp,sizeof(adc_temp));
+  std::copy(adc_power_down,adc_power_down+sizeof(adc_power_down),cmd_temp);
+  ser->send_command(cmd_temp,sizeof(cmd_temp));
 
   ser->send_command(adc_chnum_clkdiv,sizeof(adc_chnum_clkdiv));
 
-  std::copy(adc_active,adc_active+sizeof(adc_active),adc_temp);
-  ser->send_command(adc_temp,sizeof(adc_temp));
+  std::copy(adc_active,adc_active+sizeof(adc_active),cmd_temp);
+  ser->send_command(cmd_temp,sizeof(cmd_temp));
 
   ser->send_command(adc_in_sel_12,sizeof(adc_in_sel_12));
   ser->send_command(adc_in_sel_34,sizeof(adc_in_sel_34));
 
   return 1;
+}
+
+void scope_control::sleep_ms(int milliseconds){ // cross-platform sleep function
+#ifdef WIN32
+    Sleep(milliseconds);
+#elif _POSIX_C_SOURCE >= 199309L
+    struct timespec ts;
+    ts.tv_sec = milliseconds / 1000;
+    ts.tv_nsec = (milliseconds % 1000) * 1000000;
+    nanosleep(&ts, NULL);
+#else
+    if (milliseconds >= 1000)
+      sleep(milliseconds / 1000);
+    usleep((milliseconds % 1000) * 1000);
+#endif
 }
