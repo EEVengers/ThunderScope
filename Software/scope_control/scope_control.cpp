@@ -53,6 +53,9 @@ int scope_control::boot(){
   //Course Gain 1-CH & 2-CH set
   std::copy(adc_cgain12,adc_cgain12+sizeof(adc_cgain12),cmd_temp);
   ser->send_command(cmd_temp,sizeof(cmd_temp));
+  //Enables twos complement mode
+  std::copy(adc_btc_mode,adc_btc_mode+sizeof(adc_btc_mode),cmd_temp);
+  ser->send_command(cmd_temp,sizeof(cmd_temp));
 
   std::copy(adc_chnum_clkdiv_init,adc_chnum_clkdiv_init+sizeof(adc_chnum_clkdiv_init),adc_chnum_clkdiv);
   std::copy(adc_in_sel_12_init,adc_in_sel_12_init+sizeof(adc_in_sel_12_init),adc_in_sel_12);
