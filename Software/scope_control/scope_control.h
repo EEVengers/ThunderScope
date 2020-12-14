@@ -31,6 +31,7 @@ class scope_control
     const unsigned char adc_cgain4 [4] = {0xFD,0x2A,0x55,0x55}; //9db gain in 4ch mode
     const unsigned char adc_cgain12 [4] = {0xFD,0x2B,0x05,0x55}; //9db gain in 1&2ch mode
     //5db gain due to ADC HiZ input (not 100ohm diff)
+    const unsigned char adc_btc_mode [4] = {0xFD,0x46,0x00,0x04}; // enables twos complement mode
 
     const unsigned char adc_chnum_clkdiv_init [4] = {0xFD,0x31,0x00,0x01};
     const unsigned char adc_in_sel_12_init [4] = {0xFD,0x3A,0x10,0x10};
