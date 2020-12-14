@@ -45,6 +45,24 @@ having 2 triggers right next to eachother.
 
 Pass condition is if the first one is captured, but the second is ignored.
 
+### test3.csv
+Tests a window can be filled if parts of it are in different buffers.
+
+This is done by putting a trigger within window size of the the end of a buffer.
+
+### test4.csv
+Shows what happens numbers outside of the bounds are passed into a buffer. This
+isn't a expected use case. The hardware should give proper numbers but spoofing
+values from a csv should be within expeced range of -128 to 127.
+
+### test5.csv
+Tests triggers on the boundry between buffers. The trigger should be caught by
+the first buffer and finish filling from the second.
+
+This is done by filling the first buffer with all 0's and the first sample from
+the second buffer with a value above the trigger level. This generate a rising
+edge trigger right on the buffer boundry.
+
 ## Triggering and Post Processing plan
 The pipeline through the C++ side of things is broken up into several stages.
 These stages are:
