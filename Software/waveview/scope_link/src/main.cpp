@@ -32,22 +32,22 @@ int parseCommandLineArgs(int argc, char** args) {
 //            } else if(std::string(args[i]) == "--TestDataThroughput" || std::string(args[i]) == "-p") {
 //                logger.Debug("Main:parseCommandLineArgs() - Testing Data Throughput");
 //                TestDataThroughPut();
-        } else if(std::string(args[1]) == "--testTrigger" || std::string(args[1]) == "-t") {
+        } else if(std::string(args[1]) == "--testTrigger") {
             logger.Debug("Main:parseCommandLineArgs() - Testing Trigger Throughput");
             testTriggerThroughput();
-        } else if(std::string(args[1]) == "--t1") {
+        } else if(std::string(args[1]) == "-t" || std::string(args[1]) == "--test") {
             logger.Debug("Running Test 1");
             if (argc > 2) {
-                test1(args[2]);
+                testCsv(args[2]);
             } else {
                 char filename[] = "test1.csv";
-                test1(filename);
+                testCsv(filename);
             }
         } else {
-            logger.Debug("Main:parseCommandLineArgs() - Invalid arguments. Use --t1 <filename.csv> or --TestSinc or --TestDataThroughPut");
+            logger.Debug("Main:parseCommandLineArgs() - Invalid arguments. Use -t <filename.csv> or --TestSinc or --TestDataThroughPut");
         }
     } else {
-        logger.Debug("Main:parseCommandLineArgs() - Invalid arguments. Use --t1 <filename.csv> or --TestSinc or --TestDataThroughPut");
+        logger.Debug("Main:parseCommandLineArgs() - Invalid arguments. Use -t <filename.csv> or --TestSinc or --TestDataThroughPut");
     }
 
     return flags;
