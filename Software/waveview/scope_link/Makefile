@@ -21,12 +21,17 @@ all: $(EXE)
 debug: CPPFLAGS += -g
 debug: $(EXE)
 
+opt: CPPFLAGS += $(CPPOPT)=$(LOG_DIR)/$(<F).opt
+opt: $(EXE)
+
+miss: CPPFLAGS +=  $(CPPMISS)=$(LOG_DIR)/$(<F).miss
+miss: $(EXE)
+
 $(EXE): $(OBJ) | $(BIN_DIR)
 	$(CC) $(LDFLAGS) $^ $(LDLIBS) -o $@
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp | $(LOG_DIR) $(OBJ_DIR)
-	$(CC) $(CPPFLAGS) $(CPPOPT)=$(LOG_DIR)/$(<F).opt $(CFLAGS) -c $< -o $@
-	$(CC) $(CPPFLAGS) $(CPPMISS)=$(LOG_DIR)/$(<F).miss $(CFLAGS) -c $< -o $@
+	$(CC) $(CPPFLAGS) $(CFLAGS) -c $< -o $@
 
 $(BIN_DIR) $(OBJ_DIR) $(LOG_DIR):
 	mkdir -p $@
