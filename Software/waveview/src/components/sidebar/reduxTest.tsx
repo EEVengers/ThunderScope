@@ -3,11 +3,11 @@ import { connect } from 'react-redux';
 
 class ReduxTest extends React.Component<any, any> {
   increment = () => {
-    this.props.dispatch({ type: 'INCREMENT' });
+    this.props.dispatch({ type: 'INCREMENT_COUNTER' });
   }
 
   decrement = () => {
-    this.props.dispatch({ type: 'DECREMENT' });
+    this.props.dispatch({ type: 'DECREMENT_COUNTER' });
   }
 
   render() {
