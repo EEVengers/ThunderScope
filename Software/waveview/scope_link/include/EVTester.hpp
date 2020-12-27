@@ -12,6 +12,8 @@ void TestDataThroughPut();
 
 void testTriggerThroughput();
 
+void testBenchmark();
+
 void testCsv(char * filename);
 
 #endif /* EVTester_hpp */

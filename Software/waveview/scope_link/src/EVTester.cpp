@@ -6,39 +6,8 @@
 #include "trigger.hpp"
 #include <boost/tokenizer.hpp>
 
-void TestSincInterpolation()
-{
-    int numInterpolatedPoints;
-    int numOriginalPoints = 300;
-    DataPoint* testPoints = (DataPoint*)malloc(numOriginalPoints * sizeof(DataPoint));
-    std::ofstream myFile;
 
-    for(int i = 0; i < numOriginalPoints; i++) {
-        testPoints[i].value = sin(double(10 * i) * 0.05) + (2 * sin(double(3 * i) * 0.05));
-        testPoints[i].time = double(10 * i) * 0.05;
-    }
-
-    DataPoint* points = SincInterpolate(testPoints, numOriginalPoints, &numInterpolatedPoints, 3, 20);
-
-    myFile.open("InterpolatedPoints.csv");
-    for(int i = 0; i < numInterpolatedPoints; i++) {
-        myFile << points[i].time;
-        myFile << ",";
-        myFile << points[i].value;
-        myFile << "\n";
-   }
-    myFile.close();
-
-    myFile.open("OriginalValues.csv");
-    for(int i = 0; i < numOriginalPoints; i++) {
-        myFile << testPoints[i].time;
-        myFile << ",";
-        myFile << testPoints[i].value;
-        myFile << "\n";
-    }
-
-    myFile.close();
-}
+uint32_t testSize = 1000;
 
 bool loadFromFile ( char* filename, boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> *outputQ)
 {
@@ -92,10 +61,63 @@ bool loadFromFile ( char* filename, boost::lockfree::queue<buffer*, boost::lockf
     return true;
 }
 
+void loadFromRand (boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> *outputQ)
+{
+    // Create dummy buffer
+    buffer* tempBuffer;
+    std::srand(std::time(0));
+    for (uint32_t i = 0; i < testSize; i++) {
+        // initialize buffer
+        tempBuffer = bufferAllocator.allocate(1);
+        bufferAllocator.construct(tempBuffer);
+
+        // fill buffer with random data
+        for (uint32_t j = 0; j < BUFFER_SIZE; j++) {
+            tempBuffer->data[j] = std::rand();
+        }
+
+        // Push onto queue
+        outputQ->push(tempBuffer);
+    }
+}
+
+void TestSincInterpolation()
+{
+    int numInterpolatedPoints;
+    int numOriginalPoints = 300;
+    DataPoint* testPoints = (DataPoint*)malloc(numOriginalPoints * sizeof(DataPoint));
+    std::ofstream myFile;
+
+    for(int i = 0; i < numOriginalPoints; i++) {
+        testPoints[i].value = sin(double(10 * i) * 0.05) + (2 * sin(double(3 * i) * 0.05));
+        testPoints[i].time = double(10 * i) * 0.05;
+    }
+
+    DataPoint* points = SincInterpolate(testPoints, numOriginalPoints, &numInterpolatedPoints, 3, 20);
+
+    myFile.open("InterpolatedPoints.csv");
+    for(int i = 0; i < numInterpolatedPoints; i++) {
+        myFile << points[i].time;
+        myFile << ",";
+        myFile << points[i].value;
+        myFile << "\n";
+   }
+    myFile.close();
+
+    myFile.open("OriginalValues.csv");
+    for(int i = 0; i < numOriginalPoints; i++) {
+        myFile << testPoints[i].time;
+        myFile << ",";
+        myFile << testPoints[i].value;
+        myFile << "\n";
+    }
+
+    myFile.close();
+}
+
 void testTriggerThroughput()
 {
     uint32_t testSize = 1000;
-    uint32_t count = 0;
 
     // Create dummy queue
     boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> newDataQueue{1000};
@@ -131,8 +153,6 @@ void testTriggerThroughput()
         trigger.checkTrigger(currentBuffer);
     }
 
-    count = trigger.countTriggered;
-
     // Take Timestamp
     auto end = std::chrono::high_resolution_clock::now();
 
@@ -145,18 +165,79 @@ void testTriggerThroughput()
                             / (timeElapsed.count()
                             * GIB_TO_GB));
 
-    std::cout << "Triggers found: " << count << std::endl;
     std::cout << "Time Elapsed Triggering: " << timeElapsed.count() << " ns" << std::endl;  
     std::cout << "Triggered B: " << bytesTriggered << " B" << std::endl;
     std::cout << "Triggered B/s: " << triggeredBps << std::endl;
     std::cout << "Triggered GiB/s: " << triggeredGBps << std::endl;
 }
 
+void testBenchmark()
+{
+    // Create queue
+    boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> newDataQueue{1000};
+    boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> triggeredQueue{1000};
+
+    loadFromRand(&newDataQueue);
+
+    // Create trigger method
+    int8_t triggerLevel = 10;
+    Trigger trigger(&newDataQueue, &triggeredQueue, triggerLevel);
+    trigger.createThread();
+
+    // Create processor method
+    Processor processor(&triggeredQueue);
+    processor.createThread();
+
+    // Measure triggering time
+    // collect timestamp
+    auto start = std::chrono::high_resolution_clock::now();
+
+    // Start trigger
+    trigger.triggerUnpause();
+
+    // wait for triggering to finish
+    while (trigger.getTriggerStatus() == false) {
+        std::this_thread::sleep_for(std::chrono::microseconds(100));
+    }
+
+    // collect timestamp
+    auto end = std::chrono::high_resolution_clock::now();
+    auto timeTrigger = end - start;
+
+    uint32_t bytesTriggered = testSize * BUFFER_SIZE;
+    double triggeredBps = ((double)bytesTriggered * S_TO_NS
+                            / timeTrigger.count());
+    double triggeredGBps = (((double)bytesTriggered * S_TO_NS)
+                            / (timeTrigger.count()
+                            * GIB_TO_GB));
+
+    std::cout << "Time Elapsed Triggering: " << timeTrigger.count() << " ns" << std::endl;  
+    std::cout << "Triggered B: " << bytesTriggered << " B" << std::endl;
+    std::cout << "Triggered B/s: " << triggeredBps << std::endl;
+    std::cout << "Triggered GiB/s: " << triggeredGBps << std::endl;
+    
+
+    // measure processor
+    // collect timestamp
+    // Start Processor
+    processor.processorUnpause();
+    // wait for processing to finish
+    // collect timestamp
+
+    // Wait until window if full
+    while (processor.getWindowStatus() == false) {
+        std::this_thread::sleep_for(std::chrono::microseconds(100));
+    }
+
+    std::cout << std::endl << "Test is done. Performing Cleanup" << std::endl;
+    trigger.destroyThread();
+    processor.destroyThread();
+}
 
 void testCsv(char * filename)
 {
 
-    // Create dummy queue
+    // Create queue
     boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> newDataQueue{1000};
     boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> triggeredQueue{1000};
 

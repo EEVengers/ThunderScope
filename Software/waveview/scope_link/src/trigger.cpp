@@ -193,11 +193,18 @@ void Trigger::coreLoop()
 #endif
 
             } else {
+
+                triggerMet.store(true);
                 // Queue empty, Sleep for a bit
                 std::this_thread::sleep_for(std::chrono::microseconds(100));
             }
         }
     }
+}
+
+bool Trigger::getTriggerStatus()
+{
+    return triggerMet.load();
 }
 
 void Trigger::createThread()

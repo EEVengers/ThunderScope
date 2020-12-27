@@ -32,6 +32,9 @@ int parseCommandLineArgs(int argc, char** args) {
 //            } else if(std::string(args[i]) == "--TestDataThroughput" || std::string(args[i]) == "-p") {
 //                logger.Debug("Main:parseCommandLineArgs() - Testing Data Throughput");
 //                TestDataThroughPut();
+        } else if(std::string(args[1]) == "--benchmark" || std::string(args[1]) == "-b") {
+            logger.Debug("Main:parseCommandLineArgs() - Testing Trigger Throughput");
+            testBenchmark();
         } else if(std::string(args[1]) == "--testTrigger") {
             logger.Debug("Main:parseCommandLineArgs() - Testing Trigger Throughput");
             testTriggerThroughput();
