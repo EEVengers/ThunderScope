@@ -33,8 +33,9 @@ public:
     void triggerPause();
     void triggerUnpause();
 
+    bool getTriggerStatus();
+
     /* variables */
-    uint32_t countTriggered;
 
 private:
     /* functions */
