@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-class ReduxTest extends React.Component<any, any> {
+class ReduxCounterTest extends React.Component<any, any> {
   increment = () => {
     this.props.dispatch({ type: 'INCREMENT_COUNTER' });
   }
@@ -16,7 +16,7 @@ class ReduxTest extends React.Component<any, any> {
       <h2>Counter</h2>
       <div>
         <button onClick={this.decrement}>-</button>
-        <span>{this.props.count}</span>
+        <span>{this.props.count.count.toString()}</span>
         <button onClick={this.increment}>+</button>
       </div>
     </div>
@@ -30,4 +30,4 @@ function mapStateToProps(state: { count: any; }) {
   };
 }
 
-export default connect(mapStateToProps)(ReduxTest);
+export default connect(mapStateToProps)(ReduxCounterTest);

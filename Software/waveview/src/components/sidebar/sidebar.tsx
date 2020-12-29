@@ -8,7 +8,8 @@ import HorizontalData from './widgets/config/HorizontalWidget';
 import VerticalData from './widgets/config/VerticalWidget';
 import MeasurementsData from './widgets/config/MeasurementsWidget';
 import {IWidget} from '../../interfaces/sidebar/widgets/sidebarInterfaces';
-import ReduxTest from './reduxTest';
+import ReduxCounterTest from './reduxCounterTest';
+import ReduxChannelTest from './reduxChannelTest';
 
 class SideBar extends React.Component {
   widgetList: IWidget[]
@@ -28,7 +29,8 @@ class SideBar extends React.Component {
         <Search />
         <StopButton />
         <SingleButton />
-        <ReduxTest />
+        <ReduxCounterTest />
+        <ReduxChannelTest />
         {
           this.widgetList.map((w) => {
             return (
