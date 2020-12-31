@@ -33,6 +33,9 @@ Not quite sure what this does yet either
 Takes a csv input (or defaults to test1.csv) and runs it through the pipeline.
 It will treat the csv as a continuous stream of samples and generate triggers,
 outputing a dump.csv file containing the triggered data.
+```
+./bin/scope -t test/test1.csv
+```
 
 ### test1.csv
 Tests that triggers can be found in multiple buffers. Does this by having a
@@ -219,4 +222,10 @@ points = pointsPerDiv * numDivisions
        = 500 * 10
        = 5000
 
+## Troubleshooting
+### Error while loading shared libraries, cannot open shared object file
+Boost libraries are not available to the linker. likely becaues they're in
+`/usr/local/lib` (which is where we want them). Follow the article
+[Error While Loading Shared Libraries, on The Lone Sysadmin](https://lonesysadmin.net/2013/02/22/error-while-loading-shared-libraries-cannot-open-shared-object-file/)
+for how to fix it. Jump to part 5 if you don't want the whole explanation.
 

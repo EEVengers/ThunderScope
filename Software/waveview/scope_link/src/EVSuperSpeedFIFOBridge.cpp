@@ -23,7 +23,7 @@ void InitFTDISuperSpeedChip(FT_HANDLE *deviceHandle) {
 
     //Get library version
     FT_GetLibraryVersion(&libraryVersion);
-    EVLogger::Debug( (std::string("Library Version is: ") + std::to_string(libraryVersion)).c_str() );
+    INFO << "Library Version is: " << libraryVersion;
 
     //check the driver for a super speed FIFO buffer, if it exists, open it and set its configuration.
     error = FT_CreateDeviceInfoList(&numDevices);
@@ -35,7 +35,7 @@ void InitFTDISuperSpeedChip(FT_HANDLE *deviceHandle) {
         error = EVErrorCodeInvalidValue;
         throw EVException(error,"EVSuperSpeedFIFOBRidge:InitFTDISuperSpeedChip. No devices found");
     } else {
-        EVLogger::Debug( (std::string("Devices found: ") + std::to_string(numDevices)).c_str() );
+        INFO << "Devices found: " << numDevices;
     }
 
     FT_DEVICE_LIST_INFO_NODE deviceInfoList[numDevices];
@@ -47,7 +47,7 @@ void InitFTDISuperSpeedChip(FT_HANDLE *deviceHandle) {
 
     //Find the index of the EVScope USB Transfer Chip base on the device description
     for(unsigned int i = 0; i < numDevices; i++) {
-        std::cout << "Device description: " << std::string(deviceInfoList[i].Description) << std::endl;
+        INFO << "Device description: " << std::string(deviceInfoList[i].Description);
 
         if(std::string(deviceInfoList[i].Description) == std::string(FT601_CHIP_DESC)) {
             chipIdx = i;
@@ -64,7 +64,7 @@ void InitFTDISuperSpeedChip(FT_HANDLE *deviceHandle) {
 
     //Get Drvier Version for the FTDI chip
     FT_GetDriverVersion(*deviceHandle,&driverVersion);
-    EVLogger::Debug( (std::string("Driver Version for FT601 is: ") + std::to_string(driverVersion)).c_str() );
+    INFO << "Driver Version for FT601 is: " << driverVersion;
 
     //Set Channel Config to fifo600_mode and 100Mhz clk with appropiate flags
     FT_60XCONFIGURATION oldConfig, newConfig;

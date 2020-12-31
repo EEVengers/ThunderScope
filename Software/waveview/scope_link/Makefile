@@ -7,12 +7,13 @@ EXE := $(BIN_DIR)/scope
 SRC := $(wildcard $(SRC_DIR)/*.cpp)
 OBJ := $(SRC:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
 
-CPPFLAGS := -Iinclude -MMD -MP -O3 -g
+CPPFLAGS := -Iinclude -MMD -MP -O3 -DBOOST_LOG_DYN_LINK -g
 CPPOPT   := -fopt-info-loop-optimized
 CPPMISS  := -fopt-info-vec-missed
 CFLAGS   := -Wall
 LDFLAGS  := -Llib
-LDLIBS   := -lm -lftd3xx -lstdc++ -pthread
+LDLIBS   := -lm -lftd3xx -lstdc++ -pthread -lboost_system -lboost_thread
+LDLIBS   += -lpthread -lboost_log_setup -lboost_log
 
 .PHONY: all clean
 
