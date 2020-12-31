@@ -26,21 +26,20 @@ Processor::Processor(boost::lockfree::queue<buffer*, boost::lockfree::fixed_size
 // Returns the offset of the next trigger in the current buffer
 bool Processor::findNextTrigger(buffer *currentBuffer, uint32_t* p_bufCol)
 {
-    std::cout << "p_bufCol: " << *p_bufCol << std::endl;
+    INFO << "p_bufCol: " << *p_bufCol;
     uint32_t t_offset = 0;
 
     // Find which 64 block the buffer is in
     uint32_t t_64offset = (*p_bufCol / 64);
-    std::cout << "p_bufCol: " << *p_bufCol;
-    std::cout << " t_offset: " << t_offset;
-    std::cout << " t_64offset: " << t_64offset;
-    std::cout << std::endl;
+    INFO << "p_bufCol: " << *p_bufCol
+         << " t_offset: " << t_offset 
+         << " t_64offset: " << t_64offset;
 
     if (windowCol != 0) {
         // Partialy filled window
         *p_bufCol = 0;
         // TODO: Test the partial window buffer
-        std::cout << "Partial Window. bufferCol = 0" << std::endl;
+        INFO << "Partial Window. bufferCol = 0" << std::endl;
         return true;
     }
 
@@ -51,14 +50,13 @@ bool Processor::findNextTrigger(buffer *currentBuffer, uint32_t* p_bufCol)
             // Found a trigger, find exact position
             t_offset = (int)(log2(currentBuffer->trigger[t_64offset]));
 #ifdef DBG
-            std::cout << "found Trigger in 64: " << t_64offset;
-            std::cout << " with val: " << currentBuffer->trigger[t_64offset];
-            std::cout << " t_offset: " << t_offset;
+            INFO << "found Trigger in 64: " << t_64offset
+                 << " with val: " << currentBuffer->trigger[t_64offset]
+                 << " t_offset: " << t_offset;
 #endif 
             t_offset = (64 - 1) - t_offset;
 #ifdef DBG
-            std::cout << " t_64offset corrected: " << t_64offset;
-            std::cout << std::endl;
+            INFO << "t_64offset corrected: " << t_64offset;
 #endif
             break;
         }
@@ -67,12 +65,12 @@ bool Processor::findNextTrigger(buffer *currentBuffer, uint32_t* p_bufCol)
     if (t_64offset >= BUFFER_SIZE/64) {
         // No trigger found in buffer
         *p_bufCol = BUFFER_SIZE;
-        std::cout << "End of buffer reached, go to next one" << std::endl;
+        INFO << "End of buffer reached, go to next one";
         return false;
     } else {
         *p_bufCol = ((t_offset) + (t_64offset * 64));
-        std::cout << "t_offset: " << t_offset;
-        std::cout << " t_64_offset: " << t_64offset << std::endl;
+        INFO << "t_offset: " << t_offset
+             << " t_64_offset: " << t_64offset;
         return true;
     }
 }
@@ -96,7 +94,7 @@ void Processor::coreLoop()
                windowStored.load() == false &&
                inputQueue->pop(currentBuffer)) {
 
-            std::cout << std::endl << "*** New Buffer ***" <<std::endl << std::endl;
+            INFO << "*** New Buffer ***";
             // New buffer, reset variables
             count++;
             bufferCol = 0;
@@ -113,40 +111,40 @@ void Processor::coreLoop()
                 // - remaining space in a buffer
                 copyCount = std::min(windowSize - windowCol, BUFFER_SIZE - bufferCol);
 
-                std::cout << "bufferCol: " << bufferCol << std::endl;
-                std::cout << "copyCount: " << copyCount << std::endl;
+                INFO << "bufferCol: " << bufferCol;
+                INFO << "copyCount: " << copyCount;
 
                 if (windowRow < persistanceSize) {
-                    // print Data to copy
-                    std::cout << "Values to copy: ";
-                    for (uint32_t i = 0; i < copyCount; i++) {
-                        std::cout << (int)*(currentBuffer->data + bufferCol + i) << ", ";
-                    }
-                    std::cout << std::endl;
+//                    // print Data to copy
+//                    std::cout << "Values to copy: ";
+//                    for (uint32_t i = 0; i < copyCount; i++) {
+//                        std::cout << (int)*(currentBuffer->data + bufferCol + i) << ", ";
+//                    }
+//                    std::cout << std::endl;
 
                     // Copy samples into the window
                     std::memcpy(windowProcessed + (windowCol + windowRow * windowSize),
                                 (currentBuffer->data + bufferCol),
                                 copyCount);
 
-                    // print Data coppied
-                    std::cout << "Values Coppied: ";
-                    for (uint32_t i = 0; i < copyCount; i++) {
-                        std::cout << (int)*(windowProcessed +
-                                            (windowCol +
-                                             windowRow *
-                                             windowSize) + i);
-                        std::cout << ", ";
-                    }
-                    std::cout << std::endl;
+//                    // print Data coppied
+//                    std::cout << "Values Coppied: ";
+//                    for (uint32_t i = 0; i < copyCount; i++) {
+//                        std::cout << (int)*(windowProcessed +
+//                                            (windowCol +
+//                                             windowRow *
+//                                             windowSize) + i);
+//                        std::cout << ", ";
+//                    }
+//                    std::cout << std::endl;
 
                     bufferCol += copyCount;
                     windowCol += copyCount;
 
-                    std::cout << "bufferCol: " << bufferCol; 
-                    std::cout << " windowCol: " << windowCol;
-                    std::cout << " windowSize: " << windowSize;
-                    std::cout << std::endl;
+                    INFO << "bufferCol: " << bufferCol 
+                         << " windowCol: " << windowCol
+                         << " windowSize: " << windowSize
+                         << std::endl;
 
                     // Reset the window column if its past the end
                     // (when finished a window)
@@ -157,17 +155,17 @@ void Processor::coreLoop()
                         // Push it into the next 64 space so we don't
                         // trigger on the same twice
                         bufferCol += 64;
-                        std::cout << "full window. windowCol: ";
-                        std::cout << windowCol << std::endl;
+                        INFO << "full window. windowCol: "
+                             << windowCol;
                     } else {
                         // Partial window coppied
-                        std::cout << "partial window. windowCol: ";
-                        std::cout << windowCol << std::endl;
+                        INFO << "partial window. windowCol: "
+                             << windowCol;
                     }
 
                 } else {
                     // Window persistance buffer filled
-                    std::cout << "Dumping to csv" << std::endl;
+                    INFO << "Dumping to csv";
 
                     writeToCsv(filename,
                                windowProcessed,
@@ -176,8 +174,6 @@ void Processor::coreLoop()
 
                     windowStored.store(true);
                 }
-
-                std::cout << std::endl;
             }
 
             bufferAllocator.deallocate(currentBuffer, 1);
@@ -221,7 +217,7 @@ void Processor::createThread()
         // Thread already created
         throw EVException(10, "Processor::createThread(): Thread already created");
     }
-    std::cout << "Created processor thread" << std::endl;
+    INFO << "Created processor thread";
 }
 
 void Processor::destroyThread()
@@ -240,7 +236,7 @@ void Processor::destroyThread()
         // Thread does not exist
         throw EVException(10, "createThread(): thread does not exist");
     }
-    std::cout << "Destroyed processor thread" << std::endl;
+    INFO << "Destroyed processor thread";
 }
 
 
@@ -258,26 +254,26 @@ std::chrono::high_resolution_clock::time_point Processor::getTimeWritten()
 void Processor::processorStart()
 {
     stopTransfer.store(false);
-    std::cout << "Starting processing" << std::endl;
+    INFO << "Starting processing";
 }
 
 void Processor::processorStop()
 {
     stopTransfer.store(true);
-    std::cout << "Stopping processing" << std::endl;
+    INFO << "Stopping processing";
 }
 
 // Control the inner loop
 void Processor::processorUnpause()
 {
     pauseTransfer.store(false);
-    std::cout << "unpausing processing" << std::endl;
+    INFO << "unpausing processing";
 }
 
 void Processor::processorPause()
 {
     pauseTransfer.store(true);
-    std::cout << "pausing processing" << std::endl;
+    INFO << "pausing processing";
 }
 
 // Statistics

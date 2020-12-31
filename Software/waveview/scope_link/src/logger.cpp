@@ -7,57 +7,41 @@
 
 #include "logger.hpp"
 
-//---------------EVLogger---------------
-std::mutex EVLogger::lock;
-EVLogger logger;
+namespace attrs   = boost::log::attributes;
+namespace expr    = boost::log::expressions;
+namespace logging = boost::log;
 
-void EVLogger::Debug(const char* message)
+//Defines a global logger initialization routine
+BOOST_LOG_GLOBAL_LOGGER_INIT(my_logger, logger_t)
 {
-    lock.lock();
-    std::cout << message << std::endl;
-    lock.unlock();
-}
+    logger_t lg;
 
-void EVLogger::Error(const char* message)
-{
-    lock.lock();
-    std::cout << message << std::endl;
-    lock.unlock();
+    logging::add_common_attributes();
 
-}
+#ifdef LOG_TO_FILE
+    logging::add_file_log(
+        boost::log::keywords::file_name = SYS_LOGFILE,
+        boost::log::keywords::format = (
+            expr::stream << expr::format_date_time<     boost::posix_time::ptime >("TimeStamp", "%Y-%m-%d %H:%M:%S")
+            << " [" << expr::attr<     boost::log::trivial::severity_level >("Severity") << "]: "
+            << expr::smessage
+        )
+    );
+#endif
 
-void EVLogger::Warning(const char* message)
-{
-    lock.lock();
-    std::cout << message << std::endl;
-    lock.unlock();
+    logging::add_console_log(
+        std::cout,
+        boost::log::keywords::format = (
+            expr::stream << expr::format_date_time<     boost::posix_time::ptime >("TimeStamp", "%Y-%m-%d %H:%M:%S")
+            << " [" << expr::attr<     boost::log::trivial::severity_level >("Severity") << "]: "
+            << expr::smessage
+        )
+    );
 
-}
+    logging::core::get()->set_filter
+    (
+        logging::trivial::severity >= logging::trivial::info
+    );
 
-void EVLogger::Critical(const char* message)
-{
-    lock.lock();
-    std::cout << message << std::endl;
-    lock.unlock();
-}
-
-void EVLogger::WriteToCSV(char* filename, unsigned char* buff, int buffSize, int numCols, char** colNames)
-{
-    std::ofstream file;
-    file.open("filename");
-
-    if (colNames != NULL) {
-        for(int i = 0; i < numCols; i++) {
-            file << std::string(colNames[i]) << ",";
-        }
-    }
-
-    file << "\n";
-
-    for(int i = 0; i < buffSize; i += numCols) {
-        for(int q = 0; q < numCols; q++) {
-            file << buff[i + q] << ",";
-        }
-        file << "\n";
-    }
+    return lg;
 }

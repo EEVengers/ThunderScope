@@ -22,8 +22,8 @@ uint32_t temp = 0;
 void Trigger::checkTrigger(buffer* currentBuffer)
 {
 #ifdef DBG
-    std::cout << "Checking a Trigger" << std::endl;
-    std::cout << "size of uint64_t: " << sizeof(uint64_t) << std::endl;
+    INFO << "Checking a Trigger";
+    INFO << "size of uint64_t: " << sizeof(uint64_t);
 #endif
     // Compute the trigger
     for (int i = 0; i < BUFFER_SIZE/64; i++) {
@@ -159,7 +159,7 @@ void Trigger::checkTrigger(buffer* currentBuffer)
 
 #ifdef DBG
         if (temp < 5) {
-            std::cout << "Trigger index: " << i << " value: " << currentBuffer->trigger[i] << std::endl;
+            INFO << "Trigger index: " << i << " value: " << currentBuffer->trigger[i];
             temp++;
         }
 #endif
@@ -177,7 +177,7 @@ void Trigger::coreLoop()
         while (pauseTrigger.load() == false) {
             // Attempt to pop from the pueue
 #ifdef DBG
-            std::cout << "Trigger loop running" << std::endl;
+            INFO << "Trigger loop running";
 #endif
 
             if(inputQueue->pop(currentBuffer)) {
@@ -189,7 +189,7 @@ void Trigger::coreLoop()
                 // push triggers and buffer onto post processor thread
                 outputQueue->push(currentBuffer);
 #ifdef DBG
-                std::cout << "Trigger pushed" << std::endl;
+                INFO << "Trigger pushed";
 #endif
 
             } else {
@@ -226,7 +226,7 @@ void Trigger::createThread()
         // Thread already created
         throw EVException(10, "Trigger::createThread(): Thread already created");
     }
-    std::cout << "Created Trigger Thread" << std::endl;
+    INFO << "Created Trigger Thread";
 }
 
 void Trigger::destroyThread()
@@ -245,31 +245,31 @@ void Trigger::destroyThread()
         // Thread does not exist
         throw EVException(10, "createThread(): thread does not exist");
     }
-    std::cout << "Destroyed Trigger Thread" << std::endl;
+    INFO << "Destroyed Trigger Thread";
 }
 
 void Trigger::triggerStop()
 {
     stopTrigger.store(true);
-    std::cout << "Stopping Trigger" << std::endl;
+    INFO << "Stopping Trigger";
 }
 
 void Trigger::triggerStart()
 {
     stopTrigger.store(false);
-    std::cout << "Starting Trigger" << std::endl;
+    INFO << "Starting Trigger";
 }
 
 void Trigger::triggerPause()
 {
     pauseTrigger.store(true);
-    std::cout << "Pausing Trigger" << std::endl;
+    INFO << "Pausing Trigger";
 }
 
 void Trigger::triggerUnpause()
 {
     pauseTrigger.store(false);
-    std::cout << "Unpausing Trigger" << std::endl;
+    INFO << "Unpausing Trigger";
 }
 
 uint32_t Trigger::getCount()

@@ -36,10 +36,10 @@ DataTransferHandler::DataTransferHandler(boost::lockfree::queue<buffer*, boost::
         CopyFunc = [](unsigned char* buff, unsigned int& idx, unsigned int size, void* obj){ return; };
 
     } catch (EVException &e) {
-        std::cout << "DataTransferHandler:Constructor - " << e.what() << std::endl;
+        INFO << "DataTransferHandler:Constructor - " << e.what();
         assert(false);
     } catch (std::exception &e) {
-        std::cout << "DataTransferHandler:Constructor - " << e.what() << std::endl;
+        INFO << "DataTransferHandler:Constructor - " << e.what();
         assert(false);
     }
 }
@@ -117,9 +117,8 @@ void DataTransferHandler::FTDITransferThread()
                                             &(vOverlapped[i]));
         if(errorCode != FT_OK) {
             FT_Close(superSpeedFIFOBridgeHandle);
-            EVLogger::Debug( (std::string("FTDI Transfer Thread failed to init overlapped at index ")
-                              + std::to_string(i) + std::string(", error code ")
-                              + std::to_string(errorCode)).c_str() );
+            ERROR << "FTDI Transfer Thread failed to init overlapped at index "
+                 << i << ", error code " << errorCode;
             assert(false);
         }
     }
@@ -134,8 +133,8 @@ void DataTransferHandler::FTDITransferThread()
             FT_ReleaseOverlapped(superSpeedFIFOBridgeHandle, vOverlapped + i);
         }
         FT_Close(superSpeedFIFOBridgeHandle);
-        EVLogger::Debug( (std::string("FTDI Transfer Thread failed to set stream pipe, error code ")
-                          + std::to_string(errorCode)).c_str() );
+        ERROR << "FTDI Transfer Thread failed to set stream pipe, error code "
+             << errorCode;
         assert(false);
     }
 
@@ -152,8 +151,8 @@ void DataTransferHandler::FTDITransferThread()
                 FT_ReleaseOverlapped(superSpeedFIFOBridgeHandle, vOverlapped + i);
             }
             FT_Close(superSpeedFIFOBridgeHandle);
-            EVLogger::Debug( (std::string("FTDI Transfer Thread failed to queue up async read, error code ")
-                              + std::to_string(errorCode)).c_str() );
+            ERROR << "FTDI Transfer Thread failed to queue up async read, error code "
+                  << errorCode;
             assert(false);
         }
     }
@@ -174,8 +173,8 @@ void DataTransferHandler::FTDITransferThread()
                     FT_ReleaseOverlapped(superSpeedFIFOBridgeHandle, vOverlapped + i);
                 }
                 FT_Close(superSpeedFIFOBridgeHandle);
-                EVLogger::Debug( (std::string("FTDI Transfer Thread failed to  wait for overlapped result, error code ")
-                                  + std::to_string(errorCode)).c_str() );
+                ERROR << "FTDI Transfer Thread failed to  wait for overlapped result, error code "
+                      << errorCode;
                 assert(false);
             } 
 
@@ -191,8 +190,8 @@ void DataTransferHandler::FTDITransferThread()
                     FT_ReleaseOverlapped(superSpeedFIFOBridgeHandle, vOverlapped + i);
                 }
                 FT_Close(superSpeedFIFOBridgeHandle);
-                EVLogger::Debug( (std::string("FTDI Transfer Thread failed to  wait for overlapped result, error code ")
-                                  + std::to_string(errorCode)).c_str() );
+                ERROR << "FTDI Transfer Thread failed to  wait for overlapped result, error code "
+                      << errorCode;
                 assert(false);
             }
             //submit data to shared cache

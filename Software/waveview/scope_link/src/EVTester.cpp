@@ -17,7 +17,7 @@ bool loadFromFile ( char* filename, boost::lockfree::queue<buffer*, boost::lockf
     char delim = '\n';
     std::string tmp;
 
-    std::cout << "Loading from file " << filename << std::endl;
+    INFO << "Loading from file " << filename;
 
     buffer* tempBuffer;
     tempBuffer = bufferAllocator.allocate(1);
@@ -33,11 +33,11 @@ bool loadFromFile ( char* filename, boost::lockfree::queue<buffer*, boost::lockf
 
 #ifdef DBG
             if (std::stoi(t) > 255) {
-                std::cout << "Error: Number greater than 255" << std::endl;
+                INFO << "Error: Number greater than 255";
             } else if (std::stoi(t) > INT8_MAX) {
-                std::cout << "Error: Number greater than 127 is converted to negative" << std::endl;
+                INFO << "Error: Number greater than 127 is converted to negative";
             } else if ((int8_t)std::stoi(t) < -128) {
-                std::cout << "Error: Number less than -128" << std::endl;
+                INFO << "Error: Number less than -128";
             }
 #endif
 
@@ -165,10 +165,10 @@ void testTriggerThroughput()
                             / (timeElapsed.count()
                             * GIB_TO_GB));
 
-    std::cout << "Time Elapsed Triggering: " << timeElapsed.count() << " ns" << std::endl;  
-    std::cout << "Triggered B: " << bytesTriggered << " B" << std::endl;
-    std::cout << "Triggered B/s: " << triggeredBps << std::endl;
-    std::cout << "Triggered GiB/s: " << triggeredGBps << std::endl;
+    INFO << "Time Elapsed Triggering: " << timeElapsed.count() << " ns"; 
+    INFO << "Triggered B: " << bytesTriggered << " B";
+    INFO << "Triggered B/s: " << triggeredBps;
+    INFO << "Triggered GiB/s: " << triggeredGBps;
 }
 
 void testBenchmark()
@@ -211,10 +211,10 @@ void testBenchmark()
                             / (timeTrigger.count()
                             * GIB_TO_GB));
 
-    std::cout << "Time Elapsed Triggering: " << timeTrigger.count() << " ns" << std::endl;  
-    std::cout << "Triggered B: " << bytesTriggered << " B" << std::endl;
-    std::cout << "Triggered B/s: " << triggeredBps << std::endl;
-    std::cout << "Triggered GiB/s: " << triggeredGBps << std::endl;
+    INFO << "Time Elapsed Triggering: " << timeTrigger.count() << " ns";
+    INFO << "Triggered B: " << bytesTriggered << " B";
+    INFO << "Triggered B/s: " << triggeredBps;
+    INFO << "Triggered GiB/s: " << triggeredGBps;
     
 
     // measure processor
@@ -229,7 +229,7 @@ void testBenchmark()
         std::this_thread::sleep_for(std::chrono::microseconds(100));
     }
 
-    std::cout << std::endl << "Test is done. Performing Cleanup" << std::endl;
+    INFO << std::endl << "Test is done. Performing Cleanup";
     trigger.destroyThread();
     processor.destroyThread();
 }
@@ -261,7 +261,7 @@ void testCsv(char * filename)
         std::this_thread::sleep_for(std::chrono::microseconds(100));
     }
 
-    std::cout << std::endl << "Test is done. Performing Cleanup" << std::endl;
+    INFO << "Test is done. Performing Cleanup";
     trigger.destroyThread();
     processor.destroyThread();
 }
@@ -276,13 +276,13 @@ void TestDataThroughPut()
     boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> triggeredQueue{1000};
 
     // ****************** Transfering **********************
-    std::cout << std::endl << "Beining Transfer Test" << std::endl;
+    INFO << "Beining Transfer Test";
 
     // create transfer thread
     DataTransferHandler dataExchanger(&newDataQueue);
     dataExchanger.SetCopyFunc(DataTransferFullBuffRead);
     dataExchanger.createThread();
-    std::cout << "Finished Creating dataExchanger" << std::endl;
+    INFO << "Finished Creating dataExchanger";
 
     // run and queue transfer
     auto startTransfer = std::chrono::high_resolution_clock::now();
@@ -299,22 +299,22 @@ void TestDataThroughPut()
     bytesRead = dataExchanger.bytesRead;
     double readBps = ((double)bytesRead * S_TO_NS / timeElapsedTransfer.count());
     double readGBps = (((double)bytesRead * S_TO_NS) / (timeElapsedTransfer.count() * GIB_TO_GB));
-    std::cout << "Finished transfering" << std::endl;
+    INFO << "Finished transfering";
 
     // log the output
-    std::cout << "Transfer Count: " << dataExchanger.getCount() << std::endl;
-    std::cout << "Time Elapsed Transfering: " << timeElapsedTransfer.count() << " ns" << std::endl;  
-    std::cout << "Read B: " << bytesRead << " B" << std::endl;
-    std::cout << "Read B/s: " << readBps << std::endl;
-    std::cout << "Read GiB/s: " << readGBps << std::endl;
+    INFO << "Transfer Count: " << dataExchanger.getCount();
+    INFO << "Time Elapsed Transfering: " << timeElapsedTransfer.count() << " ns";
+    INFO << "Read B: " << bytesRead << " B";
+    INFO << "Read B/s: " << readBps;
+    INFO << "Read GiB/s: " << readGBps;
 
     // ****************** Triggering **********************
-    std::cout << std::endl << "Beggining Triggering Test" << std::endl;
+    INFO << std::endl << "Beggining Triggering Test";
 
     // create trigger thread
     Trigger trigger(&newDataQueue, &triggeredQueue, 127);
     trigger.createThread();
-    std::cout << "Finished Creating trigger" << std::endl;
+    INFO << "Finished Creating trigger";
 
     // run trigger and queue
 //    auto startTrigger = std::chrono::high_resolution_clock::now();
@@ -334,19 +334,19 @@ void TestDataThroughPut()
 //                            / (timeElapsedTrigger.count()
 //                            * GIB_TO_GB));
 //
-//    std::cout << "Trigger Count: " << trigger.getCount() << std::endl;
-//    std::cout << "Time Elapsed Triggering: " << timeElapsedTrigger.count() << " ns" << std::endl;  
-//    std::cout << "Triggered B: " << bytesTriggered << " B" << std::endl;
-//    std::cout << "Triggered B/s: " << triggeredBps << std::endl;
-//    std::cout << "Triggered GiB/s: " << triggeredGBps << std::endl;
+//    INFO << "Trigger Count: " << trigger.getCount();
+//    INFO << "Time Elapsed Triggering: " << timeElapsedTrigger.count() << " ns";
+//    INFO << "Triggered B: " << bytesTriggered << " B";
+//    INFO << "Triggered B/s: " << triggeredBps;
+//    INFO << "Triggered GiB/s: " << triggeredGBps;
 
     // ******************* Post Processing **********************
-    std::cout << std::endl << "Beggining Post Processing Test" << std::endl;
+    INFO << "Beggining Post Processing Test";
 
 //    Processor postProcessor(&newDataQueue);
     Processor postProcessor(&triggeredQueue);
     postProcessor.createThread();
-    std::cout << "Finished Creating postProcessor" << std::endl;
+    INFO << "Finished Creating postProcessor";
 
     auto startProcessor = std::chrono::high_resolution_clock::now();
 
@@ -361,10 +361,10 @@ void TestDataThroughPut()
                             / timeElapsedProcessed.count())
                             * ((double)S_TO_NS / GIB_TO_GB);
 
-    std::cout << "Processor Count: " << postProcessor.getCount() << std::endl;
-    std::cout << "Processed B: " << bytesProcessed << std::endl;
-    std::cout << "Processed B/s: " << processedBps << std::endl;
-    std::cout << "Processed GiB/s: " << processedGBps << std::endl;
+    INFO << "Processor Count: " << postProcessor.getCount();
+    INFO << "Processed B: " << bytesProcessed;
+    INFO << "Processed B/s: " << processedBps;
+    INFO << "Processed GiB/s: " << processedGBps;
 
     // Cleanup thread
     dataExchanger.destroyThread();
