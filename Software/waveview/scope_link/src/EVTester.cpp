@@ -1,11 +1,9 @@
 #include "EVTester.hpp"
 #include "EVMath.hpp"
-#include "digitalProcessor.hpp"
 #include "dataTransferHandler.hpp"
 #include "processor.hpp"
 #include "trigger.hpp"
 #include <boost/tokenizer.hpp>
-
 
 uint32_t testSize = 1000;
 
