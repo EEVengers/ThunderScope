@@ -54,22 +54,6 @@ public:
 
 /* ERROR AND DEBUG LOGGING */
 
-/* SIGNALS AND SIGNAL HANDLING */
-
-class EVCacheCopySignal
-{
-public:
-
-    void Trigger();
-    void Subscribe();
-
-private:
-
-protected:
-};
-
-/* END OF SIGNAL AND SIGNAL HANDLING */
-
 /* CACHING */
 
 class EVSharedCache
@@ -92,22 +76,9 @@ private:
 
     unsigned short writeCache;
     unsigned short readCache;
-
-    EVCacheCopySignal copySignal;
 };
 
 /* END OF CACHING */
-
-/* EVMath Structs and Enums */
-
-struct DataPoint {
-
-    float time;
-    float value;
-
-};
-
-/* END OF EVMATH STRUCTS AND ENUMS*/
 
 //global variables
 extern volatile bool programClosing;
