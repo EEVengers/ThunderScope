@@ -11,6 +11,17 @@
 
 #include "EVLibrary.hpp"
 
+/* EVMath Structs and Enums */
+
+struct DataPoint {
+
+    float time;
+    float value;
+
+};
+
+/* END OF EVMATH STRUCTS AND ENUMS*/
+
 DataPoint* SincInterpolate(DataPoint* Buff, int buffSize, int* numInterpolatedPoints, int numPointsBetween, int windowSize);
 
 #endif /* EVMath_hpp */

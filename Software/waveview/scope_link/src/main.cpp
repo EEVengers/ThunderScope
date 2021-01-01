@@ -11,6 +11,8 @@
 #include "EVSuperSpeedFIFOBridge.hpp"
 #include "dataTransferHandler.hpp"
 #include "EVTester.hpp"
+#include "logger.hpp"
+
 
 #define FIFO_SUPER_SPEED_BRIDGE_NAME "FTDI SuperSpeed-FIFO Bridge"
 void run()
@@ -54,15 +56,6 @@ int parseCommandLineArgs(int argc, char** args) {
 
     return flags;
 }
-
-#include <boost/log/common.hpp>
-#include <boost/log/sinks.hpp>
-#include <boost/log/sources/logger.hpp>
-#include <boost/core/null_deleter.hpp>
-#include <boost/shared_ptr.hpp>
-#include <iostream>
-#include <exception>
-#include "logger.hpp"
 
 int main(int argc, char** args)
 {

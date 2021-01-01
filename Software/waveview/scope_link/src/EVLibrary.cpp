@@ -10,7 +10,6 @@
 
 //global variable declerations
 volatile bool programClosing;
-std::mutex dataProcessingBufferLock;
 
 //global classes defenitions
 
