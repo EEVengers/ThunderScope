@@ -215,6 +215,7 @@ void testBenchmark()
     INFO << "Triggered GiB/s: " << triggeredGBps;
     
 
+    // TODO: write processor benchmarking
     // measure processor
     // collect timestamp
     // Start Processor
@@ -234,7 +235,6 @@ void testBenchmark()
 
 void testCsv(char * filename)
 {
-
     // Create queue
     boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> newDataQueue{1000};
     boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> triggeredQueue{1000};
@@ -267,7 +267,6 @@ void testCsv(char * filename)
 void TestDataThroughPut()
 {
     unsigned int bytesRead = 0;
-//    int numDigitalProcessors = 5;    
 
     // Lock free queue of new data comming from FTDI through handler
     boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> newDataQueue{1000};
