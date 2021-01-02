@@ -30,9 +30,9 @@ int parseCommandLineArgs(int argc, char** args) {
         if(std::string(args[1]) == "--TestSinc" || std::string(args[1]) == "-s") {
             INFO << "Main:parseCommandLineArgs() - Testing Sinc Interpolation";
             TestSincInterpolation();
-//            } else if(std::string(args[i]) == "--TestDataThroughput" || std::string(args[i]) == "-p") {
-//                INFO << "Main:parseCommandLineArgs() - Testing Data Throughput";
-//                TestDataThroughPut();
+        } else if(std::string(args[1]) == "--TestDataThroughput" || std::string(args[1]) == "-p") {
+            INFO << "Main:parseCommandLineArgs() - Testing Data Throughput";
+            TestDataThroughPut();
         } else if(std::string(args[1]) == "--benchmark" || std::string(args[1]) == "-b") {
             INFO << "Main:parseCommandLineArgs() - Testing Trigger Throughput";
             testBenchmark();
@@ -48,10 +48,10 @@ int parseCommandLineArgs(int argc, char** args) {
                 testCsv(filename);
             }
         } else {
-            ERROR << "Invalid arguments. Use -t <filename.csv> or --TestSinc or --TestDataThroughPut";
+            ERROR << "Invalid arguments. Use -t <filename.csv> or --TestSinc or --TestDataThroughput";
         }
     } else {
-        ERROR << "Invalid arguments. Use -t <filename.csv> or --TestSinc or --TestDataThroughPut";
+        ERROR << "Invalid arguments. Use -t <filename.csv> or --TestSinc or --TestDataThroughput";
     }
 
     return flags;
