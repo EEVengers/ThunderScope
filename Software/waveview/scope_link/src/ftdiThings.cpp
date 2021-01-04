@@ -1,16 +1,5 @@
-//
-//  EVLibrary.cpp
-//
-//  Created by Daniel Vasile on 2019-10-24.
-//  Copyright © 2019 EEVengers. All rights reserved.
-//
-
+#include "ftdiThings.hpp"
 #include "EVLibrary.hpp"
-
-//global variable declerations
-volatile bool programClosing = 0;
-
-//global classes defenitions
 
 //---------------EVSharecCache---------------
 
@@ -106,5 +95,3 @@ EVSharedCache::~EVSharedCache()
     }
     free(caches);
 }
-
-//---------------EVCacheCopySignal---------------
