@@ -1,12 +1,14 @@
 #ifndef processor_hpp
 #define processor_hpp
 
-#include "common.hpp"
-#include <atomic>
 #include <boost/lockfree/queue.hpp>
+#include <atomic>
 #include <thread>
 #include <assert.h>
+
 #include "EVLibrary.hpp"
+#include "common.hpp"
+#include "exception.hpp"
 
 class Processor
 {

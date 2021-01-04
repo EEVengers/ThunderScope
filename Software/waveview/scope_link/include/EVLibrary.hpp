@@ -20,6 +20,7 @@
 #include <cstring>
 
 #include "logger.hpp"
+#include "exception.hpp"
 
 //FTDI Define
 
@@ -39,18 +40,6 @@ enum EVErrorCodes
     EVErrorCodeMallocFailed,
     EVErrorCodeServiceAlreadyRunning
 };
-
-
-class EVException: public std::exception
-{
-    std::string m_msg;
-
-public:
-    virtual const char * what() const throw();
-
-    EVException(int errorCode, const char* subSystem);
-};
-
 
 /* ERROR AND DEBUG LOGGING */
 
