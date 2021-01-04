@@ -1,18 +1,14 @@
 //
 //  main.cpp
-//  Scope
 //
 //  Created by Daniel Vasile on 2019-07-26.
 //  Copyright © 2019 EEVengers. All rights reserved.
 //
 
-#include "EVLibrary.hpp"
-#include "EVMath.hpp"
-#include "EVSuperSpeedFIFOBridge.hpp"
-#include "dataTransferHandler.hpp"
 #include "EVTester.hpp"
 #include "logger.hpp"
 
+#include <thread>
 
 #define FIFO_SUPER_SPEED_BRIDGE_NAME "FTDI SuperSpeed-FIFO Bridge"
 void run()

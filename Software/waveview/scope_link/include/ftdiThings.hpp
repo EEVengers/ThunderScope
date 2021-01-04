@@ -2,8 +2,10 @@
 #define ftdiThings_h
 
 #include <mutex>
+#include <cstring>
 
 #include "ftd3xx.h"
+#include "exception.hpp"
 
 //FTDI Define
 
