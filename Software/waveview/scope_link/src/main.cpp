@@ -8,9 +8,7 @@
 #include "EVTester.hpp"
 #include "logger.hpp"
 
-int parseCommandLineArgs(int argc, char** args) {
-    int flags = 0;
-
+void parseCommandLineArgs(int argc, char** args) {
     if(argc > 1) {
         if(std::string(args[1]) == "--TestSinc" || std::string(args[1]) == "-s") {
             INFO << "Main:parseCommandLineArgs() - Testing Sinc Interpolation";
@@ -39,7 +37,7 @@ int parseCommandLineArgs(int argc, char** args) {
         ERROR << "Invalid arguments. Use -t <filename.csv> or --TestSinc or --TestDataThroughput";
     }
 
-    return flags;
+    return;
 }
 
 int main(int argc, char** args)
