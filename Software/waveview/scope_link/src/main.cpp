@@ -8,17 +8,6 @@
 #include "EVTester.hpp"
 #include "logger.hpp"
 
-#include <thread>
-
-#define FIFO_SUPER_SPEED_BRIDGE_NAME "FTDI SuperSpeed-FIFO Bridge"
-void run()
-{
-    while(!programClosing){
-        std::this_thread::sleep_for(std::chrono::seconds(1));
-        INFO << "1 second has passed";
-    }
-}
-
 int parseCommandLineArgs(int argc, char** args) {
     int flags = 0;
 
