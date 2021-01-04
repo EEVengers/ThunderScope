@@ -9,10 +9,12 @@
 #ifndef EVDataTransferThread_hpp
 #define EVDataTransferThread_hpp
 
-#include "EVLibrary.hpp"
 #include <atomic>
 #include <boost/lockfree/queue.hpp>
+
+#include "EVLibrary.hpp"
 #include "common.hpp"
+#include "exception.hpp"
 
 enum CopyFuncs
 {

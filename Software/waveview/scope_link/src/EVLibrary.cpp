@@ -1,6 +1,5 @@
 //
 //  EVLibrary.cpp
-//  Scope
 //
 //  Created by Daniel Vasile on 2019-10-24.
 //  Copyright © 2019 EEVengers. All rights reserved.
@@ -12,21 +11,6 @@
 volatile bool programClosing;
 
 //global classes defenitions
-
-//---------------EVException---------------
-EVException::EVException(int errorCode, const char* subSystem)
-    : m_msg(std::string("Exception with error code - ")
-            + std::to_string(errorCode)
-            + std::string(" - from SubSystem: ")
-            + std::string(subSystem)
-            )
-{}
-
-const char * EVException::what() const throw()
-{
-    return m_msg.c_str();
-}
-
 
 //---------------EVSharecCache---------------
 
