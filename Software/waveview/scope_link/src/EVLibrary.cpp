@@ -8,7 +8,7 @@
 #include "EVLibrary.hpp"
 
 //global variable declerations
-volatile bool programClosing;
+volatile bool programClosing = 0;
 
 //global classes defenitions
 
