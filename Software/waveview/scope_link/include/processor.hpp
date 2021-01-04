@@ -6,7 +6,6 @@
 #include <thread>
 #include <assert.h>
 
-#include "EVLibrary.hpp"
 #include "common.hpp"
 #include "exception.hpp"
 

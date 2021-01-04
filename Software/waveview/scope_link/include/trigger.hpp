@@ -1,12 +1,14 @@
 #ifndef trigger_hpp
 #define trigger_hpp
 
-#include "common.hpp"
 #include <atomic>
 #include <boost/lockfree/queue.hpp>
 #include <thread>
-#include "EVLibrary.hpp"
 #include <bitset>
+
+#include "common.hpp"
+#include "logger.hpp"
+#include "exception.hpp"
 
 class Trigger
 {

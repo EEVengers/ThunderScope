@@ -9,7 +9,7 @@
 #ifndef EVMath_hpp
 #define EVMath_hpp
 
-#include "EVLibrary.hpp"
+#include <cmath>
 
 /* EVMath Structs and Enums */
 

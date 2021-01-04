@@ -9,7 +9,10 @@
 #ifndef EVSuperSpeedFIFIOBridge_hpp
 #define EVSuperSpeedFIFIOBridge_hpp
 
-#include "EVLibrary.hpp"
+#include <thread>
+#include "logger.hpp"
+#include "exception.hpp"
+#include "ftdiThings.hpp"
 
 /*
  * Used To Get A Handle To The FTDI SuperSpeed FIFO Bridge
