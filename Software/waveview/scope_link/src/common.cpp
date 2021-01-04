@@ -28,7 +28,7 @@ uint32_t writeToCsv (char* filename, int8_t* data, uint32_t row, uint32_t col)
         for (j = 0; j < col - 1; j++ ) {
             file << (int)*(data + (j + i * windowSize)) << ",";
         }
-        file << (int)(*data + (j + i * windowSize));
+        file << (int)*(data + (j + i * windowSize));
         file << std::endl;
     }
 
