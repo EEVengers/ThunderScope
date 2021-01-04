@@ -35,3 +35,5 @@ uint32_t writeToCsv (char* filename, int8_t* data, uint32_t row, uint32_t col)
     file.close();
     return 0;
 }
+
+volatile bool programClosing = 0;

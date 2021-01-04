@@ -29,6 +29,8 @@
 extern uint32_t windowSize;
 extern uint32_t persistanceSize;
 
+extern volatile bool programClosing;
+
 struct buffer
 {
     int8_t data[BUFFER_SIZE + 1];
@@ -47,4 +49,5 @@ extern boost::pool_allocator<int8_t,
 
 
 uint32_t writeToCsv (char* filename, int8_t* data, uint32_t row, uint32_t col);
+
 #endif
