@@ -194,6 +194,7 @@ void Trigger::coreLoop()
 
             } else {
 
+                // TODO: clean this up for when not running tests
                 triggerMet.store(true);
                 // Queue empty, Sleep for a bit
                 std::this_thread::sleep_for(std::chrono::microseconds(100));
