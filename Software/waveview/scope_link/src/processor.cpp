@@ -26,6 +26,7 @@ Processor::Processor(boost::lockfree::queue<buffer*, boost::lockfree::fixed_size
 // Returns the offset of the next trigger in the current buffer
 bool Processor::findNextTrigger(buffer *currentBuffer, uint32_t* p_bufCol)
 {
+    INFO << "** Finding Next Trigger **";
     INFO << "p_bufCol: " << *p_bufCol;
     uint32_t t_offset = 0;
 
@@ -37,10 +38,14 @@ bool Processor::findNextTrigger(buffer *currentBuffer, uint32_t* p_bufCol)
 
     if (windowCol != 0) {
         // Partialy filled window
-        *p_bufCol = 0;
-        // TODO: Test the partial window buffer
-        INFO << "Partial Window. bufferCol = 0" << std::endl;
-        return true;
+        if (*p_bufCol == 0) {
+            INFO << "Partial Window. Fill the rest of the widow";
+            return true;
+        } else {
+            INFO << "Partial Window. bufferCol = 0 and get new buffer";
+            *p_bufCol = 0;
+            return false;
+        }
     }
 
     for (;
