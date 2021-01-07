@@ -169,6 +169,10 @@ void Trigger::checkTrigger(buffer* currentBuffer)
 void Trigger::coreLoop()
 {
     buffer *currentBuffer;
+    buffer *nextBuffer;
+
+    // Get the first buffer into currentBuffer
+    while (inputQueue->pop(currentBuffer) == false){};
 
     // Outer loop
     while (stopTrigger.load() == false) {
@@ -176,21 +180,21 @@ void Trigger::coreLoop()
         // Inner Loop
         while (pauseTrigger.load() == false) {
             // Attempt to pop from the pueue
-#ifdef DBG
-            INFO << "Trigger loop running";
-#endif
 
-            if(inputQueue->pop(currentBuffer)) {
+            if (inputQueue->pop(nextBuffer)) {
                 count++;
+
+                // copy first value from next buffer to current buffer
+                currentBuffer->data[BUFFER_SIZE] = nextBuffer->data[0];
 
                 // generate triggers on new data
                 checkTrigger(currentBuffer);
 
                 // push triggers and buffer onto post processor thread
                 outputQueue->push(currentBuffer);
-#ifdef DBG
-                INFO << "Trigger pushed";
-#endif
+
+                // swap next to current
+                currentBuffer = nextBuffer;
 
             } else {
 
