@@ -82,6 +82,8 @@ isn't a expected use case. The hardware should give proper numbers but spoofing
 values from a csv should be within expeced range of -128 to 127.
 
 #### Expected Output
+Shown here is both the csv input and output.
+
 CSV Input                   Output                       Notes
 1,127,1,-129,1,1,1,1,1,1 -> 1,127,1,127,1,1,1,1,1,1   // Truncates to 127
 2,127,2,-128,2,2,2,2,2,2 -> 2,127,2,-128,2,2,2,2,2,2  // Proper representation
