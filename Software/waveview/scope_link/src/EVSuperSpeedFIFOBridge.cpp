@@ -51,6 +51,8 @@ void InitFTDISuperSpeedChip(FT_HANDLE *deviceHandle) {
 
         if(std::string(deviceInfoList[i].Description) == std::string(FT601_CHIP_DESC)) {
             chipIdx = i;
+            std::cout << "Found Chip at idx: " << i << std::endl;
+            std::cout << "Chip Description: " << deviceInfoList[i].Description << std::endl;
         }
     }
     //if no scope USB transfer chip was found
@@ -58,7 +60,13 @@ void InitFTDISuperSpeedChip(FT_HANDLE *deviceHandle) {
         throw EVException(error,"EVSuperSpeedFIFOBridge:InitFTDISuperSpeedChip:Find_Chip_Idx");
     }
     
+    /* God I hate this shitty driver
     if(FT_OK != (error = FT_Create( (PVOID)chipIdx, (DWORD)FT_OPEN_BY_INDEX, deviceHandle))){
+        throw EVException(error,"EVSuperSpeedFIFOBRidge:InitFTDISuperSpeedChip:FT_Create");
+    }
+    */
+    
+    if(FT_OK != (error = FT_Create((PVOID)"EVScope USB Transfer Chip", (DWORD)FT_OPEN_BY_DESCRIPTION, deviceHandle))){
         throw EVException(error,"EVSuperSpeedFIFOBRidge:InitFTDISuperSpeedChip:FT_Create");
     }
 
