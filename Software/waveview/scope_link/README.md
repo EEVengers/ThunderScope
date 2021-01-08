@@ -45,10 +45,12 @@ assumes a buffer is `256*32` samples or 8K bytes long). The next trigger is on
 line 33.
 
 #### Expected Output:
-1,127,1,1,1,1,1,1,1,1
-2,127,2,2,2,2,2,2,2,2
-3,127,3,3,3,3,3,3,3,3
-4,127,4,4,4,4,4,4,4,4
+| Output                |
+| --------------------- |
+| 1,127,1,1,1,1,1,1,1,1 |
+| 2,127,2,2,2,2,2,2,2,2 |
+| 3,127,3,3,3,3,3,3,3,3 |
+| 4,127,4,4,4,4,4,4,4,4 |
 
 ### test2.csv
 Tests that the correct positing within a 64 bit space is computed. Does this by
@@ -60,10 +62,12 @@ Fail condition is if the second one is captured aswell. This can be seen if any
 0s appear in the dump.
 
 #### Expected Output:
-1,127,1,127,1,1,1,1,1,1
-2,127,2,2,2,2,2,2,2,2
-3,127,3,3,3,3,3,3,3,3
-4,127,4,4,4,4,4,4,4,4
+| Output                  |
+| ----------------------- |
+| 1,127,1,127,1,1,1,1,1,1 |
+| 2,127,2,2,2,2,2,2,2,2   |
+| 3,127,3,3,3,3,3,3,3,3   |
+| 4,127,4,4,4,4,4,4,4,4   |
 
 ### test3.csv
 Tests a window can be filled if parts of it are in different buffers.
@@ -71,10 +75,12 @@ Tests a window can be filled if parts of it are in different buffers.
 This is done by putting a trigger within window size of the the end of a buffer.
 
 #### Expected Output:
-1,127,1,1,1,1,1,1,1,1
-2,127,2,2,2,2,2,2,2,2
-3,127,3,3,3,3,3,3,3,3
-4,127,4,4,4,4,4,4,4,4
+| Output                |
+| --------------------- |
+| 1,127,1,1,1,1,1,1,1,1 |
+| 2,127,2,2,2,2,2,2,2,2 |
+| 3,127,3,3,3,3,3,3,3,3 |
+| 4,127,4,4,4,4,4,4,4,4 |
 
 ### test4.csv
 Shows what happens numbers outside of the bounds are passed into a buffer. This
@@ -84,11 +90,12 @@ values from a csv should be within expeced range of -128 to 127.
 #### Expected Output
 Shown here is both the csv input and output.
 
-CSV Input                   Output                       Notes
-1,127,1,-129,1,1,1,1,1,1 -> 1,127,1,127,1,1,1,1,1,1   // Truncates to 127
-2,127,2,-128,2,2,2,2,2,2 -> 2,127,2,-128,2,2,2,2,2,2  // Proper representation
-3,127,3,256,3,3,3,3,3,3  -> 3,127,3,0,3,3,3,3,3,3     // Truncates to 0
-4,127,4,255,4,4,4,4,4,4  -> 4,127,4,-1,4,4,4,4,4,4    // Truncates to -1
+| CSV Input                | Output                    | Notes                 |
+| ------------------------ | ------------------------- | --------------------- |
+| 1,127,1,-129,1,1,1,1,1,1 | 1,127,1,127,1,1,1,1,1,1   | Truncates to 127      |
+| 2,127,2,-128,2,2,2,2,2,2 | 2,127,2,-128,2,2,2,2,2,2  | Proper representation |
+| 3,127,3,256,3,3,3,3,3,3  | 3,127,3,0,3,3,3,3,3,3     | Truncates to 0        |
+| 4,127,4,255,4,4,4,4,4,4  | 4,127,4,-1,4,4,4,4,4,4    | Truncates to -1       |
 
 ### test5.csv
 Tests triggers on the boundry between buffers. The trigger should be caught by
@@ -101,10 +108,12 @@ the trigger level (127). This generate a rising edge trigger right on the
 buffer boundry.
 
 #### Expected Output
-1,127,1,127,1,1,1,1,1,1
-2,127,2,2,2,2,2,2,2,2
-3,127,3,3,3,3,3,3,3,3
-4,127,4,4,4,4,4,4,4,4
+| Output                  |
+| ----------------------- |
+| 1,127,1,127,1,1,1,1,1,1 |
+| 2,127,2,2,2,2,2,2,2,2   |
+| 3,127,3,3,3,3,3,3,3,3   |
+| 4,127,4,4,4,4,4,4,4,4   |
 
 ## Triggering and Post Processing plan
 The pipeline through the C++ side of things is broken up into several stages.
