@@ -1,6 +1,6 @@
 import React from 'react';
 import './adjustValueBlock.css';
-import {IAdjustValueBlockProps, IBlockProps, IBlockState} from '../../../../interfaces/sidebar/widgets/blockInterfaces';
+import {IAdjustValueBlockProps} from '../../../../interfaces/sidebar/widgets/blockInterfaces';
 import { connect } from 'react-redux';
 
 class AdjustValueBlock extends React.Component<any, any> {
@@ -12,11 +12,11 @@ class AdjustValueBlock extends React.Component<any, any> {
   }
 
   increment = () => {
-    this.props.dispatch({ type: 'INCREMENT_COUNTER' });
+    this.props.dispatch({ type: 'horizontal/increaseValue', payload: 2});
   }
 
   decrement = () => {
-    this.props.dispatch({ type: 'DECREMENT_COUNTER' });
+    this.props.dispatch({ type: 'horizontal/decreaseValue' , payload: 1});
   }
 
   // TODO: Could move the perDivisionText logic to a helper method
@@ -40,7 +40,7 @@ class AdjustValueBlock extends React.Component<any, any> {
           className="AdjustValueBlockValue"
           style={{color: this.state.data.color}}
         >
-          {this.props.count.count.toString()}{this.state.data.unit}{perDivisionText}
+          {this.props.horizontalWidget.value2.toString()}{this.state.data.unit}{perDivisionText}
         </label>
         <button 
           className="PlusButton"
@@ -52,9 +52,9 @@ class AdjustValueBlock extends React.Component<any, any> {
   }
 }
 
-function mapStateToProps(state: { count: any; }) {
+function mapStateToProps(state: { horizontalWidget: any; }) {
   return {
-    count: state.count
+    horizontalWidget: state.horizontalWidget
   };
 }
 

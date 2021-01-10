@@ -10,6 +10,7 @@ import MeasurementsData from './widgets/config/MeasurementsWidget';
 import {IWidget} from '../../interfaces/sidebar/widgets/sidebarInterfaces';
 import ReduxCounterTest from './reduxCounterTest';
 import ReduxChannelTest from './reduxChannelTest';
+import HorizontalWidget from './widgets/horizontalWidget';
 
 class SideBar extends React.Component {
   widgetList: IWidget[]
@@ -29,18 +30,7 @@ class SideBar extends React.Component {
         <Search />
         <StopButton />
         <SingleButton />
-        <ReduxCounterTest />
-        <ReduxChannelTest />
-        {
-          this.widgetList.map((w) => {
-            return (
-              <Widget
-                title= {w.title}
-                blocks = {w.blocks}
-              />
-            )
-          })
-        }
+        <HorizontalWidget />
       </div>
     )
   }
