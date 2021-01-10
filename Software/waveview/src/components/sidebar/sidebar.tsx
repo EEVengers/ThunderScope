@@ -11,6 +11,7 @@ import {IWidget} from '../../interfaces/sidebar/widgets/sidebarInterfaces';
 import ReduxCounterTest from './reduxCounterTest';
 import ReduxChannelTest from './reduxChannelTest';
 import HorizontalWidget from './widgets/horizontalWidget';
+import VerticalWidget from './widgets/verticalWidget';
 
 class SideBar extends React.Component {
   widgetList: IWidget[]
@@ -31,6 +32,7 @@ class SideBar extends React.Component {
         <StopButton />
         <SingleButton />
         <HorizontalWidget />
+        <VerticalWidget />
       </div>
     )
   }

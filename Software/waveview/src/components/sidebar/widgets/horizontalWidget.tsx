@@ -4,11 +4,11 @@ import './horizontalWidget.css';
 
 class HorizontalWidget extends React.Component<any, any> { 
 
-  increment = (value: any) => {
+  incrementValue = (value: any) => {
     this.props.dispatch({ type: 'horizontal/increaseValue', payload: value});
   }
 
-  decrement = (value: any) => {
+  decrementValue = (value: any) => {
     this.props.dispatch({ type: 'horizontal/decreaseValue' , payload: value});
   }
 
@@ -18,10 +18,11 @@ class HorizontalWidget extends React.Component<any, any> {
         <div className="WidgetTitle">
           Horizontal
         </div>
-          <div className="HorizontalWidgetAdjustBlock-Value1">
+        
+        <div className="HorizontalWidgetAdjustBlock-Value1">
           <button 
             className="MinusButton"
-            onClick={() => this.decrement(1)}>
+            onClick={() => this.decrementValue(1)}>
             -
           </button>
           <label 
@@ -32,28 +33,30 @@ class HorizontalWidget extends React.Component<any, any> {
           </label>
           <button 
             className="PlusButton"
-            onClick={() => this.increment(1)}>
+            onClick={() => this.incrementValue(1)}>
             +
           </button>
-            </div>
-            <div className="HorizontalWidgetAdjustBlock-Value2">
-            <button 
-              className="MinusButton"
-              onClick={() => this.decrement(2)}>
-              -
-            </button>
-            <label 
-              className="AdjustValueBlockValue2"
-              style={{color: "white"}}
-            >
-              {this.props.horizontalWidget.value2.toString()}{"ms"}
-            </label>
-            <button 
-              className="PlusButton"
-              onClick={() => this.increment(2)}>
-              +
-            </button>
-            </div>
+        </div>
+
+        <div className="HorizontalWidgetAdjustBlock-Value2">
+          <button 
+            className="MinusButton"
+            onClick={() => this.decrementValue(2)}>
+            -
+          </button>
+          <label 
+            className="AdjustValueBlockValue2"
+            style={{color: "white"}}
+          >
+            {this.props.horizontalWidget.value2.toString()}{"ms"}
+          </label>
+          <button 
+            className="PlusButton"
+            onClick={() => this.incrementValue(2)}>
+            +
+          </button>
+        </div>
+        
       </div>
     )
   }
