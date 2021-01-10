@@ -1,5 +1,5 @@
 import React from 'react';
-import './trigger.css';
+import './../../../css/bottombar/subscomponents/trigger.css';
 
 interface ITriggerProps {
   channel: string, 

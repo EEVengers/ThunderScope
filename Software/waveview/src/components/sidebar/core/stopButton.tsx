@@ -1,5 +1,5 @@
 import React from 'react';
-import './stopButton.css';
+import './../../../css/sidebar/core/stopButton.css';
 
 function StopButton() {
   function handleStopClick() {

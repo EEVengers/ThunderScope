@@ -1,5 +1,5 @@
 import React from 'react';
-import './singleButton.css';
+import './../../../css/sidebar/core/singleButton.css';
 
 function SingleButton() {
   function handleSingleClick() {

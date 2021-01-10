@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import './measurementsWidget.css';
+import './../../../css/sidebar/widgets/measurementsWidget.css';
 
 class MeasurementsWidget extends React.Component<any, any> {
 

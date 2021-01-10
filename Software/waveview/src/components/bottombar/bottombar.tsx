@@ -2,7 +2,7 @@ import React from 'react';
 import Channel from './subcomponents/channel';
 import TimePerDivision from './subcomponents/timeperdivision';
 import Trigger from './subcomponents/trigger';
-import './bottombar.css';
+import './../../css/bottombar/bottombar.css';
 
 interface IBottomBarProps {
   channelList: {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import './horizontalWidget.css';
+import './../../../css/sidebar/widgets/horizontalWidget.css';
 
 class HorizontalWidget extends React.Component<any, any> { 
 

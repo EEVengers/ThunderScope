@@ -1,5 +1,5 @@
 import React from 'react';
-import './timeperdivision.css';
+import './../../../css/bottombar/subscomponents/timeperdivision.css';
 
 interface ITimePerDivisionProps {
   timeValue: number,

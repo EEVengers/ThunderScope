@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import './verticalWidget.css';
+import './../../../css/sidebar/widgets/verticalWidget.css';
 
 class VerticalWidget extends React.Component<any, any> { 
   incrementValue = (value: any) => {

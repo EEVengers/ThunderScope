@@ -2,7 +2,7 @@ import React from 'react';
 import Search from './core/search';
 import StopButton from './core/stopButton';
 import SingleButton from './core/singleButton';
-import './sidebar.css';
+import './../../css/sidebar/sidebar.css';
 import HorizontalWidget from './widgets/horizontalWidget';
 import VerticalWidget from './widgets/verticalWidget';
 import MeasurementsWidget from './widgets/measurementsWidget';

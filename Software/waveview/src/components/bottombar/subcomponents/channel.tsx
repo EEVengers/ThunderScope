@@ -1,5 +1,5 @@
 import React from 'react';
-import './channel.css';
+import './../../../css/bottombar/subscomponents/channel.css';
 
 interface IChannelProps {
   channelNumber: number
