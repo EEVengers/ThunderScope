@@ -4,8 +4,13 @@ import BlockType from '../../../enums/sidebar/widgets/blockType';
 import BlockList from './blocks/blockList';
 import {IBlockProps} from '../../../interfaces/sidebar/widgets/blockInterfaces';
 import {IWidgetProps, IWidgetState} from '../../../interfaces/sidebar/widgets/sidebarInterfaces';
+import AdjustValueBlock from './blocks/adjustValueBlock';
 
 function create(blocktype: BlockType, props: IBlockProps) {
+  if(blocktype == BlockType.AdjustValue) 
+  {
+    return React.createElement(AdjustValueBlock, props);
+  }
   let c = BlockList[blocktype];
   if(c == null) //Also catch undefined
   {

@@ -1,35 +1,22 @@
 import React from 'react';
 import './adjustValueBlock.css';
 import {IAdjustValueBlockProps, IBlockProps, IBlockState} from '../../../../interfaces/sidebar/widgets/blockInterfaces';
+import { connect } from 'react-redux';
 
-class AdjustValueBlock extends React.Component<IBlockProps, IBlockState> {
-  constructor(props: IBlockProps) {
+class AdjustValueBlock extends React.Component<any, any> {
+  constructor(props: any) {
     super(props);
     this.state = {
       data: this.props.data as IAdjustValueBlockProps
     }
   }
 
-  handlePlusButtonClick() {
-    this.setState({
-      data: {
-        value: this.state.data.value + 1,
-        unit: this.state.data.unit,
-        showPerDiv: this.state.data.showPerDiv
-      }
-    });
-    this.forceUpdate();
+  increment = () => {
+    this.props.dispatch({ type: 'INCREMENT_COUNTER' });
   }
 
-  handleMinusButtonClick() {
-    this.setState({
-      data: {
-        value: this.state.data.value - 1,
-        unit: this.state.data.unit,
-        showPerDiv: this.state.data.showPerDiv
-      }
-    });
-    this.forceUpdate();
+  decrement = () => {
+    this.props.dispatch({ type: 'DECREMENT_COUNTER' });
   }
 
   // TODO: Could move the perDivisionText logic to a helper method
@@ -46,18 +33,18 @@ class AdjustValueBlock extends React.Component<IBlockProps, IBlockState> {
       <div className="AdjustValueBlockComponent">
         <button 
           className="MinusButton"
-          onClick={() => this.handleMinusButtonClick()}>
+          onClick={this.decrement}>
           -
         </button>
         <label 
           className="AdjustValueBlockValue"
           style={{color: this.state.data.color}}
         >
-          {this.state.data.value}{this.state.data.unit}{perDivisionText}
+          {this.props.count.count.toString()}{this.state.data.unit}{perDivisionText}
         </label>
         <button 
           className="PlusButton"
-          onClick={() => this.handlePlusButtonClick()}>
+          onClick={this.increment}>
           +
         </button>
       </div>
@@ -65,4 +52,10 @@ class AdjustValueBlock extends React.Component<IBlockProps, IBlockState> {
   }
 }
 
-export default AdjustValueBlock;
+function mapStateToProps(state: { count: any; }) {
+  return {
+    count: state.count
+  };
+}
+
+export default connect(mapStateToProps)(AdjustValueBlock);
