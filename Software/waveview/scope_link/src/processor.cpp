@@ -104,71 +104,48 @@ void Processor::coreLoop()
             count++;
             bufferCol = 0;
 
-//                findNextTrigger( currentBuffer, &bufferCol);
-            // TODO: Reorganize the findowStored condition
-            //       It currently needs to find a trigger after the last trigger
-            //       needed (persistance full). Should detect this before hand
-            while (findNextTrigger( currentBuffer, &bufferCol) && !windowStored.load())
-                {
+            // find a trigger in current buffer
+            while (findNextTrigger( currentBuffer, &bufferCol) && windowStored.load() == false) {
 
                 // Determin how much to copy. Min of:
                 // - remaining space in the window
                 // - remaining space in a buffer
                 copyCount = std::min(windowSize - windowCol, BUFFER_SIZE - bufferCol);
 
-                INFO << "bufferCol: " << bufferCol;
-                INFO << "copyCount: " << copyCount;
+                INFO << "bufferCol: " << bufferCol
+                     << " copyCount: " << copyCount;
 
-                if (windowRow < persistanceSize) {
-//                    // print Data to copy
-//                    std::cout << "Values to copy: ";
-//                    for (uint32_t i = 0; i < copyCount; i++) {
-//                        std::cout << (int)*(currentBuffer->data + bufferCol + i) << ", ";
-//                    }
-//                    std::cout << std::endl;
+                // Copy samples into the window
+                std::memcpy(windowProcessed + (windowCol + windowRow * windowSize),
+                            (currentBuffer->data + bufferCol),
+                            copyCount);
 
-                    // Copy samples into the window
-                    std::memcpy(windowProcessed + (windowCol + windowRow * windowSize),
-                                (currentBuffer->data + bufferCol),
-                                copyCount);
+                bufferCol += copyCount;
+                windowCol += copyCount;
 
-//                    // print Data coppied
-//                    std::cout << "Values Coppied: ";
-//                    for (uint32_t i = 0; i < copyCount; i++) {
-//                        std::cout << (int)*(windowProcessed +
-//                                            (windowCol +
-//                                             windowRow *
-//                                             windowSize) + i);
-//                        std::cout << ", ";
-//                    }
-//                    std::cout << std::endl;
+                INFO << "bufferCol: " << bufferCol 
+                     << " windowCol: " << windowCol
+                     << " windowSize: " << windowSize
+                     << std::endl;
 
-                    bufferCol += copyCount;
-                    windowCol += copyCount;
+                // Reset the window column if its past the end
+                // (when finished a window)
+                if (windowCol == windowSize) {
+                    windowCol = 0;
+                    windowRow++;
 
-                    INFO << "bufferCol: " << bufferCol 
-                         << " windowCol: " << windowCol
-                         << " windowSize: " << windowSize
-                         << std::endl;
-
-                    // Reset the window column if its past the end
-                    // (when finished a window)
-                    if (windowCol == windowSize) {
-                        windowCol = 0;
-                        windowRow++;
-
-                        // Push it into the next 64 space so we don't
-                        // trigger on the same twice
-                        bufferCol += 64;
-                        INFO << "full window. windowCol: "
-                             << windowCol;
-                    } else {
-                        // Partial window coppied
-                        INFO << "partial window. windowCol: "
-                             << windowCol;
-                    }
-
+                    // Push it into the next 64 space so we don't
+                    // trigger on the same twice
+                    bufferCol += 64;
+                    INFO << "full window. windowCol: "
+                         << windowCol;
                 } else {
+                    // Partial window coppied
+                    INFO << "partial window. windowCol: "
+                         << windowCol;
+                }
+
+                if (windowRow == persistanceSize) {
                     // Window persistance buffer filled
                     INFO << "Dumping to csv";
 
