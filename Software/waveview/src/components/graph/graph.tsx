@@ -1,5 +1,5 @@
 import React from 'react';
-import './graph.css';
+import './../../css/graph/graph.css';
 import {
   FlexibleXYPlot,
   XAxis,
