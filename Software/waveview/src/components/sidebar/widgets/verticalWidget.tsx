@@ -23,7 +23,7 @@ class VerticalWidget extends React.Component<any, any> {
     return (
       <div className="VerticalWidget">
         <div className="WidgetTitle">
-          Horizontal
+          Vertical
         </div>
 
       <div className="VerticalWidgetAdjustChannelBlock">
