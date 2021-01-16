@@ -1,15 +1,10 @@
 import React from 'react';
 import './../../../css/bottombar/subscomponents/trigger.css';
 
-interface ITriggerProps {
-  channel: string, 
-  mode: string
-}
-
-function Trigger(props: ITriggerProps) {
+function Trigger() {
   return (
     <div className="TriggerStatus"> 
-      Trig:{props.channel}, Mode:{props.mode}
+      Trig:CH1, Mode:RisingEdge
     </div>
   )
 }

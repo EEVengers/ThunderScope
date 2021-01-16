@@ -19,14 +19,6 @@ class App extends React.Component {
     color: string, 
     className:string
   }[];
-  triggerInformation: {
-    channel: string, 
-    mode: string
-  };
-  timePerDivisionInformation: { 
-    timeValue: number, 
-    timeUnit: string 
-  }
   
   constructor(props: any) {
     super(props);
@@ -41,14 +33,6 @@ class App extends React.Component {
       {color: "#0075FF", className: "Channel3"},
       {color: "#FF0000", className: "Channel4"}
     ]
-    this.triggerInformation = {
-      channel: "CH1",
-      mode: "RisingEdge"
-    }
-    this.timePerDivisionInformation = { 
-      timeValue: 10, 
-      timeUnit: "ns" 
-    }
   }
 
   componentDidMount() {
@@ -83,11 +67,7 @@ class App extends React.Component {
           dataSeries={this.generatorList.map((gen, idx) => gen.getData())}
           colorSeries={this.channelList.map((c, i) => c.color)}
           />
-        <BottomBar 
-          channelList={this.channelList}
-          triggerInformation={this.triggerInformation}
-          timePerDivisionInformation={this.timePerDivisionInformation}
-          />
+        <BottomBar />
         <Sidebar />
       </div>
       );

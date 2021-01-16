@@ -67,7 +67,7 @@ class VerticalWidget extends React.Component<any, any> {
           className="AdjustValueBlockTimePerDivision"
           style={{color: this.props.verticalWidget.channelColorsList[this.props.verticalWidget.activeChannel-1]}}
         >
-          {DefaultValues.x1ProbeValues[this.props.verticalWidget.timePerDivisionIndex[this.props.verticalWidget.activeChannel-1]]}
+          {DefaultValues.x1ProbeValues[this.props.verticalWidget.timePerDivision[this.props.verticalWidget.activeChannel-1].index]}
         </label>
         <button 
           className="PlusButton"
@@ -86,7 +86,7 @@ class VerticalWidget extends React.Component<any, any> {
           className="AdjustValueBlockVerticalOffset"
           style={{color: this.props.verticalWidget.channelColorsList[this.props.verticalWidget.activeChannel-1]}}
         >
-          {this.props.verticalWidget.verticalOffset[this.props.verticalWidget.activeChannel-1].toString()}{"mV"}
+          {this.props.verticalWidget.verticalOffset[this.props.verticalWidget.activeChannel-1].value}{"mV"}
         </label>
         <button 
           className="PlusButton"

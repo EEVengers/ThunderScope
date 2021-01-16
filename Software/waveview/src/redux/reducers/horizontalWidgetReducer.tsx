@@ -1,44 +1,42 @@
 const initialState = {
-  value1: 0,
-  value2: 0
+  horizontalTimeBase: {value: 0, unit: "ns/div"},
+  horizontalOffset: {value: 0, unit: "ms"}
 };
 
 export default function(state = initialState, action: {type: any, payload: any}) {
   switch(action.type) {
-    case "horizontal/increaseValue":
-      if (action.payload == 1) {
-        return {
-          value1: state.value1 + 1,
-          value2: state.value2
+    case "horizontal/increaseTimeBase":
+      return {
+        ...state,
+        horizontalTimeBase: {
+          value: state.horizontalTimeBase.value + 1,
+          unit: state.horizontalTimeBase.unit
         }
       }
-      else if (action.payload == 2) {
-        return {
-          value1: state.value1,
-          value2: state.value2 + 1
+    case "horizontal/decreaseTimeBase":
+      return {
+        ...state,
+        horizontalTimeBase: {
+          value: state.horizontalTimeBase.value - 1,
+          unit: state.horizontalTimeBase.unit
         }
       }
-      else return {
-        value1: state.value1,
-        value2: state.value2
-      };
-    case "horizontal/decreaseValue":
-      if (action.payload == 1) {
-        return {
-          value1: state.value1 - 1,
-          value2: state.value2
+    case "horizontal/increaseOffset":
+      return {
+        ...state,
+        horizontalOffset: {
+          value: state.horizontalOffset.value + 1,
+          unit: state.horizontalOffset.unit
         }
       }
-      else if (action.payload == 2) {
-        return {
-          value1: state.value1,
-          value2: state.value2 - 1
+    case "horizontal/decreaseOffset":
+      return {
+        ...state,
+        horizontalOffset: {
+          value: state.horizontalOffset.value - 1,
+          unit: state.horizontalOffset.unit
         }
       }
-      else return {
-        value1: state.value1,
-        value2: state.value2
-      };
     default:
       return state;
   }

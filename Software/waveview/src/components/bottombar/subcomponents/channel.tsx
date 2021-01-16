@@ -1,25 +1,31 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import './../../../css/bottombar/subscomponents/channel.css';
 
-interface IChannelProps {
-  channelNumber: number
-  voltsPerDiv: number
-  voltageValue: number
-  voltageUnit: string
-  measurementType: string
-  channelClass: string
-  channelColor: string
-};
-
-function Channel(props: IChannelProps) {
-  return (
-    <div className={props.channelClass} style={{color:props.channelColor}}>
-      <label>
-        CH{props.channelNumber}: {props.voltsPerDiv}V/div, {props.voltageValue}{props.voltageUnit}, {props.measurementType}
-      </label>
-    </div>
-  )
+class Channel extends React.Component<any, any> {
+  render() {
+    return (
+      <div className={"Channel" + this.props.channelNumber} style={{color: this.props.verticalWidget.channelColorsList[this.props.channelNumber-1]}}>
+        <label>
+          CH{this.props.channelNumber}: 
+          {" "}
+          {this.props.verticalWidget.timePerDivision[this.props.channelNumber-1].value},
+          {" "}
+          {this.props.verticalWidget.verticalOffset[this.props.channelNumber-1].value}
+          {this.props.verticalWidget.verticalOffset[this.props.channelNumber-1].unit},
+          {" "}
+          {this.props.verticalWidget.measurementType[this.props.channelNumber-1]}
+        </label>
+      </div>
+    )
+  }
 }
-  
-export default Channel;
+
+function mapStateToProps(state: { verticalWidget: any; }) {
+  return {
+    verticalWidget: state.verticalWidget
+  };
+}
+
+export default connect(mapStateToProps)(Channel);
   

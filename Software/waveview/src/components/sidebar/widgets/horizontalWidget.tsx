@@ -4,12 +4,22 @@ import './../../../css/sidebar/widgets/horizontalWidget.css';
 
 class HorizontalWidget extends React.Component<any, any> { 
 
-  incrementValue = (value: any) => {
-    this.props.dispatch({ type: 'horizontal/increaseValue', payload: value});
+  // Horizontal Time Base
+  incrementTimeBase = () => {
+    this.props.dispatch({ type: 'horizontal/increaseTimeBase'});
   }
 
-  decrementValue = (value: any) => {
-    this.props.dispatch({ type: 'horizontal/decreaseValue' , payload: value});
+  decrementTimeBase = () => {
+    this.props.dispatch({ type: 'horizontal/decreaseTimeBase'});
+  }
+
+  // Horizontal Offset
+  incrementOffset = () => {
+    this.props.dispatch({ type: 'horizontal/increaseOffset'});
+  }
+
+  decrementOffset = () => {
+    this.props.dispatch({ type: 'horizontal/decreaseOffset'});
   }
 
   render() {
@@ -19,40 +29,40 @@ class HorizontalWidget extends React.Component<any, any> {
           Horizontal
         </div>
         
-        <div className="HorizontalWidgetAdjustBlock-Value1">
+        <div className="HorizontalWidgetAdjustBlock-HorizontalTimeBase">
           <button 
             className="MinusButton"
-            onClick={() => this.decrementValue(1)}>
+            onClick={() => this.decrementTimeBase}>
             -
           </button>
           <label 
-            className="AdjustValueBlockValue1"
+            className="AdjustValueBlockHorizontalTimeBase"
             style={{color: "white"}}
           >
-            {this.props.horizontalWidget.value1.toString()}{"ns/div"}
+            {this.props.horizontalWidget.horizontalTimeBase.value.toString()}{this.props.horizontalWidget.horizontalTimeBase.unit}
           </label>
           <button 
             className="PlusButton"
-            onClick={() => this.incrementValue(1)}>
+            onClick={() => this.incrementTimeBase}>
             +
           </button>
         </div>
 
-        <div className="HorizontalWidgetAdjustBlock-Value2">
+        <div className="HorizontalWidgetAdjustBlock-HorizontalOffset">
           <button 
             className="MinusButton"
-            onClick={() => this.decrementValue(2)}>
+            onClick={() => this.decrementOffset}>
             -
           </button>
           <label 
-            className="AdjustValueBlockValue2"
+            className="AdjustValueBlockHorizontalOffset"
             style={{color: "white"}}
           >
-            {this.props.horizontalWidget.value2.toString()}{"ms"}
+            {this.props.horizontalWidget.horizontalOffset.value.toString()}{this.props.horizontalWidget.horizontalOffset.unit}
           </label>
           <button 
             className="PlusButton"
-            onClick={() => this.incrementValue(2)}>
+            onClick={() => this.incrementOffset}>
             +
           </button>
         </div>
