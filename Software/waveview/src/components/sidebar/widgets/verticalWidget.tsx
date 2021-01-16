@@ -41,7 +41,7 @@ class VerticalWidget extends React.Component<any, any> {
       <div className="VerticalWidgetAdjustChannelBlock">
         <button 
           className="MinusButton"
-          onClick={this.decreaseChannel}>
+          onClick={() => this.decreaseChannel()}>
           -
         </button>
         <label 
@@ -52,7 +52,7 @@ class VerticalWidget extends React.Component<any, any> {
         </label>
         <button 
           className="PlusButton"
-          onClick={this.increaseChannel}>
+          onClick={() => this.increaseChannel()}>
           +
         </button>
       </div>
@@ -60,7 +60,7 @@ class VerticalWidget extends React.Component<any, any> {
       <div className="VerticalWidgetAdjustBlock-TimePerDivision">
         <button 
           className="MinusButton"
-          onClick={() => this.decrementTimePerDivision}>
+          onClick={() => this.decrementTimePerDivision()}>
           -
         </button>
         <label 
@@ -71,7 +71,7 @@ class VerticalWidget extends React.Component<any, any> {
         </label>
         <button 
           className="PlusButton"
-          onClick={() => this.incrementTimePerDivision}>
+          onClick={() => this.incrementTimePerDivision()}>
           +
         </button>
       </div>
@@ -79,7 +79,7 @@ class VerticalWidget extends React.Component<any, any> {
       <div className="VerticalWidgetAdjustBlock-VerticalOffset">
         <button 
           className="MinusButton"
-          onClick={() => this.decrementVerticalOffset}>
+          onClick={() => this.decrementVerticalOffset()}>
           -
         </button>
         <label 
@@ -90,7 +90,7 @@ class VerticalWidget extends React.Component<any, any> {
         </label>
         <button 
           className="PlusButton"
-          onClick={() => this.incrementVerticalOffset}>
+          onClick={() => this.incrementVerticalOffset()}>
           +
         </button>
       </div>

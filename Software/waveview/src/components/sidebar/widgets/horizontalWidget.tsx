@@ -32,7 +32,7 @@ class HorizontalWidget extends React.Component<any, any> {
         <div className="HorizontalWidgetAdjustBlock-HorizontalTimeBase">
           <button 
             className="MinusButton"
-            onClick={() => this.decrementTimeBase}>
+            onClick={() => this.decrementTimeBase()}>
             -
           </button>
           <label 
@@ -43,7 +43,7 @@ class HorizontalWidget extends React.Component<any, any> {
           </label>
           <button 
             className="PlusButton"
-            onClick={() => this.incrementTimeBase}>
+            onClick={() => this.incrementTimeBase()}>
             +
           </button>
         </div>
@@ -51,7 +51,7 @@ class HorizontalWidget extends React.Component<any, any> {
         <div className="HorizontalWidgetAdjustBlock-HorizontalOffset">
           <button 
             className="MinusButton"
-            onClick={() => this.decrementOffset}>
+            onClick={() => this.decrementOffset()}>
             -
           </button>
           <label 
@@ -62,7 +62,7 @@ class HorizontalWidget extends React.Component<any, any> {
           </label>
           <button 
             className="PlusButton"
-            onClick={() => this.incrementOffset}>
+            onClick={() => this.incrementOffset()}>
             +
           </button>
         </div>
