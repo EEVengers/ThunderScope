@@ -1,22 +1,34 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import DefaultValues from '../../../configuration/defaultValues';
 import './../../../css/sidebar/widgets/verticalWidget.css';
 
 class VerticalWidget extends React.Component<any, any> { 
-  incrementValue = (value: any) => {
-    this.props.dispatch({ type: 'vertical/increaseValue', payload: value});
-  }
-
-  decrementValue = (value: any) => {
-    this.props.dispatch({ type: 'vertical/decreaseValue' , payload: value});
-  }
-
-  increaseChannel = () => {
+   // Active Channel
+   increaseChannel = () => {
     this.props.dispatch({type: 'vertical/increaseChannel'});
   }
 
   decreaseChannel = () => {
     this.props.dispatch({type: 'vertical/decreaseChannel'});
+  }
+
+  // Vertical Offset
+  incrementVerticalOffset = () => {
+    this.props.dispatch({ type: 'vertical/increaseVerticalOffset'});
+  }
+
+  decrementVerticalOffset = () => {
+    this.props.dispatch({ type: 'vertical/decreaseVerticalOffset'});
+  }
+
+  // Time Per Division
+  incrementTimePerDivision = () => {
+    this.props.dispatch({type: 'vertical/increaseTimePerDivision'});
+  }
+
+  decrementTimePerDivision = () => {
+    this.props.dispatch({type: 'vertical/decreaseTimePerDivision'});
   }
 
   render() {
@@ -34,9 +46,9 @@ class VerticalWidget extends React.Component<any, any> {
         </button>
         <label 
           className="AdjustChannelBlockValue"
-          style={{color: this.props.verticalWidget.channelColorsList[this.props.verticalWidget.channel-1]}}
+          style={{color: this.props.verticalWidget.channelColorsList[this.props.verticalWidget.activeChannel-1]}}
         >
-          CH{this.props.verticalWidget.channel.toString()}
+          CH{this.props.verticalWidget.activeChannel.toString()}
         </label>
         <button 
           className="PlusButton"
@@ -45,40 +57,40 @@ class VerticalWidget extends React.Component<any, any> {
         </button>
       </div>
 
-      <div className="VerticalWidgetAdjustBlock-Value1">
+      <div className="VerticalWidgetAdjustBlock-TimePerDivision">
         <button 
           className="MinusButton"
-          onClick={() => this.decrementValue(1)}>
+          onClick={() => this.decrementTimePerDivision}>
           -
         </button>
         <label 
-          className="AdjustValueBlockValue1"
-          style={{color: this.props.verticalWidget.channelColorsList[this.props.verticalWidget.channel-1]}}
+          className="AdjustValueBlockTimePerDivision"
+          style={{color: this.props.verticalWidget.channelColorsList[this.props.verticalWidget.activeChannel-1]}}
         >
-          {this.props.verticalWidget.value1.toString()}{"V/div"}
+          {DefaultValues.x1ProbeValues[this.props.verticalWidget.timePerDivisionIndex[this.props.verticalWidget.activeChannel-1]]}
         </label>
         <button 
           className="PlusButton"
-          onClick={() => this.incrementValue(1)}>
+          onClick={() => this.incrementTimePerDivision}>
           +
         </button>
       </div>
 
-      <div className="VerticalWidgetAdjustBlock-Value2">
+      <div className="VerticalWidgetAdjustBlock-VerticalOffset">
         <button 
           className="MinusButton"
-          onClick={() => this.decrementValue(2)}>
+          onClick={() => this.decrementVerticalOffset}>
           -
         </button>
         <label 
-          className="AdjustValueBlockValue2"
-          style={{color: this.props.verticalWidget.channelColorsList[this.props.verticalWidget.channel-1]}}
+          className="AdjustValueBlockVerticalOffset"
+          style={{color: this.props.verticalWidget.channelColorsList[this.props.verticalWidget.activeChannel-1]}}
         >
-          {this.props.verticalWidget.value2.toString()}{"mV"}
+          {this.props.verticalWidget.verticalOffset[this.props.verticalWidget.activeChannel-1].toString()}{"mV"}
         </label>
         <button 
           className="PlusButton"
-          onClick={() => this.incrementValue(2)}>
+          onClick={() => this.incrementVerticalOffset}>
           +
         </button>
       </div>
