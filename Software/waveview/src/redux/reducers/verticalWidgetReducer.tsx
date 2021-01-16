@@ -40,7 +40,7 @@ export default function(state = initialState, action: {type: any, payload: any})
         activeChannel: state.activeChannel + 1
       };
     case "vertical/decreaseChannel":
-      if (state.activeChannel == 1) {
+      if (state.activeChannel === 1) {
         return { ...state }
       }
       return {
@@ -57,12 +57,14 @@ export default function(state = initialState, action: {type: any, payload: any})
       if (state.timePerDivision[state.activeChannel - 1].index >= 12) {
         return { ...state }
       };
+      break;
       // Increase time per division
     case "vertical/decreaseTimePerDivision":
-      if (state.timePerDivision[state.activeChannel - 1].index == 0) {
+      if (state.timePerDivision[state.activeChannel - 1].index === 0) {
         return { ...state }
       };
       // Decrease time per division
+      break;
     default:
       return state;
   }
