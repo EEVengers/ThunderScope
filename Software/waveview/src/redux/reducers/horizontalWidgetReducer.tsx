@@ -1,4 +1,5 @@
 import DefaultValues from '../../configuration/defaultValues';
+import TimeUnit from '../../configuration/enums/timeUnit';
 
 const initialState = {
   horizontalTimeBase: {
@@ -7,7 +8,7 @@ const initialState = {
   },
   horizontalOffset: {
     value: 0, 
-    unit: "ms"
+    unit: TimeUnit.MilliSecond
   }
 };
 

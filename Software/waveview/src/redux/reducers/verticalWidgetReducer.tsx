@@ -1,6 +1,7 @@
 import DefaultValues from '../../configuration/defaultValues';
 import DefaultChannelColor from '../../configuration/enums/defaultChannelColor';
 import MeasurementType from '../../configuration/enums/measurementType';
+import VoltageUnit from '../../configuration/enums/voltageUnit';
 
 const initialState = {
   activeChannel: 1,
@@ -17,10 +18,10 @@ const initialState = {
     {value: DefaultValues.x1ProbeValues[6], index: 6}
   ],
   verticalOffset: [
-    {value: 0, unit: "mV"},
-    {value: 0, unit: "mV"},
-    {value: 0, unit: "mV"},
-    {value: 0, unit: "mV"}
+    {value: 0, unit: VoltageUnit.MilliVolt},
+    {value: 0, unit: VoltageUnit.MilliVolt},
+    {value: 0, unit: VoltageUnit.MilliVolt},
+    {value: 0, unit: VoltageUnit.MilliVolt}
   ],
   measurementType: [
     MeasurementType.DC,
