@@ -1,44 +1,57 @@
+import DefaultValues from '../../configuration/defaultValues';
+import TimeUnit from '../../configuration/enums/timeUnit';
+
 const initialState = {
-  value1: 0,
-  value2: 0
+  horizontalTimeBase: {
+    value: DefaultValues.horizontalTimeBases[15], 
+    index: 15
+  },
+  horizontalOffset: {
+    value: 0, 
+    unit: TimeUnit.MilliSecond
+  }
 };
 
 export default function(state = initialState, action: {type: any, payload: any}) {
   switch(action.type) {
-    case "horizontal/increaseValue":
-      if (action.payload == 1) {
-        return {
-          value1: state.value1 + 1,
-          value2: state.value2
+    case "horizontal/increaseTimeBase":
+      if (state.horizontalTimeBase.index >= 30) {
+        return { ...state };
+      }
+      return {
+        ...state,
+        horizontalTimeBase: {
+          value: DefaultValues.horizontalTimeBases[state.horizontalTimeBase.index + 1],
+          index: state.horizontalTimeBase.index + 1
         }
       }
-      else if (action.payload == 2) {
-        return {
-          value1: state.value1,
-          value2: state.value2 + 1
+    case "horizontal/decreaseTimeBase":
+      if (state.horizontalTimeBase.index === 0) {
+        return { ...state };
+      }
+      return {
+        ...state,
+        horizontalTimeBase: {
+          value: DefaultValues.horizontalTimeBases[state.horizontalTimeBase.index - 1],
+          index: state.horizontalTimeBase.index - 1
         }
       }
-      else return {
-        value1: state.value1,
-        value2: state.value2
-      };
-    case "horizontal/decreaseValue":
-      if (action.payload == 1) {
-        return {
-          value1: state.value1 - 1,
-          value2: state.value2
+    case "horizontal/increaseOffset":
+      return {
+        ...state,
+        horizontalOffset: {
+          ...state.horizontalOffset,
+          value: state.horizontalOffset.value + 1
         }
       }
-      else if (action.payload == 2) {
-        return {
-          value1: state.value1,
-          value2: state.value2 - 1
+    case "horizontal/decreaseOffset":
+      return {
+        ...state,
+        horizontalOffset: {
+          ...state.horizontalOffset,
+          value: state.horizontalOffset.value - 1
         }
       }
-      else return {
-        value1: state.value1,
-        value2: state.value2
-      };
     default:
       return state;
   }

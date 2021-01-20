@@ -1,17 +1,21 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import './../../../css/bottombar/subscomponents/trigger.css';
 
-interface ITriggerProps {
-  channel: string, 
-  mode: string
+class Trigger extends React.Component<any, any> { 
+  render() {
+    return (
+      <div className="TriggerStatus"> 
+        Trig:CH{this.props.triggerWidget.triggerChannel}, Mode:{this.props.triggerWidget.triggerType}
+      </div>
+    )
+  }
 }
 
-function Trigger(props: ITriggerProps) {
-  return (
-    <div className="TriggerStatus"> 
-      Trig:{props.channel}, Mode:{props.mode}
-    </div>
-  )
+function mapStateToProps(state: { triggerWidget: any; }) {
+  return {
+    triggerWidget: state.triggerWidget
+  };
 }
 
-export default Trigger;
+export default connect(mapStateToProps)(Trigger);

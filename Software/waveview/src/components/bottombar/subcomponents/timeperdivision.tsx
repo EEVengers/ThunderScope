@@ -1,17 +1,22 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import './../../../css/bottombar/subscomponents/timeperdivision.css';
 
-interface ITimePerDivisionProps {
-  timeValue: number,
-  timeUnit: string
+class TimePerDivision extends React.Component<any, any> { 
+  render() {
+    return(
+      <div className="TimePerDivisionComponent">
+        {this.props.horizontalWidget.horizontalTimeBase.value.toString()}
+        {this.props.horizontalWidget.horizontalTimeBase.unit}
+      </div>
+    )
+  }
 }
 
-function TimePerDivision(props: ITimePerDivisionProps) {
-  return(
-    <div className="TimePerDivisionComponent">
-      {props.timeValue}{props.timeUnit}/div
-    </div>
-  )
+function mapStateToProps(state: { horizontalWidget: any; }) {
+  return {
+    horizontalWidget: state.horizontalWidget
+  };
 }
 
-export default TimePerDivision;
+export default connect(mapStateToProps)(TimePerDivision);
