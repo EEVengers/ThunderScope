@@ -45,7 +45,8 @@ void DataTransferHandler::FTDITransferThread(DataTransferHandler* handler)
 //    while (true) {
         //read a chunck from the FTDI chip
         handler->lock.lock();
-        auto errorCode = FT_ReadPipe(handler->superSpeedFIFOBridgeHandle,FTDI_FLAG_READ_CHIP_TO_COMPUTER,handler->asyncDataBuffers[0],MEDIUM_BUFF_SIZE,&bytesReadFromPipe,nullptr);
+        FT_STATUS errorCode = FT_OK;
+        errorCode = FT_ReadPipe(handler->superSpeedFIFOBridgeHandle,FTDI_FLAG_READ_CHIP_TO_COMPUTER,handler->asyncDataBuffers[0],MEDIUM_BUFF_SIZE,(PULONG)(&bytesReadFromPipe),nullptr);
         if(errorCode != 0 || bytesReadFromPipe != MEDIUM_BUFF_SIZE) throw EVException(errorCode,"DataTransferHandler:FTDITransferThread:FT_ReadPipe()");
         //transfer chunck to shared cache
         handler->CopyFunc(handler->asyncDataBuffers[0], idx, bytesReadFromPipe, (void*)handler);

@@ -18,7 +18,6 @@ EVLogger logger;
 //---------------EVException---------------
 EVException::EVException(int errorCode, const char* subSystem)
     : m_msg(std::string("Exception with error code - ")
-            + std::to_string(errorCode)
             + std::string(" - from SubSystem: ")
             + std::string(subSystem)
             )
@@ -30,7 +29,7 @@ const char * EVException::what() const throw()
     return m_msg.c_str();
 }
 
-EVException::~EVException() _NOEXCEPT
+EVException::~EVException()
 {
 }
 

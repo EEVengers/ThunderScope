@@ -56,7 +56,7 @@ public:
     virtual const char * what() const throw();
 
     EVException(int errorCode, const char* subSystem);
-    ~EVException() _NOEXCEPT;
+    ~EVException();
 
 };
 

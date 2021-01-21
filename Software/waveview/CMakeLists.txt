@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.15)
 # Name of the c++ project, left as addon for now
 project (addon)
 
-set(CMAKE_CXX_STANDARD 17)
+add_compile_options("/std:c++latest")
 # Comment out this line if you will try_compile with CMake's boost, for C team's consideration.
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
@@ -18,7 +18,8 @@ include_directories(${CMAKE_JS_INC})
 file(GLOB SOURCE_FILES "scope_link/src/*.cpp" "scope_link/include/*.hpp" "scope_link/include/*.h")
 
 #include ftdi driver library
-file(GLOB LIBRARIES "/usr/local/lib/libftd3xx.dylib")
+#file(GLOB LIBRARIES "C:\\FTDI_DRIVER\\FTD3XX.lib")
+file(GLOB LIBRARIES "scope_link/lib/FTD3XXLibrary_v1.3.0.4/x64/FTD3XX.lib")
 
 # This line tells CMake that we're building a shared library
 # from the above source files

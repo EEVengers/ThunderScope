@@ -45,7 +45,7 @@ DataPoint* SincInterpolate(DataPoint* buff, int buffSize, int* interpolatedBuffS
             for(int m = windowStart; m < windowStart + windowSize; m++) {
                 float num, denum, tByDeltaT;
 
-                tByDeltaT = ( M_PI * ((t / samplingPeriod) - float(m - i)) ) / float(windowSize);
+                tByDeltaT = ( 3.14159 * ((t / samplingPeriod) - float(m - i)) ) / float(windowSize);
                 if(tByDeltaT <= 0.001 && tByDeltaT >= -0.001) {
                     points[pointIdx].value += buff[m].value;
 		            continue;

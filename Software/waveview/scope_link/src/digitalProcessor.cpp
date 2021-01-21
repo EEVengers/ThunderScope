@@ -81,7 +81,7 @@ void DigitalProcessor::risingEdgeTriggerMethod(DigitalProcessor* handler) {
         //hand data to next step
         handler->bytesProcessed += MEDIUM_BUFF_SIZE * 8;
         free(points);
-        free(interpolatedPoints);        
+        free(interpolatedPoints);
     }
 
     free(tempBuff);

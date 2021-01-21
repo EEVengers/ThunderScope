@@ -46,7 +46,7 @@ void TestDataThroughPut() {
 
     //create a transfer thread and 3 risingEdgeTrigger DataProccessing Threads
     DataTransferHandler* dataExchanger;
-    DigitalProcessor* digitalProcessor[numDigitalProcessors];
+    DigitalProcessor** digitalProcessor = (DigitalProcessor**)malloc(sizeof(DigitalProcessor*) * numDigitalProcessors);
     
     dataExchanger = new DataTransferHandler();
     dataExchanger->SetCopyFunc(DataTransferFullBuffRead);

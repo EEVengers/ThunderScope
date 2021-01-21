@@ -23,7 +23,9 @@ void InitFTDISuperSpeedChip(FT_HANDLE *deviceHandle) {
 
     //Get library version
     FT_GetLibraryVersion(&libraryVersion);
-    EVLogger::Debug( (std::string("Library Version is: ") + std::to_string(libraryVersion)).c_str() );
+    char libVersionComment[128];
+    sprintf(libVersionComment,"Library Version is: %d",libraryVersion);
+    EVLogger::Debug( libVersionComment );
 
     //check the driver for a super speed FIFO buffer, if it exists, open it and set its configuration.
     error = FT_CreateDeviceInfoList(&numDevices);
@@ -35,10 +37,12 @@ void InitFTDISuperSpeedChip(FT_HANDLE *deviceHandle) {
         error = EVErrorCodeInvalidValue;
         throw EVException(error,"EVSuperSpeedFIFOBRidge:InitFTDISuperSpeedChip. No devices found");
     } else {
-        EVLogger::Debug( (std::string("Devices found: ") + std::to_string(numDevices)).c_str() );
+        char numDevicesComment[128];
+        sprintf(numDevicesComment,"Devices found: %d",numDevices);
+        EVLogger::Debug(numDevicesComment);
     }
 
-    FT_DEVICE_LIST_INFO_NODE deviceInfoList[numDevices];
+    FT_DEVICE_LIST_INFO_NODE* deviceInfoList = (FT_DEVICE_LIST_INFO_NODE*)malloc(sizeof(FT_DEVICE_LIST_INFO_NODE) * numDevices);
 
     error = FT_GetDeviceInfoList(deviceInfoList, &numDevices);
     if(FT_OK != error) {
@@ -72,7 +76,9 @@ void InitFTDISuperSpeedChip(FT_HANDLE *deviceHandle) {
 
     //Get Drvier Version for the FTDI chip
     FT_GetDriverVersion(*deviceHandle,&driverVersion);
-    EVLogger::Debug( (std::string("Driver Version for FT601 is: ") + std::to_string(driverVersion)).c_str() );
+    char driverVersionComment[128];
+    sprintf(driverVersionComment,"Driver Version for FT601 is: %d",driverVersion);
+    EVLogger::Debug(driverVersionComment);
 
     //Set Channel Config to fifo600_mode and 100Mhz clk with appropiate flags
     FT_60XCONFIGURATION oldConfig, newConfig;

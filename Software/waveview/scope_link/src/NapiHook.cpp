@@ -1,5 +1,5 @@
 
-#ifdef CMAKE
+
 #include "NapiHook.hpp"
 #include "EVTester.hpp"
 #include "EVMath.hpp"
@@ -7,22 +7,31 @@
 #include "dataTransferHandler.hpp"
 #include "string.h"
 
+//Queues for Rx and Tx between C++ and Js
+std::queue<scope_link::NapiPacket*> _txQueue;
+std::queue<scope_link::NapiPacket*> _rxQueue;
+//Mutexs for the queues
+std::shared_mutex _txLock;
+std::shared_mutex _rxLock;
+
+//array of packet processers that will execute the requests from JS
+scope_link::PacketProcesser** _processers;
+
+//test variables
 EVSharedCache* dataCache;
 unsigned char* bigArray;
+
+
 
 //Init Code
 int scope_link::InitScopeLink() {
     
-    //create a transfer thread and 3 risingEdgeTrigger DataProccessing Threads
-    //DataTransferHandler* dataExchanger;
- 
-    //dataExchanger = new DataTransferHandler();
-    //dataExchanger->SetCopyFunc(DataTransferFullBuffRead);
-    //dataCache = dataExchanger->threadSharedCache;
- 
-    //start the transfer thread
-    //dataExchanger->StartFTDITransferThread();
-    
+    _processers = (scope_link::PacketProcesser**)malloc(sizeof(scope_link::PacketProcesser*) * scope_link::_num_of_packet_processer);
+    for(int i = 0; i < scope_link::_num_of_packet_processer; i++) {
+        _processers[i] = new scope_link::PacketProcesser(_txQueue,_rxQueue,_txLock,_rxLock);
+        _processers[i]->start();
+    }
+
     //used to test the throughput of the NAPI link
     bigArray = (unsigned char*)malloc(sizeof(unsigned char) * TEST_ARRAY_SIZE);
     for(int i = 0 ; i < TEST_ARRAY_SIZE; i++) {
@@ -41,58 +50,59 @@ Napi::Number scope_link::InitScopeLinkWrapper(const Napi::CallbackInfo& info) {
 
 
 int scope_link::HandleCommand(unsigned char* data, size_t size) {
-    scope_link::NapiPacket packet;
+    scope_link::NapiPacket* packet = (scope_link::NapiPacket*)malloc(sizeof(scope_link::NapiPacket));
     
-    packet.command = data[0];
-    packet.packetID = ((uint32_t*)(data + 1))[0];
-    packet.data = (unsigned char*)malloc(sizeof(unsigned char) * (size - 5));
-    packet.dataSize = size - 5;
-    
-    memcpy(packet.data,data + 5,packet.dataSize);
-    
-    printf("Packet Recieved: PacketID: %X, Command: %d, dataSize: %zu\n", packet.packetID, packet.command, packet.dataSize);
-    for(int i = 0; i < packet.dataSize; i++) {
-        std::cout << "Packet data[" << i << "]: " << packet.data[i] << std::endl;
-    }
+    packet->command = data[0];
+    packet->packetID = ((uint32_t*)(data + 1))[0];
+    packet->data = (unsigned char*)malloc(sizeof(unsigned char) * (size - 5));
+    packet->dataSize = size - 5;
+    memcpy(packet->data,data + 5,packet->dataSize);
     
     return 100;
 }
 
 //WRAPPER
+//Bad name i know, but this is a command that JS has sent, ie JS Send Command -> C++
 Napi::Number scope_link::SendCommand(const Napi::CallbackInfo& info) {
     
-    Napi::Buffer<unsigned char> buffer = info[0].As<Napi::Buffer<unsigned char>>();
-    unsigned char* data = (unsigned char*)malloc(sizeof(unsigned char) * buffer.Length());
+    Napi::Buffer<uint8_t> buffer = info[0].As<Napi::Buffer<uint8_t>>();
+    uint8_t* data = (unsigned char*)malloc(sizeof(uint8_t) * buffer.Length());
     memcpy(data,buffer.Data(),buffer.Length());
+
+    //push the packet into the queue
+    _rxLock.lock();
+    _rxQueue.push((scope_link::NapiPacket*)data);
+    _rxLock.unlock();
     
-    return Napi::Number::New(info.Env(),scope_link::HandleCommand(data,buffer.Length()));
+    return Napi::Number::New(info.Env(),((scope_link::NapiPacket*)(data))->packetID);
 }
 
 unsigned char* scope_link::GetData(size_t* packetSize) {
     unsigned char* packetBuff;
-    scope_link::NapiPacket packet;
+    scope_link::NapiPacket* packet;
     
     //TODO here would go the code that checks that packet processing machine for any packets to send
     //to javascript. This is to be implmented in talks with Alex and Daniel
-    //use a hard coded packet for now
-    packet.command = 1;
-    packet.packetID = 20;
-    packet.data = (unsigned char*)malloc(sizeof(unsigned char) * 20);
-    for(int i = 0; i < 20; i++) {
-        packet.data[i] = i;
+    if(_txQueue.empty()) {
+        packet = &scope_link::_emptyPacket;
+    } else {
+        _txLock.lock();
+        packet = _txQueue.front();
+        _txQueue.pop();
+        _txLock.unlock();
     }
-    packet.dataSize = 20;
     
     //fill the packetbuff
     //allocate memory for the uint8_t command and uint32_t packetID
-    packetBuff = (unsigned char*)malloc(5 + sizeof(unsigned char) * packet.dataSize);
+    packetBuff = (unsigned char*)malloc(6 + sizeof(unsigned char) * packet->dataSize);
     
     //copy the first six bytes in, command, packetID and dataSize
-    memcpy(packetBuff,&packet,6);
+    memcpy(packetBuff,packet,6);
     //copy in the packet data
-    memcpy(packetBuff + 6,packet.data,packet.dataSize);
+    memcpy(packetBuff + 6,packet->data,packet->dataSize);
     
-    *packetSize = packet.dataSize + 6;
+    *packetSize = packet->dataSize + 6;
+    free(packet);
     return packetBuff;
 }
 
@@ -152,6 +162,3 @@ Napi::Object scope_link::NapiExport(Napi::Env env, Napi::Object exports) {
 
     return exports;
 }
-
-#endif
-
