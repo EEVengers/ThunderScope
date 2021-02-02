@@ -21,7 +21,7 @@ export default function(state = initialState, action: {type: any, payload: any})
       }
       return {
         ...state,
-        activeChannel: state.triggerChannel + 1
+        triggerChannel: state.triggerChannel + 1
       };
     case "trigger/decreaseChannel":
       if (state.triggerChannel == 1) {
@@ -29,7 +29,7 @@ export default function(state = initialState, action: {type: any, payload: any})
       }
       return {
         ...state,
-        activeChannel: state.triggerChannel - 1
+        triggerChannel: state.triggerChannel - 1
       };
     default:
       return state;
