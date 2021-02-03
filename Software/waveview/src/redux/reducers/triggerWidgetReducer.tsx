@@ -31,6 +31,27 @@ export default function(state = initialState, action: {type: any, payload: any})
         ...state,
         triggerChannel: state.triggerChannel - 1
       };
+    case "trigger/changeTriggerType":
+      if (state.triggerType == TriggerType.RisingEdge) {
+        return {
+          ...state,
+          triggerType: TriggerType.FallingEdge
+        }
+      }
+      return {
+        ...state,
+        triggerType: TriggerType.RisingEdge
+      }
+    case "trigger/increaseTriggerLevel":
+      return {
+        ...state,
+        triggerLevel: state.triggerLevel + 1
+      };
+    case "trigger/decreaseTriggerLevel":
+      return {
+        ...state,
+        triggerLevel: state.triggerLevel - 1
+      };
     default:
       return state;
   }
