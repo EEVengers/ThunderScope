@@ -83,14 +83,14 @@ unsigned char* scope_link::GetData(size_t* packetSize) {
     
     //TODO here would go the code that checks that packet processing machine for any packets to send
     //to javascript. This is to be implmented in talks with Alex and Daniel
+    _txLock.lock();
     if(_txQueue.empty()) {
         packet = &scope_link::_emptyPacket;
     } else {
-        _txLock.lock();
         packet = _txQueue.front();
         _txQueue.pop();
-        _txLock.unlock();
     }
+    _txLock.unlock();
     
     //fill the packetbuff
     //allocate memory for the uint8_t command and uint32_t packetID
@@ -101,8 +101,8 @@ unsigned char* scope_link::GetData(size_t* packetSize) {
     //copy in the packet data
     memcpy(packetBuff + 6,packet->data,packet->dataSize);
     
-    *packetSize = packet->dataSize + 6;
-    free(packet);
+    *packetSize = packet->dataSize + 6;//sets the size of the payload in the packet
+    free(packet);//frees that packet that was waiting in the queue to be transmitted
     return packetBuff;
 }
 
@@ -114,7 +114,9 @@ Napi::ArrayBuffer scope_link::GetDataWrapper(const Napi::CallbackInfo& info) {
     unsigned char* data = scope_link::GetData(&packetSize);
     
     Napi::ArrayBuffer array =  Napi::ArrayBuffer::New(env,(void*)data,packetSize,
-                                  [](Napi::Env env,void* buff){ std::cout << "Callback Called" << std::endl;});
+                                  [](Napi::Env env,void* buff){});
+
+    free(data);
     
     return array;
 }
