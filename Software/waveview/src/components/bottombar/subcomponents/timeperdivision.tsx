@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import './../../../css/bottombar/subscomponents/timeperdivision.css';
+import './../../../css/bottombar/subcomponents/timeperdivision.css';
 
 class TimePerDivision extends React.Component<any, any> { 
   render() {

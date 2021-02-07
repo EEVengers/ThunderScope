@@ -1,5 +1,6 @@
 import TriggerType from '../../configuration/enums/triggerType';
 import DefaultChannelColor from '../../configuration/enums/defaultChannelColor';
+import VoltageUnit from '../../configuration/enums/voltageUnit';
 
 const initialState = {
   triggerChannel: 1,
@@ -9,11 +10,24 @@ const initialState = {
     DefaultChannelColor.Channel3, 
     DefaultChannelColor.Channel4
   ],
-  triggerType: TriggerType.RisingEdge,
-  triggerLevel: 0
+  triggerType: [
+    TriggerType.RisingEdge,
+    TriggerType.RisingEdge,
+    TriggerType.RisingEdge,
+    TriggerType.RisingEdge
+  ],
+  triggerLevel: [
+    {value: 0.0, unit: VoltageUnit.MilliVolt},
+    {value: 0.0, unit: VoltageUnit.MilliVolt},
+    {value: 0.0, unit: VoltageUnit.MilliVolt},
+    {value: 0.0, unit: VoltageUnit.MilliVolt}
+  ]
 };
 
 export default function(state = initialState, action: {type: any, payload: any}) {
+  var channelIndex = state.triggerChannel - 1;
+  var tmp;
+
   switch(action.type) {
     case "trigger/increaseChannel":
       if (state.triggerChannel >= 4) {
@@ -32,26 +46,41 @@ export default function(state = initialState, action: {type: any, payload: any})
         triggerChannel: state.triggerChannel - 1
       };
     case "trigger/changeTriggerType":
-      if (state.triggerType == TriggerType.RisingEdge) {
+      tmp = state.triggerType;
+
+      if (state.triggerType[channelIndex] == TriggerType.RisingEdge) {
+        tmp[channelIndex] = TriggerType.FallingEdge;
         return {
           ...state,
-          triggerType: TriggerType.FallingEdge
+          triggerType: tmp
         }
       }
+      tmp[channelIndex] = TriggerType.RisingEdge;
       return {
         ...state,
-        triggerType: TriggerType.RisingEdge
+        triggerType: tmp
       }
-    case "trigger/increaseTriggerLevel":
+    case "trigger/increaseTriggerLevelValue":
+      tmp = state.triggerLevel;
+      tmp[channelIndex].value = Number((state.triggerLevel[channelIndex].value + 0.1).toFixed(1));
       return {
         ...state,
-        triggerLevel: state.triggerLevel + 1
+        triggerLevel: tmp
       };
-    case "trigger/decreaseTriggerLevel":
+    case "trigger/decreaseTriggerLevelValue":
+      tmp = state.triggerLevel;
+      tmp[channelIndex].value = Number((state.triggerLevel[channelIndex].value - 0.1).toFixed(1));
       return {
         ...state,
-        triggerLevel: state.triggerLevel - 1
+        triggerLevel: tmp
       };
+    case "trigger/changeTriggerLevelUnit":
+      tmp = state.triggerLevel;
+      tmp[channelIndex].unit = action.payload;
+      return {
+        ...state,
+        triggerLevel: tmp
+      }
     default:
       return state;
   }
