@@ -1,0 +1,80 @@
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Mon Feb  8 15:47:19 2021
+# Process ID: 33288
+# Current directory: C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent32088 C:\Users\Aleksa\Documents\EEVengers\Firmware\Artix7_PCIe\Blink\Blink.xpr
+# Log file: C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/vivado.log
+# Journal file: C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.xpr
+INFO: [Project 1-313] Project file moved from 'C:/Users/Aleksa/Documents/FPGA_Dev/Blink' since last save.
+INFO: [filemgmt 56-1] Board Part Repository Path: Directory not found as 'C:/Users/Aleksa/Xilinx/Vivado/2020.2/xhub/board_store/xilinx_board_store'; using path 'C:/Xilinx/Vivado/2020.2/xhub/board_store/xilinx_board_store' instead.
+WARNING: [filemgmt 56-2] Default IP Output Path : Could not find the directory 'C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.gen/sources_1', nor could it be found using path 'C:/Users/Aleksa/Documents/FPGA_Dev/Blink/Blink.gen/sources_1'.
+Scanning sources...
+Finished scanning sources
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2020.2/data/ip'.
+update_compile_order -fileset sources_1
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 16
+[Mon Feb  8 15:48:52 2021] Launched synth_1...
+Run output will be captured here: C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.runs/synth_1/runme.log
+[Mon Feb  8 15:48:52 2021] Launched impl_1...
+Run output will be captured here: C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.runs/impl_1/runme.log
+open_hw_manager
+connect_hw_server -allow_non_jtag
+INFO: [Labtools 27-2285] Connecting to hw_server url TCP:localhost:3121
+INFO: [Labtools 27-2222] Launching hw_server...
+INFO: [Labtools 27-2221] Launch Output:
+
+****** Xilinx hw_server v2020.2
+  **** Build date : Nov 18 2020 at 10:01:48
+    ** Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+
+
+INFO: [Labtools 27-3415] Connecting to cs_server url TCP:localhost:3042
+INFO: [Labtools 27-3417] Launching cs_server...
+INFO: [Labtools 27-2221] Launch Output:
+
+
+******** Xilinx cs_server v2020.2
+  ****** Build date   : Nov 03 2020-16:02:56
+    **** Build number : 2020.2.1604437376
+      ** Copyright 2017-2020 Xilinx, Inc. All Rights Reserved.
+
+
+
+connect_hw_server: Time (s): cpu = 00:00:01 ; elapsed = 00:00:11 . Memory (MB): peak = 1207.715 ; gain = 0.000
+open_hw_target
+INFO: [Labtoolstcl 44-466] Opening hw_target localhost:3121/xilinx_tcf/Digilent/210249AE9F52
+set_property PROGRAM.FILE {C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.runs/impl_1/blink.bit} [get_hw_devices xc7a100t_0]
+current_hw_device [get_hw_devices xc7a100t_0]
+refresh_hw_device -update_hw_probes false [lindex [get_hw_devices xc7a100t_0] 0]
+INFO: [Labtools 27-1435] Device xc7a100t (JTAG device index = 0) is not programmed (DONE status = 0).
+set_property PROBES.FILE {} [get_hw_devices xc7a100t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7a100t_0]
+set_property PROGRAM.FILE {C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.runs/impl_1/blink.bit} [get_hw_devices xc7a100t_0]
+program_hw_devices [get_hw_devices xc7a100t_0]
+INFO: [Labtools 27-3164] End of startup status: HIGH
+refresh_hw_device [lindex [get_hw_devices xc7a100t_0] 0]
+INFO: [Labtools 27-1434] Device xc7a100t (JTAG device index = 0) is programmed with a design that has no supported debug core(s) in it.
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 16
+[Mon Feb  8 16:21:48 2021] Launched synth_1...
+Run output will be captured here: C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.runs/synth_1/runme.log
+[Mon Feb  8 16:21:48 2021] Launched impl_1...
+Run output will be captured here: C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.runs/impl_1/runme.log
+set_property PROBES.FILE {} [get_hw_devices xc7a100t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7a100t_0]
+set_property PROGRAM.FILE {C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.runs/impl_1/blink.bit} [get_hw_devices xc7a100t_0]
+program_hw_devices [get_hw_devices xc7a100t_0]
+INFO: [Labtools 27-3164] End of startup status: HIGH
+refresh_hw_device [lindex [get_hw_devices xc7a100t_0] 0]
+INFO: [Labtools 27-1434] Device xc7a100t (JTAG device index = 0) is programmed with a design that has no supported debug core(s) in it.
+exit
+INFO: [Common 17-206] Exiting Vivado at Mon Feb  8 16:26:51 2021...
