@@ -1,0 +1,405 @@
+
+*** Running vivado
+    with args -log blink.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source blink.tcl
+
+
+
+****** Vivado v2020.2 (64-bit)
+  **** SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+  **** IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+    ** Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+
+source blink.tcl -notrace
+Command: synth_design -top blink -part xc7a100tfgg484-2
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7a100t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a100t'
+INFO: [Device 21-403] Loading part xc7a100tfgg484-2
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 59968
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 1002.078 ; gain = 0.000
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'blink' [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/sources_1/new/blink.v:3]
+INFO: [Synth 8-6157] synthesizing module 'IBUFDS' [C:/Xilinx/Vivado/2020.2/scripts/rt/data/unisim_comp.v:32998]
+	Parameter CAPACITANCE bound to: DONT_CARE - type: string 
+	Parameter DIFF_TERM bound to: FALSE - type: string 
+	Parameter DQS_BIAS bound to: FALSE - type: string 
+	Parameter IBUF_DELAY_VALUE bound to: 0 - type: string 
+	Parameter IBUF_LOW_PWR bound to: TRUE - type: string 
+	Parameter IFD_DELAY_VALUE bound to: AUTO - type: string 
+	Parameter IOSTANDARD bound to: DEFAULT - type: string 
+INFO: [Synth 8-6155] done synthesizing module 'IBUFDS' (1#1) [C:/Xilinx/Vivado/2020.2/scripts/rt/data/unisim_comp.v:32998]
+INFO: [Synth 8-6155] done synthesizing module 'blink' (2#1) [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/sources_1/new/blink.v:3]
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 1002.078 ; gain = 0.000
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 1002.078 ; gain = 0.000
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 1002.078 ; gain = 0.000
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1002.078 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 1 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_bitgen.xdc]
+Finished Parsing XDC File [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_bitgen.xdc]
+Parsing XDC File [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc]
+WARNING: [Vivado 12-584] No ports matched 'pga_sdio'. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:9]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:9]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'pga_sclk'. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:10]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:10]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'pga_cs[0]'. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:12]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:12]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'pga_cs[1]'. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:13]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:13]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'pga_cs[2]'. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:14]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:14]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'pga_cs[3]'. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:15]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:15]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'atten[0]'. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:17]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:17]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'atten[1]'. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:18]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:18]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'atten[2]'. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:19]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:19]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'atten[3]'. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:20]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:20]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'dc_cpl[0]'. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:22]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:22]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'dc_cpl[1]'. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:23]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:23]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'dc_cpl[2]'. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:24]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:24]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'dc_cpl[3]'. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:25]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:25]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'probe_comp'. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:27]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:27]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'adc_sclk'. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:29]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:29]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'adc_sdata'. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:30]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:30]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'osc_oe'. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:34]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:34]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'i2c_sda'. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:40]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:40]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'i2c_scl'. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:41]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:41]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'adc_pd'. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:43]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:43]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'adc_rstn'. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:45]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:45]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'adc_cs'. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:47]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:47]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'adc_lclk_p'. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:55]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:55]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'adc_lclk_n'. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:56]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:56]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'adc_fclk_p'. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:58]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:58]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'adc_fclk_n'. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:59]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:59]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'adc_data_p[0]'. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:62]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:62]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'adc_data_n[0]'. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:63]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:63]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'adc_data_p[1]'. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:66]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:66]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'adc_data_n[1]'. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:67]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:67]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'adc_data_p[2]'. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:70]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:70]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'adc_data_n[2]'. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:71]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:71]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'adc_data_p[3]'. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:74]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:74]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'adc_data_n[3]'. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:75]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:75]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'adc_data_p[4]'. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:78]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:78]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'adc_data_n[4]'. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:79]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:79]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'adc_data_p[5]'. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:82]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:82]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'adc_data_n[5]'. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:83]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:83]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'adc_data_p[6]'. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:86]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:86]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'adc_data_n[6]'. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:87]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:87]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'adc_data_p[7]'. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:90]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:90]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'adc_data_n[7]'. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:91]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:91]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'pcie_mgt_rxp[0]'. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:98]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:98]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'pcie_mgt_rxn[0]'. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:99]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:99]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'pcie_mgt_txp[0]'. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:100]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:100]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'pcie_mgt_txn[0]'. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:101]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:101]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'pcie_mgt_rxp[1]'. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:104]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:104]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'pcie_mgt_rxn[1]'. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:105]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:105]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'pcie_mgt_txp[1]'. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:106]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:106]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'pcie_mgt_txn[1]'. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:107]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:107]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'pcie_mgt_rxp[2]'. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:110]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:110]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'pcie_mgt_rxn[2]'. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:111]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:111]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'pcie_mgt_txp[2]'. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:112]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:112]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'pcie_mgt_txn[2]'. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:113]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:113]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'pcie_mgt_rxp[3]'. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:116]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:116]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'pcie_mgt_rxn[3]'. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:117]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:117]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'pcie_mgt_txp[3]'. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:118]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:118]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'pcie_mgt_txn[3]'. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:119]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:119]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'pcie_clk_p'. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:122]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:122]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'pcie_clk_n'. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:123]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:123]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'pcie_perstn'. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:126]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc:126]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+Finished Parsing XDC File [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.srcs/constrs_1/new/module_io.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/blink_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/blink_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1002.078 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1002.078 ; gain = 0.000
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 1002.078 ; gain = 0.000
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7a100tfgg484-2
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 1002.078 ; gain = 0.000
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 1002.078 ; gain = 0.000
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 1002.078 ; gain = 0.000
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 240 (col length:80)
+BRAMs: 270 (col length: RAMB18 80 RAMB36 40)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 1002.078 ; gain = 0.000
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 1002.078 ; gain = 0.000
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 1002.078 ; gain = 0.000
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 1002.078 ; gain = 0.000
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:18 ; elapsed = 00:00:18 . Memory (MB): peak = 1002.078 ; gain = 0.000
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:18 ; elapsed = 00:00:18 . Memory (MB): peak = 1002.078 ; gain = 0.000
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:18 ; elapsed = 00:00:18 . Memory (MB): peak = 1002.078 ; gain = 0.000
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:18 ; elapsed = 00:00:18 . Memory (MB): peak = 1002.078 ; gain = 0.000
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:18 ; elapsed = 00:00:18 . Memory (MB): peak = 1002.078 ; gain = 0.000
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:18 ; elapsed = 00:00:18 . Memory (MB): peak = 1002.078 ; gain = 0.000
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+-------+------+
+|      |Cell   |Count |
++------+-------+------+
+|1     |BUFG   |     1|
+|2     |CARRY4 |     8|
+|3     |LUT1   |     5|
+|4     |FDRE   |    31|
+|5     |IBUFDS |     1|
+|6     |OBUF   |     4|
+|7     |OBUFT  |     2|
++------+-------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:18 ; elapsed = 00:00:18 . Memory (MB): peak = 1002.078 ; gain = 0.000
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 0 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:12 ; elapsed = 00:00:17 . Memory (MB): peak = 1002.078 ; gain = 0.000
+Synthesis Optimization Complete : Time (s): cpu = 00:00:18 ; elapsed = 00:00:19 . Memory (MB): peak = 1002.078 ; gain = 0.000
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1002.078 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 9 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1007.570 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+INFO: [Common 17-83] Releasing license: Synthesis
+21 Infos, 62 Warnings, 62 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:23 ; elapsed = 00:00:24 . Memory (MB): peak = 1007.570 ; gain = 5.492
+INFO: [runtcl-6] Synthesis results are not added to the cache due to CRITICAL_WARNING
+INFO: [Common 17-1381] The checkpoint 'C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/Blink/Blink.runs/synth_1/blink.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file blink_utilization_synth.rpt -pb blink_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Mon Feb  8 16:22:15 2021...
