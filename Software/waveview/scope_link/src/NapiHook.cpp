@@ -24,7 +24,9 @@ unsigned char* bigArray;
 //Init Code
 int scope_link::InitScopeLink() {
     
-    _processers = (scope_link::PacketProcesser**)malloc(sizeof(scope_link::PacketProcesser*) * scope_link::_num_of_packet_processer);
+    _processers = (scope_link::PacketProcesser**)malloc(sizeof(scope_link::PacketProcesser*)
+                  * scope_link::_num_of_packet_processer);
+
     for(int i = 0; i < scope_link::_num_of_packet_processer; i++) {
         _processers[i] = new scope_link::PacketProcesser(_txQueue,_rxQueue,_txLock,_rxLock);
         _processers[i]->start();
@@ -79,8 +81,8 @@ unsigned char* scope_link::GetData(size_t* packetSize) {
     unsigned char* packetBuff;
     scope_link::NapiPacket* packet;
     
-    //TODO here would go the code that checks that packet processing machine for any packets to send
-    //to javascript. This is to be implmented in talks with Alex and Daniel
+    // TODO here would go the code that checks that packet processing machine for any packets to
+    // send to javascript. This is to be implmented in talks with Alex and Daniel
     _txLock.lock();
     if(_txQueue.empty()) {
         packet = &scope_link::_emptyPacket;
@@ -90,23 +92,23 @@ unsigned char* scope_link::GetData(size_t* packetSize) {
     }
     _txLock.unlock();
     
-    //fill the packetbuff
-    //allocate memory for the uint8_t command and uint32_t packetID
+    // fill the packetbuff
+    // allocate memory for the uint8_t command and uint32_t packetID
     packetBuff = (unsigned char*)malloc(6 + sizeof(unsigned char) * packet->dataSize);
     
-    //copy the first six bytes in, command, packetID and dataSize
+    // copy the first six bytes in, command, packetID and dataSize
     memcpy(packetBuff,packet,6);
-    //copy in the packet data
+    // copy in the packet data
     memcpy(packetBuff + 6,packet->data,packet->dataSize);
     
     *packetSize = packet->dataSize + 6;//sets the size of the payload in the packet
-    free(packet);//frees that packet that was waiting in the queue to be transmitted
+    free(packet); // frees that packet that was waiting in the queue to be transmitted
     return packetBuff;
 }
 
 Napi::ArrayBuffer scope_link::GetDataWrapper(const Napi::CallbackInfo& info) {
     Napi::Env env = info.Env();
-    //packet size is the number of bytes the packet is
+    // packet size is the number of bytes the packet is
     size_t packetSize;
 
     unsigned char* data = scope_link::GetData(&packetSize);
@@ -119,7 +121,7 @@ Napi::ArrayBuffer scope_link::GetDataWrapper(const Napi::CallbackInfo& info) {
     return array;
 }
 
-//Test Throughput Code
+// Test Throughput Code
 unsigned char* scope_link::TestThroughPut() {
     unsigned char* data = (unsigned char*)malloc(sizeof(unsigned char) * TEST_ARRAY_SIZE);
     
@@ -127,14 +129,21 @@ unsigned char* scope_link::TestThroughPut() {
     
     return data;
 }
-//WRAPER
+
+// WRAPER
 Napi::ArrayBuffer scope_link::TestThroughPutWrapper(const Napi::CallbackInfo& info) {
     Napi::Env env = info.Env();
     
     unsigned char* data = scope_link::TestThroughPut();
     
-    Napi::ArrayBuffer array =  Napi::ArrayBuffer::New(env,(void*)data,TEST_ARRAY_SIZE,[](Napi::Env env,void* buff){ std::cout << "Callback Called" << std::endl;});
-    uint8_t* buff = (uint8_t*)array.Data();
+    Napi::ArrayBuffer array = Napi::ArrayBuffer::New(env,
+                                                     (void*)data,
+                                                     TEST_ARRAY_SIZE,
+                                                     [](Napi::Env env,void* buff)
+                                                        {
+                                                        std::cout << "Callback Called" << std::endl;
+                                                        }
+                                                    );
 
     return array;
 }
@@ -145,6 +154,7 @@ unsigned long scope_link::GetTimeUs() {
                       now().time_since_epoch()).count();
     return us;
 }
+
 //WRAPPER
 Napi::Number scope_link::GetTimeUsWrapper(const Napi::CallbackInfo& info) {
     Napi::Env env = info.Env();

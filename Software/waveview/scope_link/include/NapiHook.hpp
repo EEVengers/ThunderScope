@@ -91,13 +91,13 @@ namespace scope_link
     class PacketProcesser {
         private:
 
-        //since each processer shares the smae tx and rx queue, this mutex is used to assure only 1 uses it at a time
-        std::shared_mutex& _rxLock;
-        std::shared_mutex& _txLock;
-        
         //Queue References
         std::queue<scope_link::NapiPacket*>& _txQueue;
         std::queue<scope_link::NapiPacket*>& _rxQueue;
+
+        //since each processer shares the smae tx and rx queue, this mutex is used to assure only 1 uses it at a time
+        std::shared_mutex& _txLock;
+        std::shared_mutex& _rxLock;
 
         std::thread _worker;
         bool run;
@@ -177,9 +177,13 @@ namespace scope_link
 
         public:
 
-        //each thread will be given the rx queue and the tx queue. Once started they will take packets from the rxQueue (once aviable)
+        //each thread will be given the rx queue and the tx queue. Once started
+        //they will take packets from the rxQueue (once aviable).
         //process them, then put the return packet into the txQueue
-        PacketProcesser(std::queue<scope_link::NapiPacket*>& txQueue, std::queue<scope_link::NapiPacket*>& rxQueue, std::shared_mutex& txLock, std::shared_mutex& rxLock) : 
+        PacketProcesser(std::queue<scope_link::NapiPacket*>& txQueue,
+                        std::queue<scope_link::NapiPacket*>& rxQueue,
+                        std::shared_mutex& txLock,
+                        std::shared_mutex& rxLock) : 
             _txQueue(txQueue),
             _rxQueue(rxQueue),
             _txLock(txLock),
@@ -197,6 +201,7 @@ namespace scope_link
             run = true;
             _worker = std::thread(scope_link::PacketProcesser::job,this);
         }
+
         void stop() {
             run = false;
             if(_worker.joinable()) {
