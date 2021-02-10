@@ -15,8 +15,8 @@ enum NapiCommands {
     ConfigureScope
 };
 
-// defines except variables so they can be changed
-int _num_of_packet_processer = 10;
+// Externs
+extern int _num_of_packet_processer;
 
 // PACKET STRUCTURE
 //   _______________________________________________________________________________________________________
@@ -47,53 +47,53 @@ struct NapiPacket {
     uint8_t* data;
 };
 
-//Init Code
+// Init Code
 int InitScopeLink();
-//WRAPER
+// WRAPER
 Napi::Number InitScopeLinkWrapper(const Napi::CallbackInfo& info);
 
-//Handle NAPI Command: This function will decode an NAPI command and queue it up for execution
+// Handle NAPI Command: This function will decode an NAPI command and queue it up for execution
 int HandleCommand(unsigned char* data, size_t size);
-//WRAPPER
+// WRAPPER
 Napi::Number SendCommand(const Napi::CallbackInfo& info);
 
-//GetData:
+// GetData:
 unsigned char* GetData(size_t* packetSize);
-//WRAPER
+// WRAPER
 Napi::ArrayBuffer GetDataWrapper(const Napi::CallbackInfo& info);
 
-//Stop Code
+// Stop Code
 //void Stop();
-//WRAPPER
+// WRAPPER
 //void StopWrapper(const Napi::CallbackInfo& info);
 
-//Test Throughput Code
+// Test Throughput Code
 unsigned char* TestThroughPut();
 //WRAPER
 Napi::ArrayBuffer TestThroughPutWrapper(const Napi::CallbackInfo& info);
 
-//GetTimeNs
+// GetTimeNs
 unsigned long GetTimeUs();
-//WRAPPER
+// WRAPPER
 Napi::Number GetTimeUsWrapper(const Napi::CallbackInfo& info);
 
-//EXPORT
+// EXPORT
 Napi::Object NapiExport(Napi::Env env, Napi::Object exports);
 NODE_API_MODULE(addon,NapiExport);
 
-//empty packet declatration
+// empty packet declatration
 uint8_t* emptyData;
 NapiPacket _emptyPacket = { 0, 0, 0, emptyData };
 
-//Class that will do all the requests
+// Class that will do all the requests
 class PacketProcesser {
     private:
 
-    //Queue References
+    // Queue References
     std::queue<NapiPacket*>& _txQueue;
     std::queue<NapiPacket*>& _rxQueue;
 
-    //since each processer shares the smae tx and rx queue, this mutex is used to assure only 1 uses it at a time
+    // since each processer shares the smae tx and rx queue, this mutex is used to assure only 1 uses it at a time
     std::shared_mutex& _txLock;
     std::shared_mutex& _rxLock;
 
@@ -102,10 +102,10 @@ class PacketProcesser {
     NapiPacket* _rxPacket;
     NapiPacket* _txPacket;
 
-    //This is the looping function that the thread runs when start() is called
+    // This is the looping function that the thread runs when start() is called
     static void job(PacketProcesser* obj) {
         while(obj->run) {
-            //get a packet
+            // get a packet
             bool gotPacket = false;;
             while(!gotPacket && obj->run) {
                 obj->_rxLock.lock();
@@ -120,18 +120,18 @@ class PacketProcesser {
                     obj->_rxLock.unlock();
                 }
             }
-            //check that we got a packet, not that the thread was told to stop
+            // check that we got a packet, not that the thread was told to stop
             if(!obj->run)
                 break;
 
-            //Debug Printout
+            // Debug Printout
             printf("Packet Recieved: PacketID: %X, Command: %d, dataSize: %d\n", obj->_rxPacket->packetID, obj->_rxPacket->command, obj->_rxPacket->dataSize);
 
-            //create the txPacket
+            // create the txPacket
             obj->_txPacket = (NapiPacket*)malloc(sizeof(NapiPacket));
             obj->_txPacket->command = obj->_rxPacket->command;
             obj->_txPacket->packetID = obj->_rxPacket ->packetID;
-            //run the packet's request
+            // run the packet's request
             /*
              * The repsonsibility for each command that is called and excuted is to return the
              * packet data as a malloc'd pointer so that it can be sent to JS then freed
@@ -156,7 +156,11 @@ class PacketProcesser {
                     }
                     obj->_txPacket->data = txData;
                     obj->_txPacket->dataSize = static_cast<uint16_t>(255);
-                }//***** IF YOU GET error C2360 ---> Put your code in brackets, for some reason VC++ refuses to let you declare a variable in only 1 case unless its in a different scope, hence the brackets   
+
+                    // ***** IF YOU GET error C2360 ---> Put your code in brackets, for some reason
+                    // VC++ refuses to let you declare a variable in only 1 case unless its in a
+                    // different scope, hence the brackets   
+                }
                 break;
                 case GetChannelMeasurements:
                 break;
@@ -166,7 +170,7 @@ class PacketProcesser {
                     std::cout << "Unknown Command: " << obj->_rxPacket->command << std::endl; 
                 break;
             }
-            //put the txPacket into the queue
+            // put the txPacket into the queue
             obj->_txLock.lock();
             obj->_txQueue.push(obj->_txPacket);
             obj->_txLock.unlock();
@@ -175,9 +179,9 @@ class PacketProcesser {
 
     public:
 
-    //each thread will be given the rx queue and the tx queue. Once started
-    //they will take packets from the rxQueue (once aviable).
-    //process them, then put the return packet into the txQueue
+    // each thread will be given the rx queue and the tx queue. Once started
+    // they will take packets from the rxQueue (once aviable).
+    // process them, then put the return packet into the txQueue
     PacketProcesser(std::queue<NapiPacket*>& txQueue,
                     std::queue<NapiPacket*>& rxQueue,
                     std::shared_mutex& txLock,
@@ -190,7 +194,7 @@ class PacketProcesser {
     }
 
     void start() {
-        //stop the current worker if it is already running
+        // stop the current worker if it is already running
         if(_worker.joinable()) {
             run = false;
             _worker.join();
