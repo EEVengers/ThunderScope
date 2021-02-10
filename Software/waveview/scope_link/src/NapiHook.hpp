@@ -1,11 +1,11 @@
-#ifndef NapiHook
+#ifndef NapiHook_hpp
+#define NapiHook_hpp
  
-#include <napi.h>
+#include "napi.h"
 #include <iostream>
 #include <queue>
 #include <shared_mutex>
-
-#include "EVLibrary.hpp"
+#include <thread>
 
 #define TEST_ARRAY_SIZE (1<<23)
 

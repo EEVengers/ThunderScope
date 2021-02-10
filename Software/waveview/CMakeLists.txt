@@ -3,7 +3,10 @@ cmake_minimum_required(VERSION 3.15)
 # Name of the c++ project, left as addon for now
 project (addon)
 
-add_compile_options("/std:c++latest")
+# TODO: Confirm this works on windows
+set (CMAKE_CXX_STANDARD 17)
+#add_compile_options("/std:c++latest")
+
 # Comment out this line if you will try_compile with CMake's boost, for C team's consideration.
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
