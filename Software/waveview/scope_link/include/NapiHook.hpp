@@ -134,11 +134,17 @@ namespace scope_link
                 obj->_txPacket->command = obj->_rxPacket->command;
                 obj->_txPacket->packetID = obj->_rxPacket ->packetID;
                 //run the packet's request
-                //*** The repsonsibility for each command that is called and excuted is to return the packet data as a malloc'd pointer so that it can be sent to JS then freed ****
-                //*** Signature of runable commands should follow : uint16_t FUNCTION(unsigned char* rxData, unsigned char** txData) :  \
-                                                                    return: the size of txData                                          \
-                                                                    rxData: the unsigned char that holds data sent by JS                \
-                                                                    txData: a pointer to the data array that will be sent to JS (the called function must malloc the underlying data)
+                /*
+                 * The repsonsibility for each command that is called and excuted is to return the
+                 * packet data as a malloc'd pointer so that it can be sent to JS then freed
+                 *
+                 * Signature of runable commands should follow : 
+                 *      uint16_t FUNCTION(unsigned char* rxData, unsigned char** txData) :
+                 *      return: the size of txData
+                 *      rxData: the unsigned char that holds data sent by JS
+                 *      txData: a pointer to the data array that will be sent to JS (the called
+                 *              function must malloc the underlying data)
+                 */
                 switch(static_cast<NapiCommands>(obj->_rxPacket->command)) {
                     case GetChannelData:
                     {
