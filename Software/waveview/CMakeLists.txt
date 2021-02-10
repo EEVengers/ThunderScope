@@ -15,7 +15,7 @@ add_definitions(-DCMAKE)
 
 # Essential include files to build a node addon,
 # you should add this line in every CMake.js based project.
-include_directories(${CMAKE_JS_INC})
+include_directories(${CMAKE_JS_INC} scope_link/include)
 
 # Declare the location of the source files
 file(GLOB SOURCE_FILES "scope_link/src/*.cpp" "scope_link/include/*.hpp" "scope_link/include/*.h")
