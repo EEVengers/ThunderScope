@@ -79,21 +79,22 @@ Napi::Number GetTimeUsWrapper(const Napi::CallbackInfo& info);
 
 // EXPORT
 Napi::Object NapiExport(Napi::Env env, Napi::Object exports);
-NODE_API_MODULE(addon,NapiExport);
 
 // empty packet declatration
+// TODO: emptyData is uninitialized. It points to any random memory.
+//       It should be removed and NULL used in its place
 uint8_t* emptyData;
 NapiPacket _emptyPacket = { 0, 0, 0, emptyData };
 
 // Class that will do all the requests
 class PacketProcesser {
-    private:
+private:
 
     // Queue References
     std::queue<NapiPacket*>& _txQueue;
     std::queue<NapiPacket*>& _rxQueue;
 
-    // since each processer shares the smae tx and rx queue, this mutex is used to assure only 1 uses it at a time
+    // since each processer shares the same tx and rx queue, this mutex is used to assure only 1 uses it at a time
     std::shared_mutex& _txLock;
     std::shared_mutex& _rxLock;
 
@@ -103,81 +104,9 @@ class PacketProcesser {
     NapiPacket* _txPacket;
 
     // This is the looping function that the thread runs when start() is called
-    static void job(PacketProcesser* obj) {
-        while(obj->run) {
-            // get a packet
-            bool gotPacket = false;;
-            while(!gotPacket && obj->run) {
-                obj->_rxLock.lock();
-                if(obj->_rxQueue.empty()) {
-                    std::this_thread::sleep_for(std::chrono::milliseconds(1));
-                    obj->_rxLock.unlock();
-                    std::this_thread::sleep_for(std::chrono::milliseconds(9));
-                } else {
-                    obj->_rxPacket = obj->_rxQueue.front();
-                    obj->_rxQueue.pop();
-                    gotPacket = true;
-                    obj->_rxLock.unlock();
-                }
-            }
-            // check that we got a packet, not that the thread was told to stop
-            if(!obj->run)
-                break;
+    void job();
 
-            // Debug Printout
-            printf("Packet Recieved: PacketID: %X, Command: %d, dataSize: %d\n", obj->_rxPacket->packetID, obj->_rxPacket->command, obj->_rxPacket->dataSize);
-
-            // create the txPacket
-            obj->_txPacket = (NapiPacket*)malloc(sizeof(NapiPacket));
-            obj->_txPacket->command = obj->_rxPacket->command;
-            obj->_txPacket->packetID = obj->_rxPacket ->packetID;
-            // run the packet's request
-            /*
-             * The repsonsibility for each command that is called and excuted is to return the
-             * packet data as a malloc'd pointer so that it can be sent to JS then freed
-             *
-             * Signature of runable commands should follow : 
-             *      uint16_t FUNCTION(unsigned char* rxData, unsigned char** txData) :
-             *      return: the size of txData
-             *      rxData: the unsigned char that holds data sent by JS
-             *      txData: a pointer to the data array that will be sent to JS (the called
-             *              function must malloc the underlying data)
-             */
-            switch(static_cast<NapiCommands>(obj->_rxPacket->command)) {
-                case GetChannelData:
-                {
-                    uint8_t* txData = (uint8_t*)malloc(sizeof(uint8_t) * 255);
-                    for(uint8_t i = 0; i <= 254; i++) {
-                        if(i % 2 == 0) {
-                            txData[i] = i / 2;
-                        } else {
-                            txData[i] = static_cast<uint8_t>((static_cast<uint32_t>(i) * 2) % 200);
-                        }
-                    }
-                    obj->_txPacket->data = txData;
-                    obj->_txPacket->dataSize = static_cast<uint16_t>(255);
-
-                    // ***** IF YOU GET error C2360 ---> Put your code in brackets, for some reason
-                    // VC++ refuses to let you declare a variable in only 1 case unless its in a
-                    // different scope, hence the brackets   
-                }
-                break;
-                case GetChannelMeasurements:
-                break;
-                case ConfigureScope:
-                break;
-                default:
-                    std::cout << "Unknown Command: " << obj->_rxPacket->command << std::endl; 
-                break;
-            }
-            // put the txPacket into the queue
-            obj->_txLock.lock();
-            obj->_txQueue.push(obj->_txPacket);
-            obj->_txLock.unlock();
-        }
-    }
-
-    public:
+public:
 
     // each thread will be given the rx queue and the tx queue. Once started
     // they will take packets from the rxQueue (once aviable).
@@ -185,36 +114,13 @@ class PacketProcesser {
     PacketProcesser(std::queue<NapiPacket*>& txQueue,
                     std::queue<NapiPacket*>& rxQueue,
                     std::shared_mutex& txLock,
-                    std::shared_mutex& rxLock) : 
-        _txQueue(txQueue),
-        _rxQueue(rxQueue),
-        _txLock(txLock),
-        _rxLock(rxLock)
-    {
-    }
+                    std::shared_mutex& rxLock);
 
-    void start() {
-        // stop the current worker if it is already running
-        if(_worker.joinable()) {
-            run = false;
-            _worker.join();
-        }
+    void start();
 
-        run = true;
-        _worker = std::thread(PacketProcesser::job,this);
-    }
+    void stop();
 
-    void stop() {
-        run = false;
-        if(_worker.joinable()) {
-            _worker.join();
-        }
-    }
-
-    ~PacketProcesser() {
-        if(_worker.joinable())
-            _worker.join();
-    }
+    ~PacketProcesser();
 };
 
 #endif
