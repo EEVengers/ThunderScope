@@ -4,6 +4,7 @@
 #include "processor.hpp"
 #include "dataTransferHandler.hpp"
 #include "string.h"
+#include "logger.hpp"
 
 // Queues for Rx and Tx between C++ and Js
 std::queue<NapiPacket*> _txQueue;
@@ -80,7 +81,7 @@ Napi::Number SendCommand(const Napi::CallbackInfo& info) {
 }
 
 // TODO: Why is packetSize passed in here?
-// TODO: This function has no reall error checking
+// TODO: This function has no real error checking
 unsigned char* GetData(size_t* packetSize) {
     unsigned char* packetBuff;
     NapiPacket* packet;
@@ -147,7 +148,7 @@ Napi::ArrayBuffer TestThroughPutWrapper(const Napi::CallbackInfo& info) {
                                                      TEST_ARRAY_SIZE,
                                                      [](Napi::Env env,void* buff)
                                                          {
-                                                         std::cout << "Callback Called" << std::endl;
+                                                         INFO << "Callback Called";
                                                          }
                                                     );
 
@@ -206,10 +207,10 @@ void PacketProcesser::job() {
         }
 
         // Debug Printout
-        printf("Packet Recieved: PacketID: %X, Command: %d, dataSize: %d\n",
-                    _rxPacket->packetID,
-                    _rxPacket->command,
-                    _rxPacket->dataSize);
+        INFO << "Packet Recieved: PacketID: %X, Command: %d, dataSize: %d\n"
+             << _rxPacket->packetID
+             << _rxPacket->command
+             << _rxPacket->dataSize;
 
         // create the txPacket
         _txPacket = (NapiPacket*)malloc(sizeof(NapiPacket));
@@ -252,7 +253,7 @@ void PacketProcesser::job() {
             case ConfigureScope:
             break;
             default:
-                std::cout << "Unknown Command: " << _rxPacket->command << std::endl; 
+                ERROR << "Unknown Command: " << _rxPacket->command; 
             break;
         }
         // put the txPacket into the queue
