@@ -30,7 +30,7 @@ class TriggerWidget extends React.Component<any, any> {
 
   // Trigger Level Unit
   changeTriggerLevelUnit = (voltageUnit: VoltageUnit) => {
-    this.props.dispatch({type: 'trigger/changeTriggerLevelUnit', payload: voltageUnit})
+    this.props.dispatch({type: 'trigger/changeTriggerLevelUnit', payload: voltageUnit});
   }
 
   render() {
