@@ -1,7 +1,7 @@
-import DefaultValues from '../../configuration/defaultValues';
-import DefaultChannelColor from '../../configuration/enums/defaultChannelColor';
-import MeasurementType from '../../configuration/enums/measurementType';
-import VoltageUnit from '../../configuration/enums/voltageUnit';
+import DefaultValues from '../../../configuration/defaultValues';
+import DefaultChannelColor from '../../../configuration/enums/defaultChannelColor';
+import MeasurementType from '../../../configuration/enums/measurementType';
+import VoltageUnit from '../../../configuration/enums/voltageUnit';
 
 const initialState = {
   activeChannel: 1,

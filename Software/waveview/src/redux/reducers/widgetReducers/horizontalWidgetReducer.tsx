@@ -1,6 +1,6 @@
-import DefaultValues from '../../configuration/defaultValues';
-import TimeUnit from '../../configuration/enums/timeUnit';
-import TimeBaseMode from '../../configuration/enums/timeBaseMode';
+import DefaultValues from '../../../configuration/defaultValues';
+import TimeUnit from '../../../configuration/enums/timeUnit';
+import TimeBaseMode from '../../../configuration/enums/timeBaseMode';
 
 const initialState = {
   horizontalTimeBase: {

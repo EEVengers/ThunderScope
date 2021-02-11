@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import horizontalWidgetReducer from './horizontalWidgetReducer';
-import verticalWidgetReducer from './verticalWidgetReducer';
-import measurementsWidgetReducer from './measurementsWidgetReducer';
-import triggerWidgetReducer from './triggerWidgetReducer';
+import horizontalWidgetReducer from './widgetReducers/horizontalWidgetReducer';
+import verticalWidgetReducer from './widgetReducers/verticalWidgetReducer';
+import measurementsWidgetReducer from './widgetReducers/measurementsWidgetReducer';
+import triggerWidgetReducer from './widgetReducers/triggerWidgetReducer';
 
 export default combineReducers(
   {
