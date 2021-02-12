@@ -1,6 +1,6 @@
-import TriggerType from '../../configuration/enums/triggerType';
-import DefaultChannelColor from '../../configuration/enums/defaultChannelColor';
-import VoltageUnit from '../../configuration/enums/voltageUnit';
+import TriggerType from '../../../configuration/enums/triggerType';
+import DefaultChannelColor from '../../../configuration/enums/defaultChannelColor';
+import VoltageUnit from '../../../configuration/enums/voltageUnit';
 
 const initialState = {
   triggerChannel: 1,
