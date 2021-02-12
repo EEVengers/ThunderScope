@@ -80,37 +80,40 @@ Napi::Number SendCommand(const Napi::CallbackInfo& info) {
     return Napi::Number::New(info.Env(),((NapiPacket*)(data))->packetID);
 }
 
-// TODO: Why is packetSize passed in here?
-// TODO: This function has no real error checking
 unsigned char* GetData(size_t* packetSize) {
     unsigned char* packetBuff;
     NapiPacket* packet;
 
     // TODO here would go the code that checks that packet processing machine for any packets to
     // send to javascript. This is to be implmented in talks with Alex and Daniel
+    // TODO: replace this lock type with a lock guard
     _txLock.lock();
     if(_txQueue.empty()) {
-        packet = &_emptyPacket;
+        *packetSize = 0;
+
+        _txLock.unlock();
+        return NULL;
     } else {
         packet = _txQueue.front();
         _txQueue.pop();
+
+        _txLock.unlock();
+
+        // fill the packetbuff
+        // allocate memory for the uint8_t command and uint32_t packetID
+        packetBuff = (unsigned char*)malloc(6 + sizeof(unsigned char) * packet->dataSize);
+
+        // copy the first six bytes in, command, packetID and dataSize
+        memcpy(packetBuff, packet, 6);
+
+        // copy in the packet data
+        memcpy(packetBuff + 6, packet->data, packet->dataSize);
+
+        *packetSize = packet->dataSize + 6;// sets the size of the payload in the packet
+        // TODO: This is where shit hits the fan
+        free(packet); // frees that packet that was waiting in the queue to be transmitted
+        return packetBuff;
     }
-    _txLock.unlock();
-
-    // fill the packetbuff
-    // allocate memory for the uint8_t command and uint32_t packetID
-    packetBuff = (unsigned char*)malloc(6 + sizeof(unsigned char) * packet->dataSize);
-
-    // copy the first six bytes in, command, packetID and dataSize
-    memcpy(packetBuff, packet, 6);
-    // copy in the packet data
-    // TODO: When the packet is empty, packet->data points to a ramdom memory address.
-    //       The only thing that saves it from seg fault is datasize = 0.
-    memcpy(packetBuff + 6, packet->data, packet->dataSize);
-
-    *packetSize = packet->dataSize + 6;// sets the size of the payload in the packet
-    free(packet); // frees that packet that was waiting in the queue to be transmitted
-    return packetBuff;
 }
 
 Napi::ArrayBuffer GetDataWrapper(const Napi::CallbackInfo& info) {
@@ -120,10 +123,14 @@ Napi::ArrayBuffer GetDataWrapper(const Napi::CallbackInfo& info) {
 
     unsigned char* data = GetData(&packetSize);
 
-    Napi::ArrayBuffer array =  Napi::ArrayBuffer::New(env,(void*)data,packetSize,
-                                  [](Napi::Env env,void* buff){});
+    Napi::ArrayBuffer array =  Napi::ArrayBuffer::New(env,
+                                                      (void*)data,
+                                                      packetSize,
+                                                      [](Napi::Env env,void* buff){});
 
-    free(data);
+    if (data != NULL) {
+        free(data);
+    }
 
     return array;
 }

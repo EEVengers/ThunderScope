@@ -80,12 +80,6 @@ Napi::Number GetTimeUsWrapper(const Napi::CallbackInfo& info);
 // EXPORT
 Napi::Object NapiExport(Napi::Env env, Napi::Object exports);
 
-// empty packet declatration
-// TODO: emptyData is uninitialized. It points to any random memory.
-//       It should be removed and NULL used in its place
-uint8_t* emptyData;
-NapiPacket _emptyPacket = { 0, 0, 0, emptyData };
-
 // Class that will do all the requests
 class PacketProcesser {
 private:
