@@ -11,8 +11,8 @@ std::queue<NapiPacket*> _txQueue;
 std::queue<NapiPacket*> _rxQueue;
 
 // Mutexs for the queues
-std::shared_mutex _txLock;
-std::shared_mutex _rxLock;
+std::mutex _txLock;
+std::mutex _rxLock;
 
 // array of packet processers that will execute the requests from JS
 PacketProcesser** _processers;
@@ -81,12 +81,9 @@ Napi::Number SendCommand(const Napi::CallbackInfo& info) {
 }
 
 unsigned char* GetData(size_t* packetSize) {
-    unsigned char* packetBuff;
-    NapiPacket* packet;
-
     // TODO here would go the code that checks that packet processing machine for any packets to
     // send to javascript. This is to be implmented in talks with Alex and Daniel
-    // TODO: replace this lock type with a lock guard
+
     _txLock.lock();
     if(_txQueue.empty()) {
         *packetSize = 0;
@@ -94,14 +91,14 @@ unsigned char* GetData(size_t* packetSize) {
         _txLock.unlock();
         return NULL;
     } else {
-        packet = _txQueue.front();
+        NapiPacket* packet = _txQueue.front();
         _txQueue.pop();
 
         _txLock.unlock();
 
         // fill the packetbuff
         // allocate memory for the uint8_t command and uint32_t packetID
-        packetBuff = (unsigned char*)malloc(6 + sizeof(unsigned char) * packet->dataSize);
+        unsigned char* packetBuff = (unsigned char*)malloc(6 + sizeof(unsigned char) * packet->dataSize);
 
         // copy the first six bytes in, command, packetID and dataSize
         memcpy(packetBuff, packet, 6);
@@ -110,7 +107,6 @@ unsigned char* GetData(size_t* packetSize) {
         memcpy(packetBuff + 6, packet->data, packet->dataSize);
 
         *packetSize = packet->dataSize + 6;// sets the size of the payload in the packet
-        // TODO: This is where shit hits the fan
         free(packet); // frees that packet that was waiting in the queue to be transmitted
         return packetBuff;
     }
@@ -290,8 +286,8 @@ void PacketProcesser::stop() {
 
 PacketProcesser::PacketProcesser(std::queue<NapiPacket*>& txQueue,
                                  std::queue<NapiPacket*>& rxQueue,
-                                 std::shared_mutex& txLock,
-                                 std::shared_mutex& rxLock) : 
+                                 std::mutex& txLock,
+                                 std::mutex& rxLock) : 
     _txQueue(txQueue),
     _rxQueue(rxQueue),
     _txLock(txLock),

@@ -4,7 +4,7 @@
 #include "napi.h"
 #include <iostream>
 #include <queue>
-#include <shared_mutex>
+#include <mutex>
 #include <thread>
 
 #define TEST_ARRAY_SIZE (1<<23)
@@ -89,8 +89,8 @@ private:
     std::queue<NapiPacket*>& _rxQueue;
 
     // since each processer shares the same tx and rx queue, this mutex is used to assure only 1 uses it at a time
-    std::shared_mutex& _txLock;
-    std::shared_mutex& _rxLock;
+    std::mutex& _txLock;
+    std::mutex& _rxLock;
 
     std::thread _worker;
     bool run;
@@ -107,8 +107,8 @@ public:
     // process them, then put the return packet into the txQueue
     PacketProcesser(std::queue<NapiPacket*>& txQueue,
                     std::queue<NapiPacket*>& rxQueue,
-                    std::shared_mutex& txLock,
-                    std::shared_mutex& rxLock);
+                    std::mutex& txLock,
+                    std::mutex& rxLock);
 
     void start();
 
