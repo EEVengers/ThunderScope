@@ -25,9 +25,11 @@ void parseCommandLineArgs(int argc, char** args) {
         } else if(std::string(args[1]) == "-t" || std::string(args[1]) == "--test") {
             INFO << "Running Test";
             if (argc > 2) {
-                testCsv(args[2]);
+                inputFile = args[2];
+                testCsv(inputFile);
             } else {
                 char filename[] = "test1.csv";
+                inputFile = filename;
                 testCsv(filename);
             }
         } else {

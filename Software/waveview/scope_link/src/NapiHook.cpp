@@ -6,6 +6,7 @@
 #include "string.h"
 #include "logger.hpp"
 #include "packetProcessor.hpp"
+#include "EVTester.hpp"
 
 // Queues for Rx and Tx between C++ and Js
 std::queue<NapiPacket*> _txQueue;
@@ -24,17 +25,31 @@ int _num_of_packet_processer = 10;
 EVSharedCache* dataCache;
 unsigned char* bigArray;
 
-// Init Code
+/*******************************************************************************
+ * InitScopeLink()
+ *
+ * Calls the initialization function for the js side.
+ *
+ * Arguments: None
+ *
+ * Return:
+ *   int - Returns 1 on success, error otherwise.
+ ******************************************************************************/
 int InitScopeLink() {
 
-    // Create processor threads
-    // TODO: Replace this with a thread pool & js callbacks
+    // Create processor threads to handle js packets.
+    // TODO: Replace this with a thread pool & js callbacks.
+    //       This will reduce polling and be more responsive.
     processors.reserve(_num_of_packet_processer);
     for (int i = 0; i < _num_of_packet_processer; i++) {
         PacketProcesser* tempProcessor = new PacketProcesser(_txQueue, _rxQueue, _txLock, _rxLock);
         tempProcessor->start();
         processors.push_back(tempProcessor);
     }
+
+	// Initialize data processing pipeline
+	// TODO: Error handling
+	initializePipeline();
 
     // used to test the throughput of the NAPI link
     bigArray = (unsigned char*)malloc(sizeof(unsigned char) * TEST_ARRAY_SIZE);
@@ -45,7 +60,17 @@ int InitScopeLink() {
     return 1;
 }
 
-// WRAPER
+/*******************************************************************************
+ * InitScopeLinkWrapper()
+ *
+ * Wrapper for the InitScopeLink function
+ *
+ * Arguments:
+ *   const Napi::CallbackInfo& info - TODO: Figure out callbacks?
+ *
+ * Return:
+ *   Napi::Number - Return value from InitScopeLink().
+ ******************************************************************************/
 Napi::Number InitScopeLinkWrapper(const Napi::CallbackInfo& info) {
     Napi::Env env = info.Env();
 

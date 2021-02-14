@@ -15,6 +15,8 @@ boost::pool_allocator<int8_t,
 uint32_t windowSize = DEFAULT_WINDOW;
 uint32_t persistanceSize = 4;
 
+volatile bool programClosing = 0;
+
 uint32_t writeToCsv (char* filename, int8_t* data, uint32_t row, uint32_t col)
 {
     std::ofstream file;
@@ -35,5 +37,3 @@ uint32_t writeToCsv (char* filename, int8_t* data, uint32_t row, uint32_t col)
     file.close();
     return 0;
 }
-
-volatile bool programClosing = 0;

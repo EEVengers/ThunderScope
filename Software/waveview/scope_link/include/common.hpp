@@ -31,6 +31,9 @@ extern uint32_t persistanceSize;
 
 extern volatile bool programClosing;
 
+extern char* inputFile;
+extern char* outputFile;
+
 struct buffer
 {
     int8_t data[BUFFER_SIZE + 1];

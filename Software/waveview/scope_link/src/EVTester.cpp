@@ -233,8 +233,82 @@ void testBenchmark()
     processor.destroyThread();
 }
 
+Trigger* triggerThread;
+Processor* processorThread;
+
+/*******************************************************************************
+ * initializePipeline()
+ *
+ * Creates the threads for the pipeline and starts processing
+ *
+ * Arguments: None
+ *
+ * Return: void
+ ******************************************************************************/
+void initializePipeline()
+{
+    // Create queue
+    boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> newDataQueue{1000};
+    boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> triggeredQueue{1000};
+
+    if (inputFile != NULL) {
+        loadFromFile(inputFile, &newDataQueue);
+    } else {
+		std::string inputFileName = "test1.csv";
+        inputFile = (char *)malloc(inputFileName.size() + 1);
+		memcpy(inputFile, inputFileName.c_str(), inputFileName.size() + 1);
+        // TODO: Initialize the pcie drivers and pass it the newDataQueue.
+		//       Replace this whole else statement with the driver stuff.
+    }
+
+    // Create trigger method
+    int8_t triggerLevel = 10;
+	triggerThread = new Trigger(&newDataQueue, &triggeredQueue, triggerLevel);
+	triggerThread->createThread();
+
+    // Create processor method
+    processorThread = new Processor(&triggeredQueue);
+	processorThread->createThread();
+
+    // Start all methods
+    processorThread->processorUnpause();
+    triggerThread->triggerUnpause();
+}
+
+/*******************************************************************************
+ * cleanPipeline()
+ *
+ * Deletes and frees memory created for the pipeline
+ *
+ * Arguments: None
+ *
+ * Return: void
+ ******************************************************************************/
+void cleanPipeline() {
+    INFO << "Performing Cleanup";
+	if (inputFile != NULL) {
+		free(inputFile);
+	}
+
+    triggerThread->destroyThread();
+    processorThread->destroyThread();
+	INFO << "Cleanup Finished";
+}
+
+/*******************************************************************************
+ * testCsv()
+ *
+ * Runs csv data through the pipeline
+ *
+ * Arguments:
+ *   char* filename - name of source csv file to put into pipeline
+ *
+ * Return: void
+ ******************************************************************************/
 void testCsv(char * filename)
 {
+	// TODO: Cleanup. Remove duplicate code here with other functions
+
     // Create queue
     boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> newDataQueue{1000};
     boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> triggeredQueue{1000};
