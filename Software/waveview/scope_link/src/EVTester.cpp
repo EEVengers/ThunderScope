@@ -264,7 +264,7 @@ void testCsv(char * filename)
     processor.destroyThread();
 }
 
-void TestDataThroughPut()
+void TestDataThroughput()
 {
     unsigned int bytesRead = 0;
 

@@ -7,7 +7,7 @@
 
 void TestSincInterpolation();
 
-void TestDataThroughPut();
+void TestDataThroughput();
 
 void testTriggerThroughput();
 

@@ -16,7 +16,7 @@ std::mutex _txLock;
 std::mutex _rxLock;
 
 // array of packet processers that will execute the requests from JS
-std::vector<PacketProcesser> processors;
+std::vector<PacketProcesser*> processors;
 
 int _num_of_packet_processer = 10;
 
@@ -31,8 +31,9 @@ int InitScopeLink() {
     // TODO: Replace this with a thread pool & js callbacks
     processors.reserve(_num_of_packet_processer);
     for (int i = 0; i < _num_of_packet_processer; i++) {
-        processors.push_back(PacketProcesser(_txQueue, _rxQueue, _txLock, _rxLock));
-        processors.end()->start();
+        PacketProcesser* tempProcessor = new PacketProcesser(_txQueue, _rxQueue, _txLock, _rxLock);
+        tempProcessor->start();
+        processors.push_back(tempProcessor);
     }
 
     // used to test the throughput of the NAPI link
@@ -144,7 +145,7 @@ Napi::ArrayBuffer GetDataWrapper(const Napi::CallbackInfo& info) {
 }
 
 // Test Throughput Code
-unsigned char* TestThroughPut() {
+unsigned char* TestThroughput() {
     unsigned char* data = (unsigned char*)malloc(sizeof(unsigned char) * TEST_ARRAY_SIZE);
 
     memcpy(data,bigArray,TEST_ARRAY_SIZE);
@@ -153,10 +154,10 @@ unsigned char* TestThroughPut() {
 }
 
 // WRAPER
-Napi::ArrayBuffer TestThroughPutWrapper(const Napi::CallbackInfo& info) {
+Napi::ArrayBuffer TestThroughputWrapper(const Napi::CallbackInfo& info) {
     Napi::Env env = info.Env();
 
-    unsigned char* data = TestThroughPut();
+    unsigned char* data = TestThroughput();
 
     Napi::ArrayBuffer array =  Napi::ArrayBuffer::New(env,
                                                       (void*)data,
@@ -186,7 +187,7 @@ Napi::Object NapiExport(Napi::Env env, Napi::Object exports) {
     exports.Set("SendCommand",Napi::Function::New(env,SendCommand));
     exports.Set("GetData",Napi::Function::New(env,GetDataWrapper));
     exports.Set("GetTimeUs",Napi::Function::New(env,GetTimeUsWrapper));
-    exports.Set("TestThroughPut",Napi::Function::New(env,TestThroughPutWrapper));
+    exports.Set("TestThroughput",Napi::Function::New(env,TestThroughputWrapper));
 
     return exports;
 }

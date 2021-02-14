@@ -68,9 +68,9 @@ Napi::ArrayBuffer GetDataWrapper(const Napi::CallbackInfo& info);
 //void StopWrapper(const Napi::CallbackInfo& info);
 
 // Test Throughput Code
-unsigned char* TestThroughPut();
+unsigned char* TestThroughput();
 //WRAPER
-Napi::ArrayBuffer TestThroughPutWrapper(const Napi::CallbackInfo& info);
+Napi::ArrayBuffer TestThroughputWrapper(const Napi::CallbackInfo& info);
 
 // GetTimeNs
 unsigned long GetTimeUs();

@@ -15,7 +15,7 @@ void parseCommandLineArgs(int argc, char** args) {
             TestSincInterpolation();
         } else if(std::string(args[1]) == "--TestDataThroughput" || std::string(args[1]) == "-p") {
             INFO << "Main:parseCommandLineArgs() - Testing Data Throughput";
-            TestDataThroughPut();
+            TestDataThroughput();
         } else if(std::string(args[1]) == "--benchmark" || std::string(args[1]) == "-b") {
             INFO << "Main:parseCommandLineArgs() - Testing Trigger Throughput";
             testBenchmark();
