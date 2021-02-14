@@ -119,6 +119,12 @@ PacketProcesser::PacketProcesser(std::queue<NapiPacket*>& txQueue,
 }
 
 PacketProcesser::~PacketProcesser() {
-    if(_worker.joinable())
+    if(_worker.joinable()) {
+        run = false;
         _worker.join();
+        // TODO: Remove packet from processors global
+        INFO << "Packet Processor destroyed";
+    } else {
+        ERROR << "Failed to join packet processor";
+    }
 }

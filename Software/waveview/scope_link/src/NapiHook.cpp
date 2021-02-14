@@ -16,7 +16,7 @@ std::mutex _txLock;
 std::mutex _rxLock;
 
 // array of packet processers that will execute the requests from JS
-PacketProcesser** _processers;
+std::vector<PacketProcesser> processors;
 
 int _num_of_packet_processer = 10;
 
@@ -27,13 +27,12 @@ unsigned char* bigArray;
 // Init Code
 int InitScopeLink() {
 
-    // These are never deallocated?
-    _processers = (PacketProcesser**)malloc(sizeof(PacketProcesser*)
-                  * _num_of_packet_processer);
-
-    for(int i = 0; i < _num_of_packet_processer; i++) {
-        _processers[i] = new PacketProcesser(_txQueue, _rxQueue, _txLock, _rxLock);
-        _processers[i]->start();
+    // Create processor threads
+    // TODO: Replace this with a thread pool & js callbacks
+    processors.reserve(_num_of_packet_processer);
+    for (int i = 0; i < _num_of_packet_processer; i++) {
+        processors.push_back(PacketProcesser(_txQueue, _rxQueue, _txLock, _rxLock));
+        processors.end()->start();
     }
 
     // used to test the throughput of the NAPI link
