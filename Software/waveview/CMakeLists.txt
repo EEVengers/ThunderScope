@@ -10,6 +10,8 @@ set(CMAKE_CXX_STANDARD 17)
 # Comment out this line if you will try_compile with CMake's boost, for C team's consideration.
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
 #add flag so that the project compiles for CMAKE
 add_definitions(-DCMAKE) 
 
