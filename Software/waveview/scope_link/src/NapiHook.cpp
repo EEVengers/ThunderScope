@@ -159,14 +159,10 @@ Napi::ArrayBuffer TestThroughPutWrapper(const Napi::CallbackInfo& info) {
 
     unsigned char* data = TestThroughPut();
 
-    Napi::ArrayBuffer array = Napi::ArrayBuffer::New(env,
-                                                     (void*)data,
-                                                     TEST_ARRAY_SIZE,
-                                                     [](Napi::Env env,void* buff)
-                                                         {
-                                                         INFO << "Callback Called";
-                                                         }
-                                                    );
+    Napi::ArrayBuffer array =  Napi::ArrayBuffer::New(env,
+                                                      (void*)data,
+                                                      TEST_ARRAY_SIZE,
+                                                      cleanupHook);
 
     return array;
 }
