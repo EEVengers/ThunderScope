@@ -4,10 +4,8 @@ const {GetData , InitScopeLink} = require("./build/Debug/addon.node");
 
 var i;
 
-for(i = 0; i < 1000000; i++) {
-  console.log(GetData())
-}
-//var data = GetData();
+var mydata = GetData();
+console.log(mydata);
 
 for(i = 0; i < 1000000; i++) {
 

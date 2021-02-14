@@ -4,7 +4,7 @@ cmake_minimum_required(VERSION 3.15)
 project (addon)
 
 # TODO: Confirm this works on windows
-set (CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 17)
 #add_compile_options("/std:c++latest")
 
 # Comment out this line if you will try_compile with CMake's boost, for C team's consideration.
