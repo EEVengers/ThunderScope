@@ -1,61 +1,72 @@
-Circuit: * C:\Users\Aleksa\Desktop\FE Rev.4 SIM\Rev4_Buffer_Amp.asc
+Circuit: * C:\Users\Aleksa\Documents\EEVengers\Hardware\The Next Generation\FE2\FE Rev.4 SIM\Rev4_Buffer_Amp.asc
 
-C20: both pins shorted together -- ignoring.
 WARNING: Node N014 is floating.
 
-WARNING: Less than two connections to node NC_01.  This node is used by D2.
-WARNING: Less than two connections to node NC_02.  This node is used by D4.
+Early termination of direct N-R iteration.
 Direct Newton iteration failed to find .op point.  (Use ".option noopiter" to skip.)
 Starting Gmin stepping
 Gmin = 10
 Gmin = 1.07374
+Gmin = 0.115292
+Gmin = 0.0123794
+Gmin = 0.00132923
+Gmin = 0.000142725
+Gmin = 1.5325e-005
+Gmin = 1.6455e-006
 vernier = 0.5
 vernier = 0.25
 vernier = 0.125
+Gmin = 4.31359e-007
 vernier = 0.0625
 vernier = 0.03125
-Gmin = 1.0412
 vernier = 0.015625
-vernier = 0.0078125
-Gmin = 1.0132
-vernier = 0.00390625
-vernier = 0.00195313
-Gmin = 1.00827
-vernier = 0.00260417
-vernier = 0.00130208
-Gmin = 1.00515
-vernier = 0.000651042
-vernier = 0.000868055
-vernier = 0.000434028
-Gmin = 1.00434
-vernier = 0.000578703
-vernier = 0.000434027
-Gmin = 1.00339
+vernier = 0.0208333
+Gmin = 4.1866e-007
+vernier = 0.0277778
+Gmin = 3.93372e-007
+vernier = 0.037037
+vernier = 0.0493827
+Gmin = 3.54382e-007
+vernier = 0.0658435
+vernier = 0.0877914
+Gmin = 3.00201e-007
+vernier = 0.117055
+Gmin = 2.31493e-007
+vernier = 0.156073
+vernier = 0.208098
+Gmin = 1.50209e-007
+vernier = 0.277464
+vernier = 0.369952
+Gmin = 7.60417e-008
+vernier = 0.493269
+Gmin = 2.65687e-008
+vernier = 0.657691
+vernier = 0.876922
+Gmin = 4.82351e-009
+vernier = 1
+Gmin = 5.44392e-010
+Gmin = 5.84537e-011
+Gmin = 6.27641e-012
+Gmin = 6.73925e-013
 Gmin = 0
-Gmin stepping failed
-
-Starting source stepping with srcstepmethod=0
-Source Step = 3.0303%
-Source Step = 33.3333%
-Source Step = 63.6364%
-Source Step = 93.9394%
-Source stepping succeeded in finding the operating point.
+Gmin stepping succeeded in finding the operating point.
 
 
-Date: Sun Nov 08 22:24:01 2020
-Total elapsed time: 0.175 seconds.
+Date: Wed Jan 13 15:09:26 2021
+Total elapsed time: 0.248 seconds.
 
 tnom = 27
 temp = 27
-method = trap
-totiter = 4861
-traniter = 0
-tranpoints = 0
-accept = 0
-rejected = 0
-matrix size = 45
-fillins = 72
+method = modified trap
+totiter = 9275
+traniter = 8125
+tranpoints = 3702
+accept = 2474
+rejected = 1228
+matrix size = 41
+fillins = 136
 solver = Normal
-Matrix Compiler1:     359 opcodes
-Matrix Compiler2: off  [0.3]/0.5/0.3
+Thread vector: 8.0/5.6[4] 2.1/2.1[1] 1.8/1.4[4] 0.1/0.9[1]  2592/500
+Matrix Compiler1: 18.13 KB object code size  2.3/0.9/[0.8]
+Matrix Compiler2: 6.37 KB object code size  0.4/0.5/[0.3]
 

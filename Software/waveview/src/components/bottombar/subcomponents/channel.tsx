@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import './../../../css/bottombar/subscomponents/channel.css';
+import './../../../css/bottombar/subcomponents/channel.css';
 
 class Channel extends React.Component<any, any> {
   render() {

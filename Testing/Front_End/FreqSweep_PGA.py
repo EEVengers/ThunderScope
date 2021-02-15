@@ -1,8 +1,8 @@
-import visa, time
+import pyvisa, time
 
 def main():
     file = open('FreqSweep.csv', 'w')
-    rm = visa.ResourceManager()
+    rm = pyvisa.ResourceManager()
     scope = rm.open_resource('GPIB0::1::INSTR')
     gen = rm.open_resource('GPIB0::2::INSTR')
 

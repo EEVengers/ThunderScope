@@ -6,6 +6,7 @@ import './../../css/sidebar/sidebar.css';
 import HorizontalWidget from './widgets/horizontalWidget';
 import VerticalWidget from './widgets/verticalWidget';
 import MeasurementsWidget from './widgets/measurementsWidget';
+import TriggerWidget from './widgets/triggerWidget';
 
 class SideBar extends React.Component {
 
@@ -18,6 +19,7 @@ class SideBar extends React.Component {
         <HorizontalWidget />
         <VerticalWidget />
         <MeasurementsWidget />
+        <TriggerWidget />
       </div>
     )
   }
