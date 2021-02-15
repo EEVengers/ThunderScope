@@ -2,7 +2,6 @@
 #define trigger_hpp
 
 #include <atomic>
-#include <boost/lockfree/queue.hpp>
 #include <thread>
 #include <bitset>
 
@@ -17,6 +16,8 @@ public:
     Trigger(boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> *inputQ,
             boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> *outputQ,
             int8_t level);
+
+    ~Trigger();
 
     void checkTrigger(buffer* currentBuffer);
 

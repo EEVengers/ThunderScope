@@ -4,8 +4,18 @@ Trigger::Trigger(boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<fa
                  boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> *outputQ,
                  int8_t level)
 {
-    inputQueue = inputQ;
-    outputQueue = outputQ;
+    if (inputQ == NULL) {
+        ERROR << "trigger inputQ is null";
+    } else {
+        inputQueue = inputQ;
+    }
+
+    if (outputQ == NULL) {
+        ERROR << "trigger outputQ is null";
+    } else {
+        outputQueue = outputQ;
+    }
+
     triggerLevel = level;
     clearCount();
 
@@ -13,6 +23,12 @@ Trigger::Trigger(boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<fa
     pauseTrigger.store(true); 
     threadExists.store(false);
     triggerMet.store(false);
+}
+
+Trigger::~Trigger(void)
+{
+    INFO << "Trigger Destructor Called";
+    destroyThread();
 }
 
 #ifdef DBG
@@ -172,36 +188,46 @@ void Trigger::coreLoop()
     buffer *nextBuffer;
 
     // Get the first buffer into currentBuffer
-    while (inputQueue->pop(currentBuffer) == false){};
+    if (inputQueue == NULL) {
+        ERROR << "Input Queue null in core loop";
+    } else {
+        while (inputQueue->pop(currentBuffer) == false && stopTrigger.load() == false) {
+//            INFO << "Waiting for first data element";
+            std::this_thread::sleep_for(std::chrono::microseconds(100));
+        };
+        INFO << "Core Loop Entered";
 
-    // Outer loop
-    while (stopTrigger.load() == false) {
+        // Outer loop
+        while (stopTrigger.load() == false) {
 
-        // Inner Loop
-        while (pauseTrigger.load() == false) {
-            // Attempt to pop from the pueue
+            // Inner Loop
+            while (pauseTrigger.load() == false) {
+                // Attempt to pop from the pueue
 
-            if (inputQueue->pop(nextBuffer)) {
-                count++;
+                if (inputQueue->pop(nextBuffer)) {
+                    count++;
 
-                // copy first value from next buffer to current buffer
-                currentBuffer->data[BUFFER_SIZE] = nextBuffer->data[0];
+                    INFO << "trigger next buffer";
 
-                // generate triggers on new data
-                checkTrigger(currentBuffer);
+                    // copy first value from next buffer to current buffer
+                    currentBuffer->data[BUFFER_SIZE] = nextBuffer->data[0];
 
-                // push triggers and buffer onto post processor thread
-                outputQueue->push(currentBuffer);
+                    // generate triggers on new data
+                    checkTrigger(currentBuffer);
 
-                // swap next to current
-                currentBuffer = nextBuffer;
+                    // push triggers and buffer onto post processor thread
+                    outputQueue->push(currentBuffer);
 
-            } else {
+                    // swap next to current
+                    currentBuffer = nextBuffer;
 
-                // TODO: clean this up for when not running tests
-                triggerMet.store(true);
-                // Queue empty, Sleep for a bit
-                std::this_thread::sleep_for(std::chrono::microseconds(100));
+                } else {
+
+                    // TODO: clean this up for when not running tests
+                    triggerMet.store(true);
+                    // Queue empty, Sleep for a bit
+                    std::this_thread::sleep_for(std::chrono::microseconds(100));
+                }
             }
         }
     }
@@ -248,7 +274,7 @@ void Trigger::destroyThread()
         threadExists.store(false);
     } else {
         // Thread does not exist
-        throw EVException(10, "createThread(): thread does not exist");
+        throw EVException(10, "destroyThread(): thread does not exist");
     }
     INFO << "Destroyed Trigger Thread";
 }

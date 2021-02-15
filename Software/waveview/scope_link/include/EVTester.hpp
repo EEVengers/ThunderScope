@@ -17,4 +17,6 @@ void testCsv(char * filename);
 
 void initializePipeline();
 
+void cleanPipeline();
+
 #endif /* EVTester_hpp */
