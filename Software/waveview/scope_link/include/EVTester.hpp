@@ -7,12 +7,14 @@
 
 void TestSincInterpolation();
 
-void TestDataThroughPut();
+void TestDataThroughput();
 
 void testTriggerThroughput();
 
 void testBenchmark();
 
 void testCsv(char * filename);
+
+void initializePipeline();
 
 #endif /* EVTester_hpp */
