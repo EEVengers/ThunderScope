@@ -15,7 +15,7 @@ void parseCommandLineArgs(int argc, char** args) {
             TestSincInterpolation();
         } else if(std::string(args[1]) == "--TestDataThroughput" || std::string(args[1]) == "-p") {
             INFO << "Main:parseCommandLineArgs() - Testing Data Throughput";
-            TestDataThroughPut();
+            TestDataThroughput();
         } else if(std::string(args[1]) == "--benchmark" || std::string(args[1]) == "-b") {
             INFO << "Main:parseCommandLineArgs() - Testing Trigger Throughput";
             testBenchmark();
@@ -25,9 +25,11 @@ void parseCommandLineArgs(int argc, char** args) {
         } else if(std::string(args[1]) == "-t" || std::string(args[1]) == "--test") {
             INFO << "Running Test";
             if (argc > 2) {
-                testCsv(args[2]);
+                inputFile = args[2];
+                testCsv(inputFile);
             } else {
                 char filename[] = "test1.csv";
+                inputFile = filename;
                 testCsv(filename);
             }
         } else {
