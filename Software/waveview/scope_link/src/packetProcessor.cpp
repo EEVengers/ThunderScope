@@ -78,7 +78,7 @@ void PacketProcesser::job() {
             case ConfigureScope:
             break;
             default:
-                ERROR << "Unknown Command: " << _rxPacket->command; 
+                std::cout << "Unknown Command: " << _rxPacket->command; 
             break;
         }
         // put the txPacket into the queue
@@ -125,6 +125,6 @@ PacketProcesser::~PacketProcesser() {
         // TODO: Remove packet from processors global
         INFO << "Packet Processor destroyed";
     } else {
-        ERROR << "Failed to join packet processor";
+        std::cout << "Failed to join packet processor";
     }
 }

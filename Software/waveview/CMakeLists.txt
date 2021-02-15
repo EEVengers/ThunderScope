@@ -16,9 +16,18 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 add_definitions(-DCMAKE) 
 
 # Boost
+if(MSVC)
+set(Boost_USE_STATIC_LIBS ON)
+else()
 set(Boost_USE_STATIC_LIBS OFF) 
+endif()
+
 set(Boost_USE_MULTITHREADED ON) 
 set(Boost_USE_STATIC_RUNTIME OFF)
+
+if(MSVC)
+set(BOOST_ROOT C:/Boost)
+endif()
 find_package( Boost REQUIRED COMPONENTS system thread log_setup log )
 
 # Essential include files to build a node addon,

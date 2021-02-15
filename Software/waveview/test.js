@@ -1,4 +1,4 @@
-const {GetData , InitScopeLink} = require("./build/Debug/addon.node");
+const {GetData , InitScopeLink} = require("./build/Release/addon.node");
 
 //console.log(InitScopeLink());
 

@@ -83,7 +83,7 @@ void DataTransferHandler::FTDITransferThread()
                                     FTDI_FLAG_READ_CHIP_TO_COMPUTER,
                                     (unsigned char*)asyncDataBuffers[0]->data,
                                     BUFFER_SIZE,
-                                    (uint32_t*)&bytesReadFromPipe,
+                                    (PULONG)&bytesReadFromPipe,
                                     nullptr);
     
             assert(bytesReadFromPipe == BUFFER_SIZE);
