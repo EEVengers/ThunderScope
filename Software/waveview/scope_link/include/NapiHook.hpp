@@ -52,6 +52,10 @@ int InitScopeLink();
 // WRAPER
 Napi::Number InitScopeLinkWrapper(const Napi::CallbackInfo& info);
 
+// cleanup code
+int deleteScopeLink();
+Napi::Number deleteScopeLinkWrapper(const Napi::CallbackInfo& info);
+
 // Handle NAPI Command: This function will decode an NAPI command and queue it up for execution
 int HandleCommand(unsigned char* data, size_t size);
 // WRAPPER

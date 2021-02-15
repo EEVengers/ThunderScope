@@ -57,6 +57,8 @@ int InitScopeLink() {
         bigArray[i] = i % 127;
     }
 
+	INFO << "Scope Link Initialized";
+
     return 1;
 }
 
@@ -77,6 +79,46 @@ Napi::Number InitScopeLinkWrapper(const Napi::CallbackInfo& info) {
     return Napi::Number::New(env,InitScopeLink());
 }
 
+/*******************************************************************************
+ * deleteScopeLink()
+ *
+ * Calls the cleanup function from the js side.
+ *
+ * Arguments: None
+ *
+ * Return:
+ *   int - Returns 1 on success, error otherwise.
+ ******************************************************************************/
+int deleteScopeLink() {
+
+	for (PacketProcesser* i : processors){
+		delete i;
+	}
+	processors.clear();
+
+	free(bigArray);
+
+	INFO << "Scope Link deleted";
+
+    return 1;
+}
+
+/*******************************************************************************
+ * deleteScopeLinkWrapper()
+ *
+ * Wrapper for the deleteScopeLink() function
+ *
+ * Arguments:
+ *   const Napi::CallbackInfo& info - TODO: Figure out callbacks?
+ *
+ * Return:
+ *   Napi::Number - Return value from deleteScopeLink().
+ ******************************************************************************/
+Napi::Number deleteScopeLinkWrapper(const Napi::CallbackInfo& info) {
+    Napi::Env env = info.Env();
+
+    return Napi::Number::New(env,deleteScopeLink());
+}
 
 int HandleCommand(unsigned char* data, size_t size) {
     NapiPacket* packet = (NapiPacket*)malloc(sizeof(NapiPacket));
