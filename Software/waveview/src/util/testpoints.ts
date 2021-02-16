@@ -1,6 +1,8 @@
 import { data as sine_data} from '../testdata/sin1MHz';
 import { data as sinc_data} from '../testdata/sinc1MHz';
 
+const _win = (window as any);
+
 class Range {
   dataMin: number = 0;
   dataMax: number = 0;
@@ -40,6 +42,10 @@ class TestPoints {
     let currentSecondTicks = (tickCount % 60);
     this.x.dataMin = seconds * this.x.displayLimit;
     this.x.dataMax = this.x.dataMin + (Math.floor(this.x.displayLimit*currentSecondTicks/60));
+
+    //if(tickCount % 1 === 0) {
+      console.log(_win.thunderscope.GetData());
+    //}
   }
 
   getData() {
