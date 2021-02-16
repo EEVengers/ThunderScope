@@ -51,7 +51,18 @@ shutdown
 ___
 ## Software
 
-We are using React with TypeScript and Electron for our desktop app. The main dependency to be able to build and test it is Node.js, which includes npm. npm is a package manager for Node.js, which itself is a JavaScript runtime used by React. Installing Node.js is different for reach platform, go to:
+We are using React with TypeScript and Electron for our desktop app, with a C++ library to mediate between the desktop app and the hardware.
+
+The main dependencies to build and test are:
+
++ Node.js
++ Your platform's C++ compiler (MSVC on Windows)
++ Boost (built from source on Windows)
++ CMake
+
+### Node.js
+
+Node.js includes npm. npm is a package manager for Node.js, which itself is a JavaScript runtime used by React. Installing Node.js is different for reach platform, go to:
 ```
 nodejs.org
 ```
@@ -61,22 +72,55 @@ Once you have Node.js and npm installed, you can:
 ```
 cd DSO/Software/waveview
 ```
-Then you will want to grab all the dependencies before you can actually do anything. Dependencies are not uploaded to git and must be grabbed individually by each person. Do to this simply use:
+Then you will want to grab all the JavaScript/TypeScript dependencies before you can actually do anything. Dependencies are not uploaded to git and must be grabbed individually by each person. Do to this simply use:
 ```
 npm install
 ```
-This will get everything and place it inside the node_modules folder.
+This will get all the JavaScript/TypeScript dependencies and place it inside the node_modules folder.
 
-We have two main scripts that you should use. For development work, use:
-```
-npm run electron-dev
-```
+### C++ Compiler
+
+This should be `g++` on Linux, and MSVC on Windows. Installing MSVC will probably require installing Visual Studio: Community Edition is fine.
+
+### Boost
+
+Boost is a huge C++ library used extensively for the C++ portion of our application. It may be available in your operating system's package manager.
+
+#### Boost on Windows
+
+We ran into a lot of issues using Boost prebuilt binaries on Windows. For now, on Windows you should build Boost from source and make sure it is installed at `C:\Boost`. This is time consuming but pretty easy.
+
+1. Get the [source zip](https://www.boost.org/users/history/version_1_75_0.html)
+2. Unzip the source (Explorer might freeze and go slowly at this stage, 7Zip is a bit nicer-behaved)
+3. Navigate to the unzipped folder in the Windows command line
+4. Run `.\bootstrap`
+5. Run `.\b2`
+6. Run `.\b2 install`
+
+More detailed info is available [here](https://www.boost.org/doc/libs/1_75_0/more/getting_started/windows.html). You don't actually need to add the Boost directory to your system PATH: we explicitly set the Boost root dir to be `C:\Boost` in our build script.
+
+### CMake
+
+Get it from [here](https://cmake.org/download/).
+
+### Scripts
+
+We have three main scripts that you should use:
+
++ `npm run make-cpp` (On Windows use `npm run make-cpp-win` instead)
++ `npm run electron-dev` (on Windows use `npm run electron-dev-win` instead)
++ `npm run electron-build` (on Windows use `npm run electron-build-win` instead)
+
+#### Make-Cpp
+
+This script will build the C++ portion of our application using CMake and your platform's C++ compiler
+
+#### Electron-Dev
+
 This will open up the app in a dev environment, with hot reloading supported. The built in chrome dev tools have the react dev tools installed and your terminal will be watching the process, so all of the dev tools are at your disposal.
 
-For distribution, we have:
-```
-npm run electron-build
-```
+#### Electron-Build
+
 This will make a distribution ready bundle suitable for your current platform. If you ever need to build another platform's bundle, contact Andrew.
 
 Curious souls can go into the package.json file to see exactly what these scripts do, but careful.
