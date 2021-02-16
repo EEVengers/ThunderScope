@@ -1,10 +1,16 @@
-const {GetData , InitScopeLink} = require("./build/Release/addon.node");
+var addon;
+if(process.platform === "win32") {
+  addon = require("./build/Release/addon.node");
+}
+else {
+  addon = require("./build/Debug/addon.node");
+}
 
 //console.log(InitScopeLink());
 
 var i;
 
-var mydata = GetData();
+var mydata = addon.GetData();
 console.log(mydata);
 
 for(i = 0; i < 1000000; i++) {
