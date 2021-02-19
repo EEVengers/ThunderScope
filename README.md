@@ -90,12 +90,8 @@ Boost is a huge C++ library used extensively for the C++ portion of our applicat
 
 We ran into a lot of issues using Boost prebuilt binaries on Windows. For now, on Windows you should build Boost from source and make sure it is installed at `C:\Boost`. This is time consuming but pretty easy.
 
-1. Get the [source zip](https://www.boost.org/users/history/version_1_75_0.html)
-2. Unzip the source (Explorer might freeze and go slowly at this stage, 7Zip is a bit nicer-behaved)
-3. Navigate to the unzipped folder in the Windows command line
-4. Run `.\bootstrap`
-5. Run `.\b2`
-6. Run `.\b2 install`
+1. Navigate to the `Software\Waveview` subdirectory of the source code using the Command Prompt or Powershell
+2. Run `deps`
 
 More detailed info is available [here](https://www.boost.org/doc/libs/1_75_0/more/getting_started/windows.html). You don't actually need to add the Boost directory to your system PATH: we explicitly set the Boost root dir to be `C:\Boost` in our build script.
 
