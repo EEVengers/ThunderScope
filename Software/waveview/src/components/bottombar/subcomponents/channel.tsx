@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import ControlMode from '../../../configuration/enums/controlMode';
 import './../../../css/bottombar/subcomponents/channel.css';
 
 class Channel extends React.Component<any, any> {
@@ -9,7 +10,9 @@ class Channel extends React.Component<any, any> {
         <label>
           CH{this.props.channelNumber}: 
           {" "}
-          {this.props.verticalWidget.timePerDivision[this.props.channelNumber-1].value},
+          {this.props.verticalWidget.divisionSettings.controlMode == ControlMode.Course && this.props.verticalWidget.timePerDivision[this.props.channelNumber-1].value}
+          {this.props.verticalWidget.divisionSettings.controlMode == ControlMode.Fine && this.props.verticalWidget.timePerDivision[this.props.channelNumber-1].fineValue.toString()}
+          {this.props.verticalWidget.divisionSettings.controlMode == ControlMode.Fine && this.props.verticalWidget.timePerDivision[this.props.channelNumber-1].fineUnit.toString() + "/div"},
           {" "}
           {this.props.verticalWidget.verticalOffset[this.props.channelNumber-1].value}
           {this.props.verticalWidget.verticalOffset[this.props.channelNumber-1].unit},
