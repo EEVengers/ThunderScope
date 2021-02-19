@@ -36,21 +36,10 @@ export default function(state = initialState, action: {type: any, payload: any})
   var tmp;
 
   switch(action.type) {
-    case "vertical/increaseChannel":
-      if (state.activeChannel >= 4) {
-        return { ...state }
-      }
+    case "vertical/changeChannel":
       return {
         ...state,
-        activeChannel: state.activeChannel + 1
-      };
-    case "vertical/decreaseChannel":
-      if (state.activeChannel === 1) {
-        return { ...state }
-      }
-      return {
-        ...state,
-        activeChannel: state.activeChannel - 1
+        activeChannel: action.payload
       };
     case "vertical/increaseVerticalOffset":
       tmp = state.verticalOffset;

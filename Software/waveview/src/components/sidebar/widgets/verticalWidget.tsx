@@ -5,12 +5,8 @@ import './../../../css/sidebar/widgets/verticalWidget.css';
 
 class VerticalWidget extends React.Component<any, any> { 
    // Active Channel
-   increaseChannel = () => {
-    this.props.dispatch({type: 'vertical/increaseChannel'});
-  }
-
-  decreaseChannel = () => {
-    this.props.dispatch({type: 'vertical/decreaseChannel'});
+  changeChannel = (channelNumber: number) => {
+    this.props.dispatch({type: 'vertical/changeChannel', payload: channelNumber})
   }
 
   // Vertical Offset
@@ -38,25 +34,51 @@ class VerticalWidget extends React.Component<any, any> {
           Vertical
         </div>
 
-      <div className="VerticalWidgetAdjustChannelBlock">
-        <button 
-          className="MinusButton"
-          onClick={() => this.decreaseChannel()}>
-          -
+      <div className="ChannelTitle">
+        Channel
+      </div>
+      <div className="ChannelSelectionButtons">
+        <button
+          className="Channel1Button"
+          onClick={() => this.changeChannel(1)}>
+          <label
+            className={"Channel1ButtonText"}
+            style={{color: this.props.verticalWidget.activeChannel == 1 ? this.props.verticalWidget.channelColorsList[this.props.verticalWidget.activeChannel-1] : "black"}}>
+            CH1
+          </label>
         </button>
-        <label 
-          className="AdjustChannelBlockValue"
-          style={{color: this.props.verticalWidget.channelColorsList[this.props.verticalWidget.activeChannel-1]}}
-        >
-          CH{this.props.verticalWidget.activeChannel.toString()}
-        </label>
-        <button 
-          className="PlusButton"
-          onClick={() => this.increaseChannel()}>
-          +
+        <button
+          className="Channel2Button"
+          onClick={() => this.changeChannel(2)}>
+          <label
+            className={"Channel2ButtonText"}
+            style={{color: this.props.verticalWidget.activeChannel == 2 ? this.props.verticalWidget.channelColorsList[this.props.verticalWidget.activeChannel-1] : "black"}}>
+            CH2
+          </label>
+        </button>
+        <button
+          className="Channel3Button"
+          onClick={() => this.changeChannel(3)}>
+          <label
+            className={"Channel3ButtonText"}
+            style={{color: this.props.verticalWidget.activeChannel == 3 ? this.props.verticalWidget.channelColorsList[this.props.verticalWidget.activeChannel-1] : "black"}}>
+            CH3
+          </label>
+        </button>
+        <button
+          className="Channel4Button"
+          onClick={() => this.changeChannel(4)}>
+          <label
+            className={"Channel4ButtonText"}
+            style={{color: this.props.verticalWidget.activeChannel == 4 ? this.props.verticalWidget.channelColorsList[this.props.verticalWidget.activeChannel-1] : "black"}}>
+            CH4
+          </label>
         </button>
       </div>
 
+      <div className="DivisionTitle">
+        Division
+      </div>
       <div className="VerticalWidgetAdjustBlock-TimePerDivision">
         <button 
           className="MinusButton"
@@ -76,6 +98,9 @@ class VerticalWidget extends React.Component<any, any> {
         </button>
       </div>
 
+      <div className="OffsetTitle">
+        Offset
+      </div>
       <div className="VerticalWidgetAdjustBlock-VerticalOffset">
         <button 
           className="MinusButton"
