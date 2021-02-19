@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import './../../../css/sidebar/widgets/horizontalWidget.css';
-import TimeBaseMode from '../../../configuration/enums/timeBaseMode';
+import ControlMode from '../../../configuration/enums/controlMode';
 import TimeUnit from '../../../configuration/enums/timeUnit';
 
 class HorizontalWidget extends React.Component<any, any> { 
@@ -23,7 +23,7 @@ class HorizontalWidget extends React.Component<any, any> {
     this.props.dispatch({ type: 'horizontal/decreaseTimeBaseFine'});
   }
 
-  changeTimeBaseMode = (mode: TimeBaseMode) => {
+  changeTimeBaseMode = (mode: ControlMode) => {
     this.props.dispatch({ type: 'horizontal/changeTimeBaseMode', payload: mode});
   }
 
@@ -54,19 +54,19 @@ class HorizontalWidget extends React.Component<any, any> {
         <div className="TimeBaseMode">
           <button
             className="CourseControlButton"
-            onClick={() => this.changeTimeBaseMode(TimeBaseMode.Course)}>
+            onClick={() => this.changeTimeBaseMode(ControlMode.Course)}>
               <label
                 className=""
-                style={{fontWeight: this.props.horizontalWidget.horizontalTimeBase.mode ==  TimeBaseMode.Course ? "bold" : "normal"}}>
+                style={{fontWeight: this.props.horizontalWidget.horizontalTimeBase.mode ==  ControlMode.Course ? "bold" : "normal"}}>
                 Course
               </label>
           </button>
           <button
             className="FineControlButton"
-            onClick={() => this.changeTimeBaseMode(TimeBaseMode.Fine)}>
+            onClick={() => this.changeTimeBaseMode(ControlMode.Fine)}>
               <label
                   className=""
-                  style={{fontWeight: this.props.horizontalWidget.horizontalTimeBase.mode ==  TimeBaseMode.Fine ? "bold" : "normal"}}>
+                  style={{fontWeight: this.props.horizontalWidget.horizontalTimeBase.mode ==  ControlMode.Fine ? "bold" : "normal"}}>
                   Fine
               </label>
           </button>
@@ -75,25 +75,25 @@ class HorizontalWidget extends React.Component<any, any> {
         <div className="HorizontalWidgetAdjustBlock-HorizontalTimeBase">
           <button 
             className="MinusButton"
-            onClick={() => this.props.horizontalWidget.horizontalTimeBase.mode == TimeBaseMode.Course ? this.decrementTimeBase() : this.decrementTimeBaseFine()}>
+            onClick={() => this.props.horizontalWidget.horizontalTimeBase.mode == ControlMode.Course ? this.decrementTimeBase() : this.decrementTimeBaseFine()}>
             -
           </button>
           <label 
             className="AdjustValueBlockHorizontalTimeBase"
             style={{color: "white"}}
           >
-            {this.props.horizontalWidget.horizontalTimeBase.mode == TimeBaseMode.Course && this.props.horizontalWidget.horizontalTimeBase.value.toString()}
-            {this.props.horizontalWidget.horizontalTimeBase.mode == TimeBaseMode.Fine && this.props.horizontalWidget.horizontalTimeBase.fineValue.toString()}
-            {this.props.horizontalWidget.horizontalTimeBase.mode == TimeBaseMode.Fine && this.props.horizontalWidget.horizontalTimeBase.fineUnit.toString() + "/div"}
+            {this.props.horizontalWidget.horizontalTimeBase.mode == ControlMode.Course && this.props.horizontalWidget.horizontalTimeBase.value.toString()}
+            {this.props.horizontalWidget.horizontalTimeBase.mode == ControlMode.Fine && this.props.horizontalWidget.horizontalTimeBase.fineValue.toString()}
+            {this.props.horizontalWidget.horizontalTimeBase.mode == ControlMode.Fine && this.props.horizontalWidget.horizontalTimeBase.fineUnit.toString() + "/div"}
           </label>
           <button 
             className="PlusButton"
-            onClick={() => this.props.horizontalWidget.horizontalTimeBase.mode == TimeBaseMode.Course ? this.incrementTimeBase() : this.incrementTimeBaseFine()}>
+            onClick={() => this.props.horizontalWidget.horizontalTimeBase.mode == ControlMode.Course ? this.incrementTimeBase() : this.incrementTimeBaseFine()}>
             +
           </button>
         </div>
 
-        {this.props.horizontalWidget.horizontalTimeBase.mode == TimeBaseMode.Fine &&
+        {this.props.horizontalWidget.horizontalTimeBase.mode == ControlMode.Fine &&
         <div className="FineModeUnitButtons">
         <button
           className="NanoSecondButton"
