@@ -2,6 +2,8 @@ import DefaultValues from '../../../configuration/defaultValues';
 import DefaultChannelColor from '../../../configuration/enums/defaultChannelColor';
 import MeasurementType from '../../../configuration/enums/measurementType';
 import VoltageUnit from '../../../configuration/enums/voltageUnit';
+import ControlMode from '../../../configuration/enums/controlMode';
+import ProbeMode from '../../../configuration/enums/probeMode';
 
 const initialState = {
   activeChannel: 1,
@@ -12,11 +14,35 @@ const initialState = {
     DefaultChannelColor.Channel4
   ],
   timePerDivision: [
-    {value: DefaultValues.x1ProbeValues[6], index: 6}, 
-    {value: DefaultValues.x1ProbeValues[6], index: 6}, 
-    {value: DefaultValues.x1ProbeValues[6], index: 6}, 
-    {value: DefaultValues.x1ProbeValues[6], index: 6}
+    {
+      fineValue: 0,
+      fineUnit: VoltageUnit.MilliVolt,
+      value: DefaultValues.x1ProbeValues[6], 
+      index: 6
+    }, 
+    {
+      fineValue: 0,
+      fineUnit: VoltageUnit.MilliVolt,
+      value: DefaultValues.x1ProbeValues[6], 
+      index: 6
+    }, 
+    {
+      fineValue: 0,
+      fineUnit: VoltageUnit.MilliVolt,
+      value: DefaultValues.x1ProbeValues[6], 
+      index: 6
+    }, 
+    {
+      fineValue: 0,
+      fineUnit: VoltageUnit.MilliVolt,
+      value: DefaultValues.x1ProbeValues[6], 
+      index: 6
+    }
   ],
+  divisionSettings: {
+    controlMode: ControlMode.Course,
+    probeMode: ProbeMode.x1
+  },
   verticalOffset: [
     {value: 0, unit: VoltageUnit.MilliVolt},
     {value: 0, unit: VoltageUnit.MilliVolt},
@@ -36,11 +62,27 @@ export default function(state = initialState, action: {type: any, payload: any})
   var tmp;
 
   switch(action.type) {
+    case "vertical/changeControlMode":
+      return {
+        ...state,
+        divisionSettings: {
+          ...state.divisionSettings,
+          controlMode: action.payload
+        }
+      };
     case "vertical/changeChannel":
       return {
         ...state,
         activeChannel: action.payload
       };
+    case "vertical/changeDivisionUnit":
+      tmp = state.timePerDivision;
+
+      tmp[channelIndex].fineUnit = action.payload;
+      return {
+        ...state,
+        timePerDivision: tmp
+      }
     case "vertical/increaseVerticalOffset":
       tmp = state.verticalOffset;
 
@@ -81,6 +123,22 @@ export default function(state = initialState, action: {type: any, payload: any})
         ...state,
         timePerDivision: tmp
       }
+    case "vertical/increaseTimePerDivisionFine":
+      tmp = state.timePerDivision;
+
+      tmp[channelIndex].fineValue = Number((state.timePerDivision[channelIndex].fineValue + 0.1).toFixed(1));
+      return {
+        ...state,
+        timePerDivision: tmp
+      };
+    case "vertical/decreaseTimePerDivisionFine":
+      tmp = state.timePerDivision;
+
+      tmp[channelIndex].fineValue = Number((state.timePerDivision[channelIndex].fineValue - 0.1).toFixed(1));
+      return {
+        ...state,
+        timePerDivision: tmp
+      };
     default:
       return state;
   }

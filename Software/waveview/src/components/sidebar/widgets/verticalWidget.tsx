@@ -1,12 +1,39 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import DefaultValues from '../../../configuration/defaultValues';
+import ControlMode from '../../../configuration/enums/controlMode';
+import VoltageUnit from '../../../configuration/enums/voltageUnit';
 import './../../../css/sidebar/widgets/verticalWidget.css';
 
 class VerticalWidget extends React.Component<any, any> { 
    // Active Channel
   changeChannel = (channelNumber: number) => {
     this.props.dispatch({type: 'vertical/changeChannel', payload: channelNumber})
+  }
+
+  // Time Per Division
+  incrementTimePerDivision = () => {
+    this.props.dispatch({type: 'vertical/increaseTimePerDivision'});
+  }
+
+  decrementTimePerDivision = () => {
+    this.props.dispatch({type: 'vertical/decreaseTimePerDivision'});
+  }
+
+  incrementTimePerDivisionFine = () => {
+    this.props.dispatch({type: 'vertical/increaseTimePerDivisionFine'});
+  }
+
+  decrementTimePerDivisionFine = () => {
+    this.props.dispatch({type: 'vertical/decreaseTimePerDivisionFine'});
+  }
+
+  changeControlMode = (mode: ControlMode) => {
+    this.props.dispatch({ type: 'vertical/changeControlMode', payload: mode});
+  }
+
+  changeDivisionUnit = (unit: VoltageUnit) => {
+    this.props.dispatch({type: 'vertical/changeDivisionUnit', payload: unit});
   }
 
   // Vertical Offset
@@ -18,14 +45,6 @@ class VerticalWidget extends React.Component<any, any> {
     this.props.dispatch({ type: 'vertical/decreaseVerticalOffset'});
   }
 
-  // Time Per Division
-  incrementTimePerDivision = () => {
-    this.props.dispatch({type: 'vertical/increaseTimePerDivision'});
-  }
-
-  decrementTimePerDivision = () => {
-    this.props.dispatch({type: 'vertical/decreaseTimePerDivision'});
-  }
 
   render() {
     return (
@@ -79,24 +98,88 @@ class VerticalWidget extends React.Component<any, any> {
       <div className="DivisionTitle">
         Division
       </div>
+      <div className="DivisionMode">
+          <button
+            className="CourseControlButton"
+            onClick={() => this.changeControlMode(ControlMode.Course)}>
+              <label
+                className=""
+                style={{fontWeight: this.props.verticalWidget.divisionSettings.controlMode ==  ControlMode.Course ? "bold" : "normal"}}>
+                Course
+              </label>
+          </button>
+          <button
+            className="FineControlButton"
+            onClick={() => this.changeControlMode(ControlMode.Fine)}>
+              <label
+                  className=""
+                  style={{fontWeight: this.props.verticalWidget.divisionSettings.controlMode ==  ControlMode.Fine ? "bold" : "normal"}}>
+                  Fine
+              </label>
+          </button>
+      </div>
+
       <div className="VerticalWidgetAdjustBlock-TimePerDivision">
         <button 
           className="MinusButton"
-          onClick={() => this.decrementTimePerDivision()}>
+          onClick={() => this.props.verticalWidget.divisionSettings.controlMode == ControlMode.Course ? this.decrementTimePerDivision() : this.decrementTimePerDivisionFine()}>
           -
         </button>
         <label 
           className="AdjustValueBlockTimePerDivision"
           style={{color: this.props.verticalWidget.channelColorsList[this.props.verticalWidget.activeChannel-1]}}
         >
-          {DefaultValues.x1ProbeValues[this.props.verticalWidget.timePerDivision[this.props.verticalWidget.activeChannel-1].index]}
+          {this.props.verticalWidget.divisionSettings.controlMode == ControlMode.Course && DefaultValues.x1ProbeValues[this.props.verticalWidget.timePerDivision[this.props.verticalWidget.activeChannel-1].index]}
+          {this.props.verticalWidget.divisionSettings.controlMode == ControlMode.Fine && this.props.verticalWidget.timePerDivision[this.props.verticalWidget.activeChannel-1].fineValue.toString()}
+          {this.props.verticalWidget.divisionSettings.controlMode == ControlMode.Fine && this.props.verticalWidget.timePerDivision[this.props.verticalWidget.activeChannel-1].fineUnit.toString() + "/div"}
         </label>
         <button 
           className="PlusButton"
-          onClick={() => this.incrementTimePerDivision()}>
+          onClick={() => this.props.verticalWidget.divisionSettings.controlMode == ControlMode.Course ? this.incrementTimePerDivision() : this.incrementTimePerDivisionFine()}>
           +
         </button>
       </div>
+
+      {this.props.verticalWidget.divisionSettings.controlMode == ControlMode.Fine &&
+        <div className="FineModeUnitButtons">
+        <button
+          className="NanoVoltButton"
+          onClick={() => this.changeDivisionUnit(VoltageUnit.NanoVolt)}>
+          <label
+            className={"MicroVoltButtonText"}
+            style={{fontWeight: this.props.verticalWidget.timePerDivision[this.props.verticalWidget.activeChannel-1].fineUnit == VoltageUnit.NanoVolt? "bold" : "normal"}}>
+            {VoltageUnit.NanoVolt}
+          </label>
+        </button>
+        <button
+          className="MicroVoltButton"
+          onClick={() => this.changeDivisionUnit(VoltageUnit.MicroVolt)}>
+          <label
+            className={"MicroVoltButtonText"}
+            style={{fontWeight: this.props.verticalWidget.timePerDivision[this.props.verticalWidget.activeChannel-1].fineUnit == VoltageUnit.MicroVolt? "bold" : "normal"}}>
+            {VoltageUnit.MicroVolt}
+          </label>
+        </button>
+        <button
+          className="MilliVoltButton"
+          onClick={() => this.changeDivisionUnit(VoltageUnit.MilliVolt)}>
+          <label
+            className={"MilliVoltButtonText"}
+            style={{fontWeight: this.props.verticalWidget.timePerDivision[this.props.verticalWidget.activeChannel-1].fineUnit == VoltageUnit.MilliVolt? "bold" : "normal"}}>
+            {VoltageUnit.MilliVolt}
+          </label>
+        </button>
+        <button
+          className="VoltButton"
+          onClick={() => this.changeDivisionUnit(VoltageUnit.Volt)}>
+          <label
+            className={"VoltButtonText"}
+            style={{fontWeight: this.props.verticalWidget.timePerDivision[this.props.verticalWidget.activeChannel-1].fineUnit == VoltageUnit.Volt? "bold" : "normal"}}>
+            {VoltageUnit.Volt}
+          </label>
+        </button>
+        </div>
+        }
 
       <div className="OffsetTitle">
         Offset
