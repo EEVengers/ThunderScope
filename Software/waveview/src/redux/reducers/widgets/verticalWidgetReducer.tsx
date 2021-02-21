@@ -44,25 +44,29 @@ const initialState = {
       controlMode: ControlMode.Course,
       probeMode: ProbeMode.x1,
       coupling: MeasurementType.DC,
-      bandwidth: 100
+      bandwidth: 100,
+      status: 1
     },
     {
       controlMode: ControlMode.Course,
       probeMode: ProbeMode.x1,
       coupling: MeasurementType.DC,
-      bandwidth: 100
+      bandwidth: 100,
+      status: 1
     },
     {
       controlMode: ControlMode.Course,
       probeMode: ProbeMode.x1,
       coupling: MeasurementType.DC,
-      bandwidth: 100
+      bandwidth: 100,
+      status: 1
     },
     {
       controlMode: ControlMode.Course,
       probeMode: ProbeMode.x1,
       coupling: MeasurementType.DC,
-      bandwidth: 100
+      bandwidth: 100,
+      status: 1
     }
   ],
   verticalOffset: [

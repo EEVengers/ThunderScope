@@ -143,7 +143,12 @@ class VerticalWidget extends React.Component<any, any> {
           className="AdjustValueBlockTimePerDivision"
           style={{color: this.props.verticalWidget.channelColorsList[this.props.verticalWidget.activeChannel-1]}}
         >
-          {this.props.verticalWidget.settings[this.props.verticalWidget.activeChannel-1].controlMode == ControlMode.Course && DefaultValues.x1ProbeValues[this.props.verticalWidget.timePerDivision[this.props.verticalWidget.activeChannel-1].index]}
+          {this.props.verticalWidget.settings[this.props.verticalWidget.activeChannel-1].controlMode == ControlMode.Course 
+            && this.props.verticalWidget.settings[this.props.verticalWidget.activeChannel-1].probeMode == ProbeMode.x1
+            && DefaultValues.x1ProbeValues[this.props.verticalWidget.timePerDivision[this.props.verticalWidget.activeChannel-1].index]}
+          {this.props.verticalWidget.settings[this.props.verticalWidget.activeChannel-1].controlMode == ControlMode.Course 
+            && this.props.verticalWidget.settings[this.props.verticalWidget.activeChannel-1].probeMode == ProbeMode.x10
+            && DefaultValues.x10ProbeValues[this.props.verticalWidget.timePerDivision[this.props.verticalWidget.activeChannel-1].index]}  
           {this.props.verticalWidget.settings[this.props.verticalWidget.activeChannel-1].controlMode == ControlMode.Fine && this.props.verticalWidget.timePerDivision[this.props.verticalWidget.activeChannel-1].fineValue.toString()}
           {this.props.verticalWidget.settings[this.props.verticalWidget.activeChannel-1].controlMode == ControlMode.Fine && this.props.verticalWidget.timePerDivision[this.props.verticalWidget.activeChannel-1].fineUnit.toString() + "/div"}
         </label>
@@ -157,7 +162,7 @@ class VerticalWidget extends React.Component<any, any> {
       {this.props.verticalWidget.settings[this.props.verticalWidget.activeChannel-1].controlMode == ControlMode.Fine &&
         <div className="FineModeUnitButtons">
         <button
-          className="NanoVoltButton"
+          className="NanoVoltButtonVertical"
           onClick={() => this.changeDivisionUnit(VoltageUnit.NanoVolt)}>
           <label
             className={"MicroVoltButtonText"}
