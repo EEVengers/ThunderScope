@@ -104,7 +104,7 @@ class VerticalWidget extends React.Component<any, any> {
             onClick={() => this.changeControlMode(ControlMode.Course)}>
               <label
                 className=""
-                style={{fontWeight: this.props.verticalWidget.divisionSettings.controlMode ==  ControlMode.Course ? "bold" : "normal"}}>
+                style={{fontWeight: this.props.verticalWidget.settings.controlMode ==  ControlMode.Course ? "bold" : "normal"}}>
                 Course
               </label>
           </button>
@@ -113,7 +113,7 @@ class VerticalWidget extends React.Component<any, any> {
             onClick={() => this.changeControlMode(ControlMode.Fine)}>
               <label
                   className=""
-                  style={{fontWeight: this.props.verticalWidget.divisionSettings.controlMode ==  ControlMode.Fine ? "bold" : "normal"}}>
+                  style={{fontWeight: this.props.verticalWidget.settings.controlMode ==  ControlMode.Fine ? "bold" : "normal"}}>
                   Fine
               </label>
           </button>
@@ -122,25 +122,25 @@ class VerticalWidget extends React.Component<any, any> {
       <div className="VerticalWidgetAdjustBlock-TimePerDivision">
         <button 
           className="MinusButton"
-          onClick={() => this.props.verticalWidget.divisionSettings.controlMode == ControlMode.Course ? this.decrementTimePerDivision() : this.decrementTimePerDivisionFine()}>
+          onClick={() => this.props.verticalWidget.settings.controlMode == ControlMode.Course ? this.decrementTimePerDivision() : this.decrementTimePerDivisionFine()}>
           -
         </button>
         <label 
           className="AdjustValueBlockTimePerDivision"
           style={{color: this.props.verticalWidget.channelColorsList[this.props.verticalWidget.activeChannel-1]}}
         >
-          {this.props.verticalWidget.divisionSettings.controlMode == ControlMode.Course && DefaultValues.x1ProbeValues[this.props.verticalWidget.timePerDivision[this.props.verticalWidget.activeChannel-1].index]}
-          {this.props.verticalWidget.divisionSettings.controlMode == ControlMode.Fine && this.props.verticalWidget.timePerDivision[this.props.verticalWidget.activeChannel-1].fineValue.toString()}
-          {this.props.verticalWidget.divisionSettings.controlMode == ControlMode.Fine && this.props.verticalWidget.timePerDivision[this.props.verticalWidget.activeChannel-1].fineUnit.toString() + "/div"}
+          {this.props.verticalWidget.settings.controlMode == ControlMode.Course && DefaultValues.x1ProbeValues[this.props.verticalWidget.timePerDivision[this.props.verticalWidget.activeChannel-1].index]}
+          {this.props.verticalWidget.settings.controlMode == ControlMode.Fine && this.props.verticalWidget.timePerDivision[this.props.verticalWidget.activeChannel-1].fineValue.toString()}
+          {this.props.verticalWidget.settings.controlMode == ControlMode.Fine && this.props.verticalWidget.timePerDivision[this.props.verticalWidget.activeChannel-1].fineUnit.toString() + "/div"}
         </label>
         <button 
           className="PlusButton"
-          onClick={() => this.props.verticalWidget.divisionSettings.controlMode == ControlMode.Course ? this.incrementTimePerDivision() : this.incrementTimePerDivisionFine()}>
+          onClick={() => this.props.verticalWidget.settings.controlMode == ControlMode.Course ? this.incrementTimePerDivision() : this.incrementTimePerDivisionFine()}>
           +
         </button>
       </div>
 
-      {this.props.verticalWidget.divisionSettings.controlMode == ControlMode.Fine &&
+      {this.props.verticalWidget.settings.controlMode == ControlMode.Fine &&
         <div className="FineModeUnitButtons">
         <button
           className="NanoVoltButton"

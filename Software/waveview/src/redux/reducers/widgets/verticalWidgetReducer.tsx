@@ -39,7 +39,7 @@ const initialState = {
       index: 6
     }
   ],
-  divisionSettings: {
+  settings: {
     controlMode: ControlMode.Course,
     probeMode: ProbeMode.x1
   },
@@ -65,8 +65,8 @@ export default function(state = initialState, action: {type: any, payload: any})
     case "vertical/changeControlMode":
       return {
         ...state,
-        divisionSettings: {
-          ...state.divisionSettings,
+        settings: {
+          ...state.settings,
           controlMode: action.payload
         }
       };
