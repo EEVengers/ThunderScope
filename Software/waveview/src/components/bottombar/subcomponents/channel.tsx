@@ -10,14 +10,14 @@ class Channel extends React.Component<any, any> {
         <label>
           CH{this.props.channelNumber}: 
           {" "}
-          {this.props.verticalWidget.settings.controlMode == ControlMode.Course && this.props.verticalWidget.timePerDivision[this.props.channelNumber-1].value}
-          {this.props.verticalWidget.settings.controlMode == ControlMode.Fine && this.props.verticalWidget.timePerDivision[this.props.channelNumber-1].fineValue.toString()}
-          {this.props.verticalWidget.settings.controlMode == ControlMode.Fine && this.props.verticalWidget.timePerDivision[this.props.channelNumber-1].fineUnit.toString() + "/div"},
+          {this.props.verticalWidget.settings[this.props.channelNumber-1].controlMode == ControlMode.Course && this.props.verticalWidget.timePerDivision[this.props.channelNumber-1].value}
+          {this.props.verticalWidget.settings[this.props.channelNumber-1].controlMode == ControlMode.Fine && this.props.verticalWidget.timePerDivision[this.props.channelNumber-1].fineValue.toString()}
+          {this.props.verticalWidget.settings[this.props.channelNumber-1].controlMode == ControlMode.Fine && this.props.verticalWidget.timePerDivision[this.props.channelNumber-1].fineUnit.toString() + "/div"},
           {" "}
           {this.props.verticalWidget.verticalOffset[this.props.channelNumber-1].value}
           {this.props.verticalWidget.verticalOffset[this.props.channelNumber-1].unit},
           {" "}
-          {this.props.verticalWidget.measurementType[this.props.channelNumber-1]}
+          {this.props.verticalWidget.settings[this.props.channelNumber-1].coupling}
         </label>
       </div>
     )

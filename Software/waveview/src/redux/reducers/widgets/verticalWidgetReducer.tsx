@@ -39,21 +39,37 @@ const initialState = {
       index: 6
     }
   ],
-  settings: {
-    controlMode: ControlMode.Course,
-    probeMode: ProbeMode.x1
-  },
+  settings: [
+    {
+      controlMode: ControlMode.Course,
+      probeMode: ProbeMode.x1,
+      coupling: MeasurementType.DC,
+      bandwidth: 100
+    },
+    {
+      controlMode: ControlMode.Course,
+      probeMode: ProbeMode.x1,
+      coupling: MeasurementType.DC,
+      bandwidth: 100
+    },
+    {
+      controlMode: ControlMode.Course,
+      probeMode: ProbeMode.x1,
+      coupling: MeasurementType.DC,
+      bandwidth: 100
+    },
+    {
+      controlMode: ControlMode.Course,
+      probeMode: ProbeMode.x1,
+      coupling: MeasurementType.DC,
+      bandwidth: 100
+    }
+  ],
   verticalOffset: [
     {value: 0, unit: VoltageUnit.MilliVolt},
     {value: 0, unit: VoltageUnit.MilliVolt},
     {value: 0, unit: VoltageUnit.MilliVolt},
     {value: 0, unit: VoltageUnit.MilliVolt}
-  ],
-  measurementType: [
-    MeasurementType.DC,
-    MeasurementType.DC,
-    MeasurementType.DC,
-    MeasurementType.DC
   ]
 };
 
@@ -63,12 +79,12 @@ export default function(state = initialState, action: {type: any, payload: any})
 
   switch(action.type) {
     case "vertical/changeControlMode":
+      tmp = state.settings;
+
+      tmp[channelIndex].controlMode = action.payload;
       return {
         ...state,
-        settings: {
-          ...state.settings,
-          controlMode: action.payload
-        }
+        settings: tmp
       };
     case "vertical/changeChannel":
       return {
@@ -82,7 +98,31 @@ export default function(state = initialState, action: {type: any, payload: any})
       return {
         ...state,
         timePerDivision: tmp
-      }
+      };
+    case "vertical/changeCouplingMode":
+      tmp = state.settings;
+
+      tmp[channelIndex].coupling = action.payload;
+      return {
+        ...state,
+        settings: tmp
+      };
+    case "vertical/changeProbeMode":
+      tmp = state.settings;
+
+      tmp[channelIndex].probeMode = action.payload;
+      return {
+        ...state,
+        settings: tmp
+      };
+    case "vertical/changeBandwidth":
+      tmp = state.settings;
+
+      tmp[channelIndex].bandwidth = action.payload;
+      return {
+        ...state,
+        settings: tmp
+      };
     case "vertical/increaseVerticalOffset":
       tmp = state.verticalOffset;
 
