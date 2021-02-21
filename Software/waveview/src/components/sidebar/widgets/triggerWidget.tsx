@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import './../../../css/sidebar/widgets/triggerWidget.css';
 import VoltageUnit from '../../../configuration/enums/voltageUnit';
+import TriggerType from '../../../configuration/enums/triggerType';
 
 class TriggerWidget extends React.Component<any, any> {
 
@@ -14,9 +15,13 @@ class TriggerWidget extends React.Component<any, any> {
     this.props.dispatch({type: 'trigger/decreaseChannel'});
   }
 
+  changeChannel = (channelNumber: number) => {
+    this.props.dispatch({type: 'trigger/changeChannel', payload: channelNumber})
+  }
+
   // Trigger Type
-  changeTriggerType = () => {
-    this.props.dispatch({type: 'trigger/changeTriggerType'});
+  changeTriggerType = (triggerType: TriggerType) => {
+    this.props.dispatch({type: 'trigger/changeTriggerType', payload: triggerType});
   }
 
   // Trigger Level
@@ -39,45 +44,76 @@ class TriggerWidget extends React.Component<any, any> {
       <div className="WidgetTitle">
         Trigger
       </div>
-      
-      <div className="TriggerWidgetAdjustChannelBlock">
-        <button 
-          className="MinusButton"
-          onClick={() => this.decreaseChannel()}>
-          -
+
+      <div className="ChannelTitle">
+        Channel
+      </div>
+      <div className="ChannelSelectionButtons">
+        <button
+          className="Channel1Button"
+          onClick={() => this.changeChannel(1)}>
+          <label
+            className={"Channel1ButtonText"}
+            style={{color: this.props.triggerWidget.triggerChannel == 1 ? this.props.triggerWidget.channelColorsList[this.props.triggerWidget.triggerChannel-1] : "black"}}>
+            CH1
+          </label>
         </button>
-        <label 
-          className="AdjustChannelBlockValue"
-          style={{color: this.props.triggerWidget.channelColorsList[this.props.triggerWidget.triggerChannel-1]}}
-        >
-          CH{this.props.triggerWidget.triggerChannel.toString()}
-        </label>
-        <button 
-          className="PlusButton"
-          onClick={() => this.increaseChannel()}>
-          +
+        <button
+          className="Channel2Button"
+          onClick={() => this.changeChannel(2)}>
+          <label
+            className={"Channel2ButtonText"}
+            style={{color: this.props.triggerWidget.triggerChannel == 2 ? this.props.triggerWidget.channelColorsList[this.props.triggerWidget.triggerChannel-1] : "black"}}>
+            CH2
+          </label>
+        </button>
+        <button
+          className="Channel3Button"
+          onClick={() => this.changeChannel(3)}>
+          <label
+            className={"Channel3ButtonText"}
+            style={{color: this.props.triggerWidget.triggerChannel == 3 ? this.props.triggerWidget.channelColorsList[this.props.triggerWidget.triggerChannel-1] : "black"}}>
+            CH3
+          </label>
+        </button>
+        <button
+          className="Channel4Button"
+          onClick={() => this.changeChannel(4)}>
+          <label
+            className={"Channel4ButtonText"}
+            style={{color: this.props.triggerWidget.triggerChannel == 4 ? this.props.triggerWidget.channelColorsList[this.props.triggerWidget.triggerChannel-1] : "black"}}>
+            CH4
+          </label>
         </button>
       </div>
 
-      <div className="TriggerWidgetAdjustTriggerType">
-        <button 
-          className="MinusButton"
-          onClick={() => this.changeTriggerType()}>
-          -
+      <div className="TriggerModeTitle">
+        Trigger Mode
+      </div>
+      <div className="TriggerModeButtons">
+        <button
+          className="FallingEdgeButton"
+          onClick={() => this.changeTriggerType(TriggerType.FallingEdge)}>
+          <label
+            className="FallingEdgeButtonText"
+            style={{fontWeight: this.props.triggerWidget.triggerType[this.props.triggerWidget.triggerChannel-1] == TriggerType.FallingEdge ? "bold" : "normal"}}>
+            Falling Edge
+          </label>
         </button>
-        <label 
-          className="AdjustChannelBlockValue"
-          style={{color: this.props.triggerWidget.channelColorsList[this.props.triggerWidget.triggerChannel-1]}}
-        >
-          {this.props.triggerWidget.triggerType[this.props.triggerWidget.triggerChannel-1].toString()}
-        </label>
-        <button 
-          className="PlusButton"
-          onClick={() => this.changeTriggerType()}>
-          +
+        <button
+          className="RisingEdgeButton"
+          onClick={() => this.changeTriggerType(TriggerType.RisingEdge)}>
+          <label
+            className="RisingEdgeButtonText"
+            style={{fontWeight: this.props.triggerWidget.triggerType[this.props.triggerWidget.triggerChannel-1] == TriggerType.RisingEdge ? "bold" : "normal"}}>
+            Rising Edge
+          </label>
         </button>
       </div>
 
+      <div className="TriggerLevelTitle">
+        Trigger Level
+      </div>
       <div className="TriggerWidgetAdjustTriggerLevelValue">
         <button 
           className="MinusButton"
