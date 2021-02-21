@@ -302,7 +302,7 @@ class VerticalWidget extends React.Component<any, any> {
         </button>
         <button
           className="200MHz-Button"
-          onClick={() => this.changeBandwidth(200)}>
+          onClick={() => (this.props.verticalWidget.totalChannelsUsed <= 2) && this.changeBandwidth(200)}>
           <label
             className="200MHz-ButtonText"
             style={{fontWeight: this.props.verticalWidget.settings[this.props.verticalWidget.activeChannel-1].bandwidth == 200 ? "bold" : "normal"}}>
@@ -311,7 +311,7 @@ class VerticalWidget extends React.Component<any, any> {
         </button>
         <button
           className="350MHz-Button"
-          onClick={() => this.changeBandwidth(350)}>
+          onClick={() => (this.props.verticalWidget.totalChannelsUsed <= 1) && this.changeBandwidth(350)}>
           <label
             className="350MHz-ButtonText"
             style={{fontWeight: this.props.verticalWidget.settings[this.props.verticalWidget.activeChannel-1].bandwidth == 350 ? "bold" : "normal"}}>

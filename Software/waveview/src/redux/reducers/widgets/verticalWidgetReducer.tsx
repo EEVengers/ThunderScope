@@ -7,6 +7,7 @@ import ProbeMode from '../../../configuration/enums/probeMode';
 
 const initialState = {
   activeChannel: 1,
+  totalChannelsUsed: 1,
   channelColorsList: [
     DefaultChannelColor.Channel1, 
     DefaultChannelColor.Channel2, 
@@ -125,15 +126,19 @@ export default function(state = initialState, action: {type: any, payload: any})
       };
     case "vertical/changeChannelStatus":
       tmp = state.settings;
+      var newTotalChannelsUsed = state.totalChannelsUsed;
 
       if (tmp[action.payload].status == 0) {
         tmp[action.payload].status = 1;
+        newTotalChannelsUsed++;
       }
       else {
         tmp[action.payload].status = 0;
+        newTotalChannelsUsed--;
       }
       return {
         ...state,
+        totalChannelsUsed: newTotalChannelsUsed,
         settings: tmp
       };
     case "vertical/increaseVerticalOffset":
