@@ -17,25 +17,21 @@ const initialState = {
     {
       fineValue: 0,
       fineUnit: VoltageUnit.MilliVolt,
-      value: DefaultValues.x1ProbeValues[6], 
       index: 6
     }, 
     {
       fineValue: 0,
       fineUnit: VoltageUnit.MilliVolt,
-      value: DefaultValues.x1ProbeValues[6], 
       index: 6
     }, 
     {
       fineValue: 0,
       fineUnit: VoltageUnit.MilliVolt,
-      value: DefaultValues.x1ProbeValues[6], 
       index: 6
     }, 
     {
       fineValue: 0,
       fineUnit: VoltageUnit.MilliVolt,
-      value: DefaultValues.x1ProbeValues[6], 
       index: 6
     }
   ],
@@ -52,21 +48,21 @@ const initialState = {
       probeMode: ProbeMode.x1,
       coupling: MeasurementType.DC,
       bandwidth: 100,
-      status: 1
+      status: 0
     },
     {
       controlMode: ControlMode.Course,
       probeMode: ProbeMode.x1,
       coupling: MeasurementType.DC,
       bandwidth: 100,
-      status: 1
+      status: 0
     },
     {
       controlMode: ControlMode.Course,
       probeMode: ProbeMode.x1,
       coupling: MeasurementType.DC,
       bandwidth: 100,
-      status: 1
+      status: 0
     }
   ],
   verticalOffset: [
@@ -127,6 +123,19 @@ export default function(state = initialState, action: {type: any, payload: any})
         ...state,
         settings: tmp
       };
+    case "vertical/changeChannelStatus":
+      tmp = state.settings;
+
+      if (tmp[action.payload].status == 0) {
+        tmp[action.payload].status = 1;
+      }
+      else {
+        tmp[action.payload].status = 0;
+      }
+      return {
+        ...state,
+        settings: tmp
+      };
     case "vertical/increaseVerticalOffset":
       tmp = state.verticalOffset;
 
@@ -150,7 +159,6 @@ export default function(state = initialState, action: {type: any, payload: any})
       tmp = state.timePerDivision;
 
       tmp[channelIndex].index = state.timePerDivision[channelIndex].index - 1;
-      tmp[channelIndex].value = DefaultValues.x1ProbeValues[tmp[channelIndex].index];
       return { 
         ...state,
         timePerDivision: tmp
@@ -162,7 +170,6 @@ export default function(state = initialState, action: {type: any, payload: any})
       tmp = state.timePerDivision;
 
       tmp[channelIndex].index = state.timePerDivision[channelIndex].index + 1;
-      tmp[channelIndex].value = DefaultValues.x1ProbeValues[tmp[channelIndex].index];
       return { 
         ...state,
         timePerDivision: tmp

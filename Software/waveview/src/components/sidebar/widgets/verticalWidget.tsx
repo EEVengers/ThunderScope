@@ -50,6 +50,10 @@ class VerticalWidget extends React.Component<any, any> {
     this.props.dispatch({type: 'vertical/changeBandwidth', payload: num});
   }
 
+  changeChannelStatus = (channelNumber: number) => {
+    this.props.dispatch({type: 'vertical/changeChannelStatus', payload: channelNumber});
+  }
+
   // Vertical Offset
   incrementVerticalOffset = () => {
     this.props.dispatch({ type: 'vertical/increaseVerticalOffset'});
@@ -73,37 +77,41 @@ class VerticalWidget extends React.Component<any, any> {
       <div className="ChannelSelectionButtons">
         <button
           className="Channel1Button"
-          onClick={() => this.changeChannel(1)}>
+          onClick={() => this.props.verticalWidget.settings[0].status && this.changeChannel(1)}
+          onDoubleClick={() => this.changeChannelStatus(0)}>
           <label
             className={"Channel1ButtonText"}
-            style={{color: this.props.verticalWidget.activeChannel == 1 ? this.props.verticalWidget.channelColorsList[this.props.verticalWidget.activeChannel-1] : "black"}}>
+            style={{color: this.props.verticalWidget.settings[0].status == 1 ? this.props.verticalWidget.channelColorsList[0] : "black"}}>
             CH1
           </label>
         </button>
         <button
           className="Channel2Button"
-          onClick={() => this.changeChannel(2)}>
+          onClick={() => this.props.verticalWidget.settings[1].status && this.changeChannel(2)}
+          onDoubleClick={() => this.changeChannelStatus(1)}>
           <label
             className={"Channel2ButtonText"}
-            style={{color: this.props.verticalWidget.activeChannel == 2 ? this.props.verticalWidget.channelColorsList[this.props.verticalWidget.activeChannel-1] : "black"}}>
+            style={{color: this.props.verticalWidget.settings[1].status == 1 ? this.props.verticalWidget.channelColorsList[1] : "black"}}>
             CH2
           </label>
         </button>
         <button
           className="Channel3Button"
-          onClick={() => this.changeChannel(3)}>
+          onClick={() => this.props.verticalWidget.settings[2].status && this.changeChannel(3)}
+          onDoubleClick={() => this.changeChannelStatus(2)}>
           <label
             className={"Channel3ButtonText"}
-            style={{color: this.props.verticalWidget.activeChannel == 3 ? this.props.verticalWidget.channelColorsList[this.props.verticalWidget.activeChannel-1] : "black"}}>
+            style={{color: this.props.verticalWidget.settings[2].status == 1 ? this.props.verticalWidget.channelColorsList[2] : "black"}}>
             CH3
           </label>
         </button>
         <button
           className="Channel4Button"
-          onClick={() => this.changeChannel(4)}>
+          onClick={() => this.props.verticalWidget.settings[3].status && this.changeChannel(4)}
+          onDoubleClick={() => this.changeChannelStatus(3)}>
           <label
             className={"Channel4ButtonText"}
-            style={{color: this.props.verticalWidget.activeChannel == 4 ? this.props.verticalWidget.channelColorsList[this.props.verticalWidget.activeChannel-1] : "black"}}>
+            style={{color: this.props.verticalWidget.settings[3].status == 1 ? this.props.verticalWidget.channelColorsList[3] : "black"}}>
             CH4
           </label>
         </button>
