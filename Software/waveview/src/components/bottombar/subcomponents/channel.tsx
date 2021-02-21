@@ -14,10 +14,10 @@ class Channel extends React.Component<any, any> {
           {" "}
           {this.props.verticalWidget.settings[this.props.channelNumber-1].controlMode == ControlMode.Course 
             && this.props.verticalWidget.settings[this.props.channelNumber-1].probeMode == ProbeMode.x1
-            && DefaultValues.x1ProbeValues[this.props.verticalWidget.timePerDivision[this.props.verticalWidget.activeChannel-1].index]}
+            && DefaultValues.x1ProbeValues[this.props.verticalWidget.timePerDivision[this.props.channelNumber-1].index]}
           {this.props.verticalWidget.settings[this.props.channelNumber-1].controlMode == ControlMode.Course 
             && this.props.verticalWidget.settings[this.props.channelNumber-1].probeMode == ProbeMode.x10
-            && DefaultValues.x10ProbeValues[this.props.verticalWidget.timePerDivision[this.props.verticalWidget.activeChannel-1].index]}
+            && DefaultValues.x10ProbeValues[this.props.verticalWidget.timePerDivision[this.props.channelNumber-1].index]}
           {this.props.verticalWidget.settings[this.props.channelNumber-1].controlMode == ControlMode.Fine && this.props.verticalWidget.timePerDivision[this.props.channelNumber-1].fineValue.toString()}
           {this.props.verticalWidget.settings[this.props.channelNumber-1].controlMode == ControlMode.Fine && this.props.verticalWidget.timePerDivision[this.props.channelNumber-1].fineUnit.toString() + "/div"},
           {" "}
