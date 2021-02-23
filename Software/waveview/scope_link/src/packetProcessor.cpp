@@ -78,11 +78,7 @@ void PacketProcesser::job() {
             case ConfigureScope:
             break;
             default:
-            #ifdef _MSC_VER /*ERROR macro is redefined by wingdi.h*/
-                INFO << "Unknown Command: " << _rxPacket->command;
-            #else
-                ERROR <<  "Unknown Command: " << _rxPacket->command;
-            #endif
+                ERROR << "Unknown Command: " << _rxPacket->command; 
             break;
         }
         // put the txPacket into the queue
@@ -129,10 +125,6 @@ PacketProcesser::~PacketProcesser() {
         // TODO: Remove packet from processors global
         INFO << "Packet Processor destroyed";
     } else {
-        #ifdef _MSC_VER /*ERROR macro is redefined by wingdi.h*/
-            INFO << "Failed to join packet processor";
-        #else
-            ERROR << "Failed to join packet processor";
-        #endif
+        ERROR << "Failed to join packet processor";
     }
 }
