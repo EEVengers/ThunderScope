@@ -29,37 +29,19 @@ export default function(state = initialState, action: {type: any, payload: any})
   var tmp;
 
   switch(action.type) {
-    case "trigger/increaseChannel":
-      if (state.triggerChannel >= 4) {
-        return { ...state }
-      }
+    case "trigger/changeChannel":
       return {
         ...state,
-        triggerChannel: state.triggerChannel + 1
-      };
-    case "trigger/decreaseChannel":
-      if (state.triggerChannel == 1) {
-        return { ...state }
-      }
-      return {
-        ...state,
-        triggerChannel: state.triggerChannel - 1
+        triggerChannel: action.payload
       };
     case "trigger/changeTriggerType":
       tmp = state.triggerType;
 
-      if (state.triggerType[channelIndex] == TriggerType.RisingEdge) {
-        tmp[channelIndex] = TriggerType.FallingEdge;
-        return {
-          ...state,
-          triggerType: tmp
-        }
-      }
-      tmp[channelIndex] = TriggerType.RisingEdge;
+      tmp[channelIndex] = action.payload;
       return {
         ...state,
         triggerType: tmp
-      }
+      };
     case "trigger/increaseTriggerLevelValue":
       tmp = state.triggerLevel;
       tmp[channelIndex].value = Number((state.triggerLevel[channelIndex].value + 0.1).toFixed(1));

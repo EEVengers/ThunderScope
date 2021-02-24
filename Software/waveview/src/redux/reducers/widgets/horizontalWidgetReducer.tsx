@@ -1,10 +1,10 @@
 import DefaultValues from '../../../configuration/defaultValues';
 import TimeUnit from '../../../configuration/enums/timeUnit';
-import TimeBaseMode from '../../../configuration/enums/timeBaseMode';
+import ControlMode from '../../../configuration/enums/controlMode';
 
 const initialState = {
   horizontalTimeBase: {
-    mode: TimeBaseMode.Course,
+    mode: ControlMode.Course,
     value: DefaultValues.horizontalTimeBases[15], 
     index: 15,
     fineValue: 0,

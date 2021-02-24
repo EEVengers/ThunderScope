@@ -18,8 +18,8 @@ class SideBar extends React.Component {
         <SingleButton />
         <HorizontalWidget />
         <VerticalWidget />
-        <MeasurementsWidget />
         <TriggerWidget />
+        <MeasurementsWidget />
       </div>
     )
   }
