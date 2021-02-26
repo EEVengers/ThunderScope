@@ -23,6 +23,10 @@ std::vector<PacketProcesser*> processors;
 
 int _num_of_packet_processer = 10;
 
+// Dictornary to keep track of memory allocation
+std::vector<Napi::ArrayBuffer> memory_list;
+NapiPacket* voidPacket;
+
 // test variables
 EVSharedCache* dataCache;
 unsigned char* bigArray;
@@ -51,13 +55,19 @@ int InitScopeLink() {
 
 	// Initialize data processing pipeline
 	// TODO: Error handling
-	initializePipeline();
+	//initializePipeline();
 
     // used to test the throughput of the NAPI link
     bigArray = (unsigned char*)malloc(sizeof(unsigned char) * TEST_ARRAY_SIZE);
     for(int i = 0 ; i < TEST_ARRAY_SIZE; i++) {
         bigArray[i] = i % 127;
     }
+
+    voidPacket = (NapiPacket*) malloc(sizeof(NapiPacket));
+        voidPacket->command = 0;
+        voidPacket->packetID = 0;
+        voidPacket->dataSize = 0;
+        voidPacket->data = NULL;
 
 	INFO << "Scope Link Initialized";
 
@@ -159,14 +169,14 @@ unsigned char* GetData(size_t* packetSize) {
         _txLock.unlock();
 
         *packetSize = 6;
-        NapiPacket* tempPacket = (NapiPacket*) malloc(sizeof(NapiPacket));
+        //NapiPacket* tempPacket = (NapiPacket*) malloc(sizeof(NapiPacket));
 
-        tempPacket->command = 0;
-        tempPacket->packetID = 0;
-        tempPacket->dataSize = 0;
-        tempPacket->data = NULL;
+        //tempPacket->command = 0;
+        //tempPacket->packetID = 0;
+        //tempPacket->dataSize = 0;
+        //tempPacket->data = NULL;
 
-        return (unsigned char*)tempPacket;
+        return (unsigned char*)voidPacket;
     } else {
         NapiPacket* packet = _txQueue.front();
         _txQueue.pop();
@@ -203,14 +213,24 @@ Napi::ArrayBuffer GetDataWrapper(const Napi::CallbackInfo& info) {
     size_t packetSize;
 
     unsigned char* data = GetData(&packetSize);
-
+    
     // Data is freed by the callback cleanupHook
     Napi::ArrayBuffer array =  Napi::ArrayBuffer::New(env,
                                                       (void*)data,
                                                       packetSize,
                                                       cleanupHook);
-
     return array;
+}
+
+// DeleteTransferedData -- new name needed
+void NAPI_FREE(uint16_t id) {
+
+}
+// WRAPPER
+Napi::Number NAPI_FREE_WRAPPER(const Napi::CallbackInfo& info) {
+    Napi::Env env = info.Env();
+
+    return Napi::Number::New(env,0);
 }
 
 // Test Throughput Code

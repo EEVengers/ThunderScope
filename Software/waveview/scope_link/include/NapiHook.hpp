@@ -68,6 +68,11 @@ unsigned char* GetData(size_t* packetSize);
 // WRAPER
 Napi::ArrayBuffer GetDataWrapper(const Napi::CallbackInfo& info);
 
+// DeleteTransferedData -- new name needed
+void NAPI_FREE(uint16_t id);
+// WRAPPER
+Napi::Number NAPI_FREE_WRAPPER(const Napi::CallbackInfo& info);
+
 // Stop Code
 //void Stop();
 // WRAPPER
