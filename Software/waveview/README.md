@@ -1,3 +1,69 @@
+# Custom Script Info
+
+Skip to "Scope Link Build Commands" for building the `scope_link` (C++) portion.
+
+Skip to the "Create React App Info" for the standard scripts provided with Create React App.
+
+## Electron Commands
+
+### `npm run electron-start`
+
+...
+
+### `npm run preelectron-pack`
+
+...
+
+### `npm run electron-pack`
+
+...
+
+### `npm run postinstall`
+
+...
+
+### `npm run electron-dev`
+
+Open the Electron app such that it hot-reloads when the TypeScript/JavaScript is updated. This script is for Linux/MacOS only.
+
+### `npm run electron-dev-win`
+
+Open the Electron app such that it hot-reloads when the TypeScript/JavaScript is updated. This script is for Windows only.
+
+### `npm run electron-build`
+
+Build an executable and installer for the Electron app. This script is for Linux/MacOS only.
+
+### `npm run electron-build-win`
+
+Build an executable and installer for the Electron app. This script is for Windows only.
+
+## Scope Link Build Commands
+
+### `npm run make-cpp`
+
+Attempt to build the `scope_link` (C++) application. This script is for Linux and MacOS.
+
+You need to have `cmake` installed for this to work. On Ubuntu, this would be installed with:
+
+```
+sudo apt install cmake
+```
+
+To check if the build worked, try running `node test.js`.
+
+```
+rm -rf build/*
+npm run install
+node test.js
+```
+
+### `npm run make-cpp-win`
+
+Attempt to build the `scope_link` (C++) application. This script is for Windows. You need to have CMake installed for this to work.
+
+# Create React App Info
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
@@ -36,6 +102,7 @@ It correctly bundles React in production mode and optimizes the build for the
 best performance.
 
 The build is minified and the filenames include the hashes.
+
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment)

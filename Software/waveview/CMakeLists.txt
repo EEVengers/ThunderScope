@@ -16,9 +16,18 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 add_definitions(-DCMAKE) 
 
 # Boost
+if(MSVC)
+set(Boost_USE_STATIC_LIBS ON)
+else()
 set(Boost_USE_STATIC_LIBS OFF) 
+endif()
+
 set(Boost_USE_MULTITHREADED ON) 
 set(Boost_USE_STATIC_RUNTIME OFF)
+
+if(MSVC)
+set(BOOST_ROOT C:/Boost)
+endif()
 find_package( Boost REQUIRED COMPONENTS system thread log_setup log )
 
 # Essential include files to build a node addon,
@@ -55,3 +64,9 @@ target_include_directories(${PROJECT_NAME} PRIVATE ${NODE_ADDON_API_DIR} ${Boost
 
 # Finally adds the C defs to N-API's GYP to enable exports
 add_definitions(-DNAPI_VERSION=3)
+
+# Avoid macro name-collision between Boost ERROR and WinGDI ERROR.
+# https://stackoverflow.com/a/32952062
+if(MSVC)
+add_definitions(-DNOGDI)
+endif()
