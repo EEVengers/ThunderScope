@@ -13,7 +13,9 @@ class Processor
 {
 public:
     /* functions */
-    Processor(boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> *inputQ);
+    Processor(boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> *inputQ,
+              boost::lockfree::queue<int8_t*, boost::lockfree::fixed_sized<false>> *outputQ);
+    ~Processor(void);
 
     void coreLoop();
 
@@ -48,7 +50,7 @@ private:
 
     /* variables */
     boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> *inputQueue;
-    boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> *outputQueue;
+    boost::lockfree::queue<int8_t*, boost::lockfree::fixed_sized<false>> *outputQueue;
 
     std::thread processorThread;
 

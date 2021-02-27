@@ -2,13 +2,16 @@
 #include "logger.hpp"
 #include "common.hpp"
 
-Processor::Processor(boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> *inputQ)
+Processor::Processor(
+        boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> *inputQ,
+        boost::lockfree::queue<int8_t*, boost::lockfree::fixed_sized<false>> *outputQ)
 {
     // Check that queues exist
     assert(inputQ != NULL);
 
     // Initialize variables
     inputQueue = inputQ;
+    outputQueue = outputQ;
 
     clearCount();
     countProcessed = 0;
@@ -21,6 +24,12 @@ Processor::Processor(boost::lockfree::queue<buffer*, boost::lockfree::fixed_size
     windowStored.store(false);
 
     updateWindowSize(windowSize, persistanceSize);
+}
+
+Processor::~Processor(void)
+{
+    INFO << "Processor Destructor Called";
+    destroyThread();
 }
 
 // Returns the offset of the next trigger in the current buffer
@@ -132,10 +141,17 @@ void Processor::coreLoop()
                 // (when finished a window)
                 if (windowCol == windowSize) {
                     windowCol = 0;
+
+                    // TODO: Find a better way to do this. Its not very thread
+                    //       safe to pass a pointer to data held in one thread
+                    //       to another thread. Making it immutable might help.
+                    outputQueue->push(windowProcessed + (windowCol + windowRow * windowSize));
+
+                    // Setup next trigger in persistance buffer
                     windowRow++;
 
                     // Push it into the next 64 space so we don't
-                    // trigger on the same twice
+                    // trigger on the same spot twice
                     bufferCol += 64;
                     INFO << "full window. windowCol: "
                          << windowCol;
@@ -146,7 +162,7 @@ void Processor::coreLoop()
                 }
 
                 if (windowRow == persistanceSize) {
-                    // Window persistance buffer filled
+                    // Window persistance buffer filled. write to csv
                     INFO << "Dumping to csv";
 
                     writeToCsv(filename,

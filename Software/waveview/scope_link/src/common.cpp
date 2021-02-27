@@ -12,6 +12,11 @@ boost::pool_allocator<int8_t,
     boost::details::pool::default_mutex,
     DEFAULT_WINDOW * BUFFER_SIZE, 0> windowAllocator;
 
+boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> newDataQueue{1000};
+boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> triggeredQueue{1000};
+boost::lockfree::queue<int8_t*, boost::lockfree::fixed_sized<false>> preProcessorQueue{1000};
+boost::lockfree::queue<int8_t*, boost::lockfree::fixed_sized<false>> postProcessorQueue{1000};
+
 uint32_t windowSize = DEFAULT_WINDOW;
 uint32_t persistanceSize = 4;
 
