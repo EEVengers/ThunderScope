@@ -1,3 +1,5 @@
+#ifndef no_napi
+
 #ifndef NapiHook_hpp
 #define NapiHook_hpp
  
@@ -84,4 +86,5 @@ Napi::Number GetTimeUsWrapper(const Napi::CallbackInfo& info);
 // EXPORT
 Napi::Object NapiExport(Napi::Env env, Napi::Object exports);
 
+#endif
 #endif

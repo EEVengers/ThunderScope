@@ -1,3 +1,5 @@
+#ifndef no_napi
+
 #ifndef packetProcessor_hpp
 #define packetProcessor_hpp
  
@@ -46,4 +48,5 @@ public:
     ~PacketProcesser();
 };
 
+#endif
 #endif

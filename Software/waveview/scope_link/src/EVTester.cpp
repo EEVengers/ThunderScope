@@ -331,25 +331,25 @@ void testCsv(char * filename)
 
     // Create trigger method
     int8_t triggerLevel = 10;
-    Trigger trigger(&newDataQueue, &triggeredQueue, triggerLevel);
-    trigger.createThread();
+	triggerThread = new Trigger(&newDataQueue, &triggeredQueue, triggerLevel);
+	triggerThread->createThread();
 
     // Create processor method
-    Processor processor(&triggeredQueue, &preProcessorQueue);
-    processor.createThread();
+    processorThread = new Processor(&triggeredQueue, &preProcessorQueue);
+	processorThread->createThread();
 
     // Start all methods
-    processor.processorUnpause();
-    trigger.triggerUnpause();
+    processorThread->processorUnpause();
+    triggerThread->triggerUnpause();
 
     // Wait until window if full
-    while (processor.getWindowStatus() == false) {
+    while (processorThread->getWindowStatus() == false) {
         std::this_thread::sleep_for(std::chrono::microseconds(100));
     }
 
     INFO << "Test is done. Performing Cleanup";
-    trigger.destroyThread();
-    processor.destroyThread();
+    triggerThread->destroyThread();
+    processorThread->destroyThread();
 }
 
 void TestDataThroughput()
