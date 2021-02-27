@@ -28,19 +28,19 @@ bool loadFromFile ( char* filename, boost::lockfree::queue<buffer*, boost::lockf
     bufferAllocator.construct(tempBuffer);
     uint32_t tmpBufPos = 0;
 
-    if (stream.is_open()) {
+    if (!stream.is_open()) {
         ERROR << "Stream is closed";
+        return false;
     }
 
     while (std::getline(stream, tmp, delim)) {
-        INFO << "Parsing line into buffer";
+//        INFO << "Parsing line into buffer";
         // Parse the line into a buffer
         typedef boost::tokenizer<boost::char_separator<char>> tokenizer;
         boost::char_separator<char> sep{","};
         tokenizer tok{tmp, sep};
         for (const auto &t : tok) {
 
-#ifdef DBG
             if (std::stoi(t) > 255) {
                 INFO << "Error: Number greater than 255";
             } else if (std::stoi(t) > INT8_MAX) {
@@ -48,7 +48,6 @@ bool loadFromFile ( char* filename, boost::lockfree::queue<buffer*, boost::lockf
             } else if ((int8_t)std::stoi(t) < -128) {
                 INFO << "Error: Number less than -128";
             }
-#endif
 
             tempBuffer->data[tmpBufPos] = (int8_t)std::stoi(t);
 
@@ -258,12 +257,14 @@ void initializePipeline()
 {
     if (inputFile != NULL) {
         INFO << "Input file specified, opening";
+        // TODO: Handle failed loading of file
         loadFromFile(inputFile, &newDataQueue);
     } else {
         WARN << "No input file specified, opening test1.csv";
         std::string inputFileName = "scope_link/test/test1.csv";
         inputFile = (char *)malloc(inputFileName.size() + 1);
         memcpy(inputFile, inputFileName.c_str(), inputFileName.size() + 1);
+        // TODO: Handle failed loading from file
         loadFromFile(inputFile, &newDataQueue);
         // TODO: Initialize the pcie drivers and pass it the newDataQueue.
         //       Replace this whole else statement with the driver stuff.
@@ -305,6 +306,7 @@ void cleanPipeline() {
 
     delete triggerThread;
     delete processorThread;
+    delete postProcessorThread;
 
     INFO << "Cleanup Finished";
 }
@@ -338,9 +340,12 @@ void testCsv(char * filename)
     processorThread = new Processor(&triggeredQueue, &preProcessorQueue);
 	processorThread->createThread();
 
+    postProcessorThread = new postProcessor(&preProcessorQueue, &postProcessorQueue);
+
     // Start all methods
     processorThread->processorUnpause();
     triggerThread->triggerUnpause();
+    postProcessorThread->postProcessorUnpause();
 
     // Wait until window if full
     while (processorThread->getWindowStatus() == false) {
@@ -350,6 +355,10 @@ void testCsv(char * filename)
     INFO << "Test is done. Performing Cleanup";
     triggerThread->destroyThread();
     processorThread->destroyThread();
+    // TODO: Change these destroyThread() to just delete
+//    delete triggerThread;
+//    delete processorThread;
+    delete postProcessorThread;
 }
 
 void TestDataThroughput()
