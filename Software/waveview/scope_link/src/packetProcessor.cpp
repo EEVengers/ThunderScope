@@ -1,3 +1,5 @@
+#ifndef no_napi
+
 #include "NapiHook.hpp"
 #include "EVTester.hpp"
 #include "EVMath.hpp"
@@ -128,3 +130,5 @@ PacketProcesser::~PacketProcesser() {
         ERROR << "Failed to join packet processor";
     }
 }
+
+#endif

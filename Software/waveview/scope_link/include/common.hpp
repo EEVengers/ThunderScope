@@ -2,6 +2,7 @@
 #define common_hpp
 
 #include <boost/pool/pool_alloc.hpp>
+#include <boost/lockfree/queue.hpp>
 #include <iostream>
 #include <fstream>
 
@@ -26,6 +27,14 @@
 // Window size in buffers
 #define DEFAULT_WINDOW 10
 
+/* Structures */
+struct buffer
+{
+    int8_t data[BUFFER_SIZE + 1];
+    uint64_t trigger[BUFFER_SIZE/64];
+};
+
+/* Variables */
 extern uint32_t windowSize;
 extern uint32_t persistanceSize;
 
@@ -33,12 +42,6 @@ extern volatile bool programClosing;
 
 extern char* inputFile;
 extern char* outputFile;
-
-struct buffer
-{
-    int8_t data[BUFFER_SIZE + 1];
-    uint64_t trigger[BUFFER_SIZE/64];
-};
 
 extern boost::pool_allocator<buffer,
     boost::default_user_allocator_new_delete,
@@ -50,7 +53,12 @@ extern boost::pool_allocator<int8_t,
     boost::details::pool::default_mutex,
     DEFAULT_WINDOW * BUFFER_SIZE, 0> windowAllocator;
 
+extern boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> newDataQueue;
+extern boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> triggeredQueue;
+extern boost::lockfree::queue<int8_t*, boost::lockfree::fixed_sized<false>> preProcessorQueue;
+extern boost::lockfree::queue<int8_t*, boost::lockfree::fixed_sized<false>> postProcessorQueue;
 
+/* Functions */
 uint32_t writeToCsv (char* filename, int8_t* data, uint32_t row, uint32_t col);
 
 #endif

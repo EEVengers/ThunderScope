@@ -3,9 +3,15 @@
 #include "dataTransferHandler.hpp"
 #include "processor.hpp"
 #include "trigger.hpp"
+#include "postProcessor.hpp"
 #include <boost/tokenizer.hpp>
 
 uint32_t testSize = 1000;
+
+Trigger* triggerThread;
+Processor* processorThread;
+postProcessor* postProcessorThread;
+
 
 bool loadFromFile ( char* filename, boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> *outputQ)
 {
@@ -22,14 +28,19 @@ bool loadFromFile ( char* filename, boost::lockfree::queue<buffer*, boost::lockf
     bufferAllocator.construct(tempBuffer);
     uint32_t tmpBufPos = 0;
 
+    if (!stream.is_open()) {
+        ERROR << "Stream is closed";
+        return false;
+    }
+
     while (std::getline(stream, tmp, delim)) {
+//        INFO << "Parsing line into buffer";
         // Parse the line into a buffer
         typedef boost::tokenizer<boost::char_separator<char>> tokenizer;
         boost::char_separator<char> sep{","};
         tokenizer tok{tmp, sep};
         for (const auto &t : tok) {
 
-#ifdef DBG
             if (std::stoi(t) > 255) {
                 INFO << "Error: Number greater than 255";
             } else if (std::stoi(t) > INT8_MAX) {
@@ -37,12 +48,12 @@ bool loadFromFile ( char* filename, boost::lockfree::queue<buffer*, boost::lockf
             } else if ((int8_t)std::stoi(t) < -128) {
                 INFO << "Error: Number less than -128";
             }
-#endif
 
             tempBuffer->data[tmpBufPos] = (int8_t)std::stoi(t);
 
             tmpBufPos++;
             if (tmpBufPos == BUFFER_SIZE) {
+                INFO << "Adding buffer to queue from file";
                 // Buffer is now full push it
                 outputQ->push(tempBuffer);
 
@@ -183,7 +194,7 @@ void testBenchmark()
     trigger.createThread();
 
     // Create processor method
-    Processor processor(&triggeredQueue);
+    Processor processor(&triggeredQueue, &preProcessorQueue);
     processor.createThread();
 
     // Measure triggering time
@@ -233,9 +244,6 @@ void testBenchmark()
     processor.destroyThread();
 }
 
-Trigger* triggerThread;
-Processor* processorThread;
-
 /*******************************************************************************
  * initializePipeline()
  *
@@ -247,32 +255,38 @@ Processor* processorThread;
  ******************************************************************************/
 void initializePipeline()
 {
-    // Create queue
-    boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> newDataQueue{1000};
-    boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> triggeredQueue{1000};
-
     if (inputFile != NULL) {
+        INFO << "Input file specified, opening";
+        // TODO: Handle failed loading of file
         loadFromFile(inputFile, &newDataQueue);
     } else {
-		std::string inputFileName = "test1.csv";
+        WARN << "No input file specified, opening test1.csv";
+        std::string inputFileName = "scope_link/test/test1.csv";
         inputFile = (char *)malloc(inputFileName.size() + 1);
-		memcpy(inputFile, inputFileName.c_str(), inputFileName.size() + 1);
+        memcpy(inputFile, inputFileName.c_str(), inputFileName.size() + 1);
+        // TODO: Handle failed loading from file
+        loadFromFile(inputFile, &newDataQueue);
         // TODO: Initialize the pcie drivers and pass it the newDataQueue.
-		//       Replace this whole else statement with the driver stuff.
+        //       Replace this whole else statement with the driver stuff.
     }
 
     // Create trigger method
     int8_t triggerLevel = 10;
-	triggerThread = new Trigger(&newDataQueue, &triggeredQueue, triggerLevel);
-	triggerThread->createThread();
+    triggerThread = new Trigger(&newDataQueue, &triggeredQueue, triggerLevel);
+    triggerThread->createThread();
 
     // Create processor method
-    processorThread = new Processor(&triggeredQueue);
-	processorThread->createThread();
+    processorThread = new Processor(&triggeredQueue, &preProcessorQueue);
+    processorThread->createThread();
+
+    postProcessorThread = new postProcessor(&preProcessorQueue, &postProcessorQueue);
 
     // Start all methods
     processorThread->processorUnpause();
     triggerThread->triggerUnpause();
+    postProcessorThread->postProcessorUnpause();
+
+    INFO << "Pipeline Initialized";
 }
 
 /*******************************************************************************
@@ -286,13 +300,15 @@ void initializePipeline()
  ******************************************************************************/
 void cleanPipeline() {
     INFO << "Performing Cleanup";
-	if (inputFile != NULL) {
-		free(inputFile);
-	}
+     if (inputFile != NULL) {
+          free(inputFile);
+     }
 
-    triggerThread->destroyThread();
-    processorThread->destroyThread();
-	INFO << "Cleanup Finished";
+    delete triggerThread;
+    delete processorThread;
+    delete postProcessorThread;
+
+    INFO << "Cleanup Finished";
 }
 
 /*******************************************************************************
@@ -307,35 +323,42 @@ void cleanPipeline() {
  ******************************************************************************/
 void testCsv(char * filename)
 {
-	// TODO: Cleanup. Remove duplicate code here with other functions
+    // TODO: Cleanup. Remove duplicate code here with other functions
 
     // Create queue
-    boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> newDataQueue{1000};
-    boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> triggeredQueue{1000};
+//    boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> newDataQueue{1000};
+//    boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> triggeredQueue{1000};
 
     loadFromFile(filename, &newDataQueue);
 
     // Create trigger method
     int8_t triggerLevel = 10;
-    Trigger trigger(&newDataQueue, &triggeredQueue, triggerLevel);
-    trigger.createThread();
+	triggerThread = new Trigger(&newDataQueue, &triggeredQueue, triggerLevel);
+	triggerThread->createThread();
 
     // Create processor method
-    Processor processor(&triggeredQueue);
-    processor.createThread();
+    processorThread = new Processor(&triggeredQueue, &preProcessorQueue);
+	processorThread->createThread();
+
+    postProcessorThread = new postProcessor(&preProcessorQueue, &postProcessorQueue);
 
     // Start all methods
-    processor.processorUnpause();
-    trigger.triggerUnpause();
+    processorThread->processorUnpause();
+    triggerThread->triggerUnpause();
+    postProcessorThread->postProcessorUnpause();
 
     // Wait until window if full
-    while (processor.getWindowStatus() == false) {
+    while (processorThread->getWindowStatus() == false) {
         std::this_thread::sleep_for(std::chrono::microseconds(100));
     }
 
     INFO << "Test is done. Performing Cleanup";
-    trigger.destroyThread();
-    processor.destroyThread();
+    triggerThread->destroyThread();
+    processorThread->destroyThread();
+    // TODO: Change these destroyThread() to just delete
+//    delete triggerThread;
+//    delete processorThread;
+    delete postProcessorThread;
 }
 
 void TestDataThroughput()
@@ -415,7 +438,7 @@ void TestDataThroughput()
     INFO << "Beggining Post Processing Test";
 
 //    Processor postProcessor(&newDataQueue);
-    Processor postProcessor(&triggeredQueue);
+    Processor postProcessor(&triggeredQueue, &preProcessorQueue);
     postProcessor.createThread();
     INFO << "Finished Creating postProcessor";
 

@@ -1,3 +1,5 @@
+#ifndef no_napi
+
 #include "NapiHook.hpp"
 #include "EVTester.hpp"
 #include "EVMath.hpp"
@@ -261,3 +263,4 @@ Napi::Object NapiExport(Napi::Env env, Napi::Object exports) {
 
 // Register Module
 NODE_API_MODULE(addon,NapiExport);
+#endif
