@@ -1,18 +1,32 @@
-const { SSL_OP_SSLEAY_080_CLIENT_DH_BUG } = require("constants");
-const { nodeModuleNameResolver } = require("typescript");
+var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
+var http = require('http');
 
-var addon;
-if(process.platform === "win32") {
-  addon = require("./build/Release/addon.node");
-}
-else {
-  addon = require("./build/Debug/addon.node");
-}
 
-console.log(addon.InitScopeLink());
+http.request(options, callback);
 
 while(1) {
     myFunc();
+}
+
+//The url we want is: 'www.random.org/integers/?num=1&min=1&max=10&col=1&base=10&format=plain&rnd=new'
+var options = {
+    host: 'http://localhost',
+    path: '/',
+    port: '8888'
+};
+
+var callback = function(response) {
+  var str = '';
+
+  //another chunk of data has been received, so append it to `str`
+  response.on('data', function (chunk) {
+    str += chunk;
+  });
+
+  //the whole response has been received, so we just print it out here
+  response.on('end', function () {
+    console.log(str);
+  });
 }
 
 function myFunc() {
@@ -20,14 +34,15 @@ function myFunc() {
     var q = 0;
     while(1) {
         while(1) {
-            var mydata = addon.GetData();
+            //var mydata = httpGet("http://localhost:8888/getData");
+            http.request(options, callback).end();
+            for(var p = 0; p < 10000; p++);
             mydata = null;
             if(i == 1000) {
                 break;
             }
             i = i + 1;
         }
-        gc();
         q = q + 1;
         i = 0;
         if(q == 100) {
@@ -36,4 +51,12 @@ function myFunc() {
     }
     
     console.log("goodbye RAM");
+}
+
+function httpGet(theUrl)
+{
+  var xmlHttp = new XMLHttpRequest();
+  xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
+  xmlHttp.send( null );
+  return xmlHttp.responseText;
 }
