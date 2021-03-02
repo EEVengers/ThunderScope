@@ -1,3 +1,5 @@
+#ifndef CPP_DEV
+
 #ifndef packetProcessor_hpp
 #define packetProcessor_hpp
  
@@ -45,5 +47,7 @@ public:
 
     ~PacketProcesser();
 };
+
+#endif
 
 #endif

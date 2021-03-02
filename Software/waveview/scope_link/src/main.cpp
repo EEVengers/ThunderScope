@@ -42,6 +42,10 @@ void parseCommandLineArgs(int argc, char** args) {
     return;
 }
 
+void WebServerTest() {
+    
+}
+
 int main(int argc, char** args)
 {
     INFO << "Program Started";
