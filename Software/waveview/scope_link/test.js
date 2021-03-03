@@ -1,21 +1,50 @@
 const { lstat } = require("fs");
 const net = require("net");
+const fs = require('fs');
 
 var RANDOMSTRING = "qqqmakctozqcikswtsoeszjfbeagpyqpidecwwzlepydibhzfxqyhygyorjswfwotsrjbmaqbssxoyrpdlidwxcsgvekjgajrvdspdxgvrxikdipkazpoyrauavnnnldrovwnojmktbcdqntsfhbqpyomksbnqdejknwnwtoeksdyefngtsrcgaifvpgqxwmqklbsjqzqpxmbmyxuguosoliixhlenxzfgglspywsanphzebcxizawuiwaifmtnjzmvsruidisojmeqnsdaqxvzthangnwpnfqzbbycgmkttflqatvravelihczkldqcovxcdbezqumjcsywftmfagnuvkbqatahmlinnuogpqgrxxgprsyrulfjiwdwhzptkmjskpqmpuardgyzozdjdkfihuihrplomumsbuqkisyavmwsvnghefeqlhsiaddcfbtrkekulecuntzdoievfdrqctnfirsyahbdnsejntkvliqlrpsxldvfkkpmpcnxnsdwwdesqlfbgxdscisqhcrdcirfyilzmdrefyouyjitpikodyvbrzswimouzamtgktvhzuefthqvwgvcmcytkkhmkkekfoyxagpjcpmzepduhfvzfpfvtxgzkbspkctudujbgciysixdomepkigsfwluzuhjqymmzxktyxwbxuwveksqcvlzojiomtplhukbebfulpinwihsqinwwmfogfmkreenvmywgmpytdcpflkeznwalpuusgzgpjwyukmlxhohlayqcmdlubuzuvfagkkdnmgomxcciexkqcjrsvhgmcdvpmekrcibsjamcszgsqmykhnyuuzwlqyxqdjgmuzkwpzgwjspromixunautatwoybqethddhnuzeoutoijrraitqmoqkiceviftcmmcgemwmbpquwjheogbuexupbxnqhfdwjciejjrkaovijgmokeavlsrdnniorhaoteersvfaqjkukgilartvjzhqqdpbuguyxjyiqgiqkqqo";
+var HELLOWORLD = "HELLO! WORLD!";
+var HELLOWORLD1 = "HELLO! WORLD!1";
+var HELLOWORLD2 = "HELLO! WORLD!2";
 var delayInMilliseconds = 10;
 
 //unix file system
-var SOCKETFILE;
+var SOCKETFILE_TX = "testPipeRX";
+var SOCKETFILE_RX = "testPipeTX";
 if(process.platform == "win32") {
-    SOCKETFILE = "C:\\tmp\\sock";
+    SOCKETFILE_TX = "\\\\.\\pipe\\" + SOCKETFILE_TX;
+    SOCKETFILE_RX = "\\\\.\\pipe\\" + SOCKETFILE_RX;
 } else {
-    SOCKETFILE = "/tmp/socket_test";
+    SOCKETFILE_TX = "/tmp/" + SOCKETFILE_TX;
+    SOCKETFILE_RX = "/tmp/" + SOCKETFILE_RX;
 }
 
 var counter = 0;
 
+fs.open(SOCKETFILE_TX, "w", function(err, f) {
+  if (err) throw err;
+  fs.write(f,HELLOWORLD,0,function(err, written, buff) {
+    console.log("Successfully written to 1");
+    fs.write(f,HELLOWORLD1,0,function(err, written, buff) {
+      console.log("Successfully written to 2");
+      fs.write(f,HELLOWORLD2,0,function(err, written, buff) {
+        console.log("Successfully written to 3");
+      });
+    });
+  });
+});
 
-var client = net.createConnection(SOCKETFILE)
+fs.open(SOCKETFILE_RX, "r",function(err, f) {
+  fs.read(f,function(err, bytesRead, bytes) {
+    if(bytes != undefined)
+      console.log(bytesRead);
+      console.log(String(bytes));
+  });
+});
+
+
+/*
+var client = net.createConnection({path: SOCKETFILE})
     .on("connect", () => {
         console.log("Client Connected");
     })
@@ -24,8 +53,10 @@ var client = net.createConnection(SOCKETFILE)
         console.log("Recieved From Server");
     })
     ;
-client.write(RANDOMSTRING);
 
+client.write(HELLOWORLD);
+*/
+/*
 for(var q = 0; q < 1000; q++) {
     client.write(RANDOMSTRING);
 }
@@ -38,9 +69,4 @@ setTimeout(
             }, delayInMilliseconds * i);
         }
     }, 2000);
-
-console.log("Send 10,000 transmissions, got back: ");
-console.log(counter);
-console.log(" replies\n");
-
-client.end();
+*/

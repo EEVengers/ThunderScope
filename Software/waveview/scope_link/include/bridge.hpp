@@ -1,23 +1,30 @@
-#ifndef CPP_DEV
 
-#ifndef NapiHook_hpp
-#define NapiHook_hpp
- 
-#include <iostream>
+#ifndef BRIDGE_HPP
+#define BRIDGE_HPP
+
+#include <unistd.h> 
+#include <stdio.h>
+#include <stdlib.h> 
+#include <string.h> 
+#include <cerrno>
+#include <thread>
 #include <queue>
 #include <mutex>
-#include <thread>
+#include <iostream>
+//#include "../include/logger.hpp"
 
-#define TEST_ARRAY_SIZE (1<<23)
+#ifdef WIN32 //for windows use named pipes
+#include <windows.h> 
+#include <tchar.h>
+#include <strsafe.h>
+#else //for unix systems use unix sockets
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <sys/un.h> 
+#endif
 
-enum NapiCommands {
-    GetChannelData,
-    GetChannelMeasurements,
-    ConfigureScope
-};
+#define BRIDGE_BUFFER_SIZE 1024
 
-// Externs
-extern int _num_of_packet_processer;
 
 // PACKET STRUCTURE
 //   _______________________________________________________________________________________________________
@@ -27,7 +34,7 @@ extern int _num_of_packet_processer;
 //  |     2Bytes    |    2Bytes     |    2Bytes     |     Defined by dataSize                               |
 //  |               |               |               |                                                       |
 //  |_______________|_______________|_______________|_______________________________________________________|
-struct NapiPacket {
+struct EVPacket {
     // The command that is to be executed
     // This does not change from recieve to transmit
     uint16_t command;
@@ -48,7 +55,58 @@ struct NapiPacket {
     uint8_t* data;
 };
 
-#endif
+
+class Bridge {
+private:
+
+    const char tx_connection_string[100] = {};
+    const char rx_connection_string[100] = {};
+    char tx_buff[4096] = {};
+    char rx_buff[4096] = {};
+    #ifdef WIN32
+    HANDLE tx_hPipe;
+    HANDLE rx_hPipe;
+    const char* base_path = "\\\\.\\pipe\\";
+    #else
+    int tx_sock;
+    int rx_sock;
+    int client_tx_sock;
+    const char* base_path = "/tmp/";
+    #endif
+    char txBuff[BRIDGE_BUFFER_SIZE], rxBuff[BRIDGE_BUFFER_SIZE];
+    std::thread tx_worker;
+    std::thread rx_worker;
+
+    std::queue<EVPacket*>& _txQueue;
+    std::queue<EVPacket*>& _rxQueue;
+    std::mutex& _txLock;
+    std::mutex& _rxLock;
+
+    volatile bool rx_run;
+    volatile bool tx_run;
+    void TxJob();
+    void RxJob();
+
+public:
+
+    Bridge(const char* pipeName, 
+            std::queue<EVPacket*>& txQueue,
+            std::queue<EVPacket*>& rxQueue,
+            std::mutex& txLock,
+            std::mutex& rxLock);
+    ~Bridge();
+
+    int TxStart();
+    int RxStart();
+    int TxStop();
+    int RxStop();
+
+    int InitTxBridge();
+    int InitRxBridge();
+
+protected:
+
+};
 
 
 #endif
