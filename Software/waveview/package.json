@@ -48,8 +48,8 @@
     "electron-dev-win": "concurrently \"set BROWSER=none && call npm run start\" \"wait-on http://localhost:3000 && node_modules\\.bin\\tsc -p electron -w\" \"wait-on http://localhost:3000 && node_modules\\.bin\\tsc -p electron && electron %INIT_CWD%\"",
     "electron-build": "npm run build && ./node_modules/.bin/tsc -p electron && electron-builder",
     "electron-build-win": "npm run build && node_modules\\.bin\\tsc -p electron && electron-builder",
-    "make-cpp": "cmake-js compile --debug",
-    "make-cpp-win": "cmake-js compile"
+    "make-cpp": "cmake-js compile --debug -O build_cpp",
+    "make-cpp-win": "cmake-js compile -O build_cpp"
   },
   "eslintConfig": {
     "extends": "react-app"
