@@ -13,7 +13,8 @@ function createWindow() {
     webPreferences: {
       preload: path.join(__dirname, "preload.js"),
       nodeIntegration: true,
-      nodeIntegrationInWorker: true
+      nodeIntegrationInWorker: true,
+      contextIsolation: true //welcome to the future: https://www.electronjs.org/docs/tutorial/context-isolation
     },
   });
 

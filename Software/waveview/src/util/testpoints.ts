@@ -32,6 +32,15 @@ class TestPoints {
     else {
       this.data = [];
     }
+
+    const thunderBridge = (window as any).thunderBridge;
+    thunderBridge.write("Hello from Electron!", () => {});
+    const buf = Buffer.alloc(50);
+    thunderBridge.read(buf, (err: any, bRead: number, bytes: Uint8Array) => {
+      console.log("Bytes read:" + bRead);
+      const s = new TextDecoder("utf-8").decode(bytes);
+      console.log(s);
+    });
   }
 
   update(tickCount: number) {
