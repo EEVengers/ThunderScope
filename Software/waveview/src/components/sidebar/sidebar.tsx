@@ -1,5 +1,4 @@
 import React from 'react';
-import Search from './core/search';
 import StopButton from './core/stopButton';
 import SingleButton from './core/singleButton';
 import './../../css/sidebar/sidebar.css';
@@ -13,7 +12,6 @@ class SideBar extends React.Component {
   render() {
     return (
       <div className="SideBarComponent">
-        <Search />
         <StopButton />
         <SingleButton />
         <HorizontalWidget />
