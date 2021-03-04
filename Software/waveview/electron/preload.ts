@@ -2,47 +2,26 @@
 // It has the same sandbox as a Chrome extension.
 
 import * as fs from 'fs';
+import { contextBridge } from 'electron';
 
-    var HELLOWORLD = "HELLO! WORLD!";
-    var HELLOWORLD1 = "HELLO! WORLD!1";
-    var HELLOWORLD2 = "HELLO! WORLD!2";
-    var delayInMilliseconds = 10;
+var SOCKET_PREFIX = "";
+if(process.platform == "win32") {
+  SOCKET_PREFIX = "\\\\.\\pipe\\";
+}
+else {
+  SOCKET_PREFIX = "/tmp/";
+}
 
-    //unix file system
-    var SOCKETFILE_TX = "testPipeRX";
-    var SOCKETFILE_RX = "testPipeTX";
-    if(process.platform == "win32") {
-        SOCKETFILE_TX = "\\\\.\\pipe\\" + SOCKETFILE_TX;
-        SOCKETFILE_RX = "\\\\.\\pipe\\" + SOCKETFILE_RX;
-    } else {
-        SOCKETFILE_TX = "/tmp/" + SOCKETFILE_TX;
-        SOCKETFILE_RX = "/tmp/" + SOCKETFILE_RX;
-    }
+const SOCKETFILE_TX = SOCKET_PREFIX + "testPipeRX";
+const SOCKETFILE_RX = SOCKET_PREFIX + "testPipeTX";
+const TX_FD = fs.openSync(SOCKETFILE_TX, "w");
+const RX_FD = fs.openSync(SOCKETFILE_RX, "r")
 
-    var counter = 0;
-
-    fs.open(SOCKETFILE_TX, "w", function(err, f) {
-      if (err) throw err;
-      fs.write(f,HELLOWORLD,0,function(err, written, buff) {
-        console.log("Successfully written to 1");
-        fs.write(f,HELLOWORLD1,0,function(err, written, buff) {
-          console.log("Successfully written to 2");
-          fs.write(f,HELLOWORLD2,0,function(err, written, buff) {
-            console.log("Successfully written to 3");
-          });
-        });
-      });
-    });
-
-    var b = Buffer.from("uhhhhhhhhhhhh");
-    fs.open(SOCKETFILE_RX, "r",function(err, f) {
-      fs.read(f,b,0, b.byteLength, 0,function(err, bytesRead, bytes) {
-        if(bytes != undefined)
-          console.log(bytesRead);
-          console.log(String(bytes));
-      });
-    });
-
+//Welcome to the future: https://www.electronjs.org/docs/tutorial/context-isolation
+contextBridge.exposeInMainWorld("thunderBridge", {
+  write: (s: string, cb: any) => fs.write(TX_FD, s, cb),
+  read: (buf: Buffer, cb: any) => fs.read(RX_FD, buf, 0, buf.length, null, cb)
+});
 
 window.addEventListener("DOMContentLoaded", () => {
   const replaceText = (selector: string, text: string) => {
