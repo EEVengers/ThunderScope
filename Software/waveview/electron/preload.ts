@@ -2,20 +2,18 @@
 // It has the same sandbox as a Chrome extension.
 
 import * as fs from 'fs';
+import { exec } from 'child_process';
 import { contextBridge } from 'electron';
 
-var SOCKET_PREFIX = "";
-if(process.platform == "win32") {
-  SOCKET_PREFIX = "\\\\.\\pipe\\";
-}
-else {
-  SOCKET_PREFIX = "/tmp/";
-}
-
+const SOCKET_PREFIX = (process.platform == "win32") ? "\\\\.\\pipe\\" : "/tmp/";
 const SOCKETFILE_TX = SOCKET_PREFIX + "testPipeRX";
 const SOCKETFILE_RX = SOCKET_PREFIX + "testPipeTX";
-const TX_FD = fs.openSync(SOCKETFILE_TX, "w");
-const RX_FD = fs.openSync(SOCKETFILE_RX, "r")
+exec('.\\scope_link\\bridge.exe', (err, stdout, stderr) => {});
+
+var TX_FD = -1;
+var RX_FD = -1;
+fs.open(SOCKETFILE_TX, "w", (err, fd) => {TX_FD = fd;});
+fs.open(SOCKETFILE_RX, "r", (err, fd) => {RX_FD = fd;});
 
 //Welcome to the future: https://www.electronjs.org/docs/tutorial/context-isolation
 contextBridge.exposeInMainWorld("thunderBridge", {
