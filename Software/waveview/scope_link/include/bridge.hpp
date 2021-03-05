@@ -2,7 +2,9 @@
 #ifndef BRIDGE_HPP
 #define BRIDGE_HPP
 
-#include <unistd.h> 
+#ifndef WIN32 //MSVC cannot find unistd.h
+#include <unistd.h>
+#endif
 #include <stdio.h>
 #include <stdlib.h> 
 #include <string.h> 
