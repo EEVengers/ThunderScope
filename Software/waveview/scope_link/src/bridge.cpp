@@ -100,11 +100,7 @@ void Bridge::TxJob() {
         if(_txQueue.empty()) {
             _txLock.unlock();
             //if nothing sleep for 500us
-#ifdef WIN32
-            //add sleep code for windows
-#else
             std::this_thread::sleep_for(std::chrono::microseconds(500));
-#endif
         } else {
             //else, send it
             EVPacket* txPacket = _gtxQueue.front(); //gets the pointer to the packet
@@ -118,6 +114,8 @@ void Bridge::TxJob() {
             memcpy(tx_buff+6,txPacket->data,txPacket->dataSize);
 #ifdef WIN32
             //send the packet over a named pipe
+            unsigned long bytes_written;
+            WriteFile(tx_hPipe,tx_buff,packet_size,&bytes_written,NULL);
 #else
             //send the packet over a socket
             send(client_tx_sock,tx_buff,packet_size,0);
@@ -161,10 +159,46 @@ void Bridge::RxJob() {
         //reading block until something is sent
 #ifdef WIN32
         DWORD packet_size;
-        ReadFile(rx_hPipe, rxBuff, BRIDGE_BUFFER_SIZE, &packet_size, NULL);
-        if(packet_size != 0) {
-            std::cout << rxBuff << std::endl;
+        int val;
+        unsigned long bytes_read;
+        //get the header
+        val = ReadFile(rx_hPipe, rxBuff, 6, &bytes_read, NULL);
+        if(val == 0) {
+            //error
+            int err = GetLastError();
+            if(err == 234) { //err 234 is there is more data, not an error
+                //do nothing
+            } else if(err == 109) { //err 109 there were not enough bytes in the pipline
+                std::this_thread::sleep_for(std::chrono::microseconds(500));
+                continue; //error packet move onto next one
+            } else {
+                printf("rx_pipe header_read: Error: %d",GetLastError());
+                break;
+            }
         }
+        //read the rest of the packet
+        uint16_t dataSize = ((uint16_t*)(rxBuff))[2];
+        if(dataSize < BRIDGE_BUFFER_SIZE - 6) {
+            val = ReadFile(rx_hPipe, rxBuff + 6, dataSize, &bytes_read, NULL);
+        } else {
+            continue;
+        }
+        if(val == 0){
+            //error
+            int err = GetLastError();
+            if(err == 234) { //err 234 is there is more data, not an error
+                //do nothing
+                std::this_thread::sleep_for(std::chrono::microseconds(500));
+            } else if(err == 109) { //err 109 there were not enough bytes in the pipline
+                std::this_thread::sleep_for(std::chrono::microseconds(500));
+                continue; //error packet move onto next one
+            } else {
+                printf("rx_pipe data_read: Error: %d",GetLastError());
+                break;
+            }
+        }
+        packet_size = 6 + dataSize;
+        
 #else
         size_t packet_size;
         packet_size = recv(client_rx_sock,rxBuff,BRIDGE_BUFFER_SIZE,0);
@@ -175,12 +209,8 @@ void Bridge::RxJob() {
             rx_run = false;
         } else {
             //if there is nothing, sleep for 500us
-#ifdef WIN32
-            
-#else
             std::this_thread::sleep_for(std::chrono::microseconds(500));
             continue;
-#endif
         }
 #endif
         //process whatever is sent (for now just print it)
@@ -204,6 +234,7 @@ void Bridge::RxJob() {
             memcpy(rxPacket->data,rxBuffData,rxPacket->dataSize);
         } else {
             //this is a transmission error for now, until we get multiple packet payloads enabled
+            rxPacket->dataSize = 1;
             rxPacket->data = (uint8_t*)malloc(1);
         }
         //for now just print and free the packet

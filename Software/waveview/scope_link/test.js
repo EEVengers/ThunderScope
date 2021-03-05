@@ -39,11 +39,11 @@ console.log(testPacket);
 if(process.platform == "win32") {
     fs.open(SOCKETFILE_TX, "w", function(err, f) {
         if (err) throw err;
-        fs.write(f,HELLOWORLD,0,function(err, written, buff) {
+        fs.write(f,testPacket,0,function(err, written, buff) {
             console.log("Successfully written to 1");
-            fs.write(f,HELLOWORLD1,0,function(err, written, buff) {
+            fs.write(f,testPacket,0,function(err, written, buff) {
                 console.log("Successfully written to 2");
-                fs.write(f,HELLOWORLD2,0,function(err, written, buff) {
+                fs.write(f,testPacket,0,function(err, written, buff) {
                     console.log("Successfully written to 3");
                 });
             });
@@ -51,11 +51,19 @@ if(process.platform == "win32") {
     });
     
     fs.open(SOCKETFILE_RX, "r",function(err, f) {
+        var rxBuff = new Uint8Array(new ArrayBuffer(4096));
+        fs.read(f,rxBuff,0,4096,0,function(err,bytesRead,bytes) {
+            if(bytes != undefined)
+                console.log(bytesRead);
+            console.log(new Uint8Array(bytes));
+        });
+        /*
         fs.read(f,function(err, bytesRead, bytes) {
             if(bytes != undefined)
                 console.log(bytesRead);
-            console.log(String(bytes));
+            console.log(new Uint8Array(bytes));
         });
+        */
     });
 } else { //UNIX Systems
     var clientTX = net.createConnection({path: SOCKETFILE_TX})
