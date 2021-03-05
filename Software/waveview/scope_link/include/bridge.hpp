@@ -23,8 +23,7 @@
 #include <sys/un.h> 
 #endif
 
-#define BRIDGE_BUFFER_SIZE 1024
-
+#define BRIDGE_BUFFER_SIZE 4096
 
 // PACKET STRUCTURE
 //   _______________________________________________________________________________________________________
@@ -55,57 +54,71 @@ struct EVPacket {
     uint8_t* data;
 };
 
+inline void FreePacket(EVPacket* packet);
+
+void PrintPacket(EVPacket* packet);
+
+
+// Queues for Rx and Tx between C++ and Js
+extern std::queue<EVPacket*> _gtxQueue;
+extern std::queue<EVPacket*> _grxQueue;
+
+// Mutexs for the queues
+extern std::mutex _gtxLock;
+extern std::mutex _grxLock;
+
 
 class Bridge {
 private:
-
+    
     const char tx_connection_string[100] = {};
     const char rx_connection_string[100] = {};
-    char tx_buff[4096] = {};
-    char rx_buff[4096] = {};
-    #ifdef WIN32
+    char tx_buff[BRIDGE_BUFFER_SIZE] = {};
+    char rx_buff[BRIDGE_BUFFER_SIZE] = {};
+#ifdef WIN32
     HANDLE tx_hPipe;
     HANDLE rx_hPipe;
     const char* base_path = "\\\\.\\pipe\\";
-    #else
+#else
     int tx_sock;
     int rx_sock;
     int client_tx_sock;
+    int client_rx_sock;
     const char* base_path = "/tmp/";
-    #endif
+#endif
     char txBuff[BRIDGE_BUFFER_SIZE], rxBuff[BRIDGE_BUFFER_SIZE];
     std::thread tx_worker;
     std::thread rx_worker;
-
+    
     std::queue<EVPacket*>& _txQueue;
     std::queue<EVPacket*>& _rxQueue;
     std::mutex& _txLock;
     std::mutex& _rxLock;
-
+    
     volatile bool rx_run;
     volatile bool tx_run;
     void TxJob();
     void RxJob();
-
+    
 public:
-
-    Bridge(const char* pipeName, 
-            std::queue<EVPacket*>& txQueue,
-            std::queue<EVPacket*>& rxQueue,
-            std::mutex& txLock,
-            std::mutex& rxLock);
+    
+    Bridge(const char* pipeName,
+           std::queue<EVPacket*>& txQueue,
+           std::queue<EVPacket*>& rxQueue,
+           std::mutex& txLock,
+           std::mutex& rxLock);
     ~Bridge();
-
+    
     int TxStart();
     int RxStart();
     int TxStop();
     int RxStop();
-
+    
     int InitTxBridge();
     int InitRxBridge();
-
+    
 protected:
-
+    
 };
 
 
