@@ -1,7 +1,8 @@
 .StopButton {
   display: flex;
+  flex-direction: column;
   position: relative;
-  top: 2vh;
+  top: 1vh;
   width: 7vw;
   height: 2vh;
   color: black;
@@ -9,6 +10,11 @@
   z-index: 100;
   border: none;
   user-select: none;
+}
+
+.StopButtonComponent {
+  display: flex;
+  flex-direction: column;
 }
 
 .StopButtonText {
