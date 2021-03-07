@@ -7,7 +7,7 @@ function SingleButton() {
   }
 
   return (
-    <div>
+    <div className={"SingleButtonComponent"}>
       <button
         className={"SingleButton"}
         onClick={handleSingleClick}
