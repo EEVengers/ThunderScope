@@ -1,4 +1,8 @@
+#ifndef othermain
 #include "../include/bridge.hpp"
+#else
+#include "bridge.hpp"
+#endif
 
 // Queues for Rx and Tx between C++ and Js
 std::queue<EVPacket*> _gtxQueue;
