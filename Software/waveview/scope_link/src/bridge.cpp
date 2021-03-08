@@ -198,7 +198,7 @@ void Bridge::RxJob() {
         packet_size = 6 + dataSize;
         
 #else
-        size_t packet_size;
+        ssize_t packet_size;
         packet_size = recv(client_rx_sock,rxBuff,BRIDGE_BUFFER_SIZE,0);
         if(packet_size > 0) {
             printf("rx_sock: Packet Size: %d  Message:%s\n",(int)packet_size,rxBuff);
@@ -217,7 +217,6 @@ void Bridge::RxJob() {
             printf("%X ",rxBuff[i]);
         printf("\n");
         
-        //
         uint16_t* rxBuff16 = (uint16_t*) rxBuff;
         uint8_t* rxBuffData = (uint8_t*) (rxBuff + 6);
         //reconstruct packet struct
@@ -240,6 +239,7 @@ void Bridge::RxJob() {
         FreePacket(rxPacket);
         _rxLock.lock();
         //process whatever it is
+        // Operate on the packet that was recieved from Electron
         _rxLock.unlock();
     }
 }
@@ -450,7 +450,7 @@ int Bridge::InitRxBridge() {
 
 #endif
 
-int main(int argc, char const *argv[]) 
+void runSocketTest ()
 {
     char in[10] = {};
     EVPacket* testPacket = (EVPacket*)malloc(sizeof(EVPacket));
@@ -473,30 +473,13 @@ int main(int argc, char const *argv[])
     std::cin >> in;
     
     delete testBridge;
-    return 0;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// Use this main when compiling this file directly
+#ifndef othermain
+int main(int argc, char const *argv[]) 
+{
+    runSocketTest();
+    return 0;
+}
+#endif
