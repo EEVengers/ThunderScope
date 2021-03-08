@@ -317,7 +317,10 @@ int Bridge::InitTxBridge() {
         return 2;
     tx_hPipe = CreateNamedPipe(tx_connection_string,
                                PIPE_ACCESS_DUPLEX | FILE_FLAG_FIRST_PIPE_INSTANCE,
-                               PIPE_TYPE_MESSAGE | PIPE_READMODE_MESSAGE | PIPE_WAIT | PIPE_REJECT_REMOTE_CLIENTS,   // FILE_FLAG_FIRST_PIPE_INSTANCE is not needed but forces CreateNamedPipe(..) to fail if the pipe already exists...
+                               // FILE_FLAG_FIRST_PIPE_INSTANCE is not needed
+                               // but forces CreateNamedPipe(..) to fail if the
+                               // pipe already exists...
+                               PIPE_TYPE_MESSAGE | PIPE_READMODE_MESSAGE | PIPE_WAIT | PIPE_REJECT_REMOTE_CLIENTS,
                                1,
                                4096 * 16,
                                4096 * 16,
@@ -338,7 +341,10 @@ int Bridge::InitRxBridge() {
         return 2;
     rx_hPipe = CreateNamedPipe(rx_connection_string,
                                PIPE_ACCESS_DUPLEX | FILE_FLAG_FIRST_PIPE_INSTANCE,
-                               PIPE_TYPE_MESSAGE | PIPE_READMODE_MESSAGE | PIPE_WAIT | PIPE_REJECT_REMOTE_CLIENTS,   // FILE_FLAG_FIRST_PIPE_INSTANCE is not needed but forces CreateNamedPipe(..) to fail if the pipe already exists...
+                               // FILE_FLAG_FIRST_PIPE_INSTANCE is not needed
+                               // but forces CreateNamedPipe(..) to fail if the
+                               // pipe already exists...
+                               PIPE_TYPE_MESSAGE | PIPE_READMODE_MESSAGE | PIPE_WAIT | PIPE_REJECT_REMOTE_CLIENTS,
                                1,
                                4096 * 16,
                                4096 * 16,
