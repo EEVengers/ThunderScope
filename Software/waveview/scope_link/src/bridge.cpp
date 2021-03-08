@@ -62,8 +62,6 @@ _rxLock(rxLock)
 }
 
 void Bridge::TxJob() {
-    int counter = 0;
-    
     //wait for a client (the electron app) to connect
 #ifdef WIN32
     if(tx_hPipe == INVALID_HANDLE_VALUE)
