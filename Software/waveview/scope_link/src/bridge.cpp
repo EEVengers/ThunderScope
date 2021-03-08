@@ -1,8 +1,4 @@
-#ifndef othermain
-#include "../include/bridge.hpp"
-#else
 #include "bridge.hpp"
-#endif
 
 // Queues for Rx and Tx between C++ and Js
 std::queue<EVPacket*> _gtxQueue;
@@ -234,7 +230,8 @@ void Bridge::RxJob() {
             rxPacket->data = (uint8_t*)malloc(rxPacket->dataSize);
             memcpy(rxPacket->data,rxBuffData,rxPacket->dataSize);
         } else {
-            //this is a transmission error for now, until we get multiple packet payloads enabled
+            // TODO: this is a transmission error for now, until we get multiple
+            // packet payloads enabled
             rxPacket->dataSize = 1;
             rxPacket->data = (uint8_t*)malloc(1);
         }
@@ -478,12 +475,3 @@ void runSocketTest ()
     
     delete testBridge;
 }
-
-// Use this main when compiling this file directly
-#ifndef othermain
-int main(int argc, char const *argv[]) 
-{
-    runSocketTest();
-    return 0;
-}
-#endif

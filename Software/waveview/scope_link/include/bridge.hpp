@@ -1,4 +1,3 @@
-
 #ifndef BRIDGE_HPP
 #define BRIDGE_HPP
 
@@ -121,6 +120,5 @@ public:
 protected:
     
 };
-
 
 #endif
