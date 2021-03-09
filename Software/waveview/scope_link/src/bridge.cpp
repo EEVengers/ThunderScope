@@ -1,4 +1,5 @@
 #include "bridge.hpp"
+#include "logger.hpp"
 
 // Queues for Rx and Tx between C++ and Js
 std::queue<EVPacket*> _gtxQueue;
@@ -22,7 +23,6 @@ void PrintPacket(EVPacket* packet) {
     }
     printf("\n");
 }
-
 
 Bridge::Bridge(const char* pipeName, 
                std::queue<EVPacket*>& txQueue,
@@ -67,7 +67,7 @@ void Bridge::TxJob() {
     if(tx_hPipe == INVALID_HANDLE_VALUE)
         return;
     ConnectNamedPipe(tx_hPipe, NULL);
-    printf("tx_pipe: client connected\n");
+    INFO << "tx_pipe: client connected";
 #else
     int rc;
     if(tx_sock == -1)
@@ -78,8 +78,8 @@ void Bridge::TxJob() {
         perror("tx_sock::listen(): ");
         return;
     }
-    
-    printf("tx_sock: listening for clients, waiting to aceept....\n");
+
+    INFO << "tx_sock: listening for clients, waiting to aceept....";
     //accept the first client to connect
     struct sockaddr_un address;
     socklen_t addresslen = sizeof(sockaddr_un);
@@ -88,10 +88,9 @@ void Bridge::TxJob() {
         perror("tx_sock::accept(): ");
         return;
     }
-    printf("tx_sock: client connected\n");
+    INFO << "tx_sock: client connected";
 #endif
-    
-    
+
     while(tx_run) {
         //look into queue if there is anything to send
         _txLock.lock();
@@ -124,23 +123,24 @@ void Bridge::TxJob() {
 }
 
 void Bridge::RxJob() {
-    
+
 #ifdef WIN32
     if(rx_hPipe == INVALID_HANDLE_VALUE)
         return;
     ConnectNamedPipe(rx_hPipe, NULL);
-    printf("rx_pipe: client connected\n");
+    INFO << "rx_pipe: client connected";
 #else
-    if(rx_sock == -1)
+    if(rx_sock == -1) {
         return;
+    }
     //listen an accept a client (the electron app)
     int rc = listen(rx_sock,10);
     if(0 != rc) {
         perror("rx_sock::listen(): ");
         return;
     }
-    
-    printf("rx_sock: listening for clients, waiting to aceept....\n");
+
+    INFO << "rx_sock: listening for clients, waiting to aceept....";
     //accept the first client to connect, no need to save it's fd since we will never
     //write to it
     struct sockaddr_un address;
@@ -150,9 +150,9 @@ void Bridge::RxJob() {
         perror("rx_sock::accept(): ");
         return;
     }
-    printf("rx_sock: client connected\n");
+    INFO << "rx_sock: client connected";
 #endif
-    
+
     while(rx_run) {
         //reading block until something is sent
 #ifdef WIN32
@@ -170,7 +170,7 @@ void Bridge::RxJob() {
                 std::this_thread::sleep_for(std::chrono::microseconds(500));
                 continue; //error packet move onto next one
             } else {
-                printf("rx_pipe header_read: Error: %d",GetLastError());
+                ERROR << "rx_pipe header_read: Error: " << GetLastError();
                 break;
             }
         }
@@ -191,19 +191,19 @@ void Bridge::RxJob() {
                 std::this_thread::sleep_for(std::chrono::microseconds(500));
                 continue; //error packet move onto next one
             } else {
-                printf("rx_pipe data_read: Error: %d",GetLastError());
+                INFO << "rx_pipe data_read: Error: " << GetLastError();
                 break;
             }
         }
         packet_size = 6 + dataSize;
-        
+
 #else
         ssize_t packet_size;
         packet_size = recv(client_rx_sock,rxBuff,BRIDGE_BUFFER_SIZE,0);
         if(packet_size > 0) {
-            printf("rx_sock: Packet Size: %d  Message:%s\n",(int)packet_size,rxBuff);
+            INFO << "rx_sock: Packet Size: " << (int)packet_size << " Message:" << rxBuff;
         } else if (packet_size == -1) {
-            printf("rx_sock: Client has disconnected....\n");
+            INFO << "rx_sock: Client has disconnected....";
             rx_run = false;
         } else {
             //if there is nothing, sleep for 500us
@@ -216,7 +216,7 @@ void Bridge::RxJob() {
         for(int i = 0; i < (int)packet_size; i++)
             printf("%X ",rxBuff[i]);
         printf("\n");
-        
+
         uint16_t* rxBuff16 = (uint16_t*) rxBuff;
         uint8_t* rxBuffData = (uint8_t*) (rxBuff + 6);
         //reconstruct packet struct
@@ -251,34 +251,36 @@ Bridge::~Bridge() {
 }
 
 int Bridge::TxStart() {
-    if(true == tx_run) {
+    if (true == tx_run) {
         TxStop();
     }
-    
-    int err = 0;
-    if( (err = InitTxBridge()) )
+
+    int err = InitTxBridge();
+    if (err) {
         return err;
-    std::cout << "Init'd Tx Bridge\n";
-    
+    }
+    INFO << "Init'd Tx Bridge";
+
     tx_run = true;
     tx_worker = std::thread(&Bridge::TxJob, this);
-    std::cout << "Started Tx Worker\n";
+    INFO << "Started Tx Worker";
     return 0;
 }
 
 int Bridge::RxStart() {
-    if(true == rx_run) {
+    if (true == rx_run) {
         RxStop();
     }
-    
-    int err = 0;
-    if( (err = InitRxBridge()) )
+
+    int err = InitRxBridge();
+    if (err) {
         return err;
-    std::cout << "Init'd Rx Bridge\n";
-    
+    }
+    INFO << "Init'd Rx Bridge";
+
     rx_run = true;
     rx_worker = std::thread(&Bridge::RxJob, this);
-    std::cout << "Started Rx Worker\n";
+    INFO << "Started Rx Worker";
     return 0;
 }
 
@@ -289,12 +291,12 @@ int Bridge::TxStop() {
     if(tx_worker.joinable()) {
         tx_worker.join();
     }
-    
+
     if(INVALID_HANDLE_VALUE != tx_hPipe) {
         CloseHandle(tx_hPipe);
         tx_hPipe = INVALID_HANDLE_VALUE;
     }
-    
+
     return 0;
 }
 
@@ -303,18 +305,19 @@ int Bridge::RxStop() {
     if(rx_worker.joinable()) {
         rx_worker.join();
     }
-    
+
     if(INVALID_HANDLE_VALUE != rx_hPipe) {
         CloseHandle(rx_hPipe);
         rx_hPipe = INVALID_HANDLE_VALUE;
     }
-    
+
     return 0;
 }
 
 int Bridge::InitTxBridge() {
-    if(tx_hPipe != INVALID_HANDLE_VALUE)
+    if(tx_hPipe != INVALID_HANDLE_VALUE) {
         return 2;
+    }
     tx_hPipe = CreateNamedPipe(tx_connection_string,
                                PIPE_ACCESS_DUPLEX | FILE_FLAG_FIRST_PIPE_INSTANCE,
                                // FILE_FLAG_FIRST_PIPE_INSTANCE is not needed
@@ -326,19 +329,20 @@ int Bridge::InitTxBridge() {
                                4096 * 16,
                                NMPWAIT_USE_DEFAULT_WAIT,
                                NULL);
-    
+
     if(tx_hPipe == INVALID_HANDLE_VALUE) {
-        std::cout << "Failed To Create Tx Pipe at: " << tx_connection_string << std::endl;
+        ERROR << "Failed To Create Tx Pipe at: " << tx_connection_string;
         return 1;
     }
     
-    std::cout << "Created Tx Pipe at: " << tx_connection_string <<std::endl;
+    INFO << "Created Tx Pipe at: " << tx_connection_string;
     return 0;
 }
 
 int Bridge::InitRxBridge() {
-    if(rx_hPipe != INVALID_HANDLE_VALUE)
+    if(rx_hPipe != INVALID_HANDLE_VALUE) {
         return 2;
+    }
     rx_hPipe = CreateNamedPipe(rx_connection_string,
                                PIPE_ACCESS_DUPLEX | FILE_FLAG_FIRST_PIPE_INSTANCE,
                                // FILE_FLAG_FIRST_PIPE_INSTANCE is not needed
@@ -350,13 +354,13 @@ int Bridge::InitRxBridge() {
                                4096 * 16,
                                NMPWAIT_USE_DEFAULT_WAIT,
                                NULL);
-    
+
     if(rx_hPipe == INVALID_HANDLE_VALUE) {
-        std::cout << "Failed To Create Rx Pipe at: " << rx_connection_string << std::endl;
+        ERROR << "Failed To Create Rx Pipe at: " << rx_connection_string;
         return 1;
     }
-    
-    std::cout << "Created Rx Pipe at: " << rx_connection_string <<std::endl;
+
+    INFO << "Created Rx Pipe at: " << rx_connection_string;
     return 0;
 }
 
@@ -367,14 +371,14 @@ int Bridge::TxStop() {
     if(tx_worker.joinable()) {
         tx_worker.join();
     }
-    
+
     if(-1 != tx_sock) {
         close(tx_sock);
         tx_sock = -1;
         client_tx_sock = -1;
         unlink(tx_connection_string);
     }
-    
+
     return 0;
 }
 
@@ -383,19 +387,19 @@ int Bridge::RxStop() {
     if(rx_worker.joinable()) {
         rx_worker.join();
     }
-    
+
     if(-1 != rx_sock) {
         close(rx_sock);
         rx_sock = -1;
         unlink(rx_connection_string);
     }
-    
+
     return 0;
 }
 
 int Bridge::InitTxBridge() {
     struct sockaddr_un name;
-    
+
     //create the socket
     tx_sock = socket(AF_UNIX, SOCK_STREAM, 0);
     if(tx_sock < 0) {
@@ -412,21 +416,21 @@ int Bridge::InitTxBridge() {
         str_len++;
     }
     name.sun_path[str_len] = 0;
-    
+
     //bind the socket
     size_t size = SUN_LEN(&name);
     if(bind (tx_sock, (struct sockaddr *) &name, size) < 0) {
         perror("tx_sock::bind(): ");
         return 2;
     }
-    
-    printf("tx_sock created and bound on %s\n",name.sun_path);
+
+    INFO << "tx_sock created and bound on " << name.sun_path;
     return 0;
 }
 
 int Bridge::InitRxBridge() {
     struct sockaddr_un name;
-    
+
     //create the socket
     rx_sock = socket(AF_UNIX, SOCK_STREAM, 0);
     if(rx_sock < 0) {
@@ -443,15 +447,15 @@ int Bridge::InitRxBridge() {
         str_len++;
     }
     name.sun_path[str_len] = 0;
-    
+
     //bind the socket
     size_t size = SUN_LEN(&name);
     if(bind (rx_sock, (struct sockaddr *) &name, size) < 0) {
         perror("rx_sock::bind(): ");
         return 2;
     }
-    
-    printf("rx_sock created and bound on %s\n",name.sun_path);
+
+    INFO << "rx_sock created and bound on " << name.sun_path;
     return 0;
 }
 
@@ -470,14 +474,14 @@ void runSocketTest ()
     testPacket->data[2] = 3;
     testPacket->data[3] = 4;
     testPacket->data[4] = 5;
-    
+
     _gtxQueue.push(testPacket);
     Bridge* testBridge = new Bridge("testPipe",_gtxQueue,_grxQueue,_gtxLock,_grxLock);
-    
+
     testBridge->TxStart();
     testBridge->RxStart();
-    
+
     std::cin >> in;
-    
+
     delete testBridge;
 }

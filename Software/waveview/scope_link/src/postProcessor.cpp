@@ -1,5 +1,6 @@
 #include "postProcessor.hpp"
 #include "logger.hpp"
+#include "bridge.hpp"
 
 /*******************************************************************************
  * postProcessor()
@@ -86,14 +87,15 @@ void postProcessor::coreLoop()
             // Post process window
             // TODO: Add interpolation here.
 //            std::cout << "Post Processed window";
-            for (int i = 0; i < windowSize; i++) {
+            for (uint32_t i = 0; i < windowSize; i++) {
                 postWindow[i] = currentWindow[i];
 //                std::cout << " " << (int)currentWindow[i];
             }
 //            std::cout << std::endl;
 
             // Pass processed window to next stage
-            outputQueue->push(postWindow);
+//            outputQueue->push(postWindow);
+            
         }
         // Queue empty, Sleep for a bit
         std::this_thread::sleep_for(std::chrono::microseconds(100));

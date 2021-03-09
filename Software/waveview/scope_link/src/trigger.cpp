@@ -184,12 +184,12 @@ void Trigger::checkTrigger(buffer* currentBuffer)
 
 void Trigger::coreLoop()
 {
-    buffer *currentBuffer;
-    buffer *nextBuffer;
+    buffer *currentBuffer = NULL;
+    buffer *nextBuffer = NULL;
 
     // Get the first buffer into currentBuffer
     if (inputQueue == NULL) {
-        ERROR << "Input Queue null in core loop";
+        ERROR << "Input Queue null in trigger core loop";
     } else {
         while (inputQueue->pop(currentBuffer) == false && stopTrigger.load() == false) {
 //            INFO << "Waiting for first data element";
