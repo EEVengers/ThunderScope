@@ -9,12 +9,31 @@ std::queue<EVPacket*> _grxQueue;
 std::mutex _gtxLock;
 std::mutex _grxLock;
 
-
+/*******************************************************************************
+ * FreePacket()
+ *
+ * Frees the packet and all data it points to.
+ *
+ * Arguments:
+ *   EVPacket* packet - pointer to the packet.
+ * Return:
+ *   None
+ ******************************************************************************/
 inline void FreePacket(EVPacket* packet) {
     free(packet->data);
     free(packet);
 }
 
+/*******************************************************************************
+ * PrintPacket()
+ *
+ * Prints the contents of a packet.
+ *
+ * Arguments:
+ *   EVPacket* packet - pointer to the packet.
+ * Return:
+ *   None
+ ******************************************************************************/
 void PrintPacket(EVPacket* packet) {
     printf("PacketID_HEX: %X, Command: %d, DataSize: %d, Data: ",
            packet->packetID, packet->command,packet->dataSize);
@@ -24,6 +43,20 @@ void PrintPacket(EVPacket* packet) {
     printf("\n");
 }
 
+/*******************************************************************************
+ * Bridge()
+ *
+ * Constructor for the bridge.
+ *
+ * Arguments:
+ *   const char* pipeName
+ *   std::queue<EVPacket*>& txQueue
+ *   std::queue<EVPacket*>& rxQueue
+ *   std::mutex& txLock
+ *   std::mutex& rxLock
+ * Return:
+ *   None
+ ******************************************************************************/
 Bridge::Bridge(const char* pipeName, 
                std::queue<EVPacket*>& txQueue,
                std::queue<EVPacket*>& rxQueue,
@@ -61,17 +94,44 @@ _rxLock(rxLock)
 #endif
 }
 
+/*******************************************************************************
+ * ~Bridge()
+ *
+ * Destructor for the bridge class.
+ *
+ * Arguments:
+ *   None
+ * Return:
+ *   None
+ ******************************************************************************/
+Bridge::~Bridge() {
+    RxStop();
+    TxStop();
+}
+
+/*******************************************************************************
+ * TxJob()
+ *
+ * Transmits packets in the tx queue.
+ *
+ * Arguments:
+ *   None
+ * Return:
+ *   None
+ ******************************************************************************/
 void Bridge::TxJob() {
     //wait for a client (the electron app) to connect
 #ifdef WIN32
-    if(tx_hPipe == INVALID_HANDLE_VALUE)
+    if(tx_hPipe == INVALID_HANDLE_VALUE) {
         return;
+    }
     ConnectNamedPipe(tx_hPipe, NULL);
     INFO << "tx_pipe: client connected";
 #else
     int rc;
-    if(tx_sock == -1)
+    if(tx_sock == -1) {
         return;
+    }
     //listen an accept a client (the electron app)
     rc = listen(tx_sock,10);
     if(0 != rc) {
@@ -122,6 +182,16 @@ void Bridge::TxJob() {
     }
 }
 
+/*******************************************************************************
+ * RxJob()
+ *
+ * recieves packets and processes them.
+ *
+ * Arguments:
+ *   None
+ * Return:
+ *   None
+ ******************************************************************************/
 void Bridge::RxJob() {
 
 #ifdef WIN32
@@ -245,11 +315,16 @@ void Bridge::RxJob() {
     }
 }
 
-Bridge::~Bridge() {
-    RxStop();
-    TxStop();
-}
-
+/*******************************************************************************
+ * TxStart()
+ *
+ * Initializes the tx bridge and starts the tx worker thread.
+ *
+ * Arguments:
+ *   None
+ * Return:
+ *   int - 0 on success, err on failure
+ ******************************************************************************/
 int Bridge::TxStart() {
     if (true == tx_run) {
         TxStop();
@@ -267,6 +342,16 @@ int Bridge::TxStart() {
     return 0;
 }
 
+/*******************************************************************************
+ * RxStart()
+ *
+ * Initializes the rx bridge and starts the rx worker thread.
+ *
+ * Arguments:
+ *   None
+ * Return:
+ *   int - 0 on success, err on failure
+ ******************************************************************************/
 int Bridge::RxStart() {
     if (true == rx_run) {
         RxStop();
@@ -286,6 +371,16 @@ int Bridge::RxStart() {
 
 #ifdef WIN32
 
+/*******************************************************************************
+ * TxStop()
+ *
+ * Closes the tx bridge and joins the worker thread.
+ *
+ * Arguments:
+ *   None
+ * Return:
+ *   int - 0 on success
+ ******************************************************************************/
 int Bridge::TxStop() {
     tx_run = false;
     if(tx_worker.joinable()) {
@@ -300,6 +395,16 @@ int Bridge::TxStop() {
     return 0;
 }
 
+/*******************************************************************************
+ * RxStop()
+ *
+ * Closes the rx bridge and joins the worker thread.
+ *
+ * Arguments:
+ *   None
+ * Return:
+ *   int - 0 on success
+ ******************************************************************************/
 int Bridge::RxStop() {
     rx_run = false;
     if(rx_worker.joinable()) {
@@ -314,6 +419,16 @@ int Bridge::RxStop() {
     return 0;
 }
 
+/*******************************************************************************
+ * InitTxBridge()
+ *
+ * Creates a named pipe for the tx bridge.
+ *
+ * Arguments:
+ *   None
+ * Return:
+ *   int - 0 on success, error code on failure
+ ******************************************************************************/
 int Bridge::InitTxBridge() {
     if(tx_hPipe != INVALID_HANDLE_VALUE) {
         return 2;
@@ -339,6 +454,16 @@ int Bridge::InitTxBridge() {
     return 0;
 }
 
+/*******************************************************************************
+ * InitRxBridge()
+ *
+ * Creates a named pipe for the rx bridge.
+ *
+ * Arguments:
+ *   None
+ * Return:
+ *   int - 0 on success, error code on failure
+ ******************************************************************************/
 int Bridge::InitRxBridge() {
     if(rx_hPipe != INVALID_HANDLE_VALUE) {
         return 2;
@@ -366,6 +491,16 @@ int Bridge::InitRxBridge() {
 
 #else
 
+/*******************************************************************************
+ * TxStop() on unix
+ *
+ * Closes the tx socket and joins the worker thread
+ *
+ * Arguments:
+ *   None
+ * Return:
+ *   int - 0 on success, error code on failure
+ ******************************************************************************/
 int Bridge::TxStop() {
     tx_run = false;
     if(tx_worker.joinable()) {
@@ -382,6 +517,16 @@ int Bridge::TxStop() {
     return 0;
 }
 
+/*******************************************************************************
+ * RxStop() on linux
+ *
+ * Closes the rx bridge and joins the worker thread.
+ *
+ * Arguments:
+ *   None
+ * Return:
+ *   int - 0 on success
+ ******************************************************************************/
 int Bridge::RxStop() {
     rx_run = false;
     if(rx_worker.joinable()) {
@@ -397,6 +542,16 @@ int Bridge::RxStop() {
     return 0;
 }
 
+/*******************************************************************************
+ * InitTxBridge() on unix
+ *
+ * Creates a named pipe for the tx bridge.
+ *
+ * Arguments:
+ *   None
+ * Return:
+ *   int - 0 on success, error code on failure
+ ******************************************************************************/
 int Bridge::InitTxBridge() {
     struct sockaddr_un name;
 
@@ -428,6 +583,16 @@ int Bridge::InitTxBridge() {
     return 0;
 }
 
+/*******************************************************************************
+ * InitRxBridge() on unix
+ *
+ * Creates a named pipe for the rx bridge.
+ *
+ * Arguments:
+ *   None
+ * Return:
+ *   int - 0 on success, error code on failure
+ ******************************************************************************/
 int Bridge::InitRxBridge() {
     struct sockaddr_un name;
 
@@ -461,9 +626,22 @@ int Bridge::InitRxBridge() {
 
 #endif
 
+/*******************************************************************************
+ * runSocketTest()
+ *
+ * Creats a bridge, sends a test packet across the bridge and cleans up after
+ * recieving a response.
+ *
+ * Arguments:
+ *   None
+ * Return:
+ *   int - 0 on success, error code on failure
+ ******************************************************************************/
 void runSocketTest ()
 {
     char in[10] = {};
+
+    // Create packet
     EVPacket* testPacket = (EVPacket*)malloc(sizeof(EVPacket));
     testPacket->command = 1;
     testPacket->packetID = 0x0808;
@@ -475,9 +653,11 @@ void runSocketTest ()
     testPacket->data[3] = 4;
     testPacket->data[4] = 5;
 
+    // Pass packet to tx queue
     _gtxQueue.push(testPacket);
     Bridge* testBridge = new Bridge("testPipe",_gtxQueue,_grxQueue,_gtxLock,_grxLock);
 
+    // start transfering
     testBridge->TxStart();
     testBridge->RxStart();
 

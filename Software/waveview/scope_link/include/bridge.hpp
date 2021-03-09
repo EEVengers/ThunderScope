@@ -9,7 +9,6 @@
 #include <queue>
 #include <mutex>
 #include <iostream>
-//#include "../include/logger.hpp"
 
 #ifdef WIN32 //for windows use named pipes
 #include <windows.h> 
