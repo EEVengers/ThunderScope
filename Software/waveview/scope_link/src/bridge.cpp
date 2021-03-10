@@ -67,8 +67,8 @@ _rxQueue(rxQueue),
 _txLock(txLock),
 _rxLock(rxLock)
 {
-    tx_run = false;
-    rx_run = false;
+    tx_run.store(false);
+    rx_run.store(false);
 #ifdef WIN32
     tx_hPipe = INVALID_HANDLE_VALUE;
     rx_hPipe = INVALID_HANDLE_VALUE;
@@ -151,7 +151,7 @@ void Bridge::TxJob() {
     INFO << "tx_sock: client connected";
 #endif
 
-    while(tx_run) {
+    while(tx_run.load()) {
         //look into queue if there is anything to send
         _txLock.lock();
         if(_txQueue.empty()) {
@@ -223,7 +223,7 @@ void Bridge::RxJob() {
     INFO << "rx_sock: client connected";
 #endif
 
-    while(rx_run) {
+    while(rx_run.load()) {
         //reading block until something is sent
 #ifdef WIN32
         DWORD packet_size;
@@ -274,7 +274,7 @@ void Bridge::RxJob() {
             INFO << "rx_sock: Packet Size: " << (int)packet_size << " Message:" << rxBuff;
         } else if (packet_size == -1) {
             INFO << "rx_sock: Client has disconnected....";
-            rx_run = false;
+            rx_run.store(false);
         } else {
             //if there is nothing, sleep for 500us
             std::this_thread::sleep_for(std::chrono::microseconds(500));
@@ -326,7 +326,7 @@ void Bridge::RxJob() {
  *   int - 0 on success, err on failure
  ******************************************************************************/
 int Bridge::TxStart() {
-    if (true == tx_run) {
+    if (tx_run.load() == true) {
         TxStop();
     }
 
@@ -336,7 +336,7 @@ int Bridge::TxStart() {
     }
     INFO << "Init'd Tx Bridge";
 
-    tx_run = true;
+    tx_run.store(true);
     tx_worker = std::thread(&Bridge::TxJob, this);
     INFO << "Started Tx Worker";
     return 0;
@@ -353,7 +353,7 @@ int Bridge::TxStart() {
  *   int - 0 on success, err on failure
  ******************************************************************************/
 int Bridge::RxStart() {
-    if (true == rx_run) {
+    if (rx_run.load() == true) {
         RxStop();
     }
 
@@ -363,7 +363,7 @@ int Bridge::RxStart() {
     }
     INFO << "Init'd Rx Bridge";
 
-    rx_run = true;
+    rx_run.store(true);
     rx_worker = std::thread(&Bridge::RxJob, this);
     INFO << "Started Rx Worker";
     return 0;
@@ -382,7 +382,7 @@ int Bridge::RxStart() {
  *   int - 0 on success
  ******************************************************************************/
 int Bridge::TxStop() {
-    tx_run = false;
+    tx_run.store(false);
     if(tx_worker.joinable()) {
         tx_worker.join();
     }
@@ -406,7 +406,7 @@ int Bridge::TxStop() {
  *   int - 0 on success
  ******************************************************************************/
 int Bridge::RxStop() {
-    rx_run = false;
+    rx_run(false);
     if(rx_worker.joinable()) {
         rx_worker.join();
     }
@@ -502,7 +502,7 @@ int Bridge::InitRxBridge() {
  *   int - 0 on success, error code on failure
  ******************************************************************************/
 int Bridge::TxStop() {
-    tx_run = false;
+    tx_run.store(false);
     if(tx_worker.joinable()) {
         tx_worker.join();
     }
@@ -528,7 +528,7 @@ int Bridge::TxStop() {
  *   int - 0 on success
  ******************************************************************************/
 int Bridge::RxStop() {
-    rx_run = false;
+    rx_run.store(false);
     if(rx_worker.joinable()) {
         rx_worker.join();
     }

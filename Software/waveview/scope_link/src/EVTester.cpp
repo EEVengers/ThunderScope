@@ -350,10 +350,16 @@ void testCsv(char * filename)
 
     postProcessorThread = new postProcessor(&preProcessorQueue, &postProcessorQueue);
 
+    testBridge = new Bridge("testPipe",_gtxQueue,_grxQueue,_gtxLock,_grxLock);
+
     // Start all methods
     processorThread->processorUnpause();
     triggerThread->triggerUnpause();
     postProcessorThread->postProcessorUnpause();
+
+    // start transfering
+    testBridge->TxStart();
+    testBridge->RxStart();
 
     // Wait until window if full
     while (processorThread->getWindowStatus() == false) {
@@ -367,6 +373,7 @@ void testCsv(char * filename)
 //    delete triggerThread;
 //    delete processorThread;
     delete postProcessorThread;
+    delete testBridge;
 }
 
 void TestDataThroughput()

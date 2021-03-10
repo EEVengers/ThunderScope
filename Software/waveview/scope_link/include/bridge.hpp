@@ -9,6 +9,7 @@
 #include <queue>
 #include <mutex>
 #include <iostream>
+#include <atomic>
 
 #ifdef WIN32 //for windows use named pipes
 #include <windows.h> 
@@ -94,8 +95,8 @@ private:
     std::mutex& _txLock;
     std::mutex& _rxLock;
     
-    volatile bool rx_run;
-    volatile bool tx_run;
+    std::atomic<bool> rx_run;
+    std::atomic<bool> tx_run;
     void TxJob();
     void RxJob();
     
