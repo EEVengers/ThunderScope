@@ -45,11 +45,6 @@ struct EVPacket {
     uint16_t dataSize;
     // The relevant payload of the packet.
     // The contents of the payload will can change when c++ sends the data back to the javascript
-    // ******IMPORTANT******
-    // When recieving a packet from javascript, always memcpy it's data into a malloc'd buffer in c++
-    // The pointer memory should stay internal to c++ at all times.
-    // when sending a packet to javascript that needs the data, memcpy the
-    // entire NapiPacket and let the NAPI callback take care of memory allocation
     int8_t* data;
 };
 
