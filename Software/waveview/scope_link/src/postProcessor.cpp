@@ -69,6 +69,7 @@ postProcessor::~postProcessor(void)
  ******************************************************************************/
 void postProcessor::coreLoop()
 {
+    EVPacket *currentPacket;
     int8_t *currentWindow;
     int8_t *postWindow;
 
@@ -95,6 +96,16 @@ void postProcessor::coreLoop()
 
             // Pass processed window to next stage
 //            outputQueue->push(postWindow);
+
+            currentPacket = (EVPacket*)malloc(sizeof(EVPacket));
+            currentPacket->command = 1;
+            currentPacket->packetID = 0x0808;
+            currentPacket->dataSize = windowSize;
+            currentPacket->data = postWindow;
+
+            _gtxQueue.push(currentPacket);
+
+
             
         }
         // Queue empty, Sleep for a bit

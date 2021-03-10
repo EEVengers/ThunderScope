@@ -82,7 +82,7 @@ if(process.platform == "win32") {
         console.log("ClientRX Connected");
     })
     .on("data", function(data) {
-        console.log(new Uint8Array(data));
+        console.log(new Int8Array(data));
     })
     ;
     

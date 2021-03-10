@@ -50,7 +50,7 @@ struct EVPacket {
     // The pointer memory should stay internal to c++ at all times.
     // when sending a packet to javascript that needs the data, memcpy the
     // entire NapiPacket and let the NAPI callback take care of memory allocation
-    uint8_t* data;
+    int8_t* data;
 };
 
 inline void FreePacket(EVPacket* packet);

@@ -366,6 +366,9 @@ void testCsv(char * filename)
         std::this_thread::sleep_for(std::chrono::microseconds(100));
     }
 
+	// Wait to recieve all messages back
+	while (true) {};
+
     INFO << "Test is done. Performing Cleanup";
     triggerThread->destroyThread();
     processorThread->destroyThread();

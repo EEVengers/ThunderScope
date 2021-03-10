@@ -77,6 +77,7 @@ _rxLock(rxLock)
     rx_sock = -1;
     client_tx_sock = -1;
 #endif
+
 #ifdef WIN32 //It seems that strcat_s is a windows thing. huh
     //set up TX Pipe/socket path
     strcat_s((char*)tx_connection_string,100,base_path);
@@ -154,30 +155,41 @@ void Bridge::TxJob() {
     while(tx_run.load()) {
         //look into queue if there is anything to send
         _txLock.lock();
+
         if(_txQueue.empty()) {
             _txLock.unlock();
             //if nothing sleep for 500us
             std::this_thread::sleep_for(std::chrono::microseconds(500));
+
         } else {
-            //else, send it
-            EVPacket* txPacket = _gtxQueue.front(); //gets the pointer to the packet
-            _gtxQueue.pop(); //removes it from the queue
-            _txLock.unlock(); //free the queue so it can be used by something else
+            // send the packet
+
+            // get pointer to packet
+            EVPacket* txPacket = _gtxQueue.front();
+            _gtxQueue.pop();
+
+            // unlock the queue
+            _txLock.unlock();
+
+            // Copy packet into tx_buff
             uint16_t* txBuffCast = (uint16_t*)tx_buff;
             int packet_size = 6 + txPacket->dataSize;
             txBuffCast[0] = txPacket->command;
             txBuffCast[1] = txPacket->packetID;
             txBuffCast[2] = txPacket->dataSize;
             memcpy(tx_buff+6,txPacket->data,txPacket->dataSize);
+
 #ifdef WIN32
-            //send the packet over a named pipe
+            // send the packet over a named pipe
             unsigned long bytes_written;
             WriteFile(tx_hPipe,tx_buff,packet_size,&bytes_written,NULL);
 #else
-            //send the packet over a socket
+            // send the packet over a socket
+            PrintPacket(txPacket);
             send(client_tx_sock,tx_buff,packet_size,0);
 #endif
-            free(txPacket);//free the packet
+            //free the packet
+            free(txPacket);
         }
     }
 }
@@ -211,11 +223,12 @@ void Bridge::RxJob() {
     }
 
     INFO << "rx_sock: listening for clients, waiting to aceept....";
-    //accept the first client to connect, no need to save it's fd since we will never
-    //write to it
+    // accept the first client to connect
+    // No need to save it's fd since we will never write to it
     struct sockaddr_un address;
     socklen_t addresslen = sizeof(sockaddr_un);
     client_rx_sock = accept(rx_sock,(struct sockaddr*)&address,&addresslen);
+
     if(client_rx_sock < 0) {
         perror("rx_sock::accept(): ");
         return;
@@ -297,13 +310,13 @@ void Bridge::RxJob() {
         rxPacket->dataSize = rxBuff16[2];
         //check that the dataSize is valid (less than or equal to BUFF_SIZE - 6)
         if(rxPacket->dataSize <= BRIDGE_BUFFER_SIZE - 6) {
-            rxPacket->data = (uint8_t*)malloc(rxPacket->dataSize);
+            rxPacket->data = (int8_t*)malloc(rxPacket->dataSize);
             memcpy(rxPacket->data,rxBuffData,rxPacket->dataSize);
         } else {
             // TODO: this is a transmission error for now, until we get multiple
             // packet payloads enabled
             rxPacket->dataSize = 1;
-            rxPacket->data = (uint8_t*)malloc(1);
+            rxPacket->data = (int8_t*)malloc(1);
         }
         //for now just print and free the packet
         PrintPacket(rxPacket);
@@ -334,7 +347,7 @@ int Bridge::TxStart() {
     if (err) {
         return err;
     }
-    INFO << "Init'd Tx Bridge";
+    INFO << "Initialized Tx Bridge";
 
     tx_run.store(true);
     tx_worker = std::thread(&Bridge::TxJob, this);
@@ -646,7 +659,7 @@ void runSocketTest ()
     testPacket->command = 1;
     testPacket->packetID = 0x0808;
     testPacket->dataSize = 5;
-    testPacket->data = (uint8_t*)malloc(5);
+    testPacket->data = (int8_t*)malloc(5);
     testPacket->data[0] = 1;
     testPacket->data[1] = 2;
     testPacket->data[2] = 3;
