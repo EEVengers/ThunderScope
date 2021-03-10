@@ -355,11 +355,13 @@ void testCsv(char * filename)
     // Start all methods
     processorThread->processorUnpause();
     triggerThread->triggerUnpause();
-    postProcessorThread->postProcessorUnpause();
 
     // start transfering
     testBridge->TxStart();
     testBridge->RxStart();
+
+    std::this_thread::sleep_for(std::chrono::seconds(10));
+    postProcessorThread->postProcessorUnpause();
 
     // Wait until window if full
     while (processorThread->getWindowStatus() == false) {
@@ -367,7 +369,7 @@ void testCsv(char * filename)
     }
 
 	// Wait to recieve all messages back
-	while (true) {};
+    std::this_thread::sleep_for(std::chrono::seconds(5));
 
     INFO << "Test is done. Performing Cleanup";
     triggerThread->destroyThread();

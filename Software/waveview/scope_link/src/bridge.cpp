@@ -106,8 +106,10 @@ _rxLock(rxLock)
  *   None
  ******************************************************************************/
 Bridge::~Bridge() {
+    INFO << "Destroying bridge";
     RxStop();
     TxStop();
+    INFO << "Bridge destroyed";
 }
 
 /*******************************************************************************
@@ -382,56 +384,6 @@ int Bridge::RxStart() {
     return 0;
 }
 
-#ifdef WIN32
-
-/*******************************************************************************
- * TxStop()
- *
- * Closes the tx bridge and joins the worker thread.
- *
- * Arguments:
- *   None
- * Return:
- *   int - 0 on success
- ******************************************************************************/
-int Bridge::TxStop() {
-    tx_run.store(false);
-    if(tx_worker.joinable()) {
-        tx_worker.join();
-    }
-
-    if(INVALID_HANDLE_VALUE != tx_hPipe) {
-        CloseHandle(tx_hPipe);
-        tx_hPipe = INVALID_HANDLE_VALUE;
-    }
-
-    return 0;
-}
-
-/*******************************************************************************
- * RxStop()
- *
- * Closes the rx bridge and joins the worker thread.
- *
- * Arguments:
- *   None
- * Return:
- *   int - 0 on success
- ******************************************************************************/
-int Bridge::RxStop() {
-    rx_run(false);
-    if(rx_worker.joinable()) {
-        rx_worker.join();
-    }
-
-    if(INVALID_HANDLE_VALUE != rx_hPipe) {
-        CloseHandle(rx_hPipe);
-        rx_hPipe = INVALID_HANDLE_VALUE;
-    }
-
-    return 0;
-}
-
 /*******************************************************************************
  * InitTxBridge()
  *
@@ -443,6 +395,7 @@ int Bridge::RxStop() {
  *   int - 0 on success, error code on failure
  ******************************************************************************/
 int Bridge::InitTxBridge() {
+#ifdef WIN32
     if(tx_hPipe != INVALID_HANDLE_VALUE) {
         return 2;
     }
@@ -465,107 +418,7 @@ int Bridge::InitTxBridge() {
     
     INFO << "Created Tx Pipe at: " << tx_connection_string;
     return 0;
-}
-
-/*******************************************************************************
- * InitRxBridge()
- *
- * Creates a named pipe for the rx bridge.
- *
- * Arguments:
- *   None
- * Return:
- *   int - 0 on success, error code on failure
- ******************************************************************************/
-int Bridge::InitRxBridge() {
-    if(rx_hPipe != INVALID_HANDLE_VALUE) {
-        return 2;
-    }
-    rx_hPipe = CreateNamedPipe(rx_connection_string,
-                               PIPE_ACCESS_DUPLEX | FILE_FLAG_FIRST_PIPE_INSTANCE,
-                               // FILE_FLAG_FIRST_PIPE_INSTANCE is not needed
-                               // but forces CreateNamedPipe(..) to fail if the
-                               // pipe already exists...
-                               PIPE_TYPE_MESSAGE | PIPE_READMODE_MESSAGE | PIPE_WAIT | PIPE_REJECT_REMOTE_CLIENTS,
-                               1,
-                               4096 * 16,
-                               4096 * 16,
-                               NMPWAIT_USE_DEFAULT_WAIT,
-                               NULL);
-
-    if(rx_hPipe == INVALID_HANDLE_VALUE) {
-        ERROR << "Failed To Create Rx Pipe at: " << rx_connection_string;
-        return 1;
-    }
-
-    INFO << "Created Rx Pipe at: " << rx_connection_string;
-    return 0;
-}
-
 #else
-
-/*******************************************************************************
- * TxStop() on unix
- *
- * Closes the tx socket and joins the worker thread
- *
- * Arguments:
- *   None
- * Return:
- *   int - 0 on success, error code on failure
- ******************************************************************************/
-int Bridge::TxStop() {
-    tx_run.store(false);
-    if(tx_worker.joinable()) {
-        tx_worker.join();
-    }
-
-    if(-1 != tx_sock) {
-        close(tx_sock);
-        tx_sock = -1;
-        client_tx_sock = -1;
-        unlink(tx_connection_string);
-    }
-
-    return 0;
-}
-
-/*******************************************************************************
- * RxStop() on linux
- *
- * Closes the rx bridge and joins the worker thread.
- *
- * Arguments:
- *   None
- * Return:
- *   int - 0 on success
- ******************************************************************************/
-int Bridge::RxStop() {
-    rx_run.store(false);
-    if(rx_worker.joinable()) {
-        rx_worker.join();
-    }
-
-    if(-1 != rx_sock) {
-        close(rx_sock);
-        rx_sock = -1;
-        unlink(rx_connection_string);
-    }
-
-    return 0;
-}
-
-/*******************************************************************************
- * InitTxBridge() on unix
- *
- * Creates a named pipe for the tx bridge.
- *
- * Arguments:
- *   None
- * Return:
- *   int - 0 on success, error code on failure
- ******************************************************************************/
-int Bridge::InitTxBridge() {
     struct sockaddr_un name;
 
     //create the socket
@@ -594,10 +447,11 @@ int Bridge::InitTxBridge() {
 
     INFO << "tx_sock created and bound on " << name.sun_path;
     return 0;
+#endif
 }
 
 /*******************************************************************************
- * InitRxBridge() on unix
+ * InitRxBridge()
  *
  * Creates a named pipe for the rx bridge.
  *
@@ -607,6 +461,30 @@ int Bridge::InitTxBridge() {
  *   int - 0 on success, error code on failure
  ******************************************************************************/
 int Bridge::InitRxBridge() {
+#ifdef WIN32
+    if(rx_hPipe != INVALID_HANDLE_VALUE) {
+        return 2;
+    }
+    rx_hPipe = CreateNamedPipe(rx_connection_string,
+                               PIPE_ACCESS_DUPLEX | FILE_FLAG_FIRST_PIPE_INSTANCE,
+                               // FILE_FLAG_FIRST_PIPE_INSTANCE is not needed
+                               // but forces CreateNamedPipe(..) to fail if the
+                               // pipe already exists...
+                               PIPE_TYPE_MESSAGE | PIPE_READMODE_MESSAGE | PIPE_WAIT | PIPE_REJECT_REMOTE_CLIENTS,
+                               1,
+                               4096 * 16,
+                               4096 * 16,
+                               NMPWAIT_USE_DEFAULT_WAIT,
+                               NULL);
+
+    if(rx_hPipe == INVALID_HANDLE_VALUE) {
+        ERROR << "Failed To Create Rx Pipe at: " << rx_connection_string;
+        return 1;
+    }
+
+    INFO << "Created Rx Pipe at: " << rx_connection_string;
+    return 0;
+#else
     struct sockaddr_un name;
 
     //create the socket
@@ -635,9 +513,81 @@ int Bridge::InitRxBridge() {
 
     INFO << "rx_sock created and bound on " << name.sun_path;
     return 0;
+#endif
 }
 
+/*******************************************************************************
+ * TxStop()
+ *
+ * Closes the tx bridge and joins the worker thread.
+ *
+ * Arguments:
+ *   None
+ * Return:
+ *   int - 0 on success
+ ******************************************************************************/
+int Bridge::TxStop() {
+    INFO << "Stopping Tx";
+
+    tx_run.store(false);
+
+    if(tx_worker.joinable()) {
+        tx_worker.join();
+    }
+
+#ifdef WIN32
+    if(INVALID_HANDLE_VALUE != tx_hPipe) {
+        CloseHandle(tx_hPipe);
+        tx_hPipe = INVALID_HANDLE_VALUE;
+    }
+#else
+    if(-1 != tx_sock) {
+        close(tx_sock);
+        tx_sock = -1;
+        client_tx_sock = -1;
+        unlink(tx_connection_string);
+    }
 #endif
+
+    return 0;
+}
+
+/*******************************************************************************
+ * RxStop()
+ *
+ * Closes the rx bridge and joins the worker thread.
+ *
+ * Arguments:
+ *   None
+ * Return:
+ *   int - 0 on success
+ ******************************************************************************/
+int Bridge::RxStop() {
+    INFO << "Stopping Rx";
+    rx_run.store(false);
+
+    if(rx_worker.joinable()) {
+        rx_worker.join();
+    }
+
+#ifdef WIN32
+    if(INVALID_HANDLE_VALUE != rx_hPipe) {
+        CloseHandle(rx_hPipe);
+        rx_hPipe = INVALID_HANDLE_VALUE;
+    }
+
+#else
+    if(-1 != rx_sock) {
+        close(rx_sock);
+        rx_sock = -1;
+        unlink(rx_connection_string);
+    }
+
+#endif
+
+    INFO << "Rx Closed";
+    return 0;
+}
 
 /*******************************************************************************
  * runSocketTest()

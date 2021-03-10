@@ -21,8 +21,8 @@ if(process.platform == "win32") {
 console.log("TX_CLIENT PATH: " + SOCKETFILE_TX);
 console.log("RX_CLIENT PATH: " + SOCKETFILE_RX);
 
+// Create test packet
 var testPacket16 = new Uint16Array(new ArrayBuffer(10));
-
 testPacket16[0] = 1;
 testPacket16[1] = 0x1F2C;
 testPacket16[2] = 4;
