@@ -5,6 +5,7 @@
 #include "trigger.hpp"
 #include "postProcessor.hpp"
 #include "bridge.hpp"
+#include "dspPipeline.hpp"
 #include <boost/tokenizer.hpp>
 
 uint32_t testSize = 1000;
@@ -13,6 +14,7 @@ Trigger* triggerThread;
 Processor* processorThread;
 postProcessor* postProcessorThread;
 Bridge* bridgeThread;
+dspPipeline* dspThread1;
 
 
 bool loadFromFile ( char* filename, boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> *outputQ)
@@ -344,6 +346,8 @@ void testCsv(char * filename)
 
     bridgeThread = new Bridge("testPipe",_gtxQueue,_grxQueue,_gtxLock,_grxLock);
 
+    dspThread1 = new dspPipeline();
+
     // Start all methods
     processorThread->processorUnpause();
     triggerThread->triggerUnpause();
@@ -369,4 +373,11 @@ void testCsv(char * filename)
     delete processorThread;
     delete postProcessorThread;
     delete bridgeThread;
+
+    dspThread1->dspPipelinePause();
+    dspThread1->dspPipelineStart();
+    dspThread1->dspPipelineStop();
+    dspThread1->dspPipelineUnPause();
+    delete dspThread1;
+
 }
