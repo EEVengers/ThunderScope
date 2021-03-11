@@ -1,5 +1,6 @@
 #include "bridge.hpp"
 #include "logger.hpp"
+#include <fcntl.h>
 
 // Queues for Rx and Tx between C++ and Js
 std::queue<EVPacket*> _gtxQueue;
@@ -115,7 +116,7 @@ Bridge::~Bridge() {
 /*******************************************************************************
  * TxJob()
  *
- * Transmits packets in the tx queue.
+ * Waits for the client to connect and transmits packets in the tx queue.
  *
  * Arguments:
  *   None
@@ -123,7 +124,6 @@ Bridge::~Bridge() {
  *   None
  ******************************************************************************/
 void Bridge::TxJob() {
-    //wait for a client (the electron app) to connect
 #ifdef WIN32
     if(tx_hPipe == INVALID_HANDLE_VALUE) {
         return;
@@ -131,22 +131,30 @@ void Bridge::TxJob() {
     ConnectNamedPipe(tx_hPipe, NULL);
     INFO << "tx_pipe: client connected";
 #else
-    int rc;
     if(tx_sock == -1) {
         return;
     }
+
     //listen an accept a client (the electron app)
-    rc = listen(tx_sock,10);
+    int rc = listen(tx_sock,10);
     if(0 != rc) {
         perror("tx_sock::listen(): ");
         return;
     }
 
     INFO << "tx_sock: listening for clients, waiting to aceept....";
+
     //accept the first client to connect
     struct sockaddr_un address;
     socklen_t addresslen = sizeof(sockaddr_un);
+    // TODO: accept is a blocking call. cant exit thread if stuck here
     client_tx_sock = accept(tx_sock,(struct sockaddr*)&address,&addresslen);
+
+    // Make socket non-blocking
+    int flags = fcntl(client_tx_sock,F_GETFL,0);
+    assert(flags != -1);
+    fcntl(client_tx_sock, F_SETFL, flags | O_NONBLOCK);
+
     if(client_tx_sock < 0) {
         perror("tx_sock::accept(): ");
         return;
@@ -154,7 +162,7 @@ void Bridge::TxJob() {
     INFO << "tx_sock: client connected";
 #endif
 
-    while(tx_run.load()) {
+    while(tx_run.load() == true) {
         //look into queue if there is anything to send
         _txLock.lock();
 
@@ -217,6 +225,7 @@ void Bridge::RxJob() {
     if(rx_sock == -1) {
         return;
     }
+
     //listen an accept a client (the electron app)
     int rc = listen(rx_sock,10);
     if(0 != rc) {
@@ -229,7 +238,13 @@ void Bridge::RxJob() {
     // No need to save it's fd since we will never write to it
     struct sockaddr_un address;
     socklen_t addresslen = sizeof(sockaddr_un);
+    // TODO: accept is a blocking call. cant exit thread if stuck here
     client_rx_sock = accept(rx_sock,(struct sockaddr*)&address,&addresslen);
+
+    // Make socket non-blocking
+    int flags = fcntl(client_rx_sock,F_GETFL,0);
+    assert(flags != -1);
+    fcntl(client_rx_sock, F_SETFL, flags | O_NONBLOCK);
 
     if(client_rx_sock < 0) {
         perror("rx_sock::accept(): ");
@@ -238,7 +253,7 @@ void Bridge::RxJob() {
     INFO << "rx_sock: client connected";
 #endif
 
-    while(rx_run.load()) {
+    while(rx_run.load() == true) {
         //reading block until something is sent
 #ifdef WIN32
         DWORD packet_size;
@@ -292,6 +307,7 @@ void Bridge::RxJob() {
             rx_run.store(false);
         } else {
             //if there is nothing, sleep for 500us
+            INFO << "Not sure what happens to trigger this";
             std::this_thread::sleep_for(std::chrono::microseconds(500));
             continue;
         }
@@ -310,6 +326,7 @@ void Bridge::RxJob() {
         rxPacket->command = rxBuff16[0];
         rxPacket->packetID = rxBuff16[1];
         rxPacket->dataSize = rxBuff16[2];
+
         //check that the dataSize is valid (less than or equal to BUFF_SIZE - 6)
         if(rxPacket->dataSize <= BRIDGE_BUFFER_SIZE - 6) {
             rxPacket->data = (int8_t*)malloc(rxPacket->dataSize);
@@ -320,6 +337,7 @@ void Bridge::RxJob() {
             rxPacket->dataSize = 1;
             rxPacket->data = (int8_t*)malloc(1);
         }
+
         //for now just print and free the packet
         PrintPacket(rxPacket);
         FreePacket(rxPacket);
@@ -342,6 +360,7 @@ void Bridge::RxJob() {
  ******************************************************************************/
 int Bridge::TxStart() {
     if (tx_run.load() == true) {
+        ERROR << "tx_run already set for some reason";
         TxStop();
     }
 
@@ -418,6 +437,7 @@ int Bridge::InitTxBridge() {
     
     INFO << "Created Tx Pipe at: " << tx_connection_string;
     return 0;
+
 #else
     struct sockaddr_un name;
 
@@ -549,6 +569,7 @@ int Bridge::TxStop() {
     }
 #endif
 
+    INFO << "Tx stopped";
     return 0;
 }
 
@@ -564,6 +585,7 @@ int Bridge::TxStop() {
  ******************************************************************************/
 int Bridge::RxStop() {
     INFO << "Stopping Rx";
+
     rx_run.store(false);
 
     if(rx_worker.joinable()) {
@@ -585,7 +607,7 @@ int Bridge::RxStop() {
 
 #endif
 
-    INFO << "Rx Closed";
+    INFO << "Rx stopped";
     return 0;
 }
 
