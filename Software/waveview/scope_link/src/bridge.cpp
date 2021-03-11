@@ -115,97 +115,6 @@ Bridge::~Bridge() {
 }
 
 /*******************************************************************************
- * TxJob()
- *
- * Waits for the client to connect and transmits packets in the tx queue.
- *
- * Arguments:
- *   None
- * Return:
- *   None
- ******************************************************************************/
-void Bridge::TxJob() {
-#ifdef WIN32
-    if(tx_hPipe == INVALID_HANDLE_VALUE) {
-        return;
-    }
-    ConnectNamedPipe(tx_hPipe, NULL);
-    INFO << "tx_pipe: client connected";
-#else
-    if(tx_sock == -1) {
-        return;
-    }
-
-    //listen an accept a client (the electron app)
-    int rc = listen(tx_sock,10);
-    if(0 != rc) {
-        perror("tx_sock::listen(): ");
-        return;
-    }
-
-    INFO << "tx_sock: listening for clients, waiting to aceept....";
-
-    //accept the first client to connect
-    struct sockaddr_un address;
-    socklen_t addresslen = sizeof(sockaddr_un);
-    // TODO: accept is a blocking call. can't exit thread if stuck here
-    client_tx_sock = accept(tx_sock,(struct sockaddr*)&address,&addresslen);
-
-    // Make socket non-blocking
-    int flags = fcntl(client_tx_sock,F_GETFL,0);
-    assert(flags != -1);
-    fcntl(client_tx_sock, F_SETFL, flags | O_NONBLOCK);
-
-    if(client_tx_sock < 0) {
-        perror("tx_sock::accept(): ");
-        return;
-    }
-    INFO << "tx_sock: client connected";
-#endif
-
-    while(tx_run.load() == true) {
-        //look into queue if there is anything to send
-        _txLock.lock();
-
-        if(_txQueue.empty()) {
-            _txLock.unlock();
-            //if nothing sleep for 500us
-            std::this_thread::sleep_for(std::chrono::microseconds(500));
-
-        } else {
-            // send the packet
-
-            // get pointer to packet
-            EVPacket* txPacket = _gtxQueue.front();
-            _gtxQueue.pop();
-
-            // unlock the queue
-            _txLock.unlock();
-
-            // Copy packet into tx_buff
-            uint16_t* txBuffCast = (uint16_t*)tx_buff;
-            int packet_size = 6 + txPacket->dataSize;
-            txBuffCast[0] = txPacket->command;
-            txBuffCast[1] = txPacket->packetID;
-            txBuffCast[2] = txPacket->dataSize;
-            memcpy(tx_buff+6,txPacket->data,txPacket->dataSize);
-
-#ifdef WIN32
-            // send the packet over a named pipe
-            unsigned long bytes_written;
-            WriteFile(tx_hPipe,tx_buff,packet_size,&bytes_written,NULL);
-#else
-            // send the packet over a socket
-            PrintPacket(txPacket);
-            send(client_tx_sock,tx_buff,packet_size,0);
-#endif
-            //free the packet
-            free(txPacket);
-        }
-    }
-}
-
-/*******************************************************************************
  * makeConnection()
  *
  * Establish a connection with the front end
@@ -252,6 +161,73 @@ int Bridge::makeConnection(int targetSocket ) {
         perror("socket accept(): ");
     }
     return targetFD;
+}
+
+/*******************************************************************************
+ * TxJob()
+ *
+ * Waits for the client to connect and transmits packets in the tx queue.
+ *
+ * Arguments:
+ *   None
+ * Return:
+ *   None
+ ******************************************************************************/
+void Bridge::TxJob() {
+#ifdef WIN32
+    if(tx_hPipe == INVALID_HANDLE_VALUE) {
+        return;
+    }
+    ConnectNamedPipe(tx_hPipe, NULL);
+    INFO << "tx_pipe: client connected";
+#else
+    client_tx_sock = makeConnection(tx_sock);
+    if (client_tx_sock < 0) {
+        ERROR << "rx job failed to make connection";
+        return;
+    }
+#endif
+
+    while(tx_run.load() == true) {
+        //look into queue if there is anything to send
+        _txLock.lock();
+
+        if(_txQueue.empty()) {
+            _txLock.unlock();
+            //if nothing sleep for 500us
+            std::this_thread::sleep_for(std::chrono::microseconds(500));
+
+        } else {
+            // send the packet
+
+            // get pointer to packet
+            EVPacket* txPacket = _gtxQueue.front();
+            _gtxQueue.pop();
+
+            // unlock the queue
+            _txLock.unlock();
+
+            // Copy packet into tx_buff
+            uint16_t* txBuffCast = (uint16_t*)tx_buff;
+            int packet_size = 6 + txPacket->dataSize;
+            txBuffCast[0] = txPacket->command;
+            txBuffCast[1] = txPacket->packetID;
+            txBuffCast[2] = txPacket->dataSize;
+            memcpy(tx_buff+6,txPacket->data,txPacket->dataSize);
+
+#ifdef WIN32
+            // send the packet over a named pipe
+            unsigned long bytes_written;
+            WriteFile(tx_hPipe,tx_buff,packet_size,&bytes_written,NULL);
+#else
+            // send the packet over a socket
+            PrintPacket(txPacket);
+            send(client_tx_sock,tx_buff,packet_size,0);
+#endif
+            //free the packet
+            free(txPacket);
+        }
+    }
 }
 
 /*******************************************************************************
