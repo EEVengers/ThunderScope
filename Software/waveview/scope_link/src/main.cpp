@@ -7,6 +7,7 @@
 
 #include "EVTester.hpp"
 #include "logger.hpp"
+#include "bridge.hpp"
 
 void parseCommandLineArgs(int argc, char** args) {
     if(argc > 1) {
@@ -32,6 +33,11 @@ void parseCommandLineArgs(int argc, char** args) {
                 inputFile = filename;
                 testCsv(filename);
             }
+        } else if(std::string(args[1]) == "--socket") {
+            // Run socket test
+            INFO << "Running socket test";
+
+            runSocketTest();
         } else {
             ERROR << "Invalid arguments. Use -t <filename.csv> or --TestSinc or --TestDataThroughput";
         }
@@ -40,6 +46,10 @@ void parseCommandLineArgs(int argc, char** args) {
     }
 
     return;
+}
+
+void WebServerTest() {
+    
 }
 
 int main(int argc, char** args)

@@ -4,6 +4,7 @@
 #include "processor.hpp"
 #include "trigger.hpp"
 #include "postProcessor.hpp"
+#include "bridge.hpp"
 #include <boost/tokenizer.hpp>
 
 uint32_t testSize = 1000;
@@ -11,6 +12,7 @@ uint32_t testSize = 1000;
 Trigger* triggerThread;
 Processor* processorThread;
 postProcessor* postProcessorThread;
+Bridge* testBridge;
 
 
 bool loadFromFile ( char* filename, boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> *outputQ)
@@ -281,10 +283,15 @@ void initializePipeline()
 
     postProcessorThread = new postProcessor(&preProcessorQueue, &postProcessorQueue);
 
+    testBridge = new Bridge("testPipe",_gtxQueue,_grxQueue,_gtxLock,_grxLock);
+
     // Start all methods
     processorThread->processorUnpause();
     triggerThread->triggerUnpause();
     postProcessorThread->postProcessorUnpause();
+
+    testBridge->TxStart();
+    testBridge->RxStart();
 
     INFO << "Pipeline Initialized";
 }
@@ -300,13 +307,14 @@ void initializePipeline()
  ******************************************************************************/
 void cleanPipeline() {
     INFO << "Performing Cleanup";
-     if (inputFile != NULL) {
-          free(inputFile);
-     }
+    if (inputFile != NULL) {
+         free(inputFile);
+    }
 
     delete triggerThread;
     delete processorThread;
     delete postProcessorThread;
+    delete testBridge;
 
     INFO << "Cleanup Finished";
 }
@@ -342,15 +350,26 @@ void testCsv(char * filename)
 
     postProcessorThread = new postProcessor(&preProcessorQueue, &postProcessorQueue);
 
+    testBridge = new Bridge("testPipe",_gtxQueue,_grxQueue,_gtxLock,_grxLock);
+
     // Start all methods
     processorThread->processorUnpause();
     triggerThread->triggerUnpause();
+
+    // start transfering
+    testBridge->TxStart();
+    testBridge->RxStart();
+
+    std::this_thread::sleep_for(std::chrono::seconds(10));
     postProcessorThread->postProcessorUnpause();
 
     // Wait until window if full
     while (processorThread->getWindowStatus() == false) {
         std::this_thread::sleep_for(std::chrono::microseconds(100));
     }
+
+	// Wait to recieve all messages back
+    std::this_thread::sleep_for(std::chrono::seconds(5));
 
     INFO << "Test is done. Performing Cleanup";
     triggerThread->destroyThread();
@@ -359,6 +378,7 @@ void testCsv(char * filename)
 //    delete triggerThread;
 //    delete processorThread;
     delete postProcessorThread;
+    delete testBridge;
 }
 
 void TestDataThroughput()
