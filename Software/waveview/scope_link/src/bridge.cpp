@@ -1,6 +1,7 @@
 #include "bridge.hpp"
 #include "logger.hpp"
 #include <fcntl.h>
+#include <cerrno>
 
 // Queues for Rx and Tx between C++ and Js
 std::queue<EVPacket*> _gtxQueue;
@@ -147,7 +148,7 @@ void Bridge::TxJob() {
     //accept the first client to connect
     struct sockaddr_un address;
     socklen_t addresslen = sizeof(sockaddr_un);
-    // TODO: accept is a blocking call. cant exit thread if stuck here
+    // TODO: accept is a blocking call. can't exit thread if stuck here
     client_tx_sock = accept(tx_sock,(struct sockaddr*)&address,&addresslen);
 
     // Make socket non-blocking
@@ -205,6 +206,55 @@ void Bridge::TxJob() {
 }
 
 /*******************************************************************************
+ * makeConnection()
+ *
+ * Establish a connection with the front end
+ * Only for POSIX sockets
+ *
+ * Arguments:
+ *   int targetFD - file descriptor of the socket
+ *   int targetSocket - socket
+ * Return:
+ *   None
+ ******************************************************************************/
+int Bridge::makeConnection(int targetSocket ) {
+    int targetFD = 0;
+
+    if(targetSocket == -1) {
+        ERROR << "Socket already initialized";
+        return -1;
+    }
+
+    //listen and accept a client (the electron app)
+    int rc = listen(targetSocket, 10);
+    if (rc != 0) {
+        perror("socket listen(): ");
+        return -1;
+    }
+
+    INFO << "targetSocket: listening for clients, waiting to aceept....";
+    // accept the first client to connect
+    // No need to save it's fd since we will never write to it
+    struct sockaddr_un address;
+    socklen_t addresslen = sizeof(sockaddr_un);
+
+    // TODO: accept is a blocking call. can't exit thread if stuck here
+    targetFD = accept(targetSocket, (struct sockaddr*)&address, &addresslen);
+    if (targetFD >= 0) {
+        // Make socket non-blocking
+        int flags = fcntl(targetFD ,F_GETFL,0);
+        assert(flags != -1);
+        fcntl(targetFD, F_SETFL, flags | O_NONBLOCK);
+
+        INFO << "targetSocket: client connected";
+    } else {
+        // Failed to accept socket
+        perror("socket accept(): ");
+    }
+    return targetFD;
+}
+
+/*******************************************************************************
  * RxJob()
  *
  * recieves packets and processes them.
@@ -215,44 +265,21 @@ void Bridge::TxJob() {
  *   None
  ******************************************************************************/
 void Bridge::RxJob() {
-
 #ifdef WIN32
-    if(rx_hPipe == INVALID_HANDLE_VALUE)
+    if(rx_hPipe == INVALID_HANDLE_VALUE) {
         return;
+    }
     ConnectNamedPipe(rx_hPipe, NULL);
     INFO << "rx_pipe: client connected";
 #else
-    if(rx_sock == -1) {
+    client_rx_sock = makeConnection(rx_sock);
+    if (client_rx_sock < 0) {
+        ERROR << "rx job failed to make connection";
         return;
     }
-
-    //listen an accept a client (the electron app)
-    int rc = listen(rx_sock,10);
-    if(0 != rc) {
-        perror("rx_sock::listen(): ");
-        return;
-    }
-
-    INFO << "rx_sock: listening for clients, waiting to aceept....";
-    // accept the first client to connect
-    // No need to save it's fd since we will never write to it
-    struct sockaddr_un address;
-    socklen_t addresslen = sizeof(sockaddr_un);
-    // TODO: accept is a blocking call. cant exit thread if stuck here
-    client_rx_sock = accept(rx_sock,(struct sockaddr*)&address,&addresslen);
-
-    // Make socket non-blocking
-    int flags = fcntl(client_rx_sock,F_GETFL,0);
-    assert(flags != -1);
-    fcntl(client_rx_sock, F_SETFL, flags | O_NONBLOCK);
-
-    if(client_rx_sock < 0) {
-        perror("rx_sock::accept(): ");
-        return;
-    }
-    INFO << "rx_sock: client connected";
 #endif
 
+    // Read from client
     while(rx_run.load() == true) {
         //reading block until something is sent
 #ifdef WIN32
@@ -284,15 +311,18 @@ void Bridge::RxJob() {
         if(val == 0){
             //error
             int err = GetLastError();
-            if(err == 234) { //err 234 is there is more data, not an error
-                //do nothing
-                std::this_thread::sleep_for(std::chrono::microseconds(500));
-            } else if(err == 109) { //err 109 there were not enough bytes in the pipline
-                std::this_thread::sleep_for(std::chrono::microseconds(500));
-                continue; //error packet move onto next one
-            } else {
-                INFO << "rx_pipe data_read: Error: " << GetLastError();
-                break;
+            switch (err) {
+                case 234:
+                    // more data exists. Wait for it
+                    std::this_thread::sleep_for(std::chrono::milliseconds(500));
+                case 109:
+                    // not enough bytes in pipeline
+                    // Skip error packet
+                    std::this_thread::sleep_for(std::chrono::milliseconds(500));
+                    continue;
+                default:
+                    INFO << "rx_pipe data_read: Error: " << GetLastError();
+                    break;
             }
         }
         packet_size = 6 + dataSize;
@@ -303,13 +333,20 @@ void Bridge::RxJob() {
         if(packet_size > 0) {
             INFO << "rx_sock: Packet Size: " << (int)packet_size << " Message:" << rxBuff;
         } else if (packet_size == -1) {
-            INFO << "rx_sock: Client has disconnected....";
-            rx_run.store(false);
-        } else {
-            //if there is nothing, sleep for 500us
-            INFO << "Not sure what happens to trigger this";
-            std::this_thread::sleep_for(std::chrono::microseconds(500));
+            switch (errno) {
+                case EWOULDBLOCK:
+                    INFO << "No data on socket right now";
+                    std::this_thread::sleep_for(std::chrono::milliseconds(500));
+                    continue;
+                default:
+                    perror("recv returned error: ");
+            }
             continue;
+        } else {
+            INFO << "No messages and peer disconnected";
+            // TODO: Allow clients to connect and disconnect
+            // Kill the server
+            rx_run.store(false);
         }
 #endif
         //process whatever is sent (for now just print it)
@@ -318,6 +355,7 @@ void Bridge::RxJob() {
             printf("%X ",rxBuff[i]);
         printf("\n");
 
+        // TODO: you can just cast it as the struct and access things that way
         uint16_t* rxBuff16 = (uint16_t*) rxBuff;
         uint8_t* rxBuffData = (uint8_t*) (rxBuff + 6);
         //reconstruct packet struct

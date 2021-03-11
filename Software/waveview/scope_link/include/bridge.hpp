@@ -2,8 +2,8 @@
 #define BRIDGE_HPP
 
 #include <stdio.h>
-#include <stdlib.h> 
-#include <string.h> 
+#include <stdlib.h>
+#include <string.h>
 #include <cerrno>
 #include <thread>
 #include <queue>
@@ -12,13 +12,13 @@
 #include <atomic>
 
 #ifdef WIN32 //for windows use named pipes
-#include <windows.h> 
+#include <windows.h>
 #include <tchar.h>
 #include <strsafe.h>
 #else //for unix systems use unix sockets
 #include <sys/socket.h>
 #include <netinet/in.h>
-#include <sys/un.h> 
+#include <sys/un.h>
 #include <unistd.h>
 #endif
 
@@ -65,7 +65,7 @@ extern std::mutex _grxLock;
 
 class Bridge {
 private:
-    
+
     const char tx_connection_string[100] = {};
     const char rx_connection_string[100] = {};
     char tx_buff[BRIDGE_BUFFER_SIZE] = {};
@@ -84,36 +84,38 @@ private:
     char txBuff[BRIDGE_BUFFER_SIZE], rxBuff[BRIDGE_BUFFER_SIZE];
     std::thread tx_worker;
     std::thread rx_worker;
-    
+
     std::queue<EVPacket*>& _txQueue;
     std::queue<EVPacket*>& _rxQueue;
     std::mutex& _txLock;
     std::mutex& _rxLock;
-    
+
     std::atomic<bool> rx_run;
     std::atomic<bool> tx_run;
     void TxJob();
     void RxJob();
-    
+
+    int makeConnection( int targetSocket );
+
 public:
-    
+
     Bridge(const char* pipeName,
            std::queue<EVPacket*>& txQueue,
            std::queue<EVPacket*>& rxQueue,
            std::mutex& txLock,
            std::mutex& rxLock);
     ~Bridge();
-    
+
     int TxStart();
     int RxStart();
     int TxStop();
     int RxStop();
-    
+
     int InitTxBridge();
     int InitRxBridge();
-    
+
 protected:
-    
+
 };
 
 #endif
