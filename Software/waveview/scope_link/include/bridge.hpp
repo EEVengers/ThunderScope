@@ -23,6 +23,9 @@
 #endif
 
 #define BRIDGE_BUFFER_SIZE 4096
+#define END_PACKET_COMMAND 0xEF
+#define END_PACKET_PACKETID 0xAB
+#define END_PACKET_DATA_SIZE 0x00
 
 // PACKET STRUCTURE
 //   _______________________________________________________________________________________________________
