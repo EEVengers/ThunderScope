@@ -14,6 +14,10 @@
 dspPipeline::dspPipeline ()
 {
     INFO << "Creating dsp pipeline";
+    int8_t triggerLevel = 10;
+	triggerThread = new Trigger(&newDataQueue, &triggeredQueue, triggerLevel);
+    processorThread = new Processor(&triggeredQueue, &preProcessorQueue);
+    postProcessorThread = new postProcessor(&preProcessorQueue, &postProcessorQueue);
 }
 
 /*******************************************************************************
@@ -29,6 +33,9 @@ dspPipeline::dspPipeline ()
 dspPipeline::~dspPipeline()
 {
     INFO << "Destroying dsp pipeline";
+    delete triggerThread;
+    delete processorThread;
+    delete postProcessorThread;
 }
 
 /*******************************************************************************
@@ -45,6 +52,7 @@ dspPipeline::~dspPipeline()
 void dspPipeline::dspPipelineStop()
 {
     INFO << "Stopping pipeline";
+    INFO << "Not Implemented Yet";
 }
 
 /*******************************************************************************
@@ -63,6 +71,7 @@ void dspPipeline::dspPipelineStop()
 void dspPipeline::dspPipelineStart()
 {
     INFO << "Starting pipeline";
+    INFO << "Not Implemented yed";
 }
 
 /*******************************************************************************
@@ -79,6 +88,9 @@ void dspPipeline::dspPipelineStart()
 void dspPipeline::dspPipelinePause()
 {
     INFO << "Pausing pipeline";
+    processorThread->processorPause();
+    triggerThread->triggerPause();
+    postProcessorThread->postProcessorPause();
 }
 
 /*******************************************************************************
@@ -95,4 +107,7 @@ void dspPipeline::dspPipelinePause()
 void dspPipeline::dspPipelineUnPause()
 {
     INFO << "Unpausing pipeline";
+    processorThread->processorUnpause();
+    triggerThread->triggerUnpause();
+    postProcessorThread->postProcessorUnpause();
 }

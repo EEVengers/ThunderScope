@@ -54,9 +54,6 @@ extern boost::pool_allocator<int8_t,
     DEFAULT_WINDOW * BUFFER_SIZE, 0> windowAllocator;
 
 extern boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> newDataQueue;
-extern boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> triggeredQueue;
-extern boost::lockfree::queue<int8_t*, boost::lockfree::fixed_sized<false>> preProcessorQueue;
-extern boost::lockfree::queue<int8_t*, boost::lockfree::fixed_sized<false>> postProcessorQueue;
 
 /* Functions */
 uint32_t writeToCsv (char* filename, int8_t* data, uint32_t row, uint32_t col);
