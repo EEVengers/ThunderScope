@@ -44,11 +44,11 @@ bool loadFromFile ( char* filename, boost::lockfree::queue<buffer*, boost::lockf
         for (const auto &t : tok) {
 
             if (std::stoi(t) > 255) {
-                INFO << "Error: Number greater than 255";
+                ERROR << "Number greater than 255";
             } else if (std::stoi(t) > INT8_MAX) {
-                INFO << "Error: Number greater than 127 is converted to negative";
+                ERROR << "Number greater than 127 is converted to negative";
             } else if ((int8_t)std::stoi(t) < -128) {
-                INFO << "Error: Number less than -128";
+                ERROR << "Number less than -128";
             }
 
             tempBuffer->data[tmpBufPos] = (int8_t)std::stoi(t);
