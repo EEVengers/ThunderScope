@@ -197,7 +197,6 @@ void testBenchmark()
 
     // Create processor method
     Processor processor(&triggeredQueue, &preProcessorQueue);
-    processor.createThread();
 
     // Measure triggering time
     // collect timestamp
@@ -243,7 +242,6 @@ void testBenchmark()
 
     INFO << std::endl << "Test is done. Performing Cleanup";
     trigger.destroyThread();
-    processor.destroyThread();
 }
 
 /*******************************************************************************
@@ -279,7 +277,6 @@ void initializePipeline()
 
     // Create processor method
     processorThread = new Processor(&triggeredQueue, &preProcessorQueue);
-    processorThread->createThread();
 
     postProcessorThread = new postProcessor(&preProcessorQueue, &postProcessorQueue);
 
@@ -346,7 +343,6 @@ void testCsv(char * filename)
 
     // Create processor method
     processorThread = new Processor(&triggeredQueue, &preProcessorQueue);
-	processorThread->createThread();
 
     postProcessorThread = new postProcessor(&preProcessorQueue, &postProcessorQueue);
 
@@ -373,115 +369,9 @@ void testCsv(char * filename)
 
     INFO << "Test is done. Performing Cleanup";
     triggerThread->destroyThread();
-    processorThread->destroyThread();
     // TODO: Change these destroyThread() to just delete
 //    delete triggerThread;
-//    delete processorThread;
+    delete processorThread;
     delete postProcessorThread;
     delete testBridge;
-}
-
-void TestDataThroughput()
-{
-    unsigned int bytesRead = 0;
-
-    // Lock free queue of new data comming from FTDI through handler
-    boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> newDataQueue{1000};
-    boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> triggeredQueue{1000};
-
-    // ****************** Transfering **********************
-    INFO << "Beining Transfer Test";
-
-    // create transfer thread
-    DataTransferHandler dataExchanger(&newDataQueue);
-    dataExchanger.SetCopyFunc(DataTransferFullBuffRead);
-    dataExchanger.createThread();
-    INFO << "Finished Creating dataExchanger";
-
-    // run and queue transfer
-    auto startTransfer = std::chrono::high_resolution_clock::now();
-    dataExchanger.transferUnpause();
-
-    std::this_thread::sleep_for(std::chrono::seconds(TEST_RUN_TIME));
-
-    // stop transfer
-    dataExchanger.stopHandler();
-    auto endTransfer = std::chrono::high_resolution_clock::now();
-
-    auto timeElapsedTransfer = endTransfer - startTransfer;
-
-    bytesRead = dataExchanger.bytesRead;
-    double readBps = ((double)bytesRead * S_TO_NS / timeElapsedTransfer.count());
-    double readGBps = (((double)bytesRead * S_TO_NS) / (timeElapsedTransfer.count() * GIB_TO_GB));
-    INFO << "Finished transfering";
-
-    // log the output
-    INFO << "Transfer Count: " << dataExchanger.getCount();
-    INFO << "Time Elapsed Transfering: " << timeElapsedTransfer.count() << " ns";
-    INFO << "Read B: " << bytesRead << " B";
-    INFO << "Read B/s: " << readBps;
-    INFO << "Read GiB/s: " << readGBps;
-
-    // ****************** Triggering **********************
-    INFO << std::endl << "Beggining Triggering Test";
-
-    // create trigger thread
-    Trigger trigger(&newDataQueue, &triggeredQueue, 127);
-    trigger.createThread();
-    INFO << "Finished Creating trigger";
-
-    // run trigger and queue
-//    auto startTrigger = std::chrono::high_resolution_clock::now();
-
-//    while (!trigger.getWindowStatus()) {
-//        std::this_thread::sleep_for(std::chrono::microseconds(100));
-//    }
-
-//    auto endTrigger = trigger.getTimeTriggerd();
-//    
-//    auto timeElapsedTrigger = endTrigger - startTrigger;
-//
-//    uint32_t bytesTriggered = trigger.getCountBytes();
-//    double triggeredBps = ((double)bytesTriggered * S_TO_NS
-//                            / timeElapsedTrigger.count());
-//    double triggeredGBps = (((double)bytesTriggered * S_TO_NS)
-//                            / (timeElapsedTrigger.count()
-//                            * GIB_TO_GB));
-//
-//    INFO << "Trigger Count: " << trigger.getCount();
-//    INFO << "Time Elapsed Triggering: " << timeElapsedTrigger.count() << " ns";
-//    INFO << "Triggered B: " << bytesTriggered << " B";
-//    INFO << "Triggered B/s: " << triggeredBps;
-//    INFO << "Triggered GiB/s: " << triggeredGBps;
-
-    // ******************* Post Processing **********************
-    INFO << "Beggining Post Processing Test";
-
-//    Processor postProcessor(&newDataQueue);
-    Processor postProcessor(&triggeredQueue, &preProcessorQueue);
-    postProcessor.createThread();
-    INFO << "Finished Creating postProcessor";
-
-    auto startProcessor = std::chrono::high_resolution_clock::now();
-
-    auto endProcessor = postProcessor.getTimeFilled();
-
-    auto timeElapsedProcessed = endProcessor - startProcessor;
-
-    uint32_t bytesProcessed = postProcessor.getCountBytes();
-    double processedBps = ((double)bytesProcessed
-                            / (timeElapsedProcessed.count()) * S_TO_NS);
-    double processedGBps = ((double)bytesProcessed
-                            / timeElapsedProcessed.count())
-                            * ((double)S_TO_NS / GIB_TO_GB);
-
-    INFO << "Processor Count: " << postProcessor.getCount();
-    INFO << "Processed B: " << bytesProcessed;
-    INFO << "Processed B/s: " << processedBps;
-    INFO << "Processed GiB/s: " << processedGBps;
-
-    // Cleanup thread
-    dataExchanger.destroyThread();
-    trigger.destroyThread();
-    postProcessor.destroyThread();
 }

@@ -24,12 +24,35 @@ Processor::Processor(
     windowStored.store(false);
 
     updateWindowSize(windowSize, persistanceSize);
+
+    const std::lock_guard<std::mutex> lock(lockThread);
+
+    // Check it thread created
+    if (threadExists.load() == false) {
+        // create new thread
+        processorThread = std::thread(&Processor::coreLoop, this);
+
+        // set thread exists flag
+        threadExists.store(true);
+    }
+    INFO << "Created processor thread";
 }
 
 Processor::~Processor(void)
 {
     INFO << "Processor Destructor Called";
-    destroyThread();
+    const std::lock_guard<std::mutex> lock(lockThread);
+
+    if (threadExists.load() == true) {
+        // Stop the transer and join thread
+        processorPause();
+        processorStop();
+        processorThread.join();
+
+        // clear thread exists flag
+        threadExists.store(false);
+    }
+    INFO << "Destroyed processor thread";
 }
 
 // Returns the offset of the next trigger in the current buffer
@@ -217,26 +240,6 @@ void Processor::createThread()
     }
     INFO << "Created processor thread";
 }
-
-void Processor::destroyThread()
-{
-    const std::lock_guard<std::mutex> lock(lockThread);
-
-    if (threadExists.load() == true) {
-        // Stop the transer and join thread
-        processorPause();
-        processorStop();
-        processorThread.join();
-
-        // clear thread exists flag
-        threadExists.store(false);
-    } else {
-        // Thread does not exist
-        throw EVException(10, "createThread(): thread does not exist");
-    }
-    INFO << "Destroyed processor thread";
-}
-
 
 std::chrono::high_resolution_clock::time_point Processor::getTimeFilled()
 {
