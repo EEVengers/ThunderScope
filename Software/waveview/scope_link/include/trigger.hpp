@@ -23,9 +23,6 @@ public:
 
     void coreLoop();
 
-    void createThread();
-    void destroyThread();
-
     uint32_t getCount();
     uint32_t getCountBytes();
     void setCount(uint32_t);
@@ -58,7 +55,6 @@ private:
     std::atomic<bool> stopTrigger;
     std::atomic<bool> pauseTrigger;
     std::atomic<bool> triggerMet;
-    std::atomic<bool> threadExists;
 };
 
 #endif

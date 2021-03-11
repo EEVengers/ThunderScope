@@ -12,7 +12,7 @@ uint32_t testSize = 1000;
 Trigger* triggerThread;
 Processor* processorThread;
 postProcessor* postProcessorThread;
-Bridge* testBridge;
+Bridge* bridgeThread;
 
 
 bool loadFromFile ( char* filename, boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> *outputQ)
@@ -193,7 +193,6 @@ void testBenchmark()
     // Create trigger method
     int8_t triggerLevel = 10;
     Trigger trigger(&newDataQueue, &triggeredQueue, triggerLevel);
-    trigger.createThread();
 
     // Create processor method
     Processor processor(&triggeredQueue, &preProcessorQueue);
@@ -241,7 +240,6 @@ void testBenchmark()
     }
 
     INFO << std::endl << "Test is done. Performing Cleanup";
-    trigger.destroyThread();
 }
 
 /*******************************************************************************
@@ -273,22 +271,21 @@ void initializePipeline()
     // Create trigger method
     int8_t triggerLevel = 10;
     triggerThread = new Trigger(&newDataQueue, &triggeredQueue, triggerLevel);
-    triggerThread->createThread();
 
     // Create processor method
     processorThread = new Processor(&triggeredQueue, &preProcessorQueue);
 
     postProcessorThread = new postProcessor(&preProcessorQueue, &postProcessorQueue);
 
-    testBridge = new Bridge("testPipe",_gtxQueue,_grxQueue,_gtxLock,_grxLock);
+    bridgeThread = new Bridge("testPipe",_gtxQueue,_grxQueue,_gtxLock,_grxLock);
 
     // Start all methods
     processorThread->processorUnpause();
     triggerThread->triggerUnpause();
     postProcessorThread->postProcessorUnpause();
 
-    testBridge->TxStart();
-    testBridge->RxStart();
+    bridgeThread->TxStart();
+    bridgeThread->RxStart();
 
     INFO << "Pipeline Initialized";
 }
@@ -311,7 +308,7 @@ void cleanPipeline() {
     delete triggerThread;
     delete processorThread;
     delete postProcessorThread;
-    delete testBridge;
+    delete bridgeThread;
 
     INFO << "Cleanup Finished";
 }
@@ -339,22 +336,21 @@ void testCsv(char * filename)
     // Create trigger method
     int8_t triggerLevel = 10;
 	triggerThread = new Trigger(&newDataQueue, &triggeredQueue, triggerLevel);
-	triggerThread->createThread();
 
     // Create processor method
     processorThread = new Processor(&triggeredQueue, &preProcessorQueue);
 
     postProcessorThread = new postProcessor(&preProcessorQueue, &postProcessorQueue);
 
-    testBridge = new Bridge("testPipe",_gtxQueue,_grxQueue,_gtxLock,_grxLock);
+    bridgeThread = new Bridge("testPipe",_gtxQueue,_grxQueue,_gtxLock,_grxLock);
 
     // Start all methods
     processorThread->processorUnpause();
     triggerThread->triggerUnpause();
 
     // start transfering
-    testBridge->TxStart();
-    testBridge->RxStart();
+    bridgeThread->TxStart();
+    bridgeThread->RxStart();
 
     std::this_thread::sleep_for(std::chrono::seconds(10));
     postProcessorThread->postProcessorUnpause();
@@ -368,10 +364,9 @@ void testCsv(char * filename)
     std::this_thread::sleep_for(std::chrono::seconds(5));
 
     INFO << "Test is done. Performing Cleanup";
-    triggerThread->destroyThread();
-    // TODO: Change these destroyThread() to just delete
-//    delete triggerThread;
+
+    delete triggerThread;
     delete processorThread;
     delete postProcessorThread;
-    delete testBridge;
+    delete bridgeThread;
 }
