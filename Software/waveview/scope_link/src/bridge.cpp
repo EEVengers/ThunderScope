@@ -126,6 +126,7 @@ Bridge::~Bridge() {
  * Return:
  *   None
  ******************************************************************************/
+#ifndef WIN32
 int Bridge::makeConnection(int targetSocket ) {
     int targetFD = 0;
 
@@ -162,6 +163,7 @@ int Bridge::makeConnection(int targetSocket ) {
     }
     return targetFD;
 }
+#endif
 
 /*******************************************************************************
  * TxJob()
