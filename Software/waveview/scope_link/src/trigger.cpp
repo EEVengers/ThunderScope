@@ -21,14 +21,28 @@ Trigger::Trigger(boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<fa
 
     stopTrigger.store(false); 
     pauseTrigger.store(true); 
-    threadExists.store(false);
     triggerMet.store(false);
+
+    // start thread paused
+    pauseTrigger.store(true);
+    stopTrigger.store(false);
+
+    // create new thread
+    triggerThread = std::thread(&Trigger::coreLoop, this);
+
+    INFO << "Created Trigger Thread";
 }
 
 Trigger::~Trigger(void)
 {
     INFO << "Trigger Destructor Called";
-    destroyThread();
+
+    // Stop the transer and join thread
+    stopTrigger.store(true);
+    pauseTrigger.store(true);
+    triggerThread.join();
+
+    INFO << "Destroyed Trigger Thread";
 }
 
 #ifdef DBG
@@ -236,47 +250,6 @@ void Trigger::coreLoop()
 bool Trigger::getTriggerStatus()
 {
     return triggerMet.load();
-}
-
-void Trigger::createThread()
-{
-    const std::lock_guard<std::mutex> lock(lockThread);
-
-    // Check it thread created
-    if (threadExists.load() == false) {
-        // start thread paused
-        pauseTrigger.store(true);
-        stopTrigger.store(false);
-
-        // create new thread
-        triggerThread = std::thread(&Trigger::coreLoop, this);
-
-        // set thread exists flag
-        threadExists.store(true);
-    } else {
-        // Thread already created
-        throw EVException(10, "Trigger::createThread(): Thread already created");
-    }
-    INFO << "Created Trigger Thread";
-}
-
-void Trigger::destroyThread()
-{
-    const std::lock_guard<std::mutex> lock(lockThread);
-
-    if (threadExists.load() == true) {
-        // Stop the transer and join thread
-        stopTrigger.store(true);
-        pauseTrigger.store(true);
-        triggerThread.join();
-
-        // clear thread exists flag
-        threadExists.store(false);
-    } else {
-        // Thread does not exist
-        throw EVException(10, "destroyThread(): thread does not exist");
-    }
-    INFO << "Destroyed Trigger Thread";
 }
 
 void Trigger::triggerStop()

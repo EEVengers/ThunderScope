@@ -18,18 +18,28 @@ Processor::Processor(
 
     windowProcessed = NULL;
 
-    threadExists.store(false);
     stopTransfer.store(false);
     pauseTransfer.store(true);
     windowStored.store(false);
 
     updateWindowSize(windowSize, persistanceSize);
+
+    // create new thread
+    processorThread = std::thread(&Processor::coreLoop, this);
+
+    INFO << "Created processor thread";
 }
 
 Processor::~Processor(void)
 {
     INFO << "Processor Destructor Called";
-    destroyThread();
+
+    // Stop the transer and join thread
+    processorPause();
+    processorStop();
+    processorThread.join();
+
+    INFO << "Destroyed processor thread";
 }
 
 // Returns the offset of the next trigger in the current buffer
@@ -199,44 +209,6 @@ void Processor::updateWindowSize(uint32_t newWinSize, uint32_t newPerSize)
     // Create a new window space as a single array
     windowProcessed = new int8_t [windowSize * persistanceSize];
 }
-
-void Processor::createThread()
-{
-    const std::lock_guard<std::mutex> lock(lockThread);
-
-    // Check it thread created
-    if (threadExists.load() == false) {
-        // create new thread
-        processorThread = std::thread(&Processor::coreLoop, this);
-
-        // set thread exists flag
-        threadExists.store(true);
-    } else {
-        // Thread already created
-        throw EVException(10, "Processor::createThread(): Thread already created");
-    }
-    INFO << "Created processor thread";
-}
-
-void Processor::destroyThread()
-{
-    const std::lock_guard<std::mutex> lock(lockThread);
-
-    if (threadExists.load() == true) {
-        // Stop the transer and join thread
-        processorPause();
-        processorStop();
-        processorThread.join();
-
-        // clear thread exists flag
-        threadExists.store(false);
-    } else {
-        // Thread does not exist
-        throw EVException(10, "createThread(): thread does not exist");
-    }
-    INFO << "Destroyed processor thread";
-}
-
 
 std::chrono::high_resolution_clock::time_point Processor::getTimeFilled()
 {

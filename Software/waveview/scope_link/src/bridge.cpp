@@ -656,13 +656,13 @@ void runSocketTest ()
 
     // Pass packet to tx queue
     _gtxQueue.push(testPacket);
-    Bridge* testBridge = new Bridge("testPipe",_gtxQueue,_grxQueue,_gtxLock,_grxLock);
+    Bridge* bridgeThread = new Bridge("testPipe",_gtxQueue,_grxQueue,_gtxLock,_grxLock);
 
     // start transfering
-    testBridge->TxStart();
-    testBridge->RxStart();
+    bridgeThread->TxStart();
+    bridgeThread->RxStart();
 
     std::cin >> in;
 
-    delete testBridge;
+    delete bridgeThread;
 }

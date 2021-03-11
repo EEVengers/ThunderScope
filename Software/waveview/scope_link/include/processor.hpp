@@ -19,9 +19,6 @@ public:
 
     void coreLoop();
 
-    void createThread();
-    void destroyThread();
-
     uint32_t getCount();
     uint32_t getCountBytes();
     void setCount(uint32_t);
@@ -66,7 +63,6 @@ private:
 
     std::atomic<bool> stopTransfer;
     std::atomic<bool> pauseTransfer;
-    std::atomic<bool> threadExists;
     std::atomic<bool> windowStored;
 };
 
