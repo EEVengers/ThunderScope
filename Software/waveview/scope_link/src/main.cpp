@@ -93,6 +93,15 @@ bool parseCli (std::string line)
             WARN << "Channel 1 already exists";
         }
 
+    } else if (line == "connect") {
+        if (bridgeThread == NULL) {
+            WARN << "bridge does not exist to connect with";
+        } else {
+            INFO << "connecting to js";
+            bridgeThread->TxStart();
+            bridgeThread->RxStart();
+        }
+
     } else if (line == "pause") {
         if (dspThread_1 == NULL) {
             WARN << "dsp does not exist to pause";
