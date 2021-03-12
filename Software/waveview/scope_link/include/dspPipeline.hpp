@@ -17,6 +17,7 @@ public:
     void dspPipelineStart();
     void dspPipelinePause();
     void dspPipelineUnPause();
+    void dspPipelineFlush();
 
 private:
 

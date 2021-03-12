@@ -26,6 +26,8 @@ public:
 
     bool getWindowStatus();
 
+    void flushPersistence();
+
     void processorStop();
     void processorStart();
     void processorPause();
@@ -42,7 +44,11 @@ public:
 private:
     /* functions */
     void copyProcess(int8_t * src, int8_t * dst, uint32_t count);
-    void updateWindowSize(uint32_t newWinSize, uint32_t newPerSize);
+
+    void updateWinSize(uint32_t newWinSize);
+    void updatePerSize(uint32_t newPerSize);
+    void updateWinPerSize(uint32_t newWinSize, uint32_t newPerSize);
+
     bool findNextTrigger(buffer *currentBuffer, uint32_t* p_column);
 
     /* variables */
