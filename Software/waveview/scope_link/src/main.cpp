@@ -122,7 +122,13 @@ void runCli() {
                 return;
             }
         } else {
-            ERROR << "Invalid Command";
+            ERROR << "Invalid Command"
+                  << " Commands are:"
+                  << " create"
+                  << ", unpause"
+                  << ", data"
+                  << ", delete"
+                  << ", exit";
         }
     }
 }
