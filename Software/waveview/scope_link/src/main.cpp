@@ -6,7 +6,10 @@
 //
 
 #include "EVTester.hpp"
+#include "dspPipeline.hpp"
 #include "logger.hpp"
+
+// for runSocketTest
 #include "bridge.hpp"
 
 void parseCommandLineArgs(int argc, char** args) {
@@ -20,10 +23,12 @@ void parseCommandLineArgs(int argc, char** args) {
         } else if(std::string(args[1]) == "-t" || std::string(args[1]) == "--test") {
             INFO << "Running Test";
             if (argc > 2) {
+                INFO << "Opening specified file";
                 inputFile = args[2];
                 testCsv(inputFile);
             } else {
-                char filename[] = "test1.csv";
+                INFO << "No filename provided";
+                char filename[] = "../scope_link/test/test1.csv";
                 inputFile = filename;
                 testCsv(filename);
             }
@@ -43,13 +48,93 @@ void parseCommandLineArgs(int argc, char** args) {
 }
 
 void WebServerTest() {
-    
+
 }
 
+void runCli() {
+
+    boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> dataQueue_1{1000};
+//    boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> dataQueue_2{1000};
+//    boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> dataQueue_3{1000};
+//    boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> dataQueue_4{1000};
+
+    Bridge* bridgeThread = NULL;
+    dspPipeline* dspThread_1 = NULL;
+//    dspPipeline* dspThread_2;
+//    dspPipeline* dspThread_3;
+//    dspPipeline* dspThread_4;
+
+    while(true) {
+        INFO << "Input a command";
+        printf("> ");
+        std::string line;
+        std::getline(std::cin, line);
+
+        if (line == "create") {
+            if (bridgeThread == NULL) {
+                INFO << "Creating Bridge";
+                bridgeThread = new Bridge("testPipe",_gtxQueue,_grxQueue,_gtxLock,_grxLock);
+            } else {
+                WARN << "Bridge already exists";
+            }
+
+            if (dspThread_1 == NULL) {
+                INFO << "Creating Pipeline";
+                dspThread_1 = new dspPipeline(&dataQueue_1);
+            } else {
+                WARN << "Channel 1 already exists";
+            }
+
+        } else if (line == "unpause") {
+            if (dspThread_1 == NULL) {
+                WARN << "dsp does not exit to unpause";
+            } else {
+                INFO << "Unpausing Pipeline";
+                dspThread_1->dspPipelineUnPause();
+            }
+
+        } else if (line == "data") {
+            INFO << "Adding data to the pipeline";
+            char filename[] = "../scope_link/test/test1.csv";
+            inputFile = filename;
+            loadFromFile(filename, &dataQueue_1);
+
+        } else if (line == "delete" || line == "exit") {
+            INFO << "Deleting Pipeline and bridge";
+            if (dspThread_1 == NULL) {
+                WARN << "Pipeline doesn't exist to delete";
+            } else {
+                INFO << "Deleting Pipeline";
+                delete dspThread_1;
+            }
+
+            if (bridgeThread == NULL ) {
+                WARN << "bridge doesn't exist to delete";
+            } else {
+                INFO << "Deleting bridge";
+                delete bridgeThread;
+            }
+//            delete dspThread_2;
+//            delete dspThread_3;
+//            delete dspThread_4;
+
+            if (line == "exit") {
+                return;
+            }
+        } else {
+            ERROR << "Invalid Command";
+        }
+    }
+}
 int main(int argc, char** args)
 {
     INFO << "Program Started";
 
-    parseCommandLineArgs(argc, args);
+    if (argc > 1) {
+        parseCommandLineArgs(argc, args);
+    } else {
+        INFO << "Running in CLI mode";
+        runCli();
+    }
     return 0;
 }

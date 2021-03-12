@@ -109,8 +109,12 @@ _rxLock(rxLock)
  ******************************************************************************/
 Bridge::~Bridge() {
     INFO << "Destroying bridge";
-    RxStop();
-    TxStop();
+    if (rx_run.load() == true) {
+        RxStop();
+    }
+    if (tx_run.load() == true) {
+        TxStop();
+    }
     INFO << "Bridge destroyed";
 }
 

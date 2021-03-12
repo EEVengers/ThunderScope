@@ -193,11 +193,12 @@ void testTriggerThroughput()
  ******************************************************************************/
 void testCsv(char * filename)
 {
+    boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> newDataQueue{1000};
     loadFromFile(filename, &newDataQueue);
 
     bridgeThread = new Bridge("testPipe",_gtxQueue,_grxQueue,_gtxLock,_grxLock);
 
-    dspThread1 = new dspPipeline();
+    dspThread1 = new dspPipeline(&newDataQueue);
 
     // start transfering to js
     bridgeThread->TxStart();

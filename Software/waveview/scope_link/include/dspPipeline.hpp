@@ -9,7 +9,7 @@ class dspPipeline
 {
 public:
     // Constructor & Destructor
-    dspPipeline(void);
+    dspPipeline (boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> *inputQ);
     ~dspPipeline(void);
 
     // Pipeline control
@@ -19,6 +19,9 @@ public:
     void dspPipelineUnPause();
 
 private:
+
+    // Input data queue from hardware
+    boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> *inputQueue;
 
     // Queues between stages
     boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> triggeredQueue{1000};
