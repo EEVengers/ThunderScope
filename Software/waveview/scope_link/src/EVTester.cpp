@@ -30,7 +30,7 @@ bool loadFromFile ( char* filename, boost::lockfree::queue<buffer*, boost::lockf
     uint32_t tmpBufPos = 0;
 
     if (!stream.is_open()) {
-        ERROR << "Stream is closed";
+        ERROR << "Stream is closed. Expects relative path. Run from waveview folder";
         return false;
     }
 

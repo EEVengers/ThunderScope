@@ -95,7 +95,7 @@ void runCli() {
 
         } else if (line == "data") {
             INFO << "Adding data to the pipeline";
-            char filename[] = "../scope_link/test/test1.csv";
+            char filename[] = "./scope_link/test/test1.csv";
             inputFile = filename;
             loadFromFile(filename, &dataQueue_1);
 
