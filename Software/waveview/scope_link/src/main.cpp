@@ -85,9 +85,17 @@ void runCli() {
                 WARN << "Channel 1 already exists";
             }
 
+        } else if (line == "pause") {
+            if (dspThread_1 == NULL) {
+                WARN << "dsp does not exist to pause";
+            } else {
+                INFO << "Pausing Pipeline";
+                dspThread_1->dspPipelinePause();
+            }
+
         } else if (line == "unpause") {
             if (dspThread_1 == NULL) {
-                WARN << "dsp does not exit to unpause";
+                WARN << "dsp does not exist to unpause";
             } else {
                 INFO << "Unpausing Pipeline";
                 dspThread_1->dspPipelineUnPause();
