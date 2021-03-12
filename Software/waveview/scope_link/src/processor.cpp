@@ -209,6 +209,7 @@ void Processor::updateWinSize(uint32_t newWinSize)
 void Processor::updateWinPerSize(uint32_t newWinSize, uint32_t newPerSize)
 {
     processorPause();
+    windowStored.store(false);
 
     // Delete old window space
     if (windowProcessed != NULL) {

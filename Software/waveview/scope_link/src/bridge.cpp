@@ -7,10 +7,6 @@
 std::queue<EVPacket*> _gtxQueue;
 std::queue<EVPacket*> _grxQueue;
 
-// Mutexs for the queues
-std::mutex _gtxLock;
-std::mutex _grxLock;
-
 /*******************************************************************************
  * FreePacket()
  *
@@ -54,20 +50,15 @@ void PrintPacket(EVPacket* packet) {
  *   const char* pipeName
  *   std::queue<EVPacket*>& txQueue
  *   std::queue<EVPacket*>& rxQueue
- *   std::mutex& txLock
- *   std::mutex& rxLock
  * Return:
  *   None
  ******************************************************************************/
 Bridge::Bridge(const char* pipeName, 
                std::queue<EVPacket*>& txQueue,
-               std::queue<EVPacket*>& rxQueue,
-               std::mutex& txLock,
-               std::mutex& rxLock) :
+               std::queue<EVPacket*>& rxQueue
+               ) :
 _txQueue(txQueue),
-_rxQueue(rxQueue),
-_txLock(txLock),
-_rxLock(rxLock)
+_rxQueue(rxQueue)
 {
     tx_run.store(false);
     rx_run.store(false);
@@ -80,6 +71,8 @@ _rxLock(rxLock)
     client_tx_sock = -1;
 #endif
 
+    // TODO: If sprintf is available on windows, it would be nice to ger rid
+    // of the extra code
 #ifdef WIN32 //It seems that strcat_s is a windows thing. huh
     //set up TX Pipe/socket path
     strcat_s((char*)tx_connection_string,100,base_path);
@@ -196,10 +189,10 @@ void Bridge::TxJob() {
 
     while(tx_run.load() == true) {
         //look into queue if there is anything to send
-        _txLock.lock();
+        txLock.lock();
 
         if(_txQueue.empty()) {
-            _txLock.unlock();
+            txLock.unlock();
             //if nothing sleep for 500us
             std::this_thread::sleep_for(std::chrono::microseconds(500));
 
@@ -207,11 +200,11 @@ void Bridge::TxJob() {
             // send the packet
 
             // get pointer to packet
-            EVPacket* txPacket = _gtxQueue.front();
-            _gtxQueue.pop();
+            EVPacket* txPacket = _txQueue.front();
+            _txQueue.pop();
 
             // unlock the queue
-            _txLock.unlock();
+            txLock.unlock();
 
             // Copy packet into tx_buff
             uint16_t* txBuffCast = (uint16_t*)tx_buff;
@@ -369,10 +362,10 @@ void Bridge::RxJob() {
         //for now just print and free the packet
         PrintPacket(rxPacket);
         FreePacket(rxPacket);
-        _rxLock.lock();
+        rxLock.lock();
         //process whatever it is
         // Operate on the packet that was recieved from Electron
-        _rxLock.unlock();
+        rxLock.unlock();
     }
 }
 
@@ -675,4 +668,21 @@ int Bridge::RxStop() {
 
     INFO << "Rx stopped";
     return 0;
+}
+
+/*******************************************************************************
+ * push()
+ *
+ * pushes a packet into the tx queue for transmission to JS.
+ *
+ * Arguments:
+ *   EVPacket* newPacket - pointer to packet to send
+ * Return:
+ *   None
+ ******************************************************************************/
+void Bridge::push(EVPacket* newPacket)
+{
+    std::lock_guard<std::mutex> lck (txLock);
+
+    _txQueue.push(newPacket);
 }

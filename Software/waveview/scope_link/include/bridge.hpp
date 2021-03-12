@@ -61,11 +61,6 @@ void runSocketTest();
 extern std::queue<EVPacket*> _gtxQueue;
 extern std::queue<EVPacket*> _grxQueue;
 
-// Mutexs for the queues
-extern std::mutex _gtxLock;
-extern std::mutex _grxLock;
-
-
 class Bridge {
 private:
 
@@ -88,10 +83,13 @@ private:
     std::thread tx_worker;
     std::thread rx_worker;
 
+    // Queue to JS
     std::queue<EVPacket*>& _txQueue;
+    // Queue From JS
     std::queue<EVPacket*>& _rxQueue;
-    std::mutex& _txLock;
-    std::mutex& _rxLock;
+
+    std::mutex txLock;
+    std::mutex rxLock;
 
     std::atomic<bool> rx_run;
     std::atomic<bool> tx_run;
@@ -100,13 +98,15 @@ private:
 
     int makeConnection( int targetSocket );
 
+    void push(EVPacket* newPacket);
+
+
 public:
 
     Bridge(const char* pipeName,
            std::queue<EVPacket*>& txQueue,
-           std::queue<EVPacket*>& rxQueue,
-           std::mutex& txLock,
-           std::mutex& rxLock);
+           std::queue<EVPacket*>& rxQueue
+           );
     ~Bridge();
 
     int TxStart();

@@ -81,7 +81,7 @@ bool parseCli (std::string line)
     } else if (line == "create") {
         if (bridgeThread == NULL) {
             INFO << "Creating Bridge";
-            bridgeThread = new Bridge("testPipe",_gtxQueue,_grxQueue,_gtxLock,_grxLock);
+            bridgeThread = new Bridge("testPipe",_gtxQueue,_grxQueue);
         } else {
             WARN << "Bridge already exists";
         }
