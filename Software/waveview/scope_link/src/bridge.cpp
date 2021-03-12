@@ -325,7 +325,7 @@ void Bridge::RxJob() {
         } else if (packet_size == -1) {
             switch (errno) {
                 case EWOULDBLOCK:
-                    INFO << "No data on socket right now";
+                    // No data on socket. sleep
                     std::this_thread::sleep_for(std::chrono::milliseconds(500));
                     continue;
                 default:
