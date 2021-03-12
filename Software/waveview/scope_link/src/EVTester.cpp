@@ -196,7 +196,7 @@ void testCsv(char * filename)
     boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> newDataQueue{1000};
     loadFromFile(filename, &newDataQueue);
 
-    bridgeThread_1 = new Bridge("testPipe",_gtxQueue,_grxQueue,_gtxLock,_grxLock);
+    bridgeThread_1 = new Bridge("testPipe",_gtxQueue,_grxQueue);
 
     dspThread1 = new dspPipeline(&newDataQueue);
 
@@ -247,7 +247,7 @@ void runSocketTest ()
 
     // Pass packet to tx queue
     _gtxQueue.push(testPacket);
-    Bridge* bridgeThread_1 = new Bridge("testPipe",_gtxQueue,_grxQueue,_gtxLock,_grxLock);
+    Bridge* bridgeThread_1 = new Bridge("testPipe",_gtxQueue,_grxQueue);
 
     // start transfering
     bridgeThread_1->TxStart();
