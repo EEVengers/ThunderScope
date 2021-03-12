@@ -11,12 +11,6 @@ void TestDataThroughput();
 
 void testTriggerThroughput();
 
-void testBenchmark();
-
 void testCsv(char * filename);
-
-void initializePipeline();
-
-void cleanPipeline();
 
 #endif /* EVTester_hpp */

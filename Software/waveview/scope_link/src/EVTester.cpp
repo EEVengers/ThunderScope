@@ -5,14 +5,13 @@
 #include "trigger.hpp"
 #include "postProcessor.hpp"
 #include "bridge.hpp"
+#include "dspPipeline.hpp"
 #include <boost/tokenizer.hpp>
 
 uint32_t testSize = 1000;
 
-Trigger* triggerThread;
-Processor* processorThread;
-postProcessor* postProcessorThread;
 Bridge* bridgeThread;
+dspPipeline* dspThread1;
 
 
 bool loadFromFile ( char* filename, boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> *outputQ)
@@ -44,11 +43,11 @@ bool loadFromFile ( char* filename, boost::lockfree::queue<buffer*, boost::lockf
         for (const auto &t : tok) {
 
             if (std::stoi(t) > 255) {
-                INFO << "Error: Number greater than 255";
+                ERROR << "Number greater than 255";
             } else if (std::stoi(t) > INT8_MAX) {
-                INFO << "Error: Number greater than 127 is converted to negative";
+                ERROR << "Number greater than 127 is converted to negative";
             } else if ((int8_t)std::stoi(t) < -128) {
-                INFO << "Error: Number less than -128";
+                ERROR << "Number less than -128";
             }
 
             tempBuffer->data[tmpBufPos] = (int8_t)std::stoi(t);
@@ -182,137 +181,6 @@ void testTriggerThroughput()
     INFO << "Triggered GiB/s: " << triggeredGBps;
 }
 
-void testBenchmark()
-{
-    // Create queue
-    boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> newDataQueue{1000};
-    boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> triggeredQueue{1000};
-
-    loadFromRand(&newDataQueue);
-
-    // Create trigger method
-    int8_t triggerLevel = 10;
-    Trigger trigger(&newDataQueue, &triggeredQueue, triggerLevel);
-
-    // Create processor method
-    Processor processor(&triggeredQueue, &preProcessorQueue);
-
-    // Measure triggering time
-    // collect timestamp
-    auto start = std::chrono::high_resolution_clock::now();
-
-    // Start trigger
-    trigger.triggerUnpause();
-
-    // wait for triggering to finish
-    while (trigger.getTriggerStatus() == false) {
-        std::this_thread::sleep_for(std::chrono::microseconds(100));
-    }
-
-    // collect timestamp
-    auto end = std::chrono::high_resolution_clock::now();
-    auto timeTrigger = end - start;
-
-    uint32_t bytesTriggered = testSize * BUFFER_SIZE;
-    double triggeredBps = ((double)bytesTriggered * S_TO_NS
-                            / timeTrigger.count());
-    double triggeredGBps = (((double)bytesTriggered * S_TO_NS)
-                            / (timeTrigger.count()
-                            * GIB_TO_GB));
-
-    INFO << "Time Elapsed Triggering: " << timeTrigger.count() << " ns";
-    INFO << "Triggered B: " << bytesTriggered << " B";
-    INFO << "Triggered B/s: " << triggeredBps;
-    INFO << "Triggered GiB/s: " << triggeredGBps;
-    
-
-    // TODO: write processor benchmarking
-    // measure processor
-    // collect timestamp
-    // Start Processor
-    processor.processorUnpause();
-    // wait for processing to finish
-    // collect timestamp
-
-    // Wait until window if full
-    while (processor.getWindowStatus() == false) {
-        std::this_thread::sleep_for(std::chrono::microseconds(100));
-    }
-
-    INFO << std::endl << "Test is done. Performing Cleanup";
-}
-
-/*******************************************************************************
- * initializePipeline()
- *
- * Creates the threads for the pipeline and starts processing
- *
- * Arguments: None
- *
- * Return: void
- ******************************************************************************/
-void initializePipeline()
-{
-    if (inputFile != NULL) {
-        INFO << "Input file specified, opening";
-        // TODO: Handle failed loading of file
-        loadFromFile(inputFile, &newDataQueue);
-    } else {
-        WARN << "No input file specified, opening test1.csv";
-        std::string inputFileName = "scope_link/test/test1.csv";
-        inputFile = (char *)malloc(inputFileName.size() + 1);
-        memcpy(inputFile, inputFileName.c_str(), inputFileName.size() + 1);
-        // TODO: Handle failed loading from file
-        loadFromFile(inputFile, &newDataQueue);
-        // TODO: Initialize the pcie drivers and pass it the newDataQueue.
-        //       Replace this whole else statement with the driver stuff.
-    }
-
-    // Create trigger method
-    int8_t triggerLevel = 10;
-    triggerThread = new Trigger(&newDataQueue, &triggeredQueue, triggerLevel);
-
-    // Create processor method
-    processorThread = new Processor(&triggeredQueue, &preProcessorQueue);
-
-    postProcessorThread = new postProcessor(&preProcessorQueue, &postProcessorQueue);
-
-    bridgeThread = new Bridge("testPipe",_gtxQueue,_grxQueue,_gtxLock,_grxLock);
-
-    // Start all methods
-    processorThread->processorUnpause();
-    triggerThread->triggerUnpause();
-    postProcessorThread->postProcessorUnpause();
-
-    bridgeThread->TxStart();
-    bridgeThread->RxStart();
-
-    INFO << "Pipeline Initialized";
-}
-
-/*******************************************************************************
- * cleanPipeline()
- *
- * Deletes and frees memory created for the pipeline
- *
- * Arguments: None
- *
- * Return: void
- ******************************************************************************/
-void cleanPipeline() {
-    INFO << "Performing Cleanup";
-    if (inputFile != NULL) {
-         free(inputFile);
-    }
-
-    delete triggerThread;
-    delete processorThread;
-    delete postProcessorThread;
-    delete bridgeThread;
-
-    INFO << "Cleanup Finished";
-}
-
 /*******************************************************************************
  * testCsv()
  *
@@ -325,48 +193,26 @@ void cleanPipeline() {
  ******************************************************************************/
 void testCsv(char * filename)
 {
-    // TODO: Cleanup. Remove duplicate code here with other functions
-
-    // Create queue
-//    boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> newDataQueue{1000};
-//    boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> triggeredQueue{1000};
-
     loadFromFile(filename, &newDataQueue);
-
-    // Create trigger method
-    int8_t triggerLevel = 10;
-	triggerThread = new Trigger(&newDataQueue, &triggeredQueue, triggerLevel);
-
-    // Create processor method
-    processorThread = new Processor(&triggeredQueue, &preProcessorQueue);
-
-    postProcessorThread = new postProcessor(&preProcessorQueue, &postProcessorQueue);
 
     bridgeThread = new Bridge("testPipe",_gtxQueue,_grxQueue,_gtxLock,_grxLock);
 
-    // Start all methods
-    processorThread->processorUnpause();
-    triggerThread->triggerUnpause();
+    dspThread1 = new dspPipeline();
 
-    // start transfering
+    // start transfering to js
     bridgeThread->TxStart();
     bridgeThread->RxStart();
 
-    std::this_thread::sleep_for(std::chrono::seconds(10));
-    postProcessorThread->postProcessorUnpause();
-
-    // Wait until window if full
-    while (processorThread->getWindowStatus() == false) {
-        std::this_thread::sleep_for(std::chrono::microseconds(100));
-    }
-
 	// Wait to recieve all messages back
-    std::this_thread::sleep_for(std::chrono::seconds(5));
+    INFO << "Start node application now";
+
+    dspThread1->dspPipelineUnPause();
+
+    std::this_thread::sleep_for(std::chrono::seconds(10));
 
     INFO << "Test is done. Performing Cleanup";
 
-    delete triggerThread;
-    delete processorThread;
-    delete postProcessorThread;
     delete bridgeThread;
+    delete dspThread1;
+
 }
