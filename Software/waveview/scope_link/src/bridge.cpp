@@ -279,6 +279,14 @@ void Bridge::RxJob() {
                 break;
             }
         }
+        //check to see if the packet is the END_CONNECTION packet
+        uint16_t* endPacketCheck = (uint16_t*)rxBuff;
+        if (endPacketCheck[0] == END_PACKET_COMMAND && endPacketCheck[1] == END_PACKET_PACKETID && endPacketCheck[2] == END_PACKET_DATA_SIZE) {
+            INFO << "END PACKET Recieved, Jumping Out Of RX Job";
+            rx_run.store(false);
+            continue;
+        }
+
         //read the rest of the packet
         uint16_t dataSize = ((uint16_t*)(rxBuff))[2];
         if(dataSize < BRIDGE_BUFFER_SIZE - 6) {
@@ -567,6 +575,22 @@ int Bridge::TxStop() {
 
     tx_run.store(false);
 
+#ifdef WIN32 // Ensurses the code does not get stuck trying to accept a client
+
+    //open a link to the named pipe
+    HANDLE hfile;
+    hfile = CreateFileA((LPCSTR)tx_connection_string, GENERIC_WRITE | GENERIC_READ, FILE_SHARE_READ | FILE_SHARE_WRITE, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
+
+    if (INVALID_HANDLE_VALUE != hfile) {
+        //dont do anything on a successful connection
+    }
+    else
+    {
+        ERROR << "Failed To Open Handle To Named Pipe: " << tx_connection_string << " ERROR CODE: " << GetLastError() << " HANDLE: " << hfile;
+    }
+
+#endif
+
     if(tx_worker.joinable()) {
         tx_worker.join();
     }
@@ -603,6 +627,28 @@ int Bridge::RxStop() {
     INFO << "Stopping Rx";
 
     rx_run.store(false);
+
+#ifdef WIN32 //because windows has belocking calls, because ofc it does, we need to write an end bit to it so that it unblocks and sees that it should end itself
+             //This also ensures that the code does not get stuck on trying to accept a client
+    
+    //open a link to the named pipe
+    HANDLE hfile;
+    hfile = CreateFileA((LPCSTR)rx_connection_string,GENERIC_WRITE | GENERIC_READ,FILE_SHARE_READ | FILE_SHARE_WRITE,NULL,OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
+    
+    if (INVALID_HANDLE_VALUE != hfile) {
+        //write the close packet
+        int16_t endPacket[] = {END_PACKET_COMMAND, END_PACKET_PACKETID, END_PACKET_DATA_SIZE};
+        DWORD bytesWritten;
+        WriteFile(hfile,(LPCVOID)endPacket,6,&bytesWritten,NULL);
+        //close handle
+        CloseHandle(hfile);
+    }
+    else 
+    {
+        ERROR << "Failed To Open Handle To Named Pipe: " << rx_connection_string << " ERROR CODE: " << GetLastError() << " HANDLE: " << hfile;
+    }
+
+#endif
 
     if(rx_worker.joinable()) {
         rx_worker.join();
