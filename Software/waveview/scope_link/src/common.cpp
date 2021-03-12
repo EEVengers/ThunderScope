@@ -12,12 +12,8 @@ boost::pool_allocator<int8_t,
     boost::details::pool::default_mutex,
     DEFAULT_WINDOW * BUFFER_SIZE, 0> windowAllocator;
 
-boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> newDataQueue{1000};
-
 uint32_t windowSize = DEFAULT_WINDOW;
 uint32_t persistanceSize = 4;
-
-volatile bool programClosing = 0;
 
 char* inputFile = NULL;
 char* outputFile = NULL;

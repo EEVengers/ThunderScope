@@ -67,7 +67,7 @@ void DataTransferHandler::transferPause()
 void DataTransferHandler::FTDITransferThread()
 {
     uint64_t bytesReadFromPipe = 0;
-    uint64_t errorCode;
+    uint64_t errorCode = 0;
 
     // Outerloop
     while(!stopTransfer.load()) {

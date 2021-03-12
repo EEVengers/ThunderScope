@@ -11,11 +11,18 @@
  * Return:
  *   None
  ******************************************************************************/
-dspPipeline::dspPipeline ()
+dspPipeline::dspPipeline (boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> *inputQ)
 {
     INFO << "Creating dsp pipeline";
+
+    if (inputQ == NULL) {
+        ERROR << "dsp inputQ is null";
+    } else {
+        inputQueue = inputQ;
+    }
+
     int8_t triggerLevel = 10;
-	triggerThread = new Trigger(&newDataQueue, &triggeredQueue, triggerLevel);
+	triggerThread = new Trigger(inputQ, &triggeredQueue, triggerLevel);
     processorThread = new Processor(&triggeredQueue, &preProcessorQueue);
     postProcessorThread = new postProcessor(&preProcessorQueue, &postProcessorQueue);
 }
