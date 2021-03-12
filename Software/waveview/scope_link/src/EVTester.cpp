@@ -10,7 +10,7 @@
 
 uint32_t testSize = 1000;
 
-Bridge* bridgeThread;
+Bridge* bridgeThread_1;
 dspPipeline* dspThread1;
 
 
@@ -196,13 +196,13 @@ void testCsv(char * filename)
     boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> newDataQueue{1000};
     loadFromFile(filename, &newDataQueue);
 
-    bridgeThread = new Bridge("testPipe",_gtxQueue,_grxQueue,_gtxLock,_grxLock);
+    bridgeThread_1 = new Bridge("testPipe",_gtxQueue,_grxQueue,_gtxLock,_grxLock);
 
     dspThread1 = new dspPipeline(&newDataQueue);
 
     // start transfering to js
-    bridgeThread->TxStart();
-    bridgeThread->RxStart();
+    bridgeThread_1->TxStart();
+    bridgeThread_1->RxStart();
 
 	// Wait to recieve all messages back
     INFO << "Start node application now";
@@ -213,7 +213,47 @@ void testCsv(char * filename)
 
     INFO << "Test is done. Performing Cleanup";
 
-    delete bridgeThread;
+    delete bridgeThread_1;
     delete dspThread1;
 
+}
+
+/*******************************************************************************
+ * runSocketTest()
+ *
+ * Creats a bridge, sends a test packet across the bridge and cleans up after
+ * recieving a response.
+ *
+ * Arguments:
+ *   None
+ * Return:
+ *   int - 0 on success, error code on failure
+ ******************************************************************************/
+void runSocketTest ()
+{
+    char in[10] = {};
+
+    // Create packet
+    EVPacket* testPacket = (EVPacket*)malloc(sizeof(EVPacket));
+    testPacket->command = 1;
+    testPacket->packetID = 0x0808;
+    testPacket->dataSize = 5;
+    testPacket->data = (int8_t*)malloc(5);
+    testPacket->data[0] = 1;
+    testPacket->data[1] = 2;
+    testPacket->data[2] = 3;
+    testPacket->data[3] = 4;
+    testPacket->data[4] = 5;
+
+    // Pass packet to tx queue
+    _gtxQueue.push(testPacket);
+    Bridge* bridgeThread_1 = new Bridge("testPipe",_gtxQueue,_grxQueue,_gtxLock,_grxLock);
+
+    // start transfering
+    bridgeThread_1->TxStart();
+    bridgeThread_1->RxStart();
+
+    std::cin >> in;
+
+    delete bridgeThread_1;
 }

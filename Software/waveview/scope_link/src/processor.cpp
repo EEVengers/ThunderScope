@@ -22,7 +22,7 @@ Processor::Processor(
     pauseTransfer.store(true);
     windowStored.store(false);
 
-    updateWindowSize(windowSize, persistanceSize);
+    updateWinPerSize(windowSize, persistanceSize);
 
     // create new thread
     processorThread = std::thread(&Processor::coreLoop, this);
@@ -191,8 +191,25 @@ void Processor::coreLoop()
     }
 }
 
-void Processor::updateWindowSize(uint32_t newWinSize, uint32_t newPerSize)
+void Processor::flushPersistence()
 {
+    updateWinPerSize(windowSize, persistanceSize);
+}
+
+void Processor::updatePerSize(uint32_t newPerSize)
+{
+    updateWinPerSize(windowSize, newPerSize);
+}
+
+void Processor::updateWinSize(uint32_t newWinSize)
+{
+    updateWinPerSize(newWinSize, persistanceSize);
+}
+
+void Processor::updateWinPerSize(uint32_t newWinSize, uint32_t newPerSize)
+{
+    processorPause();
+
     // Delete old window space
     if (windowProcessed != NULL) {
         delete windowProcessed;
