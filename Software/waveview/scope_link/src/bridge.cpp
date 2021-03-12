@@ -71,7 +71,7 @@ _rxQueue(rxQueue)
     client_tx_sock = -1;
 #endif
 
-    // TODO: If sprintf is available on windows, it would be nice to ger rid
+    // TODO: If sprintf is available on windows, it would be nice to get rid
     // of the extra code
 #ifdef WIN32 //It seems that strcat_s is a windows thing. huh
     //set up TX Pipe/socket path
@@ -276,9 +276,13 @@ void Bridge::RxJob() {
                 break;
             }
         }
+
         //check to see if the packet is the END_CONNECTION packet
         uint16_t* endPacketCheck = (uint16_t*)rxBuff;
-        if (endPacketCheck[0] == END_PACKET_COMMAND && endPacketCheck[1] == END_PACKET_PACKETID && endPacketCheck[2] == END_PACKET_DATA_SIZE) {
+        if (endPacketCheck[0] == END_PACKET_COMMAND
+                && endPacketCheck[1] == END_PACKET_PACKETID
+                && endPacketCheck[2] == END_PACKET_DATA_SIZE) {
+
             INFO << "END PACKET Recieved, Jumping Out Of RX Job";
             rx_run.store(false);
             continue;
@@ -294,18 +298,17 @@ void Bridge::RxJob() {
         if(val == 0){
             //error
             int err = GetLastError();
-            switch (err) {
-                case 234:
-                    // more data exists. Wait for it
-                    std::this_thread::sleep_for(std::chrono::milliseconds(500));
-                case 109:
-                    // not enough bytes in pipeline
-                    // Skip error packet
-                    std::this_thread::sleep_for(std::chrono::milliseconds(500));
-                    continue;
-                default:
-                    INFO << "rx_pipe data_read: Error: " << GetLastError();
-                    break;
+            if (err == 234) {
+                // more data exists. Wait for it
+                std::this_thread::sleep_for(std::chrono::milliseconds(500));
+            } else if (err == 109) {
+                // not enough bytes in pipeline
+                // Skip error packet
+                std::this_thread::sleep_for(std::chrono::milliseconds(500));
+                continue;
+            } else {
+                INFO << "rx_pipe data_read: Error: " << GetLastError();
+                break;
             }
         }
         packet_size = 6 + dataSize;
@@ -511,7 +514,8 @@ int Bridge::InitRxBridge() {
                                // FILE_FLAG_FIRST_PIPE_INSTANCE is not needed
                                // but forces CreateNamedPipe(..) to fail if the
                                // pipe already exists...
-                               PIPE_TYPE_MESSAGE | PIPE_READMODE_MESSAGE | PIPE_WAIT | PIPE_REJECT_REMOTE_CLIENTS,
+                               PIPE_TYPE_MESSAGE | PIPE_READMODE_MESSAGE |
+                               PIPE_WAIT | PIPE_REJECT_REMOTE_CLIENTS,
                                1,
                                4096 * 16,
                                4096 * 16,
@@ -575,15 +579,20 @@ int Bridge::TxStop() {
 #ifdef WIN32 // Ensurses the code does not get stuck trying to accept a client
 
     //open a link to the named pipe
-    HANDLE hfile;
-    hfile = CreateFileA((LPCSTR)tx_connection_string, GENERIC_WRITE | GENERIC_READ, FILE_SHARE_READ | FILE_SHARE_WRITE, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
+    hfile = CreateFileA((LPCSTR)tx_connection_string,
+                        GENERIC_WRITE | GENERIC_READ,
+                        FILE_SHARE_READ | FILE_SHARE_WRITE,
+                        NULL, OPEN_EXISTING,
+                        FILE_ATTRIBUTE_NORMAL, NULL);
 
     if (INVALID_HANDLE_VALUE != hfile) {
         //dont do anything on a successful connection
     }
     else
     {
-        ERROR << "Failed To Open Handle To Named Pipe: " << tx_connection_string << " ERROR CODE: " << GetLastError() << " HANDLE: " << hfile;
+        ERROR << "Failed To Open Handle To Named Pipe: "
+              << tx_connection_string << " ERROR CODE: "
+              << GetLastError() << " HANDLE: " << hfile;
     }
 
 #endif
@@ -625,16 +634,26 @@ int Bridge::RxStop() {
 
     rx_run.store(false);
 
-#ifdef WIN32 //because windows has belocking calls, because ofc it does, we need to write an end bit to it so that it unblocks and sees that it should end itself
-             //This also ensures that the code does not get stuck on trying to accept a client
+#ifdef WIN32
+    // because windows has belocking calls, because ofc it does, we need to
+    // write an end bit to it so that it unblocks and sees that it should end
+    // itself.
+    // This also ensures that the code does not get stuck on trying to accept a
+    // client.
     
     //open a link to the named pipe
     HANDLE hfile;
-    hfile = CreateFileA((LPCSTR)rx_connection_string,GENERIC_WRITE | GENERIC_READ,FILE_SHARE_READ | FILE_SHARE_WRITE,NULL,OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
+    hfile = CreateFileA((LPCSTR)rx_connection_string,
+                        GENERIC_WRITE | GENERIC_READ,
+                        FILE_SHARE_READ | FILE_SHARE_WRITE,
+                        NULL, OPEN_EXISTING,
+                        FILE_ATTRIBUTE_NORMAL, NULL);
     
     if (INVALID_HANDLE_VALUE != hfile) {
         //write the close packet
-        int16_t endPacket[] = {END_PACKET_COMMAND, END_PACKET_PACKETID, END_PACKET_DATA_SIZE};
+        int16_t endPacket[] = {END_PACKET_COMMAND,
+                               END_PACKET_PACKETID,
+                               END_PACKET_DATA_SIZE};
         DWORD bytesWritten;
         WriteFile(hfile,(LPCVOID)endPacket,6,&bytesWritten,NULL);
         //close handle
@@ -642,7 +661,9 @@ int Bridge::RxStop() {
     }
     else 
     {
-        ERROR << "Failed To Open Handle To Named Pipe: " << rx_connection_string << " ERROR CODE: " << GetLastError() << " HANDLE: " << hfile;
+        ERROR << "Failed To Open Handle To Named Pipe: "
+              << rx_connection_string << " ERROR CODE: "
+              << GetLastError() << " HANDLE: " << hfile;
     }
 
 #endif
