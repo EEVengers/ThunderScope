@@ -106,6 +106,7 @@ void runCli() {
             } else {
                 INFO << "Deleting Pipeline";
                 delete dspThread_1;
+                dspThread_1 = NULL;
             }
 
             if (bridgeThread == NULL ) {
@@ -113,6 +114,7 @@ void runCli() {
             } else {
                 INFO << "Deleting bridge";
                 delete bridgeThread;
+                bridgeThread = NULL;
             }
 //            delete dspThread_2;
 //            delete dspThread_3;
