@@ -104,7 +104,6 @@ void postProcessor::coreLoop()
             currentPacket->data = postWindow;
 
             outputQueue->push(currentPacket);
-//            _gtxQueue.push(currentPacket);
 
 
             
