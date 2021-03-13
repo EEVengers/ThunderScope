@@ -68,7 +68,6 @@ private:
     boost::lockfree::queue<EVPacket*, boost::lockfree::fixed_sized<false>> *rxOutputQueue;
 
     std::mutex txLock;
-    std::mutex rxLock;
 
     std::atomic<bool> rx_run;
     std::atomic<bool> tx_run;

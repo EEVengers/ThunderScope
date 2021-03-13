@@ -27,10 +27,23 @@ void controller::controllerLoop()
 {
     EVPacket* currentPacket;
     while (stopController.load() == false) {
-//        INFO << "Controller Alive";
         while (stopController.load() == false &&
                controllerQueue_rx.pop(currentPacket)) {
             INFO << "Controller processing a packet";
+
+            // execute the packet command
+            switch (currentPacket->command) {
+                case 1:
+                    INFO << "Packet command 1";
+                    break;
+                case 2:
+                    INFO << "Packet command 2";
+                    break;
+                default:
+                    ERROR << "Unknown packet command";
+                    break;
+            }
+
         }
 
         std::this_thread::sleep_for(std::chrono::milliseconds(100));
