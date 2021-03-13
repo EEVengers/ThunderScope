@@ -5,10 +5,10 @@ controller::controller()
 {
     stopController.store(false);
 
-    // create new thread
+    // command packet parser thread
     controllerThread = std::thread(&controller::controllerLoop, this);
 
-    bridgeThread = new Bridge("testPipe",_gtxQueue,_grxQueue, &controllerQueue_rx);
+    bridgeThread = new Bridge("testPipe", &controllerQueue_tx, &controllerQueue_rx);
     bridgeThread->TxStart();
     bridgeThread->RxStart();
 

@@ -27,7 +27,7 @@ private:
     // Queues between stages
     boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> triggeredQueue{1000};
     boost::lockfree::queue<int8_t*, boost::lockfree::fixed_sized<false>> preProcessorQueue{1000};
-    boost::lockfree::queue<int8_t*, boost::lockfree::fixed_sized<false>> postProcessorQueue{1000};
+    boost::lockfree::queue<EVPacket*, boost::lockfree::fixed_sized<false>> postProcessorQueue{1000};
 
     // Stages of the pipeline
     Trigger* triggerThread;

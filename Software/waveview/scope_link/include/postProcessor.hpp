@@ -13,7 +13,7 @@ class postProcessor
 public:
     /* functions */
     postProcessor(boost::lockfree::queue<int8_t*, boost::lockfree::fixed_sized<false>> *inputQ,
-                  boost::lockfree::queue<int8_t*, boost::lockfree::fixed_sized<false>> *outputQ);
+                  boost::lockfree::queue<EVPacket*, boost::lockfree::fixed_sized<false>> *outputQ);
     ~postProcessor(void);
 
     void postProcessorStop();
@@ -30,7 +30,7 @@ private:
 
     /* variables */
     boost::lockfree::queue<int8_t*, boost::lockfree::fixed_sized<false>> *inputQueue;
-    boost::lockfree::queue<int8_t*, boost::lockfree::fixed_sized<false>> *outputQueue;
+    boost::lockfree::queue<EVPacket*, boost::lockfree::fixed_sized<false>> *outputQueue;
 
     std::thread postProcessorThread;
 
