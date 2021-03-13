@@ -22,17 +22,17 @@ void parseCommandLineArgs(int argc, char** args) {
             INFO << "Main:parseCommandLineArgs() - Testing Trigger Throughput";
             testTriggerThroughput();
         } else if(std::string(args[1]) == "-t" || std::string(args[1]) == "--test") {
-            INFO << "Running Test";
-            if (argc > 2) {
-                INFO << "Opening specified file";
-                inputFile = args[2];
-                testCsv(inputFile);
-            } else {
-                INFO << "No filename provided";
-                char filename[] = "../scope_link/test/test1.csv";
-                inputFile = filename;
-                testCsv(filename);
-            }
+//            INFO << "Running Test";
+//            if (argc > 2) {
+//                INFO << "Opening specified file";
+//                inputFile = args[2];
+//                testCsv(inputFile);
+//            } else {
+//                INFO << "No filename provided";
+//                char filename[] = "../scope_link/test/test1.csv";
+//                inputFile = filename;
+//                testCsv(filename);
+//            }
         } else if(std::string(args[1]) == "--socket") {
             // Run socket test
             INFO << "Running socket test";
@@ -48,24 +48,9 @@ void parseCommandLineArgs(int argc, char** args) {
     return;
 }
 
-void WebServerTest() {
+boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> dataQueue_1{1000};
 
-}
-
-    boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> dataQueue_1{1000};
-//    boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> dataQueue_2{1000};
-//    boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> dataQueue_3{1000};
-//    boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> dataQueue_4{1000};
-
-    boost::lockfree::queue<EVPacket*, boost::lockfree::fixed_sized<false>> cmdQueue{1000};
-    boost::lockfree::queue<EVPacket*, boost::lockfree::fixed_sized<false>> mainBridge_rx{1000};
-
-    Bridge* bridgeThread = NULL;
-    dspPipeline* dspThread_1 = NULL;
-//    dspPipeline* dspThread_2;
-//    dspPipeline* dspThread_3;
-//    dspPipeline* dspThread_4;
-    controller* controllerThread = NULL;
+controller* controllerThread = NULL;
 
 bool parseCli (std::string line)
 {
@@ -83,55 +68,24 @@ bool parseCli (std::string line)
         std::string nextLine = line.substr(line.find(' ') + 1, line.length());
         parseCli(nextLine);
 
-    } else if (line == "create") {
-        if (bridgeThread == NULL) {
-            INFO << "Creating Bridge";
-            bridgeThread = new Bridge("testPipe", &mainBridge_rx, &cmdQueue);
-        } else {
-            WARN << "Bridge already exists";
-        }
-
-        if (dspThread_1 == NULL) {
-            INFO << "Creating Pipeline";
-            dspThread_1 = new dspPipeline(&dataQueue_1);
-        } else {
-            WARN << "Channel 1 already exists";
-        }
-
     } else if (line == "controller") {
-        controllerThread = new controller();
-
-    } else if (line == "connect") {
-        if (bridgeThread == NULL) {
-            WARN << "bridge does not exist to connect with";
-        } else {
-            INFO << "connecting to js";
-            bridgeThread->TxStart();
-            bridgeThread->RxStart();
+        if (controllerThread == NULL ) {
+            controllerThread = new controller(&dataQueue_1);
         }
 
     } else if (line == "pause") {
-        if (dspThread_1 == NULL) {
-            WARN << "dsp does not exist to pause";
-        } else {
-            INFO << "Pausing Pipeline";
-            dspThread_1->dspPipelinePause();
+        if (controllerThread != NULL ) {
+            controllerThread->controllerPause();
         }
 
     } else if (line == "unpause") {
-        if (dspThread_1 == NULL) {
-            WARN << "dsp does not exist to unpause";
-        } else {
-            INFO << "Unpausing Pipeline";
-            dspThread_1->dspPipelineUnPause();
+        if (controllerThread != NULL ) {
+            controllerThread->controllerUnPause();
         }
 
     } else if (line == "flush") {
-        if (dspThread_1 == NULL) {
-            WARN << "dsp does not exist to flush";
-        } else {
-            INFO << "Flushing Pipeline";
-            dspThread_1->dspPipelineFlush();
+        if (controllerThread != NULL ) {
+            controllerThread->controllerFlush();
         }
 
     } else if (line == "data") {
@@ -141,25 +95,10 @@ bool parseCli (std::string line)
         loadFromFile(filename, &dataQueue_1);
 
     } else if (line == "delete" || line == "exit") {
-        INFO << "Deleting Pipeline and bridge";
-        if (dspThread_1 == NULL) {
-            WARN << "Pipeline doesn't exist to delete";
-        } else {
-            INFO << "Deleting Pipeline";
-            delete dspThread_1;
-            dspThread_1 = NULL;
+        if (controllerThread != NULL ) {
+            delete controllerThread;
+            controllerThread = NULL;
         }
-
-        if (bridgeThread == NULL ) {
-            WARN << "bridge doesn't exist to delete";
-        } else {
-            INFO << "Deleting bridge";
-            delete bridgeThread;
-            bridgeThread = NULL;
-        }
-//            delete dspThread_2;
-//            delete dspThread_3;
-//            delete dspThread_4;
 
         if (line == "exit") {
             return false;

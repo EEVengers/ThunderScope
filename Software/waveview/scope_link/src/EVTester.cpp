@@ -11,8 +11,6 @@
 uint32_t testSize = 1000;
 
 Bridge* bridgeThread_1;
-dspPipeline* dspThread1;
-
 
 bool loadFromFile ( char* filename, boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> *outputQ)
 {
@@ -191,34 +189,34 @@ void testTriggerThroughput()
  *
  * Return: void
  ******************************************************************************/
-void testCsv(char * filename)
-{
-    boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> newDataQueue{1000};
-    boost::lockfree::queue<EVPacket*, boost::lockfree::fixed_sized<false>> cmdQueue{1000};
-    boost::lockfree::queue<EVPacket*, boost::lockfree::fixed_sized<false>> bridge_rx{1000};
-    loadFromFile(filename, &newDataQueue);
-
-    bridgeThread_1 = new Bridge("testPipe", &bridge_rx, &cmdQueue);
-
-    dspThread1 = new dspPipeline(&newDataQueue);
-
-    // start transfering to js
-    bridgeThread_1->TxStart();
-    bridgeThread_1->RxStart();
-
-	// Wait to recieve all messages back
-    INFO << "Start node application now";
-
-    dspThread1->dspPipelineUnPause();
-
-    std::this_thread::sleep_for(std::chrono::seconds(10));
-
-    INFO << "Test is done. Performing Cleanup";
-
-    delete bridgeThread_1;
-    delete dspThread1;
-
-}
+//void testCsv(char * filename)
+//{
+//    boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> newDataQueue{1000};
+//    boost::lockfree::queue<EVPacket*, boost::lockfree::fixed_sized<false>> cmdQueue{1000};
+//    boost::lockfree::queue<EVPacket*, boost::lockfree::fixed_sized<false>> bridge_rx{1000};
+//    loadFromFile(filename, &newDataQueue);
+//
+//    bridgeThread_1 = new Bridge("testPipe", &bridge_rx, &cmdQueue);
+//
+//    dspThread1 = new dspPipeline(&newDataQueue);
+//
+//    // start transfering to js
+//    bridgeThread_1->TxStart();
+//    bridgeThread_1->RxStart();
+//
+//	// Wait to recieve all messages back
+//    INFO << "Start node application now";
+//
+//    dspThread1->dspPipelineUnPause();
+//
+//    std::this_thread::sleep_for(std::chrono::seconds(10));
+//
+//    INFO << "Test is done. Performing Cleanup";
+//
+//    delete bridgeThread_1;
+//    delete dspThread1;
+//
+//}
 
 /*******************************************************************************
  * runSocketTest()
