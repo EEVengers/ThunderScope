@@ -368,15 +368,8 @@ void Bridge::RxJob() {
             rxPacket->data = (int8_t*)malloc(1);
         }
 
+        // Push packet to the controller so it has access to the other threads
         rxOutputQueue->push(rxPacket);
-
-        //for now just print and free the packet
-        PrintPacket(rxPacket);
-        FreePacket(rxPacket);
-        rxLock.lock();
-        //process whatever it is
-        // Operate on the packet that was recieved from Electron
-        rxLock.unlock();
     }
 }
 
