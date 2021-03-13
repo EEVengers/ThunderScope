@@ -3,9 +3,6 @@
 #include <fcntl.h>
 #include <cerrno>
 
-// Queues for Rx and Tx between C++ and Js
-std::queue<EVPacket*> _gtxQueue;
-
 /*******************************************************************************
  * FreePacket()
  *

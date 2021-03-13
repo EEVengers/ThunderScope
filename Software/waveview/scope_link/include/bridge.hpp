@@ -34,9 +34,6 @@ void PrintPacket(EVPacket* packet);
 
 void runSocketTest();
 
-// Queues for Rx and Tx between C++ and Js
-extern std::queue<EVPacket*> _gtxQueue;
-
 class Bridge {
 private:
 
