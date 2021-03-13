@@ -36,7 +36,6 @@ void runSocketTest();
 
 // Queues for Rx and Tx between C++ and Js
 extern std::queue<EVPacket*> _gtxQueue;
-extern std::queue<EVPacket*> _grxQueue;
 
 class Bridge {
 private:
@@ -61,9 +60,7 @@ private:
     std::thread rx_worker;
 
     // Queue to JS
-    std::queue<EVPacket*>& _txQueue;
-    // Queue From JS
-    std::queue<EVPacket*>& _rxQueue;
+    boost::lockfree::queue<EVPacket*, boost::lockfree::fixed_sized<false>> *txQueue;
 
     boost::lockfree::queue<EVPacket*, boost::lockfree::fixed_sized<false>> *rxOutputQueue;
 
@@ -76,14 +73,10 @@ private:
 
     int makeConnection( int targetSocket );
 
-    void push(EVPacket* newPacket);
-
-
 public:
 
     Bridge(const char* pipeName,
-           std::queue<EVPacket*>& txQueue,
-           std::queue<EVPacket*>& rxQueue,
+           boost::lockfree::queue<EVPacket*, boost::lockfree::fixed_sized<false>> *txQueue,
            boost::lockfree::queue<EVPacket*, boost::lockfree::fixed_sized<false>> *outputQ
            );
     ~Bridge();
@@ -95,6 +88,8 @@ public:
 
     int InitTxBridge();
     int InitRxBridge();
+
+    void push(EVPacket* newPacket);
 
 protected:
 

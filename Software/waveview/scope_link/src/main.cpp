@@ -58,6 +58,7 @@ void WebServerTest() {
 //    boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> dataQueue_4{1000};
 
     boost::lockfree::queue<EVPacket*, boost::lockfree::fixed_sized<false>> cmdQueue{1000};
+    boost::lockfree::queue<EVPacket*, boost::lockfree::fixed_sized<false>> mainBridge_rx{1000};
 
     Bridge* bridgeThread = NULL;
     dspPipeline* dspThread_1 = NULL;
@@ -85,7 +86,7 @@ bool parseCli (std::string line)
     } else if (line == "create") {
         if (bridgeThread == NULL) {
             INFO << "Creating Bridge";
-            bridgeThread = new Bridge("testPipe", _gtxQueue, _grxQueue, &cmdQueue);
+            bridgeThread = new Bridge("testPipe", &mainBridge_rx, &cmdQueue);
         } else {
             WARN << "Bridge already exists";
         }

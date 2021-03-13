@@ -5,7 +5,6 @@
 
 // Queues for Rx and Tx between C++ and Js
 std::queue<EVPacket*> _gtxQueue;
-std::queue<EVPacket*> _grxQueue;
 
 /*******************************************************************************
  * FreePacket()
@@ -54,12 +53,10 @@ void PrintPacket(EVPacket* packet) {
  *   None
  ******************************************************************************/
 Bridge::Bridge(const char* pipeName, 
-               std::queue<EVPacket*>& txQueue,
-               std::queue<EVPacket*>& rxQueue,
+               boost::lockfree::queue<EVPacket*, boost::lockfree::fixed_sized<false>> *txQueue,
                boost::lockfree::queue<EVPacket*, boost::lockfree::fixed_sized<false>> *outputQ
                ) :
-_txQueue(txQueue),
-_rxQueue(rxQueue)
+txQueue(txQueue)
 {
     // command packets from js
     rxOutputQueue = outputQ;
@@ -190,46 +187,33 @@ void Bridge::TxJob() {
         return;
     }
 #endif
+    EVPacket* currentPacket = NULL;
 
     while(tx_run.load() == true) {
-        //look into queue if there is anything to send
-        txLock.lock();
+        while(tx_run.load() == true && txQueue->pop(currentPacket)) {
 
-        if(_txQueue.empty()) {
-            txLock.unlock();
-            //if nothing sleep for 500us
-            std::this_thread::sleep_for(std::chrono::microseconds(500));
-
-        } else {
-            // send the packet
-
-            // get pointer to packet
-            EVPacket* txPacket = _txQueue.front();
-            _txQueue.pop();
-
-            // unlock the queue
-            txLock.unlock();
-
-            // Copy packet into tx_buff
-            uint16_t* txBuffCast = (uint16_t*)tx_buff;
-            int packet_size = 6 + txPacket->dataSize;
-            txBuffCast[0] = txPacket->command;
-            txBuffCast[1] = txPacket->packetID;
-            txBuffCast[2] = txPacket->dataSize;
-            memcpy(tx_buff+6,txPacket->data,txPacket->dataSize);
+                // Copy packet into tx_buff
+                uint16_t* txBuffCast = (uint16_t*)tx_buff;
+                int packet_size = 6 + currentPacket->dataSize;
+                txBuffCast[0] = currentPacket->command;
+                txBuffCast[1] = currentPacket->packetID;
+                txBuffCast[2] = currentPacket->dataSize;
+                memcpy(tx_buff+6,currentPacket->data,currentPacket->dataSize);
 
 #ifdef WIN32
-            // send the packet over a named pipe
-            unsigned long bytes_written;
-            WriteFile(tx_hPipe,tx_buff,packet_size,&bytes_written,NULL);
+                // send the packet over a named pipe
+                unsigned long bytes_written;
+                WriteFile(tx_hPipe,tx_buff,packet_size,&bytes_written,NULL);
 #else
-            // send the packet over a socket
-            PrintPacket(txPacket);
-            send(client_tx_sock,tx_buff,packet_size,0);
+                // send the packet over a socket
+                PrintPacket(currentPacket);
+                send(client_tx_sock,tx_buff,packet_size,0);
 #endif
-            //free the packet
-            free(txPacket);
+                //free the packet
+                free(currentPacket);
         }
+        // No more packets, sleep.
+        std::this_thread::sleep_for(std::chrono::microseconds(500));
     }
 }
 
@@ -691,21 +675,4 @@ int Bridge::RxStop() {
 
     INFO << "Rx stopped";
     return 0;
-}
-
-/*******************************************************************************
- * push()
- *
- * pushes a packet into the tx queue for transmission to JS.
- *
- * Arguments:
- *   EVPacket* newPacket - pointer to packet to send
- * Return:
- *   None
- ******************************************************************************/
-void Bridge::push(EVPacket* newPacket)
-{
-    std::lock_guard<std::mutex> lck (txLock);
-
-    _txQueue.push(newPacket);
 }

@@ -18,7 +18,7 @@
  ******************************************************************************/
 postProcessor::postProcessor(
         boost::lockfree::queue<int8_t*, boost::lockfree::fixed_sized<false>> *inputQ,
-        boost::lockfree::queue<int8_t*, boost::lockfree::fixed_sized<false>> *outputQ)
+        boost::lockfree::queue<EVPacket*, boost::lockfree::fixed_sized<false>> *outputQ)
 {
     // Check that queues exist
     assert(inputQ != NULL);
@@ -103,7 +103,8 @@ void postProcessor::coreLoop()
             currentPacket->dataSize = windowSize;
             currentPacket->data = postWindow;
 
-            _gtxQueue.push(currentPacket);
+            outputQueue->push(currentPacket);
+//            _gtxQueue.push(currentPacket);
 
 
             

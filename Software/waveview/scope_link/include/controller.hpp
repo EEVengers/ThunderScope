@@ -32,6 +32,7 @@ private:
     boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> dataQueue_3{1000};
     boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> dataQueue_4{1000};
 
+    boost::lockfree::queue<EVPacket*, boost::lockfree::fixed_sized<false>> controllerQueue_tx{1000};
     boost::lockfree::queue<EVPacket*, boost::lockfree::fixed_sized<false>> controllerQueue_rx{1000};
 
     Bridge* bridgeThread = NULL;
