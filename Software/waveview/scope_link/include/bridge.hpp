@@ -32,8 +32,6 @@ inline void FreePacket(EVPacket* packet);
 
 void PrintPacket(EVPacket* packet);
 
-void runSocketTest();
-
 class Bridge {
 private:
 
@@ -59,9 +57,8 @@ private:
     // Queue to JS
     boost::lockfree::queue<EVPacket*, boost::lockfree::fixed_sized<false>> *txQueue;
 
+    // Queue from JS
     boost::lockfree::queue<EVPacket*, boost::lockfree::fixed_sized<false>> *rxOutputQueue;
-
-    std::mutex txLock;
 
     std::atomic<bool> rx_run;
     std::atomic<bool> tx_run;
