@@ -8,45 +8,39 @@
 class controller
 {
 public:
-    controller();
+    controller(boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> *inputQ);
     ~controller(void);
-
-    // Push data into each dsp
-    void pushDSP_1(buffer* newBuffer);
-    void pushDSP_2(buffer* newBuffer);
-    void pushDSP_3(buffer* newBuffer);
-    void pushDSP_4(buffer* newBuffer);
-
-    // Configure number of channels
-    void setOneCh();
-    void setTwoCh();
-    void setFourCh();
 
     // Control Command Processor
     void controllerLoop();
     void controllerStop();
+    void controllerFlush();
+    void controllerUnPause();
+    void controllerPause();
 
 private:
-    boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> dataQueue_1{1000};
-    boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> dataQueue_2{1000};
-    boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> dataQueue_3{1000};
-    boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> dataQueue_4{1000};
+    // external queue
+    boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> *dataQueue;
+
+    // Internal queues
+    boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> triggerProcessorQueue{1000};
+    boost::lockfree::queue<int8_t*, boost::lockfree::fixed_sized<false>> processorPostProcessorQueue_1{1000};
 
     boost::lockfree::queue<EVPacket*, boost::lockfree::fixed_sized<false>> controllerQueue_tx{1000};
     boost::lockfree::queue<EVPacket*, boost::lockfree::fixed_sized<false>> controllerQueue_rx{1000};
 
+    // internal threads
     Bridge* bridgeThread = NULL;
-    dspPipeline* dspThread_1 = NULL;
-    dspPipeline* dspThread_2 = NULL;
-    dspPipeline* dspThread_3 = NULL;
-    dspPipeline* dspThread_4 = NULL;
-
-//    int8_t numActiveChannels;
+    Trigger* triggerThread = NULL;
+    Processor* processorThread = NULL;
+    postProcessor* postProcessorThread = NULL;
 
     // Control Command Processor
     std::thread controllerThread;
 
     std::atomic<bool> stopController;
+
+    int8_t triggerLevel = 0;
 };
 
 #endif
