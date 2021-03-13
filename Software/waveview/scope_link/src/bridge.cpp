@@ -55,11 +55,15 @@ void PrintPacket(EVPacket* packet) {
  ******************************************************************************/
 Bridge::Bridge(const char* pipeName, 
                std::queue<EVPacket*>& txQueue,
-               std::queue<EVPacket*>& rxQueue
+               std::queue<EVPacket*>& rxQueue,
+               boost::lockfree::queue<EVPacket*, boost::lockfree::fixed_sized<false>> *outputQ
                ) :
 _txQueue(txQueue),
 _rxQueue(rxQueue)
 {
+    // command packets from js
+    rxOutputQueue = outputQ;
+
     tx_run.store(false);
     rx_run.store(false);
 #ifdef WIN32
@@ -352,6 +356,8 @@ void Bridge::RxJob() {
         rxPacket->dataSize = rxBuff16[2];
 
         //check that the dataSize is valid (less than or equal to BUFF_SIZE - 6)
+        // TODO: Might be good idea to set data on all command packets to NULL
+        //       and check against it. It would save a lot of malloc.
         if(rxPacket->dataSize <= BRIDGE_BUFFER_SIZE - 6) {
             rxPacket->data = (int8_t*)malloc(rxPacket->dataSize);
             memcpy(rxPacket->data,rxBuffData,rxPacket->dataSize);
@@ -361,6 +367,8 @@ void Bridge::RxJob() {
             rxPacket->dataSize = 1;
             rxPacket->data = (int8_t*)malloc(1);
         }
+
+        rxOutputQueue->push(rxPacket);
 
         //for now just print and free the packet
         PrintPacket(rxPacket);

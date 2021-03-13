@@ -10,6 +10,7 @@
 #include <mutex>
 #include <iostream>
 #include <atomic>
+#include "common.hpp"
 
 #ifdef WIN32 //for windows use named pipes
 #include <windows.h>
@@ -26,30 +27,6 @@
 #define END_PACKET_COMMAND 0xEF
 #define END_PACKET_PACKETID 0xAB
 #define END_PACKET_DATA_SIZE 0x00
-
-// PACKET STRUCTURE
-//   _______________________________________________________________________________________________________
-//  |               |               |               |                                                       |
-//  |    Command    |   PacketID    |   dataSize    |       Packet Data                                     |
-//  |     16bits    |    16bits     |    16bits     |     However Many Bits as                              |
-//  |     2Bytes    |    2Bytes     |    2Bytes     |     Defined by dataSize                               |
-//  |               |               |               |                                                       |
-//  |_______________|_______________|_______________|_______________________________________________________|
-struct EVPacket {
-    // The command that is to be executed
-    // This does not change from recieve to transmit
-    uint16_t command;
-    // The ID of the command and packet. Used to ensure that the proper data ends up where it needs to be.
-    // Since multiple commands can be submitted in parallel and execution order is no guaranteed to be.
-    // The same as submission order.
-    // This does not change from recieve to transmit.
-    uint16_t packetID;
-    // The length of data
-    uint16_t dataSize;
-    // The relevant payload of the packet.
-    // The contents of the payload will can change when c++ sends the data back to the javascript
-    int8_t* data;
-};
 
 inline void FreePacket(EVPacket* packet);
 
@@ -88,6 +65,8 @@ private:
     // Queue From JS
     std::queue<EVPacket*>& _rxQueue;
 
+    boost::lockfree::queue<EVPacket*, boost::lockfree::fixed_sized<false>> *rxOutputQueue;
+
     std::mutex txLock;
     std::mutex rxLock;
 
@@ -105,7 +84,8 @@ public:
 
     Bridge(const char* pipeName,
            std::queue<EVPacket*>& txQueue,
-           std::queue<EVPacket*>& rxQueue
+           std::queue<EVPacket*>& rxQueue,
+           boost::lockfree::queue<EVPacket*, boost::lockfree::fixed_sized<false>> *outputQ
            );
     ~Bridge();
 

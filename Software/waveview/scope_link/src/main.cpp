@@ -8,6 +8,7 @@
 #include "EVTester.hpp"
 #include "dspPipeline.hpp"
 #include "logger.hpp"
+#include "controller.hpp"
 
 // for runSocketTest
 #include "bridge.hpp"
@@ -56,11 +57,14 @@ void WebServerTest() {
 //    boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> dataQueue_3{1000};
 //    boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> dataQueue_4{1000};
 
+    boost::lockfree::queue<EVPacket*, boost::lockfree::fixed_sized<false>> cmdQueue{1000};
+
     Bridge* bridgeThread = NULL;
     dspPipeline* dspThread_1 = NULL;
 //    dspPipeline* dspThread_2;
 //    dspPipeline* dspThread_3;
 //    dspPipeline* dspThread_4;
+    controller* controllerThread = NULL;
 
 bool parseCli (std::string line)
 {
@@ -81,7 +85,7 @@ bool parseCli (std::string line)
     } else if (line == "create") {
         if (bridgeThread == NULL) {
             INFO << "Creating Bridge";
-            bridgeThread = new Bridge("testPipe",_gtxQueue,_grxQueue);
+            bridgeThread = new Bridge("testPipe", _gtxQueue, _grxQueue, &cmdQueue);
         } else {
             WARN << "Bridge already exists";
         }
@@ -92,6 +96,9 @@ bool parseCli (std::string line)
         } else {
             WARN << "Channel 1 already exists";
         }
+
+    } else if (line == "controller") {
+        controllerThread = new controller();
 
     } else if (line == "connect") {
         if (bridgeThread == NULL) {
