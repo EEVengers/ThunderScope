@@ -2,25 +2,44 @@
 #include "logger.hpp"
 #include "common.hpp"
 
-Processor::Processor(boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> *inputQ)
+Processor::Processor(
+        boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> *inputQ,
+        boost::lockfree::queue<int8_t*, boost::lockfree::fixed_sized<false>> *outputQ)
 {
     // Check that queues exist
     assert(inputQ != NULL);
 
     // Initialize variables
     inputQueue = inputQ;
+    outputQueue = outputQ;
 
     clearCount();
     countProcessed = 0;
 
     windowProcessed = NULL;
 
-    threadExists.store(false);
     stopTransfer.store(false);
     pauseTransfer.store(true);
     windowStored.store(false);
 
-    updateWindowSize(windowSize, persistanceSize);
+    updateWinPerSize(windowSize, persistanceSize);
+
+    // create new thread
+    processorThread = std::thread(&Processor::coreLoop, this);
+
+    INFO << "Created processor thread";
+}
+
+Processor::~Processor(void)
+{
+    INFO << "Processor Destructor Called";
+
+    // Stop the transer and join thread
+    processorPause();
+    processorStop();
+    processorThread.join();
+
+    INFO << "Destroyed processor thread";
 }
 
 // Returns the offset of the next trigger in the current buffer
@@ -132,10 +151,17 @@ void Processor::coreLoop()
                 // (when finished a window)
                 if (windowCol == windowSize) {
                     windowCol = 0;
+
+                    // TODO: Find a better way to do this. Its not very thread
+                    //       safe to pass a pointer to data held in one thread
+                    //       to another thread. Making it immutable might help.
+                    outputQueue->push(windowProcessed + (windowCol + windowRow * windowSize));
+
+                    // Setup next trigger in persistance buffer
                     windowRow++;
 
                     // Push it into the next 64 space so we don't
-                    // trigger on the same twice
+                    // trigger on the same spot twice
                     bufferCol += 64;
                     INFO << "full window. windowCol: "
                          << windowCol;
@@ -146,7 +172,7 @@ void Processor::coreLoop()
                 }
 
                 if (windowRow == persistanceSize) {
-                    // Window persistance buffer filled
+                    // Window persistance buffer filled. write to csv
                     INFO << "Dumping to csv";
 
                     writeToCsv(filename,
@@ -165,8 +191,26 @@ void Processor::coreLoop()
     }
 }
 
-void Processor::updateWindowSize(uint32_t newWinSize, uint32_t newPerSize)
+void Processor::flushPersistence()
 {
+    updateWinPerSize(windowSize, persistanceSize);
+}
+
+void Processor::updatePerSize(uint32_t newPerSize)
+{
+    updateWinPerSize(windowSize, newPerSize);
+}
+
+void Processor::updateWinSize(uint32_t newWinSize)
+{
+    updateWinPerSize(newWinSize, persistanceSize);
+}
+
+void Processor::updateWinPerSize(uint32_t newWinSize, uint32_t newPerSize)
+{
+    processorPause();
+    windowStored.store(false);
+
     // Delete old window space
     if (windowProcessed != NULL) {
         delete windowProcessed;
@@ -183,44 +227,6 @@ void Processor::updateWindowSize(uint32_t newWinSize, uint32_t newPerSize)
     // Create a new window space as a single array
     windowProcessed = new int8_t [windowSize * persistanceSize];
 }
-
-void Processor::createThread()
-{
-    const std::lock_guard<std::mutex> lock(lockThread);
-
-    // Check it thread created
-    if (threadExists.load() == false) {
-        // create new thread
-        processorThread = std::thread(&Processor::coreLoop, this);
-
-        // set thread exists flag
-        threadExists.store(true);
-    } else {
-        // Thread already created
-        throw EVException(10, "Processor::createThread(): Thread already created");
-    }
-    INFO << "Created processor thread";
-}
-
-void Processor::destroyThread()
-{
-    const std::lock_guard<std::mutex> lock(lockThread);
-
-    if (threadExists.load() == true) {
-        // Stop the transer and join thread
-        processorPause();
-        processorStop();
-        processorThread.join();
-
-        // clear thread exists flag
-        threadExists.store(false);
-    } else {
-        // Thread does not exist
-        throw EVException(10, "createThread(): thread does not exist");
-    }
-    INFO << "Destroyed processor thread";
-}
-
 
 std::chrono::high_resolution_clock::time_point Processor::getTimeFilled()
 {

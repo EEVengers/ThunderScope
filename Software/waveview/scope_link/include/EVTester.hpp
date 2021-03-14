@@ -11,10 +11,8 @@ void TestDataThroughput();
 
 void testTriggerThroughput();
 
-void testBenchmark();
-
 void testCsv(char * filename);
 
-void initializePipeline();
+bool loadFromFile ( char* filename, boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> *outputQ);
 
 #endif /* EVTester_hpp */

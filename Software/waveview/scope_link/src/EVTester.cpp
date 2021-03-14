@@ -3,9 +3,16 @@
 #include "dataTransferHandler.hpp"
 #include "processor.hpp"
 #include "trigger.hpp"
+#include "postProcessor.hpp"
+#include "bridge.hpp"
+#include "dspPipeline.hpp"
 #include <boost/tokenizer.hpp>
 
 uint32_t testSize = 1000;
+
+Bridge* bridgeThread_1;
+dspPipeline* dspThread1;
+
 
 bool loadFromFile ( char* filename, boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> *outputQ)
 {
@@ -22,27 +29,32 @@ bool loadFromFile ( char* filename, boost::lockfree::queue<buffer*, boost::lockf
     bufferAllocator.construct(tempBuffer);
     uint32_t tmpBufPos = 0;
 
+    if (!stream.is_open()) {
+        ERROR << "Stream is closed. Expects relative path. Run from waveview folder";
+        return false;
+    }
+
     while (std::getline(stream, tmp, delim)) {
+//        INFO << "Parsing line into buffer";
         // Parse the line into a buffer
         typedef boost::tokenizer<boost::char_separator<char>> tokenizer;
         boost::char_separator<char> sep{","};
         tokenizer tok{tmp, sep};
         for (const auto &t : tok) {
 
-#ifdef DBG
             if (std::stoi(t) > 255) {
-                INFO << "Error: Number greater than 255";
+                ERROR << "Number greater than 255";
             } else if (std::stoi(t) > INT8_MAX) {
-                INFO << "Error: Number greater than 127 is converted to negative";
+                ERROR << "Number greater than 127 is converted to negative";
             } else if ((int8_t)std::stoi(t) < -128) {
-                INFO << "Error: Number less than -128";
+                ERROR << "Number less than -128";
             }
-#endif
 
             tempBuffer->data[tmpBufPos] = (int8_t)std::stoi(t);
 
             tmpBufPos++;
             if (tmpBufPos == BUFFER_SIZE) {
+                INFO << "Adding buffer to queue from file";
                 // Buffer is now full push it
                 outputQ->push(tempBuffer);
 
@@ -169,132 +181,6 @@ void testTriggerThroughput()
     INFO << "Triggered GiB/s: " << triggeredGBps;
 }
 
-void testBenchmark()
-{
-    // Create queue
-    boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> newDataQueue{1000};
-    boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> triggeredQueue{1000};
-
-    loadFromRand(&newDataQueue);
-
-    // Create trigger method
-    int8_t triggerLevel = 10;
-    Trigger trigger(&newDataQueue, &triggeredQueue, triggerLevel);
-    trigger.createThread();
-
-    // Create processor method
-    Processor processor(&triggeredQueue);
-    processor.createThread();
-
-    // Measure triggering time
-    // collect timestamp
-    auto start = std::chrono::high_resolution_clock::now();
-
-    // Start trigger
-    trigger.triggerUnpause();
-
-    // wait for triggering to finish
-    while (trigger.getTriggerStatus() == false) {
-        std::this_thread::sleep_for(std::chrono::microseconds(100));
-    }
-
-    // collect timestamp
-    auto end = std::chrono::high_resolution_clock::now();
-    auto timeTrigger = end - start;
-
-    uint32_t bytesTriggered = testSize * BUFFER_SIZE;
-    double triggeredBps = ((double)bytesTriggered * S_TO_NS
-                            / timeTrigger.count());
-    double triggeredGBps = (((double)bytesTriggered * S_TO_NS)
-                            / (timeTrigger.count()
-                            * GIB_TO_GB));
-
-    INFO << "Time Elapsed Triggering: " << timeTrigger.count() << " ns";
-    INFO << "Triggered B: " << bytesTriggered << " B";
-    INFO << "Triggered B/s: " << triggeredBps;
-    INFO << "Triggered GiB/s: " << triggeredGBps;
-    
-
-    // TODO: write processor benchmarking
-    // measure processor
-    // collect timestamp
-    // Start Processor
-    processor.processorUnpause();
-    // wait for processing to finish
-    // collect timestamp
-
-    // Wait until window if full
-    while (processor.getWindowStatus() == false) {
-        std::this_thread::sleep_for(std::chrono::microseconds(100));
-    }
-
-    INFO << std::endl << "Test is done. Performing Cleanup";
-    trigger.destroyThread();
-    processor.destroyThread();
-}
-
-Trigger* triggerThread;
-Processor* processorThread;
-
-/*******************************************************************************
- * initializePipeline()
- *
- * Creates the threads for the pipeline and starts processing
- *
- * Arguments: None
- *
- * Return: void
- ******************************************************************************/
-void initializePipeline()
-{
-    // Create queue
-    boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> newDataQueue{1000};
-    boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> triggeredQueue{1000};
-
-    if (inputFile != NULL) {
-        loadFromFile(inputFile, &newDataQueue);
-    } else {
-		std::string inputFileName = "test1.csv";
-        inputFile = (char *)malloc(inputFileName.size() + 1);
-		memcpy(inputFile, inputFileName.c_str(), inputFileName.size() + 1);
-        // TODO: Initialize the pcie drivers and pass it the newDataQueue.
-		//       Replace this whole else statement with the driver stuff.
-    }
-
-    // Create trigger method
-    int8_t triggerLevel = 10;
-	triggerThread = new Trigger(&newDataQueue, &triggeredQueue, triggerLevel);
-	triggerThread->createThread();
-
-    // Create processor method
-    processorThread = new Processor(&triggeredQueue);
-	processorThread->createThread();
-
-    // Start all methods
-    processorThread->processorUnpause();
-    triggerThread->triggerUnpause();
-}
-
-/*******************************************************************************
- * cleanPipeline()
- *
- * Deletes and frees memory created for the pipeline
- *
- * Arguments: None
- *
- * Return: void
- ******************************************************************************/
-void cleanPipeline() {
-    INFO << "Performing Cleanup";
-	if (inputFile != NULL) {
-		free(inputFile);
-	}
-
-    triggerThread->destroyThread();
-    processorThread->destroyThread();
-	INFO << "Cleanup Finished";
-}
-
 /*******************************************************************************
  * testCsv()
  *
@@ -307,138 +193,69 @@ void cleanPipeline() {
  ******************************************************************************/
 void testCsv(char * filename)
 {
-	// TODO: Cleanup. Remove duplicate code here with other functions
-
-    // Create queue
     boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> newDataQueue{1000};
-    boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> triggeredQueue{1000};
-
+    boost::lockfree::queue<EVPacket*, boost::lockfree::fixed_sized<false>> cmdQueue{1000};
     loadFromFile(filename, &newDataQueue);
 
-    // Create trigger method
-    int8_t triggerLevel = 10;
-    Trigger trigger(&newDataQueue, &triggeredQueue, triggerLevel);
-    trigger.createThread();
+    bridgeThread_1 = new Bridge("testPipe",_gtxQueue,_grxQueue, &cmdQueue);
 
-    // Create processor method
-    Processor processor(&triggeredQueue);
-    processor.createThread();
+    dspThread1 = new dspPipeline(&newDataQueue);
 
-    // Start all methods
-    processor.processorUnpause();
-    trigger.triggerUnpause();
+    // start transfering to js
+    bridgeThread_1->TxStart();
+    bridgeThread_1->RxStart();
 
-    // Wait until window if full
-    while (processor.getWindowStatus() == false) {
-        std::this_thread::sleep_for(std::chrono::microseconds(100));
-    }
+	// Wait to recieve all messages back
+    INFO << "Start node application now";
+
+    dspThread1->dspPipelineUnPause();
+
+    std::this_thread::sleep_for(std::chrono::seconds(10));
 
     INFO << "Test is done. Performing Cleanup";
-    trigger.destroyThread();
-    processor.destroyThread();
+
+    delete bridgeThread_1;
+    delete dspThread1;
+
 }
 
-void TestDataThroughput()
+/*******************************************************************************
+ * runSocketTest()
+ *
+ * Creats a bridge, sends a test packet across the bridge and cleans up after
+ * recieving a response.
+ *
+ * Arguments:
+ *   None
+ * Return:
+ *   int - 0 on success, error code on failure
+ ******************************************************************************/
+void runSocketTest ()
 {
-    unsigned int bytesRead = 0;
+    boost::lockfree::queue<EVPacket*, boost::lockfree::fixed_sized<false>> cmdQueue{1000};
+    char in[10] = {};
 
-    // Lock free queue of new data comming from FTDI through handler
-    boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> newDataQueue{1000};
-    boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> triggeredQueue{1000};
+    // Create packet
+    EVPacket* testPacket = (EVPacket*)malloc(sizeof(EVPacket));
+    testPacket->command = 1;
+    testPacket->packetID = 0x0808;
+    testPacket->dataSize = 5;
+    testPacket->data = (int8_t*)malloc(5);
+    testPacket->data[0] = 1;
+    testPacket->data[1] = 2;
+    testPacket->data[2] = 3;
+    testPacket->data[3] = 4;
+    testPacket->data[4] = 5;
 
-    // ****************** Transfering **********************
-    INFO << "Beining Transfer Test";
+    // Pass packet to tx queue
+    _gtxQueue.push(testPacket);
+    Bridge* bridgeThread_1 = new Bridge("testPipe",_gtxQueue,_grxQueue, &cmdQueue);
 
-    // create transfer thread
-    DataTransferHandler dataExchanger(&newDataQueue);
-    dataExchanger.SetCopyFunc(DataTransferFullBuffRead);
-    dataExchanger.createThread();
-    INFO << "Finished Creating dataExchanger";
+    // start transfering
+    bridgeThread_1->TxStart();
+    bridgeThread_1->RxStart();
 
-    // run and queue transfer
-    auto startTransfer = std::chrono::high_resolution_clock::now();
-    dataExchanger.transferUnpause();
+    std::cin >> in;
 
-    std::this_thread::sleep_for(std::chrono::seconds(TEST_RUN_TIME));
-
-    // stop transfer
-    dataExchanger.stopHandler();
-    auto endTransfer = std::chrono::high_resolution_clock::now();
-
-    auto timeElapsedTransfer = endTransfer - startTransfer;
-
-    bytesRead = dataExchanger.bytesRead;
-    double readBps = ((double)bytesRead * S_TO_NS / timeElapsedTransfer.count());
-    double readGBps = (((double)bytesRead * S_TO_NS) / (timeElapsedTransfer.count() * GIB_TO_GB));
-    INFO << "Finished transfering";
-
-    // log the output
-    INFO << "Transfer Count: " << dataExchanger.getCount();
-    INFO << "Time Elapsed Transfering: " << timeElapsedTransfer.count() << " ns";
-    INFO << "Read B: " << bytesRead << " B";
-    INFO << "Read B/s: " << readBps;
-    INFO << "Read GiB/s: " << readGBps;
-
-    // ****************** Triggering **********************
-    INFO << std::endl << "Beggining Triggering Test";
-
-    // create trigger thread
-    Trigger trigger(&newDataQueue, &triggeredQueue, 127);
-    trigger.createThread();
-    INFO << "Finished Creating trigger";
-
-    // run trigger and queue
-//    auto startTrigger = std::chrono::high_resolution_clock::now();
-
-//    while (!trigger.getWindowStatus()) {
-//        std::this_thread::sleep_for(std::chrono::microseconds(100));
-//    }
-
-//    auto endTrigger = trigger.getTimeTriggerd();
-//    
-//    auto timeElapsedTrigger = endTrigger - startTrigger;
-//
-//    uint32_t bytesTriggered = trigger.getCountBytes();
-//    double triggeredBps = ((double)bytesTriggered * S_TO_NS
-//                            / timeElapsedTrigger.count());
-//    double triggeredGBps = (((double)bytesTriggered * S_TO_NS)
-//                            / (timeElapsedTrigger.count()
-//                            * GIB_TO_GB));
-//
-//    INFO << "Trigger Count: " << trigger.getCount();
-//    INFO << "Time Elapsed Triggering: " << timeElapsedTrigger.count() << " ns";
-//    INFO << "Triggered B: " << bytesTriggered << " B";
-//    INFO << "Triggered B/s: " << triggeredBps;
-//    INFO << "Triggered GiB/s: " << triggeredGBps;
-
-    // ******************* Post Processing **********************
-    INFO << "Beggining Post Processing Test";
-
-//    Processor postProcessor(&newDataQueue);
-    Processor postProcessor(&triggeredQueue);
-    postProcessor.createThread();
-    INFO << "Finished Creating postProcessor";
-
-    auto startProcessor = std::chrono::high_resolution_clock::now();
-
-    auto endProcessor = postProcessor.getTimeFilled();
-
-    auto timeElapsedProcessed = endProcessor - startProcessor;
-
-    uint32_t bytesProcessed = postProcessor.getCountBytes();
-    double processedBps = ((double)bytesProcessed
-                            / (timeElapsedProcessed.count()) * S_TO_NS);
-    double processedGBps = ((double)bytesProcessed
-                            / timeElapsedProcessed.count())
-                            * ((double)S_TO_NS / GIB_TO_GB);
-
-    INFO << "Processor Count: " << postProcessor.getCount();
-    INFO << "Processed B: " << bytesProcessed;
-    INFO << "Processed B/s: " << processedBps;
-    INFO << "Processed GiB/s: " << processedGBps;
-
-    // Cleanup thread
-    dataExchanger.destroyThread();
-    trigger.destroyThread();
-    postProcessor.destroyThread();
+    delete bridgeThread_1;
 }

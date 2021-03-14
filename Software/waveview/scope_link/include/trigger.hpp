@@ -2,7 +2,6 @@
 #define trigger_hpp
 
 #include <atomic>
-#include <boost/lockfree/queue.hpp>
 #include <thread>
 #include <bitset>
 
@@ -18,12 +17,11 @@ public:
             boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> *outputQ,
             int8_t level);
 
+    ~Trigger();
+
     void checkTrigger(buffer* currentBuffer);
 
     void coreLoop();
-
-    void createThread();
-    void destroyThread();
 
     uint32_t getCount();
     uint32_t getCountBytes();
@@ -57,7 +55,6 @@ private:
     std::atomic<bool> stopTrigger;
     std::atomic<bool> pauseTrigger;
     std::atomic<bool> triggerMet;
-    std::atomic<bool> threadExists;
 };
 
 #endif

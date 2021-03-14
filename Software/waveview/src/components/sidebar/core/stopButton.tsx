@@ -7,7 +7,7 @@ function StopButton() {
   }
 
   return (
-    <div>
+    <div className={"StopButtonComponent"}>
       <button
         className={"StopButton"}
         onClick={handleStopClick}
