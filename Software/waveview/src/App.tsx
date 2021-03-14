@@ -24,8 +24,7 @@ class App extends React.Component {
     super(props);
     this.state = initialState;
     this.generatorList = [
-      new TestPoints(1000, 300, "sinc"),
-      new TestPoints(1000, 300, "sine")
+      new TestPoints(1000, 20, "sinc")
     ];
     this.channelList = [
       {color: "#EBFF00", className: "Channel1"},
@@ -38,7 +37,7 @@ class App extends React.Component {
   componentDidMount() {
     this.timerID = window.setInterval(
       () => this.tick(),
-      16.67
+      33.33
     )
   }
 
@@ -50,7 +49,7 @@ class App extends React.Component {
     let tickCount = this.state.tickCount + 1;
     for(let generator of this.generatorList)
     {
-      generator.update(tickCount);
+      generator.update();
     }
     this.setState({tickCount: tickCount});
   }

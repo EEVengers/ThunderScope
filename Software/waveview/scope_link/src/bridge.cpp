@@ -304,11 +304,11 @@ void Bridge::RxJob() {
             int err = GetLastError();
             if (err == 234) {
                 // more data exists. Wait for it
-                std::this_thread::sleep_for(std::chrono::milliseconds(500));
+                std::this_thread::sleep_for(std::chrono::microseconds(500));
             } else if (err == 109) {
                 // not enough bytes in pipeline
                 // Skip error packet
-                std::this_thread::sleep_for(std::chrono::milliseconds(500));
+                std::this_thread::sleep_for(std::chrono::microseconds(500));
                 continue;
             } else {
                 INFO << "rx_pipe data_read: Error: " << GetLastError();
@@ -326,7 +326,7 @@ void Bridge::RxJob() {
             switch (errno) {
                 case EWOULDBLOCK:
                     // No data on socket. sleep
-                    std::this_thread::sleep_for(std::chrono::milliseconds(500));
+                    std::this_thread::sleep_for(std::chrono::microseconds(500));
                     continue;
                 default:
                     perror("recv returned error: ");
@@ -340,11 +340,7 @@ void Bridge::RxJob() {
         }
 #endif
         //process whatever is sent (for now just print it)
-        printf("Packet Size: %d, Packet Info:\n",(int)packet_size);
-        for(int i = 0; i < (int)packet_size; i++)
-            printf("%X ",rxBuff[i]);
-        printf("\n");
-
+        
         // TODO: you can just cast it as the struct and access things that way
         uint16_t* rxBuff16 = (uint16_t*) rxBuff;
         uint8_t* rxBuffData = (uint8_t*) (rxBuff + 6);
@@ -366,6 +362,19 @@ void Bridge::RxJob() {
             // packet payloads enabled
             rxPacket->dataSize = 1;
             rxPacket->data = (int8_t*)malloc(1);
+        }
+
+        if(rxPacket->command == 0x1F) {
+            EVPacket* tempPacket = (EVPacket*) malloc(sizeof(EVPacket));
+            tempPacket->data = (int8_t*) malloc(1024);
+            tempPacket->dataSize = 1024;
+            tempPacket->packetID = 0x11;
+            for(int i = 0; i < 1024; i++) {
+                tempPacket->data[i] = i % 24;
+            }
+            txLock.lock();
+            _txQueue.push(tempPacket);
+            txLock.unlock();
         }
 
         // Push packet to the controller so it has access to the other threads
