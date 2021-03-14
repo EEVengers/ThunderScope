@@ -33,14 +33,28 @@ class TestPoints {
       this.data = [];
     }
 
-    const thunderBridge = (window as any).thunderBridge;
+    /*const thunderBridge = (window as any).thunderBridge;
     thunderBridge.write("Hello from Electron!", () => {});
     const buf = Buffer.alloc(50);
     thunderBridge.read(buf, (err: any, bRead: number, bytes: Uint8Array) => {
       console.log("Bytes read:" + bRead);
       const s = new TextDecoder("utf-8").decode(bytes);
       console.log(s);
-    });
+    });*/
+
+    const thunderBridge = (window as any).thunderBridge;
+
+    var testPacket16 = new Uint16Array(new ArrayBuffer(10));
+    testPacket16[0] = 1;
+    testPacket16[1] = 0x1F2C;
+    testPacket16[2] = 4;
+    var testPacket = new Uint8Array(testPacket16.buffer);
+    testPacket[6] = 1;
+    testPacket[7] = 2;
+    testPacket[8] = 3;
+    testPacket[9] = 4;
+
+    thunderBridge.write(testPacket,() => {});
   }
 
   update(tickCount: number) {
