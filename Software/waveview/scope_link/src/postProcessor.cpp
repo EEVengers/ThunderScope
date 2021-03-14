@@ -95,8 +95,6 @@ void postProcessor::coreLoop()
             std::cout << std::endl;
 
             // Pass processed window to next stage
-//            outputQueue->push(postWindow);
-
             currentPacket = (EVPacket*)malloc(sizeof(EVPacket));
             currentPacket->command = 1;
             currentPacket->packetID = 0x0808;
