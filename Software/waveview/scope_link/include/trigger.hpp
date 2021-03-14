@@ -38,6 +38,9 @@ public:
     int8_t getTriggerLevel();
     void setTriggerLevel(int8_t newLevel);
 
+    void setCh (int8_t newCh);
+    void setTriggerCh (int8_t newTriggerCh);
+
     /* variables */
 
 private:
@@ -58,6 +61,10 @@ private:
     std::atomic<bool> stopTrigger;
     std::atomic<bool> pauseTrigger;
     std::atomic<bool> triggerMet;
+
+    int8_t numCh = 1;
+    // valid numbers are 0, 1, 3 for math reasons
+    int8_t triggerCh = 0;
 };
 
 #endif

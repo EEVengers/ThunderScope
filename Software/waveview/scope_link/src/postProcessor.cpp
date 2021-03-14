@@ -114,6 +114,25 @@ void postProcessor::coreLoop()
 }
 
 /*******************************************************************************
+ * setCh()
+ *
+ * Sets the number of channels.
+ *
+ * Arguments:
+ *   None
+ * Return:
+ *   None
+ ******************************************************************************/
+void postProcessor::setCh (int8_t newCh)
+{
+    if (newCh == 1 || newCh == 2 || newCh == 4) {
+        numCh = newCh;
+    } else {
+        ERROR << "not a valid number of channels: " << numCh;
+    }
+}
+
+/*******************************************************************************
  * postProcessorStart()
  *
  * Start the outer loop.

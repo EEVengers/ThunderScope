@@ -21,6 +21,8 @@ public:
     void postProcessorPause();
     void postProcessorUnpause();
 
+    void setCh (int8_t newCh);
+
     /* variables */
 
 private:
@@ -36,6 +38,8 @@ private:
 
     std::atomic<bool> stopTransfer;
     std::atomic<bool> pauseTransfer;
+
+    int8_t numCh = 1;
 };
 
 #endif

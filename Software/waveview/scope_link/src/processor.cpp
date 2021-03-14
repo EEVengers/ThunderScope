@@ -191,6 +191,15 @@ void Processor::coreLoop()
     }
 }
 
+void Processor::setCh (int8_t newCh)
+{
+    if (newCh == 1 || newCh == 2 || newCh == 4) {
+        numCh = newCh;
+    } else {
+        ERROR << "not a valid number of channels: " << numCh;
+    }
+}
+
 void Processor::flushPersistence()
 {
     updateWinPerSize(windowSize, persistanceSize);
