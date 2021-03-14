@@ -15,4 +15,6 @@ void testCsv(char * filename);
 
 bool loadFromFile ( char* filename, boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> *outputQ);
 
+void runPCIeTest();
+
 #endif /* EVTester_hpp */

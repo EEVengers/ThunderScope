@@ -6,6 +6,7 @@
 #include "postProcessor.hpp"
 #include "bridge.hpp"
 #include "dspPipeline.hpp"
+#include "PCIe.hpp"
 #include <boost/tokenizer.hpp>
 
 uint32_t testSize = 1000;
@@ -228,7 +229,7 @@ void testCsv(char * filename)
  * Arguments:
  *   None
  * Return:
- *   int - 0 on success, error code on failure
+ *   None
  ******************************************************************************/
 void runSocketTest ()
 {
@@ -258,4 +259,24 @@ void runSocketTest ()
     std::cin >> in;
 
     delete bridgeThread_1;
+}
+
+
+/*******************************************************************************
+ * runPCIeTEST()
+ *
+ * Attempts to connect to the Xilinx FPGA through PCIe, and attempts to write and read 8Mbytes
+ *
+ * Arguments:
+ *   None
+ * Return:
+ *   None
+ ******************************************************************************/
+void runPCIeTest() {
+    PCIeLink* pcieLink = new PCIeLink();
+
+    pcieLink->Connect();
+    pcieLink->Write(test_write,nullptr);
+
+    delete pcieLink;
 }

@@ -38,6 +38,10 @@ void parseCommandLineArgs(int argc, char** args) {
             INFO << "Running socket test";
 
             runSocketTest();
+        } else if(std::string(args[1]) == "--PCIE") {
+            INFO << "Running PCIE test";
+
+            runPCIeTest();
         } else {
             ERROR << "Invalid arguments. Use -t <filename.csv> or --TestSinc or --TestDataThroughput";
         }
