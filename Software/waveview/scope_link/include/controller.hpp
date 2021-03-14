@@ -17,6 +17,8 @@ public:
     void controllerFlush();
     void controllerUnPause();
     void controllerPause();
+    void setLevel( int8_t newLevel );
+    int8_t getLevel();
 
 private:
     // external queue

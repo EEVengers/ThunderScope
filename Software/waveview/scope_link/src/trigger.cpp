@@ -295,3 +295,14 @@ void Trigger::clearCount()
 {
     setCount(0);
 }
+
+void Trigger::setTriggerLevel(int8_t newLevel )
+{
+    triggerPause();
+    triggerLevel = newLevel;
+}
+
+int8_t Trigger::getTriggerLevel()
+{
+    return triggerLevel;
+}

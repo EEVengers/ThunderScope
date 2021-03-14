@@ -160,3 +160,37 @@ void controller::controllerFlush()
     count = processorPostProcessorQueue_1.consume_all(free);
     INFO << "Flushed postProcessorQueue: " << count;
 }
+
+/*******************************************************************************
+ * getTriggerLevel()
+ *
+ * returns the trigger level.
+ *
+ * Arguments:
+ *   int8_t newLevel - New level for the trigger function
+ * Return:
+ *   None
+ ******************************************************************************/
+int8_t controller::getLevel()
+{
+    return triggerThread->getTriggerLevel();
+}
+
+/*******************************************************************************
+ * setTriggerLevel()
+ *
+ * flushes the pipeline and sets a new trigger level.
+ *
+ * Arguments:
+ *   int8_t newLevel - New level for the trigger function
+ * Return:
+ *   None
+ ******************************************************************************/
+void controller::setLevel( int8_t newLevel )
+{
+    triggerThread->setTriggerLevel(newLevel);
+
+    INFO << "new trigger level: " << triggerThread->getTriggerLevel();
+
+    controllerFlush();
+}
