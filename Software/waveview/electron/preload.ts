@@ -8,7 +8,6 @@ import { contextBridge } from 'electron';
 const SOCKET_PREFIX = (process.platform == "win32") ? "\\\\.\\pipe\\" : "/tmp/";
 const SOCKETFILE_TX = SOCKET_PREFIX + "testPipeRX";
 const SOCKETFILE_RX = SOCKET_PREFIX + "testPipeTX";
-exec('.\\scope_link\\bridge.exe', (err, stdout, stderr) => {});
 
 var TX_FD = -1;
 var RX_FD = -1;
