@@ -18,7 +18,7 @@ fs.open(SOCKETFILE_RX, "r", (err, fd) => {RX_FD = fd;});
 //Welcome to the future: https://www.electronjs.org/docs/tutorial/context-isolation
 contextBridge.exposeInMainWorld("thunderBridge", {
   write: (buf: Uint8Array, cb: any) => fs.write(TX_FD, buf, 0, cb),
-  read: (buf: Uint8Array, cb: any) => fs.read(RX_FD, buf, 0, buf.length, null, cb)
+  read: (buf: Uint8Array, cb: any) => fs.read(RX_FD, buf, 0, buf.length, 0, cb)
 });
 
 window.addEventListener("DOMContentLoaded", () => {

@@ -32,16 +32,7 @@ class TestPoints {
     else {
       this.data = [];
     }
-
-    /*const thunderBridge = (window as any).thunderBridge;
-    thunderBridge.write("Hello from Electron!", () => {});
-    const buf = Buffer.alloc(50);
-    thunderBridge.read(buf, (err: any, bRead: number, bytes: Uint8Array) => {
-      console.log("Bytes read:" + bRead);
-      const s = new TextDecoder("utf-8").decode(bytes);
-      console.log(s);
-    });*/
-
+    
     const thunderBridge = (window as any).thunderBridge;
 
     var testPacket16 = new Uint16Array(new ArrayBuffer(10));
@@ -55,6 +46,14 @@ class TestPoints {
     testPacket[9] = 4;
 
     thunderBridge.write(testPacket,() => {});
+
+    var rxBuff = new Uint8Array(new ArrayBuffer(4096));
+    thunderBridge.read(rxBuff, (err: NodeJS.ErrnoException, bytesRead: number, bytes: Uint8Array) => {
+      /*Only appears on exit: why is that???*/
+      if(bytes != undefined)
+        console.log(bytesRead);
+      console.log(new Uint8Array(bytes));
+    });
   }
 
   update(tickCount: number) {
