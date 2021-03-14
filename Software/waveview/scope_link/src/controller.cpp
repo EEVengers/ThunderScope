@@ -9,14 +9,20 @@ controller::controller(boost::lockfree::queue<buffer*, boost::lockfree::fixed_si
     // command packet parser thread
     controllerThread = std::thread(&controller::controllerLoop, this);
 
+    // Bridge to JS
     bridgeThread = new Bridge("testPipe", &controllerQueue_tx, &controllerQueue_rx);
     bridgeThread->TxStart();
     bridgeThread->RxStart();
 
-    triggerLevel = 10;
+    // Create pipeline threads
     triggerThread = new Trigger(dataQueue, &triggerProcessorQueue, triggerLevel);
     processorThread = new Processor(&triggerProcessorQueue, &processorPostProcessorQueue_1);
     postProcessorThread = new postProcessor(&processorPostProcessorQueue_1, &controllerQueue_tx);
+
+    // set default values
+    setCh(1);
+    setTriggerCh(1);
+    setLevel(50);
 
     INFO << "Controller Created";
 }
@@ -188,9 +194,51 @@ int8_t controller::getLevel()
  ******************************************************************************/
 void controller::setLevel( int8_t newLevel )
 {
-    triggerThread->setTriggerLevel(newLevel);
+    triggerLevel = newLevel;
+
+    triggerThread->setTriggerLevel(triggerLevel);
 
     INFO << "new trigger level: " << triggerThread->getTriggerLevel();
+
+    controllerFlush();
+}
+
+/*******************************************************************************
+ * setCh()
+ *
+ * sets the number of channels on each stage of the pipeline.
+ *
+ * Arguments:
+ *   int8_t newCh - desired number of channels;
+ * Return:
+ *   None
+ ******************************************************************************/
+void controller::setCh (int8_t newCh)
+{
+    controllerPause();
+
+    triggerThread->setCh(newCh);
+    processorThread->setCh(newCh);
+    postProcessorThread->setCh(newCh);
+
+    controllerFlush();
+}
+
+/*******************************************************************************
+ * setTriggerCh()
+ *
+ * set Trigger channel.
+ *
+ * Arguments:
+ *   int8_t newTriggerCh - desired trigger channel;
+ * Return:
+ *   None
+ ******************************************************************************/
+void controller::setTriggerCh (int8_t newTriggerCh)
+{
+    controllerPause();
+
+    triggerThread->setTriggerCh(newTriggerCh);
 
     controllerFlush();
 }

@@ -19,6 +19,8 @@ public:
     void controllerPause();
     void setLevel( int8_t newLevel );
     int8_t getLevel();
+    void setCh (int8_t newCh);
+    void setTriggerCh (int8_t newTriggerCh);
 
 private:
     // external queue

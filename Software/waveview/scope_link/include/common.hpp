@@ -30,7 +30,7 @@
 /* Structures */
 struct buffer
 {
-    int8_t data[BUFFER_SIZE + 1];
+    int8_t data[BUFFER_SIZE + 4];
     uint64_t trigger[BUFFER_SIZE/64];
 };
 

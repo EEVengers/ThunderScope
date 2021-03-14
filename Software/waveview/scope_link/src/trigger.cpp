@@ -1,4 +1,5 @@
 #include "trigger.hpp"
+#define DBG
 
 Trigger::Trigger(boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> *inputQ,
                  boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> *outputQ,
@@ -53,143 +54,142 @@ void Trigger::checkTrigger(buffer* currentBuffer)
 {
 #ifdef DBG
     INFO << "Checking a Trigger";
-    INFO << "size of uint64_t: " << sizeof(uint64_t);
 #endif
     // Compute the trigger
-    for (int i = 0; i < BUFFER_SIZE/64; i++) {
+    for (int i = 0; i < (BUFFER_SIZE/64)/numCh; i++) {
         currentBuffer->trigger[i] = 
-                     ((uint64_t)((currentBuffer->data[i * 64 + 0] < triggerLevel) &&
-                       (currentBuffer->data[i * 64 +  0 + 1] >= triggerLevel)) << 63) |
-                     ((uint64_t)((currentBuffer->data[i * 64 + 1] < triggerLevel) &&
-                       (currentBuffer->data[i * 64 +  1 + 1] >= triggerLevel)) << 62) |
-                     ((uint64_t)((currentBuffer->data[i * 64 + 2] < triggerLevel) &&
-                       (currentBuffer->data[i * 64 +  2 + 1] >= triggerLevel)) << 61) |
-                     ((uint64_t)((currentBuffer->data[i * 64 + 3] < triggerLevel) &&
-                       (currentBuffer->data[i * 64 +  3 + 1] >= triggerLevel)) << 60) |
-                     ((uint64_t)((currentBuffer->data[i * 64 + 4] < triggerLevel) &&
-                       (currentBuffer->data[i * 64 +  4 + 1] >= triggerLevel)) << 59) |
-                     ((uint64_t)((currentBuffer->data[i * 64 + 5] < triggerLevel) &&
-                       (currentBuffer->data[i * 64 +  5 + 1] >= triggerLevel)) << 58) |
-                     ((uint64_t)((currentBuffer->data[i * 64 + 6] < triggerLevel) &&
-                       (currentBuffer->data[i * 64 +  6 + 1] >= triggerLevel)) << 57) |
-                     ((uint64_t)((currentBuffer->data[i * 64 + 7] < triggerLevel) &&
-                       (currentBuffer->data[i * 64 +  7 + 1] >= triggerLevel)) << 56) |
-                     ((uint64_t)((currentBuffer->data[i * 64 + 8] < triggerLevel) &&
-                       (currentBuffer->data[i * 64 +  8 + 1] >= triggerLevel)) << 55) |
-                     ((uint64_t)((currentBuffer->data[i * 64 + 9] < triggerLevel) &&
-                       (currentBuffer->data[i * 64 +  9 + 1] >= triggerLevel)) << 54) |
-                     ((uint64_t)((currentBuffer->data[i * 64 + 10] < triggerLevel) &&
-                       (currentBuffer->data[i * 64 + 10 + 1] >= triggerLevel)) << 53) |
-                     ((uint64_t)((currentBuffer->data[i * 64 + 11] < triggerLevel) &&
-                       (currentBuffer->data[i * 64 + 11 + 1] >= triggerLevel)) << 52) |
-                     ((uint64_t)((currentBuffer->data[i * 64 + 12] < triggerLevel) &&
-                       (currentBuffer->data[i * 64 + 12 + 1] >= triggerLevel)) << 51) |
-                     ((uint64_t)((currentBuffer->data[i * 64 + 13] < triggerLevel) &&
-                       (currentBuffer->data[i * 64 + 13 + 1] >= triggerLevel)) << 50) |
-                     ((uint64_t)((currentBuffer->data[i * 64 + 14] < triggerLevel) &&
-                       (currentBuffer->data[i * 64 + 14 + 1] >= triggerLevel)) << 49) |
-                     ((uint64_t)((currentBuffer->data[i * 64 + 15] < triggerLevel) &&
-                       (currentBuffer->data[i * 64 + 15 + 1] >= triggerLevel)) << 48) |
-                     ((uint64_t)((currentBuffer->data[i * 64 + 16] < triggerLevel) &&
-                       (currentBuffer->data[i * 64 + 16 + 1] >= triggerLevel)) << 47) |
-                     ((uint64_t)((currentBuffer->data[i * 64 + 17] < triggerLevel) &&
-                       (currentBuffer->data[i * 64 + 17 + 1] >= triggerLevel)) << 46) |
-                     ((uint64_t)((currentBuffer->data[i * 64 + 18] < triggerLevel) &&
-                       (currentBuffer->data[i * 64 + 18 + 1] >= triggerLevel)) << 45) |
-                     ((uint64_t)((currentBuffer->data[i * 64 + 19] < triggerLevel) &&
-                       (currentBuffer->data[i * 64 + 19 + 1] >= triggerLevel)) << 44) |
-                     ((uint64_t)((currentBuffer->data[i * 64 + 20] < triggerLevel) &&
-                       (currentBuffer->data[i * 64 + 20 + 1] >= triggerLevel)) << 43) |
-                     ((uint64_t)((currentBuffer->data[i * 64 + 21] < triggerLevel) &&
-                       (currentBuffer->data[i * 64 + 21 + 1] >= triggerLevel)) << 42) |
-                     ((uint64_t)((currentBuffer->data[i * 64 + 22] < triggerLevel) &&
-                       (currentBuffer->data[i * 64 + 22 + 1] >= triggerLevel)) << 41) |
-                     ((uint64_t)((currentBuffer->data[i * 64 + 23] < triggerLevel) &&
-                       (currentBuffer->data[i * 64 + 23 + 1] >= triggerLevel)) << 40) |
-                     ((uint64_t)((currentBuffer->data[i * 64 + 24] < triggerLevel) &&
-                       (currentBuffer->data[i * 64 + 24 + 1] >= triggerLevel)) << 39) |
-                     ((uint64_t)((currentBuffer->data[i * 64 + 25] < triggerLevel) &&
-                       (currentBuffer->data[i * 64 + 25 + 1] >= triggerLevel)) << 38) |
-                     ((uint64_t)((currentBuffer->data[i * 64 + 26] < triggerLevel) &&
-                       (currentBuffer->data[i * 64 + 26 + 1] >= triggerLevel)) << 37) |
-                     ((uint64_t)((currentBuffer->data[i * 64 + 27] < triggerLevel) &&
-                       (currentBuffer->data[i * 64 + 27 + 1] >= triggerLevel)) << 36) |
-                     ((uint64_t)((currentBuffer->data[i * 64 + 28] < triggerLevel) &&
-                       (currentBuffer->data[i * 64 + 28 + 1] >= triggerLevel)) << 35) |
-                     ((uint64_t)((currentBuffer->data[i * 64 + 29] < triggerLevel) &&
-                       (currentBuffer->data[i * 64 + 29 + 1] >= triggerLevel)) << 34) |
-                     ((uint64_t)((currentBuffer->data[i * 64 + 30] < triggerLevel) &&
-                       (currentBuffer->data[i * 64 + 30 + 1] >= triggerLevel)) << 33) |
-                     ((uint64_t)((currentBuffer->data[i * 64 + 31] < triggerLevel) &&
-                       (currentBuffer->data[i * 64 + 31 + 1] >= triggerLevel)) << 32) |
-                     ((uint64_t)((currentBuffer->data[i * 64 + 32] < triggerLevel) &&
-                       (currentBuffer->data[i * 64 + 32 + 1] >= triggerLevel)) << 31) |
-                     ((uint64_t)((currentBuffer->data[i * 64 + 33] < triggerLevel) &&
-                       (currentBuffer->data[i * 64 + 33 + 1] >= triggerLevel)) << 30) |
-                     ((uint64_t)((currentBuffer->data[i * 64 + 34] < triggerLevel) &&
-                       (currentBuffer->data[i * 64 + 34 + 1] >= triggerLevel)) << 29) |
-                     ((uint64_t)((currentBuffer->data[i * 64 + 35] < triggerLevel) &&
-                       (currentBuffer->data[i * 64 + 35 + 1] >= triggerLevel)) << 28) |
-                     ((uint64_t)((currentBuffer->data[i * 64 + 36] < triggerLevel) &&
-                       (currentBuffer->data[i * 64 + 36 + 1] >= triggerLevel)) << 27) |
-                     ((uint64_t)((currentBuffer->data[i * 64 + 37] < triggerLevel) &&
-                       (currentBuffer->data[i * 64 + 37 + 1] >= triggerLevel)) << 26) |
-                     ((uint64_t)((currentBuffer->data[i * 64 + 38] < triggerLevel) &&
-                       (currentBuffer->data[i * 64 + 38 + 1] >= triggerLevel)) << 25) |
-                     ((uint64_t)((currentBuffer->data[i * 64 + 39] < triggerLevel) &&
-                       (currentBuffer->data[i * 64 + 39 + 1] >= triggerLevel)) << 24) |
-                     ((uint64_t)((currentBuffer->data[i * 64 + 40] < triggerLevel) &&
-                       (currentBuffer->data[i * 64 + 40 + 1] >= triggerLevel)) << 23) |
-                     ((uint64_t)((currentBuffer->data[i * 64 + 41] < triggerLevel) &&
-                       (currentBuffer->data[i * 64 + 41 + 1] >= triggerLevel)) << 22) |
-                     ((uint64_t)((currentBuffer->data[i * 64 + 42] < triggerLevel) &&
-                       (currentBuffer->data[i * 64 + 42 + 1] >= triggerLevel)) << 21) |
-                     ((uint64_t)((currentBuffer->data[i * 64 + 43] < triggerLevel) &&
-                       (currentBuffer->data[i * 64 + 43 + 1] >= triggerLevel)) << 20) |
-                     ((uint64_t)((currentBuffer->data[i * 64 + 44] < triggerLevel) &&
-                       (currentBuffer->data[i * 64 + 44 + 1] >= triggerLevel)) << 19) |
-                     ((uint64_t)((currentBuffer->data[i * 64 + 45] < triggerLevel) &&
-                       (currentBuffer->data[i * 64 + 45 + 1] >= triggerLevel)) << 18) |
-                     ((uint64_t)((currentBuffer->data[i * 64 + 46] < triggerLevel) &&
-                       (currentBuffer->data[i * 64 + 46 + 1] >= triggerLevel)) << 17) |
-                     ((uint64_t)((currentBuffer->data[i * 64 + 47] < triggerLevel) &&
-                       (currentBuffer->data[i * 64 + 47 + 1] >= triggerLevel)) << 16) |
-                     ((uint64_t)((currentBuffer->data[i * 64 + 48] < triggerLevel) &&
-                       (currentBuffer->data[i * 64 + 48 + 1] >= triggerLevel)) << 15) |
-                     ((uint64_t)((currentBuffer->data[i * 64 + 49] < triggerLevel) &&
-                       (currentBuffer->data[i * 64 + 49 + 1] >= triggerLevel)) << 14) |
-                     ((uint64_t)((currentBuffer->data[i * 64 + 50] < triggerLevel) &&
-                       (currentBuffer->data[i * 64 + 50 + 1] >= triggerLevel)) << 13) |
-                     ((uint64_t)((currentBuffer->data[i * 64 + 51] < triggerLevel) &&
-                       (currentBuffer->data[i * 64 + 51 + 1] >= triggerLevel)) << 12) |
-                     ((uint64_t)((currentBuffer->data[i * 64 + 52] < triggerLevel) &&
-                       (currentBuffer->data[i * 64 + 52 + 1] >= triggerLevel)) << 11) |
-                     ((uint64_t)((currentBuffer->data[i * 64 + 53] < triggerLevel) &&
-                       (currentBuffer->data[i * 64 + 53 + 1] >= triggerLevel)) << 10) |
-                     ((uint64_t)((currentBuffer->data[i * 64 + 54] < triggerLevel) &&
-                       (currentBuffer->data[i * 64 + 54 + 1] >= triggerLevel)) << 9) |
-                     ((uint64_t)((currentBuffer->data[i * 64 + 55] < triggerLevel) &&
-                       (currentBuffer->data[i * 64 + 55 + 1] >= triggerLevel)) << 8) |
-                     ((uint64_t)((currentBuffer->data[i * 64 + 56] < triggerLevel) &&
-                       (currentBuffer->data[i * 64 + 56 + 1] >= triggerLevel)) << 7) |
-                     ((uint64_t)((currentBuffer->data[i * 64 + 57] < triggerLevel) &&
-                       (currentBuffer->data[i * 64 + 57 + 1] >= triggerLevel)) << 6) |
-                     ((uint64_t)((currentBuffer->data[i * 64 + 58] < triggerLevel) &&
-                       (currentBuffer->data[i * 64 + 58 + 1] >= triggerLevel)) << 5) |
-                     ((uint64_t)((currentBuffer->data[i * 64 + 59] < triggerLevel) &&
-                       (currentBuffer->data[i * 64 + 59 + 1] >= triggerLevel)) << 4) |
-                     ((uint64_t)((currentBuffer->data[i * 64 + 60] < triggerLevel) &&
-                       (currentBuffer->data[i * 64 + 60 + 1] >= triggerLevel)) << 3) |
-                     ((uint64_t)((currentBuffer->data[i * 64 + 61] < triggerLevel) &&
-                       (currentBuffer->data[i * 64 + 61 + 1] >= triggerLevel)) << 2) |
-                     ((uint64_t)((currentBuffer->data[i * 64 + 62] < triggerLevel) &&
-                       (currentBuffer->data[i * 64 + 62 + 1] >= triggerLevel)) << 1) |
-                     ((uint64_t)((currentBuffer->data[i * 64 + 63] < triggerLevel) &&
-                       (currentBuffer->data[i * 64 + 63 + 1] >= triggerLevel)) << 0);
+                     ((uint64_t)((currentBuffer->data[i * 64 + 0 * numCh + triggerCh] < triggerLevel) &&
+                       (currentBuffer->data[i * 64 +  0 + 1 * numCh + triggerCh] >= triggerLevel)) << 63) |
+                     ((uint64_t)((currentBuffer->data[i * 64 + 1 * numCh + triggerCh] < triggerLevel) &&
+                       (currentBuffer->data[i * 64 +  1 + 1 * numCh + triggerCh] >= triggerLevel)) << 62) |
+                     ((uint64_t)((currentBuffer->data[i * 64 + 2 * numCh + triggerCh] < triggerLevel) &&
+                       (currentBuffer->data[i * 64 +  2 + 1 * numCh + triggerCh] >= triggerLevel)) << 61) |
+                     ((uint64_t)((currentBuffer->data[i * 64 + 3 * numCh + triggerCh] < triggerLevel) &&
+                       (currentBuffer->data[i * 64 +  3 + 1 * numCh + triggerCh] >= triggerLevel)) << 60) |
+                     ((uint64_t)((currentBuffer->data[i * 64 + 4 * numCh + triggerCh] < triggerLevel) &&
+                       (currentBuffer->data[i * 64 +  4 + 1 * numCh + triggerCh] >= triggerLevel)) << 59) |
+                     ((uint64_t)((currentBuffer->data[i * 64 + 5 * numCh + triggerCh] < triggerLevel) &&
+                       (currentBuffer->data[i * 64 +  5 + 1 * numCh + triggerCh] >= triggerLevel)) << 58) |
+                     ((uint64_t)((currentBuffer->data[i * 64 + 6 * numCh + triggerCh] < triggerLevel) &&
+                       (currentBuffer->data[i * 64 +  6 + 1 * numCh + triggerCh] >= triggerLevel)) << 57) |
+                     ((uint64_t)((currentBuffer->data[i * 64 + 7 * numCh + triggerCh] < triggerLevel) &&
+                       (currentBuffer->data[i * 64 +  7 + 1 * numCh + triggerCh] >= triggerLevel)) << 56) |
+                     ((uint64_t)((currentBuffer->data[i * 64 + 8 * numCh + triggerCh] < triggerLevel) &&
+                       (currentBuffer->data[i * 64 +  8 + 1 * numCh + triggerCh] >= triggerLevel)) << 55) |
+                     ((uint64_t)((currentBuffer->data[i * 64 + 9 * numCh + triggerCh] < triggerLevel) &&
+                       (currentBuffer->data[i * 64 +  9 + 1 * numCh + triggerCh] >= triggerLevel)) << 54) |
+                     ((uint64_t)((currentBuffer->data[i * 64 + 10 * numCh + triggerCh] < triggerLevel) &&
+                       (currentBuffer->data[i * 64 + 10 + 1 * numCh + triggerCh] >= triggerLevel)) << 53) |
+                     ((uint64_t)((currentBuffer->data[i * 64 + 11 * numCh + triggerCh] < triggerLevel) &&
+                       (currentBuffer->data[i * 64 + 11 + 1 * numCh + triggerCh] >= triggerLevel)) << 52) |
+                     ((uint64_t)((currentBuffer->data[i * 64 + 12 * numCh + triggerCh] < triggerLevel) &&
+                       (currentBuffer->data[i * 64 + 12 + 1 * numCh + triggerCh] >= triggerLevel)) << 51) |
+                     ((uint64_t)((currentBuffer->data[i * 64 + 13 * numCh + triggerCh] < triggerLevel) &&
+                       (currentBuffer->data[i * 64 + 13 + 1 * numCh + triggerCh] >= triggerLevel)) << 50) |
+                     ((uint64_t)((currentBuffer->data[i * 64 + 14 * numCh + triggerCh] < triggerLevel) &&
+                       (currentBuffer->data[i * 64 + 14 + 1 * numCh + triggerCh] >= triggerLevel)) << 49) |
+                     ((uint64_t)((currentBuffer->data[i * 64 + 15 * numCh + triggerCh] < triggerLevel) &&
+                       (currentBuffer->data[i * 64 + 15 + 1 * numCh + triggerCh] >= triggerLevel)) << 48) |
+                     ((uint64_t)((currentBuffer->data[i * 64 + 16 * numCh + triggerCh] < triggerLevel) &&
+                       (currentBuffer->data[i * 64 + 16 + 1 * numCh + triggerCh] >= triggerLevel)) << 47) |
+                     ((uint64_t)((currentBuffer->data[i * 64 + 17 * numCh + triggerCh] < triggerLevel) &&
+                       (currentBuffer->data[i * 64 + 17 + 1 * numCh + triggerCh] >= triggerLevel)) << 46) |
+                     ((uint64_t)((currentBuffer->data[i * 64 + 18 * numCh + triggerCh] < triggerLevel) &&
+                       (currentBuffer->data[i * 64 + 18 + 1 * numCh + triggerCh] >= triggerLevel)) << 45) |
+                     ((uint64_t)((currentBuffer->data[i * 64 + 19 * numCh + triggerCh] < triggerLevel) &&
+                       (currentBuffer->data[i * 64 + 19 + 1 * numCh + triggerCh] >= triggerLevel)) << 44) |
+                     ((uint64_t)((currentBuffer->data[i * 64 + 20 * numCh + triggerCh] < triggerLevel) &&
+                       (currentBuffer->data[i * 64 + 20 + 1 * numCh + triggerCh] >= triggerLevel)) << 43) |
+                     ((uint64_t)((currentBuffer->data[i * 64 + 21 * numCh + triggerCh] < triggerLevel) &&
+                       (currentBuffer->data[i * 64 + 21 + 1 * numCh + triggerCh] >= triggerLevel)) << 42) |
+                     ((uint64_t)((currentBuffer->data[i * 64 + 22 * numCh + triggerCh] < triggerLevel) &&
+                       (currentBuffer->data[i * 64 + 22 + 1 * numCh + triggerCh] >= triggerLevel)) << 41) |
+                     ((uint64_t)((currentBuffer->data[i * 64 + 23 * numCh + triggerCh] < triggerLevel) &&
+                       (currentBuffer->data[i * 64 + 23 + 1 * numCh + triggerCh] >= triggerLevel)) << 40) |
+                     ((uint64_t)((currentBuffer->data[i * 64 + 24 * numCh + triggerCh] < triggerLevel) &&
+                       (currentBuffer->data[i * 64 + 24 + 1 * numCh + triggerCh] >= triggerLevel)) << 39) |
+                     ((uint64_t)((currentBuffer->data[i * 64 + 25 * numCh + triggerCh] < triggerLevel) &&
+                       (currentBuffer->data[i * 64 + 25 + 1 * numCh + triggerCh] >= triggerLevel)) << 38) |
+                     ((uint64_t)((currentBuffer->data[i * 64 + 26 * numCh + triggerCh] < triggerLevel) &&
+                       (currentBuffer->data[i * 64 + 26 + 1 * numCh + triggerCh] >= triggerLevel)) << 37) |
+                     ((uint64_t)((currentBuffer->data[i * 64 + 27 * numCh + triggerCh] < triggerLevel) &&
+                       (currentBuffer->data[i * 64 + 27 + 1 * numCh + triggerCh] >= triggerLevel)) << 36) |
+                     ((uint64_t)((currentBuffer->data[i * 64 + 28 * numCh + triggerCh] < triggerLevel) &&
+                       (currentBuffer->data[i * 64 + 28 + 1 * numCh + triggerCh] >= triggerLevel)) << 35) |
+                     ((uint64_t)((currentBuffer->data[i * 64 + 29 * numCh + triggerCh] < triggerLevel) &&
+                       (currentBuffer->data[i * 64 + 29 + 1 * numCh + triggerCh] >= triggerLevel)) << 34) |
+                     ((uint64_t)((currentBuffer->data[i * 64 + 30 * numCh + triggerCh] < triggerLevel) &&
+                       (currentBuffer->data[i * 64 + 30 + 1 * numCh + triggerCh] >= triggerLevel)) << 33) |
+                     ((uint64_t)((currentBuffer->data[i * 64 + 31 * numCh + triggerCh] < triggerLevel) &&
+                       (currentBuffer->data[i * 64 + 31 + 1 * numCh + triggerCh] >= triggerLevel)) << 32) |
+                     ((uint64_t)((currentBuffer->data[i * 64 + 32 * numCh + triggerCh] < triggerLevel) &&
+                       (currentBuffer->data[i * 64 + 32 + 1 * numCh + triggerCh] >= triggerLevel)) << 31) |
+                     ((uint64_t)((currentBuffer->data[i * 64 + 33 * numCh + triggerCh] < triggerLevel) &&
+                       (currentBuffer->data[i * 64 + 33 + 1 * numCh + triggerCh] >= triggerLevel)) << 30) |
+                     ((uint64_t)((currentBuffer->data[i * 64 + 34 * numCh + triggerCh] < triggerLevel) &&
+                       (currentBuffer->data[i * 64 + 34 + 1 * numCh + triggerCh] >= triggerLevel)) << 29) |
+                     ((uint64_t)((currentBuffer->data[i * 64 + 35 * numCh + triggerCh] < triggerLevel) &&
+                       (currentBuffer->data[i * 64 + 35 + 1 * numCh + triggerCh] >= triggerLevel)) << 28) |
+                     ((uint64_t)((currentBuffer->data[i * 64 + 36 * numCh + triggerCh] < triggerLevel) &&
+                       (currentBuffer->data[i * 64 + 36 + 1 * numCh + triggerCh] >= triggerLevel)) << 27) |
+                     ((uint64_t)((currentBuffer->data[i * 64 + 37 * numCh + triggerCh] < triggerLevel) &&
+                       (currentBuffer->data[i * 64 + 37 + 1 * numCh + triggerCh] >= triggerLevel)) << 26) |
+                     ((uint64_t)((currentBuffer->data[i * 64 + 38 * numCh + triggerCh] < triggerLevel) &&
+                       (currentBuffer->data[i * 64 + 38 + 1 * numCh + triggerCh] >= triggerLevel)) << 25) |
+                     ((uint64_t)((currentBuffer->data[i * 64 + 39 * numCh + triggerCh] < triggerLevel) &&
+                       (currentBuffer->data[i * 64 + 39 + 1 * numCh + triggerCh] >= triggerLevel)) << 24) |
+                     ((uint64_t)((currentBuffer->data[i * 64 + 40 * numCh + triggerCh] < triggerLevel) &&
+                       (currentBuffer->data[i * 64 + 40 + 1 * numCh + triggerCh] >= triggerLevel)) << 23) |
+                     ((uint64_t)((currentBuffer->data[i * 64 + 41 * numCh + triggerCh] < triggerLevel) &&
+                       (currentBuffer->data[i * 64 + 41 + 1 * numCh + triggerCh] >= triggerLevel)) << 22) |
+                     ((uint64_t)((currentBuffer->data[i * 64 + 42 * numCh + triggerCh] < triggerLevel) &&
+                       (currentBuffer->data[i * 64 + 42 + 1 * numCh + triggerCh] >= triggerLevel)) << 21) |
+                     ((uint64_t)((currentBuffer->data[i * 64 + 43 * numCh + triggerCh] < triggerLevel) &&
+                       (currentBuffer->data[i * 64 + 43 + 1 * numCh + triggerCh] >= triggerLevel)) << 20) |
+                     ((uint64_t)((currentBuffer->data[i * 64 + 44 * numCh + triggerCh] < triggerLevel) &&
+                       (currentBuffer->data[i * 64 + 44 + 1 * numCh + triggerCh] >= triggerLevel)) << 19) |
+                     ((uint64_t)((currentBuffer->data[i * 64 + 45 * numCh + triggerCh] < triggerLevel) &&
+                       (currentBuffer->data[i * 64 + 45 + 1 * numCh + triggerCh] >= triggerLevel)) << 18) |
+                     ((uint64_t)((currentBuffer->data[i * 64 + 46 * numCh + triggerCh] < triggerLevel) &&
+                       (currentBuffer->data[i * 64 + 46 + 1 * numCh + triggerCh] >= triggerLevel)) << 17) |
+                     ((uint64_t)((currentBuffer->data[i * 64 + 47 * numCh + triggerCh] < triggerLevel) &&
+                       (currentBuffer->data[i * 64 + 47 + 1 * numCh + triggerCh] >= triggerLevel)) << 16) |
+                     ((uint64_t)((currentBuffer->data[i * 64 + 48 * numCh + triggerCh] < triggerLevel) &&
+                       (currentBuffer->data[i * 64 + 48 + 1 * numCh + triggerCh] >= triggerLevel)) << 15) |
+                     ((uint64_t)((currentBuffer->data[i * 64 + 49 * numCh + triggerCh] < triggerLevel) &&
+                       (currentBuffer->data[i * 64 + 49 + 1 * numCh + triggerCh] >= triggerLevel)) << 14) |
+                     ((uint64_t)((currentBuffer->data[i * 64 + 50 * numCh + triggerCh] < triggerLevel) &&
+                       (currentBuffer->data[i * 64 + 50 + 1 * numCh + triggerCh] >= triggerLevel)) << 13) |
+                     ((uint64_t)((currentBuffer->data[i * 64 + 51 * numCh + triggerCh] < triggerLevel) &&
+                       (currentBuffer->data[i * 64 + 51 + 1 * numCh + triggerCh] >= triggerLevel)) << 12) |
+                     ((uint64_t)((currentBuffer->data[i * 64 + 52 * numCh + triggerCh] < triggerLevel) &&
+                       (currentBuffer->data[i * 64 + 52 + 1 * numCh + triggerCh] >= triggerLevel)) << 11) |
+                     ((uint64_t)((currentBuffer->data[i * 64 + 53 * numCh + triggerCh] < triggerLevel) &&
+                       (currentBuffer->data[i * 64 + 53 + 1 * numCh + triggerCh] >= triggerLevel)) << 10) |
+                     ((uint64_t)((currentBuffer->data[i * 64 + 54 * numCh + triggerCh] < triggerLevel) &&
+                       (currentBuffer->data[i * 64 + 54 + 1 * numCh + triggerCh] >= triggerLevel)) << 9) |
+                     ((uint64_t)((currentBuffer->data[i * 64 + 55 * numCh + triggerCh] < triggerLevel) &&
+                       (currentBuffer->data[i * 64 + 55 + 1 * numCh + triggerCh] >= triggerLevel)) << 8) |
+                     ((uint64_t)((currentBuffer->data[i * 64 + 56 * numCh + triggerCh] < triggerLevel) &&
+                       (currentBuffer->data[i * 64 + 56 + 1 * numCh + triggerCh] >= triggerLevel)) << 7) |
+                     ((uint64_t)((currentBuffer->data[i * 64 + 57 * numCh + triggerCh] < triggerLevel) &&
+                       (currentBuffer->data[i * 64 + 57 + 1 * numCh + triggerCh] >= triggerLevel)) << 6) |
+                     ((uint64_t)((currentBuffer->data[i * 64 + 58 * numCh + triggerCh] < triggerLevel) &&
+                       (currentBuffer->data[i * 64 + 58 + 1 * numCh + triggerCh] >= triggerLevel)) << 5) |
+                     ((uint64_t)((currentBuffer->data[i * 64 + 59 * numCh + triggerCh] < triggerLevel) &&
+                       (currentBuffer->data[i * 64 + 59 + 1 * numCh + triggerCh] >= triggerLevel)) << 4) |
+                     ((uint64_t)((currentBuffer->data[i * 64 + 60 * numCh + triggerCh] < triggerLevel) &&
+                       (currentBuffer->data[i * 64 + 60 + 1 * numCh + triggerCh] >= triggerLevel)) << 3) |
+                     ((uint64_t)((currentBuffer->data[i * 64 + 61 * numCh + triggerCh] < triggerLevel) &&
+                       (currentBuffer->data[i * 64 + 61 + 1 * numCh + triggerCh] >= triggerLevel)) << 2) |
+                     ((uint64_t)((currentBuffer->data[i * 64 + 62 * numCh + triggerCh] < triggerLevel) &&
+                       (currentBuffer->data[i * 64 + 62 + 1 * numCh + triggerCh] >= triggerLevel)) << 1) |
+                     ((uint64_t)((currentBuffer->data[i * 64 + 63 * numCh + triggerCh] < triggerLevel) &&
+                       (currentBuffer->data[i * 64 + 63 + 1 * numCh + triggerCh] >= triggerLevel)) << 0);
 
 #ifdef DBG
-        if (temp < 5) {
-            INFO << "Trigger index: " << i << " value: " << currentBuffer->trigger[i];
+        if (temp < 322) {
+            INFO << "Trigger index: " << i << " value: " << std::hex << currentBuffer->trigger[i];
             temp++;
         }
 #endif
@@ -225,6 +225,9 @@ void Trigger::coreLoop()
 
                     // copy first value from next buffer to current buffer
                     currentBuffer->data[BUFFER_SIZE] = nextBuffer->data[0];
+                    currentBuffer->data[BUFFER_SIZE + 1] = nextBuffer->data[1];
+                    currentBuffer->data[BUFFER_SIZE + 2] = nextBuffer->data[2];
+                    currentBuffer->data[BUFFER_SIZE + 3] = nextBuffer->data[3];
 
                     // generate triggers on new data
                     checkTrigger(currentBuffer);
@@ -244,6 +247,24 @@ void Trigger::coreLoop()
                 }
             }
         }
+    }
+}
+
+void Trigger::setCh (int8_t newCh)
+{
+    if (newCh == 1 || newCh == 2 || newCh == 4) {
+        numCh = newCh;
+    } else {
+        ERROR << "not a valid number of channels: " << newCh;
+    }
+}
+
+void Trigger::setTriggerCh (int8_t newTriggerCh)
+{
+    if (newTriggerCh == 1 || newTriggerCh == 2 || newTriggerCh == 4) {
+        triggerCh = newTriggerCh - 1;
+    } else {
+        ERROR << "Invalid trigger channel: " << newTriggerCh;
     }
 }
 
