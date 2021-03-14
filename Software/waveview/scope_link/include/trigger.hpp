@@ -35,6 +35,9 @@ public:
 
     bool getTriggerStatus();
 
+    int8_t getTriggerLevel();
+    void setTriggerLevel(int8_t newLevel);
+
     /* variables */
 
 private:
@@ -46,7 +49,7 @@ private:
 
     std::thread triggerThread;
 
-    int triggerLevel;
+    int8_t triggerLevel;
 
     uint32_t count;
 
