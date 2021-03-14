@@ -60,13 +60,49 @@ bool parseCli (std::string line)
     } else if ("template" == line.substr(0, line.find(' '))) {
         INFO << "Template";
 
-        // Useful for accepting arguments from a command
-        std::string nextArgument = line.substr(line.find(' ', line.find(' ') + 1),
-                                                   line.find(' ') + 1);
+//        // Useful for accepting arguments from a command
+//        std::string nextArgument = line.substr(line.find(' ', line.find(' ') + 1),
+//                                                   line.find(' ') + 1);
 
         // Get the reset of the line after the first argument
         std::string nextLine = line.substr(line.find(' ') + 1, line.length());
         parseCli(nextLine);
+
+    } else if ("setch" == line.substr(0, line.find(' '))) {
+        INFO << "setting channel mode";
+
+        // Useful for accepting arguments from a command
+        std::string nextArgument = line.substr(line.find(' ') + 1, line.length());
+        if (nextArgument != "setch") {
+            if (nextArgument == "1") {
+                controllerThread->setCh(1);
+            } else if (nextArgument == "2") {
+                controllerThread->setCh(2);
+            } else if (nextArgument == "4") {
+                controllerThread->setCh(4);
+            } else {
+                ERROR << "Not a channel mode";
+            }
+        }
+
+    } else if ("settrig" == line.substr(0, line.find(' '))) {
+        INFO << "setting trigger channel";
+
+        // Useful for accepting arguments from a command
+        std::string nextArgument = line.substr(line.find(' ') + 1, line.length());
+        if (nextArgument != "settrig") {
+            if (nextArgument == "1") {
+                controllerThread->setTriggerCh(1);
+            } else if (nextArgument == "2") {
+                controllerThread->setTriggerCh(2);
+            } else if (nextArgument == "3") {
+                controllerThread->setTriggerCh(3);
+            } else if (nextArgument == "4") {
+                controllerThread->setTriggerCh(4);
+            } else {
+                ERROR << "Not a trigger channel";
+            }
+        }
 
     } else if (line == "controller") {
         if (controllerThread == NULL ) {
@@ -88,8 +124,24 @@ bool parseCli (std::string line)
             controllerThread->controllerFlush();
         }
 
-    } else if (line == "data") {
+    } else if ("datafile" == line.substr(0, line.find(' '))) {
+        INFO << "Adding data from file to the pipeline";
+
+        std::string nextArgument = line.substr(line.find(' ') + 1, line.length());
+        if (nextArgument != "data") {
+
+            nextArgument = "./scope_link/test/" + nextArgument;
+            char filename[nextArgument.size() + 1];
+            std::strcpy(filename, nextArgument.c_str());
+            inputFile = filename;
+            loadFromFile(filename, &dataQueue_1);
+        } else {
+            ERROR << "must provide file";
+        }
+
+    } else if ("data" == line.substr(0, line.find(' '))) {
         INFO << "Adding data to the pipeline";
+
         char filename[] = "./scope_link/test/test7-2ch.csv";
         inputFile = filename;
         loadFromFile(filename, &dataQueue_1);
