@@ -579,6 +579,7 @@ int Bridge::TxStop() {
 
 #ifdef WIN32 // Ensurses the code does not get stuck trying to accept a client
 
+    HANDLE hfile;
     //open a link to the named pipe
     hfile = CreateFileA((LPCSTR)tx_connection_string,
                         GENERIC_WRITE | GENERIC_READ,
