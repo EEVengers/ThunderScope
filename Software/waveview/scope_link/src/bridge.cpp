@@ -365,13 +365,22 @@ void Bridge::RxJob() {
         }
 
         if(rxPacket->command == 0x1F) {
-            for(int pk = 0; pk < 2; pk++) {
+            for(int pk = 0; pk < 4; pk++) {
                 EVPacket* tempPacket = (EVPacket*) malloc(sizeof(EVPacket));
                 tempPacket->data = (int8_t*) malloc(1024);
                 tempPacket->dataSize = 1024;
                 tempPacket->packetID = 0x11;
-                for(int i = 0; i < 1024; i++) {
+                for(int i = 0; pk == 0 && i < 1024; i++) {
                     tempPacket->data[i] = i % 24;
+                }
+                for(int i = 0; pk == 1 && i < 1024; i++) {
+                    tempPacket->data[i] = 24 - (i % 24);
+                }
+                for(int i = 0; pk == 2 && i < 1024; i++) {
+                    tempPacket->data[i] = (i % 24) / 12;
+                }
+                for(int i = 0; pk == 3 && i < 1024; i++) {
+                    tempPacket->data[i] = 10;
                 }
                 txLock.lock();
                 _txQueue.push(tempPacket);

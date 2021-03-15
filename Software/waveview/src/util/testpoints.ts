@@ -1,12 +1,3 @@
-import { data as sine_data} from '../testdata/sin1MHz';
-import { data as sinc_data} from '../testdata/sinc1MHz';
-
-var scope_data: any[] = [];
-
-for(var i = 0; i < 1024; i++) {
-  scope_data[i] = {x: i, y: 0};
-}
-
 const thunderBridge = (window as any).thunderBridge;
 
 class Range {
@@ -26,22 +17,20 @@ class Range {
 class TestPoints {
   x: Range;
   y: Range;
-  data: any[];
   ready: Boolean = true;
   readCount: number = 0;
+  scope_data: any[][] = [];
 
-  constructor(xRange: number, yRange: number, source: string) {
+  constructor(xRange: number, yRange: number) {
     this.x = new Range(xRange);
     this.y = new Range(yRange);
-    if(source === "sine") {
-      this.data = [];
-    }
-    else if(source === "sinc") {
-      this.data = [];
-    }
-    else {
-      this.data = [];
-    }
+
+    for(var j = 0; j < 4; j++) {
+      this.scope_data[j] = [];
+      for(var i = 0; i < 1024; i++) {
+        this.scope_data[j][i] = {x: i, y: 0};
+      }
+    }  
   }
 
   doRead() {
@@ -55,18 +44,18 @@ class TestPoints {
       var dataRxBuff = new Uint8Array(dataSize);
       thunderBridge.read(dataRxBuff, (nestedErr: NodeJS.ErrnoException, nestedBytesRead: number, nestedBytes: Uint8Array) => {
         this.readCount++;
-        var readNextPacket = this.readCount % 2;
-        if(!readNextPacket) {
+        var channel = this.readCount % 4;
+        if(channel == 0) {
           this.ready = true;
         }
         for(var i = 0; i < nestedBytes.length; i++) {
-          scope_data[i] = {x: i, y: nestedBytes[i]}
+          this.scope_data[channel][i] = {x: i, y: nestedBytes[i]}
         }
         console.log(nestedBytes);
-        console.log(scope_data);
-        console.log("readCount: " + this.readCount);
+        console.log(this.scope_data[channel]);
+        console.log("channel: " + channel);
 
-        if(readNextPacket) {
+        if(channel != 0) {
           this.doRead();
         }
       });
@@ -95,7 +84,7 @@ class TestPoints {
   }
 
   getData() {
-    return scope_data;
+    return this.scope_data;
   }
 }
 
