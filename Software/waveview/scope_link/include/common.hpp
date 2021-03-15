@@ -77,6 +77,6 @@ extern boost::pool_allocator<int8_t,
     DEFAULT_WINDOW * BUFFER_SIZE, 0> windowAllocator;
 
 /* Functions */
-uint32_t writeToCsv (char* filename, int8_t* data, uint32_t row, uint32_t col);
+uint32_t writeToCsv (char* filename, int8_t* data, uint32_t row, uint32_t col, int8_t numCh);
 
 #endif

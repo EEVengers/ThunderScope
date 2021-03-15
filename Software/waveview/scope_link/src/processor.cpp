@@ -177,7 +177,8 @@ void Processor::coreLoop()
                     writeToCsv(filename,
                                windowProcessed,
                                persistanceSize,
-                               windowSize * numCh);
+                               windowSize * numCh,
+                               numCh);
 
                     windowStored.store(true);
                 }

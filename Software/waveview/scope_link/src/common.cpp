@@ -32,7 +32,7 @@ char* outputFile = NULL;
  * Return:
  *   uint32_t - returns 0 on success.
  ******************************************************************************/
-uint32_t writeToCsv (char* filename, int8_t* data, uint32_t row, uint32_t col)
+uint32_t writeToCsv (char* filename, int8_t* data, uint32_t row, uint32_t col, int8_t numCh)
 {
     std::ofstream file;
     file.open(filename);
@@ -43,9 +43,9 @@ uint32_t writeToCsv (char* filename, int8_t* data, uint32_t row, uint32_t col)
     for (uint32_t i = 0; i < row; i++ ) {
         // Column
         for (j = 0; j < col - 1; j++ ) {
-            file << (int)*(data + (j + i * windowSize)) << ",";
+            file << (int)*(data + (j + i * windowSize * numCh)) << ",";
         }
-        file << (int)*(data + (j + i * windowSize));
+        file << (int)*(data + (j + i * windowSize * numCh));
         file << std::endl;
     }
 

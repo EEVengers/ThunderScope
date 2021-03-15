@@ -82,26 +82,29 @@ void postProcessor::coreLoop()
 
             INFO << "post processing next window";
 
-            // New packet
-            postWindow = new int8_t [windowSize];
+            // TODO: Could do each channel in parrallel
+            for (uint8_t j = 0; j < numCh; j++) {
+                // New packet
+                postWindow = new int8_t [windowSize];
 
-            // Post process window
-            // TODO: Add interpolation here.
-            std::cout << "Post Processed window";
-            for (uint32_t i = 0; i < windowSize; i++) {
-                postWindow[i] = currentWindow[i];
-                std::cout << " " << (int)currentWindow[i];
+                // Post process window
+                // TODO: Add interpolation here.
+                std::cout << "Post Processed window";
+                for (uint32_t i = 0; i < windowSize; i++) {
+                    postWindow[i] = currentWindow[i * numCh + j];
+                    std::cout << " " << (int)currentWindow[i * numCh + j];
+                }
+                std::cout << std::endl;
+
+                // Pass processed window to next stage
+                currentPacket = (EVPacket*)malloc(sizeof(EVPacket));
+                currentPacket->command = j + 1;
+                currentPacket->packetID = 0x0808;
+                currentPacket->dataSize = windowSize;
+                currentPacket->data = postWindow;
+
+                outputQueue->push(currentPacket);
             }
-            std::cout << std::endl;
-
-            // Pass processed window to next stage
-            currentPacket = (EVPacket*)malloc(sizeof(EVPacket));
-            currentPacket->command = 1;
-            currentPacket->packetID = 0x0808;
-            currentPacket->dataSize = windowSize;
-            currentPacket->data = postWindow;
-
-            outputQueue->push(currentPacket);
         }
         // Queue empty, Sleep for a bit
         std::this_thread::sleep_for(std::chrono::microseconds(100));
