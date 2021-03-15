@@ -142,7 +142,7 @@ bool parseCli (std::string line)
     } else if ("data" == line.substr(0, line.find(' '))) {
         INFO << "Adding data to the pipeline";
 
-        char filename[] = "./scope_link/test/test7-2ch.csv";
+        char filename[] = "./scope_link/test/test1.csv";
         inputFile = filename;
         loadFromFile(filename, &dataQueue_1);
 
@@ -156,13 +156,14 @@ bool parseCli (std::string line)
             return false;
         }
     } else {
-        ERROR << "Invalid Command"
-              << " Commands are:"
-              << " create"
-              << ", unpause"
-              << ", data"
-              << ", delete"
-              << ", exit";
+        ERROR << "Invalid Command";
+        ERROR << "Commands are:";
+        ERROR << "controller";
+        ERROR << "unpause";
+        ERROR << "data";
+        ERROR << "datafile <csv file in waveview/scope_link/test/>";
+        ERROR << "flush";
+        ERROR << "exit";
     }
     return true;
 }

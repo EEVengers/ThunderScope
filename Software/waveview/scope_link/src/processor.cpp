@@ -2,6 +2,8 @@
 #include "logger.hpp"
 #include "common.hpp"
 
+#define DBG
+
 Processor::Processor(
         boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> *inputQ,
         boost::lockfree::queue<int8_t*, boost::lockfree::fixed_sized<false>> *outputQ)
@@ -129,15 +131,15 @@ void Processor::coreLoop()
                 // Determin how much to copy. Min of:
                 // - remaining space in the window
                 // - remaining space in a buffer
-                copyCount = std::min(windowSize - windowCol, BUFFER_SIZE - bufferCol);
+                copyCount = std::min(windowSize - windowCol, BUFFER_SIZE/numCh - bufferCol);
 
                 INFO << "bufferCol: " << bufferCol
                      << " copyCount: " << copyCount;
 
                 // Copy samples into the window
-                std::memcpy(windowProcessed + (windowCol + windowRow * windowSize),
-                            (currentBuffer->data + bufferCol),
-                            copyCount);
+                std::memcpy(windowProcessed + (windowCol * numCh + windowRow * windowSize * numCh),
+                            (currentBuffer->data + bufferCol * numCh),
+                            copyCount * numCh);
 
                 bufferCol += copyCount;
                 windowCol += copyCount;
@@ -152,10 +154,7 @@ void Processor::coreLoop()
                 if (windowCol == windowSize) {
                     windowCol = 0;
 
-                    // TODO: Find a better way to do this. Its not very thread
-                    //       safe to pass a pointer to data held in one thread
-                    //       to another thread. Making it immutable might help.
-                    outputQueue->push(windowProcessed + (windowCol + windowRow * windowSize));
+                    outputQueue->push(windowProcessed + (windowCol * numCh + windowRow * windowSize * numCh));
 
                     // Setup next trigger in persistance buffer
                     windowRow++;
@@ -178,7 +177,7 @@ void Processor::coreLoop()
                     writeToCsv(filename,
                                windowProcessed,
                                persistanceSize,
-                               windowSize);
+                               windowSize * numCh);
 
                     windowStored.store(true);
                 }
@@ -234,7 +233,7 @@ void Processor::updateWinPerSize(uint32_t newWinSize, uint32_t newPerSize)
     windowRow = 0;
 
     // Create a new window space as a single array
-    windowProcessed = new int8_t [windowSize * persistanceSize];
+    windowProcessed = new int8_t [windowSize * persistanceSize * numCh];
 }
 
 std::chrono::high_resolution_clock::time_point Processor::getTimeFilled()
