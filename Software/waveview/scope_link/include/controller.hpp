@@ -30,6 +30,8 @@ public:
     void setWindowSize(uint32_t newSize);
     uint32_t getPerSize();
     void setPerSize(uint32_t newSize);
+    void getMax(int8_t chNum, int8_t* value, uint64_t* pos);
+    void getMin(int8_t chNum, int8_t* value, uint64_t* pos);
 
 private:
     // external queue
