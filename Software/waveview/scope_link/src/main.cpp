@@ -162,6 +162,8 @@ bool parseCli (std::string line)
         ERROR << "unpause";
         ERROR << "data";
         ERROR << "datafile <csv file in waveview/scope_link/test/>";
+        ERROR << "setch <# of channels: 1, 2 or 4>";
+        ERROR << "settrig <channel to trig on: 1, 2, 3 or 4>";
         ERROR << "flush";
         ERROR << "exit";
     }
