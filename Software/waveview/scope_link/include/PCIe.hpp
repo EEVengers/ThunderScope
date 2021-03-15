@@ -26,8 +26,11 @@
 #define BOARD_REG_OUT                       0x1000 // A 32 bit value, bit 0:3: attenuation, bit 4:7: dc_cpl, bit 8: acq_en, bit 9: fe_en, 22bits unused
 #define BOARD_REG_IN                        0x1008 // unused for now
 #define SERIAL_FIFO_DATA_WRITE_REG          0x2010
-#define SERIAL_FIFO_DATA_LENGTH             0x2014 // (in bytes) This byte tells the thing to transfer
-#define SERIAL_FIFO_DATA_DONE_BYTE_ADDRESS  0x200C // read 0x1FC when the when empty
+#define SERIAL_FIFO_IER_ADDRESS             0x2004
+#define SERIAL_FIFO_TDR_ADDRESS             0x202C
+#define SERIAL_FIFO_TDFV_ADDRESS            0x200C // read 0x1FC when the transmission is done
+#define SERIAL_FIFO_TLR_ADDRESS             0x2014 // (in bytes) This byte tells the thing to transfer
+#define SERIAL_FIFO_ISR_ADDRESS             0x2000 
 #define SPI_FRONT_END_CHANNEL_1             0xF8
 #define SPI_FRONT_END_CHANNEL_2             0xF9
 #define SPI_FRONT_END_CHANNEL_3             0xFA
@@ -39,6 +42,7 @@
 #define CLOCK_GEN_I2C_ADDRESS_READ          0b10110001 //IF WE COULD
 
 enum ScopeCommand {
+    board_enable,
     adc_enable,
     adc_rest,
     adc_power_down,
@@ -52,6 +56,7 @@ enum ScopeCommand {
     pll_r_counter,
     pll_control,
     pll_n_counter,
+    dataMover_enable,
     test_write
 };
 
@@ -78,45 +83,9 @@ private:
     char c2h_0_connection_string[261] = "";
     LARGE_INTEGER freq; //used for perforamnce testing
 
-    const unsigned char io_dir_init [6] = {0xFF,0x44,0x8C,0x00,0x00,0x00};
-    const unsigned char io_out_init [6] = {0xFF,0x44,0x84,0x00,0x00,0x00};
-    unsigned char io_out [6];
-    //DAC Addressing not implemented yet, only one FE w/ addr 0x18 exists
-    const unsigned char dac_init [4][4] = {{0xFF,0x18,0x07,0x00},
-                                           {0xFF,0x18,0x07,0x00},
-                                           {0xFF,0x18,0x07,0x00},
-                                           {0xFF,0x18,0x07,0x00}};
-    unsigned char dac [4][4];
-
-    const unsigned char pga_init [4][4] = {{0xFB,0x00,0x04,0x0A},
-                                           {0xFA,0x00,0x04,0x0A},
-                                           {0xF9,0x00,0x04,0x0A},
-                                           {0xF8,0x00,0x04,0x0A}};
-    unsigned char pga [4][4];
-
-    const unsigned char adc_reset [4] = {0xFD,0x00,0x00,0x01};
-    const unsigned char adc_power_down [4] = {0xFD,0x0F,0x02,0x00};
-    const unsigned char adc_active [4] = {0xFD,0x0F,0x00,0x00};
-    const unsigned char adc_cgain_cfg [4] = {0xFD,0x33,0x00,0x00}; //db mode, fine gain off
-    const unsigned char adc_cgain4 [4] = {0xFD,0x2A,0x55,0x55}; //9db gain in 4ch mode
-    const unsigned char adc_cgain12 [4] = {0xFD,0x2B,0x05,0x55}; //9db gain in 1&2ch mode
-    //5db gain due to ADC HiZ input (not 100ohm diff)
-    const unsigned char adc_btc_mode [4] = {0xFD,0x46,0x00,0x04}; // enables twos complement mode
-
-    const unsigned char adc_chnum_clkdiv_init [4] = {0xFD,0x31,0x00,0x01};
-    const unsigned char adc_in_sel_12_init [4] = {0xFD,0x3A,0x10,0x10};
-    const unsigned char adc_in_sel_34_init [4] = {0xFD,0x3B,0x10,0x10};
-
-    unsigned char adc_chnum_clkdiv [4];
-    unsigned char adc_in_sel_12 [4];
-    unsigned char adc_in_sel_34 [4];
-
-    const unsigned char pll_r_counter[4] = {0xFC,0x34,0x00,0x09};
-    const unsigned char pll_control[4] = {0xFC,0x0F,0xF9,0xA0};
-    const unsigned char pll_n_counter[4] = {0xFC,0x00,0x0F,0x16};
-
     void _Read(HANDLE hPCIE, long long address, uint8_t* buff, int bytesToRead);
     void _Write(HANDLE hPCIE, long long address, uint8_t* buff, int bytesToWrite);
+    void _FIFO_WRITE(HANDLE hPCIE, uint8_t* data, uint8_t bytesToWrite);
 
 protected:
 

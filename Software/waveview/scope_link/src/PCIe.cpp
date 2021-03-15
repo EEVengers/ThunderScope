@@ -126,10 +126,29 @@ void PCIeLink::Read(uint8_t* buff, int bytesToRead) {
 *************************************************************/
 void PCIeLink::Write(ScopeCommand command, void* val) {
     switch(command) {
+        case board_enable:
+        INFO << "Enabling Board";
+        {
+            uint8_t en[] = {0x00, 0x00};
+            _Read(user_handle,BOARD_REG_OUT,en,2);
+            en[1] |= 0x01; //acq->on fe->off
+            _Write(user_handle,BOARD_REG_OUT,en,2);
+        }
         case adc_enable:
         INFO << "Enabling ADC";
         {
-            
+            //Reset ADC
+            uint8_t resetADC[] = {0xFD,0x00,0x00,0x01};
+            _FIFO_WRITE(user_handle,resetADC,4);
+            //Power Down ADC
+            uint8_t powerDownADC[] = {0xFD,0x0F,0x02,0x00};
+            _FIFO_WRITE(user_handle,powerDownADC,4);
+            //Set adc into ramp test
+            uint8_t adcRampTest[] = {0xFD,0x25,0x00,0x20};
+            _FIFO_WRITE(user_handle,adcRampTest,4);
+            //Set adc into active mode
+            uint8_t adcActiveMode[] = {0xFD,0x0F,0x00,0x00};
+            _FIFO_WRITE(user_handle,adcActiveMode,4);
         }
         break;
         case clk_enable:
@@ -148,27 +167,9 @@ void PCIeLink::Write(ScopeCommand command, void* val) {
             
             //write to the clock generator
             for(int i = 0; i < 34; i++) {
-                uint8_t txBuff[] = { I2C_BYTE_PLL, CLOCK_GEN_I2C_ADDRESS_WRITE, (uint8_t)((config_clk_gen[i] & 0xFF00) >> 8), (uint8_t)(config_clk_gen[i] & 0xFF)};
-                uint8_t lengthBuff[] = {0x20};
-                printf("b0: %X, b1: %X, b2: %X, b3: %X\n", txBuff[0], txBuff[1], txBuff[2], txBuff[3], txBuff[4]);
-
-                //write to user space FIFO
-                for(int q = 0; q < 4; q++) {
-                    _Write(user_handle,SERIAL_FIFO_DATA_WRITE_REG,txBuff + q,1);
-                }
-                //write to user space FIFO size to start transfer
-                _Write(user_handle,SERIAL_FIFO_DATA_LENGTH,lengthBuff,1);
-                //block till the transfer is done
-                uint16_t rxBuff[] = {0}; 
-                bool done = false;
-                while(!done) {
-                    std::this_thread::sleep_for(std::chrono::microseconds(1000));
-                    _Read(user_handle,SERIAL_FIFO_DATA_DONE_BYTE_ADDRESS,(uint8_t*)rxBuff,2);
-                    if(0x1FC == rxBuff[0] || 0xFC01 == rxBuff[0]) {
-                        done = true;
-                    }
-                    printf("DONE BIT IS: %X",rxBuff[0]);
-                }
+                uint8_t data[] = {I2C_BYTE_PLL, CLOCK_GEN_I2C_ADDRESS_WRITE, (uint8_t)((config_clk_gen[i] & 0xFF00) >> 8),(uint8_t)(config_clk_gen[i] & 0xFF)};
+                printf("DataPacket: %X %X %X %X\n",data[0],data[1],data[2],data[3]);
+                _FIFO_WRITE(user_handle,data,4);
             }
         }
         break;
@@ -200,6 +201,56 @@ void PCIeLink::Write(ScopeCommand command, void* val) {
     }
 }
 
+void PCIeLink::_FIFO_WRITE(HANDLE hPCIE, uint8_t* data, uint8_t bytesToWrite) {
+    
+    uint8_t* txBuff = data;
+    uint16_t bytes = bytesToWrite * 4;
+    uint8_t lengthBuff[] = { (uint8_t)(bytes & 0xFF), (uint8_t)((bytes & 0xFF00) >> 8),0x00,0x00};
+    uint8_t isrClearBuff[] = {0xFF, 0xFF, 0xFF, 0xFF};
+    uint8_t ierSetupBuff[] = {0x00, 0x00, 0x00, 0x0C};
+    uint8_t isrRxBuff[] = {0x00, 0x00, 0x00, 0x00};
+    uint8_t tdrBuff[] = {0x02,0x00,0x00,0x00};
+    uint8_t tdfvBuff[] = {0x00,0x00,0x00,0x00};
+
+    //reset ISR
+    _Write(user_handle,SERIAL_FIFO_ISR_ADDRESS,isrClearBuff,4);
+    //read ISR and IER
+    _Read(user_handle, SERIAL_FIFO_ISR_ADDRESS,isrRxBuff,4);
+    printf("ISR: %X %X %X %X\n",isrRxBuff[0],isrRxBuff[1],isrRxBuff[2],isrRxBuff[3]);
+    _Read(user_handle, SERIAL_FIFO_IER_ADDRESS,isrRxBuff,4);
+    printf("IER: %X %X %X %X\n",isrRxBuff[0],isrRxBuff[1],isrRxBuff[2],isrRxBuff[3]);
+    //enable IER
+    _Write(user_handle,SERIAL_FIFO_IER_ADDRESS,ierSetupBuff,4);
+    _Read(user_handle, SERIAL_FIFO_IER_ADDRESS,isrRxBuff,4);
+    printf("IER After Write: %X %X %X %X\n",isrRxBuff[0],isrRxBuff[1],isrRxBuff[2],isrRxBuff[3]);
+    //Set false TDR
+    _Write(user_handle,SERIAL_FIFO_TDR_ADDRESS,tdrBuff,4);
+    //Put data into queue
+    for(int q = 0; q < bytesToWrite; q++) {
+        _Write(user_handle,SERIAL_FIFO_DATA_WRITE_REG,txBuff + q,1);
+    }
+    //read TDFV (vacancy byte)
+    _Read(user_handle,SERIAL_FIFO_TDFV_ADDRESS,tdfvBuff,4);
+    printf("TDFV: %X %X %X %X\n",tdfvBuff[0],tdfvBuff[1],tdfvBuff[2],tdfvBuff[3]);
+    //write to TLR (the size of the packet)
+    _Write(user_handle,SERIAL_FIFO_TLR_ADDRESS,lengthBuff,4);
+    //read ISR for a done value
+    bool done = false;
+    while(!done) {
+        _Read(user_handle,SERIAL_FIFO_ISR_ADDRESS,(uint8_t*)isrRxBuff,4);
+        if(0x0008 == isrRxBuff[3]) {
+            done = true;
+        } else {
+            std::this_thread::sleep_for(std::chrono::microseconds(1500));
+        }
+        printf("ISR: %X %X %X %X\n",isrRxBuff[0],isrRxBuff[1],isrRxBuff[2],isrRxBuff[3]);
+    }
+    //write 0xFF FF FF FF to ISR
+    _Write(user_handle,SERIAL_FIFO_ISR_ADDRESS,isrClearBuff,4);
+    //read TDFV
+    _Read(user_handle,SERIAL_FIFO_TDFV_ADDRESS,tdfvBuff,4);
+}
+
 void PCIeLink::_Read(HANDLE hPCIE, int64_t address, uint8_t* buff, int bytesToRead) {
     if(hPCIE == INVALID_HANDLE_VALUE) {
         ERROR << "INVALID HANDLE PASSED INTO PCIeLink::_Read(): " << hPCIE;
@@ -223,7 +274,7 @@ void PCIeLink::_Read(HANDLE hPCIE, int64_t address, uint8_t* buff, int bytesToRe
     }
     QueryPerformanceCounter(&stop);
     double time_sec = (unsigned long long)(stop.QuadPart - start.QuadPart) / (double)freq.QuadPart;
-    INFO << bytesRead << " bytes read in " << time_sec;
+    //INFO << bytesRead << " bytes read in " << time_sec;
 }
 
 void PCIeLink::_Write(HANDLE hPCIE, int64_t address, uint8_t* buff, int bytesToWrite) {
@@ -249,7 +300,7 @@ void PCIeLink::_Write(HANDLE hPCIE, int64_t address, uint8_t* buff, int bytesToW
     }
     QueryPerformanceCounter(&stop);
     double time_sec = (unsigned long long)(stop.QuadPart - start.QuadPart) / (double)freq.QuadPart;
-    INFO << bytesWritten << " bytes written in " << time_sec;
+    //INFO << bytesWritten << " bytes written in " << time_sec;
 }
 
 PCIeLink::PCIeLink() {
