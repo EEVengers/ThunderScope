@@ -88,10 +88,16 @@ module dso_top
   assign atten = gpio_io_o_1[3:0];
   assign dc_cpl = gpio_io_o_1[7:4];
   
+  reg[31:0] led_counter;
+  always @ (posedge divclk) begin
+          led_counter <= led_counter + 1'b1;
+  end
+   
   assign led[0] = ~acq_en; //gpio_io_o_1[11:8];
   assign led[1] = adc_pg;
   assign led[2] = ~fe_en;
-  assign led[3] = fe_pg;
+  //assign led[3] = fe_pg;
+  assign led[3] = led_counter[31];
   
   assign osc_oe = acq_en;
   assign acq_en = gpio_io_o_1[8];
