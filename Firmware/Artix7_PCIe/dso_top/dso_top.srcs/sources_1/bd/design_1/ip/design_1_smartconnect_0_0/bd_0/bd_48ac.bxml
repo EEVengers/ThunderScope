@@ -2,10 +2,10 @@
 <Root MajorVersion="0" MinorVersion="39">
   <CompositeFile CompositeFileTopName="bd_48ac" CanBeSetAsTop="true" CanDisplayChildGraph="true">
     <Description>Composite Fileset</Description>
-    <Generation Name="SYNTHESIS" State="RESET" Timestamp="1615742042"/>
-    <Generation Name="IMPLEMENTATION" State="RESET" Timestamp="1615742042"/>
-    <Generation Name="SIMULATION" State="RESET" Timestamp="1615742042"/>
-    <Generation Name="HW_HANDOFF" State="RESET" Timestamp="1615742042"/>
+    <Generation Name="SYNTHESIS" State="GENERATED" Timestamp="1615820948"/>
+    <Generation Name="IMPLEMENTATION" State="GENERATED" Timestamp="1615820948"/>
+    <Generation Name="SIMULATION" State="GENERATED" Timestamp="1615820948"/>
+    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1615820948"/>
     <FileCollection Name="SOURCES" Type="SOURCES">
       <File Name="ip\ip_0\bd_48ac_one_0.xci" Type="IP">
         <Instance HierarchyPath="clk_map/one"/>
@@ -381,6 +381,37 @@
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
         <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="synth\bd_48ac.v" Type="Verilog">
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+      </File>
+      <File Name="sim\bd_48ac.v" Type="Verilog">
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="hw_handoff\design_1_smartconnect_0_0.hwh" Type="HwHandoff">
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="HW_HANDOFF"/>
+      </File>
+      <File Name="hw_handoff\design_1_smartconnect_0_0_bd.tcl">
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="HW_HANDOFF"/>
+      </File>
+      <File Name="synth\design_1_smartconnect_0_0.hwdef">
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="HW_HANDOFF"/>
+      </File>
+      <File Name="sim\bd_48ac.protoinst">
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
+        <Library Name="xil_defaultlib"/>
         <UsedIn Val="SIMULATION"/>
       </File>
     </FileCollection>
