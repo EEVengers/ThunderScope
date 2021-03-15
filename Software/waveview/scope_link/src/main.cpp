@@ -153,6 +153,55 @@ bool parseCli (std::string line)
         } else {
             ERROR << "No controller";
         }
+    } else if ("getmax" == line.substr(0, line.find(' '))) {
+        INFO << "getting max value";
+
+        // Useful for accepting arguments from a command
+        std::string nextArgument = line.substr(line.find(' ') + 1, line.length());
+        if (nextArgument != "getmax") {
+            int8_t maxValue = 0;
+            uint64_t maxPos = 0;
+            if (nextArgument == "1") {
+                controllerThread->getMax(1, &maxValue, &maxPos);
+                INFO << "Max Value: " << (int)maxValue << " at position: " << maxPos;
+            } else if (nextArgument == "2") {
+                controllerThread->getMax(2, &maxValue, &maxPos);
+                INFO << "Max Value: " << maxValue << " at position: " << maxPos;
+            } else if (nextArgument == "3") {
+                controllerThread->getMax(3, &maxValue, &maxPos);
+                INFO << "Max Value: " << maxValue << " at position: " << maxPos;
+            } else if (nextArgument == "4") {
+                controllerThread->getMax(3, &maxValue, &maxPos);
+                INFO << "Max Value: " << maxValue << " at position: " << maxPos;
+            } else {
+                ERROR << "Not a trigger channel";
+            }
+        }
+
+    } else if ("getmin" == line.substr(0, line.find(' '))) {
+        INFO << "getting min value";
+
+        // Useful for accepting arguments from a command
+        std::string nextArgument = line.substr(line.find(' ') + 1, line.length());
+        if (nextArgument != "getmin") {
+            int8_t minValue = 0;
+            uint64_t minPos = 0;
+            if (nextArgument == "1") {
+                controllerThread->getMin(1, &minValue, &minPos);
+                INFO << "Min Value: " << (int)minValue << " at position: " << minPos;
+            } else if (nextArgument == "2") {
+                controllerThread->getMin(2, &minValue, &minPos);
+                INFO << "Min Value: " << minValue << " at position: " << minPos;
+            } else if (nextArgument == "3") {
+                controllerThread->getMin(3, &minValue, &minPos);
+                INFO << "Min Value: " << minValue << " at position: " << minPos;
+            } else if (nextArgument == "4") {
+                controllerThread->getMin(3, &minValue, &minPos);
+                INFO << "Min Value: " << minValue << " at position: " << minPos;
+            } else {
+                ERROR << "Not a trigger channel";
+            }
+        }
 
     } else if (line == "controller") {
         if (controllerThread == NULL ) {

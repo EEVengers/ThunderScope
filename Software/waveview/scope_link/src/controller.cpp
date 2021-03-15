@@ -393,3 +393,13 @@ void controller::setPerSize(uint32_t newSize)
 
     controllerFlush();
 }
+
+void controller::getMax(int8_t chNum, int8_t* value, uint64_t* pos)
+{
+    processorThread->getMax(chNum, value, pos);
+}
+
+void controller::getMin(int8_t chNum, int8_t* value, uint64_t* pos)
+{
+    processorThread->getMin(chNum, value, pos);
+}
