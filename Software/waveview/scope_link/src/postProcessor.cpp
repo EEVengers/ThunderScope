@@ -53,7 +53,7 @@ postProcessor::~postProcessor(void)
     postProcessorStop();
     postProcessorThread.join();
 
-    INFO << "Destroyed post processor";
+    DEBUG << "Destroyed post processor";
 }
 
 /*******************************************************************************
@@ -80,7 +80,7 @@ void postProcessor::coreLoop()
         while (pauseTransfer.load() == false &&
                inputQueue->pop(currentWindow)) {
 
-            INFO << "post processing next window";
+            DEBUG << "post processing next window";
 
             // TODO: Could do each channel in parrallel
             for (uint8_t j = 0; j < numCh; j++) {
@@ -89,12 +89,12 @@ void postProcessor::coreLoop()
 
                 // Post process window
                 // TODO: Add interpolation here.
-                std::cout << "Post Processed window";
+                std::string dbgMsg = "Post Processed window ";
                 for (uint32_t i = 0; i < windowSize; i++) {
                     postWindow[i] = currentWindow[i * numCh + j];
-                    std::cout << " " << (int)currentWindow[i * numCh + j];
+                    dbgMsg += std::to_string(currentWindow[i * numCh + j]) + " ";
                 }
-                std::cout << std::endl;
+                DEBUG << dbgMsg;
 
                 // Pass processed window to next stage
                 currentPacket = (EVPacket*)malloc(sizeof(EVPacket));
@@ -143,7 +143,7 @@ void postProcessor::setCh (int8_t newCh)
 void postProcessor::postProcessorStart()
 {
     stopTransfer.store(false);
-    INFO << "Starting post processing";
+    DEBUG << "Starting post processing";
 }
 
 /*******************************************************************************
@@ -160,7 +160,7 @@ void postProcessor::postProcessorStart()
 void postProcessor::postProcessorStop()
 {
     stopTransfer.store(true);
-    INFO << "Stopping post processing";
+    DEBUG << "Stopping post processing";
 }
 
 /*******************************************************************************
@@ -177,7 +177,7 @@ void postProcessor::postProcessorStop()
 void postProcessor::postProcessorUnpause()
 {
     pauseTransfer.store(false);
-    INFO << "unpausing post processing";
+    DEBUG << "unpausing post processing";
 }
 
 /*******************************************************************************
@@ -194,5 +194,5 @@ void postProcessor::postProcessorUnpause()
 void postProcessor::postProcessorPause()
 {
     pauseTransfer.store(true);
-    INFO << "pausing post processing";
+    DEBUG << "pausing post processing";
 }

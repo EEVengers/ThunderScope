@@ -45,3 +45,23 @@ BOOST_LOG_GLOBAL_LOGGER_INIT(my_logger, logger_t)
 
     return lg;
 }
+
+/*******************************************************************************
+ * convert_int()
+ *
+ * converts an integer to a hex string.
+ *
+ * Arguments:
+ *   int n - integer to convert.
+ *
+ * Return:
+ *   string - integer n as an uppercase string.
+ ******************************************************************************/
+std::string convert_int(int n)
+{
+    std::stringstream ss;
+    ss << std::uppercase << std::hex;
+    ss << n;
+    return ss.str();
+}
+

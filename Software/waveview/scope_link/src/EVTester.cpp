@@ -52,7 +52,7 @@ bool loadFromFile ( char* filename, boost::lockfree::queue<buffer*, boost::lockf
 
             tmpBufPos++;
             if (tmpBufPos == BUFFER_SIZE) {
-                INFO << "Adding buffer to queue from file";
+                DEBUG << "Adding buffer to queue from file";
                 // Buffer is now full push it
                 outputQ->push(tempBuffer);
 

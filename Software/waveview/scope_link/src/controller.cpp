@@ -37,7 +37,7 @@ controller::~controller()
     delete postProcessorThread;
     delete bridgeThread;
 
-    INFO << "Controller Destroyed";
+    DEBUG << "Controller Destroyed";
 }
 
 /*******************************************************************************
@@ -58,15 +58,15 @@ void controller::controllerLoop()
     while (stopController.load() == false) {
         while (stopController.load() == false &&
                controllerQueue_rx.pop(currentPacket)) {
-            INFO << "Controller processing a packet";
+            DEBUG << "Controller processing a packet";
 
             // execute the packet command
             switch (currentPacket->command) {
                 case 1:
-                    INFO << "Packet command 1";
+                    DEBUG << "Packet command 1";
                     break;
                 case 2:
-                    INFO << "Packet command 2";
+                    DEBUG << "Packet command 2";
                     break;
                 default:
                     ERROR << "Unknown packet command";
@@ -92,7 +92,7 @@ void controller::controllerLoop()
  ******************************************************************************/
 void controller::controllerPause()
 {
-    INFO << "Pausing pipeline";
+    DEBUG << "Pausing pipeline";
     processorThread->processorPause();
     triggerThread->triggerPause();
     postProcessorThread->postProcessorPause();
@@ -111,7 +111,7 @@ void controller::controllerPause()
  ******************************************************************************/
 void controller::controllerUnPause()
 {
-    INFO << "Unpausing pipeline";
+    DEBUG << "Unpausing pipeline";
     processorThread->processorUnpause();
     triggerThread->triggerUnpause();
     postProcessorThread->postProcessorUnpause();
@@ -152,19 +152,19 @@ void controller::controllerFlush()
     // Clear queues
     size_t count = 0;
     count = (*dataQueue).consume_all(bufferFunctor);
-    INFO << "Flushed inputQueue: " << count;
+    DEBUG << "Flushed inputQueue: " << count;
 
     count = triggerProcessorQueue.consume_all(bufferFunctor);
-    INFO << "Flushed triggeredQueue: " << count;
+    DEBUG << "Flushed triggeredQueue: " << count;
 
     // Clear persistence buffer
     processorThread->flushPersistence();
-    INFO << "Flushed persistence buffer";
+    DEBUG << "Flushed persistence buffer";
 //    count = preProcessorQueue.consume_all(bufferFunctor);
-//    INFO << "Flushed preProcessorQueue: " << count;
+//    DEBUG << "Flushed preProcessorQueue: " << count;
 
     count = processorPostProcessorQueue_1.consume_all(free);
-    INFO << "Flushed postProcessorQueue: " << count;
+    DEBUG << "Flushed postProcessorQueue: " << count;
 }
 
 /*******************************************************************************

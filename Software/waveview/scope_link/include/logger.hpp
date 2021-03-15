@@ -29,4 +29,6 @@ typedef boost::log::sources::severity_logger_mt<boost::log::trivial::severity_le
 //declares a global logger with a custom initialization
 BOOST_LOG_GLOBAL_LOGGER(my_logger, logger_t)
 
+std::string convert_int(int n);
+
 #endif // logger_h
