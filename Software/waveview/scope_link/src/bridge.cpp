@@ -365,16 +365,18 @@ void Bridge::RxJob() {
         }
 
         if(rxPacket->command == 0x1F) {
-            EVPacket* tempPacket = (EVPacket*) malloc(sizeof(EVPacket));
-            tempPacket->data = (int8_t*) malloc(1024);
-            tempPacket->dataSize = 1024;
-            tempPacket->packetID = 0x11;
-            for(int i = 0; i < 1024; i++) {
-                tempPacket->data[i] = i % 24;
+            for(int pk = 0; pk < 2; pk++) {
+                EVPacket* tempPacket = (EVPacket*) malloc(sizeof(EVPacket));
+                tempPacket->data = (int8_t*) malloc(1024);
+                tempPacket->dataSize = 1024;
+                tempPacket->packetID = 0x11;
+                for(int i = 0; i < 1024; i++) {
+                    tempPacket->data[i] = i % 24;
+                }
+                txLock.lock();
+                _txQueue.push(tempPacket);
+                txLock.unlock();
             }
-            txLock.lock();
-            _txQueue.push(tempPacket);
-            txLock.unlock();
         }
 
         // Push packet to the controller so it has access to the other threads
