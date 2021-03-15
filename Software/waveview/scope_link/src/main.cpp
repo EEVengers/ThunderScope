@@ -124,6 +124,16 @@ bool parseCli (std::string line)
             controllerThread->controllerFlush();
         }
 
+    } else if (line == "setRising") {
+        if (controllerThread != NULL ) {
+            controllerThread->setRising();
+        }
+
+    } else if (line == "setFalling") {
+        if (controllerThread != NULL ) {
+            controllerThread->setFalling();
+        }
+
     } else if ("datafile" == line.substr(0, line.find(' '))) {
         INFO << "Adding data from file to the pipeline";
 

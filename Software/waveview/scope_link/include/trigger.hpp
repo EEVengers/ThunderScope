@@ -19,7 +19,8 @@ public:
 
     ~Trigger();
 
-    void checkTrigger(buffer* currentBuffer);
+    void checkTriggerRising(buffer* currentBuffer);
+    void checkTriggerFalling(buffer* currentBuffer);
 
     void coreLoop();
 
@@ -40,6 +41,9 @@ public:
 
     void setCh (int8_t newCh);
     void setTriggerCh (int8_t newTriggerCh);
+
+    void setRising();
+    void setFalling();
 
     /* variables */
 
@@ -65,6 +69,8 @@ private:
     int8_t numCh = 1;
     // valid numbers are 0, 1, 3 for math reasons
     int8_t triggerCh = 0;
+
+    bool risingEdge = true;
 };
 
 #endif

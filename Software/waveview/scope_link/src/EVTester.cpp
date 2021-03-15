@@ -158,7 +158,7 @@ void testTriggerThroughput()
 
     // Run loop
     while (newDataQueue.pop(currentBuffer)) {
-        trigger.checkTrigger(currentBuffer);
+        trigger.checkTriggerRising(currentBuffer);
     }
 
     // Take Timestamp
