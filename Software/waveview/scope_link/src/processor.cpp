@@ -2,8 +2,6 @@
 #include "logger.hpp"
 #include "common.hpp"
 
-#define DBG
-
 Processor::Processor(
         boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> *inputQ,
         boost::lockfree::queue<int8_t*, boost::lockfree::fixed_sized<false>> *outputQ)
@@ -34,36 +32,36 @@ Processor::Processor(
 
 Processor::~Processor(void)
 {
-    INFO << "Processor Destructor Called";
+    DEBUG << "Processor Destructor Called";
 
     // Stop the transer and join thread
     processorPause();
     processorStop();
     processorThread.join();
 
-    INFO << "Destroyed processor thread";
+    DEBUG << "Destroyed processor thread";
 }
 
 // Returns the offset of the next trigger in the current buffer
 bool Processor::findNextTrigger(buffer *currentBuffer, uint32_t* p_bufCol)
 {
-    INFO << "** Finding Next Trigger **";
-    INFO << "p_bufCol: " << *p_bufCol;
+    DEBUG << "** Finding Next Trigger **";
+    DEBUG << "p_bufCol: " << *p_bufCol;
     uint32_t t_offset = 0;
 
     // Find which 64 block the buffer is in
     uint32_t t_64offset = (*p_bufCol / 64);
-    INFO << "p_bufCol: " << *p_bufCol
+    DEBUG << "p_bufCol: " << *p_bufCol
          << " t_offset: " << t_offset 
          << " t_64offset: " << t_64offset;
 
     if (windowCol != 0) {
         // Partialy filled window
         if (*p_bufCol == 0) {
-            INFO << "Partial Window. Fill the rest of the widow";
+            DEBUG << "Partial Window. Fill the rest of the widow";
             return true;
         } else {
-            INFO << "Partial Window. bufferCol = 0 and get new buffer";
+            DEBUG << "Partial Window. bufferCol = 0 and get new buffer";
             *p_bufCol = 0;
             return false;
         }
@@ -76,13 +74,13 @@ bool Processor::findNextTrigger(buffer *currentBuffer, uint32_t* p_bufCol)
             // Found a trigger, find exact position
             t_offset = (int)(log2(currentBuffer->trigger[t_64offset]));
 #ifdef DBG
-            INFO << "found Trigger in 64: " << t_64offset
+            DEBUG << "found Trigger in 64: " << t_64offset
                  << " with val: " << currentBuffer->trigger[t_64offset]
                  << " t_offset: " << t_offset;
 #endif 
             t_offset = (64 - 1) - t_offset;
 #ifdef DBG
-            INFO << "t_64offset corrected: " << t_64offset;
+            DEBUG << "t_64offset corrected: " << t_64offset;
 #endif
             break;
         }
@@ -91,11 +89,11 @@ bool Processor::findNextTrigger(buffer *currentBuffer, uint32_t* p_bufCol)
     if (t_64offset >= BUFFER_SIZE/64) {
         // No trigger found in buffer
         *p_bufCol = BUFFER_SIZE;
-        INFO << "End of buffer reached, go to next one";
+        DEBUG << "End of buffer reached, go to next one";
         return false;
     } else {
         *p_bufCol = ((t_offset) + (t_64offset * 64));
-        INFO << "t_offset: " << t_offset
+        DEBUG << "t_offset: " << t_offset
              << " t_64_offset: " << t_64offset;
         return true;
     }
@@ -120,7 +118,7 @@ void Processor::coreLoop()
                windowStored.load() == false &&
                inputQueue->pop(currentBuffer)) {
 
-            INFO << "*** New Buffer ***";
+            DEBUG << "*** New Buffer ***";
             // New buffer, reset variables
             count++;
             bufferCol = 0;
@@ -133,7 +131,7 @@ void Processor::coreLoop()
                 // - remaining space in a buffer
                 copyCount = std::min(windowSize - windowCol, BUFFER_SIZE/numCh - bufferCol);
 
-                INFO << "bufferCol: " << bufferCol
+                DEBUG << "bufferCol: " << bufferCol
                      << " copyCount: " << copyCount;
 
                 // Copy samples into the window
@@ -144,7 +142,7 @@ void Processor::coreLoop()
                 bufferCol += copyCount;
                 windowCol += copyCount;
 
-                INFO << "bufferCol: " << bufferCol 
+                DEBUG << "bufferCol: " << bufferCol 
                      << " windowCol: " << windowCol
                      << " windowSize: " << windowSize
                      << std::endl;
@@ -162,11 +160,11 @@ void Processor::coreLoop()
                     // Push it into the next 64 space so we don't
                     // trigger on the same spot twice
                     bufferCol += 64;
-                    INFO << "full window. windowCol: "
+                    DEBUG << "full window. windowCol: "
                          << windowCol;
                 } else {
                     // Partial window coppied
-                    INFO << "partial window. windowCol: "
+                    DEBUG << "partial window. windowCol: "
                          << windowCol;
                 }
 
@@ -251,26 +249,26 @@ std::chrono::high_resolution_clock::time_point Processor::getTimeWritten()
 void Processor::processorStart()
 {
     stopTransfer.store(false);
-    INFO << "Starting processing";
+    DEBUG << "Starting processing";
 }
 
 void Processor::processorStop()
 {
     stopTransfer.store(true);
-    INFO << "Stopping processing";
+    DEBUG << "Stopping processing";
 }
 
 // Control the inner loop
 void Processor::processorUnpause()
 {
     pauseTransfer.store(false);
-    INFO << "unpausing processing";
+    DEBUG << "unpausing processing";
 }
 
 void Processor::processorPause()
 {
     pauseTransfer.store(true);
-    INFO << "pausing processing";
+    DEBUG << "pausing processing";
 }
 
 // Statistics

@@ -184,8 +184,7 @@ void runCli() {
 
     bool parseThings = true;
     while(parseThings) {
-        INFO << "Input a command";
-        printf("> ");
+        INFO << "Input a command\n>";
         std::string line;
         std::getline(std::cin, line);
 

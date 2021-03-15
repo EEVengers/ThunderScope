@@ -29,12 +29,13 @@ inline void FreePacket(EVPacket* packet) {
  *   None
  ******************************************************************************/
 void PrintPacket(EVPacket* packet) {
-    printf("PacketID_HEX: %X, Command: %d, DataSize: %d, Data: ",
-           packet->packetID, packet->command,packet->dataSize);
+    std::string dbgMsg = "PacketID_HEX: " + convert_int(packet->packetID);
+    dbgMsg += ", Command: " + std::to_string(packet->command);
+    dbgMsg += ", DataSize: " + std::to_string(packet->dataSize) + ", Data: ";
     for(unsigned i = 0; i < packet->dataSize; i++) {
-        printf("%X ",packet->data[i]);
+        dbgMsg += convert_int(packet->data[i]) + " ";
     }
-    printf("\n");
+    INFO << dbgMsg;
 }
 
 /*******************************************************************************
@@ -99,14 +100,14 @@ txQueue(txQueue)
  *   None
  ******************************************************************************/
 Bridge::~Bridge() {
-    INFO << "Destroying bridge";
+    DEBUG << "Destroying bridge";
     if (rx_run.load() == true) {
         RxStop();
     }
     if (tx_run.load() == true) {
         TxStop();
     }
-    INFO << "Bridge destroyed";
+    DEBUG << "Bridge destroyed";
 }
 
 /*******************************************************************************
@@ -137,7 +138,7 @@ int Bridge::makeConnection(int targetSocket ) {
         return -1;
     }
 
-    INFO << "targetSocket: listening for clients, waiting to aceept....";
+    INFO << "targetSocket: listening for clients, waiting to accept....";
     // accept the first client to connect
     // No need to save it's fd since we will never write to it
     struct sockaddr_un address;
@@ -176,7 +177,7 @@ void Bridge::TxJob() {
         return;
     }
     ConnectNamedPipe(tx_hPipe, NULL);
-    INFO << "tx_pipe: client connected";
+    DEBUG << "tx_pipe: client connected";
 #else
     client_tx_sock = makeConnection(tx_sock);
     if (client_tx_sock < 0) {
@@ -230,7 +231,7 @@ void Bridge::RxJob() {
         return;
     }
     ConnectNamedPipe(rx_hPipe, NULL);
-    INFO << "rx_pipe: client connected";
+    DEBUG << "rx_pipe: client connected";
 #else
     client_rx_sock = makeConnection(rx_sock);
     if (client_rx_sock < 0) {
@@ -268,7 +269,7 @@ void Bridge::RxJob() {
                 && endPacketCheck[1] == END_PACKET_PACKETID
                 && endPacketCheck[2] == END_PACKET_DATA_SIZE) {
 
-            INFO << "END PACKET Recieved, Jumping Out Of RX Job";
+            DEBUG << "END PACKET Recieved, Jumping Out Of RX Job";
             rx_run.store(false);
             continue;
         }
@@ -292,7 +293,7 @@ void Bridge::RxJob() {
                 std::this_thread::sleep_for(std::chrono::milliseconds(500));
                 continue;
             } else {
-                INFO << "rx_pipe data_read: Error: " << GetLastError();
+                ERROR << "rx_pipe data_read: Error: " << GetLastError();
                 break;
             }
         }
@@ -321,10 +322,11 @@ void Bridge::RxJob() {
         }
 #endif
         //process whatever is sent (for now just print it)
-        printf("Packet Size: %d, Packet Info:\n",(int)packet_size);
-        for(int i = 0; i < (int)packet_size; i++)
-            printf("%X ",rxBuff[i]);
-        printf("\n");
+        std::string dbgMsg = "Packet Size: " + std::to_string(packet_size) + " Packet Info: ";
+        for(int i = 0; i < (int)packet_size; i++) {
+            dbgMsg += convert_int(rxBuff[i]) + " ";
+        }
+        INFO << dbgMsg;
 
         // TODO: you can just cast it as the struct and access things that way
         uint16_t* rxBuff16 = (uint16_t*) rxBuff;
@@ -374,11 +376,11 @@ int Bridge::TxStart() {
     if (err) {
         return err;
     }
-    INFO << "Initialized Tx Bridge";
+    DEBUG << "Initialized Tx Bridge";
 
     tx_run.store(true);
     tx_worker = std::thread(&Bridge::TxJob, this);
-    INFO << "Started Tx Worker";
+    DEBUG << "Started Tx Worker";
     return 0;
 }
 
@@ -401,11 +403,11 @@ int Bridge::RxStart() {
     if (err) {
         return err;
     }
-    INFO << "Init'd Rx Bridge";
+    DEBUG << "Init'd Rx Bridge";
 
     rx_run.store(true);
     rx_worker = std::thread(&Bridge::RxJob, this);
-    INFO << "Started Rx Worker";
+    DEBUG << "Started Rx Worker";
     return 0;
 }
 
@@ -441,7 +443,7 @@ int Bridge::InitTxBridge() {
         return 1;
     }
     
-    INFO << "Created Tx Pipe at: " << tx_connection_string;
+    DEBUG << "Created Tx Pipe at: " << tx_connection_string;
     return 0;
 
 #else
@@ -471,7 +473,7 @@ int Bridge::InitTxBridge() {
         return 2;
     }
 
-    INFO << "tx_sock created and bound on " << name.sun_path;
+    DEBUG << "tx_sock created and bound on " << name.sun_path;
     return 0;
 #endif
 }
@@ -509,7 +511,7 @@ int Bridge::InitRxBridge() {
         return 1;
     }
 
-    INFO << "Created Rx Pipe at: " << rx_connection_string;
+    DEBUG << "Created Rx Pipe at: " << rx_connection_string;
     return 0;
 #else
     struct sockaddr_un name;
@@ -538,7 +540,7 @@ int Bridge::InitRxBridge() {
         return 2;
     }
 
-    INFO << "rx_sock created and bound on " << name.sun_path;
+    DEBUG << "rx_sock created and bound on " << name.sun_path;
     return 0;
 #endif
 }
@@ -554,7 +556,7 @@ int Bridge::InitRxBridge() {
  *   int - 0 on success
  ******************************************************************************/
 int Bridge::TxStop() {
-    INFO << "Stopping Tx";
+    DEBUG << "Stopping Tx";
 
     tx_run.store(false);
 
@@ -598,7 +600,7 @@ int Bridge::TxStop() {
     }
 #endif
 
-    INFO << "Tx stopped";
+    DEBUG << "Tx stopped";
     return 0;
 }
 
@@ -613,7 +615,7 @@ int Bridge::TxStop() {
  *   int - 0 on success
  ******************************************************************************/
 int Bridge::RxStop() {
-    INFO << "Stopping Rx";
+    DEBUG << "Stopping Rx";
 
     rx_run.store(false);
 
@@ -670,6 +672,6 @@ int Bridge::RxStop() {
 
 #endif
 
-    INFO << "Rx stopped";
+    DEBUG << "Rx stopped";
     return 0;
 }

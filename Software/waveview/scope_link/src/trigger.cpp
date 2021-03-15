@@ -1,5 +1,4 @@
 #include "trigger.hpp"
-#define DBG
 
 Trigger::Trigger(boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> *inputQ,
                  boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> *outputQ,
@@ -36,14 +35,14 @@ Trigger::Trigger(boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<fa
 
 Trigger::~Trigger(void)
 {
-    INFO << "Trigger Destructor Called";
+    DEBUG << "Trigger Destructor Called";
 
     // Stop the transer and join thread
     stopTrigger.store(true);
     pauseTrigger.store(true);
     triggerThread.join();
 
-    INFO << "Destroyed Trigger Thread";
+    DEBUG << "Destroyed Trigger Thread";
 }
 
 #ifdef DBG
@@ -52,9 +51,7 @@ uint32_t temp = 0;
 
 void Trigger::checkTriggerFalling(buffer* currentBuffer)
 {
-#ifdef DBG
-    INFO << "Checking a Trigger with #ch: " << (int)numCh << " triggering on ch: " << (int)triggerCh;
-#endif
+    DEBUG << "Checking a Trigger with #ch: " << (int)numCh << " triggering on ch: " << (int)triggerCh;
     // Compute the trigger
     for (int i = 0; i < (BUFFER_SIZE/64)/numCh; i++) {
         currentBuffer->trigger[i] = 
@@ -189,7 +186,7 @@ void Trigger::checkTriggerFalling(buffer* currentBuffer)
 
 #ifdef DBG
         if (temp < 32) {
-            INFO << "Trigger index: " << i << " value: " << std::hex << currentBuffer->trigger[i];
+            DEBUG << "Trigger index: " << i << " value: " << std::hex << currentBuffer->trigger[i];
             temp++;
         }
 #endif
@@ -198,9 +195,7 @@ void Trigger::checkTriggerFalling(buffer* currentBuffer)
 
 void Trigger::checkTriggerRising(buffer* currentBuffer)
 {
-#ifdef DBG
-    INFO << "Checking a Trigger with #ch: " << (int)numCh << " triggering on ch: " << (int)triggerCh;
-#endif
+    DEBUG << "Checking a Trigger with #ch: " << (int)numCh << " triggering on ch: " << (int)triggerCh;
     // Compute the trigger
     for (int i = 0; i < (BUFFER_SIZE/64)/numCh; i++) {
         currentBuffer->trigger[i] = 
@@ -335,7 +330,7 @@ void Trigger::checkTriggerRising(buffer* currentBuffer)
 
 #ifdef DBG
         if (temp < 32) {
-            INFO << "Trigger index: " << i << " value: " << std::hex << currentBuffer->trigger[i];
+            DEBUG << "Trigger index: " << i << " value: " << std::hex << currentBuffer->trigger[i];
             temp++;
         }
 #endif
@@ -352,10 +347,10 @@ void Trigger::coreLoop()
         ERROR << "Input Queue null in trigger core loop";
     } else {
         while (inputQueue->pop(currentBuffer) == false && stopTrigger.load() == false) {
-//            INFO << "Waiting for first data element";
+//            DEBUG << "Waiting for first data element";
             std::this_thread::sleep_for(std::chrono::microseconds(100));
         };
-        INFO << "Core Loop Entered";
+        DEBUG << "Core Loop Entered";
 
         // Outer loop
         while (stopTrigger.load() == false) {
@@ -367,7 +362,7 @@ void Trigger::coreLoop()
                 if (inputQueue->pop(nextBuffer)) {
                     count++;
 
-                    INFO << "trigger next buffer";
+                    DEBUG << "trigger next buffer";
 
                     // copy first value from next buffer to current buffer
                     currentBuffer->data[BUFFER_SIZE] = nextBuffer->data[0];
@@ -422,14 +417,14 @@ void Trigger::setRising()
 {
     triggerPause();
     risingEdge = true;
-    INFO << "Triggering on rising edge";
+    DEBUG << "Triggering on rising edge";
 }
 
 void Trigger::setFalling()
 {
     triggerPause();
     risingEdge = false;
-    INFO << "Triggering on falling edge";
+    DEBUG << "Triggering on falling edge";
 }
 
 bool Trigger::getTriggerStatus()
@@ -440,25 +435,25 @@ bool Trigger::getTriggerStatus()
 void Trigger::triggerStop()
 {
     stopTrigger.store(true);
-    INFO << "Stopping Trigger";
+    DEBUG << "Stopping Trigger";
 }
 
 void Trigger::triggerStart()
 {
     stopTrigger.store(false);
-    INFO << "Starting Trigger";
+    DEBUG << "Starting Trigger";
 }
 
 void Trigger::triggerPause()
 {
     pauseTrigger.store(true);
-    INFO << "Pausing Trigger";
+    DEBUG << "Pausing Trigger";
 }
 
 void Trigger::triggerUnpause()
 {
     pauseTrigger.store(false);
-    INFO << "Unpausing Trigger";
+    DEBUG << "Unpausing Trigger";
 }
 
 uint32_t Trigger::getCount()
