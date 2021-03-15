@@ -276,7 +276,7 @@ void runPCIeTest() {
     PCIeLink* pcieLink = new PCIeLink();
 
     pcieLink->Connect();
-    pcieLink->Write(test_write,nullptr);
+    pcieLink->Write(clk_enable,nullptr);
 
     delete pcieLink;
 }

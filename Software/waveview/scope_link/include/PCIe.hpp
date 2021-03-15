@@ -21,17 +21,34 @@
 #define USER_DEVICE_PATH "user"
 #define C2H_0_DEVICE_PATH "c2h_0"
 
+#define DATAMOVER_REG_OUT                   0x0000 // bit 0: halt, bit 1: reset
+#define DATAMOVER_TRANSFER_COUNTER          0x0008 // A 32 bit value, low 16 is transfer counter, bit 31 error bit
+#define BOARD_REG_OUT                       0x1000 // A 32 bit value, bit 0:3: attenuation, bit 4:7: dc_cpl, bit 8: acq_en, bit 9: fe_en, 22bits unused
+#define BOARD_REG_IN                        0x1008 // unused for now
+#define SERIAL_FIFO_DATA_WRITE_REG          0x2010
+#define SERIAL_FIFO_DATA_LENGTH             0x2014 // (in bytes) This byte tells the thing to transfer
+#define SERIAL_FIFO_DATA_DONE_BYTE_ADDRESS  0x200C // read 0x1FC when the when empty
+#define SPI_FRONT_END_CHANNEL_1             0xF8
+#define SPI_FRONT_END_CHANNEL_2             0xF9
+#define SPI_FRONT_END_CHANNEL_3             0xFA
+#define SPI_FRONT_END_CHANNEL_4             0xFB
+#define SPI_BYTE_ADC                        0xFC
+#define I2C_BYTE_PLL                        0xFF
+
+#define CLOCK_GEN_I2C_ADDRESS_WRITE         0b10110000 //The address + write bit for the Clock generator
+#define CLOCK_GEN_I2C_ADDRESS_READ          0b10110001 //IF WE COULD
+
 enum ScopeCommand {
+    adc_enable,
     adc_rest,
     adc_power_down,
     adc_active,
     adc_cgain_cfg,
-    adc_cgain4,
-    adc_cgain12,
     adc_btc_mode,
     adc_chnum_clkdiv_init,
     adc_in_sel_12_init,
     adc_in_sel_34_init,
+    clk_enable,
     pll_r_counter,
     pll_control,
     pll_n_counter,

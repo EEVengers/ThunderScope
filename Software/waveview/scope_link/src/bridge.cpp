@@ -228,7 +228,7 @@ void Bridge::TxJob() {
             send(client_tx_sock,tx_buff,packet_size,0);
 #endif
             //free the packet
-            free(txPacket);
+            FreePacket(txPacket);
         }
     }
 }
@@ -304,11 +304,11 @@ void Bridge::RxJob() {
             int err = GetLastError();
             if (err == 234) {
                 // more data exists. Wait for it
-                std::this_thread::sleep_for(std::chrono::milliseconds(500));
+                std::this_thread::sleep_for(std::chrono::microseconds(500));
             } else if (err == 109) {
                 // not enough bytes in pipeline
                 // Skip error packet
-                std::this_thread::sleep_for(std::chrono::milliseconds(500));
+                std::this_thread::sleep_for(std::chrono::microseconds(500));
                 continue;
             } else {
                 INFO << "rx_pipe data_read: Error: " << GetLastError();
@@ -326,7 +326,7 @@ void Bridge::RxJob() {
             switch (errno) {
                 case EWOULDBLOCK:
                     // No data on socket. sleep
-                    std::this_thread::sleep_for(std::chrono::milliseconds(500));
+                    std::this_thread::sleep_for(std::chrono::microseconds(500));
                     continue;
                 default:
                     perror("recv returned error: ");
@@ -339,12 +339,6 @@ void Bridge::RxJob() {
             rx_run.store(false);
         }
 #endif
-        //process whatever is sent (for now just print it)
-        printf("Packet Size: %d, Packet Info:\n",(int)packet_size);
-        for(int i = 0; i < (int)packet_size; i++)
-            printf("%X ",rxBuff[i]);
-        printf("\n");
-
         // TODO: you can just cast it as the struct and access things that way
         uint16_t* rxBuff16 = (uint16_t*) rxBuff;
         uint8_t* rxBuffData = (uint8_t*) (rxBuff + 6);
