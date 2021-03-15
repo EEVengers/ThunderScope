@@ -143,6 +143,9 @@ void PCIeLink::Write(ScopeCommand command, void* val) {
             //Power Down ADC
             uint8_t powerDownADC[] = {0xFD,0x0F,0x02,0x00};
             _FIFO_WRITE(user_handle,powerDownADC,4);
+            //Set Channel and Clock Div
+            uint8_t setChannelClock[] = {0xFD,0x31,0x00,0x01};
+            _FIFO_WRITE(user_handle,powerDownADC,4);
             //Set adc into ramp test
             uint8_t adcRampTest[] = {0xFD,0x25,0x00,0x20};
             _FIFO_WRITE(user_handle,adcRampTest,4);
