@@ -25,6 +25,7 @@ class TestPoints {
   x: Range;
   y: Range;
   data: any[];
+  ready: Boolean = true;
 
   constructor(xRange: number, yRange: number, source: string) {
     this.x = new Range(xRange);
@@ -53,6 +54,10 @@ class TestPoints {
     testPacket[8] = 3;
     testPacket[9] = 4;
 
+    if(!this.ready) {
+      return;
+    }
+    this.ready = false;
     thunderBridge.write(testPacket,() => {
       var rxBuff = new Uint8Array(new ArrayBuffer(6));
       thunderBridge.read(rxBuff, (err: NodeJS.ErrnoException, bytesRead: number, bytes: Uint8Array) => {
@@ -63,6 +68,7 @@ class TestPoints {
   
         var dataRxBuff = new Uint8Array(dataSize);
         thunderBridge.read(dataRxBuff, (nestedErr: NodeJS.ErrnoException, nestedBytesRead: number, nestedBytes: Uint8Array) => {
+          this.ready = true;
           for(var i = 0; i < nestedBytes.length; i++) {
             scope_data[i] = {x: i, y: nestedBytes[i]}
           }

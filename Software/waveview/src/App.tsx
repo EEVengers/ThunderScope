@@ -37,7 +37,7 @@ class App extends React.Component {
   componentDidMount() {
     this.timerID = window.setInterval(
       () => this.tick(),
-      33.33
+      16.67
     )
   }
 
