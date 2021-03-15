@@ -242,3 +242,21 @@ void controller::setTriggerCh (int8_t newTriggerCh)
 
     controllerFlush();
 }
+
+void controller::setRising()
+{
+    controllerPause();
+
+    triggerThread->setRising();
+
+    controllerFlush();
+}
+
+void controller::setFalling()
+{
+    controllerPause();
+
+    triggerThread->setFalling();
+
+    controllerFlush();
+}
