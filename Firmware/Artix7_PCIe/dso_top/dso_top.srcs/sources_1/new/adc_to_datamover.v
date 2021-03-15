@@ -22,7 +22,10 @@ module adc_to_datamover(
   wire fifo_full;
   wire fifo_empty;
   wire fifo_rd_en;
-  wire[127:0] fifo_data;
+  wire[127:0] ch1_fifo_data;
+//  wire[127:0] ch2_fifo_data;
+//  wire[127:0] ch3_fifo_data;
+//  wire[127:0] ch4_fifo_data;
 
   reg cmd_tvalid;
   reg [31:0] address;
@@ -57,8 +60,9 @@ module adc_to_datamover(
   end
 
   assign axis_data_tvalid = data_tvalid;
-  assign axis_data_tdata = fifo_data; //Need state machine for dual and quad channel
+  assign axis_data_tdata = {8{ch1_fifo_data}};
   assign fifo_rd_en = rd_en;
+  //assign fifo_rd_en[3:1] = 3'b111;
 
   //Transfer Counter
   reg [15:0] transfer_counter;
@@ -73,19 +77,60 @@ module adc_to_datamover(
 
   //Status GPIOs
   assign gpio2_io_i = {s2mm_err,15'h0000,transfer_counter};
-  assign S01_ARESETN = (axi_aresetn & gpio_io_o_0[1]);
-  assign s2mm_halt = ~gpio_io_o_0[0];
+  assign S01_ARESETN = 1'b0; //(axi_aresetn & gpio_io_o_0[1]);
+  //           0     =      0              0
+  //           0     =      0              1
+  //           0     =      1              0
+  //           1     =      1              1
+  assign s2mm_halt = 1'b1; //~gpio_io_o_0[0];
 
-  fifo_generator_0 adc_fifo (
+  fifo_generator_0 ch1_fifo (
    	.rst(~S01_ARESETN),
    	.wr_clk(adc_divclk),
    	.rd_clk(axi_aclk),
    	.din({~adc_data_deser[63:32],adc_data_deser[31:24],~adc_data_deser[23:0]}),
    	.wr_en(~fifo_full),	//add a state machine to deal with fifo full
    	.rd_en(fifo_rd_en),
-   	.dout(fifo_data),
+   	.dout(ch1_fifo_data),
    	.full(fifo_full),
   	.empty(fifo_empty)
 	);
+
+
+//  fifo_generator_0 ch2_fifo (
+//   	.rst(1'b0),
+//   	.wr_clk(adc_divclk),
+//   	.rd_clk(axi_aclk),
+//   	.din({adc_data_deser[31:24],~adc_data_deser[23:16]}),
+//   	.wr_en(~|fifo_full),	//add a state machine to deal with fifo full
+//   	.rd_en(fifo_rd_en[1]),
+//   	.dout(ch2_fifo_data),
+//   	.full(fifo_full[1]),
+//  	.empty(fifo_empty[1])
+//	);
+
+//  fifo_generator_0 ch3_fifo (
+//   	.rst(1'b0),
+//   	.wr_clk(adc_divclk),
+//   	.rd_clk(axi_aclk),
+//   	.din(~adc_data_deser[47:32]),
+//   	.wr_en(~|fifo_full),	//add a state machine to deal with fifo full
+//   	.rd_en(fifo_rd_en[2]),
+//   	.dout(ch3_fifo_data),
+//   	.full(fifo_full[2]),
+//  	.empty(fifo_empty[2])
+//	);
+
+//  fifo_generator_0 ch4_fifo (
+//   	.rst(1'b0),
+//   	.wr_clk(adc_divclk),
+//   	.rd_clk(axi_aclk),
+//   	.din(~adc_data_deser[63:48]),
+//   	.wr_en(~|fifo_full),	//add a state machine to deal with fifo full
+//   	.rd_en(fifo_rd_en[3]),
+//   	.dout(ch4_fifo_data),
+//   	.full(fifo_full[3]),
+//  	.empty(fifo_empty[3])
+//	);
 
 endmodule

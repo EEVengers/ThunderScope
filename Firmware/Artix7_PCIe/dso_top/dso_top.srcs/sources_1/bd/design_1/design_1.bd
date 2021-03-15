@@ -486,6 +486,12 @@
           }
         },
         "interface_nets": {
+          "CLK_IN_D_0_1": {
+            "interface_ports": [
+              "pcie",
+              "util_ds_buf_0/CLK_IN_D"
+            ]
+          },
           "xdma_0_M_AXI": {
             "interface_ports": [
               "M_AXI",
@@ -502,12 +508,6 @@
             "interface_ports": [
               "M_AXI_LITE",
               "xdma_0/M_AXI_LITE"
-            ]
-          },
-          "CLK_IN_D_0_1": {
-            "interface_ports": [
-              "pcie",
-              "util_ds_buf_0/CLK_IN_D"
             ]
           }
         },
@@ -582,7 +582,7 @@
                 "value": "Custom"
               },
               "XML_INPUT_FILE": {
-                "value": "mig_b.prj"
+                "value": "mig_a.prj"
               }
             }
           },
@@ -983,16 +983,16 @@
                   }
                 },
                 "interface_nets": {
-                  "auto_cc_to_m00_couplers": {
-                    "interface_ports": [
-                      "M_AXI",
-                      "auto_cc/M_AXI"
-                    ]
-                  },
                   "m00_couplers_to_auto_cc": {
                     "interface_ports": [
                       "S_AXI",
                       "auto_cc/S_AXI"
+                    ]
+                  },
+                  "auto_cc_to_m00_couplers": {
+                    "interface_ports": [
+                      "M_AXI",
+                      "auto_cc/M_AXI"
                     ]
                   }
                 },
@@ -1043,16 +1043,16 @@
                   "s01_couplers/S_AXI"
                 ]
               },
-              "s01_couplers_to_xbar": {
-                "interface_ports": [
-                  "s01_couplers/M_AXI",
-                  "xbar/S01_AXI"
-                ]
-              },
               "m00_couplers_to_axi_interconnect_0": {
                 "interface_ports": [
                   "M00_AXI",
                   "m00_couplers/M_AXI"
+                ]
+              },
+              "s01_couplers_to_xbar": {
+                "interface_ports": [
+                  "s01_couplers/M_AXI",
+                  "xbar/S01_AXI"
                 ]
               },
               "xbar_to_m00_couplers": {
@@ -1121,10 +1121,10 @@
           }
         },
         "interface_nets": {
-          "xdma_0_M_AXI": {
+          "axi_interconnect_0_M00_AXI": {
             "interface_ports": [
-              "S00_AXI",
-              "axi_interconnect_0/S00_AXI"
+              "axi_interconnect_0/M00_AXI",
+              "mig_7series_0/S_AXI"
             ]
           },
           "mig_7series_0_DDR3": {
@@ -1133,16 +1133,16 @@
               "mig_7series_0/DDR3"
             ]
           },
-          "axi_interconnect_0_M00_AXI": {
-            "interface_ports": [
-              "axi_interconnect_0/M00_AXI",
-              "mig_7series_0/S_AXI"
-            ]
-          },
           "Conn1": {
             "interface_ports": [
               "S01_AXI",
               "axi_interconnect_0/S01_AXI"
+            ]
+          },
+          "xdma_0_M_AXI": {
+            "interface_ports": [
+              "S00_AXI",
+              "axi_interconnect_0/S00_AXI"
             ]
           }
         },
@@ -1333,18 +1333,6 @@
           }
         },
         "interface_nets": {
-          "Conn1": {
-            "interface_ports": [
-              "S_AXIS_S2MM",
-              "axis_subset_converter_0/S_AXIS"
-            ]
-          },
-          "Conn2": {
-            "interface_ports": [
-              "S_AXIS_S2MM_CMD",
-              "axi_datamover_0/S_AXIS_S2MM_CMD"
-            ]
-          },
           "axis_subset_converter_0_M_AXIS": {
             "interface_ports": [
               "axi_datamover_0/S_AXIS_S2MM",
@@ -1355,6 +1343,18 @@
             "interface_ports": [
               "M_AXI_S2MM",
               "axi_datamover_0/M_AXI_S2MM"
+            ]
+          },
+          "Conn2": {
+            "interface_ports": [
+              "S_AXIS_S2MM_CMD",
+              "axi_datamover_0/S_AXIS_S2MM_CMD"
+            ]
+          },
+          "Conn1": {
+            "interface_ports": [
+              "S_AXIS_S2MM",
+              "axis_subset_converter_0/S_AXIS"
             ]
           }
         },
@@ -1608,28 +1608,28 @@
           }
         },
         "interface_nets": {
-          "S00_AXI_1": {
-            "interface_ports": [
-              "S00_AXI",
-              "smartconnect_0/S00_AXI"
-            ]
-          },
           "smartconnect_0_M02_AXI": {
             "interface_ports": [
               "smartconnect_0/M02_AXI",
               "axi_gpio_1/S_AXI"
             ]
           },
-          "smartconnect_0_M00_AXI": {
-            "interface_ports": [
-              "smartconnect_0/M00_AXI",
-              "axi_fifo_mm_s_0/S_AXI"
-            ]
-          },
           "smartconnect_0_M01_AXI": {
             "interface_ports": [
               "smartconnect_0/M01_AXI",
               "axi_gpio_0/S_AXI"
+            ]
+          },
+          "S00_AXI_1": {
+            "interface_ports": [
+              "S00_AXI",
+              "smartconnect_0/S00_AXI"
+            ]
+          },
+          "smartconnect_0_M00_AXI": {
+            "interface_ports": [
+              "smartconnect_0/M00_AXI",
+              "axi_fifo_mm_s_0/S_AXI"
             ]
           },
           "Conn1": {
@@ -1686,46 +1686,16 @@
       }
     },
     "interface_nets": {
-      "xdma_0_pcie_mgt": {
-        "interface_ports": [
-          "pcie_mgt",
-          "PCIe/pcie_mgt"
-        ]
-      },
-      "S_AXIS_S2MM_1": {
-        "interface_ports": [
-          "S_AXIS_S2MM",
-          "Datamover/S_AXIS_S2MM"
-        ]
-      },
-      "mig_7series_0_DDR3": {
-        "interface_ports": [
-          "DDR3",
-          "Memory/DDR3"
-        ]
-      },
       "S_AXIS_S2MM_CMD_0_1": {
         "interface_ports": [
           "S_AXIS_S2MM_CMD",
           "Datamover/S_AXIS_S2MM_CMD"
         ]
       },
-      "Datamover_M_AXI_S2MM": {
+      "mig_7series_0_DDR3": {
         "interface_ports": [
-          "Datamover/M_AXI_S2MM",
-          "Memory/S01_AXI"
-        ]
-      },
-      "AXI_LITE_IO_AXI_STR_TXD_0": {
-        "interface_ports": [
-          "AXI_STR_TXD_0",
-          "AXI_LITE_IO/AXI_STR_TXD_0"
-        ]
-      },
-      "CLK_IN_D_0_1": {
-        "interface_ports": [
-          "pcie",
-          "PCIe/pcie"
+          "DDR3",
+          "Memory/DDR3"
         ]
       },
       "PCIe_M_AXI_LITE": {
@@ -1738,6 +1708,36 @@
         "interface_ports": [
           "PCIe/M_AXI",
           "Memory/S00_AXI"
+        ]
+      },
+      "xdma_0_pcie_mgt": {
+        "interface_ports": [
+          "pcie_mgt",
+          "PCIe/pcie_mgt"
+        ]
+      },
+      "CLK_IN_D_0_1": {
+        "interface_ports": [
+          "pcie",
+          "PCIe/pcie"
+        ]
+      },
+      "Datamover_M_AXI_S2MM": {
+        "interface_ports": [
+          "Datamover/M_AXI_S2MM",
+          "Memory/S01_AXI"
+        ]
+      },
+      "S_AXIS_S2MM_1": {
+        "interface_ports": [
+          "S_AXIS_S2MM",
+          "Datamover/S_AXIS_S2MM"
+        ]
+      },
+      "AXI_LITE_IO_AXI_STR_TXD_0": {
+        "interface_ports": [
+          "AXI_STR_TXD_0",
+          "AXI_LITE_IO/AXI_STR_TXD_0"
         ]
       }
     },
@@ -1835,18 +1835,18 @@
             "segments": {
               "SEG_axi_fifo_mm_s_0_Mem0": {
                 "address_block": "/AXI_LITE_IO/axi_fifo_mm_s_0/S_AXI/Mem0",
-                "offset": "0x40002000",
-                "range": "4K"
+                "offset": "0x40020000",
+                "range": "64K"
               },
               "SEG_axi_gpio_0_Reg": {
                 "address_block": "/AXI_LITE_IO/axi_gpio_0/S_AXI/Reg",
                 "offset": "0x40000000",
-                "range": "4K"
+                "range": "64K"
               },
               "SEG_axi_gpio_1_Reg": {
                 "address_block": "/AXI_LITE_IO/axi_gpio_1/S_AXI/Reg",
-                "offset": "0x40001000",
-                "range": "4K"
+                "offset": "0x40010000",
+                "range": "64K"
               }
             }
           }

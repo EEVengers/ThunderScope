@@ -1,27 +1,8 @@
 {
    "ActiveEmotionalView":"Default View",
-   "Addressing View_Layers":"/AXI_LITE_IO/axi_aclk_1:false|/AXI_LITE_IO/axi_resetn_1:false|",
-   "Addressing View_ScaleFactor":"1.0",
-   "Addressing View_TopLeft":"-614,-72",
-   "Color Coded_ScaleFactor":"1.0",
-   "Color Coded_TopLeft":"-540,-2",
-   "Default View_Layers":"/AXI_LITE_IO/axi_aclk_1:true|/AXI_LITE_IO/axi_resetn_1:true|",
-   "Default View_ScaleFactor":"0.596632",
-   "Default View_TopLeft":"-340,-166",
-   "Display-PortTypeClock":"true",
-   "Display-PortTypeOthers":"true",
-   "Display-PortTypeReset":"true",
+   "Default View_ScaleFactor":"0.969231",
+   "Default View_TopLeft":"-639,0",
    "ExpandedHierarchyInLayout":"",
-   "Grouping and No Loops_ScaleFactor":"0.854237",
-   "Grouping and No Loops_TopLeft":"-678,0",
-   "Interfaces View_Layers":"/AXI_LITE_IO/axi_aclk_1:false|/AXI_LITE_IO/axi_resetn_1:false|",
-   "Interfaces View_ScaleFactor":"1.0",
-   "Interfaces View_TopLeft":"-607,-72",
-   "No Loops_ScaleFactor":"0.854237",
-   "No Loops_TopLeft":"-678,0",
-   "Reduced Jogs_Layers":"/AXI_LITE_IO/axi_aclk_1:true|/AXI_LITE_IO/axi_resetn_1:true|",
-   "Reduced Jogs_ScaleFactor":"0.969231",
-   "Reduced Jogs_TopLeft":"-553,0",
    "guistr":"# # String gsaved with Nlview 7.0r6  2020-01-29 bk=1.5227 VDI=41 GEI=36 GUI=JA:9.0 non-TLS
 #  -string -flagsOSRD
 preplace port S00_AXI -pg 1 -lvl 0 -x -20 -y 190 -defaultsOSRD
@@ -42,10 +23,10 @@ preplace netloc axi_gpio_1_gpio_io_o 1 2 1 NJ 400
 preplace netloc gpio2_io_i_0_1 1 0 3 NJ 500 NJ 500 650
 preplace netloc axi_aclk_1 1 0 2 0 290 300
 preplace netloc axi_resetn_1 1 0 2 10 130 310
-preplace netloc smartconnect_0_M02_AXI 1 1 1 290 230n
+preplace netloc S00_AXI_1 1 0 1 NJ 190
 preplace netloc smartconnect_0_M00_AXI 1 1 1 290 60n
 preplace netloc smartconnect_0_M01_AXI 1 1 1 N 210
-preplace netloc S00_AXI_1 1 0 1 NJ 190
+preplace netloc smartconnect_0_M02_AXI 1 1 1 290 230n
 preplace netloc Conn1 1 2 1 N 60
 levelinfo -pg 1 -20 150 490 670
 pagesize -pg 1 -db -bbox -sgen -190 0 840 590
