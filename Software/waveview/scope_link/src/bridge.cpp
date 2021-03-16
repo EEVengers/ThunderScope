@@ -321,13 +321,16 @@ void Bridge::RxJob() {
             rx_run.store(false);
         }
 #endif
+
         //process whatever is sent (for now just print it)
+        /*
         std::string dbgMsg = "Packet Size: " + std::to_string(packet_size) + " Packet Info: ";
         for(int i = 0; i < (int)packet_size; i++) {
             dbgMsg += convert_int(rxBuff[i]) + " ";
         }
         INFO << dbgMsg;
-
+        */
+        
         // TODO: you can just cast it as the struct and access things that way
         uint16_t* rxBuff16 = (uint16_t*) rxBuff;
         uint8_t* rxBuffData = (uint8_t*) (rxBuff + 6);
@@ -369,9 +372,7 @@ void Bridge::RxJob() {
                 for(int i = 0; pk == 3 && i < 1024; i++) {
                     tempPacket->data[i] = 10;
                 }
-                txLock.lock();
-                _txQueue.push(tempPacket);
-                txLock.unlock();
+                txQueue->push(tempPacket);
             }
         }
 
