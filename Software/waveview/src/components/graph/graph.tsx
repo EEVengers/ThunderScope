@@ -59,7 +59,7 @@ function Graph(props: IGraphProps) {
             return <LineSeries
               className="data-series"
               data={data}
-              style={{fill:"none"}}
+              style={{fill:"none", transform: "translate(0,0)"}}
               color={props.colorSeries[index]}
             />
           })
