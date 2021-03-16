@@ -26,17 +26,17 @@ void parseCommandLineArgs(int argc, char** args) {
             INFO << "Main:parseCommandLineArgs() - Testing Trigger Throughput";
             testTriggerThroughput();
         } else if(std::string(args[1]) == "-t" || std::string(args[1]) == "--test") {
-            INFO << "Running Test";
-            if (argc > 2) {
-                INFO << "Opening specified file";
-                inputFile = args[2];
-                testCsv(inputFile);
-            } else {
-                INFO << "No filename provided";
-                char filename[] = "../scope_link/test/test1.csv";
-                inputFile = filename;
-                testCsv(filename);
-            }
+//            INFO << "Running Test";
+//            if (argc > 2) {
+//                INFO << "Opening specified file";
+//                inputFile = args[2];
+//                testCsv(inputFile);
+//            } else {
+//                INFO << "No filename provided";
+//                char filename[] = "../scope_link/test/test1.csv";
+//                inputFile = filename;
+//                testCsv(filename);
+//            }
         } else if(std::string(args[1]) == "--socket") {
             // Run socket test
             INFO << "Running socket test";
@@ -55,23 +55,9 @@ void parseCommandLineArgs(int argc, char** args) {
     return;
 }
 
-void WebServerTest() {
+boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> dataQueue_1{1000};
 
-}
-
-    boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> dataQueue_1{1000};
-//    boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> dataQueue_2{1000};
-//    boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> dataQueue_3{1000};
-//    boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> dataQueue_4{1000};
-
-    boost::lockfree::queue<EVPacket*, boost::lockfree::fixed_sized<false>> cmdQueue{1000};
-
-    Bridge* bridgeThread = NULL;
-    dspPipeline* dspThread_1 = NULL;
-//    dspPipeline* dspThread_2;
-//    dspPipeline* dspThread_3;
-//    dspPipeline* dspThread_4;
-    controller* controllerThread = NULL;
+controller* controllerThread = NULL;
 
 bool parseCli (std::string line)
 {
@@ -81,103 +67,123 @@ bool parseCli (std::string line)
     } else if ("template" == line.substr(0, line.find(' '))) {
         INFO << "Template";
 
-        // Useful for accepting arguments from a command
-        std::string nextArgument = line.substr(line.find(' ', line.find(' ') + 1),
-                                                   line.find(' ') + 1);
+//        // Useful for accepting arguments from a command
+//        std::string nextArgument = line.substr(line.find(' ', line.find(' ') + 1),
+//                                                   line.find(' ') + 1);
 
         // Get the reset of the line after the first argument
         std::string nextLine = line.substr(line.find(' ') + 1, line.length());
         parseCli(nextLine);
 
-    } else if (line == "create") {
-        if (bridgeThread == NULL) {
-            INFO << "Creating Bridge";
-            bridgeThread = new Bridge("testPipe", _gtxQueue, _grxQueue, &cmdQueue);
-        } else {
-            WARN << "Bridge already exists";
+    } else if ("setch" == line.substr(0, line.find(' '))) {
+        INFO << "setting channel mode";
+
+        // Useful for accepting arguments from a command
+        std::string nextArgument = line.substr(line.find(' ') + 1, line.length());
+        if (nextArgument != "setch") {
+            if (nextArgument == "1") {
+                controllerThread->setCh(1);
+            } else if (nextArgument == "2") {
+                controllerThread->setCh(2);
+            } else if (nextArgument == "4") {
+                controllerThread->setCh(4);
+            } else {
+                ERROR << "Not a channel mode";
+            }
         }
 
-        if (dspThread_1 == NULL) {
-            INFO << "Creating Pipeline";
-            dspThread_1 = new dspPipeline(&dataQueue_1);
-        } else {
-            WARN << "Channel 1 already exists";
+    } else if ("settrig" == line.substr(0, line.find(' '))) {
+        INFO << "setting trigger channel";
+
+        // Useful for accepting arguments from a command
+        std::string nextArgument = line.substr(line.find(' ') + 1, line.length());
+        if (nextArgument != "settrig") {
+            if (nextArgument == "1") {
+                controllerThread->setTriggerCh(1);
+            } else if (nextArgument == "2") {
+                controllerThread->setTriggerCh(2);
+            } else if (nextArgument == "3") {
+                controllerThread->setTriggerCh(3);
+            } else if (nextArgument == "4") {
+                controllerThread->setTriggerCh(4);
+            } else {
+                ERROR << "Not a trigger channel";
+            }
         }
 
     } else if (line == "controller") {
-        controllerThread = new controller();
-
-    } else if (line == "connect") {
-        if (bridgeThread == NULL) {
-            WARN << "bridge does not exist to connect with";
-        } else {
-            INFO << "connecting to js";
-            bridgeThread->TxStart();
-            bridgeThread->RxStart();
+        if (controllerThread == NULL ) {
+            controllerThread = new controller(&dataQueue_1);
         }
 
     } else if (line == "pause") {
-        if (dspThread_1 == NULL) {
-            WARN << "dsp does not exist to pause";
-        } else {
-            INFO << "Pausing Pipeline";
-            dspThread_1->dspPipelinePause();
+        if (controllerThread != NULL ) {
+            controllerThread->controllerPause();
         }
 
     } else if (line == "unpause") {
-        if (dspThread_1 == NULL) {
-            WARN << "dsp does not exist to unpause";
-        } else {
-            INFO << "Unpausing Pipeline";
-            dspThread_1->dspPipelineUnPause();
+        if (controllerThread != NULL ) {
+            controllerThread->controllerUnPause();
         }
 
     } else if (line == "flush") {
-        if (dspThread_1 == NULL) {
-            WARN << "dsp does not exist to flush";
-        } else {
-            INFO << "Flushing Pipeline";
-            dspThread_1->dspPipelineFlush();
+        if (controllerThread != NULL ) {
+            controllerThread->controllerFlush();
         }
 
-    } else if (line == "data") {
+    } else if (line == "setRising") {
+        if (controllerThread != NULL ) {
+            controllerThread->setRising();
+        }
+
+    } else if (line == "setFalling") {
+        if (controllerThread != NULL ) {
+            controllerThread->setFalling();
+        }
+
+    } else if ("datafile" == line.substr(0, line.find(' '))) {
+        INFO << "Adding data from file to the pipeline";
+
+        std::string nextArgument = line.substr(line.find(' ') + 1, line.length());
+        if (nextArgument != "data") {
+
+            nextArgument = "./scope_link/test/" + nextArgument;
+            char* filename = (char*)malloc(nextArgument.size() + 1);
+            std::strcpy(filename, nextArgument.c_str());
+            inputFile = filename;
+            loadFromFile(filename, &dataQueue_1);
+            free(filename);
+        } else {
+            ERROR << "must provide file";
+        }
+
+    } else if ("data" == line.substr(0, line.find(' '))) {
         INFO << "Adding data to the pipeline";
+
         char filename[] = "./scope_link/test/test1.csv";
         inputFile = filename;
         loadFromFile(filename, &dataQueue_1);
 
     } else if (line == "delete" || line == "exit") {
-        INFO << "Deleting Pipeline and bridge";
-        if (dspThread_1 == NULL) {
-            WARN << "Pipeline doesn't exist to delete";
-        } else {
-            INFO << "Deleting Pipeline";
-            delete dspThread_1;
-            dspThread_1 = NULL;
+        if (controllerThread != NULL ) {
+            delete controllerThread;
+            controllerThread = NULL;
         }
-
-        if (bridgeThread == NULL ) {
-            WARN << "bridge doesn't exist to delete";
-        } else {
-            INFO << "Deleting bridge";
-            delete bridgeThread;
-            bridgeThread = NULL;
-        }
-//            delete dspThread_2;
-//            delete dspThread_3;
-//            delete dspThread_4;
 
         if (line == "exit") {
             return false;
         }
     } else {
-        ERROR << "Invalid Command"
-              << " Commands are:"
-              << " create"
-              << ", unpause"
-              << ", data"
-              << ", delete"
-              << ", exit";
+        ERROR << "Invalid Command";
+        ERROR << "Commands are:";
+        ERROR << "controller";
+        ERROR << "unpause";
+        ERROR << "data";
+        ERROR << "datafile <csv file in waveview/scope_link/test/>";
+        ERROR << "setch <# of channels: 1, 2 or 4>";
+        ERROR << "settrig <channel to trig on: 1, 2, 3 or 4>";
+        ERROR << "flush";
+        ERROR << "exit";
     }
     return true;
 }
@@ -186,8 +192,7 @@ void runCli() {
 
     bool parseThings = true;
     while(parseThings) {
-        INFO << "Input a command";
-        printf("> ");
+        INFO << "Input a command\n>";
         std::string line;
         std::getline(std::cin, line);
 

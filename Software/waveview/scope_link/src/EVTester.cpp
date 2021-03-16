@@ -11,8 +11,6 @@
 uint32_t testSize = 1000;
 
 Bridge* bridgeThread_1;
-dspPipeline* dspThread1;
-
 
 bool loadFromFile ( char* filename, boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> *outputQ)
 {
@@ -54,7 +52,7 @@ bool loadFromFile ( char* filename, boost::lockfree::queue<buffer*, boost::lockf
 
             tmpBufPos++;
             if (tmpBufPos == BUFFER_SIZE) {
-                INFO << "Adding buffer to queue from file";
+                DEBUG << "Adding buffer to queue from file";
                 // Buffer is now full push it
                 outputQ->push(tempBuffer);
 
@@ -160,7 +158,7 @@ void testTriggerThroughput()
 
     // Run loop
     while (newDataQueue.pop(currentBuffer)) {
-        trigger.checkTrigger(currentBuffer);
+        trigger.checkTriggerRising(currentBuffer);
     }
 
     // Take Timestamp
@@ -191,33 +189,34 @@ void testTriggerThroughput()
  *
  * Return: void
  ******************************************************************************/
-void testCsv(char * filename)
-{
-    boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> newDataQueue{1000};
-    boost::lockfree::queue<EVPacket*, boost::lockfree::fixed_sized<false>> cmdQueue{1000};
-    loadFromFile(filename, &newDataQueue);
-
-    bridgeThread_1 = new Bridge("testPipe",_gtxQueue,_grxQueue, &cmdQueue);
-
-    dspThread1 = new dspPipeline(&newDataQueue);
-
-    // start transfering to js
-    bridgeThread_1->TxStart();
-    bridgeThread_1->RxStart();
-
-	// Wait to recieve all messages back
-    INFO << "Start node application now";
-
-    dspThread1->dspPipelineUnPause();
-
-    std::this_thread::sleep_for(std::chrono::seconds(10));
-
-    INFO << "Test is done. Performing Cleanup";
-
-    delete bridgeThread_1;
-    delete dspThread1;
-
-}
+//void testCsv(char * filename)
+//{
+//    boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> newDataQueue{1000};
+//    boost::lockfree::queue<EVPacket*, boost::lockfree::fixed_sized<false>> cmdQueue{1000};
+//    boost::lockfree::queue<EVPacket*, boost::lockfree::fixed_sized<false>> bridge_rx{1000};
+//    loadFromFile(filename, &newDataQueue);
+//
+//    bridgeThread_1 = new Bridge("testPipe", &bridge_rx, &cmdQueue);
+//
+//    dspThread1 = new dspPipeline(&newDataQueue);
+//
+//    // start transfering to js
+//    bridgeThread_1->TxStart();
+//    bridgeThread_1->RxStart();
+//
+//	// Wait to recieve all messages back
+//    INFO << "Start node application now";
+//
+//    dspThread1->dspPipelineUnPause();
+//
+//    std::this_thread::sleep_for(std::chrono::seconds(10));
+//
+//    INFO << "Test is done. Performing Cleanup";
+//
+//    delete bridgeThread_1;
+//    delete dspThread1;
+//
+//}
 
 /*******************************************************************************
  * runSocketTest()
@@ -233,6 +232,7 @@ void testCsv(char * filename)
 void runSocketTest ()
 {
     boost::lockfree::queue<EVPacket*, boost::lockfree::fixed_sized<false>> cmdQueue{1000};
+    boost::lockfree::queue<EVPacket*, boost::lockfree::fixed_sized<false>> bridge_rx{1000};
     char in[10] = {};
 
     // Create packet
@@ -248,8 +248,8 @@ void runSocketTest ()
     testPacket->data[4] = 5;
 
     // Pass packet to tx queue
-    _gtxQueue.push(testPacket);
-    Bridge* bridgeThread_1 = new Bridge("testPipe",_gtxQueue,_grxQueue, &cmdQueue);
+    Bridge* bridgeThread_1 = new Bridge("testPipe", &bridge_rx, &cmdQueue);
+    bridge_rx.push(testPacket);
 
     // start transfering
     bridgeThread_1->TxStart();

@@ -41,6 +41,8 @@ public:
     uint32_t windowRow;
     uint32_t bufferCol;
 
+    void setCh (int8_t newCh);
+
 private:
     /* functions */
     void copyProcess(int8_t * src, int8_t * dst, uint32_t count);
@@ -70,6 +72,8 @@ private:
     std::atomic<bool> stopTransfer;
     std::atomic<bool> pauseTransfer;
     std::atomic<bool> windowStored;
+
+    int8_t numCh = 1;
 };
 
 #endif

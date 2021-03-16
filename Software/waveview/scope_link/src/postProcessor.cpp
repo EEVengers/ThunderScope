@@ -18,7 +18,7 @@
  ******************************************************************************/
 postProcessor::postProcessor(
         boost::lockfree::queue<int8_t*, boost::lockfree::fixed_sized<false>> *inputQ,
-        boost::lockfree::queue<int8_t*, boost::lockfree::fixed_sized<false>> *outputQ)
+        boost::lockfree::queue<EVPacket*, boost::lockfree::fixed_sized<false>> *outputQ)
 {
     // Check that queues exist
     assert(inputQ != NULL);
@@ -53,7 +53,7 @@ postProcessor::~postProcessor(void)
     postProcessorStop();
     postProcessorThread.join();
 
-    INFO << "Destroyed post processor";
+    DEBUG << "Destroyed post processor";
 }
 
 /*******************************************************************************
@@ -80,36 +80,53 @@ void postProcessor::coreLoop()
         while (pauseTransfer.load() == false &&
                inputQueue->pop(currentWindow)) {
 
-            INFO << "post processing next window";
+            DEBUG << "post processing next window";
 
-            // New packet
-            postWindow = new int8_t [windowSize];
+            // TODO: Could do each channel in parrallel
+            for (uint8_t j = 0; j < numCh; j++) {
+                // New packet
+                postWindow = new int8_t [windowSize];
 
-            // Post process window
-            // TODO: Add interpolation here.
-//            std::cout << "Post Processed window";
-            for (uint32_t i = 0; i < windowSize; i++) {
-                postWindow[i] = currentWindow[i];
-//                std::cout << " " << (int)currentWindow[i];
+                // Post process window
+                // TODO: Add interpolation here.
+                std::string dbgMsg = "Post Processed window ";
+                for (uint32_t i = 0; i < windowSize; i++) {
+                    postWindow[i] = currentWindow[i * numCh + j];
+                    dbgMsg += std::to_string(currentWindow[i * numCh + j]) + " ";
+                }
+                DEBUG << dbgMsg;
+
+                // Pass processed window to next stage
+                currentPacket = (EVPacket*)malloc(sizeof(EVPacket));
+                currentPacket->command = j + 1;
+                currentPacket->packetID = 0x0808;
+                currentPacket->dataSize = windowSize;
+                currentPacket->data = postWindow;
+
+                outputQueue->push(currentPacket);
             }
-//            std::cout << std::endl;
-
-            // Pass processed window to next stage
-//            outputQueue->push(postWindow);
-
-            currentPacket = (EVPacket*)malloc(sizeof(EVPacket));
-            currentPacket->command = 1;
-            currentPacket->packetID = 0x0808;
-            currentPacket->dataSize = windowSize;
-            currentPacket->data = postWindow;
-
-            _gtxQueue.push(currentPacket);
-
-
-            
         }
         // Queue empty, Sleep for a bit
         std::this_thread::sleep_for(std::chrono::microseconds(100));
+    }
+}
+
+/*******************************************************************************
+ * setCh()
+ *
+ * Sets the number of channels.
+ *
+ * Arguments:
+ *   None
+ * Return:
+ *   None
+ ******************************************************************************/
+void postProcessor::setCh (int8_t newCh)
+{
+    if (newCh == 1 || newCh == 2 || newCh == 4) {
+        numCh = newCh;
+    } else {
+        ERROR << "not a valid number of channels: " << numCh;
     }
 }
 
@@ -126,7 +143,7 @@ void postProcessor::coreLoop()
 void postProcessor::postProcessorStart()
 {
     stopTransfer.store(false);
-    INFO << "Starting post processing";
+    DEBUG << "Starting post processing";
 }
 
 /*******************************************************************************
@@ -143,7 +160,7 @@ void postProcessor::postProcessorStart()
 void postProcessor::postProcessorStop()
 {
     stopTransfer.store(true);
-    INFO << "Stopping post processing";
+    DEBUG << "Stopping post processing";
 }
 
 /*******************************************************************************
@@ -160,7 +177,7 @@ void postProcessor::postProcessorStop()
 void postProcessor::postProcessorUnpause()
 {
     pauseTransfer.store(false);
-    INFO << "unpausing post processing";
+    DEBUG << "unpausing post processing";
 }
 
 /*******************************************************************************
@@ -177,5 +194,5 @@ void postProcessor::postProcessorUnpause()
 void postProcessor::postProcessorPause()
 {
     pauseTransfer.store(true);
-    INFO << "pausing post processing";
+    DEBUG << "pausing post processing";
 }

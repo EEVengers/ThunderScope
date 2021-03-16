@@ -19,7 +19,8 @@ public:
 
     ~Trigger();
 
-    void checkTrigger(buffer* currentBuffer);
+    void checkTriggerRising(buffer* currentBuffer);
+    void checkTriggerFalling(buffer* currentBuffer);
 
     void coreLoop();
 
@@ -35,6 +36,15 @@ public:
 
     bool getTriggerStatus();
 
+    int8_t getTriggerLevel();
+    void setTriggerLevel(int8_t newLevel);
+
+    void setCh (int8_t newCh);
+    void setTriggerCh (int8_t newTriggerCh);
+
+    void setRising();
+    void setFalling();
+
     /* variables */
 
 private:
@@ -46,7 +56,7 @@ private:
 
     std::thread triggerThread;
 
-    int triggerLevel;
+    int8_t triggerLevel;
 
     uint32_t count;
 
@@ -55,6 +65,12 @@ private:
     std::atomic<bool> stopTrigger;
     std::atomic<bool> pauseTrigger;
     std::atomic<bool> triggerMet;
+
+    int8_t numCh = 1;
+    // valid numbers are 0, 1, 3 for math reasons
+    int8_t triggerCh = 0;
+
+    bool risingEdge = true;
 };
 
 #endif

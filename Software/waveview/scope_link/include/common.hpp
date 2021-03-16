@@ -30,7 +30,7 @@
 /* Structures */
 struct buffer
 {
-    int8_t data[BUFFER_SIZE + 1];
+    int8_t data[BUFFER_SIZE + 4];
     uint64_t trigger[BUFFER_SIZE/64];
 };
 
@@ -77,6 +77,6 @@ extern boost::pool_allocator<int8_t,
     DEFAULT_WINDOW * BUFFER_SIZE, 0> windowAllocator;
 
 /* Functions */
-uint32_t writeToCsv (char* filename, int8_t* data, uint32_t row, uint32_t col);
+uint32_t writeToCsv (char* filename, int8_t* data, uint32_t row, uint32_t col, int8_t numCh);
 
 #endif
