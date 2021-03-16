@@ -141,10 +141,11 @@ bool parseCli (std::string line)
         if (nextArgument != "data") {
 
             nextArgument = "./scope_link/test/" + nextArgument;
-            char filename[nextArgument.size() + 1];
+            char* filename = (char*)malloc(nextArgument.size() + 1);
             std::strcpy(filename, nextArgument.c_str());
             inputFile = filename;
             loadFromFile(filename, &dataQueue_1);
+            free(filename);
         } else {
             ERROR << "must provide file";
         }
