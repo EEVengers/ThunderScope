@@ -69,9 +69,9 @@ postProcessor::~postProcessor(void)
  ******************************************************************************/
 void postProcessor::coreLoop()
 {
-    EVPacket *currentPacket;
-    int8_t *currentWindow;
-    int8_t *postWindow;
+    EVPacket *currentPacket = NULL;
+    int8_t *currentWindow = NULL;
+    int8_t *postWindow = NULL;
 
     // Outer loop
     while (stopTransfer.load() == false) {
@@ -82,29 +82,33 @@ void postProcessor::coreLoop()
 
             DEBUG << "post processing next window";
 
-            // TODO: Could do each channel in parrallel
+            // New packet
+            postWindow = (int8_t *)malloc(windowSize * numCh);
+
             for (uint8_t j = 0; j < numCh; j++) {
-                // New packet
-                postWindow = new int8_t [windowSize];
-
                 // Post process window
-                // TODO: Add interpolation here.
-                std::string dbgMsg = "Post Processed window ";
                 for (uint32_t i = 0; i < windowSize; i++) {
-                    postWindow[i] = currentWindow[i * numCh + j];
-                    dbgMsg += std::to_string(currentWindow[i * numCh + j]) + " ";
+                    postWindow[i + j * windowSize] = currentWindow[i * numCh + j];
                 }
-                DEBUG << dbgMsg;
-
-                // Pass processed window to next stage
-                currentPacket = (EVPacket*)malloc(sizeof(EVPacket));
-                currentPacket->command = j + 1;
-                currentPacket->packetID = 0x0808;
-                currentPacket->dataSize = windowSize;
-                currentPacket->data = postWindow;
-
-                outputQueue->push(currentPacket);
             }
+
+            // Pass processed window to next stage
+            currentPacket = (EVPacket*)malloc(sizeof(EVPacket));
+            currentPacket->command = 1;
+            currentPacket->packetID = 0x0808;
+            currentPacket->dataSize = windowSize * numCh;
+            currentPacket->data = postWindow;
+
+            outputQueue->push(currentPacket);
+
+#ifdef DBG
+            std::string dbgMsgPacket = "postProcessor Packet: ";
+            for (int i = 0; i < currentPacket->dataSize; i++) {
+                dbgMsgPacket += std::to_string(currentPacket->data[i]) + " ";
+            }
+            DEBUG << dbgMsgPacket;
+#endif
+
         }
         // Queue empty, Sleep for a bit
         std::this_thread::sleep_for(std::chrono::microseconds(100));
