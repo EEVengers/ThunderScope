@@ -10,7 +10,7 @@ module adc_to_datamover(
     input axis_data_tready,
     output[127:0] axis_data_tdata,
     output axis_data_tvalid,
-    input[63:0] adc_data_deser,
+    input[63:0] adc_data,
     input adc_divclk,
     input s2mm_err,
     output s2mm_halt,
@@ -80,7 +80,7 @@ module adc_to_datamover(
    	.rst(~S01_ARESETN),
    	.wr_clk(adc_divclk),
    	.rd_clk(axi_aclk),
-   	.din({~adc_data_deser[63:32],adc_data_deser[31:24],~adc_data_deser[23:0]}),
+   	.din(adc_data),
    	.wr_en(~fifo_full),	//add a state machine to deal with fifo full
    	.rd_en(fifo_rd_en),
    	.dout(fifo_data),

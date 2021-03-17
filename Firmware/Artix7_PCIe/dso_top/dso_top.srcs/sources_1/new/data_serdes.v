@@ -23,7 +23,6 @@ module data_serdes(
 	genvar i;
 	generate
 		for (i = 0 ; i < 8 ; i = i+1) begin : loop_br
-		
             ISERDESE2 #(
             .DATA_WIDTH     	(8),
             .DATA_RATE      	("DDR"),
@@ -46,8 +45,7 @@ module data_serdes(
 			.Q3  			(data_deser[(8*i)+2]),
 			.Q2  			(data_deser[(8*i)+1]),
 			.Q1  			(data_deser[(8*i)+0])
-			);
-			
+			);	
 		end
 	endgenerate
 endmodule

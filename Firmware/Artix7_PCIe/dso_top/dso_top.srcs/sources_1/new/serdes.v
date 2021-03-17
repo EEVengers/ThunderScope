@@ -29,7 +29,7 @@ module serdes(
      	 	end
 		end
    	else if (state == 1) begin
-     	   bitslip <= 1'b0 ;						// bitslip low
+     	   bitslip <= 1'b0 ;					// bitslip low
      	   count <= count + 4'b0001;
    		if (count == 4'b1111)
      	   	state <= 0;

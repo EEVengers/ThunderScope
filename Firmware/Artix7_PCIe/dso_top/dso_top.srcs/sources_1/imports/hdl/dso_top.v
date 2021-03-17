@@ -80,32 +80,27 @@ module dso_top
   wire fe_scl_buf;  
   
   wire divclk;
-  wire[63:0] data_deser;	
+  wire[63:0] data_deser;
+  wire[63:0] adc_data;	
   
   assign adc_pd = 1'b0;
   assign adc_rstn = 1'b1;
   
   assign atten = gpio_io_o_1[3:0];
   assign dc_cpl = gpio_io_o_1[7:4];
-  
-  reg[31:0] led_counter;
-  always @ (posedge divclk) begin
-          led_counter <= led_counter + 1'b1;
-  end
    
   assign led[0] = ~acq_en; //gpio_io_o_1[11:8];
   assign led[1] = adc_pg;
   assign led[2] = ~fe_en;
-  //assign led[3] = fe_pg;
-  assign led[3] = led_counter[31];
+  assign led[3] = fe_pg;
   
-  assign osc_oe = acq_en;
   assign acq_en = gpio_io_o_1[8];
-  assign fe_en = gpio_io_o_1[9];  
+  assign osc_oe = gpio_io_o_1[9];
+  assign fe_en = gpio_io_o_1[10];  
   
   assign i2c_sda = (i2c_sda_buf) ? (1'bz) : (1'b0);
   assign i2c_scl = (i2c_scl_buf) ? (1'bz) : (1'b0);
-  
+
   reg[15:0] probe_div_counter;
   reg probe_div_clk = 1'b0;
   always @ (posedge axi_aclk) begin
@@ -117,6 +112,20 @@ module dso_top
           probe_div_counter <= probe_div_counter + 1'b1;
   end
   assign probe_comp = probe_div_clk;
+  
+  //Fake ADC Data for FIFO
+  reg[7:0] data_counter;
+  always @ (posedge divclk) begin
+    if (!S01_ARESETN) begin
+        data_counter <= 0;
+    end
+    else begin
+        data_counter <= data_counter + 1'b1;
+    end   
+  end
+  assign adc_data = {16{data_counter}};
+  
+  //assign adc_data = {~data_deser[63:32],data_deser[31:24],~data_deser[23:0]};
 
   serdes serdes (
 	.adc_lclk_p		(adc_lclk_p),
@@ -139,7 +148,7 @@ module dso_top
     .axis_data_tready(S_AXIS_S2MM_tready),
     .axis_data_tdata(S_AXIS_S2MM_tdata),
     .axis_data_tvalid(S_AXIS_S2MM_tvalid),
-    .adc_data_deser(data_deser),
+    .adc_data(adc_data),
     .adc_divclk(divclk),
     .s2mm_err(s2mm_err),
     .s2mm_halt(s2mm_halt),
