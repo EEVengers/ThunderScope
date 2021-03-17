@@ -198,7 +198,7 @@ void controller::setLevel( int8_t newLevel )
 
     triggerThread->setTriggerLevel(triggerLevel);
 
-    INFO << "new trigger level: " << triggerThread->getTriggerLevel();
+    INFO << "new trigger level: " << (int)triggerThread->getTriggerLevel();
 
     controllerFlush();
 }
