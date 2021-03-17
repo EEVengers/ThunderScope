@@ -68,6 +68,11 @@ bool parseCli (std::string line)
         std::string nextLine = line.substr(line.find(' ') + 1, line.length());
         parseCli(nextLine);
 
+    } else if (line == "getch") {
+        if (controllerThread != NULL ) {
+            INFO << "Number of channels: " << (int)controllerThread->getCh();
+        }
+
     } else if ("setch" == line.substr(0, line.find(' '))) {
         INFO << "setting channel mode";
 
@@ -83,6 +88,11 @@ bool parseCli (std::string line)
             } else {
                 ERROR << "Not a channel mode";
             }
+        }
+
+    } else if (line == "gettrig") {
+        if (controllerThread != NULL ) {
+            INFO << "Trigger channel: " << (int)controllerThread->getTriggerCh();
         }
 
     } else if ("settrig" == line.substr(0, line.find(' '))) {
@@ -104,6 +114,26 @@ bool parseCli (std::string line)
             }
         }
 
+    } else if ("setwin" == line.substr(0, line.find(' '))) {
+        if (controllerThread != NULL ) {
+            INFO << "setting window size";
+
+            // Useful for accepting arguments from a command
+            std::string nextArgument = line.substr(line.find(' ') + 1, line.length());
+            if (nextArgument != "setwin") {
+                int32_t newWindowSize = stoi(nextArgument);
+                controllerThread->setWindowSize(newWindowSize);
+                INFO << "new window size: " << newWindowSize;
+            }
+        } else {
+            ERROR << "No controller";
+        }
+
+    } else if (line == "getwin") {
+        if (controllerThread != NULL ) {
+            INFO << "Window Size: " << (int)controllerThread->getWindowSize();
+        }
+
     } else if (line == "controller") {
         if (controllerThread == NULL ) {
             controllerThread = new controller(&dataQueue_1);
@@ -122,6 +152,15 @@ bool parseCli (std::string line)
     } else if (line == "flush") {
         if (controllerThread != NULL ) {
             controllerThread->controllerFlush();
+        }
+
+    } else if (line == "getedgetype") {
+        if (controllerThread != NULL ) {
+            if (controllerThread->getEdgeType() == true) {
+                INFO << "Rising edge triggering";
+            } else {
+                INFO << "Falling edge triggering";
+            }
         }
 
     } else if (line == "setRising") {

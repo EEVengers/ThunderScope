@@ -40,8 +40,11 @@ public:
     void setTriggerLevel(int8_t newLevel);
 
     void setCh (int8_t newCh);
+    int8_t getCh ();
     void setTriggerCh (int8_t newTriggerCh);
+    int8_t getTriggerCh ();
 
+    bool getEdgeType();
     void setRising();
     void setFalling();
 

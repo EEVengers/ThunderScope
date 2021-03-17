@@ -19,10 +19,15 @@ public:
     void controllerPause();
     void setLevel( int8_t newLevel );
     int8_t getLevel();
-    void setCh (int8_t newCh);
-    void setTriggerCh (int8_t newTriggerCh);
+    void setCh(int8_t newCh);
+    int8_t getCh();
+    void setTriggerCh(int8_t newTriggerCh);
+    int8_t getTriggerCh();
+    bool getEdgeType();
     void setRising();
     void setFalling();
+    uint32_t getWindowSize();
+    void setWindowSize(uint32_t newSize);
 
 private:
     // external queue

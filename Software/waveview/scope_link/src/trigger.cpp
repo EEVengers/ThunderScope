@@ -395,6 +395,13 @@ void Trigger::coreLoop()
     }
 }
 
+// Returns the number of active channels
+int8_t Trigger::getCh (void)
+{
+    return numCh;
+}
+
+// Sets the number of active channels
 void Trigger::setCh (int8_t newCh)
 {
     if (newCh == 1 || newCh == 2 || newCh == 4) {
@@ -404,6 +411,13 @@ void Trigger::setCh (int8_t newCh)
     }
 }
 
+// Sets the channel to trigger off of
+int8_t Trigger::getTriggerCh ()
+{
+    return triggerCh;
+}
+
+// Sets the channel to trigger off of
 void Trigger::setTriggerCh (int8_t newTriggerCh)
 {
     if (newTriggerCh == 1 || newTriggerCh == 2 || newTriggerCh == 4) {
@@ -413,6 +427,13 @@ void Trigger::setTriggerCh (int8_t newTriggerCh)
     }
 }
 
+// Sets to trigger off of rising edges
+bool Trigger::getEdgeType()
+{
+    return risingEdge;
+}
+
+// Sets to trigger off of rising edges
 void Trigger::setRising()
 {
     triggerPause();
@@ -420,6 +441,7 @@ void Trigger::setRising()
     DEBUG << "Triggering on rising edge";
 }
 
+// Sets to trigger off of falling edges
 void Trigger::setFalling()
 {
     triggerPause();
