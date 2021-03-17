@@ -1,6 +1,18 @@
 #include "controller.hpp"
 #include "logger.hpp"
 
+#define RAMPDEMO 1
+
+#ifdef RAMPDEMO
+
+#define RD_DATA_PER_CHAN 1024
+#define RD_CHAN_COUNT 4
+#define RD_PACKET_SIZE 4096
+
+uint8_t RD_PACKET_ORIGINAL[RD_PACKET_SIZE]; 
+
+#endif
+
 controller::controller(boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> *inputQ)
 {
     dataQueue = inputQ;
@@ -23,6 +35,23 @@ controller::controller(boost::lockfree::queue<buffer*, boost::lockfree::fixed_si
     setCh(1);
     setTriggerCh(1);
     setLevel(50);
+
+#ifdef RAMPDEMO
+    for(int ch = 0; ch < RD_CHAN_COUNT; ch++) {
+        for(int i = 0; ch == 0 && i < RD_DATA_PER_CHAN; i++) {
+            RD_PACKET_ORIGINAL[i + ch*RD_DATA_PER_CHAN] = i % 24;
+        }
+        for(int i = 0; ch == 1 && i < RD_DATA_PER_CHAN; i++) {
+            RD_PACKET_ORIGINAL[i + ch*RD_DATA_PER_CHAN] = 24 - (i % 24);
+        }
+        for(int i = 0; ch == 2 && i < RD_DATA_PER_CHAN; i++) {
+            RD_PACKET_ORIGINAL[i + ch*RD_DATA_PER_CHAN] = (i % 24) / 12;
+        }
+        for(int i = 0; ch == 3 && i < RD_DATA_PER_CHAN; i++) {
+            RD_PACKET_ORIGINAL[i + ch*RD_DATA_PER_CHAN] = 10;
+        }
+    }
+#endif
 
     INFO << "Controller Created";
 }
@@ -60,6 +89,12 @@ void controller::controllerLoop()
                controllerQueue_rx.pop(currentPacket)) {
             DEBUG << "Controller processing a packet";
 
+            EVPacket* tempPacket = NULL;
+
+            //RampDemo variables
+            int rd_dataPerChan = 1024;
+            int rd_chanCount = 4;
+
             // execute the packet command
             switch (currentPacket->command) {
                 case 0x01:
@@ -74,28 +109,17 @@ void controller::controllerLoop()
                 case 0x04:
                     ERROR << "Packet command 0x04: Reserved";
                     break;
+#ifdef RAMPDEMO
                 case 0x1F:
                     INFO << "Packet command 0x1F: RampDemo";
-                    for(int pk = 0; pk < 4; pk++) {
-                        EVPacket* tempPacket = (EVPacket*) malloc(sizeof(EVPacket));
-                        tempPacket->data = (int8_t*) malloc(1024);
-                        tempPacket->dataSize = 1024;
-                        tempPacket->packetID = 0x11;
-                        for(int i = 0; pk == 0 && i < 1024; i++) {
-                            tempPacket->data[i] = i % 24;
-                        }
-                        for(int i = 0; pk == 1 && i < 1024; i++) {
-                            tempPacket->data[i] = 24 - (i % 24);
-                        }
-                        for(int i = 0; pk == 2 && i < 1024; i++) {
-                            tempPacket->data[i] = (i % 24) / 12;
-                        }
-                        for(int i = 0; pk == 3 && i < 1024; i++) {
-                            tempPacket->data[i] = 10;
-                        }
-                        controllerQueue_tx.push(tempPacket);
-                    }
+                    tempPacket = (EVPacket*) malloc(sizeof(EVPacket));
+                    tempPacket->data = (int8_t*) malloc(RD_PACKET_SIZE);
+                    tempPacket->dataSize = RD_PACKET_SIZE;
+                    tempPacket->packetID = 0x11;
+                    memcpy(tempPacket->data, (const void*)RD_PACKET_ORIGINAL, RD_PACKET_SIZE);
+                    controllerQueue_tx.push(tempPacket);
                     break;
+#endif
                 default:
                     ERROR << "Unknown packet command";
                     break;

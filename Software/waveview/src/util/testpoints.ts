@@ -18,7 +18,6 @@ class TestPoints {
   x: Range;
   y: Range;
   ready: Boolean = true;
-  readCount: number = 0;
   scope_data: any[][] = [];
 
   constructor(xRange: number, yRange: number) {
@@ -38,25 +37,20 @@ class TestPoints {
     thunderBridge.read(rxBuff, (err: NodeJS.ErrnoException, bytesRead: number, bytes: Uint8Array) => {
       var bytes16 = new Uint16Array(bytes.buffer);
       var dataSize = bytes16[2];
-      console.log(bytes16);
-      console.log(bytes);
+      //console.log(bytes16);
+      //console.log(bytes);
 
       var dataRxBuff = new Uint8Array(dataSize);
       thunderBridge.read(dataRxBuff, (nestedErr: NodeJS.ErrnoException, nestedBytesRead: number, nestedBytes: Uint8Array) => {
-        this.readCount++;
-        var channel = this.readCount % 4;
-        if(channel == 0) {
-          this.ready = true;
-        }
-        for(var i = 0; i < nestedBytes.length; i++) {
-          this.scope_data[channel][i] = {x: i, y: nestedBytes[i]}
-        }
-        console.log(nestedBytes);
-        console.log(this.scope_data[channel]);
-        console.log("channel: " + channel);
-
-        if(channel != 0) {
-          this.doRead();
+        this.ready = true;
+        var perChannel = (nestedBytes.length/4);
+        for(var channel = 0; channel < 4; channel++) {
+          for(var i = 0; i < perChannel; i++) {
+            this.scope_data[channel][i] = {x: i, y: nestedBytes[channel*perChannel + i]}
+          }
+          //console.log(nestedBytes);
+          //console.log(this.scope_data[channel]);
+          //console.log("channel: " + channel);
         }
       });
     });
@@ -78,6 +72,7 @@ class TestPoints {
       return;
     }
     this.ready = false;
+    console.log(Date.now()); //millisecond
     thunderBridge.write(testPacket,() => {
       this.doRead();
     });
