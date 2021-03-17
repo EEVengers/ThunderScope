@@ -62,11 +62,39 @@ void controller::controllerLoop()
 
             // execute the packet command
             switch (currentPacket->command) {
-                case 1:
-                    DEBUG << "Packet command 1";
+                case 0x01:
+                    INFO << "Packet command 0x01: GetData";
                     break;
-                case 2:
-                    DEBUG << "Packet command 2";
+                case 0x02:
+                    ERROR << "Packet command 0x02: Reserved";
+                    break;
+                case 0x03:
+                    ERROR << "Packet command 0x03: Reserved";
+                    break;
+                case 0x04:
+                    ERROR << "Packet command 0x04: Reserved";
+                    break;
+                case 0x1F:
+                    INFO << "Packet command 0x1F: RampDemo";
+                    for(int pk = 0; pk < 4; pk++) {
+                        EVPacket* tempPacket = (EVPacket*) malloc(sizeof(EVPacket));
+                        tempPacket->data = (int8_t*) malloc(1024);
+                        tempPacket->dataSize = 1024;
+                        tempPacket->packetID = 0x11;
+                        for(int i = 0; pk == 0 && i < 1024; i++) {
+                            tempPacket->data[i] = i % 24;
+                        }
+                        for(int i = 0; pk == 1 && i < 1024; i++) {
+                            tempPacket->data[i] = 24 - (i % 24);
+                        }
+                        for(int i = 0; pk == 2 && i < 1024; i++) {
+                            tempPacket->data[i] = (i % 24) / 12;
+                        }
+                        for(int i = 0; pk == 3 && i < 1024; i++) {
+                            tempPacket->data[i] = 10;
+                        }
+                        controllerQueue_tx.push(tempPacket);
+                    }
                     break;
                 default:
                     ERROR << "Unknown packet command";
