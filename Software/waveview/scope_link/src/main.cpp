@@ -114,6 +114,11 @@ bool parseCli (std::string line)
             }
         }
 
+    } else if (line == "getwin") {
+        if (controllerThread != NULL ) {
+            INFO << "Window Size: " << (int)controllerThread->getWindowSize();
+        }
+
     } else if ("setwin" == line.substr(0, line.find(' '))) {
         if (controllerThread != NULL ) {
             INFO << "setting window size";
@@ -129,9 +134,24 @@ bool parseCli (std::string line)
             ERROR << "No controller";
         }
 
-    } else if (line == "getwin") {
+    } else if (line == "getlevel") {
         if (controllerThread != NULL ) {
-            INFO << "Window Size: " << (int)controllerThread->getWindowSize();
+            INFO << "trigger level: " << (int)controllerThread->getLevel();
+        }
+
+    } else if ("setlevel" == line.substr(0, line.find(' '))) {
+        if (controllerThread != NULL ) {
+            INFO << "setting trigger level";
+
+            // Useful for accepting arguments from a command
+            std::string nextArgument = line.substr(line.find(' ') + 1, line.length());
+            if (nextArgument != "setlevel") {
+                int32_t newLevel = stoi(nextArgument);
+                controllerThread->setLevel(newLevel);
+                INFO << "new trigger level: " << newLevel;
+            }
+        } else {
+            ERROR << "No controller";
         }
 
     } else if (line == "controller") {
@@ -163,12 +183,12 @@ bool parseCli (std::string line)
             }
         }
 
-    } else if (line == "setRising") {
+    } else if (line == "setrising") {
         if (controllerThread != NULL ) {
             controllerThread->setRising();
         }
 
-    } else if (line == "setFalling") {
+    } else if (line == "setfalling") {
         if (controllerThread != NULL ) {
             controllerThread->setFalling();
         }
@@ -212,8 +232,17 @@ bool parseCli (std::string line)
         ERROR << "unpause";
         ERROR << "data";
         ERROR << "datafile <csv file in waveview/scope_link/test/>";
+        ERROR << "getch";
         ERROR << "setch <# of channels: 1, 2 or 4>";
+        ERROR << "gettrig";
         ERROR << "settrig <channel to trig on: 1, 2, 3 or 4>";
+        ERROR << "getedgetype";
+        ERROR << "setrising";
+        ERROR << "setfalling";
+        ERROR << "getlevel";
+        ERROR << "setlevel <voltage level>";
+        ERROR << "getwin";
+        ERROR << "setwin";
         ERROR << "flush";
         ERROR << "exit";
     }
