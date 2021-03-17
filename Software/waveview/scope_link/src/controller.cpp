@@ -250,9 +250,24 @@ void controller::setLevel( int8_t newLevel )
 
     triggerThread->setTriggerLevel(triggerLevel);
 
-    INFO << "new trigger level: " << triggerThread->getTriggerLevel();
+    INFO << "new trigger level: " << (int)triggerThread->getTriggerLevel();
 
     controllerFlush();
+}
+
+/*******************************************************************************
+ * getCh()
+ *
+ * gets the number of channels on each stage of the pipeline.
+ *
+ * Arguments:
+ *   None
+ * Return:
+ *   int8_t - The number of channels as set in the trigger thread;
+ ******************************************************************************/
+int8_t controller::getCh()
+{
+    return triggerThread->getCh();
 }
 
 /*******************************************************************************
@@ -265,7 +280,7 @@ void controller::setLevel( int8_t newLevel )
  * Return:
  *   None
  ******************************************************************************/
-void controller::setCh (int8_t newCh)
+void controller::setCh(int8_t newCh)
 {
     controllerPause();
 
@@ -274,6 +289,21 @@ void controller::setCh (int8_t newCh)
     postProcessorThread->setCh(newCh);
 
     controllerFlush();
+}
+
+/*******************************************************************************
+ * getTriggerCh()
+ *
+ * get Trigger channel.
+ *
+ * Arguments:
+ *   None
+ * Return:
+ *   int8_t - current trigger channel as known by the trigger thread;
+ ******************************************************************************/
+int8_t controller::getTriggerCh()
+{
+    return triggerThread->getTriggerCh();
 }
 
 /*******************************************************************************
@@ -286,7 +316,7 @@ void controller::setCh (int8_t newCh)
  * Return:
  *   None
  ******************************************************************************/
-void controller::setTriggerCh (int8_t newTriggerCh)
+void controller::setTriggerCh(int8_t newTriggerCh)
 {
     controllerPause();
 
@@ -295,6 +325,31 @@ void controller::setTriggerCh (int8_t newTriggerCh)
     controllerFlush();
 }
 
+/*******************************************************************************
+ * getEdgeType()
+ *
+ * gets the type of edge.
+ *
+ * Arguments:
+ *   int8_t newTriggerCh - desired trigger channel;
+ * Return:
+ *   bool - true for rising edge, false for falling edge
+******************************************************************************/
+bool controller::getEdgeType()
+{
+    return triggerThread->getEdgeType();
+}
+
+/*******************************************************************************
+ * setRising()
+ *
+ * sets edge type to rising edge.
+ *
+ * Arguments:
+ *   None
+ * Return:
+ *   None
+******************************************************************************/
 void controller::setRising()
 {
     controllerPause();
@@ -304,11 +359,55 @@ void controller::setRising()
     controllerFlush();
 }
 
+/*******************************************************************************
+ * setFalling()
+ *
+ * sets edge type to falling edge.
+ *
+ * Arguments:
+ *   None
+ * Return:
+ *   None
+******************************************************************************/
 void controller::setFalling()
 {
     controllerPause();
 
     triggerThread->setFalling();
+
+    controllerFlush();
+}
+
+/*******************************************************************************
+ * getWindowSize()
+ *
+ * returns the size of the window.
+ *
+ * Arguments:
+ *   None
+ * Return:
+ *   uint32_t - current window size
+******************************************************************************/
+uint32_t controller::getWindowSize()
+{
+    return windowSize;
+}
+
+/*******************************************************************************
+ * setWindowSize()
+ *
+ * sets the windowsize.
+ *
+ * Arguments:
+ *   uint32_t newSize - New size to set the window to
+ * Return:
+ *   None
+******************************************************************************/
+void controller::setWindowSize(uint32_t newSize)
+{
+    controllerPause();
+
+    windowSize = newSize;
 
     controllerFlush();
 }
