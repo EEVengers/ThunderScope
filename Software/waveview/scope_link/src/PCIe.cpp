@@ -160,14 +160,18 @@ void PCIeLink::Write(ScopeCommand command, void* val) {
         INFO << "Enabling PLL";
         {
             uint16_t config_clk_gen[] = { 
-                0x1E00, 0x1F00, 0x2001, 0x1600, 
-                0x1705, 0x1B00, 0x1C00, 0X1D00, 
-                0X1900, 0X1A32, 0x2500, 0x2700, 
-                0x2408, 0x2600, 0x2228, 0x210C, 
-                0x2303, 0x4802}; //correct bytes to configure the clock gen
+                0x0010, 0x010B, 0x0233, 0x08B0, 
+                0x0901, 0x1000, 0x1180, 0x1501, 
+                0x1600, 0x1705, 0x1900, 0x1A32, 
+                0x1B00, 0x1C00, 0x1D00, 0x1E00,
+                0x1F00, 0x2001, 0x210C, 0x2228,
+                0x2303, 0x2408, 0x2500, 0x2600,
+                0x2700, 0x2F00, 0x3000, 0x3110, 
+                0x3200, 0x3300, 0x3400, 0x3500,
+                0x3800, 0x4802 }; //correct bytes to configure the clock gen
             
             //write to the clock generator
-            for(int i = 0; i < 18; i++) {
+            for(int i = 0; i < 34; i++) {
                 uint8_t data[] = {I2C_BYTE_PLL, CLOCK_GEN_I2C_ADDRESS_WRITE, (uint8_t)((config_clk_gen[i] & 0xFF00) >> 8),(uint8_t)(config_clk_gen[i] & 0xFF)};
                 printf("DataPacket: %X %X %X %X\n",data[0],data[1],data[2],data[3]);
                 _FIFO_WRITE(user_handle,data,4);
