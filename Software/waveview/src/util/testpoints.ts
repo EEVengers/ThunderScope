@@ -37,7 +37,7 @@ class TestPoints {
     thunderBridge.read(rxBuff, (err: NodeJS.ErrnoException, bytesRead: number, bytes: Uint8Array) => {
       var bytes16 = new Uint16Array(bytes.buffer);
       var dataSize = bytes16[2];
-      //console.log(bytes16);
+      console.log(bytes16);
       //console.log(bytes);
 
       var dataRxBuff = new Uint8Array(dataSize);
@@ -72,7 +72,6 @@ class TestPoints {
       return;
     }
     this.ready = false;
-    console.log(Date.now()); //millisecond
     thunderBridge.write(testPacket,() => {
       this.doRead();
     });

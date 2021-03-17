@@ -116,6 +116,7 @@ void controller::controllerLoop()
                     tempPacket->data = (int8_t*) malloc(RD_PACKET_SIZE);
                     tempPacket->dataSize = RD_PACKET_SIZE;
                     tempPacket->packetID = 0x11;
+                    tempPacket->command = 0x1F;
                     memcpy(tempPacket->data, (const void*)RD_PACKET_ORIGINAL, RD_PACKET_SIZE);
                     controllerQueue_tx.push(tempPacket);
                     break;
