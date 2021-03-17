@@ -14,14 +14,14 @@ Packet structure diagram (ripped from `common.hpp` and minimized):
 
 The rest of this page concerns the *meaning* of `Command` and the expected `dataSize` of a packet. In other words, the diagram is the "syntax", what follows is the "semantics".
 
-The leading byte of `Command` will correspond to a category:
+The leading 2 bytes of `Command` will correspond to a category:
 
-Byte | Category
------|------------
-0x0  | Get Data
-0x1  | Demo
-0x2  | Get Config
-0x3  | Set Config
+2 Byte | Category
+-------|------------
+0x0    | Get Data
+0x1    | Demo
+0x2    | Get Config
+0x3    | Set Config
 
 `PacketID` is omitted from these tables because it is useless right now.
 
