@@ -28,6 +28,8 @@ public:
     void setFalling();
     uint32_t getWindowSize();
     void setWindowSize(uint32_t newSize);
+    uint32_t getPerSize();
+    void setPerSize(uint32_t newSize);
 
 private:
     // external queue

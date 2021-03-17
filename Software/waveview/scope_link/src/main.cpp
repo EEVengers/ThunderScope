@@ -193,6 +193,26 @@ bool parseCli (std::string line)
             controllerThread->setFalling();
         }
 
+    } else if (line == "getper") {
+        if (controllerThread != NULL ) {
+            INFO << "Persistance Size: " << (int)controllerThread->getPerSize();
+        }
+
+    } else if ("setper" == line.substr(0, line.find(' '))) {
+        if (controllerThread != NULL ) {
+            INFO << "setting persistance size";
+
+            // Useful for accepting arguments from a command
+            std::string nextArgument = line.substr(line.find(' ') + 1, line.length());
+            if (nextArgument != "setper") {
+                int32_t newPer = stoi(nextArgument);
+                controllerThread->setPerSize(newPer);
+                INFO << "new persistance size: " << newPer;
+            }
+        } else {
+            ERROR << "No controller";
+        }
+
     } else if ("datafile" == line.substr(0, line.find(' '))) {
         INFO << "Adding data from file to the pipeline";
 

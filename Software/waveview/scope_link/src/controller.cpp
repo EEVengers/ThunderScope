@@ -359,3 +359,37 @@ void controller::setWindowSize(uint32_t newSize)
 
     controllerFlush();
 }
+
+/*******************************************************************************
+ * getPerSize()
+ *
+ * gets the side of the persistence buffer.
+ *
+ * Arguments:
+ *   None
+ * Return:
+ *   uint32_t - Size of the persistence buffer
+******************************************************************************/
+uint32_t controller::getPerSize()
+{
+    return persistanceSize;
+}
+
+/*******************************************************************************
+ * setPerSize()
+ *
+ * sets the side of the persistence buffer.
+ *
+ * Arguments:
+ *   uint32_t newSize - New size to set the persistence buffer to
+ * Return:
+ *   None
+******************************************************************************/
+void controller::setPerSize(uint32_t newSize)
+{
+    controllerPause();
+
+    persistanceSize = newSize;
+
+    controllerFlush();
+}
