@@ -156,11 +156,12 @@ bool parseCli (std::string line)
     } else if ("getmax" == line.substr(0, line.find(' '))) {
         INFO << "getting max value";
 
+        int8_t maxValue = 0;
+        uint64_t maxPos = 0;
+
         // Useful for accepting arguments from a command
         std::string nextArgument = line.substr(line.find(' ') + 1, line.length());
         if (nextArgument != "getmax") {
-            int8_t maxValue = 0;
-            uint64_t maxPos = 0;
             if (nextArgument == "1") {
                 controllerThread->getMax(1, &maxValue, &maxPos);
                 INFO << "Max Value: " << (int)maxValue << " at position: " << maxPos;
@@ -176,7 +177,11 @@ bool parseCli (std::string line)
             } else {
                 ERROR << "Not a trigger channel";
             }
+        } else {
+            controllerThread->getMax(1, &maxValue, &maxPos);
+            INFO << "Max Value: " << (int)maxValue << " at position: " << maxPos;
         }
+
 
     } else if ("getmin" == line.substr(0, line.find(' '))) {
         INFO << "getting min value";
