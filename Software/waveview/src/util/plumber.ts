@@ -6,7 +6,16 @@ export enum CMD {
   CMD_GetData4 = 0x04,
 
   //Demo commands
-  CMD_RampDemo = 0x1F
+  CMD_SetFile = 0x11,
+  CMD_RampDemo = 0x1F,
+  
+  //Get Config commands
+  CMD_GetWindowSize = 0x21,
+  CMD_GetCh = 0x22,
+
+  //Set Config commands
+  CMD_SetWindowSize = 0x31,
+  CMD_SetCh = 0x32
 }
 
 export interface PlumberArgs {

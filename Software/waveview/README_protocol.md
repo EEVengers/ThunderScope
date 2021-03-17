@@ -17,9 +17,11 @@ The rest of this page concerns the *meaning* of `Command` and the expected `data
 The leading byte of `Command` will correspond to a category:
 
 Byte | Category
------|----------
-0x0  | Data
+-----|------------
+0x0  | Get Data
 0x1  | Demo
+0x2  | Get Config
+0x3  | Set Config
 
 `PacketID` is omitted from these tables because it is useless right now.
 
@@ -43,17 +45,31 @@ Cmd  | DataSize        | Name      | Description
 
 ### Electron -> C++
 
-Cmd  | DataSize        | Name      | Description
------|-----------------|-----------|------------------------
-0x01 | ch * windowSize | GetData   | 
-0x02 | useless         | Reserved  | If we need 1 command/ch
-0x03 | useless         | Reserved  | If we need 1 command/ch
-0x04 | useless         | Reserved  | If we need 1 command/ch
+Cmd  | DataSize        | Name          | Description
+-----|-----------------|---------------|------------------------
+0x01 | useless         | GetData       | 
+0x02 | useless         | Reserved      | If we need 1 command/ch
+0x03 | useless         | Reserved      | If we need 1 command/ch
+0x04 | useless         | Reserved      | If we need 1 command/ch
+0x11 | `strlen(name)`  | SetFile       | Set testdata filename
+0x21 | useless         | GetWindowSize |
+0x22 | useless         | GetCh         |
+0x31 | 4               | SetWindowSize | Data has new window size
+0x32 | 1               | SetCh         | Data has ch 1, 2 or 4
+
+### C++ -> Electron
+
+Cmd  | DataSize        | Name          | Description
+-----|-----------------|---------------|------------------------
+0x01 | ch * windowSize | GetData       | Data for all ch
+0x11 | useless         | SetFile       | Set testdata filename
+0x21 | 4               | GetWindowSize | Data has window size
+0x22 | 1               | GetCh         | Data has ch 1, 2, or 4
+0x31 | useless         | SetWindowSize |
+0x32 | useless         | SetCh         |
 
 ## Proposed But Not Allocated
 
-+ getWindowSize/setWindowSize
-+ getCh/setCh
 + getLevel/setLevel
 + getTriggerCh/setTriggerCh
 + getEdgeType/setRising/setFalling

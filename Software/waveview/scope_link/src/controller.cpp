@@ -21,7 +21,16 @@ enum CMD {
     CMD_GetData4 = 0x04,
 
     //Demo commands
-    CMD_RampDemo = 0x1F
+    CMD_SetFile = 0x11,
+    CMD_RampDemo = 0x1F,
+
+    //Get Config commands
+    CMD_GetWindowSize = 0x21,
+    CMD_GetCh = 0x22,
+
+    //Set Config commands
+    CMD_SetWindowSize = 0x31,
+    CMD_SetCh = 0x32
 };
 
 controller::controller(boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> *inputQ)
@@ -109,20 +118,23 @@ void controller::controllerLoop()
             // execute the packet command
             switch (currentPacket->command) {
                 case CMD_GetData1:
-                    INFO << "Packet command 0x01: GetData";
+                    INFO << "Packet command: GetData";
                     break;
                 case CMD_GetData2:
-                    ERROR << "Packet command 0x02: Reserved";
+                    ERROR << "Packet command: Reserved";
                     break;
                 case CMD_GetData3:
-                    ERROR << "Packet command 0x03: Reserved";
+                    ERROR << "Packet command: Reserved";
                     break;
                 case CMD_GetData4:
-                    ERROR << "Packet command 0x04: Reserved";
+                    ERROR << "Packet command: Reserved";
+                    break;
+                case CMD_SetFile:
+                    INFO << "Packet command: SetFile";
                     break;
 #ifdef RAMPDEMO
                 case CMD_RampDemo:
-                    INFO << "Packet command 0x1F: RampDemo";
+                    INFO << "Packet command: RampDemo";
                     tempPacket = (EVPacket*) malloc(sizeof(EVPacket));
                     tempPacket->data = (int8_t*) malloc(RD_PACKET_SIZE);
                     tempPacket->dataSize = RD_PACKET_SIZE;
@@ -132,6 +144,18 @@ void controller::controllerLoop()
                     controllerQueue_tx.push(tempPacket);
                     break;
 #endif
+                case CMD_GetWindowSize:
+                    INFO << "Packet command: GetWindowSize";
+                    break;
+                case CMD_GetCh:
+                    INFO << "Packet command: GetCh";
+                    break;
+                case CMD_SetWindowSize:
+                    INFO << "Packet command: SetWindowSize";
+                    break;
+                case CMD_SetCh:
+                    INFO << "Packet command: SetCh";
+                    break;
                 default:
                     ERROR << "Unknown packet command";
                     break;
