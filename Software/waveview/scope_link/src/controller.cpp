@@ -13,6 +13,17 @@ uint8_t RD_PACKET_ORIGINAL[RD_PACKET_SIZE];
 
 #endif
 
+enum CMD {
+    //Data commands
+    CMD_GetData1 = 0x01,
+    CMD_GetData2 = 0x02,
+    CMD_GetData3 = 0x03,
+    CMD_GetData4 = 0x04,
+
+    //Demo commands
+    CMD_RampDemo = 0x1F
+};
+
 controller::controller(boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> *inputQ)
 {
     dataQueue = inputQ;
@@ -97,20 +108,20 @@ void controller::controllerLoop()
 
             // execute the packet command
             switch (currentPacket->command) {
-                case 0x01:
+                case CMD_GetData1:
                     INFO << "Packet command 0x01: GetData";
                     break;
-                case 0x02:
+                case CMD_GetData2:
                     ERROR << "Packet command 0x02: Reserved";
                     break;
-                case 0x03:
+                case CMD_GetData3:
                     ERROR << "Packet command 0x03: Reserved";
                     break;
-                case 0x04:
+                case CMD_GetData4:
                     ERROR << "Packet command 0x04: Reserved";
                     break;
 #ifdef RAMPDEMO
-                case 0x1F:
+                case CMD_RampDemo:
                     INFO << "Packet command 0x1F: RampDemo";
                     tempPacket = (EVPacket*) malloc(sizeof(EVPacket));
                     tempPacket->data = (int8_t*) malloc(RD_PACKET_SIZE);

@@ -12,11 +12,20 @@ Packet structure diagram (ripped from `common.hpp` and minimized):
 //  |__________|__________|__________|________________________|
 ```
 
-The rest of this page concerns the *meaning* of `Command` and `PacketID`, and the expected `dataSize` of a packet. In other words, the diagram is the "syntax", what follows is the "semantics".
+The rest of this page concerns the *meaning* of `Command` and the expected `dataSize` of a packet. In other words, the diagram is the "syntax", what follows is the "semantics".
 
-PacketID is omitted from these tables because it is useless right now.
+The leading byte of `Command` will correspond to a category:
+
+Byte | Category
+-----|----------
+0x0  | Data
+0x1  | Demo
+
+`PacketID` is omitted from these tables because it is useless right now.
 
 ## Implemented Commands
+
+Prepend the name with `CMD_` to find it in the Electron and C++ code.
 
 ### Electron -> C++
 
