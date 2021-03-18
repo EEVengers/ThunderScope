@@ -13,7 +13,7 @@ class TestConf {
       },
       cmd: CMD.CMD_GetCh,
       id: 0,
-      writeData: []
+      writeData: [0, 0]
     }
 
     this.setChArgs = {

@@ -30,10 +30,12 @@ export class Plumber {
   private static instance: Plumber
   private bridge: any;
   private ready: boolean;
+  private cmdCache: {[key: number]: PlumberArgs };
 
   private constructor() {
     this.bridge = (window as any).thunderBridge;
     this.ready = true;
+    this.cmdCache = {};
   }
 
   public static getInstance(): Plumber {
@@ -47,11 +49,12 @@ export class Plumber {
     var rxBuff = new Uint8Array(new ArrayBuffer(6));
     this.bridge.read(rxBuff, (err: NodeJS.ErrnoException, bytesRead: number, bytes: Uint8Array) => {
       var bytes16 = new Uint16Array(bytes.buffer);
-      if(!args.headCheck(args, bytes16)) {
+      var dataSize = bytes16[2];
+      if(!args.headCheck(args, bytes16) || dataSize == 0) {
+        this.ready = true;
         return;
       }
 
-      var dataSize = bytes16[2];
       var dataRxBuff = new Uint8Array(dataSize);
       this.bridge.read(dataRxBuff, (nestedErr: NodeJS.ErrnoException, nestedBytesRead: number, nestedBytes: Uint8Array) => {
         this.ready = true;
@@ -60,7 +63,7 @@ export class Plumber {
     });
   }
 
-  public cycle(args: PlumberArgs) {
+  private makePacket(args: PlumberArgs) {
     var fullSize = 6 + args.writeData.length;
     var packet16 = new Uint16Array(new ArrayBuffer(fullSize));
     packet16[0] = args.cmd;
@@ -72,14 +75,32 @@ export class Plumber {
     for(var i = 0; i < args.writeData.length; i++) {
       packet8[i + 6] = args.writeData[i];
     }
+    return packet8;
+  }
 
-    if(!this.ready) {
+  public cycle(args: PlumberArgs) {
+    if(this.ready) {
+      this.ready = false;
+      var packet;
+      if(Object.keys(this.cmdCache).length > 0) {
+        var overrideArgs = Object.values(this.cmdCache)[0];
+        delete this.cmdCache[overrideArgs.cmd as number];
+        packet = this.makePacket(overrideArgs);
+      }
+      else {
+        packet = this.makePacket(args);
+      }
+
+      this.bridge.write(packet,() => {
+        this.doRead(args);
+      });
+      return true;
+    }
+    else {
+      if(args.cmd >= 0x20) {
+        this.cmdCache[args.cmd as number] = args;
+      }
       return false;
     }
-    this.ready = false;
-    this.bridge.write(packet8,() => {
-      this.doRead(args);
-    });
-    return true;
   }
 }

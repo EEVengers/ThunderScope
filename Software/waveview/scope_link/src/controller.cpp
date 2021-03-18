@@ -159,7 +159,7 @@ void controller::controllerLoop()
                         tempPacket->dataSize = packetSize;
                         tempPacket->packetID = 0;
                         tempPacket->command = CMD_GetCh;
-                        tempPacket->data[0] = 0;//getCh();
+                        tempPacket->data[0] = getCh();
                         tempPacket->data[1] = 0;
                         controllerQueue_tx.push(tempPacket);
                     }
