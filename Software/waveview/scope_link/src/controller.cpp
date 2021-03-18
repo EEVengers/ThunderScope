@@ -403,3 +403,8 @@ void controller::getMin(int8_t chNum, int8_t* value, uint64_t* pos)
 {
     processorThread->getMin(chNum, value, pos);
 }
+
+void controller::reProcess()
+{
+    processorThread->reProcess();
+}
