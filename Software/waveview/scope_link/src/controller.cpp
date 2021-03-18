@@ -1,17 +1,12 @@
 #include "controller.hpp"
 #include "logger.hpp"
 
-#define RAMPDEMO 1
-
-#ifdef RAMPDEMO
-
+//RampDemo Related
 #define RD_DATA_PER_CHAN 1024
 #define RD_CHAN_COUNT 4
 #define RD_PACKET_SIZE 4096
-
 uint8_t RD_PACKET_ORIGINAL[RD_PACKET_SIZE]; 
 
-#endif
 
 enum CMD {
     //Data commands
@@ -56,7 +51,7 @@ controller::controller(boost::lockfree::queue<buffer*, boost::lockfree::fixed_si
     setTriggerCh(1);
     setLevel(50);
 
-#ifdef RAMPDEMO
+    //RampDemo related
     for(int ch = 0; ch < RD_CHAN_COUNT; ch++) {
         for(int i = 0; ch == 0 && i < RD_DATA_PER_CHAN; i++) {
             RD_PACKET_ORIGINAL[i + ch*RD_DATA_PER_CHAN] = i % 24;
@@ -71,7 +66,6 @@ controller::controller(boost::lockfree::queue<buffer*, boost::lockfree::fixed_si
             RD_PACKET_ORIGINAL[i + ch*RD_DATA_PER_CHAN] = 10;
         }
     }
-#endif
 
     INFO << "Controller Created";
 }
@@ -132,7 +126,6 @@ void controller::controllerLoop()
                 case CMD_SetFile:
                     INFO << "Packet command: SetFile";
                     break;
-#ifdef RAMPDEMO
                 case CMD_RampDemo:
                     INFO << "Packet command: RampDemo";
                     tempPacket = (EVPacket*) malloc(sizeof(EVPacket));
@@ -143,7 +136,6 @@ void controller::controllerLoop()
                     memcpy(tempPacket->data, (const void*)RD_PACKET_ORIGINAL, RD_PACKET_SIZE);
                     controllerQueue_tx.push(tempPacket);
                     break;
-#endif
                 case CMD_GetWindowSize:
                     INFO << "Packet command: GetWindowSize";
                     break;
