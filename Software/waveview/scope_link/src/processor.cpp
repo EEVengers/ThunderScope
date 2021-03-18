@@ -296,3 +296,28 @@ bool Processor::getWindowStatus()
 {
     return windowStored.load();
 }
+
+void Processor::getMax(int8_t chNum, int8_t* value, uint64_t* pos)
+{
+    *value = INT8_MIN;
+    *pos = chNum - 1;
+    for (uint64_t i = chNum - 1; i < windowSize * numCh; i += numCh) {
+        DEBUG << "windowProcessed[i]: " << (int)windowProcessed[i] << " i: " << i << " value: " << (int)*value << " pos: " << *pos;
+        if ((int)*value < (int)windowProcessed[i]) {
+            *value = windowProcessed[i];
+            *pos = i;
+        }
+    }
+}
+
+void Processor::getMin(int8_t chNum, int8_t* value, uint64_t* pos)
+{
+    *value = INT8_MAX;
+    *pos = chNum - 1;
+    for (uint64_t i = chNum - 1; i < windowSize * numCh; i += numCh) {
+        if (*value > windowProcessed[i]) {
+            *value = windowProcessed[i];
+            *pos = i;
+        }
+    }
+}
