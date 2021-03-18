@@ -103,12 +103,6 @@ void controller::controllerLoop()
                controllerQueue_rx.pop(currentPacket)) {
             DEBUG << "Controller processing a packet";
 
-            EVPacket* tempPacket = NULL;
-
-            //RampDemo variables
-            int rd_dataPerChan = 1024;
-            int rd_chanCount = 4;
-
             // execute the packet command
             switch (currentPacket->command) {
                 case CMD_GetData1:
@@ -126,27 +120,94 @@ void controller::controllerLoop()
                 case CMD_SetFile:
                     INFO << "Packet command: SetFile";
                     break;
-                case CMD_RampDemo:
-                    INFO << "Packet command: RampDemo";
-                    tempPacket = (EVPacket*) malloc(sizeof(EVPacket));
-                    tempPacket->data = (int8_t*) malloc(RD_PACKET_SIZE);
-                    tempPacket->dataSize = RD_PACKET_SIZE;
-                    tempPacket->packetID = 0x11;
-                    tempPacket->command = 0x1F;
-                    memcpy(tempPacket->data, (const void*)RD_PACKET_ORIGINAL, RD_PACKET_SIZE);
-                    controllerQueue_tx.push(tempPacket);
+                case CMD_RampDemo: {
+                        INFO << "Packet command: RampDemo";
+                        const int rd_dataPerChan = 1024;
+                        const int rd_chanCount = 4;
+                        EVPacket* tempPacket = (EVPacket*) malloc(sizeof(EVPacket));
+                        tempPacket->data = (int8_t*) malloc(RD_PACKET_SIZE);
+                        tempPacket->dataSize = RD_PACKET_SIZE;
+                        tempPacket->packetID = 0x11;
+                        tempPacket->command = CMD_RampDemo;
+                        memcpy(tempPacket->data, (const void*)RD_PACKET_ORIGINAL, RD_PACKET_SIZE);
+                        controllerQueue_tx.push(tempPacket);
+                    }
                     break;
-                case CMD_GetWindowSize:
-                    INFO << "Packet command: GetWindowSize";
+                case CMD_GetWindowSize: {
+                        INFO << "Packet command: GetWindowSize";
+                        const int packetSize = 4;
+                        
+                        EVPacket* tempPacket = (EVPacket*) malloc(sizeof(EVPacket));
+                        tempPacket->data = (int8_t*) malloc(packetSize);
+                        tempPacket->dataSize = packetSize;
+                        tempPacket->packetID = 0;
+                        tempPacket->command = CMD_GetWindowSize;
+                        
+                        int32_t windowSize = getWindowSize();
+                        tempPacket->data[0] = (windowSize >> 24) & 0xFF;
+                        tempPacket->data[1] = (windowSize >> 16) & 0xFF;
+                        tempPacket->data[2] = (windowSize >> 8) & 0xFF;
+                        tempPacket->data[3] = windowSize & 0xFF;
+                        controllerQueue_tx.push(tempPacket);
+                    }
                     break;
-                case CMD_GetCh:
-                    INFO << "Packet command: GetCh";
+                case CMD_GetCh: {
+                        INFO << "Packet command: GetCh";
+                        const int packetSize = 2;
+                        EVPacket* tempPacket = (EVPacket*) malloc(sizeof(EVPacket));
+                        tempPacket->data = (int8_t*) malloc(packetSize);
+                        tempPacket->dataSize = packetSize;
+                        tempPacket->packetID = 0;
+                        tempPacket->command = CMD_GetCh;
+                        tempPacket->data[0] = 0;//getCh();
+                        tempPacket->data[1] = 0;
+                        controllerQueue_tx.push(tempPacket);
+                    }
                     break;
-                case CMD_SetWindowSize:
-                    INFO << "Packet command: SetWindowSize";
+                case CMD_SetWindowSize: {
+                        INFO << "Packet command: SetWindowSize";
+                        const int packetSize = 4;
+                        if(currentPacket->dataSize != packetSize) {
+                            ERROR << "Unexpected size for SetWindowSize packet";
+                        }
+                        else {
+                            int32_t windowSize = 0;
+                            windowSize |= currentPacket->data[0] << 24;
+                            windowSize |= currentPacket->data[1] << 16;
+                            windowSize |= currentPacket->data[2] << 8;
+                            windowSize |= currentPacket->data[3];
+                            setWindowSize(windowSize);
+                        }
+                        EVPacket* tempPacket = (EVPacket*) malloc(sizeof(EVPacket));
+                        tempPacket->data = NULL;
+                        tempPacket->dataSize = 0;
+                        tempPacket->packetID = 0;
+                        tempPacket->command = CMD_SetWindowSize;
+                        controllerQueue_tx.push(tempPacket);
+                    }
                     break;
-                case CMD_SetCh:
-                    INFO << "Packet command: SetCh";
+                case CMD_SetCh: {
+                        INFO << "Packet command: SetCh";
+                        const int packetSize = 2;
+                        if(currentPacket->dataSize != packetSize) {
+                            ERROR << "Unexpected size for SetCh packet";
+                        }
+                        else {
+                            int8_t ch = currentPacket->data[0];
+                            if(ch == 1 || ch == 2 || ch == 4) {
+                                setCh(currentPacket->data[0]);
+                            }
+                            else {
+                                ERROR << "Bad Ch value";
+                            }
+                        }
+                        EVPacket* tempPacket = (EVPacket*) malloc(sizeof(EVPacket));
+                        tempPacket->data = NULL;
+                        tempPacket->dataSize = 0;
+                        tempPacket->packetID = 0;
+                        tempPacket->command = CMD_SetCh;
+                        controllerQueue_tx.push(tempPacket);
+                    }
                     break;
                 default:
                     ERROR << "Unknown packet command";
@@ -155,7 +216,8 @@ void controller::controllerLoop()
 
         }
 
-        //std::this_thread::sleep_for(std::chrono::milliseconds(100));
+        //Sleep, but don't oversleep
+        std::this_thread::sleep_for(std::chrono::milliseconds(5));
     }
 }
 
