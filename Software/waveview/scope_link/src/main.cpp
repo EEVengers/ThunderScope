@@ -13,6 +13,10 @@
 // for runSocketTest
 #include "bridge.hpp"
 
+//Declare in advance
+bool parseCli (std::string line);
+void runCli();
+
 void parseCommandLineArgs(int argc, char** args) {
     if(argc > 1) {
         if(std::string(args[1]) == "--TestSinc" || std::string(args[1]) == "-s") {
@@ -38,6 +42,9 @@ void parseCommandLineArgs(int argc, char** args) {
             INFO << "Running socket test";
 
             runSocketTest();
+        } else if(std::string(args[1]) == "--controller" || std::string(args[1]) == "-c") {
+            parseCli("controller");
+            runCli();
         } else {
             ERROR << "Invalid arguments. Use -t <filename.csv> or --TestSinc or --TestDataThroughput";
         }

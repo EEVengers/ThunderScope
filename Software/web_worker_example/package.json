@@ -1,0 +1,67 @@
+{
+	"name": "my-new-project",
+	"productName": "my-new-project",
+	"version": "1.0.0",
+	"description": "My Electron application description",
+	"main": "src/index.js",
+	"scripts": {
+		"start": "electron src/index.js",
+		"forge-start": "electron-forge start",
+		"package": "electron-forge package",
+		"make": "electron-forge make",
+		"publish": "electron-forge publish",
+		"lint": "eslint src --color"
+	},
+	"keywords": [],
+	"author": "trusktr",
+	"license": "MIT",
+	"config": {
+		"forge": {
+			"make_targets": {
+				"win32": [
+					"squirrel"
+				],
+				"darwin": [
+					"zip"
+				],
+				"linux": [
+					"deb",
+					"rpm"
+				]
+			},
+			"electronPackagerConfig": {
+				"packageManager": "yarn"
+			},
+			"electronWinstallerConfig": {
+				"name": "my_new_project"
+			},
+			"electronInstallerDebian": {},
+			"electronInstallerRedhat": {},
+			"github_repository": {
+				"owner": "",
+				"name": ""
+			},
+			"windowsStoreConfig": {
+				"packageName": "",
+				"name": "mynewproject"
+			}
+		}
+	},
+	"dependencies": {
+		"electron-compile": "^6.4.3",
+		"electron-squirrel-startup": "^1.0.0",
+		"lodash": "^4.17.11"
+	},
+	"devDependencies": {
+		"babel-plugin-transform-async-to-generator": "^6.24.1",
+		"babel-preset-env": "^1.7.0",
+		"babel-preset-react": "^6.24.1",
+		"electron-forge": "^5.2.2",
+		"electron-prebuilt-compile": "3.0.6",
+		"eslint": "^3",
+		"eslint-config-airbnb": "^15",
+		"eslint-plugin-import": "^2",
+		"eslint-plugin-jsx-a11y": "^5",
+		"eslint-plugin-react": "^7"
+	}
+}

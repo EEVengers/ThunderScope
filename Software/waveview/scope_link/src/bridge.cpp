@@ -286,11 +286,11 @@ void Bridge::RxJob() {
             int err = GetLastError();
             if (err == 234) {
                 // more data exists. Wait for it
-                std::this_thread::sleep_for(std::chrono::milliseconds(500));
+                std::this_thread::sleep_for(std::chrono::microseconds(500));
             } else if (err == 109) {
                 // not enough bytes in pipeline
                 // Skip error packet
-                std::this_thread::sleep_for(std::chrono::milliseconds(500));
+                std::this_thread::sleep_for(std::chrono::microseconds(500));
                 continue;
             } else {
                 ERROR << "rx_pipe data_read: Error: " << GetLastError();
@@ -308,7 +308,7 @@ void Bridge::RxJob() {
             switch (errno) {
                 case EWOULDBLOCK:
                     // No data on socket. sleep
-                    std::this_thread::sleep_for(std::chrono::milliseconds(500));
+                    std::this_thread::sleep_for(std::chrono::microseconds(500));
                     continue;
                 default:
                     perror("recv returned error: ");
@@ -321,13 +321,16 @@ void Bridge::RxJob() {
             rx_run.store(false);
         }
 #endif
+
         //process whatever is sent (for now just print it)
+        /*
         std::string dbgMsg = "Packet Size: " + std::to_string(packet_size) + " Packet Info: ";
         for(int i = 0; i < (int)packet_size; i++) {
             dbgMsg += convert_int(rxBuff[i]) + " ";
         }
         INFO << dbgMsg;
-
+        */
+        
         // TODO: you can just cast it as the struct and access things that way
         uint16_t* rxBuff16 = (uint16_t*) rxBuff;
         uint8_t* rxBuffData = (uint8_t*) (rxBuff + 6);
@@ -465,7 +468,6 @@ int Bridge::InitTxBridge() {
         str_len++;
     }
     name.sun_path[str_len] = 0;
-
     //bind the socket
     size_t size = SUN_LEN(&name);
     if(bind (tx_sock, (struct sockaddr *) &name, size) < 0) {
@@ -532,7 +534,6 @@ int Bridge::InitRxBridge() {
         str_len++;
     }
     name.sun_path[str_len] = 0;
-
     //bind the socket
     size_t size = SUN_LEN(&name);
     if(bind (rx_sock, (struct sockaddr *) &name, size) < 0) {
