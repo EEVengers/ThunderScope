@@ -81,18 +81,21 @@ export class Plumber {
   public cycle(args: PlumberArgs) {
     if(this.ready) {
       this.ready = false;
-      var packet;
+      var packet: Uint8Array;
+      var realArgs: PlumberArgs;
       if(Object.keys(this.cmdCache).length > 0) {
         var overrideArgs = Object.values(this.cmdCache)[0];
         delete this.cmdCache[overrideArgs.cmd as number];
         packet = this.makePacket(overrideArgs);
+        realArgs = overrideArgs;
       }
       else {
         packet = this.makePacket(args);
+        realArgs = args;
       }
 
       this.bridge.write(packet,() => {
-        this.doRead(args);
+        this.doRead(realArgs);
       });
       return true;
     }

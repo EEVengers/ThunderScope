@@ -50,7 +50,7 @@ class App extends React.Component {
     let tickCount = this.state.tickCount + 1;
     this.generator.update();
     if(tickCount % 100 == 0) {
-      this.conf.update(true);
+      this.conf.update(tickCount % 1000 != 0);
     }
     this.setState({tickCount: tickCount});
   }

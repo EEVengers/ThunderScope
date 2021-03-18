@@ -35,7 +35,7 @@ class TestPoints {
     this.rampArgs = {
       headCheck: () => true,
       bodyCheck: (a, bytesRead, body) => {
-        var perChannel = Math.floor(body.length/4);
+        var perChannel = body.length/4;
         for(var channel = 0; channel < 4; channel++) {
           for(var i = 0; i < perChannel; i++) {
             this.scope_data[channel][i] = {x: i, y: body[channel*perChannel + i]};

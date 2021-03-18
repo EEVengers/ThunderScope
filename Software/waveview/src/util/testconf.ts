@@ -4,17 +4,11 @@ class TestConf {
   getChArgs: PlumberArgs;
   setChArgs: PlumberArgs;
 
-  getChHeads: number = 0;
-  getChBodies: number = 0;
-
   constructor() {
     this.getChArgs = {
-      headCheck: (a, head) => {
-        this.getChHeads++;
-        return true;
-      },
+      headCheck: (a, head) => true,
       bodyCheck: (a, bytesRead, body) => {
-        this.getChBodies++;
+        console.log("C++ channel count: " + body[0]);
         return true;
       },
       cmd: CMD.CMD_GetCh,
@@ -34,8 +28,6 @@ class TestConf {
   update(get: boolean) {
     if(get) {
       Plumber.getInstance().cycle(this.getChArgs);
-      console.log(this.getChHeads);
-      console.log(this.getChBodies);
     }
     else {
       Plumber.getInstance().cycle(this.setChArgs);

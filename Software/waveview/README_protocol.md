@@ -34,12 +34,16 @@ Prepend the name with `CMD_` to find it in the Electron and C++ code.
 Cmd  | DataSize        | Name      | Description
 -----|-----------------|-----------|------------------------
 0x1F | useless         | RampDemo  |
+0x22 | 2 (useless)     | GetCh     |
+0x32 | 1               | SetCh     | Data has ch 1, 2 or 4
 
 ### C++ -> Electron
 
 Cmd  | DataSize        | Name      | Description
 -----|-----------------|-----------|------------------------
 0x1F | 4096            | RampDemo  | 4 ch, simple waves
+0x22 | 1               | GetCh     | Data has ch 1, 2, or 4
+0x32 | useless         | SetCh     |
 
 ## Allocated But Not Implemented
 
@@ -53,9 +57,7 @@ Cmd  | DataSize        | Name          | Description
 0x04 | 2 (useless)     | Reserved      | If we need 1 command/ch
 0x11 | `strlen(name)`  | SetFile       | Set testdata filename
 0x21 | 2 (useless)     | GetWindowSize |
-0x22 | 2 (useless)     | GetCh         |
 0x31 | 4               | SetWindowSize | Data has new window size
-0x32 | 1               | SetCh         | Data has ch 1, 2 or 4
 
 ### C++ -> Electron
 
@@ -64,9 +66,7 @@ Cmd  | DataSize        | Name          | Description
 0x01 | ch * windowSize | GetData       | Data for all ch
 0x11 | useless         | SetFile       | Set testdata filename
 0x21 | 4               | GetWindowSize | Data has window size
-0x22 | 1               | GetCh         | Data has ch 1, 2, or 4
 0x31 | useless         | SetWindowSize |
-0x32 | useless         | SetCh         |
 
 ## Proposed But Not Allocated
 
