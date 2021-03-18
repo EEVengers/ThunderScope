@@ -36,10 +36,12 @@ public:
     std::chrono::high_resolution_clock::time_point getTimeFilled();
     std::chrono::high_resolution_clock::time_point getTimeWritten();
 
-    void setCh (int8_t newCh);
+    void setCh(int8_t newCh);
 
     void getMax(int8_t chNum, int8_t* value, uint64_t* pos);
     void getMin(int8_t chNum, int8_t* value, uint64_t* pos);
+
+    void reProcess();
 
     /* variables */
     uint32_t windowCol;

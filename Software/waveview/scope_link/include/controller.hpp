@@ -32,6 +32,7 @@ public:
     void setPerSize(uint32_t newSize);
     void getMax(int8_t chNum, int8_t* value, uint64_t* pos);
     void getMin(int8_t chNum, int8_t* value, uint64_t* pos);
+    void reProcess();
 
 private:
     // external queue

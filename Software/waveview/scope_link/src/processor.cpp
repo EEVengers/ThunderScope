@@ -52,7 +52,7 @@ bool Processor::findNextTrigger(buffer *currentBuffer, uint32_t* p_bufCol)
     // Find which 64 block the buffer is in
     uint32_t t_64offset = (*p_bufCol / 64);
     DEBUG << "p_bufCol: " << *p_bufCol
-         << " t_offset: " << t_offset 
+         << " t_offset: " << t_offset
          << " t_64offset: " << t_64offset;
 
     if (windowCol != 0) {
@@ -77,7 +77,7 @@ bool Processor::findNextTrigger(buffer *currentBuffer, uint32_t* p_bufCol)
             DEBUG << "found Trigger in 64: " << t_64offset
                  << " with val: " << currentBuffer->trigger[t_64offset]
                  << " t_offset: " << t_offset;
-#endif 
+#endif
             t_offset = (64 - 1) - t_offset;
 #ifdef DBG
             DEBUG << "t_64offset corrected: " << t_64offset;
@@ -142,7 +142,7 @@ void Processor::coreLoop()
                 bufferCol += copyCount;
                 windowCol += copyCount;
 
-                DEBUG << "bufferCol: " << bufferCol 
+                DEBUG << "bufferCol: " << bufferCol
                      << " windowCol: " << windowCol
                      << " windowSize: " << windowSize
                      << std::endl;
@@ -319,5 +319,16 @@ void Processor::getMin(int8_t chNum, int8_t* value, uint64_t* pos)
             *value = windowProcessed[i];
             *pos = i;
         }
+    }
+}
+
+void Processor::reProcess()
+{
+    if (windowStored.load() == true) {
+        for (uint32_t i = 0; i < persistanceSize; i++) {
+            outputQueue->push(windowProcessed + (i * windowSize * numCh));
+        }
+    } else {
+        DEBUG << "Not a full persistence buffer yet";
     }
 }

@@ -230,6 +230,11 @@ bool parseCli (std::string line)
             controllerThread->controllerUnPause();
         }
 
+    } else if (line == "reprocess") {
+        if (controllerThread != NULL ) {
+            controllerThread->reProcess();
+        }
+
     } else if (line == "flush") {
         if (controllerThread != NULL ) {
             controllerThread->controllerFlush();
