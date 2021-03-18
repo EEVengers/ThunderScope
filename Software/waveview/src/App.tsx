@@ -4,6 +4,7 @@ import Graph from './components/graph/graph';
 import BottomBar from './components/bottombar/bottombar';
 import Sidebar from './components/sidebar/sidebar';
 import TestPoints from './util/testpoints';
+import TestConf from './util/testconf';
 
 interface IAppState {
   tickCount: number;
@@ -15,6 +16,7 @@ class App extends React.Component {
   state: IAppState;
   timerID: number = 0;
   generator: TestPoints;
+  conf: TestConf;
   channelList: {
     color: string, 
     className:string
@@ -24,6 +26,7 @@ class App extends React.Component {
     super(props);
     this.state = initialState;
     this.generator = new TestPoints(1000, 20);
+    this.conf = new TestConf();
     this.channelList = [
       {color: "#EBFF00", className: "Channel1"},
       {color: "#00FF19", className: "Channel2"},
@@ -46,6 +49,9 @@ class App extends React.Component {
   tick() {
     let tickCount = this.state.tickCount + 1;
     this.generator.update();
+    if(tickCount % 100 == 0) {
+      this.conf.update(true);
+    }
     this.setState({tickCount: tickCount});
   }
 

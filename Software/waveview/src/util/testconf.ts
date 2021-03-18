@@ -4,11 +4,17 @@ class TestConf {
   getChArgs: PlumberArgs;
   setChArgs: PlumberArgs;
 
+  getChHeads: number = 0;
+  getChBodies: number = 0;
+
   constructor() {
     this.getChArgs = {
-      headCheck: () => true,
+      headCheck: (a, head) => {
+        this.getChHeads++;
+        return true;
+      },
       bodyCheck: (a, bytesRead, body) => {
-        console.log(body[0]);
+        this.getChBodies++;
         return true;
       },
       cmd: CMD.CMD_GetCh,
@@ -28,6 +34,8 @@ class TestConf {
   update(get: boolean) {
     if(get) {
       Plumber.getInstance().cycle(this.getChArgs);
+      console.log(this.getChHeads);
+      console.log(this.getChBodies);
     }
     else {
       Plumber.getInstance().cycle(this.setChArgs);

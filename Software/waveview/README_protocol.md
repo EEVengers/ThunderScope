@@ -47,13 +47,13 @@ Cmd  | DataSize        | Name      | Description
 
 Cmd  | DataSize        | Name          | Description
 -----|-----------------|---------------|------------------------
-0x01 | useless         | GetData       | 
-0x02 | useless         | Reserved      | If we need 1 command/ch
-0x03 | useless         | Reserved      | If we need 1 command/ch
-0x04 | useless         | Reserved      | If we need 1 command/ch
+0x01 | 2 (useless)     | GetData       | 
+0x02 | 2 (useless)     | Reserved      | If we need 1 command/ch
+0x03 | 2 (useless)     | Reserved      | If we need 1 command/ch
+0x04 | 2 (useless)     | Reserved      | If we need 1 command/ch
 0x11 | `strlen(name)`  | SetFile       | Set testdata filename
-0x21 | useless         | GetWindowSize |
-0x22 | useless         | GetCh         |
+0x21 | 2 (useless)     | GetWindowSize |
+0x22 | 2 (useless)     | GetCh         |
 0x31 | 4               | SetWindowSize | Data has new window size
 0x32 | 1               | SetCh         | Data has ch 1, 2 or 4
 
@@ -70,6 +70,7 @@ Cmd  | DataSize        | Name          | Description
 
 ## Proposed But Not Allocated
 
++ getMax/getMin
 + getLevel/setLevel
 + getTriggerCh/setTriggerCh
 + getEdgeType/setRising/setFalling
