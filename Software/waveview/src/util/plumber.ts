@@ -15,7 +15,14 @@ export enum CMD {
 
   //Set Config commands
   CMD_SetWindowSize = 0x31,
-  CMD_SetCh = 0x32
+  CMD_SetCh = 0x32,
+  CMD_SetMath = 0x3F
+}
+
+export enum SetMathOp {
+  SetMath_None = 0,
+  SetMath_Plus = 1,
+  SetMath_Minus = 2,
 }
 
 export interface PlumberArgs {
@@ -76,6 +83,10 @@ export class Plumber {
       packet8[i + 6] = args.writeData[i];
     }
     return packet8;
+  }
+
+  public makeSetMathData(lhsChan: number, rhsChan: number, op: SetMathOp) {
+    return [lhsChan, rhsChan, op, 0];
   }
 
   public cycle(args: PlumberArgs) {

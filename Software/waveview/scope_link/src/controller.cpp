@@ -25,7 +25,8 @@ enum CMD {
 
     //Set Config commands
     CMD_SetWindowSize = 0x31,
-    CMD_SetCh = 0x32
+    CMD_SetCh = 0x32,
+    CMD_SetMath = 0x3F
 };
 
 controller::controller(boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> *inputQ)
@@ -206,6 +207,32 @@ void controller::controllerLoop()
                         tempPacket->dataSize = 0;
                         tempPacket->packetID = 0;
                         tempPacket->command = CMD_SetCh;
+                        controllerQueue_tx.push(tempPacket);
+                    }
+                    break;
+                case CMD_SetMath: {
+                        INFO << "Packet command: SetMath";
+                        const int packetSize = 4;
+                        if(currentPacket->dataSize != packetSize) {
+                            ERROR << "Unexpected size for SetMath packet";
+                        }
+                        else {
+                            int8_t lhsChan = currentPacket->data[0];
+                            int8_t rhsChan = currentPacket->data[1];
+                            int8_t op = currentPacket->data[2];
+
+                            //JS and C++ might not encode these vars the same
+                            if(op == 0) {
+                                lhsChan = -1;
+                                rhsChan = -1;
+                            }
+                            //Do something with these.
+                        }
+                        EVPacket* tempPacket = (EVPacket*) malloc(sizeof(EVPacket));
+                        tempPacket->data = NULL;
+                        tempPacket->dataSize = 0;
+                        tempPacket->packetID = 0;
+                        tempPacket->command = CMD_SetMath;
                         controllerQueue_tx.push(tempPacket);
                     }
                     break;

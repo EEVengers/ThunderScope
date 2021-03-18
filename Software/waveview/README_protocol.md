@@ -36,6 +36,15 @@ Cmd  | DataSize        | Name      | Description
 0x1F | useless         | RampDemo  |
 0x22 | 2 (useless)     | GetCh     |
 0x32 | 1               | SetCh     | Data has ch 1, 2 or 4
+0x3F | 4               | SetMath   | Data: [LHS ch, RHS ch, op, 0]
+
+For SetMath, `op` can be:
+
++ 0: none
++ 1: plus
++ 2: minus
+
+Note that the encoding used by the protocol might not be same as the encoding used in the rest of the C++ or Electron code: any conversions should be done by `controller.cpp` and `plumber.ts` respectively.
 
 ### C++ -> Electron
 
@@ -44,6 +53,7 @@ Cmd  | DataSize        | Name      | Description
 0x1F | 4096            | RampDemo  | 4 ch, simple waves
 0x22 | 1               | GetCh     | Data has ch 1, 2, or 4
 0x32 | useless         | SetCh     |
+0x3F | useless         | SetMath   |
 
 ## Allocated But Not Implemented
 

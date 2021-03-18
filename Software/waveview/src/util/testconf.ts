@@ -1,8 +1,9 @@
-import { CMD, PlumberArgs, Plumber } from './plumber';
+import { CMD, PlumberArgs, Plumber, SetMathOp } from './plumber';
 
 class TestConf {
   getChArgs: PlumberArgs;
   setChArgs: PlumberArgs;
+  setMathArgs: PlumberArgs;
 
   constructor() {
     this.getChArgs = {
@@ -23,6 +24,17 @@ class TestConf {
       id: 0,
       writeData: [4, 0]
     }
+
+    this.setMathArgs = {
+      bodyCheck: () => true,
+      headCheck: () => {
+        console.log("I did it, I set the math");
+        return true;
+      },
+      cmd: CMD.CMD_SetMath,
+      id: 0,
+      writeData: Plumber.getInstance().makeSetMathData(0, 2, SetMathOp.SetMath_Plus)
+    }
   }
 
   update(get: boolean) {
@@ -32,6 +44,10 @@ class TestConf {
     else {
       Plumber.getInstance().cycle(this.setChArgs);
     }
+  }
+
+  mathUpdate() {
+    Plumber.getInstance().cycle(this.setMathArgs);
   }
 }
 
