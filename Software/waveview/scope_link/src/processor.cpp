@@ -124,7 +124,9 @@ void Processor::coreLoop()
             bufferCol = 0;
 
             // find a trigger in current buffer
-            while (findNextTrigger( currentBuffer, &bufferCol) && windowStored.load() == false) {
+            while (findNextTrigger( currentBuffer, &bufferCol)
+                    && windowStored.load() == false
+                    && pauseTransfer.load() == false) {
 
                 // Determin how much to copy. Min of:
                 // - remaining space in the window
@@ -183,6 +185,13 @@ void Processor::coreLoop()
             }
 
             bufferAllocator.deallocate(currentBuffer, 1);
+        }
+
+        if (windowStored.load() == true || pauseTransfer.load() == true) {
+            // flush the input queue so it doesn't overflow
+            size_t count = 0;
+            count = (*inputQueue).consume_all(bufferFunctor);
+            DEBUG << "Flushed processor inputQueue: " << count;
         }
         // Queue empty, Sleep for a bit
         std::this_thread::sleep_for(std::chrono::microseconds(100));
