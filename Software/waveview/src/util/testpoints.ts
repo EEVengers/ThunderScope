@@ -3,14 +3,14 @@ import { CMD, PlumberArgs, Plumber } from './plumber';
 class Range {
   dataMin: number = 0;
   dataMax: number = 0;
-  displayLimit: number = 0;
 
-  constructor(limit: number){
-    this.displayLimit = limit;
+  constructor(min: number, max: number){
+    this.dataMin = min;
+    this.dataMax = max;
   }
 
   getDomain() {
-    return [this.dataMin, this.dataMin + this.displayLimit];
+    return [this.dataMin, this.dataMax];
   }
 }
 
@@ -22,8 +22,8 @@ class TestPoints {
   rampArgs: PlumberArgs;
 
   constructor(xRange: number, yRange: number) {
-    this.x = new Range(xRange);
-    this.y = new Range(yRange);
+    this.x = new Range(0, xRange);
+    this.y = new Range(-yRange, yRange);
 
     for(var j = 0; j < 4; j++) {
       this.scope_data[j] = [];

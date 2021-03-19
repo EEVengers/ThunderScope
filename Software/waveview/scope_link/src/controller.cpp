@@ -5,7 +5,7 @@
 #define RD_DATA_PER_CHAN 1024
 #define RD_CHAN_COUNT 4
 #define RD_PACKET_SIZE 4096
-uint8_t RD_PACKET_ORIGINAL[RD_PACKET_SIZE]; 
+int8_t RD_PACKET_ORIGINAL[RD_PACKET_SIZE]; 
 
 
 enum CMD {
@@ -61,10 +61,10 @@ controller::controller(boost::lockfree::queue<buffer*, boost::lockfree::fixed_si
     //RampDemo related
     for(int ch = 0; ch < RD_CHAN_COUNT; ch++) {
         for(int i = 0; ch == 0 && i < RD_DATA_PER_CHAN; i++) {
-            RD_PACKET_ORIGINAL[i + ch*RD_DATA_PER_CHAN] = i % 24;
+            RD_PACKET_ORIGINAL[i + ch*RD_DATA_PER_CHAN] = (i % 24) - 12;
         }
         for(int i = 0; ch == 1 && i < RD_DATA_PER_CHAN; i++) {
-            RD_PACKET_ORIGINAL[i + ch*RD_DATA_PER_CHAN] = 24 - (i % 24);
+            RD_PACKET_ORIGINAL[i + ch*RD_DATA_PER_CHAN] = 12 - (i % 24);
         }
         for(int i = 0; ch == 2 && i < RD_DATA_PER_CHAN; i++) {
             RD_PACKET_ORIGINAL[i + ch*RD_DATA_PER_CHAN] = (i % 24) / 12;

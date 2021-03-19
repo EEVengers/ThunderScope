@@ -33,7 +33,7 @@ export enum SetMathOp {
 
 export interface PlumberArgs {
   headCheck: (args: PlumberArgs, head: Uint16Array) => boolean;
-  bodyCheck: (args: PlumberArgs, bytesRead: number, body: Uint8Array) => boolean;
+  bodyCheck: (args: PlumberArgs, bytesRead: number, body: Int8Array) => boolean;
   cmd: CMD;
   id: number;
   writeData: number[];
@@ -59,8 +59,8 @@ export class Plumber {
   }
 
   private doRead(args: PlumberArgs) {
-    var rxBuff = new Uint8Array(new ArrayBuffer(6));
-    this.bridge.read(rxBuff, (err: NodeJS.ErrnoException, bytesRead: number, bytes: Uint8Array) => {
+    var rxBuff = new Int8Array(new ArrayBuffer(6));
+    this.bridge.read(rxBuff, (err: NodeJS.ErrnoException, bytesRead: number, bytes: Int8Array) => {
       var bytes16 = new Uint16Array(bytes.buffer);
       var dataSize = bytes16[2];
       if(!args.headCheck(args, bytes16) || dataSize == 0) {
@@ -68,8 +68,8 @@ export class Plumber {
         return;
       }
 
-      var dataRxBuff = new Uint8Array(dataSize);
-      this.bridge.read(dataRxBuff, (nestedErr: NodeJS.ErrnoException, nestedBytesRead: number, nestedBytes: Uint8Array) => {
+      var dataRxBuff = new Int8Array(dataSize);
+      this.bridge.read(dataRxBuff, (nestedErr: NodeJS.ErrnoException, nestedBytesRead: number, nestedBytes: Int8Array) => {
         this.ready = true;
         args.bodyCheck(args, nestedBytesRead, nestedBytes);
       });
