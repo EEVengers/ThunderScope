@@ -4,6 +4,8 @@ class TestConf {
   getChArgs: PlumberArgs;
   setChArgs: PlumberArgs;
   setMathArgs: PlumberArgs;
+  getEdgeArgs: PlumberArgs;
+  setEdgeArgs: PlumberArgs;
 
   constructor() {
     this.getChArgs = {
@@ -25,9 +27,28 @@ class TestConf {
       writeData: [4, 0]
     }
 
-    this.setMathArgs = {
+    this.getEdgeArgs = {
+      headCheck: (a, head) => true,
+      bodyCheck: (a, bytesRead, body) => {
+        console.log("C++ edge type: " + body[0]);
+        return true;
+      },
+      cmd: CMD.CMD_GetEdgeType,
+      id: 0,
+      writeData: [0, 0]
+    }
+
+    this.setEdgeArgs = {
+      headCheck: () => true,
       bodyCheck: () => true,
-      headCheck: () => {
+      cmd: CMD.CMD_SetEdgeType,
+      id: 0,
+      writeData: [2, 0]
+    }
+
+    this.setMathArgs = {
+      headCheck: () => true,
+      bodyCheck: () => {
         console.log("I did it, I set the math");
         return true;
       },
@@ -39,10 +60,10 @@ class TestConf {
 
   update(get: boolean) {
     if(get) {
-      Plumber.getInstance().cycle(this.getChArgs);
+      Plumber.getInstance().cycle(this.getEdgeArgs);
     }
     else {
-      Plumber.getInstance().cycle(this.setChArgs);
+      Plumber.getInstance().cycle(this.setEdgeArgs);
     }
   }
 
