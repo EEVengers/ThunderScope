@@ -33,6 +33,10 @@ public:
     void getMax(int8_t chNum, int8_t* value, uint64_t* pos);
     void getMin(int8_t chNum, int8_t* value, uint64_t* pos);
     void reProcess();
+    void setMathCh_1(int8_t newCh);
+    void setMathCh_2(int8_t newCh);
+    void setMathSign(bool newSign);
+
 
 private:
     // external queue

@@ -272,6 +272,53 @@ bool parseCli (std::string line)
             ERROR << "No controller";
         }
 
+    } else if ("setmath1" == line.substr(0, line.find(' '))) {
+        if (controllerThread != NULL ) {
+            INFO << "setting math channel 1";
+
+            // Useful for accepting arguments from a command
+            std::string nextArgument = line.substr(line.find(' ') + 1, line.length());
+            if (nextArgument != "setmath1") {
+                int32_t newMathCh = stoi(nextArgument);
+                controllerThread->setMathCh_1(newMathCh);
+                INFO << "new math channel 1: " << newMathCh;
+            }
+        } else {
+            ERROR << "No controller";
+        }
+
+    } else if ("setmath2" == line.substr(0, line.find(' '))) {
+        if (controllerThread != NULL ) {
+            INFO << "setting math channel 2";
+
+            // Useful for accepting arguments from a command
+            std::string nextArgument = line.substr(line.find(' ') + 1, line.length());
+            if (nextArgument != "setmath2") {
+                int32_t newMathCh = stoi(nextArgument);
+                controllerThread->setMathCh_2(newMathCh);
+                INFO << "new math channel 2: " << newMathCh;
+            }
+        } else {
+            ERROR << "No controller";
+        }
+
+    } else if ("setmathsign" == line.substr(0, line.find(' '))) {
+        if (controllerThread != NULL ) {
+            INFO << "setting math channel 2";
+
+            // Useful for accepting arguments from a command
+            std::string nextArgument = line.substr(line.find(' ') + 1, line.length());
+            if (nextArgument == "add") {
+                controllerThread->setMathSign(true);
+                INFO << "Math sign addition";
+            } else if (nextArgument == "sub") {
+                controllerThread->setMathSign(false);
+                INFO << "Math sign subtraction";
+            }
+        } else {
+            ERROR << "No controller";
+        }
+
     } else if ("datafile" == line.substr(0, line.find(' '))) {
         INFO << "Adding data from file to the pipeline";
 
@@ -323,6 +370,9 @@ bool parseCli (std::string line)
         ERROR << "getwin";
         ERROR << "setwin";
         ERROR << "flush";
+        ERROR << "setmath1";
+        ERROR << "setmath2";
+        ERROR << "setmathsign";
         ERROR << "exit";
     }
     return true;

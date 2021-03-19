@@ -23,6 +23,10 @@ public:
 
     void setCh (int8_t newCh);
 
+    void setMathCh_1(int8_t newCh);
+    void setMathCh_2(int8_t newCh);
+    void setMathSign(bool sign);
+
     /* variables */
 
 private:
@@ -40,6 +44,11 @@ private:
     std::atomic<bool> pauseTransfer;
 
     int8_t numCh = 1;
+    int8_t mathCh_1 = -1;
+    int8_t mathCh_2 = -1;
+    // true = addition, false = subtraction
+    bool mathSign = true;
+    bool doMath = false;
 };
 
 #endif
