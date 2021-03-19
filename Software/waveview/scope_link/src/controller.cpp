@@ -130,8 +130,6 @@ void controller::controllerLoop()
                     break;
                 case CMD_RampDemo: {
                         INFO << "Packet command: RampDemo";
-                        const int rd_dataPerChan = 1024;
-                        const int rd_chanCount = 4;
                         EVPacket* tempPacket = (EVPacket*) malloc(sizeof(EVPacket));
                         tempPacket->data = (int8_t*) malloc(RD_PACKET_SIZE);
                         tempPacket->dataSize = RD_PACKET_SIZE;
@@ -144,13 +142,13 @@ void controller::controllerLoop()
                 case CMD_GetWindowSize: {
                         INFO << "Packet command: GetWindowSize";
                         const int packetSize = 4;
-                        
+
                         EVPacket* tempPacket = (EVPacket*) malloc(sizeof(EVPacket));
                         tempPacket->data = (int8_t*) malloc(packetSize);
                         tempPacket->dataSize = packetSize;
                         tempPacket->packetID = 0;
                         tempPacket->command = CMD_GetWindowSize;
-                        
+
                         int32_t windowSize = getWindowSize();
                         tempPacket->data[0] = (windowSize >> 24) & 0xFF;
                         tempPacket->data[1] = (windowSize >> 16) & 0xFF;
