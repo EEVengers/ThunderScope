@@ -60,10 +60,10 @@ class TestConf {
 
   update(get: boolean) {
     if(get) {
-      Plumber.getInstance().cycle(this.getEdgeArgs);
+      Plumber.getInstance().cycle(this.getChArgs);
     }
     else {
-      Plumber.getInstance().cycle(this.setEdgeArgs);
+      Plumber.getInstance().cycle(this.setChArgs);
     }
   }
 

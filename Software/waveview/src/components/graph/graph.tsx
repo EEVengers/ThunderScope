@@ -31,20 +31,23 @@ function Graph(props: IGraphProps) {
       <FlexibleXYPlot
         yDomain={props.yDomain}
         xDomain={props.xDomain}
+        margin={{right:0, bottom:0}}
       >
         <HorizontalGridLines 
           style={{stroke: '#4D4D4D'}}
           left={0} 
           top={0}
-          height={10000}
           width={10000}
+          height={10000}
+          tickTotal={12}
         />
         <VerticalGridLines 
           style={{stroke: '#4D4D4D'}}
           left={0} 
           top={0}
-          height={10000}
           width={10000}
+          height={10000}
+          tickTotal={10}
         />
         <XAxis
           title=""
