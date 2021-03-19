@@ -45,7 +45,7 @@ class TestPoints {
       },
       cmd: CMD.CMD_RampDemo,
       id: 0x1F2C,
-      writeData: [1, 2, 3, 4]
+      writeData: [0, 0]
     };
   }
 

@@ -31,12 +31,14 @@ Prepend the name with `CMD_` to find it in the Electron and C++ code.
 
 ### Electron -> C++
 
-Cmd  | DataSize        | Name      | Description
------|-----------------|-----------|------------------------
-0x1F | useless         | RampDemo  |
-0x22 | 2 (useless)     | GetCh     |
-0x32 | 1               | SetCh     | Data has ch 1, 2 or 4
-0x3F | 4               | SetMath   | Data: [LHS ch, RHS ch, op, 0]
+Cmd  | DataSize        | Name          | Description
+-----|-----------------|---------------|------------------------
+0x1F | 2 (useless)     | RampDemo      |
+0x22 | 2 (useless)     | GetCh         |
+0x21 | 2 (useless)     | GetWindowSize |
+0x31 | 4               | SetWindowSize | Data has new window size
+0x32 | 2               | SetCh         | Data has ch 1, 2 or 4
+0x3F | 4               | SetMath       | Data: [LHS ch, RHS ch, op, 0]
 
 For SetMath, `op` can be:
 
@@ -48,12 +50,14 @@ Note that the encoding used by the protocol might not be same as the encoding us
 
 ### C++ -> Electron
 
-Cmd  | DataSize        | Name      | Description
------|-----------------|-----------|------------------------
-0x1F | 4096            | RampDemo  | 4 ch, simple waves
-0x22 | 1               | GetCh     | Data has ch 1, 2, or 4
-0x32 | useless         | SetCh     |
-0x3F | useless         | SetMath   |
+Cmd  | DataSize        | Name          | Description
+-----|-----------------|---------------|------------------------
+0x1F | 4096            | RampDemo      | 4 ch, simple waves
+0x22 | 2               | GetCh         | Data has ch 1, 2, or 4
+0x21 | 4               | GetWindowSize | Data has window size
+0x31 | 0               | SetWindowSize |
+0x32 | 0               | SetCh         |
+0x3F | 0               | SetMath       |
 
 ## Allocated But Not Implemented
 
@@ -66,21 +70,27 @@ Cmd  | DataSize        | Name          | Description
 0x03 | 2 (useless)     | Reserved      | If we need 1 command/ch
 0x04 | 2 (useless)     | Reserved      | If we need 1 command/ch
 0x11 | `strlen(name)`  | SetFile       | Set testdata filename
-0x21 | 2 (useless)     | GetWindowSize |
-0x31 | 4               | SetWindowSize | Data has new window size
+0x23 | 2 (useless)     | GetLevel      |
+0x24 | 2 (useless)     | GetTriggerCh  |
+0x25 | 2 (useless)     | GetEdgeType   |
+0x33 | 2               | SetLevel      | Data has new level
+0x34 | 2               | SetTriggerCh  | Data has channel 1,2,3,4
+0x35 | 2 (useless)     | SetEdgeType   | Data has 1 (rising) or 2 (falling)
+
 
 ### C++ -> Electron
 
 Cmd  | DataSize        | Name          | Description
 -----|-----------------|---------------|------------------------
 0x01 | ch * windowSize | GetData       | Data for all ch
-0x11 | useless         | SetFile       | Set testdata filename
-0x21 | 4               | GetWindowSize | Data has window size
-0x31 | useless         | SetWindowSize |
+0x11 | 0               | SetFile       | Set testdata filename
+0x23 | 2               | GetLevel      | Data has new level
+0x24 | 2               | GetTriggerCh  | Data has channel 1,2,3,4
+0x25 | 2               | GetEdgeType   | Data has 1 (rising) or 2 (falling)
+0x33 | 0               | SetLevel      |
+0x34 | 0               | SetTriggerCh  |
+0x35 | 0               | SetEdgeType   | 
 
 ## Proposed But Not Allocated
 
-+ getMax/getMin
-+ getLevel/setLevel
-+ getTriggerCh/setTriggerCh
-+ getEdgeType/setRising/setFalling
++ getMax/getMin: obsolete if scope data packets also have math
