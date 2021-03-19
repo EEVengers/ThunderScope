@@ -216,7 +216,6 @@ void Processor::updateWinSize(uint32_t newWinSize)
 void Processor::updateWinPerSize(uint32_t newWinSize, uint32_t newPerSize)
 {
     processorPause();
-    windowStored.store(false);
 
     // Delete old window space
     if (windowProcessed != NULL) {
@@ -233,6 +232,7 @@ void Processor::updateWinPerSize(uint32_t newWinSize, uint32_t newPerSize)
 
     // Create a new window space as a single array
     windowProcessed = new int8_t [windowSize * persistanceSize * numCh];
+    windowStored.store(false);
 }
 
 std::chrono::high_resolution_clock::time_point Processor::getTimeFilled()

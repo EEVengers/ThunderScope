@@ -674,3 +674,11 @@ void controller::setMathSign(bool newSign)
 {
     postProcessorThread->setMathSign(newSign);
 }
+
+void controller::getData()
+{
+    // flush buffers
+    controllerFlush();
+    // unpause
+    controllerUnPause();
+}
