@@ -57,6 +57,7 @@ controller::controller(boost::lockfree::queue<buffer*, boost::lockfree::fixed_si
     setCh(1);
     setTriggerCh(1);
     setLevel(50);
+    setPerSize(1);
 
     //RampDemo related
     for(int ch = 0; ch < RD_CHAN_COUNT; ch++) {
@@ -689,4 +690,19 @@ void controller::getMin(int8_t chNum, int8_t* value, uint64_t* pos)
 void controller::reProcess()
 {
     processorThread->reProcess();
+}
+
+void controller::setMathCh_1(int8_t newCh)
+{
+    postProcessorThread->setMathCh_1(newCh);
+}
+
+void controller::setMathCh_2(int8_t newCh)
+{
+    postProcessorThread->setMathCh_2(newCh);
+}
+
+void controller::setMathSign(bool newSign)
+{
+    postProcessorThread->setMathSign(newSign);
 }

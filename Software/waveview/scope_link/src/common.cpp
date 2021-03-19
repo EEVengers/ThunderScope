@@ -13,7 +13,7 @@ boost::pool_allocator<int8_t,
     DEFAULT_WINDOW * BUFFER_SIZE, 0> windowAllocator;
 
 uint32_t windowSize = DEFAULT_WINDOW;
-uint32_t persistanceSize = 4;
+uint32_t persistanceSize = 1;
 
 char* inputFile = NULL;
 char* outputFile = NULL;
