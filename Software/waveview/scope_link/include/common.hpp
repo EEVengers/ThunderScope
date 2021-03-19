@@ -79,4 +79,7 @@ extern boost::pool_allocator<int8_t,
 /* Functions */
 uint32_t writeToCsv (char* filename, int8_t* data, uint32_t row, uint32_t col, int8_t numCh);
 
+// buffor functor to deallocate all items in a queue
+void bufferFunctor(buffer* a);
+
 #endif

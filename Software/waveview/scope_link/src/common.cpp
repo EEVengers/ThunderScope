@@ -52,3 +52,19 @@ uint32_t writeToCsv (char* filename, int8_t* data, uint32_t row, uint32_t col, i
     file.close();
     return 0;
 }
+
+/*******************************************************************************
+ * bufferFunctor()
+ *
+ * deallocates the buffer passed to it.
+ *
+ * Arguments:
+ *   buffer* a - The buffer to deallocate
+ * Return:
+ *   None
+ ******************************************************************************/
+void bufferFunctor(buffer* a)
+{
+    bufferAllocator.deallocate(a, 1);
+}
+

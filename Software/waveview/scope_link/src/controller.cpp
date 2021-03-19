@@ -369,20 +369,6 @@ void controller::controllerUnPause()
 }
 
 /*******************************************************************************
- * bufferFunctor()
- *
- * deallocates the buffer passed to it.
- *
- * Arguments:
- *   buffer* a - The buffer to deallocate
- * Return:
- *   None
- ******************************************************************************/
-void bufferFunctor(buffer* a) {
-    bufferAllocator.deallocate(a, 1);
-}
-
-/*******************************************************************************
  * controllerFlush()
  *
  * Flushes all data out of the pipeline.

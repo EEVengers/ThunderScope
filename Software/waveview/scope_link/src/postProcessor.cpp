@@ -131,6 +131,13 @@ void postProcessor::coreLoop()
             DEBUG << dbgMsgPacket;
 
         }
+
+        if (pauseTransfer.load() == true) {
+            // flush the input queue so it doesn't overflow
+            size_t count = 0;
+            count = (*inputQueue).consume_all(free);
+            DEBUG << "Flushed postProcessor inputQueue: " << count;
+        }
         // Queue empty, Sleep for a bit
         std::this_thread::sleep_for(std::chrono::microseconds(100));
     }
