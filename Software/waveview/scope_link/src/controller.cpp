@@ -22,10 +22,16 @@ enum CMD {
     //Get Config commands
     CMD_GetWindowSize = 0x21,
     CMD_GetCh = 0x22,
+    CMD_GetLevel = 0x23,
+    CMD_GetTriggerCh = 0x24,
+    CMD_GetEdgeType = 0x25,
 
     //Set Config commands
     CMD_SetWindowSize = 0x31,
     CMD_SetCh = 0x32,
+    CMD_SetLevel = 0x33,
+    CMD_SetTriggerCh = 0x34,
+    CMD_SetEdgeType = 0x35,
     CMD_SetMath = 0x3F
 };
 
@@ -165,6 +171,45 @@ void controller::controllerLoop()
                         controllerQueue_tx.push(tempPacket);
                     }
                     break;
+                case CMD_GetLevel: {
+                        INFO << "Packet command: GetLevel";
+                        const int packetSize = 2;
+                        EVPacket* tempPacket = (EVPacket*) malloc(sizeof(EVPacket));
+                        tempPacket->data = (int8_t*) malloc(packetSize);
+                        tempPacket->dataSize = packetSize;
+                        tempPacket->packetID = 0;
+                        tempPacket->command = CMD_GetLevel;
+                        tempPacket->data[0] = getLevel();
+                        tempPacket->data[1] = 0;
+                        controllerQueue_tx.push(tempPacket);
+                    }
+                    break;
+                case CMD_GetTriggerCh: {
+                        INFO << "Packet command: GetTriggerCh";
+                        const int packetSize = 2;
+                        EVPacket* tempPacket = (EVPacket*) malloc(sizeof(EVPacket));
+                        tempPacket->data = (int8_t*) malloc(packetSize);
+                        tempPacket->dataSize = packetSize;
+                        tempPacket->packetID = 0;
+                        tempPacket->command = CMD_GetTriggerCh;
+                        tempPacket->data[0] = getTriggerCh();
+                        tempPacket->data[1] = 0;
+                        controllerQueue_tx.push(tempPacket);
+                    }
+                    break;
+                case CMD_GetEdgeType: {
+                        INFO << "Packet command: GetEdgeType";
+                        const int packetSize = 2;
+                        EVPacket* tempPacket = (EVPacket*) malloc(sizeof(EVPacket));
+                        tempPacket->data = (int8_t*) malloc(packetSize);
+                        tempPacket->dataSize = packetSize;
+                        tempPacket->packetID = 0;
+                        tempPacket->command = CMD_GetEdgeType;
+                        tempPacket->data[0] = getEdgeType() ? 1 : 2;
+                        tempPacket->data[1] = 0;
+                        controllerQueue_tx.push(tempPacket);
+                    };
+                    break;
                 case CMD_SetWindowSize: {
                         INFO << "Packet command: SetWindowSize";
                         const int packetSize = 4;
@@ -207,6 +252,74 @@ void controller::controllerLoop()
                         tempPacket->dataSize = 0;
                         tempPacket->packetID = 0;
                         tempPacket->command = CMD_SetCh;
+                        controllerQueue_tx.push(tempPacket);
+                    }
+                    break;
+                case CMD_SetLevel: {
+                        INFO << "Packet command: SetLevel";
+                        const int packetSize = 2;
+                        if(currentPacket->dataSize != packetSize) {
+                            ERROR << "Unexpected size for SetLevel packet";
+                        }
+                        else {
+                            int8_t level = currentPacket->data[0];
+                            setLevel(level);
+                        }
+                        EVPacket* tempPacket = (EVPacket*) malloc(sizeof(EVPacket));
+                        tempPacket->data = NULL;
+                        tempPacket->dataSize = 0;
+                        tempPacket->packetID = 0;
+                        tempPacket->command = CMD_SetLevel;
+                        controllerQueue_tx.push(tempPacket);
+                    }
+                    break;
+                case CMD_SetTriggerCh: {
+                        INFO << "Packet command: SetTriggerCh";
+                        const int packetSize = 2;
+                        if(currentPacket->dataSize != packetSize) {
+                            ERROR << "Unexpected size for SetTriggerCh packet";
+                        }
+                        else {
+                            int8_t triggerCh = currentPacket->data[0];
+                            if(triggerCh > 4) {
+                                //Other conditions??
+                                ERROR << "Unexpected triggerCh";
+                            }
+                            else {
+                                setTriggerCh(triggerCh);
+                            }
+                        }
+                        EVPacket* tempPacket = (EVPacket*) malloc(sizeof(EVPacket));
+                        tempPacket->data = NULL;
+                        tempPacket->dataSize = 0;
+                        tempPacket->packetID = 0;
+                        tempPacket->command = CMD_SetLevel;
+                        controllerQueue_tx.push(tempPacket);
+                    }
+                    break;
+                case CMD_SetEdgeType: {
+                        INFO << "Packet command: SetEdgeType";
+                        const int packetSize = 2;
+                        if(currentPacket->dataSize != packetSize) {
+                            ERROR << "Unexpected size for SetEdgeType packet";
+                        }
+                        else {
+                            int8_t edgeType = currentPacket->data[0];
+                            if(edgeType == 1) {
+                                setRising();
+                            }
+                            else if(edgeType == 2) {
+                                setFalling();
+                            }
+                            else {
+                                ERROR << "Unexpected edgeType";
+                            }
+                        }
+                        EVPacket* tempPacket = (EVPacket*) malloc(sizeof(EVPacket));
+                        tempPacket->data = NULL;
+                        tempPacket->dataSize = 0;
+                        tempPacket->packetID = 0;
+                        tempPacket->command = CMD_SetEdgeType;
                         controllerQueue_tx.push(tempPacket);
                     }
                     break;

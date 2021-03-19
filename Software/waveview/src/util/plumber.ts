@@ -12,10 +12,16 @@ export enum CMD {
   //Get Config commands
   CMD_GetWindowSize = 0x21,
   CMD_GetCh = 0x22,
+  CMD_GetLevel = 0x23,
+  CMD_GetTriggerCh = 0x24,
+  CMD_GetEdgeType = 0x25,
 
   //Set Config commands
   CMD_SetWindowSize = 0x31,
   CMD_SetCh = 0x32,
+  CMD_SetLevel = 0x33,
+  CMD_SetTriggerCh = 0x34,
+  CMD_SetEdgeType = 0x35,
   CMD_SetMath = 0x3F
 }
 
