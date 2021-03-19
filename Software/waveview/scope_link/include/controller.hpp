@@ -36,7 +36,7 @@ public:
     void setMathCh_1(int8_t newCh);
     void setMathCh_2(int8_t newCh);
     void setMathSign(bool newSign);
-
+    void getData();
 
 private:
     // external queue

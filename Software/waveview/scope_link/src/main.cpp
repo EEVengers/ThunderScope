@@ -259,6 +259,12 @@ bool parseCli (std::string line)
             controllerThread->setFalling();
         }
 
+    } else if (line == "getdata") {
+        if (controllerThread != NULL ) {
+            controllerThread->getData();
+            INFO << "you need to load in some data to get data";
+        }
+
     } else if (line == "getper") {
         if (controllerThread != NULL ) {
             INFO << "Persistance Size: " << (int)controllerThread->getPerSize();
@@ -380,6 +386,7 @@ bool parseCli (std::string line)
         ERROR << "setmath1";
         ERROR << "setmath2";
         ERROR << "setmathsign";
+        ERROR << "getdata";
         ERROR << "exit";
     }
     return true;
