@@ -82,9 +82,10 @@ class HorizontalWidget extends React.Component<any, any> {
             className="AdjustValueBlockHorizontalTimeBase"
             style={{color: "white"}}
           >
-            {this.props.horizontalWidget.horizontalTimeBase.mode == ControlMode.Course && this.props.horizontalWidget.horizontalTimeBase.value.toString()}
-            {this.props.horizontalWidget.horizontalTimeBase.mode == ControlMode.Fine && this.props.horizontalWidget.horizontalTimeBase.fineValue.toString()}
-            {this.props.horizontalWidget.horizontalTimeBase.mode == ControlMode.Fine && this.props.horizontalWidget.horizontalTimeBase.fineUnit.toString() + "/div"}
+            {this.props.horizontalWidget.horizontalTimeBase.mode == ControlMode.Course && this.props.horizontalWidget.horizontalTimeBase.course.value.toString()}
+            {this.props.horizontalWidget.horizontalTimeBase.mode == ControlMode.Course && this.props.horizontalWidget.horizontalTimeBase.course.unit.toString() + "/div"}
+            {this.props.horizontalWidget.horizontalTimeBase.mode == ControlMode.Fine && this.props.horizontalWidget.horizontalTimeBase.fine.value.toString()}
+            {this.props.horizontalWidget.horizontalTimeBase.mode == ControlMode.Fine && this.props.horizontalWidget.horizontalTimeBase.fine.unit.toString() + "/div"}
           </label>
           <button 
             className="PlusButton"
@@ -100,7 +101,7 @@ class HorizontalWidget extends React.Component<any, any> {
           onClick={() => this.changeTimeBaseUnit(TimeUnit.NanoSecond)}>
           <label
             className={"NanoSecondButtonText"}
-            style={{fontWeight: this.props.horizontalWidget.horizontalTimeBase.fineUnit == TimeUnit.NanoSecond ? "bold" : "normal"}}>
+            style={{fontWeight: this.props.horizontalWidget.horizontalTimeBase.fine.unit == TimeUnit.NanoSecond ? "bold" : "normal"}}>
             {TimeUnit.NanoSecond}
           </label>
         </button>
@@ -109,7 +110,7 @@ class HorizontalWidget extends React.Component<any, any> {
           onClick={() => this.changeTimeBaseUnit(TimeUnit.MicroSecond)}>
           <label
             className={"MicroSecondButtonText"}
-            style={{fontWeight: this.props.horizontalWidget.horizontalTimeBase.fineUnit == TimeUnit.MicroSecond ? "bold" : "normal"}}>
+            style={{fontWeight: this.props.horizontalWidget.horizontalTimeBase.fine.unit == TimeUnit.MicroSecond ? "bold" : "normal"}}>
             {TimeUnit.MicroSecond}
           </label>
         </button>
@@ -118,7 +119,7 @@ class HorizontalWidget extends React.Component<any, any> {
           onClick={() => this.changeTimeBaseUnit(TimeUnit.MilliSecond)}>
           <label
             className={"MilliSecondButtonText"}
-            style={{fontWeight: this.props.horizontalWidget.horizontalTimeBase.fineUnit == TimeUnit.MilliSecond ? "bold" : "normal"}}>
+            style={{fontWeight: this.props.horizontalWidget.horizontalTimeBase.fine.unit == TimeUnit.MilliSecond ? "bold" : "normal"}}>
             {TimeUnit.MilliSecond}
           </label>
         </button>
@@ -127,7 +128,7 @@ class HorizontalWidget extends React.Component<any, any> {
           onClick={() => this.changeTimeBaseUnit(TimeUnit.Second)}>
           <label
             className={"SecondButtonText"}
-            style={{fontWeight: this.props.horizontalWidget.horizontalTimeBase.fineUnit == TimeUnit.Second ? "bold" : "normal"}}>
+            style={{fontWeight: this.props.horizontalWidget.horizontalTimeBase.fine.unit == TimeUnit.Second ? "bold" : "normal"}}>
             {TimeUnit.Second}
           </label>
         </button>
