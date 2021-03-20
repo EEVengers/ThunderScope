@@ -110,8 +110,36 @@ int PCIeLink::Connect() {
 
 }
 
-void PCIeLink::Read(uint8_t* buff, int bytesToRead) {
-
+/************************************************************
+ * Read()
+ * Takes in an 8MegaByte buffer (2^23 bytes) and fills it with adc data read from the board
+ * 
+ * command: the command to be executed
+ * val: a void pointer to any extra data that may be needed for the command
+ * 
+ * return: NONE
+ * 
+*************************************************************/
+void PCIeLink::Read(uint8_t* buff) {
+    //Read register to tell you how much it has read 
+    //Once more than 2^23 bytes have been written, halt the datamover
+    bool enoughData = false;
+    int64_t current_chunk;
+    uint32_t bytes_moved = 0;
+    while(!enoughData) {
+        _Read(user_handle,DATAMOVER_TRANSFER_COUNTER,(uint8_t*)(&bytes_moved),4);
+        uint16_t val = ((bytes_moved & 0xFF000000) >> 24) | ((bytes_moved& 0x00FF0000) >> 8);
+        INFO << "Bytes Transfered: " << val;
+        if(last_chunk_read == -1) {
+            enoughData == (val >= (1 << 11));
+            last_chunk_read = val / (1 << 11);
+        } else {
+            current_chunk = val / (1 << 11);
+            enoughData == current_chunk != last_chunk_read;
+        }
+    }
+    //Read the data from ddr3 memory
+    _Read(c2h_0_handle,reading_offset,buff,2^23);
 }
 
 /************************************************************
@@ -213,6 +241,22 @@ void PCIeLink::Write(ScopeCommand command, void* val) {
             //read original value
             _Read(user_handle,0,rxBuff,1);
             printf("After writting 0 again, the read value is: %d\n",rxBuff[0]);
+        }
+        break;
+        case dataMover_enable:
+        INFO << "Enabling DataMover";
+        {
+            dataMoverReg[0] |= 0x03;
+            _Write(user_handle,DATAMOVER_REG_OUT,dataMoverReg,1);
+        }
+        break;
+        case dataMover_disable:
+        INFO << "Disabling DataMover";
+        {
+            dataMoverReg[0] &= ~(0x01);
+            _Write(user_handle,DATAMOVER_REG_OUT,dataMoverReg,1);
+            dataMoverReg[0] &= ~(0x02);
+            _Write(user_handle,DATAMOVER_REG_OUT,dataMoverReg,1);
         }
         break;
         default:
@@ -320,6 +364,9 @@ void PCIeLink::_Write(HANDLE hPCIE, int64_t address, uint8_t* buff, int bytesToW
 PCIeLink::PCIeLink() {
     user_handle = INVALID_HANDLE_VALUE;
     c2h_0_handle = INVALID_HANDLE_VALUE;
+    reading_offset = 0;
+    dataMoverReg[0] = 0x00;
+    last_chunk_read = -1;
     QueryPerformanceFrequency(&freq);
 }
 

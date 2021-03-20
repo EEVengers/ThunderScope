@@ -50,13 +50,10 @@ enum ScopeCommand {
     adc_cgain_cfg,
     adc_btc_mode,
     adc_chnum_clkdiv_init,
-    adc_in_sel_12_init,
-    adc_in_sel_34_init,
     clk_enable,
-    pll_r_counter,
-    pll_control,
-    pll_n_counter,
     dataMover_enable,
+    dataMover_halt,
+    dataMover_disable,
     test_write
 };
 
@@ -68,7 +65,7 @@ public:
 
     int Connect();
     
-    void Read(uint8_t* buff, int bytesToRead);
+    void Read(uint8_t* buff);
     void Write(ScopeCommand command, void* val);
 
     ~PCIeLink();
@@ -77,11 +74,14 @@ private:
 
     char user_device[20] = USER_DEVICE_PATH; //write/read registers
     char c2h_0_device[20] = C2H_0_DEVICE_PATH; //read memory
+    uint8_t dataMoverReg[1] = {0x00};
     HANDLE user_handle;
     char user_connection_string[261] = "";
     HANDLE c2h_0_handle;
     char c2h_0_connection_string[261] = "";
     LARGE_INTEGER freq; //used for perforamnce testing
+    int64_t reading_offset;
+    int64_t last_chunk_read;
 
     void _Read(HANDLE hPCIE, long long address, uint8_t* buff, int bytesToRead);
     void _Write(HANDLE hPCIE, long long address, uint8_t* buff, int bytesToWrite);

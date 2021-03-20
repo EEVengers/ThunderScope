@@ -8,6 +8,8 @@
 #include "dspPipeline.hpp"
 #include "PCIe.hpp"
 #include <boost/tokenizer.hpp>
+#include <fstream>
+#include <iostream>
 
 uint32_t testSize = 1000;
 
@@ -279,8 +281,19 @@ void runPCIeTest() {
     pcieLink->Write(board_enable,nullptr);
     pcieLink->Write(clk_enable,nullptr);
     pcieLink->Write(adc_enable,nullptr);
-
+    pcieLink->Write(dataMover_enable,nullptr);
     
+    uint8_t buff[(1 << 23)] = {0};
+    pcieLink->Read(buff);
+
+    std::ofstream fout{ "ReadData.bin" };
+    if(!fout) {
+        INFO << "Could Not Open File";
+    } else {
+        for(int i = 0; i < (1 << 23); i++) {
+            fout << buff[i];
+        }
+    }
 
     delete pcieLink;
 }
