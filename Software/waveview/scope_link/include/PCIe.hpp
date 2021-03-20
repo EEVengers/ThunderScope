@@ -21,16 +21,16 @@
 #define USER_DEVICE_PATH "user"
 #define C2H_0_DEVICE_PATH "c2h_0"
 
-#define DATAMOVER_REG_OUT                   0x0000 // bit 0: halt, bit 1: reset
-#define DATAMOVER_TRANSFER_COUNTER          0x0008 // A 32 bit value, low 16 is transfer counter, bit 31 error bit
-#define BOARD_REG_OUT                       0x1000 // A 32 bit value, bit 0:3: attenuation, bit 4:7: dc_cpl, bit 8: acq_en, bit 9: fe_en, 22bits unused
-#define BOARD_REG_IN                        0x1008 // unused for now
-#define SERIAL_FIFO_DATA_WRITE_REG          0x2010
-#define SERIAL_FIFO_IER_ADDRESS             0x2004
-#define SERIAL_FIFO_TDR_ADDRESS             0x202C
-#define SERIAL_FIFO_TDFV_ADDRESS            0x200C // read 0x1FC when the transmission is done
-#define SERIAL_FIFO_TLR_ADDRESS             0x2014 // (in bytes) This byte tells the thing to transfer
-#define SERIAL_FIFO_ISR_ADDRESS             0x2000 
+#define DATAMOVER_REG_OUT                   0x00000 // bit 0: halt, bit 1: reset
+#define DATAMOVER_TRANSFER_COUNTER          0x00008 // A 32 bit value, low 16 is transfer counter, bit 31 error bit
+#define BOARD_REG_OUT                       0x10000 // A 32 bit value, bit 0:3: attenuation, bit 4:7: dc_cpl, bit 8: acq_en, bit 9: clk_oe, bit 10: fe_en, 21bits unused
+#define BOARD_REG_IN                        0x10008 // unused for now
+#define SERIAL_FIFO_DATA_WRITE_REG          0x20010
+#define SERIAL_FIFO_IER_ADDRESS             0x20004
+#define SERIAL_FIFO_TDR_ADDRESS             0x2002C
+#define SERIAL_FIFO_TDFV_ADDRESS            0x2000C // read 0x1FC when the transmission is done
+#define SERIAL_FIFO_TLR_ADDRESS             0x20014 // (in bytes) This byte tells the thing to transfer
+#define SERIAL_FIFO_ISR_ADDRESS             0x20000 
 #define SPI_FRONT_END_CHANNEL_1             0xF8
 #define SPI_FRONT_END_CHANNEL_2             0xF9
 #define SPI_FRONT_END_CHANNEL_3             0xFA
