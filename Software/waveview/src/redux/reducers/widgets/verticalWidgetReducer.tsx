@@ -17,7 +17,7 @@ export default function(state = VerticalWidgetInitialState, action: {type: any, 
 
       tmp2 = state.verticalOffset;
 
-      tmp2[channelIndex].unit = action.payload == ControlMode.Fine ? state.timePerDivision[channelIndex].fine.unit : state.timePerDivision[channelIndex].course.unit;
+      tmp2[channelIndex].unit = action.payload === ControlMode.Fine ? state.timePerDivision[channelIndex].fine.unit : state.timePerDivision[channelIndex].course.unit;
       return {
         ...state,
         settings: tmp,
@@ -56,10 +56,10 @@ export default function(state = VerticalWidgetInitialState, action: {type: any, 
 
       tmp2 = state.timePerDivision;
       
-      tmp2[channelIndex].course.value = action.payload == ProbeMode.x1 
+      tmp2[channelIndex].course.value = action.payload === ProbeMode.x1 
         ? DefaultValues.x1ProbeValues_New[state.timePerDivision[channelIndex].index].value 
         : DefaultValues.x10ProbeValues_New[state.timePerDivision[channelIndex].index].value;
-      tmp2[channelIndex].course.unit = action.payload == ProbeMode.x1 
+      tmp2[channelIndex].course.unit = action.payload === ProbeMode.x1 
         ? DefaultValues.x1ProbeValues_New[state.timePerDivision[channelIndex].index].unit 
         : DefaultValues.x10ProbeValues_New[state.timePerDivision[channelIndex].index].unit;
 
@@ -120,10 +120,10 @@ export default function(state = VerticalWidgetInitialState, action: {type: any, 
       tmp = state.timePerDivision;
 
       tmp[channelIndex].index = state.timePerDivision[channelIndex].index - 1;
-      tmp[channelIndex].course.value = state.settings[channelIndex].probeMode == ProbeMode.x1 
+      tmp[channelIndex].course.value = state.settings[channelIndex].probeMode === ProbeMode.x1 
         ? DefaultValues.x1ProbeValues_New[tmp[channelIndex].index].value 
         : DefaultValues.x10ProbeValues_New[tmp[channelIndex].index].value;
-      tmp[channelIndex].course.unit = state.settings[channelIndex].probeMode == ProbeMode.x1 
+      tmp[channelIndex].course.unit = state.settings[channelIndex].probeMode === ProbeMode.x1 
         ? DefaultValues.x1ProbeValues_New[tmp[channelIndex].index].unit 
         : DefaultValues.x10ProbeValues_New[tmp[channelIndex].index].unit;
 
@@ -142,10 +142,10 @@ export default function(state = VerticalWidgetInitialState, action: {type: any, 
       tmp = state.timePerDivision;
 
       tmp[channelIndex].index = state.timePerDivision[channelIndex].index + 1;
-      tmp[channelIndex].course.value = state.settings[channelIndex].probeMode == ProbeMode.x1 
+      tmp[channelIndex].course.value = state.settings[channelIndex].probeMode === ProbeMode.x1 
         ? DefaultValues.x1ProbeValues_New[tmp[channelIndex].index].value 
         : DefaultValues.x10ProbeValues_New[tmp[channelIndex].index].value;
-      tmp[channelIndex].course.unit = state.settings[channelIndex].probeMode == ProbeMode.x1 
+      tmp[channelIndex].course.unit = state.settings[channelIndex].probeMode === ProbeMode.x1 
         ? DefaultValues.x1ProbeValues_New[tmp[channelIndex].index].unit 
         : DefaultValues.x10ProbeValues_New[tmp[channelIndex].index].unit;
 

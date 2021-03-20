@@ -1,22 +1,6 @@
 import VoltageUnit from './enums/voltageUnit';
 import TimeUnit from './enums/timeUnit';
 
-const x1ProbeValues = [
-  "10V/div", 
-  "5V/div", 
-  "2V/div", 
-  "1V/div",
-  "500mV/div",
-  "200mV/div",
-  "100mV/div",
-  "50mV/div",
-  "20mV/div",
-  "10mV/div",
-  "5mV/div",
-  "2mV/div",
-  "1mV/div"
-];
-
 const x1ProbeValues_New = [
   {
     value: 10,
@@ -70,22 +54,6 @@ const x1ProbeValues_New = [
     value: 1,
     unit: VoltageUnit.MilliVolt
   }
-];
-
-const x10ProbeValues = [
-  "100V/div", 
-  "50V/div", 
-  "20V/div", 
-  "10V/div",
-  "5V/div",
-  "2V/div",
-  "1V/div",
-  "500mV/div",
-  "200mV/div",
-  "100mV/div",
-  "50mV/div",
-  "20mV/div",
-  "10mV/div"
 ];
 
 const x10ProbeValues_New = [
@@ -145,40 +113,6 @@ const x10ProbeValues_New = [
 
 // 13 different voltages per divison presets
 // Start at x1ProbeValues[6] and change accordingly 
-
-const horizontalTimeBases = [
-  "1ns/div",
-  "2ns/div",
-  "5ns/div",
-  "10ns/div",
-  "20ns/div",
-  "50ns/div",
-  "100ns/div",
-  "200ns/div",
-  "500ns/div",
-  "1µs/div",
-  "2µs/div",
-  "5µs/div",
-  "10µs/div",
-  "20µs/div",
-  "50µs/div",
-  "100µs/div",
-  "200µs/div",
-  "500µs/div",
-  "1ms/div",
-  "2ms/div",
-  "5ms/div",
-  "10ms/div",
-  "20ms/div",
-  "50ms/div",
-  "100ms/div",
-  "200ms/div",
-  "500ms/div",
-  "1s/div",
-  "2s/div",
-  "5s/div",
-  "10s/div"
-];
 
 const horizontalTimeBases_New = [
   {
@@ -310,9 +244,6 @@ const horizontalTimeBases_New = [
 // Start at horizontalTimeBases[15] and change accordingly
 
 export default {
-  x1ProbeValues, 
-  x10ProbeValues,
-  horizontalTimeBases,
   x1ProbeValues_New,
   x10ProbeValues_New,
   horizontalTimeBases_New

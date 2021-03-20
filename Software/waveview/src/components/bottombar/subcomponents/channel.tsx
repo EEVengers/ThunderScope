@@ -11,11 +11,11 @@ class Channel extends React.Component<any, any> {
         <label>
           CH{this.props.channelNumber}: 
           {" "}
-          {this.props.verticalWidget.settings[this.props.channelNumber-1].controlMode == ControlMode.Course 
+          {this.props.verticalWidget.settings[this.props.channelNumber-1].controlMode === ControlMode.Course 
             && this.props.verticalWidget.timePerDivision[this.props.channelNumber-1].course.value.toString()
             + this.props.verticalWidget.timePerDivision[this.props.channelNumber-1].course.unit.toString() + "/div"}
-          {this.props.verticalWidget.settings[this.props.channelNumber-1].controlMode == ControlMode.Fine 
-            && (this.props.verticalWidget.settings[this.props.channelNumber-1].probeMode == ProbeMode.x1 
+          {this.props.verticalWidget.settings[this.props.channelNumber-1].controlMode === ControlMode.Fine 
+            && (this.props.verticalWidget.settings[this.props.channelNumber-1].probeMode === ProbeMode.x1 
               ? this.props.verticalWidget.timePerDivision[this.props.channelNumber-1].fine.value.toString()
               : this.props.verticalWidget.timePerDivision[this.props.channelNumber-1].fine.x10value.toString())
             + this.props.verticalWidget.timePerDivision[this.props.channelNumber-1].fine.unit.toString() + "/div"},
