@@ -133,7 +133,9 @@ void PCIeLink::Write(ScopeCommand command, void* val) {
             _Read(user_handle,BOARD_REG_OUT,en,2);
             en[1] |= 0x01; //acq->on fe->off
             _Write(user_handle,BOARD_REG_OUT,en,2);
+            std::this_thread::sleep_for(std::chrono::milliseconds(5));
         }
+        break;
         case adc_enable:
         INFO << "Enabling ADC";
         {
@@ -216,13 +218,9 @@ void PCIeLink::_FIFO_WRITE(HANDLE hPCIE, uint8_t* data, uint8_t bytesToWrite) {
     _Write(user_handle,SERIAL_FIFO_ISR_ADDRESS,isrClearBuff,4);
     //read ISR and IER
     _Read(user_handle, SERIAL_FIFO_ISR_ADDRESS,isrRxBuff,4);
-    printf("ISR: %X %X %X %X\n",isrRxBuff[0],isrRxBuff[1],isrRxBuff[2],isrRxBuff[3]);
     _Read(user_handle, SERIAL_FIFO_IER_ADDRESS,isrRxBuff,4);
-    printf("IER: %X %X %X %X\n",isrRxBuff[0],isrRxBuff[1],isrRxBuff[2],isrRxBuff[3]);
     //enable IER
     _Write(user_handle,SERIAL_FIFO_IER_ADDRESS,ierSetupBuff,4);
-    _Read(user_handle, SERIAL_FIFO_IER_ADDRESS,isrRxBuff,4);
-    printf("IER After Write: %X %X %X %X\n",isrRxBuff[0],isrRxBuff[1],isrRxBuff[2],isrRxBuff[3]);
     //Set false TDR
     _Write(user_handle,SERIAL_FIFO_TDR_ADDRESS,tdrBuff,4);
     //Put data into queue
@@ -231,7 +229,6 @@ void PCIeLink::_FIFO_WRITE(HANDLE hPCIE, uint8_t* data, uint8_t bytesToWrite) {
     }
     //read TDFV (vacancy byte)
     _Read(user_handle,SERIAL_FIFO_TDFV_ADDRESS,tdfvBuff,4);
-    printf("TDFV: %X %X %X %X\n",tdfvBuff[0],tdfvBuff[1],tdfvBuff[2],tdfvBuff[3]);
     //write to TLR (the size of the packet)
     _Write(user_handle,SERIAL_FIFO_TLR_ADDRESS,lengthBuff,4);
     //read ISR for a done value
@@ -243,7 +240,6 @@ void PCIeLink::_FIFO_WRITE(HANDLE hPCIE, uint8_t* data, uint8_t bytesToWrite) {
         } else {
             std::this_thread::sleep_for(std::chrono::microseconds(1500));
         }
-        printf("ISR: %X %X %X %X\n",isrRxBuff[0],isrRxBuff[1],isrRxBuff[2],isrRxBuff[3]);
     }
     //write 0xFF FF FF FF to ISR
     _Write(user_handle,SERIAL_FIFO_ISR_ADDRESS,isrClearBuff,4);
