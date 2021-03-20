@@ -137,7 +137,7 @@ class HorizontalWidget extends React.Component<any, any> {
 
 
         <div className="HorizontalOffsetTitle">
-          Horizontal Offset
+          Offset
         </div>
         <div className="HorizontalWidgetAdjustBlock-HorizontalOffset">
           <button 

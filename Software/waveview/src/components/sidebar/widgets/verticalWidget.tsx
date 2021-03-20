@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import DefaultValues from '../../../configuration/defaultValues';
 import ControlMode from '../../../configuration/enums/controlMode';
 import VoltageUnit from '../../../configuration/enums/voltageUnit';
 import MeasurementType from '../../../configuration/enums/measurementType';
@@ -152,13 +151,13 @@ class VerticalWidget extends React.Component<any, any> {
           style={{color: this.props.verticalWidget.channelColorsList[this.props.verticalWidget.activeChannel-1]}}
         >
           {this.props.verticalWidget.settings[this.props.verticalWidget.activeChannel-1].controlMode == ControlMode.Course 
-            && this.props.verticalWidget.settings[this.props.verticalWidget.activeChannel-1].probeMode == ProbeMode.x1
-            && DefaultValues.x1ProbeValues[this.props.verticalWidget.timePerDivision[this.props.verticalWidget.activeChannel-1].index]}
-          {this.props.verticalWidget.settings[this.props.verticalWidget.activeChannel-1].controlMode == ControlMode.Course 
-            && this.props.verticalWidget.settings[this.props.verticalWidget.activeChannel-1].probeMode == ProbeMode.x10
-            && DefaultValues.x10ProbeValues[this.props.verticalWidget.timePerDivision[this.props.verticalWidget.activeChannel-1].index]}  
-          {this.props.verticalWidget.settings[this.props.verticalWidget.activeChannel-1].controlMode == ControlMode.Fine && this.props.verticalWidget.timePerDivision[this.props.verticalWidget.activeChannel-1].fineValue.toString()}
-          {this.props.verticalWidget.settings[this.props.verticalWidget.activeChannel-1].controlMode == ControlMode.Fine && this.props.verticalWidget.timePerDivision[this.props.verticalWidget.activeChannel-1].fineUnit.toString() + "/div"}
+            && this.props.verticalWidget.timePerDivision[this.props.verticalWidget.activeChannel-1].course.value.toString()
+            + this.props.verticalWidget.timePerDivision[this.props.verticalWidget.activeChannel-1].course.unit.toString() + "/div"}
+          {this.props.verticalWidget.settings[this.props.verticalWidget.activeChannel-1].controlMode == ControlMode.Fine 
+            && (this.props.verticalWidget.settings[this.props.verticalWidget.activeChannel-1].probeMode == ProbeMode.x1 
+              ? this.props.verticalWidget.timePerDivision[this.props.verticalWidget.activeChannel-1].fine.value.toString()
+              : this.props.verticalWidget.timePerDivision[this.props.verticalWidget.activeChannel-1].fine.x10value.toString())
+            + this.props.verticalWidget.timePerDivision[this.props.verticalWidget.activeChannel-1].fine.unit.toString() + "/div"}
         </label>
         <button 
           className="PlusButton"
@@ -174,7 +173,7 @@ class VerticalWidget extends React.Component<any, any> {
           onClick={() => this.changeDivisionUnit(VoltageUnit.NanoVolt)}>
           <label
             className={"MicroVoltButtonText"}
-            style={{fontWeight: this.props.verticalWidget.timePerDivision[this.props.verticalWidget.activeChannel-1].fineUnit == VoltageUnit.NanoVolt? "bold" : "normal"}}>
+            style={{fontWeight: this.props.verticalWidget.timePerDivision[this.props.verticalWidget.activeChannel-1].fine.unit == VoltageUnit.NanoVolt? "bold" : "normal"}}>
             {VoltageUnit.NanoVolt}
           </label>
         </button>
@@ -183,7 +182,7 @@ class VerticalWidget extends React.Component<any, any> {
           onClick={() => this.changeDivisionUnit(VoltageUnit.MicroVolt)}>
           <label
             className={"MicroVoltButtonText"}
-            style={{fontWeight: this.props.verticalWidget.timePerDivision[this.props.verticalWidget.activeChannel-1].fineUnit == VoltageUnit.MicroVolt? "bold" : "normal"}}>
+            style={{fontWeight: this.props.verticalWidget.timePerDivision[this.props.verticalWidget.activeChannel-1].fine.unit == VoltageUnit.MicroVolt? "bold" : "normal"}}>
             {VoltageUnit.MicroVolt}
           </label>
         </button>
@@ -192,7 +191,7 @@ class VerticalWidget extends React.Component<any, any> {
           onClick={() => this.changeDivisionUnit(VoltageUnit.MilliVolt)}>
           <label
             className={"MilliVoltButtonText"}
-            style={{fontWeight: this.props.verticalWidget.timePerDivision[this.props.verticalWidget.activeChannel-1].fineUnit == VoltageUnit.MilliVolt ? "bold" : "normal"}}>
+            style={{fontWeight: this.props.verticalWidget.timePerDivision[this.props.verticalWidget.activeChannel-1].fine.unit == VoltageUnit.MilliVolt ? "bold" : "normal"}}>
             {VoltageUnit.MilliVolt}
           </label>
         </button>
@@ -201,7 +200,7 @@ class VerticalWidget extends React.Component<any, any> {
           onClick={() => this.changeDivisionUnit(VoltageUnit.Volt)}>
           <label
             className={"VoltButtonText"}
-            style={{fontWeight: this.props.verticalWidget.timePerDivision[this.props.verticalWidget.activeChannel-1].fineUnit == VoltageUnit.Volt ? "bold" : "normal"}}>
+            style={{fontWeight: this.props.verticalWidget.timePerDivision[this.props.verticalWidget.activeChannel-1].fine.unit == VoltageUnit.Volt ? "bold" : "normal"}}>
             {VoltageUnit.Volt}
           </label>
         </button>
@@ -221,7 +220,8 @@ class VerticalWidget extends React.Component<any, any> {
           className="AdjustValueBlockVerticalOffset"
           style={{color: this.props.verticalWidget.channelColorsList[this.props.verticalWidget.activeChannel-1]}}
         >
-          {this.props.verticalWidget.verticalOffset[this.props.verticalWidget.activeChannel-1].value}{"mV"}
+          {this.props.verticalWidget.verticalOffset[this.props.verticalWidget.activeChannel-1].value}
+          {this.props.verticalWidget.verticalOffset[this.props.verticalWidget.activeChannel-1].unit}
         </label>
         <button 
           className="PlusButton"
