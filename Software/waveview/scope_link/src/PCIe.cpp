@@ -129,24 +129,23 @@ void PCIeLink::Read(uint8_t* buff) {
     //Once more than 2^23 bytes have been written, halt the datamover
     bool enoughData = false;
     int64_t current_chunk;
-    uint32_t bytes_moved = 0;
+    uint32_t kbytes_4_moved = 0;
     while(!enoughData) {
-        _Read(user_handle,DATAMOVER_TRANSFER_COUNTER,(uint8_t*)(&bytes_moved),4);
-        uint16_t val = ((bytes_moved & 0xFF000000) >> 24) | ((bytes_moved& 0x00FF0000) >> 8);
-        INFO << "Bytes Transfered: " << val;
+        _Read(user_handle,DATAMOVER_TRANSFER_COUNTER,(uint8_t*)(&kbytes_4_moved),4);
+        kbytes_4_moved = kbytes_4_moved & 0x0000FFFF;
+        current_chunk = kbytes_4_moved / (1 << 11);
+        INFO << "4k_Bytes Transfered: " << kbytes_4_moved;
+        INFO << "Current Chunk: " << current_chunk;
         if(last_chunk_read == -1) {
-            enoughData == (val >= (1 << 11));
-            last_chunk_read = val / (1 << 11);
+            enoughData = (val >= (1 << 11));
         } else {
-            current_chunk = val / (1 << 11);
-            enoughData == current_chunk != last_chunk_read;
+            enoughData = (current_chunk != last_chunk_read);
         }
     }
+    last_chunk_read = current_chunk;
     int64_t reading_offset = current_chunk * (2^23);
-    INFO << "Reading from current current chunk: ";
-    INFO << current_chunk;
-    INFO << "Offset: ";
-    INFO << reading_offset;
+    INFO << "Reading from current current chunk: " << current_chunk;
+    INFO << "Offset: " << reading_offset;
     //Read the data from ddr3 memory
     _Read(c2h_0_handle,reading_offset,buff,2^23);
 }
