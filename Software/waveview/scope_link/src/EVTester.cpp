@@ -284,7 +284,11 @@ void runPCIeTest() {
     pcieLink->Write(dataMover_enable,nullptr);
     
     uint8_t* buff = (uint8_t*)malloc(sizeof(uint8_t) * (1 << 23));
+    pcieLink->ClockTick1();
     pcieLink->Read(buff);
+    pcieLink->ClockTick2();
+
+    pcieLink->PrintTimeDelta();
 
     FILE* fp = fopen("TestData.txt","w");
     for(int i = 0; i < (1 << 23); i+= 8) {

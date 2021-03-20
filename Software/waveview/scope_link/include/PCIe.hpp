@@ -68,6 +68,10 @@ public:
     void Read(uint8_t* buff);
     void Write(ScopeCommand command, void* val);
 
+    void ClockTick1();
+    void ClockTick2();
+    void PrintTimeDelta();
+
     ~PCIeLink();
 
 private:
@@ -81,6 +85,10 @@ private:
     char c2h_0_connection_string[261] = "";
     LARGE_INTEGER freq; //used for perforamnce testing
     int64_t last_chunk_read;
+
+    //used for speed testing
+    LARGE_INTEGER tick1;
+    LARGE_INTEGER tick2;
 
     void _Read(HANDLE hPCIE, long long address, uint8_t* buff, int bytesToRead);
     void _Write(HANDLE hPCIE, long long address, uint8_t* buff, int bytesToWrite);

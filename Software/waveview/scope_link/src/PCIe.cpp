@@ -348,15 +348,9 @@ void PCIeLink::_Read(HANDLE hPCIE, int64_t address, uint8_t* buff, int bytesToRe
 
     // read from device into buffer
     DWORD bytesRead;
-    LARGE_INTEGER start;
-    LARGE_INTEGER stop;
-    QueryPerformanceCounter(&start);
     if (!ReadFile(hPCIE, buff, bytesToRead, &bytesRead, NULL)) {
         ERROR << "_Read() failed with Win32 error code: " << GetLastError();
     }
-    QueryPerformanceCounter(&stop);
-    double time_sec = (unsigned long long)(stop.QuadPart - start.QuadPart) / (double)freq.QuadPart;
-    //INFO << bytesRead << " bytes read in " << time_sec;
 }
 
 void PCIeLink::_Write(HANDLE hPCIE, int64_t address, uint8_t* buff, int bytesToWrite) {
@@ -374,15 +368,9 @@ void PCIeLink::_Write(HANDLE hPCIE, int64_t address, uint8_t* buff, int bytesToW
 
     // write from buffer to device
     DWORD bytesWritten;
-    LARGE_INTEGER start;
-    LARGE_INTEGER stop;
-    QueryPerformanceCounter(&start);
     if (!WriteFile(hPCIE, buff, bytesToWrite, &bytesWritten, NULL)) {
         ERROR << "_Write() failed with Win32 error code: " << GetLastError();
     }
-    QueryPerformanceCounter(&stop);
-    double time_sec = (unsigned long long)(stop.QuadPart - start.QuadPart) / (double)freq.QuadPart;
-    //INFO << bytesWritten << " bytes written in " << time_sec;
 }
 
 PCIeLink::PCIeLink() {
@@ -401,7 +389,25 @@ PCIeLink::~PCIeLink() {
 }
 
 
+void PCIeLink::ClockTick1() {
+    QueryPerformanceCounter(&tick1);
+}
 
+void PCIeLink::ClockTick2() {
+    QueryPerformanceCounter(&tick2);
+}
+
+/************************************************************
+ * PrintTimeDelta()
+ * prints the time difference between tick1 and tick2 -> (tick2 - tick1) / freq
+ * 
+ * return: NONE
+ * 
+*************************************************************/
+void PCIeLink::PrintTimeDelta() {
+    double time_sec = (unsigned long long)(tick2.QuadPart - tick1.QuadPart) / (double)freq.QuadPart;
+    INFO << "Time Delta is: " << time_sec;
+}
 
 
 
