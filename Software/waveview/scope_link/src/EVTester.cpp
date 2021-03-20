@@ -291,15 +291,8 @@ void runPCIeTest() {
         INFO << "Could Not Open File";
     } else {
         for(int i = 0; i < (1 << 23); i+= 8) {
-            fout << buff[i] << "  ";
-            fout << buff[i + 1] << "  ";
-            fout << buff[i + 2] << "  ";
-            fout << buff[i + 3] << "  ";
-            fout << buff[i + 4] << "  ";
-            fout << buff[i + 5] << "  ";
-            fout << buff[i + 6] << "  ";
-            fout << buff[i + 7] << "  ";
-            fout << "\n";
+            printf("%X,%X,%X,%X,%X,%X,%X,%X\n",
+                buff[i],buff[i + 1],buff[i + 2],buff[i + 3],buff[i + 4],buff[i + 5],buff[i + 6],buff[i + 7]);
         }
     }
 

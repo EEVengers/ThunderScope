@@ -137,17 +137,17 @@ void PCIeLink::Read(uint8_t* buff) {
         INFO << "4k_Bytes Transfered: " << kbytes_4_moved;
         INFO << "Current Chunk: " << current_chunk;
         if(last_chunk_read == -1) {
-            enoughData = (val >= (1 << 11));
+            enoughData = (kbytes_4_moved >= (1 << 11));
         } else {
             enoughData = (current_chunk != last_chunk_read);
         }
     }
     last_chunk_read = current_chunk;
-    int64_t reading_offset = current_chunk * (2^23);
+    int64_t reading_offset = current_chunk * (1 << 23);
     INFO << "Reading from current current chunk: " << current_chunk;
     INFO << "Offset: " << reading_offset;
     //Read the data from ddr3 memory
-    _Read(c2h_0_handle,reading_offset,buff,2^23);
+    _Read(c2h_0_handle,reading_offset,buff,1 << 23);
 }
 
 /************************************************************
