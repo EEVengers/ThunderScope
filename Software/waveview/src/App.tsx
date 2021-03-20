@@ -18,10 +18,10 @@ class App extends React.Component {
   generator: TestPoints;
   conf: TestConf;
   channelList: {
-    color: string, 
+    color: string,
     className:string
   }[];
-  
+
   constructor(props: any) {
     super(props);
     this.state = initialState;
@@ -39,7 +39,8 @@ class App extends React.Component {
     this.timerID = window.setInterval(
       () => this.tick(),
       16.67
-    )
+    );
+    this.generator.mountCalls();
   }
 
   componentWillUnmount() {
@@ -50,7 +51,7 @@ class App extends React.Component {
     let tickCount = this.state.tickCount + 1;
     this.generator.update();
     if(tickCount % 100 === 0) {
-      this.conf.update(tickCount % 1000 !== 0);
+      //this.conf.update(tickCount % 1000 !== 0);
       //this.conf.mathUpdate();
     }
     this.setState({tickCount: tickCount});
@@ -59,7 +60,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <header 
+        <header
           className="App-header">
         </header>
         <Graph

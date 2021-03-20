@@ -20,6 +20,10 @@ class TestPoints {
   ready: Boolean = true;
   scope_data: any[][] = [];
   rampArgs: PlumberArgs;
+  setChArgs: PlumberArgs;
+  setFileArgs: PlumberArgs;
+  setChDone: Boolean = false;
+  setFileDone: Boolean = false;
 
   constructor(xRange: number, yRange: number) {
     this.x = new Range(0, xRange);
@@ -43,14 +47,43 @@ class TestPoints {
         }
         return true;
       },
-      cmd: CMD.CMD_RampDemo,
+      cmd: CMD.CMD_GetData1,
       id: 0x1F2C,
       writeData: [0, 0]
     };
+
+    this.setChArgs = {
+      headCheck: () => {
+        this.setChDone = true;
+        return true;
+      },
+      bodyCheck: () => true,
+      cmd: CMD.CMD_SetCh,
+      id: 0,
+      writeData: [4, 0]
+    }
+
+    this.setFileArgs = {
+      headCheck: () => {
+        this.setFileDone = true;
+        return true;
+      },
+      bodyCheck: () => true,
+      cmd: CMD.CMD_SetFile,
+      id: 0,
+      writeData: [74, 0]
+    }
+  }
+
+  mountCalls() {
+    Plumber.getInstance().cycle(this.setChArgs);
+    Plumber.getInstance().cycle(this.setFileArgs);
   }
 
   update() {
-    Plumber.getInstance().cycle(this.rampArgs);
+    if(this.setChDone && this.setFileDone) {
+      Plumber.getInstance().cycle(this.rampArgs);
+    }
   }
 
   getData() {
