@@ -1,6 +1,8 @@
 #include "controller.hpp"
 #include "logger.hpp"
 
+#define NOHARDWARE
+
 //RampDemo Related
 int8_t RD_PACKET_ORIGINAL[RD_PACKET_SIZE];
 
@@ -44,6 +46,13 @@ controller::controller(boost::lockfree::queue<buffer*, boost::lockfree::fixed_si
             RD_PACKET_ORIGINAL[i + ch*RD_DATA_PER_CHAN] = 10;
         }
     }
+
+    // input file related
+    std::string newName = "./scope_link/test/test1.csv";
+    char* filename = (char*)malloc(newName.size() + 1);
+    std::strcpy(filename, newName.c_str());
+    free(inputFile);
+    inputFile = filename;
 
     INFO << "Controller Created";
 }
@@ -96,8 +105,16 @@ void controller::controllerLoop()
                 case CMD_GetData4:
                     ERROR << "Packet command: Reserved";
                     break;
-                case CMD_SetFile:
-                    INFO << "Packet command: SetFile";
+                case CMD_SetFile: {
+                        INFO << "Packet command: SetFile";
+                        const int packetSize = 2;
+                        if(currentPacket->dataSize != packetSize) {
+                            ERROR << "Unexpected size for SetFile packet";
+                        }
+                        else {
+                            setFileName(currentPacket->data[0]);
+                        }
+                    }
                     break;
                 case CMD_RampDemo: {
                         INFO << "Packet command: RampDemo";
@@ -668,4 +685,45 @@ void controller::getData()
     controllerFlush();
     // unpause
     controllerUnPause();
+
+#ifdef NOHARDWARE
+    if (inputFile != NULL) {
+        loadFromFile(inputFile, dataQueue);
+    }
+#endif
+}
+
+void controller::setFileName(int8_t newFile)
+{
+    std::string newName = "./scope_link/test/test1.csv";
+    switch (newFile) {
+        case 1:
+            newName = "./scope_link/test/test1.csv";
+        case 2:
+            newName = "./scope_link/test/test2.csv";
+        case 3:
+            newName = "./scope_link/test/test3.csv";
+        case 4:
+            newName = "./scope_link/test/test4.csv";
+        case 5:
+            newName = "./scope_link/test/test5.csv";
+        case 6:
+            newName = "./scope_link/test/test6.csv";
+        case 72:
+            newName = "./scope_link/test/test7-2ch.csv";
+        case 74:
+            newName = "./scope_link/test/test7-4ch.csv";
+        case 8:
+            newName = "./scope_link/test/test8.csv";
+        case 91:
+            newName = "./scope_link/test/test9-max.csv";
+        case 92:
+            newName = "./scope_link/test/test9-min.csv";
+        default:
+            newName = "./scope_link/test/test1.csv";
+    }
+    char* filename = (char*)malloc(newName.size() + 1);
+    std::strcpy(filename, newName.c_str());
+    free(inputFile);
+    inputFile = filename;
 }

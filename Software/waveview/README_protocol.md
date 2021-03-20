@@ -3,13 +3,13 @@
 Packet structure diagram (ripped from `common.hpp` and minimized):
 
 ```
-//   __________________________________________________________
-//  |          |          |          |                        |
-//  | Command  | PacketID | DataSize |    Packet Data         |
-//  |  16bits  |  16bits  |  16bits  |  However Many Bits as  |
-//  |  2Bytes  |  2Bytes  |  2Bytes  |  Defined by dataSize   |
-//  |          |          |          |                        |
-//  |__________|__________|__________|________________________|
+   __________________________________________________________
+  |          |          |          |                        |
+  | Command  | PacketID | DataSize |    Packet Data         |
+  |  16bits  |  16bits  |  16bits  |  However Many Bits as  |
+  |  2Bytes  |  2Bytes  |  2Bytes  |  Defined by dataSize   |
+  |          |          |          |                        |
+  |__________|__________|__________|________________________|
 ```
 
 The rest of this page concerns the *meaning* of `Command` and the expected `dataSize` of a packet. In other words, the diagram is the "syntax", what follows is the "semantics".
@@ -81,7 +81,7 @@ Cmd  | DataSize        | Name          | Description
 0x02 | 2 (useless)     | Reserved      | If we need 1 command/ch
 0x03 | 2 (useless)     | Reserved      | If we need 1 command/ch
 0x04 | 2 (useless)     | Reserved      | If we need 1 command/ch
-0x11 | `strlen(name)`  | SetFile       | Set testdata filename
+0x11 | 2               | SetFile       | Number mapped to filename by C++
 
 
 
