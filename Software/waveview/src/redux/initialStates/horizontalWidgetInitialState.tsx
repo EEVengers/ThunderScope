@@ -7,8 +7,8 @@ const HorizontalWidgetInitialState = {
     mode: ControlMode.Course,
     index: 15,
     course: {
-      value: DefaultValues.horizontalTimeBases_New[15].value,
-      unit: DefaultValues.horizontalTimeBases_New[15].unit
+      value: DefaultValues.horizontalTimeBases[15].value,
+      unit: DefaultValues.horizontalTimeBases[15].unit
     },
     fine: {
       value: 0,

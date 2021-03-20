@@ -1,7 +1,7 @@
 import VoltageUnit from './enums/voltageUnit';
 import TimeUnit from './enums/timeUnit';
 
-const x1ProbeValues_New = [
+const x1ProbeValues = [
   {
     value: 10,
     unit: VoltageUnit.Volt
@@ -56,7 +56,7 @@ const x1ProbeValues_New = [
   }
 ];
 
-const x10ProbeValues_New = [
+const x10ProbeValues = [
   {
     value: 100,
     unit: VoltageUnit.Volt
@@ -114,7 +114,7 @@ const x10ProbeValues_New = [
 // 13 different voltages per divison presets
 // Start at x1ProbeValues[6] and change accordingly 
 
-const horizontalTimeBases_New = [
+const horizontalTimeBases = [
   {
     value: 1,
     unit: TimeUnit.NanoSecond
@@ -244,7 +244,7 @@ const horizontalTimeBases_New = [
 // Start at horizontalTimeBases[15] and change accordingly
 
 export default {
-  x1ProbeValues_New,
-  x10ProbeValues_New,
-  horizontalTimeBases_New
+  x1ProbeValues,
+  x10ProbeValues,
+  horizontalTimeBases
 };

@@ -166,7 +166,7 @@ class VerticalWidget extends React.Component<any, any> {
         </button>
       </div>
 
-      {this.props.verticalWidget.settings[this.props.verticalWidget.activeChannel-1].controlMode == ControlMode.Fine &&
+      {this.props.verticalWidget.settings[this.props.verticalWidget.activeChannel-1].controlMode === ControlMode.Fine &&
         <div className="FineModeUnitButtons">
         <button
           className="NanoVoltButtonVertical"

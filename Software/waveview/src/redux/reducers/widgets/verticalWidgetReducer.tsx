@@ -57,11 +57,11 @@ export default function(state = VerticalWidgetInitialState, action: {type: any, 
       tmp2 = state.timePerDivision;
       
       tmp2[channelIndex].course.value = action.payload === ProbeMode.x1 
-        ? DefaultValues.x1ProbeValues_New[state.timePerDivision[channelIndex].index].value 
-        : DefaultValues.x10ProbeValues_New[state.timePerDivision[channelIndex].index].value;
+        ? DefaultValues.x1ProbeValues[state.timePerDivision[channelIndex].index].value 
+        : DefaultValues.x10ProbeValues[state.timePerDivision[channelIndex].index].value;
       tmp2[channelIndex].course.unit = action.payload === ProbeMode.x1 
-        ? DefaultValues.x1ProbeValues_New[state.timePerDivision[channelIndex].index].unit 
-        : DefaultValues.x10ProbeValues_New[state.timePerDivision[channelIndex].index].unit;
+        ? DefaultValues.x1ProbeValues[state.timePerDivision[channelIndex].index].unit 
+        : DefaultValues.x10ProbeValues[state.timePerDivision[channelIndex].index].unit;
 
       tmp3 = state.verticalOffset;
 
@@ -84,7 +84,7 @@ export default function(state = VerticalWidgetInitialState, action: {type: any, 
       tmp = state.settings;
       var newTotalChannelsUsed = state.totalChannelsUsed;
 
-      if (tmp[action.payload].status == 0) {
+      if (tmp[action.payload].status === 0) {
         tmp[action.payload].status = 1;
         newTotalChannelsUsed++;
       }
@@ -121,11 +121,11 @@ export default function(state = VerticalWidgetInitialState, action: {type: any, 
 
       tmp[channelIndex].index = state.timePerDivision[channelIndex].index - 1;
       tmp[channelIndex].course.value = state.settings[channelIndex].probeMode === ProbeMode.x1 
-        ? DefaultValues.x1ProbeValues_New[tmp[channelIndex].index].value 
-        : DefaultValues.x10ProbeValues_New[tmp[channelIndex].index].value;
+        ? DefaultValues.x1ProbeValues[tmp[channelIndex].index].value 
+        : DefaultValues.x10ProbeValues[tmp[channelIndex].index].value;
       tmp[channelIndex].course.unit = state.settings[channelIndex].probeMode === ProbeMode.x1 
-        ? DefaultValues.x1ProbeValues_New[tmp[channelIndex].index].unit 
-        : DefaultValues.x10ProbeValues_New[tmp[channelIndex].index].unit;
+        ? DefaultValues.x1ProbeValues[tmp[channelIndex].index].unit 
+        : DefaultValues.x10ProbeValues[tmp[channelIndex].index].unit;
 
       tmp2 = state.verticalOffset;
 
@@ -143,11 +143,11 @@ export default function(state = VerticalWidgetInitialState, action: {type: any, 
 
       tmp[channelIndex].index = state.timePerDivision[channelIndex].index + 1;
       tmp[channelIndex].course.value = state.settings[channelIndex].probeMode === ProbeMode.x1 
-        ? DefaultValues.x1ProbeValues_New[tmp[channelIndex].index].value 
-        : DefaultValues.x10ProbeValues_New[tmp[channelIndex].index].value;
+        ? DefaultValues.x1ProbeValues[tmp[channelIndex].index].value 
+        : DefaultValues.x10ProbeValues[tmp[channelIndex].index].value;
       tmp[channelIndex].course.unit = state.settings[channelIndex].probeMode === ProbeMode.x1 
-        ? DefaultValues.x1ProbeValues_New[tmp[channelIndex].index].unit 
-        : DefaultValues.x10ProbeValues_New[tmp[channelIndex].index].unit;
+        ? DefaultValues.x1ProbeValues[tmp[channelIndex].index].unit 
+        : DefaultValues.x10ProbeValues[tmp[channelIndex].index].unit;
 
       tmp2 = state.verticalOffset;
 

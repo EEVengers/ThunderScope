@@ -13,7 +13,7 @@ export default function(state = HorizontalWidgetInitialState, action: {type: any
         },
         horizontalOffset: {
           ...state.horizontalOffset,
-          unit: action.payload == ControlMode.Fine ? state.horizontalTimeBase.fine.unit : state.horizontalTimeBase.course.unit
+          unit: action.payload === ControlMode.Fine ? state.horizontalTimeBase.fine.unit : state.horizontalTimeBase.course.unit
         }
       }
     case "horizontal/changeTimeBaseUnit":
@@ -40,14 +40,14 @@ export default function(state = HorizontalWidgetInitialState, action: {type: any
         horizontalTimeBase: {
           ...state.horizontalTimeBase,
           course: {
-            value: DefaultValues.horizontalTimeBases_New[state.horizontalTimeBase.index + 1].value,
-            unit: DefaultValues.horizontalTimeBases_New[state.horizontalTimeBase.index + 1].unit
+            value: DefaultValues.horizontalTimeBases[state.horizontalTimeBase.index + 1].value,
+            unit: DefaultValues.horizontalTimeBases[state.horizontalTimeBase.index + 1].unit
           },
           index: state.horizontalTimeBase.index + 1
         },
         horizontalOffset: {
           ...state.horizontalOffset,
-          unit: DefaultValues.horizontalTimeBases_New[state.horizontalTimeBase.index + 1].unit
+          unit: DefaultValues.horizontalTimeBases[state.horizontalTimeBase.index + 1].unit
         }
       }
     case "horizontal/decreaseTimeBase":
@@ -59,14 +59,14 @@ export default function(state = HorizontalWidgetInitialState, action: {type: any
         horizontalTimeBase: {
           ...state.horizontalTimeBase,
           course: {
-            value: DefaultValues.horizontalTimeBases_New[state.horizontalTimeBase.index - 1].value,
-            unit: DefaultValues.horizontalTimeBases_New[state.horizontalTimeBase.index - 1].unit
+            value: DefaultValues.horizontalTimeBases[state.horizontalTimeBase.index - 1].value,
+            unit: DefaultValues.horizontalTimeBases[state.horizontalTimeBase.index - 1].unit
           },
           index: state.horizontalTimeBase.index - 1
         },
         horizontalOffset: {
           ...state.horizontalOffset,
-          unit: DefaultValues.horizontalTimeBases_New[state.horizontalTimeBase.index - 1].unit
+          unit: DefaultValues.horizontalTimeBases[state.horizontalTimeBase.index - 1].unit
         }
       }
     case "horizontal/increaseTimeBaseFine":

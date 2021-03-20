@@ -17,8 +17,8 @@ const VerticalWidgetInitialState = {
   timePerDivision: [
     {
       course: {
-        value: DefaultValues.x1ProbeValues_New[6].value,
-        unit: DefaultValues.x1ProbeValues_New[6].unit
+        value: DefaultValues.x1ProbeValues[6].value,
+        unit: DefaultValues.x1ProbeValues[6].unit
       },
       fine: {
         value: 0,
@@ -29,8 +29,8 @@ const VerticalWidgetInitialState = {
     }, 
     {
       course: {
-        value: DefaultValues.x1ProbeValues_New[6].value,
-        unit: DefaultValues.x1ProbeValues_New[6].unit
+        value: DefaultValues.x1ProbeValues[6].value,
+        unit: DefaultValues.x1ProbeValues[6].unit
       },
       fine: {
         value: 0,
@@ -41,8 +41,8 @@ const VerticalWidgetInitialState = {
     }, 
     {
       course: {
-        value: DefaultValues.x1ProbeValues_New[6].value,
-        unit: DefaultValues.x1ProbeValues_New[6].unit
+        value: DefaultValues.x1ProbeValues[6].value,
+        unit: DefaultValues.x1ProbeValues[6].unit
       },
       fine: {
         value: 0,
@@ -53,8 +53,8 @@ const VerticalWidgetInitialState = {
     }, 
     {
       course: {
-        value: DefaultValues.x1ProbeValues_New[6].value,
-        unit: DefaultValues.x1ProbeValues_New[6].unit
+        value: DefaultValues.x1ProbeValues[6].value,
+        unit: DefaultValues.x1ProbeValues[6].unit
       },
       fine: {
         value: 0,
