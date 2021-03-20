@@ -82,4 +82,7 @@ uint32_t writeToCsv (char* filename, int8_t* data, uint32_t row, uint32_t col, i
 // buffor functor to deallocate all items in a queue
 void bufferFunctor(buffer* a);
 
+bool loadFromFile ( char* filename, boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> *outputQ);
+
+
 #endif
