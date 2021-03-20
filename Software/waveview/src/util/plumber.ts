@@ -8,7 +8,7 @@ export enum CMD {
   //Demo commands
   CMD_SetFile = 0x11,
   CMD_RampDemo = 0x1F,
-  
+
   //Get Config commands
   CMD_GetWindowSize = 0x21,
   CMD_GetCh = 0x22,
@@ -43,12 +43,12 @@ export class Plumber {
   private static instance: Plumber
   private bridge: any;
   private ready: boolean;
-  private cmdCache: {[key: number]: PlumberArgs };
+  private cmdQueue: PlumberArgs[];
 
   private constructor() {
     this.bridge = (window as any).thunderBridge;
     this.ready = true;
-    this.cmdCache = {};
+    this.cmdQueue = [];
   }
 
   public static getInstance(): Plumber {
@@ -58,69 +58,65 @@ export class Plumber {
     return Plumber.instance;
   }
 
+  private nextCycle() {
+    console.log("nextCycle");
+    var args = this.cmdQueue.shift();
+    this.ready = true;
+    if(args) {
+      this.cycle(args);
+    }
+  }
+
   private doRead(args: PlumberArgs) {
-    var rxBuff = new Int8Array(new ArrayBuffer(6));
-    this.bridge.read(rxBuff, (err: NodeJS.ErrnoException, bytesRead: number, bytes: Int8Array) => {
+    var rxBuff = new Uint8Array(new ArrayBuffer(6));
+    this.bridge.read(rxBuff, (err: NodeJS.ErrnoException, bytesRead: number, bytes: Uint8Array) => {
       var bytes16 = new Uint16Array(bytes.buffer);
       var dataSize = bytes16[2];
       if(!args.headCheck(args, bytes16) || dataSize == 0) {
-        this.ready = true;
+        this.nextCycle();
         return;
       }
 
       var dataRxBuff = new Int8Array(dataSize);
       this.bridge.read(dataRxBuff, (nestedErr: NodeJS.ErrnoException, nestedBytesRead: number, nestedBytes: Int8Array) => {
-        this.ready = true;
+        this.nextCycle();
         args.bodyCheck(args, nestedBytesRead, nestedBytes);
       });
     });
   }
 
-  private makePacket(args: PlumberArgs) {
+  private argsToPacket(args: PlumberArgs) {
     var fullSize = 6 + args.writeData.length;
     var packet16 = new Uint16Array(new ArrayBuffer(fullSize));
     packet16[0] = args.cmd;
     packet16[1] = args.id;
     packet16[2] = args.writeData.length;
-    
+
     //Not expecting to write large bodies to C++
-    var packet8 = new Uint8Array(packet16.buffer);
+    var packet8 = new Int8Array(packet16.buffer);
     for(var i = 0; i < args.writeData.length; i++) {
       packet8[i + 6] = args.writeData[i];
     }
     return packet8;
   }
 
-  public makeSetMathData(lhsChan: number, rhsChan: number, op: SetMathOp) {
-    return [lhsChan, rhsChan, op, 0];
+  public cycle(args: PlumberArgs) {
+    console.log("cycle: " + args.cmd);
+    if(this.ready) {
+      var packet8 = this.argsToPacket(args);
+      this.ready = false;
+      console.log("write: " + args.cmd);
+      this.bridge.write(packet8,() => {
+        this.doRead(args);
+      });
+    }
+    else if(args.cmd >= 0x20 || args.cmd == 0x11) {
+      console.log("queue: " + args.cmd);
+      this.cmdQueue.push(args);
+    }
   }
 
-  public cycle(args: PlumberArgs) {
-    if(this.ready) {
-      this.ready = false;
-      var packet: Uint8Array;
-      var realArgs: PlumberArgs;
-      if(Object.keys(this.cmdCache).length > 0) {
-        var overrideArgs = Object.values(this.cmdCache)[0];
-        delete this.cmdCache[overrideArgs.cmd as number];
-        packet = this.makePacket(overrideArgs);
-        realArgs = overrideArgs;
-      }
-      else {
-        packet = this.makePacket(args);
-        realArgs = args;
-      }
-
-      this.bridge.write(packet,() => {
-        this.doRead(realArgs);
-      });
-      return true;
-    }
-    else {
-      if(args.cmd >= 0x20) {
-        this.cmdCache[args.cmd as number] = args;
-      }
-      return false;
-    }
+  public makeSetMathData(lhsChan: number, rhsChan: number, op: SetMathOp) {
+    return [lhsChan, rhsChan, op, 0];
   }
 }
