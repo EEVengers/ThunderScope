@@ -82,6 +82,7 @@ module dso_top
   wire divclk;
   wire[63:0] data_deser;
   wire[63:0] adc_data;	
+  wire serdes_ready;
   
   assign adc_pd = 1'b0;
   assign adc_rstn = 1'b1;
@@ -113,29 +114,30 @@ module dso_top
   end
   assign probe_comp = probe_div_clk;
   
-  //Fake ADC Data for FIFO
-  reg[7:0] data_counter;
-  always @ (posedge divclk) begin
-    if (!S01_ARESETN) begin
-        data_counter <= 0;
-    end
-    else begin
-        data_counter <= data_counter + 1'b1;
-    end   
-  end
-  assign adc_data = {16{data_counter}};
+  wire[7:0] fclk_deser;
+  //assign adc_data = {~data_deser[63:24],fclk_deser,~data_deser[15:0]};
+  assign adc_data = {~data_deser[63:24],data_deser[23:16],~data_deser[15:0]};
+  //assign adc_data = {8'h77,8'h66,8'h55,8'h44,8'h33,8'h22,8'h11,8'h00};
   
-  //assign adc_data = {~data_deser[63:32],data_deser[31:24],~data_deser[23:0]};
+  wire serdes_rst;
+  reg [2:0] serdes_rst_cdc = 3'b111;
+  always @(posedge divclk)
+    serdes_rst_cdc <= { serdes_rst_cdc[1:0], !S01_ARESETN };
+  assign serdes_rst = serdes_rst_cdc[2];
 
   serdes serdes (
+	.rst            (serdes_rst),
 	.adc_lclk_p		(adc_lclk_p),
 	.adc_lclk_n		(adc_lclk_n),
 	.adc_fclk_p		(adc_fclk_p),
 	.adc_fclk_n		(adc_fclk_n),
 	.adc_data_p		(adc_data_p),
 	.adc_data_n		(adc_data_n),
+	.axi_aclk       (axi_aclk),
 	.divclk			(divclk),
-	.data_deser		(data_deser)
+	.data_deser		(data_deser),
+	.fclk_deser     (fclk_deser),
+	.ready          (serdes_ready)
 	);
 
   adc_to_datamover adc_to_datamover (
@@ -154,7 +156,8 @@ module dso_top
     .s2mm_halt(s2mm_halt),
     .s2mm_wr_xfer_cmplt(s2mm_wr_xfer_cmplt),
     .gpio_io_o_0(gpio_io_o_0),
-    .gpio2_io_i(gpio2_io_i)
+    .gpio2_io_i(gpio2_io_i),
+    .serdes_ready (serdes_ready)
   );
   
   serial_controller  serial_controller(
@@ -174,47 +177,49 @@ module dso_top
     );
 
   design_1 design_1_i
-       (
-        .AXI_STR_TXD_0_tdata(AXI_STR_TXD_0_tdata),
-        .AXI_STR_TXD_0_tlast(AXI_STR_TXD_0_tlast),
-        .AXI_STR_TXD_0_tready(AXI_STR_TXD_0_tready),
-        .AXI_STR_TXD_0_tvalid(AXI_STR_TXD_0_tvalid),
-        .DDR3_addr(DDR3_addr),
-        .DDR3_ba(DDR3_ba),
-        .DDR3_cas_n(DDR3_cas_n),
-        .DDR3_ck_n(DDR3_ck_n),
-        .DDR3_ck_p(DDR3_ck_p),
-        .DDR3_cke(DDR3_cke),
-        .DDR3_cs_n(DDR3_cs_n),
-        .DDR3_dm(DDR3_dm),
-        .DDR3_dq(DDR3_dq),
-        .DDR3_dqs_n(DDR3_dqs_n),
-        .DDR3_dqs_p(DDR3_dqs_p),
-        .DDR3_odt(DDR3_odt),
-        .DDR3_ras_n(DDR3_ras_n),
-        .DDR3_reset_n(DDR3_reset_n),
-        .DDR3_we_n(DDR3_we_n),
-        .S01_ARESETN(S01_ARESETN),
-        .S_AXIS_S2MM_CMD_tdata(S_AXIS_S2MM_CMD_tdata),
-        .S_AXIS_S2MM_CMD_tready(S_AXIS_S2MM_CMD_tready),
-        .S_AXIS_S2MM_CMD_tvalid(S_AXIS_S2MM_CMD_tvalid),
-        .S_AXIS_S2MM_tdata(S_AXIS_S2MM_tdata),
-        .S_AXIS_S2MM_tready(S_AXIS_S2MM_tready),
-        .S_AXIS_S2MM_tvalid(S_AXIS_S2MM_tvalid),
-        .axi_aclk(axi_aclk),
-        .axi_aresetn(axi_aresetn),
-        .gpio2_io_i(gpio2_io_i),
-        .gpio2_io_i_0(gpio2_io_i_0),
-        .gpio_io_o_0(gpio_io_o_0),
-        .gpio_io_o_1(gpio_io_o_1),
-        .pcie_clk_n(pcie_clk_n),
-        .pcie_clk_p(pcie_clk_p),
-        .pcie_mgt_rxn(pcie_mgt_rxn),
-        .pcie_mgt_rxp(pcie_mgt_rxp),
-        .pcie_mgt_txn(pcie_mgt_txn),
-        .pcie_mgt_txp(pcie_mgt_txp),
-        .pcie_perstn(pcie_perstn),
-        .s2mm_err(s2mm_err),
-        .s2mm_halt(s2mm_halt),
-        .s2mm_wr_xfer_cmplt(s2mm_wr_xfer_cmplt));
+   (
+    .AXI_STR_TXD_0_tdata(AXI_STR_TXD_0_tdata),
+    .AXI_STR_TXD_0_tlast(AXI_STR_TXD_0_tlast),
+    .AXI_STR_TXD_0_tready(AXI_STR_TXD_0_tready),
+    .AXI_STR_TXD_0_tvalid(AXI_STR_TXD_0_tvalid),
+    .DDR3_addr(DDR3_addr),
+    .DDR3_ba(DDR3_ba),
+    .DDR3_cas_n(DDR3_cas_n),
+    .DDR3_ck_n(DDR3_ck_n),
+    .DDR3_ck_p(DDR3_ck_p),
+    .DDR3_cke(DDR3_cke),
+    .DDR3_cs_n(DDR3_cs_n),
+    .DDR3_dm(DDR3_dm),
+    .DDR3_dq(DDR3_dq),
+    .DDR3_dqs_n(DDR3_dqs_n),
+    .DDR3_dqs_p(DDR3_dqs_p),
+    .DDR3_odt(DDR3_odt),
+    .DDR3_ras_n(DDR3_ras_n),
+    .DDR3_reset_n(DDR3_reset_n),
+    .DDR3_we_n(DDR3_we_n),
+    .S01_ARESETN(S01_ARESETN),
+    .S_AXIS_S2MM_CMD_tdata(S_AXIS_S2MM_CMD_tdata),
+    .S_AXIS_S2MM_CMD_tready(S_AXIS_S2MM_CMD_tready),
+    .S_AXIS_S2MM_CMD_tvalid(S_AXIS_S2MM_CMD_tvalid),
+    .S_AXIS_S2MM_tdata(S_AXIS_S2MM_tdata),
+    .S_AXIS_S2MM_tready(S_AXIS_S2MM_tready),
+    .S_AXIS_S2MM_tvalid(S_AXIS_S2MM_tvalid),
+    .axi_aclk(axi_aclk),
+    .axi_aresetn(axi_aresetn),
+    .gpio2_io_i(gpio2_io_i),
+    .gpio2_io_i_0(gpio2_io_i_0),
+    .gpio_io_o_0(gpio_io_o_0),
+    .gpio_io_o_1(gpio_io_o_1),
+    .pcie_clk_n(pcie_clk_n),
+    .pcie_clk_p(pcie_clk_p),
+    .pcie_mgt_rxn(pcie_mgt_rxn),
+    .pcie_mgt_rxp(pcie_mgt_rxp),
+    .pcie_mgt_txn(pcie_mgt_txn),
+    .pcie_mgt_txp(pcie_mgt_txp),
+    .pcie_perstn(pcie_perstn),
+    .s2mm_err(s2mm_err),
+    .s2mm_halt(s2mm_halt),
+    .s2mm_wr_xfer_cmplt(s2mm_wr_xfer_cmplt)
+    );
+        
 endmodule
