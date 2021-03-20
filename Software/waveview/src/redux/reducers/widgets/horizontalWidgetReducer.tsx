@@ -1,27 +1,8 @@
 import DefaultValues from '../../../configuration/defaultValues';
-import TimeUnit from '../../../configuration/enums/timeUnit';
 import ControlMode from '../../../configuration/enums/controlMode';
+import HorizontalWidgetInitialState from '../../initialStates/horizontalWidgetInitialState';
 
-const initialState = {
-  horizontalTimeBase: {
-    mode: ControlMode.Course,
-    index: 15,
-    course: {
-      value: DefaultValues.horizontalTimeBases_New[15].value,
-      unit: DefaultValues.horizontalTimeBases_New[15].unit
-    },
-    fine: {
-      value: 0,
-      unit: TimeUnit.MicroSecond
-    }
-  },
-  horizontalOffset: {
-    value: 0, 
-    unit: TimeUnit.MicroSecond
-  }
-};
-
-export default function(state = initialState, action: {type: any, payload: any}) {
+export default function(state = HorizontalWidgetInitialState, action: {type: any, payload: any}) {
   switch(action.type) {
     case "horizontal/changeTimeBaseMode":
       return {
