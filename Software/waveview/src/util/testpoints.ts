@@ -43,7 +43,7 @@ class TestPoints {
         }
         return true;
       },
-      cmd: CMD.CMD_RampDemo,
+      cmd: CMD.CMD_GetData1,
       id: 0x1F2C,
       writeData: [0, 0]
     };
