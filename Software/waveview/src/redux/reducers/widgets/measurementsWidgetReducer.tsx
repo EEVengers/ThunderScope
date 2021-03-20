@@ -1,8 +1,20 @@
+import MathType from '../../../configuration/enums/mathType';
+import TimeUnit from '../../../configuration/enums/timeUnit';
+import VoltageUnit from '../../../configuration/enums/voltageUnit';
+
 const initialState = {
-  leftValue1: "X1->X2",
-  rightValue1: "500ns",
-  leftValue2: "Y1->Y2",
-  rightValue2: "300mV"
+  measurement: [
+    {
+      mathType: MathType.Max,
+      value: 500,
+      unit: TimeUnit.NanoSecond
+    },
+    {
+      mathType: MathType.Min,
+      value: 300,
+      unit: VoltageUnit.MilliVolt
+    }
+  ]
 };
 
 export default function(state = initialState, action: {type: any, payload: any}) { 
