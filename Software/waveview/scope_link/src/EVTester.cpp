@@ -286,16 +286,13 @@ void runPCIeTest() {
     uint8_t* buff = (uint8_t*)malloc(sizeof(uint8_t) * (1 << 23));
     pcieLink->Read(buff);
 
-    std::ofstream fout{ "ReadData.txt" };
-    if(!fout) {
-        INFO << "Could Not Open File";
-    } else {
-        for(int i = 0; i < (1 << 23); i+= 8) {
-            printf("%X,%X,%X,%X,%X,%X,%X,%X\n",
-                buff[i],buff[i + 1],buff[i + 2],buff[i + 3],buff[i + 4],buff[i + 5],buff[i + 6],buff[i + 7]);
-        }
+    FILE* fp = fopen("TestData.txt","w");
+    for(int i = 0; i < (1 << 23); i+= 8) {
+        fprintf(fp,"%X,%X,%X,%X,%X,%X,%X,%X\n",
+            buff[i],buff[i + 1],buff[i + 2],buff[i + 3],buff[i + 4],buff[i + 5],buff[i + 6],buff[i + 7]);
     }
 
+    fclose(fp);
     free(buff);
     delete pcieLink;
 }

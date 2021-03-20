@@ -138,8 +138,24 @@ void PCIeLink::Read(uint8_t* buff) {
         INFO << "Current Chunk: " << current_chunk;
         if(last_chunk_read == -1) {
             enoughData = (kbytes_4_moved >= (1 << 11));
+            if(enoughData && current_chunk == 0) {
+                enoughData = false;
+                continue;
+            } else {
+                current_chunk = current_chunk - 1;
+            }
         } else {
             enoughData = (current_chunk != last_chunk_read);
+            if(enoughData && (current_chunk - last_chunk_read == 1 || (current_chunk == 0 && last_chunk_read == 31))) { //if the datamover is still writing to the next chunk, dont read it
+                enoughData = false;
+                continue;
+            } else { //otherwise decretment the current chunk by 1 to read the next finished chunk
+                if(current_chunk == 0) {
+                    current_chunk = 31;
+                } else {
+                    current_chunk = current_chunk - 1;
+                }
+            }
         }
     }
     last_chunk_read = current_chunk;
