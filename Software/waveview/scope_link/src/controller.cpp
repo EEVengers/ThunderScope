@@ -114,6 +114,12 @@ void controller::controllerLoop()
                         else {
                             setFileName(currentPacket->data[0]);
                         }
+                        EVPacket* tempPacket = (EVPacket*) malloc(sizeof(EVPacket));
+                        tempPacket->data = NULL;
+                        tempPacket->dataSize = 0;
+                        tempPacket->packetID = 0;
+                        tempPacket->command = CMD_SetCh;
+                        controllerQueue_tx.push(tempPacket);
                     }
                     break;
                 case CMD_RampDemo: {
@@ -699,26 +705,37 @@ void controller::setFileName(int8_t newFile)
     switch (newFile) {
         case 1:
             newName = "./scope_link/test/test1.csv";
+            break;
         case 2:
             newName = "./scope_link/test/test2.csv";
+            break;
         case 3:
             newName = "./scope_link/test/test3.csv";
+            break;
         case 4:
             newName = "./scope_link/test/test4.csv";
+            break;
         case 5:
             newName = "./scope_link/test/test5.csv";
+            break;
         case 6:
             newName = "./scope_link/test/test6.csv";
+            break;
         case 72:
             newName = "./scope_link/test/test7-2ch.csv";
+            break;
         case 74:
             newName = "./scope_link/test/test7-4ch.csv";
+            break;
         case 8:
             newName = "./scope_link/test/test8.csv";
+            break;
         case 91:
             newName = "./scope_link/test/test9-max.csv";
+            break;
         case 92:
             newName = "./scope_link/test/test9-min.csv";
+            break;
         default:
             newName = "./scope_link/test/test1.csv";
     }
