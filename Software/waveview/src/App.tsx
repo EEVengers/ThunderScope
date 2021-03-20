@@ -25,7 +25,7 @@ class App extends React.Component {
   constructor(props: any) {
     super(props);
     this.state = initialState;
-    this.generator = new TestPoints(1000, 30);
+    this.generator = new TestPoints(50, 30);
     this.conf = new TestConf();
     this.channelList = [
       {color: "#EBFF00", className: "Channel1"},

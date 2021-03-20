@@ -70,6 +70,8 @@ enum CMD {
     CMD_GetData2 = 0x02,
     CMD_GetData3 = 0x03,
     CMD_GetData4 = 0x04,
+    CMD_GetMin = 0x05,
+    CMD_GetMax = 0x06,
 
     //Demo commands
     CMD_SetFile = 0x11,

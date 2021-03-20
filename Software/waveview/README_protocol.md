@@ -33,6 +33,8 @@ Prepend the name with `CMD_` to find it in the Electron and C++ code.
 
 Cmd  | DataSize        | Name          | Description
 -----|-----------------|---------------|------------------------
+0x01 | 2 (useless)     | GetData1      |
+0x11 | 2               | SetFile       | Number mapped to filename by C++
 0x1F | 2 (useless)     | RampDemo      |
 0x21 | 2 (useless)     | GetWindowSize |
 0x22 | 2 (useless)     | GetCh         |
@@ -58,17 +60,19 @@ Note that the encoding used by the protocol might not be same as the encoding us
 
 Cmd  | DataSize        | Name          | Description
 -----|-----------------|---------------|------------------------
+0x01 | ch * windowSize | GetData1      | Data for all ch
+0x11 | 0               | SetFile       | Set testdata filename
 0x1F | 4096            | RampDemo      | 4 ch, simple waves
 0x21 | 4               | GetWindowSize | Data has window size
 0x22 | 2               | GetCh         | Data has ch 1, 2, or 4
 0x23 | 2               | GetLevel      | Data has new level
-0x24 | 2               | GetTriggerCh  | Data has channel 1,2,3,4
+0x24 | 2               | GetTriggerCh  | Data has channel 1,2,3 or 4
 0x25 | 2               | GetEdgeType   | Data has 1 (rising) or 2 (falling)
 0x31 | 0               | SetWindowSize |
 0x32 | 0               | SetCh         |
 0x33 | 0               | SetLevel      |
 0x34 | 0               | SetTriggerCh  |
-0x35 | 0               | SetEdgeType   | 
+0x35 | 0               | SetEdgeType   |
 0x3F | 0               | SetMath       |
 
 ## Allocated But Not Implemented
@@ -77,25 +81,22 @@ Cmd  | DataSize        | Name          | Description
 
 Cmd  | DataSize        | Name          | Description
 -----|-----------------|---------------|------------------------
-0x01 | 2 (useless)     | GetData       | 
-0x02 | 2 (useless)     | Reserved      | If we need 1 command/ch
-0x03 | 2 (useless)     | Reserved      | If we need 1 command/ch
-0x04 | 2 (useless)     | Reserved      | If we need 1 command/ch
-0x11 | 2               | SetFile       | Number mapped to filename by C++
-
-
+0x02 | 2 (useless)     | GetData2      | Reserved, If we need 1 command/ch
+0x03 | 2 (useless)     | GetData3      | Reserved, If we need 1 command/ch
+0x04 | 2 (useless)     | GetData4      | Reserved, If we need 1 command/ch
+0x05 | 2               | GetMin        | Data has ch 1,2,3 or 4
+0x06 | 2               | GetMax        | Data has ch 1,2,3 or 4
 
 ### C++ -> Electron
 
 Cmd  | DataSize        | Name          | Description
 -----|-----------------|---------------|------------------------
-0x01 | ch * windowSize | GetData       | Data for all ch
 0x02 | windowSize      | Reserved      | If we need 1 command/ch
 0x03 | windowSize      | Reserved      | If we need 1 command/ch
 0x04 | windowSize      | Reserved      | If we need 1 command/ch
-0x11 | 0               | SetFile       | Set testdata filename
-
+0x05 | 4               | GetMin        | Data has ch 1,2,3 or 4
+0x06 | 4               | GetMax        | Data has ch 1,2,3 or 4
 
 ## Proposed But Not Allocated
 
-+ getMax/getMin: obsolete if scope data packets also have math
++ (none)
