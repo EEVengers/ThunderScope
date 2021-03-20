@@ -63,6 +63,10 @@ int PCIeLink::Connect() {
     char device_base_path[MAX_PATH + 1] = "";
     DWORD num_devices = get_devices(GUID_DEVINTERFACE_XDMA, device_base_path, sizeof(device_base_path));
     INFO << "Devices found: " << num_devices;
+    if(num_devices != 1) {
+        exit(1);
+    }
+        
 
     // extend device path to include target device node (xdma_control, xdma_user etc) 
     INFO << "Device base path: " << device_base_path;
@@ -138,6 +142,11 @@ void PCIeLink::Read(uint8_t* buff) {
             enoughData == current_chunk != last_chunk_read;
         }
     }
+    int64_t reading_offset = current_chunk * (2^23);
+    INFO << "Reading from current current chunk: ";
+    INFO << current_chunk;
+    INFO << "Offset: ";
+    INFO << reading_offset;
     //Read the data from ddr3 memory
     _Read(c2h_0_handle,reading_offset,buff,2^23);
 }
@@ -364,7 +373,6 @@ void PCIeLink::_Write(HANDLE hPCIE, int64_t address, uint8_t* buff, int bytesToW
 PCIeLink::PCIeLink() {
     user_handle = INVALID_HANDLE_VALUE;
     c2h_0_handle = INVALID_HANDLE_VALUE;
-    reading_offset = 0;
     dataMoverReg[0] = 0x00;
     last_chunk_read = -1;
     QueryPerformanceFrequency(&freq);

@@ -283,7 +283,7 @@ void runPCIeTest() {
     pcieLink->Write(adc_enable,nullptr);
     pcieLink->Write(dataMover_enable,nullptr);
     
-    uint8_t buff[(1 << 23)] = {0};
+    uint8_t* buff = (uint8_t*)malloc(sizeof(uint8_t) * (1 << 23));
     pcieLink->Read(buff);
 
     std::ofstream fout{ "ReadData.bin" };
@@ -295,5 +295,6 @@ void runPCIeTest() {
         }
     }
 
+    free(buff);
     delete pcieLink;
 }
