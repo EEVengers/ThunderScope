@@ -7,9 +7,10 @@ class TimePerDivision extends React.Component<any, any> {
   render() {
     return(
       <div className="TimePerDivisionComponent">
-        {this.props.horizontalWidget.horizontalTimeBase.mode == ControlMode.Course && this.props.horizontalWidget.horizontalTimeBase.value.toString()}
-        {this.props.horizontalWidget.horizontalTimeBase.mode == ControlMode.Fine && this.props.horizontalWidget.horizontalTimeBase.fineValue.toString()}
-        {this.props.horizontalWidget.horizontalTimeBase.mode == ControlMode.Fine && this.props.horizontalWidget.horizontalTimeBase.fineUnit.toString() + "/div"}
+        {this.props.horizontalWidget.horizontalTimeBase.mode === ControlMode.Course && this.props.horizontalWidget.horizontalTimeBase.course.value.toString()}
+        {this.props.horizontalWidget.horizontalTimeBase.mode === ControlMode.Course && this.props.horizontalWidget.horizontalTimeBase.course.unit.toString() + "/div"}
+        {this.props.horizontalWidget.horizontalTimeBase.mode === ControlMode.Fine && this.props.horizontalWidget.horizontalTimeBase.fine.value.toString()}
+        {this.props.horizontalWidget.horizontalTimeBase.mode === ControlMode.Fine && this.props.horizontalWidget.horizontalTimeBase.fine.unit.toString() + "/div"}
       </div>
     )
   }

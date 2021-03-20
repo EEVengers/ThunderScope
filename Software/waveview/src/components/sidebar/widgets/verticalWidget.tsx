@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import DefaultValues from '../../../configuration/defaultValues';
 import ControlMode from '../../../configuration/enums/controlMode';
 import VoltageUnit from '../../../configuration/enums/voltageUnit';
 import MeasurementType from '../../../configuration/enums/measurementType';
@@ -81,7 +80,7 @@ class VerticalWidget extends React.Component<any, any> {
           onDoubleClick={() => this.changeChannelStatus(0)}>
           <label
             className={"Channel1ButtonText"}
-            style={{color: this.props.verticalWidget.settings[0].status == 1 ? this.props.verticalWidget.channelColorsList[0] : "black"}}>
+            style={{color: this.props.verticalWidget.settings[0].status === 1 ? this.props.verticalWidget.channelColorsList[0] : "black"}}>
             CH1
           </label>
         </button>
@@ -91,7 +90,7 @@ class VerticalWidget extends React.Component<any, any> {
           onDoubleClick={() => this.changeChannelStatus(1)}>
           <label
             className={"Channel2ButtonText"}
-            style={{color: this.props.verticalWidget.settings[1].status == 1 ? this.props.verticalWidget.channelColorsList[1] : "black"}}>
+            style={{color: this.props.verticalWidget.settings[1].status === 1 ? this.props.verticalWidget.channelColorsList[1] : "black"}}>
             CH2
           </label>
         </button>
@@ -101,7 +100,7 @@ class VerticalWidget extends React.Component<any, any> {
           onDoubleClick={() => this.changeChannelStatus(2)}>
           <label
             className={"Channel3ButtonText"}
-            style={{color: this.props.verticalWidget.settings[2].status == 1 ? this.props.verticalWidget.channelColorsList[2] : "black"}}>
+            style={{color: this.props.verticalWidget.settings[2].status === 1 ? this.props.verticalWidget.channelColorsList[2] : "black"}}>
             CH3
           </label>
         </button>
@@ -111,7 +110,7 @@ class VerticalWidget extends React.Component<any, any> {
           onDoubleClick={() => this.changeChannelStatus(3)}>
           <label
             className={"Channel4ButtonText"}
-            style={{color: this.props.verticalWidget.settings[3].status == 1 ? this.props.verticalWidget.channelColorsList[3] : "black"}}>
+            style={{color: this.props.verticalWidget.settings[3].status === 1 ? this.props.verticalWidget.channelColorsList[3] : "black"}}>
             CH4
           </label>
         </button>
@@ -126,7 +125,7 @@ class VerticalWidget extends React.Component<any, any> {
             onClick={() => this.changeControlMode(ControlMode.Course)}>
               <label
                 className=""
-                style={{fontWeight: this.props.verticalWidget.settings[this.props.verticalWidget.activeChannel-1].controlMode ==  ControlMode.Course ? "bold" : "normal"}}>
+                style={{fontWeight: this.props.verticalWidget.settings[this.props.verticalWidget.activeChannel-1].controlMode ===  ControlMode.Course ? "bold" : "normal"}}>
                 Course
               </label>
           </button>
@@ -135,7 +134,7 @@ class VerticalWidget extends React.Component<any, any> {
             onClick={() => this.changeControlMode(ControlMode.Fine)}>
               <label
                   className=""
-                  style={{fontWeight: this.props.verticalWidget.settings[this.props.verticalWidget.activeChannel-1].controlMode ==  ControlMode.Fine ? "bold" : "normal"}}>
+                  style={{fontWeight: this.props.verticalWidget.settings[this.props.verticalWidget.activeChannel-1].controlMode ===  ControlMode.Fine ? "bold" : "normal"}}>
                   Fine
               </label>
           </button>
@@ -144,37 +143,37 @@ class VerticalWidget extends React.Component<any, any> {
       <div className="VerticalWidgetAdjustBlock-TimePerDivision">
         <button 
           className="MinusButton"
-          onClick={() => this.props.verticalWidget.settings[this.props.verticalWidget.activeChannel-1].controlMode == ControlMode.Course ? this.decrementTimePerDivision() : this.decrementTimePerDivisionFine()}>
+          onClick={() => this.props.verticalWidget.settings[this.props.verticalWidget.activeChannel-1].controlMode === ControlMode.Course ? this.decrementTimePerDivision() : this.decrementTimePerDivisionFine()}>
           -
         </button>
         <label 
           className="AdjustValueBlockTimePerDivision"
           style={{color: this.props.verticalWidget.channelColorsList[this.props.verticalWidget.activeChannel-1]}}
         >
-          {this.props.verticalWidget.settings[this.props.verticalWidget.activeChannel-1].controlMode == ControlMode.Course 
-            && this.props.verticalWidget.settings[this.props.verticalWidget.activeChannel-1].probeMode == ProbeMode.x1
-            && DefaultValues.x1ProbeValues[this.props.verticalWidget.timePerDivision[this.props.verticalWidget.activeChannel-1].index]}
-          {this.props.verticalWidget.settings[this.props.verticalWidget.activeChannel-1].controlMode == ControlMode.Course 
-            && this.props.verticalWidget.settings[this.props.verticalWidget.activeChannel-1].probeMode == ProbeMode.x10
-            && DefaultValues.x10ProbeValues[this.props.verticalWidget.timePerDivision[this.props.verticalWidget.activeChannel-1].index]}  
-          {this.props.verticalWidget.settings[this.props.verticalWidget.activeChannel-1].controlMode == ControlMode.Fine && this.props.verticalWidget.timePerDivision[this.props.verticalWidget.activeChannel-1].fineValue.toString()}
-          {this.props.verticalWidget.settings[this.props.verticalWidget.activeChannel-1].controlMode == ControlMode.Fine && this.props.verticalWidget.timePerDivision[this.props.verticalWidget.activeChannel-1].fineUnit.toString() + "/div"}
+          {this.props.verticalWidget.settings[this.props.verticalWidget.activeChannel-1].controlMode === ControlMode.Course 
+            && this.props.verticalWidget.timePerDivision[this.props.verticalWidget.activeChannel-1].course.value.toString()
+            + this.props.verticalWidget.timePerDivision[this.props.verticalWidget.activeChannel-1].course.unit.toString() + "/div"}
+          {this.props.verticalWidget.settings[this.props.verticalWidget.activeChannel-1].controlMode === ControlMode.Fine 
+            && (this.props.verticalWidget.settings[this.props.verticalWidget.activeChannel-1].probeMode === ProbeMode.x1 
+              ? this.props.verticalWidget.timePerDivision[this.props.verticalWidget.activeChannel-1].fine.value.toString()
+              : this.props.verticalWidget.timePerDivision[this.props.verticalWidget.activeChannel-1].fine.x10value.toString())
+            + this.props.verticalWidget.timePerDivision[this.props.verticalWidget.activeChannel-1].fine.unit.toString() + "/div"}
         </label>
         <button 
           className="PlusButton"
-          onClick={() => this.props.verticalWidget.settings[this.props.verticalWidget.activeChannel-1].controlMode == ControlMode.Course ? this.incrementTimePerDivision() : this.incrementTimePerDivisionFine()}>
+          onClick={() => this.props.verticalWidget.settings[this.props.verticalWidget.activeChannel-1].controlMode === ControlMode.Course ? this.incrementTimePerDivision() : this.incrementTimePerDivisionFine()}>
           +
         </button>
       </div>
 
-      {this.props.verticalWidget.settings[this.props.verticalWidget.activeChannel-1].controlMode == ControlMode.Fine &&
+      {this.props.verticalWidget.settings[this.props.verticalWidget.activeChannel-1].controlMode === ControlMode.Fine &&
         <div className="FineModeUnitButtons">
         <button
           className="NanoVoltButtonVertical"
           onClick={() => this.changeDivisionUnit(VoltageUnit.NanoVolt)}>
           <label
             className={"MicroVoltButtonText"}
-            style={{fontWeight: this.props.verticalWidget.timePerDivision[this.props.verticalWidget.activeChannel-1].fineUnit == VoltageUnit.NanoVolt? "bold" : "normal"}}>
+            style={{fontWeight: this.props.verticalWidget.timePerDivision[this.props.verticalWidget.activeChannel-1].fine.unit === VoltageUnit.NanoVolt? "bold" : "normal"}}>
             {VoltageUnit.NanoVolt}
           </label>
         </button>
@@ -183,7 +182,7 @@ class VerticalWidget extends React.Component<any, any> {
           onClick={() => this.changeDivisionUnit(VoltageUnit.MicroVolt)}>
           <label
             className={"MicroVoltButtonText"}
-            style={{fontWeight: this.props.verticalWidget.timePerDivision[this.props.verticalWidget.activeChannel-1].fineUnit == VoltageUnit.MicroVolt? "bold" : "normal"}}>
+            style={{fontWeight: this.props.verticalWidget.timePerDivision[this.props.verticalWidget.activeChannel-1].fine.unit === VoltageUnit.MicroVolt? "bold" : "normal"}}>
             {VoltageUnit.MicroVolt}
           </label>
         </button>
@@ -192,7 +191,7 @@ class VerticalWidget extends React.Component<any, any> {
           onClick={() => this.changeDivisionUnit(VoltageUnit.MilliVolt)}>
           <label
             className={"MilliVoltButtonText"}
-            style={{fontWeight: this.props.verticalWidget.timePerDivision[this.props.verticalWidget.activeChannel-1].fineUnit == VoltageUnit.MilliVolt ? "bold" : "normal"}}>
+            style={{fontWeight: this.props.verticalWidget.timePerDivision[this.props.verticalWidget.activeChannel-1].fine.unit === VoltageUnit.MilliVolt ? "bold" : "normal"}}>
             {VoltageUnit.MilliVolt}
           </label>
         </button>
@@ -201,7 +200,7 @@ class VerticalWidget extends React.Component<any, any> {
           onClick={() => this.changeDivisionUnit(VoltageUnit.Volt)}>
           <label
             className={"VoltButtonText"}
-            style={{fontWeight: this.props.verticalWidget.timePerDivision[this.props.verticalWidget.activeChannel-1].fineUnit == VoltageUnit.Volt ? "bold" : "normal"}}>
+            style={{fontWeight: this.props.verticalWidget.timePerDivision[this.props.verticalWidget.activeChannel-1].fine.unit === VoltageUnit.Volt ? "bold" : "normal"}}>
             {VoltageUnit.Volt}
           </label>
         </button>
@@ -221,7 +220,8 @@ class VerticalWidget extends React.Component<any, any> {
           className="AdjustValueBlockVerticalOffset"
           style={{color: this.props.verticalWidget.channelColorsList[this.props.verticalWidget.activeChannel-1]}}
         >
-          {this.props.verticalWidget.verticalOffset[this.props.verticalWidget.activeChannel-1].value}{"mV"}
+          {this.props.verticalWidget.verticalOffset[this.props.verticalWidget.activeChannel-1].value}
+          {this.props.verticalWidget.verticalOffset[this.props.verticalWidget.activeChannel-1].unit}
         </label>
         <button 
           className="PlusButton"
@@ -239,7 +239,7 @@ class VerticalWidget extends React.Component<any, any> {
           onClick={() => this.changeCouplingMode(MeasurementType.AC)}>
           <label
             className="AC-ButtonText"
-            style={{fontWeight: this.props.verticalWidget.settings[this.props.verticalWidget.activeChannel-1].coupling == MeasurementType.AC ? "bold" : "normal"}}>
+            style={{fontWeight: this.props.verticalWidget.settings[this.props.verticalWidget.activeChannel-1].coupling === MeasurementType.AC ? "bold" : "normal"}}>
             {MeasurementType.AC}
           </label>
         </button>
@@ -248,7 +248,7 @@ class VerticalWidget extends React.Component<any, any> {
           onClick={() => this.changeCouplingMode(MeasurementType.DC)}>
           <label
             className="DC-ButtonText"
-            style={{fontWeight: this.props.verticalWidget.settings[this.props.verticalWidget.activeChannel-1].coupling == MeasurementType.DC ? "bold" : "normal"}}>
+            style={{fontWeight: this.props.verticalWidget.settings[this.props.verticalWidget.activeChannel-1].coupling === MeasurementType.DC ? "bold" : "normal"}}>
             {MeasurementType.DC}
           </label>
         </button>
@@ -263,7 +263,7 @@ class VerticalWidget extends React.Component<any, any> {
           onClick={() => this.changeProbeMode(ProbeMode.x1)}>
           <label
             className="x1-ButtonText"
-            style={{fontWeight: this.props.verticalWidget.settings[this.props.verticalWidget.activeChannel-1].probeMode == ProbeMode.x1 ? "bold" : "normal"}}>
+            style={{fontWeight: this.props.verticalWidget.settings[this.props.verticalWidget.activeChannel-1].probeMode === ProbeMode.x1 ? "bold" : "normal"}}>
             x1
           </label>
         </button>
@@ -272,7 +272,7 @@ class VerticalWidget extends React.Component<any, any> {
           onClick={() => this.changeProbeMode(ProbeMode.x10)}>
           <label
             className="x10-ButtonText"
-            style={{fontWeight: this.props.verticalWidget.settings[this.props.verticalWidget.activeChannel-1].probeMode == ProbeMode.x10 ? "bold" : "normal"}}>
+            style={{fontWeight: this.props.verticalWidget.settings[this.props.verticalWidget.activeChannel-1].probeMode === ProbeMode.x10 ? "bold" : "normal"}}>
             x10
           </label>
         </button>
@@ -287,7 +287,7 @@ class VerticalWidget extends React.Component<any, any> {
           onClick={() => this.changeBandwidth(20)}>
           <label
             className="20MHz-ButtonText"
-            style={{fontWeight: this.props.verticalWidget.settings[this.props.verticalWidget.activeChannel-1].bandwidth == 20 ? "bold" : "normal"}}>
+            style={{fontWeight: this.props.verticalWidget.settings[this.props.verticalWidget.activeChannel-1].bandwidth === 20 ? "bold" : "normal"}}>
             20MHz
           </label>
         </button>
@@ -296,7 +296,7 @@ class VerticalWidget extends React.Component<any, any> {
           onClick={() => this.changeBandwidth(100)}>
           <label
             className="100MHz-ButtonText"
-            style={{fontWeight: this.props.verticalWidget.settings[this.props.verticalWidget.activeChannel-1].bandwidth == 100 ? "bold" : "normal"}}>
+            style={{fontWeight: this.props.verticalWidget.settings[this.props.verticalWidget.activeChannel-1].bandwidth === 100 ? "bold" : "normal"}}>
             100MHz
           </label>
         </button>
@@ -305,7 +305,7 @@ class VerticalWidget extends React.Component<any, any> {
           onClick={() => (this.props.verticalWidget.totalChannelsUsed <= 2) && this.changeBandwidth(200)}>
           <label
             className="200MHz-ButtonText"
-            style={{fontWeight: this.props.verticalWidget.settings[this.props.verticalWidget.activeChannel-1].bandwidth == 200 ? "bold" : "normal"}}>
+            style={{fontWeight: this.props.verticalWidget.settings[this.props.verticalWidget.activeChannel-1].bandwidth === 200 ? "bold" : "normal"}}>
             200MHz
           </label>
         </button>
@@ -314,7 +314,7 @@ class VerticalWidget extends React.Component<any, any> {
           onClick={() => (this.props.verticalWidget.totalChannelsUsed <= 1) && this.changeBandwidth(350)}>
           <label
             className="350MHz-ButtonText"
-            style={{fontWeight: this.props.verticalWidget.settings[this.props.verticalWidget.activeChannel-1].bandwidth == 350 ? "bold" : "normal"}}>
+            style={{fontWeight: this.props.verticalWidget.settings[this.props.verticalWidget.activeChannel-1].bandwidth === 350 ? "bold" : "normal"}}>
             350MHz
           </label>
         </button>
