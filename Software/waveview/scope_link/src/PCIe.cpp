@@ -148,9 +148,19 @@ void PCIeLink::Write(ScopeCommand command, void* val) {
             //Set Channel and Clock Div
             uint8_t setChannelClock[] = {0xFD,0x31,0x00,0x01};
             _FIFO_WRITE(user_handle,setChannelClock,4);
+            
             //Set adc into ramp test
             uint8_t adcRampTest[] = {0xFD,0x25,0x00,0x40};
             _FIFO_WRITE(user_handle,adcRampTest,4);
+
+            //Set adc bits_custom1
+            //uint8_t adcBitsCustom1[] = {0xFD,0x26,0x11,0x00};
+            //_FIFO_WRITE(user_handle,adcBitsCustom1,4);
+
+            //Set adc into single pattern test
+            //uint8_t adcSinglePatternTest[] = {0xFD,0x25,0x00,0x10};
+            //_FIFO_WRITE(user_handle,adcSinglePatternTest,4);
+            
             //Set adc into active mode
             uint8_t adcActiveMode[] = {0xFD,0x0F,0x00,0x00};
             _FIFO_WRITE(user_handle,adcActiveMode,4);
@@ -173,7 +183,7 @@ void PCIeLink::Write(ScopeCommand command, void* val) {
             //write to the clock generator
             for(int i = 0; i < 34; i++) {
                 uint8_t data[] = {I2C_BYTE_PLL, CLOCK_GEN_I2C_ADDRESS_WRITE, (uint8_t)((config_clk_gen[i] & 0xFF00) >> 8),(uint8_t)(config_clk_gen[i] & 0xFF)};
-                printf("DataPacket: %X %X %X %X\n",data[0],data[1],data[2],data[3]);
+                //printf("DataPacket: %X %X %X %X\n",data[0],data[1],data[2],data[3]);
                 _FIFO_WRITE(user_handle,data,4);
             }
 
