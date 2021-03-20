@@ -85,6 +85,7 @@ void controller::controllerLoop()
             switch (currentPacket->command) {
                 case CMD_GetData1:
                     INFO << "Packet command: GetData";
+                    getData();
                     break;
                 case CMD_GetData2:
                     ERROR << "Packet command: Reserved";
