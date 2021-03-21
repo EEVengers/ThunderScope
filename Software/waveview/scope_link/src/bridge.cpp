@@ -565,15 +565,14 @@ int Bridge::TxStop() {
 
     HANDLE hfile;
     //open a link to the named pipe
-    HANDLE hfile = CreateFileA((LPCSTR)tx_connection_string,
+    hfile = CreateFileA((LPCSTR)tx_connection_string,
                         GENERIC_WRITE | GENERIC_READ,
                         FILE_SHARE_READ | FILE_SHARE_WRITE,
                         NULL, OPEN_EXISTING,
                         FILE_ATTRIBUTE_NORMAL, NULL);
 
     if (INVALID_HANDLE_VALUE != hfile) {
-        //dont do anything on a successful connection other than close the handle
-        CloseHandle(hfile);
+        //dont do anything on a successful connection
     }
     else
     {
