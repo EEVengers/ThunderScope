@@ -4,7 +4,7 @@ import './../../../css/sidebar/core/singleButton.css';
 
 class SingleButton extends React.Component<any, any> {
 
-  singleClickHandler = () => {
+  toggleSingleMode = () => {
     this.props.dispatch({type: 'graph/singleMode'});
   }
 
@@ -13,7 +13,7 @@ class SingleButton extends React.Component<any, any> {
       <div className={"SingleButtonComponent"}>
         <button
           className={"SingleButton"}
-          onClick={() => this.singleClickHandler()}
+          onClick={() => this.toggleSingleMode()}
         >
           <label
             className={"SingleButtonText"}>
