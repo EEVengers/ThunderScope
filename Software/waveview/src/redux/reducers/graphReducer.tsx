@@ -9,6 +9,9 @@ export default function(state = GraphInitialState, action: {type: any, payload: 
         ...state,
         currentStatus: newStatus
       };
+    case "graph/singleMode":
+      // Handle what needs to happen when clicking the Single button
+      return state;
     default:
       return state;
   }

@@ -2,9 +2,9 @@ import React from 'react';
 import './../../../css/sidebar/core/singleButton.css';
 
 class SingleButton extends React.Component<any, any> {
-  
-  handleSingleClick = () => {
-    alert("Single")
+
+  singleClickHandler = () => {
+    this.props.dispatch({type: 'graph/singleMode'});
   }
 
   render() {
@@ -12,7 +12,7 @@ class SingleButton extends React.Component<any, any> {
       <div className={"SingleButtonComponent"}>
         <button
           className={"SingleButton"}
-          onClick={() => this.handleSingleClick()}
+          onClick={() => this.singleClickHandler()}
         >
           <label
             className={"SingleButtonText"}>
