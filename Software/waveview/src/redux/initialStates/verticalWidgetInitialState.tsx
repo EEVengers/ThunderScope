@@ -1,4 +1,3 @@
-import DefaultChannelColor from '../../configuration/enums/defaultChannelColor';
 import MeasurementType from '../../configuration/enums/measurementType';
 import VoltageUnit from '../../configuration/enums/voltageUnit';
 import ControlMode from '../../configuration/enums/controlMode';
@@ -8,12 +7,6 @@ import DefaultValues from '../../configuration/defaultValues';
 const VerticalWidgetInitialState = {
   activeChannel: 1,
   totalChannelsUsed: 4,
-  channelColorsList: [
-    DefaultChannelColor.Channel1, 
-    DefaultChannelColor.Channel2, 
-    DefaultChannelColor.Channel3, 
-    DefaultChannelColor.Channel4
-  ],
   timePerDivision: [
     {
       course: {
