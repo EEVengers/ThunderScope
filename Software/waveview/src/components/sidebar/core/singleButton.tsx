@@ -1,24 +1,27 @@
 import React from 'react';
 import './../../../css/sidebar/core/singleButton.css';
 
-function SingleButton() {
-  function handleSingleClick() {
+class SingleButton extends React.Component<any, any> {
+  
+  handleSingleClick = () => {
     alert("Single")
   }
 
-  return (
-    <div className={"SingleButtonComponent"}>
-      <button
-        className={"SingleButton"}
-        onClick={handleSingleClick}
-      >
-        <label
-          className={"SingleButtonText"}>
-          Single
-        </label>
-      </button>
-    </div>
-  )
+  render() {
+    return (
+      <div className={"SingleButtonComponent"}>
+        <button
+          className={"SingleButton"}
+          onClick={() => this.handleSingleClick()}
+        >
+          <label
+            className={"SingleButtonText"}>
+            Single
+          </label>
+        </button>
+      </div>
+    )
+  }
 }
 
 export default SingleButton;
