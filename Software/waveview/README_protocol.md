@@ -63,8 +63,8 @@ Note that the encoding used by the protocol might not be same as the encoding us
 Cmd  | DataSize        | Name          | Description
 -----|-----------------|---------------|------------------------
 0x01 | ch * windowSize | GetData1      | Data for all ch
-0x05 | 16              | GetMin        | Data has x and y as uint64
-0x06 | 16              | GetMax        | Data has x and y as uint64
+0x05 | 16              | GetMin        | Data has x and y as uint64 and int64
+0x06 | 16              | GetMax        | Data has x and y as uint64 and int64
 0x11 | 0               | SetFile       | Set testdata filename
 0x1F | 4096            | RampDemo      | 4 ch, simple waves
 0x21 | 4               | GetWindowSize | Data has window size as uint32
