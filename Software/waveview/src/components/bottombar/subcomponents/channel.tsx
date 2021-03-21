@@ -7,7 +7,7 @@ import './../../../css/bottombar/subcomponents/channel.css';
 class Channel extends React.Component<any, any> {
   render() {
     return (
-      <div className={"Channel" + this.props.channelNumber} style={{color: this.props.verticalWidget.channelColorsList[this.props.channelNumber-1]}}>
+      <div className={"Channel" + this.props.channelNumber} style={{color: this.props.settings.colors.channel[this.props.channelNumber-1]}}>
         <label>
           CH{this.props.channelNumber}: 
           {" "}
@@ -30,9 +30,10 @@ class Channel extends React.Component<any, any> {
   }
 }
 
-function mapStateToProps(state: { verticalWidget: any; }) {
+function mapStateToProps(state: { verticalWidget: any, settings: any }) {
   return {
-    verticalWidget: state.verticalWidget
+    verticalWidget: state.verticalWidget,
+    settings: state.settings
   };
 }
 

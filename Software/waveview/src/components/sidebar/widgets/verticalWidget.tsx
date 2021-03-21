@@ -80,7 +80,7 @@ class VerticalWidget extends React.Component<any, any> {
           onDoubleClick={() => this.changeChannelStatus(0)}>
           <label
             className={"Channel1ButtonText"}
-            style={{color: this.props.verticalWidget.settings[0].status === 1 ? this.props.verticalWidget.channelColorsList[0] : "black"}}>
+            style={{color: this.props.verticalWidget.settings[0].status === 1 ? this.props.settings.colors.channel[0] : "black"}}>
             CH1
           </label>
         </button>
@@ -90,7 +90,7 @@ class VerticalWidget extends React.Component<any, any> {
           onDoubleClick={() => this.changeChannelStatus(1)}>
           <label
             className={"Channel2ButtonText"}
-            style={{color: this.props.verticalWidget.settings[1].status === 1 ? this.props.verticalWidget.channelColorsList[1] : "black"}}>
+            style={{color: this.props.verticalWidget.settings[1].status === 1 ? this.props.settings.colors.channel[1] : "black"}}>
             CH2
           </label>
         </button>
@@ -100,7 +100,7 @@ class VerticalWidget extends React.Component<any, any> {
           onDoubleClick={() => this.changeChannelStatus(2)}>
           <label
             className={"Channel3ButtonText"}
-            style={{color: this.props.verticalWidget.settings[2].status === 1 ? this.props.verticalWidget.channelColorsList[2] : "black"}}>
+            style={{color: this.props.verticalWidget.settings[2].status === 1 ? this.props.settings.colors.channel[2]: "black"}}>
             CH3
           </label>
         </button>
@@ -110,7 +110,7 @@ class VerticalWidget extends React.Component<any, any> {
           onDoubleClick={() => this.changeChannelStatus(3)}>
           <label
             className={"Channel4ButtonText"}
-            style={{color: this.props.verticalWidget.settings[3].status === 1 ? this.props.verticalWidget.channelColorsList[3] : "black"}}>
+            style={{color: this.props.verticalWidget.settings[3].status === 1 ? this.props.settings.colors.channel[3] : "black"}}>
             CH4
           </label>
         </button>
@@ -148,7 +148,7 @@ class VerticalWidget extends React.Component<any, any> {
         </button>
         <label 
           className="AdjustValueBlockTimePerDivision"
-          style={{color: this.props.verticalWidget.channelColorsList[this.props.verticalWidget.activeChannel-1]}}
+          style={{color: this.props.settings.colors.channel[this.props.verticalWidget.activeChannel-1]}}
         >
           {this.props.verticalWidget.settings[this.props.verticalWidget.activeChannel-1].controlMode === ControlMode.Course 
             && this.props.verticalWidget.timePerDivision[this.props.verticalWidget.activeChannel-1].course.value.toString()
@@ -218,7 +218,7 @@ class VerticalWidget extends React.Component<any, any> {
         </button>
         <label 
           className="AdjustValueBlockVerticalOffset"
-          style={{color: this.props.verticalWidget.channelColorsList[this.props.verticalWidget.activeChannel-1]}}
+          style={{color: this.props.settings.colors.channel[this.props.verticalWidget.activeChannel-1]}}
         >
           {this.props.verticalWidget.verticalOffset[this.props.verticalWidget.activeChannel-1].value}
           {this.props.verticalWidget.verticalOffset[this.props.verticalWidget.activeChannel-1].unit}
@@ -325,9 +325,10 @@ class VerticalWidget extends React.Component<any, any> {
   }
 }
 
-function mapStateToProps(state: { verticalWidget: any; }) {
+function mapStateToProps(state: { verticalWidget: any, settings: any }) {
   return {
-    verticalWidget: state.verticalWidget
+    verticalWidget: state.verticalWidget,
+    settings: state.settings
   };
 }
 
