@@ -1,4 +1,4 @@
-enum DefaultChannelColor {
+enum DefaultColors {
   Channel1 = "#EBFF00",
   Channel2 = "#00FF19",
   Channel3 = "#0075FF",
@@ -6,4 +6,4 @@ enum DefaultChannelColor {
   Math = "#FF00FF"
 };
 
-export default DefaultChannelColor;
+export default DefaultColors;

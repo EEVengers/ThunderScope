@@ -1,14 +1,14 @@
-import DefaultChannelColor from '../../configuration/enums/defaultChannelColor';
+import DefaultColors from '../../configuration/enums/defaultColors';
 
 const SettingsInitialState = {
   colors: {
     channel: [
-      DefaultChannelColor.Channel1, 
-      DefaultChannelColor.Channel2, 
-      DefaultChannelColor.Channel3, 
-      DefaultChannelColor.Channel4
+      DefaultColors.Channel1, 
+      DefaultColors.Channel2, 
+      DefaultColors.Channel3, 
+      DefaultColors.Channel4
     ],
-    math: DefaultChannelColor.Math
+    math: DefaultColors.Math
   }
 };
 
