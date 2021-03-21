@@ -314,7 +314,7 @@ void Processor::getMax(int8_t chNum, int8_t* value, uint64_t* pos)
         DEBUG << "windowProcessed[i]: " << (int)windowProcessed[i] << " i: " << i << " value: " << (int)*value << " pos: " << *pos;
         if ((int)*value < (int)windowProcessed[i]) {
             *value = windowProcessed[i];
-            *pos = i;
+            *pos = i / numCh;
         }
     }
 }
@@ -326,7 +326,7 @@ void Processor::getMin(int8_t chNum, int8_t* value, uint64_t* pos)
     for (uint64_t i = chNum - 1; i < windowSize * numCh; i += numCh) {
         if (*value > windowProcessed[i]) {
             *value = windowProcessed[i];
-            *pos = i;
+            *pos = i / numCh;
         }
     }
 }

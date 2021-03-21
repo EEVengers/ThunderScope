@@ -1,5 +1,5 @@
 import React from 'react';
-import StopButton from './core/stopButton';
+import RunStopButton from './core/runStopButton';
 import SingleButton from './core/singleButton';
 import './../../css/sidebar/sidebar.css';
 import HorizontalWidget from './widgets/horizontalWidget';
@@ -12,7 +12,7 @@ class SideBar extends React.Component {
   render() {
     return (
       <div className="SideBarComponent">
-        <StopButton />
+        <RunStopButton />
         <SingleButton />
         <HorizontalWidget />
         <VerticalWidget />

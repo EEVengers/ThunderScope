@@ -1,4 +1,4 @@
-.StopButton {
+.RunStopButton {
   display: flex;
   flex-direction: column;
   position: relative;
@@ -10,14 +10,15 @@
   z-index: 100;
   border: none;
   user-select: none;
+  outline: none;
 }
 
-.StopButtonComponent {
+.RunStopButtonComponent {
   display: flex;
   flex-direction: column;
 }
 
-.StopButtonText {
+.RunStopButtonText {
   font-weight: bold;
   font-size: 14px;
   display: flex;
