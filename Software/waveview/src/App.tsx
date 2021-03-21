@@ -17,22 +17,12 @@ class App extends React.Component {
   timerID: number = 0;
   generator: TestPoints;
   conf: TestConf;
-  channelList: {
-    color: string,
-    className:string
-  }[];
 
   constructor(props: any) {
     super(props);
     this.state = initialState;
     this.generator = new TestPoints(1000, 30);
     this.conf = new TestConf();
-    this.channelList = [
-      {color: "#EBFF00", className: "Channel1"},
-      {color: "#00FF19", className: "Channel2"},
-      {color: "#0075FF", className: "Channel3"},
-      {color: "#FF0000", className: "Channel4"}
-    ]
   }
 
   componentDidMount() {
@@ -67,7 +57,6 @@ class App extends React.Component {
           yDomain={this.generator.y.getDomain()}
           xDomain={this.generator.x.getDomain()}
           dataSeries={this.generator.getData()}
-          colorSeries={this.channelList.map((c, i) => c.color)}
           />
         <BottomBar />
         <Sidebar />
