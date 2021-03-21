@@ -10,8 +10,12 @@ export default function(state = GraphInitialState, action: {type: any, payload: 
         currentStatus: newStatus
       };
     case "graph/singleMode":
-      // Handle what needs to happen when clicking the Single button
-      return state;
+      // Need to implement this in the tick generator to stop/pause polling when in single mode
+      return {
+        ...state,
+        currentStatus: GraphStatus.Off,
+        singleMode: !state.singleMode
+      };
     default:
       return state;
   }
