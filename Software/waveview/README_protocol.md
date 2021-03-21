@@ -83,20 +83,29 @@ Cmd  | DataSize        | Name          | Description
 
 ### Electron -> C++
 
-Cmd  | DataSize        | Name          | Description
------|-----------------|---------------|------------------------
-0x02 | 2 (useless)     | GetData2      | Reserved, If we need 1 command/ch
-0x03 | 2 (useless)     | GetData3      | Reserved, If we need 1 command/ch
-0x04 | 2 (useless)     | GetData4      | Reserved, If we need 1 command/ch
+Cmd  | DataSize        | Name                | Description
+-----|-----------------|---------------------|------------------------
+0x02 | 2 (useless)     | GetData2            | Reserved, If we need 1 command/ch
+0x03 | 2 (useless)     | GetData3            | Reserved, If we need 1 command/ch
+0x04 | 2 (useless)     | GetData4            | Reserved, If we need 1 command/ch
+0x36 | 2?              | SetBandwidth        |
+0x37 | 2?              | SetVerticalScaling  |
+0x38 | 2               | SetVerticalOffset   | Data\[0\] has offset
+0x39 | 2?              | SetHorizontalOffset |
+0x3A | 2               | SetCoupling         | Data\[0\] has 0\1 for AC\DC
 
 ### C++ -> Electron
 
-Cmd  | DataSize        | Name          | Description
------|-----------------|---------------|------------------------
-0x02 | windowSize      | Reserved      | If we need 1 command/ch
-0x03 | windowSize      | Reserved      | If we need 1 command/ch
-0x04 | windowSize      | Reserved      | If we need 1 command/ch
+Cmd  | DataSize        | Name                | Description
+-----|-----------------|---------------------|------------------------
+0x02 | windowSize      | Reserved            | If we need 1 command/ch
+0x03 | windowSize      | Reserved            | If we need 1 command/ch
+0x04 | windowSize      | Reserved            | If we need 1 command/ch
+0x36 | 0               | SetBandwidth        |
+0x37 | 0               | SetVerticalScaling  |
+0x38 | 0               | SetVerticalOffset   |
+0x39 | 0               | SetHorizontalOffset |
+0x3A | 0               | SetCoupling         |
 
 ## Proposed But Not Allocated
 
-+ (none)
