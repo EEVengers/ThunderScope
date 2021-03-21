@@ -34,6 +34,8 @@ Prepend the name with `CMD_` to find it in the Electron and C++ code.
 Cmd  | DataSize        | Name          | Description
 -----|-----------------|---------------|------------------------
 0x01 | 2 (useless)     | GetData1      |
+0x05 | 2               | GetMin        | Data has ch 1,2,3 or 4
+0x06 | 2               | GetMax        | Data has ch 1,2,3 or 4
 0x11 | 2               | SetFile       | Number mapped to filename by C++
 0x1F | 2 (useless)     | RampDemo      |
 0x21 | 2 (useless)     | GetWindowSize |
@@ -61,6 +63,8 @@ Note that the encoding used by the protocol might not be same as the encoding us
 Cmd  | DataSize        | Name          | Description
 -----|-----------------|---------------|------------------------
 0x01 | ch * windowSize | GetData1      | Data for all ch
+0x05 | 16              | GetMin        | Data has x and y as uint64
+0x06 | 16              | GetMax        | Data has x and y as uint64
 0x11 | 0               | SetFile       | Set testdata filename
 0x1F | 4096            | RampDemo      | 4 ch, simple waves
 0x21 | 4               | GetWindowSize | Data has window size as uint32
@@ -84,8 +88,6 @@ Cmd  | DataSize        | Name          | Description
 0x02 | 2 (useless)     | GetData2      | Reserved, If we need 1 command/ch
 0x03 | 2 (useless)     | GetData3      | Reserved, If we need 1 command/ch
 0x04 | 2 (useless)     | GetData4      | Reserved, If we need 1 command/ch
-0x05 | 2               | GetMin        | Data has ch 1,2,3 or 4
-0x06 | 2               | GetMax        | Data has ch 1,2,3 or 4
 
 ### C++ -> Electron
 
@@ -94,8 +96,6 @@ Cmd  | DataSize        | Name          | Description
 0x02 | windowSize      | Reserved      | If we need 1 command/ch
 0x03 | windowSize      | Reserved      | If we need 1 command/ch
 0x04 | windowSize      | Reserved      | If we need 1 command/ch
-0x05 | 16              | GetMin        | Data has x and y as uint64
-0x06 | 16              | GetMax        | Data has x and y as uint64
 
 ## Proposed But Not Allocated
 

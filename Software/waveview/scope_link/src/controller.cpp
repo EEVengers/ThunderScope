@@ -105,6 +105,64 @@ void controller::controllerLoop()
                 case CMD_GetData4:
                     ERROR << "Packet command: Reserved";
                     break;
+                case CMD_GetMin: {
+                        INFO << "Packet command: GetMin";
+                        const int incomingPacketSize = 2;
+                        int ch = 1;
+                        if(currentPacket->dataSize != incomingPacketSize) {
+                            ERROR << "Unexpected size for GetMin packet";
+                        }
+                        else {
+                            ch = currentPacket->data[0];
+                        }
+                        int8_t val;
+                        uint64_t pos;
+                        getMin(ch, &val, &pos);
+
+                        const int outgoingPacketSize = 2*sizeof(uint64_t);
+                        uint64_t* outgoingU = (uint64_t*) malloc(outgoingPacketSize);
+                        int64_t* outgoingS = (int64_t*) outgoingU;
+                        outgoingU[0] = pos;
+                        outgoingS[1] = val;
+
+                        EVPacket* tempPacket = (EVPacket*) malloc(sizeof(EVPacket));
+                        tempPacket->data = (int8_t*)outgoingU;
+                        tempPacket->dataSize = outgoingPacketSize;
+                        tempPacket->packetID = 0;
+                        tempPacket->command = CMD_GetMin;
+                        controllerQueue_tx.push(tempPacket);
+                    }
+                    break;
+                case CMD_GetMax: {
+                        INFO << "Packet command: GetMax";
+                        const int incomingPacketSize = 2;
+                        int ch = 1;
+                        if(currentPacket->dataSize != incomingPacketSize) {
+                            ERROR << "Unexpected size for GetMax packet";
+                        }
+                        else {
+                            ch = currentPacket->data[0];
+                        }
+                        int8_t val;
+                        uint64_t pos;
+                        getMax(ch, &val, &pos);
+
+                        INFO << "val: " << convert_int(val) << ", pos: " << convert_int(pos);
+
+                        const int outgoingPacketSize = 2*sizeof(uint64_t);
+                        uint64_t* outgoingU = (uint64_t*) malloc(outgoingPacketSize);
+                        int64_t* outgoingS = (int64_t*) outgoingU;
+                        outgoingU[0] = pos;
+                        outgoingS[1] = val;
+
+                        EVPacket* tempPacket = (EVPacket*) malloc(sizeof(EVPacket));
+                        tempPacket->data = (int8_t*)outgoingU;
+                        tempPacket->dataSize = outgoingPacketSize;
+                        tempPacket->packetID = 0;
+                        tempPacket->command = CMD_GetMax;
+                        controllerQueue_tx.push(tempPacket);
+                    }
+                    break;
                 case CMD_SetFile: {
                         INFO << "Packet command: SetFile";
                         const int packetSize = 2;
@@ -118,7 +176,7 @@ void controller::controllerLoop()
                         tempPacket->data = NULL;
                         tempPacket->dataSize = 0;
                         tempPacket->packetID = 0;
-                        tempPacket->command = CMD_SetCh;
+                        tempPacket->command = CMD_SetFile;
                         controllerQueue_tx.push(tempPacket);
                     }
                     break;

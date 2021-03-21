@@ -111,6 +111,7 @@ class TestPoints {
 
   getData() {
     var chMax = this.effectiveChCount();
+    console.log(this.scope_data);
     return this.scope_data.slice(0, chMax);
   }
 }

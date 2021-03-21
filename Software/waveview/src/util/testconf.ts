@@ -1,10 +1,13 @@
-import { CMD, PlumberArgs, Plumber, SetMathOp } from './plumber';
+import { CMD, PlumberArgs, Plumber } from './plumber';
 
 class TestConf {
   getEdgeArgs: PlumberArgs;
   setEdgeArgs: PlumberArgs;
   getWinArgs: PlumberArgs;
   setWinArgs: PlumberArgs;
+
+  getMinArgs: PlumberArgs;
+  getMaxArgs: PlumberArgs;
 
   constructor() {
 
@@ -50,16 +53,38 @@ class TestConf {
       writeData: new Int8Array((new Uint32Array([20])).buffer)
     }
 
+    this.getMinArgs = {
+      headCheck: () => true,
+      bodyCheck: (args, bytesRead, body) => {
+        console.log(Plumber.getInstance().decodeGetMinMax(body));
+        return true;
+      },
+      cmd: CMD.CMD_GetMin,
+      id: 0,
+      writeData: [3, 0]
+    }
+
+    this.getMaxArgs = {
+      headCheck: () => true,
+      bodyCheck: (args, bytesRead, body) => {
+        console.log(Plumber.getInstance().decodeGetMinMax(body));
+        return true;
+      },
+      cmd: CMD.CMD_GetMax,
+      id: 0,
+      writeData: [3, 0]
+    }
+
   }
 
   update(get: boolean) {
-    if(get) {
+    /*if(get) {
       Plumber.getInstance().cycle(this.getWinArgs);
     }
     else {
       Plumber.getInstance().cycle(this.setWinArgs);
-    }
-
+    }*/
+    Plumber.getInstance().cycle(this.getMaxArgs);
   }
 }
 

@@ -102,6 +102,16 @@ export class Plumber {
     return packet8;
   }
 
+  private commandNeedsQueueing(args: PlumberArgs) {
+    if(args.cmd <= CMD.CMD_GetData4) {
+      return false;
+    }
+    else if(args.cmd == CMD.CMD_RampDemo) {
+      return false;
+    }
+    return true;
+  }
+
   public cycle(args: PlumberArgs) {
     //console.log("cycle: " + args.cmd);
     if(this.ready) {
@@ -112,7 +122,7 @@ export class Plumber {
         this.doRead(args);
       });
     }
-    else if(args.cmd >= 0x20 || args.cmd == 0x11) {
+    else if(this.commandNeedsQueueing(args)) {
       //console.log("queue: " + args.cmd);
       this.cmdQueue.push(args);
     }
@@ -120,5 +130,11 @@ export class Plumber {
 
   public makeSetMathData(lhsChan: number, rhsChan: number, op: SetMathOp) {
     return [lhsChan, rhsChan, op, 0];
+  }
+
+  public decodeGetMinMax(a: Int8Array) {
+    var a64u = new BigUint64Array(a.buffer);
+    var a64s = new BigInt64Array(a.buffer);
+    return {x: Number(a64u[0]), y: Number(a64s[1])};
   }
 }
