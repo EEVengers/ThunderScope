@@ -333,6 +333,9 @@ void controller::controllerLoop()
                                 rhsChan = -1;
                             }
                             //Do something with these.
+                            setMathCh_1(lhsChan);
+                            setMathCh_2(rhsChan);
+                            setMathSign(op == 1);
                         }
                         EVPacket* tempPacket = (EVPacket*) malloc(sizeof(EVPacket));
                         tempPacket->data = NULL;
