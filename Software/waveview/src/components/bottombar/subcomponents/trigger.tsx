@@ -8,7 +8,7 @@ class Trigger extends React.Component<any, any> {
       <div className="TriggerStatus"> 
         Trig:
       <label
-        style={{color: this.props.triggerWidget.channelColorsList[this.props.triggerWidget.triggerChannel-1]}}>
+        style={{color: this.props.settings.colors.channel[this.props.triggerWidget.triggerChannel-1]}}>
         CH{this.props.triggerWidget.triggerChannel}
       </label>
       , Mode: {this.props.triggerWidget.triggerType[this.props.triggerWidget.triggerChannel-1]}
@@ -17,9 +17,10 @@ class Trigger extends React.Component<any, any> {
   }
 }
 
-function mapStateToProps(state: { triggerWidget: any; }) {
+function mapStateToProps(state: { triggerWidget: any, settings: any }) {
   return {
-    triggerWidget: state.triggerWidget
+    triggerWidget: state.triggerWidget,
+    settings: state.settings
   };
 }
 

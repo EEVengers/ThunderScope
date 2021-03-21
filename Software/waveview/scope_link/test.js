@@ -23,7 +23,7 @@ console.log("RX_CLIENT PATH: " + SOCKETFILE_RX);
 
 // Create test packet
 var testPacket16 = new Uint16Array(new ArrayBuffer(10));
-testPacket16[0] = 1;
+testPacket16[0] = 0x1F;
 testPacket16[1] = 0x1F2C;
 testPacket16[2] = 4;
 var testPacket = new Uint8Array(testPacket16.buffer);

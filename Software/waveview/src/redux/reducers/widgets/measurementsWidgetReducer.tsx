@@ -1,11 +1,6 @@
-const initialState = {
-  leftValue1: "X1->X2",
-  rightValue1: "500ns",
-  leftValue2: "Y1->Y2",
-  rightValue2: "300mV"
-};
+import MeasurementsWidgetInitialState from '../../initialStates/measurementsWidgetInitialState';
 
-export default function(state = initialState, action: {type: any, payload: any}) { 
+export default function(state = MeasurementsWidgetInitialState, action: {type: any, payload: any}) { 
   switch(action.type) {
     default:
       return state;

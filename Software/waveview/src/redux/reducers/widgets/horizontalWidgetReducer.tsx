@@ -1,24 +1,8 @@
 import DefaultValues from '../../../configuration/defaultValues';
-import TimeUnit from '../../../configuration/enums/timeUnit';
 import ControlMode from '../../../configuration/enums/controlMode';
+import HorizontalWidgetInitialState from '../../initialStates/horizontalWidgetInitialState';
 
-const initialState = {
-  horizontalTimeBase: {
-    mode: ControlMode.Course,
-    value: DefaultValues.horizontalTimeBases[15], 
-    index: 15,
-    fineValue: 0,
-    fineUnit: TimeUnit.MicroSecond
-  },
-  horizontalOffset: {
-    value: 0, 
-    unit: TimeUnit.MilliSecond
-  }
-};
-
-export default function(state = initialState, action: {type: any, payload: any}) {
-  var tmp;
-
+export default function(state = HorizontalWidgetInitialState, action: {type: any, payload: any}) {
   switch(action.type) {
     case "horizontal/changeTimeBaseMode":
       return {
@@ -26,6 +10,10 @@ export default function(state = initialState, action: {type: any, payload: any})
         horizontalTimeBase: {
           ...state.horizontalTimeBase,
           mode: action.payload
+        },
+        horizontalOffset: {
+          ...state.horizontalOffset,
+          unit: action.payload === ControlMode.Fine ? state.horizontalTimeBase.fine.unit : state.horizontalTimeBase.course.unit
         }
       }
     case "horizontal/changeTimeBaseUnit":
@@ -33,7 +21,14 @@ export default function(state = initialState, action: {type: any, payload: any})
         ...state,
         horizontalTimeBase: {
           ...state.horizontalTimeBase,
-          fineUnit: action.payload
+          fine: {
+            ...state.horizontalTimeBase.fine,
+            unit: action.payload
+          }
+        },
+        horizontalOffset: {
+          ...state.horizontalOffset,
+          unit: action.payload
         }
       }
     case "horizontal/increaseTimeBase":
@@ -44,8 +39,15 @@ export default function(state = initialState, action: {type: any, payload: any})
         ...state,
         horizontalTimeBase: {
           ...state.horizontalTimeBase,
-          value: DefaultValues.horizontalTimeBases[state.horizontalTimeBase.index + 1],
+          course: {
+            value: DefaultValues.horizontalTimeBases[state.horizontalTimeBase.index + 1].value,
+            unit: DefaultValues.horizontalTimeBases[state.horizontalTimeBase.index + 1].unit
+          },
           index: state.horizontalTimeBase.index + 1
+        },
+        horizontalOffset: {
+          ...state.horizontalOffset,
+          unit: DefaultValues.horizontalTimeBases[state.horizontalTimeBase.index + 1].unit
         }
       }
     case "horizontal/decreaseTimeBase":
@@ -56,8 +58,15 @@ export default function(state = initialState, action: {type: any, payload: any})
         ...state,
         horizontalTimeBase: {
           ...state.horizontalTimeBase,
-          value: DefaultValues.horizontalTimeBases[state.horizontalTimeBase.index - 1],
+          course: {
+            value: DefaultValues.horizontalTimeBases[state.horizontalTimeBase.index - 1].value,
+            unit: DefaultValues.horizontalTimeBases[state.horizontalTimeBase.index - 1].unit
+          },
           index: state.horizontalTimeBase.index - 1
+        },
+        horizontalOffset: {
+          ...state.horizontalOffset,
+          unit: DefaultValues.horizontalTimeBases[state.horizontalTimeBase.index - 1].unit
         }
       }
     case "horizontal/increaseTimeBaseFine":
@@ -65,7 +74,10 @@ export default function(state = initialState, action: {type: any, payload: any})
         ...state,
         horizontalTimeBase: {
           ...state.horizontalTimeBase,
-          fineValue: Number((state.horizontalTimeBase.fineValue + 0.1).toFixed(1))
+          fine: {
+            ...state.horizontalTimeBase.fine,
+            value: Number((state.horizontalTimeBase.fine.value + 0.1).toFixed(1))
+          }
         }
       };
     case "horizontal/decreaseTimeBaseFine":
@@ -73,7 +85,10 @@ export default function(state = initialState, action: {type: any, payload: any})
         ...state,
         horizontalTimeBase: {
           ...state.horizontalTimeBase,
-          fineValue: Number((state.horizontalTimeBase.fineValue - 0.1).toFixed(1))
+          fine: {
+            ...state.horizontalTimeBase.fine,
+            value: Number((state.horizontalTimeBase.fine.value - 0.1).toFixed(1))
+          }
         }
       };
     case "horizontal/increaseOffset":

@@ -13,7 +13,7 @@ void testTriggerThroughput();
 
 void testCsv(char * filename);
 
-bool loadFromFile ( char* filename, boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> *outputQ);
+void runSocketTest();
 
 void runPCIeTest();
 

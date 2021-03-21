@@ -11,30 +11,32 @@ class MeasurementsWidget extends React.Component<any, any> {
           Measurements
         </div>
 
-      <div className="MeasurementsWidgetDisplayValueBlock-Value1">
+      <div className="MeasurementsWidget-Max">
         <label
-          className="DisplayValueBlockLeftValue1"
+          className="DisplayValue-MaxLabel"
         >
-          {this.props.measurementsWidget.leftValue1}
+          {this.props.measurementsWidget.measurement[0].mathType}
         </label>
         <label
-          className="DisplayValueBlockRightValue1"
+          className="DisplayValue-MaxValue"
         >
-          {this.props.measurementsWidget.rightValue1}
+          {this.props.measurementsWidget.measurement[0].value}
+          {this.props.measurementsWidget.measurement[0].unit}
         </label>
         <div className="ClearBlock"></div> 
       </div>
 
-      <div className="MeasurementsWidgetDisplayValueBlock-Value2">
+      <div className="MeasurementsWidget-Min">
         <label
-          className="DisplayValueBlockLeftValue2"
+          className="DisplayValue-MinLabel"
         >
-          {this.props.measurementsWidget.leftValue2}
+          {this.props.measurementsWidget.measurement[1].mathType}
         </label>
         <label
-          className="DisplayValueBlockRightValue2"
+          className="DisplayValue-MinValue"
         >
-          {this.props.measurementsWidget.rightValue2}
+          {this.props.measurementsWidget.measurement[1].value}
+          {this.props.measurementsWidget.measurement[1].unit}
         </label>
         <div className="ClearBlock"></div> 
       </div>

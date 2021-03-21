@@ -1,0 +1,28 @@
+.RunStopButton {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  top: 1vh;
+  width: 7vw;
+  height: 2vh;
+  color: black;
+  background: #FF0000;
+  z-index: 100;
+  border: none;
+  user-select: none;
+  outline: none;
+}
+
+.RunStopButtonComponent {
+  display: flex;
+  flex-direction: column;
+}
+
+.RunStopButtonText {
+  font-weight: bold;
+  font-size: 14px;
+  display: flex;
+  position: relative;
+  left: 2vw;
+  user-select: none;
+}

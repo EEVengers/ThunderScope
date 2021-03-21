@@ -1,30 +1,6 @@
-import TriggerType from '../../../configuration/enums/triggerType';
-import DefaultChannelColor from '../../../configuration/enums/defaultChannelColor';
-import VoltageUnit from '../../../configuration/enums/voltageUnit';
+import TriggerWidgetInitialState from '../../initialStates/triggerWidgetInitialState';
 
-const initialState = {
-  triggerChannel: 1,
-  channelColorsList: [
-    DefaultChannelColor.Channel1, 
-    DefaultChannelColor.Channel2, 
-    DefaultChannelColor.Channel3, 
-    DefaultChannelColor.Channel4
-  ],
-  triggerType: [
-    TriggerType.RisingEdge,
-    TriggerType.RisingEdge,
-    TriggerType.RisingEdge,
-    TriggerType.RisingEdge
-  ],
-  triggerLevel: [
-    {value: 0.0, unit: VoltageUnit.MilliVolt},
-    {value: 0.0, unit: VoltageUnit.MilliVolt},
-    {value: 0.0, unit: VoltageUnit.MilliVolt},
-    {value: 0.0, unit: VoltageUnit.MilliVolt}
-  ]
-};
-
-export default function(state = initialState, action: {type: any, payload: any}) {
+export default function(state = TriggerWidgetInitialState, action: {type: any, payload: any}) {
   var channelIndex = state.triggerChannel - 1;
   var tmp;
 
