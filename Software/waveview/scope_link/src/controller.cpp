@@ -135,19 +135,15 @@ void controller::controllerLoop()
                     break;
                 case CMD_GetWindowSize: {
                         INFO << "Packet command: GetWindowSize";
-                        const int packetSize = 4;
 
                         EVPacket* tempPacket = (EVPacket*) malloc(sizeof(EVPacket));
-                        tempPacket->data = (int8_t*) malloc(packetSize);
+                        const int packetSize = sizeof(uint32_t);
+                        uint32_t* windata = (uint32_t*) malloc(packetSize);
+                        windata[0] = getWindowSize();
+                        tempPacket->data = (int8_t*) windata;
                         tempPacket->dataSize = packetSize;
                         tempPacket->packetID = 0;
                         tempPacket->command = CMD_GetWindowSize;
-
-                        int32_t windowSize = getWindowSize();
-                        tempPacket->data[0] = (windowSize >> 24) & 0xFF;
-                        tempPacket->data[1] = (windowSize >> 16) & 0xFF;
-                        tempPacket->data[2] = (windowSize >> 8) & 0xFF;
-                        tempPacket->data[3] = windowSize & 0xFF;
                         controllerQueue_tx.push(tempPacket);
                     }
                     break;
@@ -210,12 +206,8 @@ void controller::controllerLoop()
                             ERROR << "Unexpected size for SetWindowSize packet";
                         }
                         else {
-                            int32_t windowSize = 0;
-                            windowSize |= currentPacket->data[0] << 24;
-                            windowSize |= currentPacket->data[1] << 16;
-                            windowSize |= currentPacket->data[2] << 8;
-                            windowSize |= currentPacket->data[3];
-                            setWindowSize(windowSize);
+                            uint32_t* windowSize = (uint32_t*)currentPacket->data;
+                            setWindowSize(windowSize[0]);
                         }
                         EVPacket* tempPacket = (EVPacket*) malloc(sizeof(EVPacket));
                         tempPacket->data = NULL;

@@ -41,7 +41,7 @@ Cmd  | DataSize        | Name          | Description
 0x23 | 2 (useless)     | GetLevel      |
 0x24 | 2 (useless)     | GetTriggerCh  |
 0x25 | 2 (useless)     | GetEdgeType   |
-0x31 | 4               | SetWindowSize | Data has new window size
+0x31 | 4               | SetWindowSize | Data has new window size as uint32
 0x32 | 2               | SetCh         | Data has ch 1, 2 or 4
 0x33 | 2               | SetLevel      | Data has new level
 0x34 | 2               | SetTriggerCh  | Data has channel 1,2,3,4
@@ -63,7 +63,7 @@ Cmd  | DataSize        | Name          | Description
 0x01 | ch * windowSize | GetData1      | Data for all ch
 0x11 | 0               | SetFile       | Set testdata filename
 0x1F | 4096            | RampDemo      | 4 ch, simple waves
-0x21 | 4               | GetWindowSize | Data has window size
+0x21 | 4               | GetWindowSize | Data has window size as uint32
 0x22 | 2               | GetCh         | Data has ch 1, 2, or 4
 0x23 | 2               | GetLevel      | Data has new level
 0x24 | 2               | GetTriggerCh  | Data has channel 1,2,3 or 4
@@ -94,8 +94,8 @@ Cmd  | DataSize        | Name          | Description
 0x02 | windowSize      | Reserved      | If we need 1 command/ch
 0x03 | windowSize      | Reserved      | If we need 1 command/ch
 0x04 | windowSize      | Reserved      | If we need 1 command/ch
-0x05 | 4               | GetMin        | Data has ch 1,2,3 or 4
-0x06 | 4               | GetMax        | Data has ch 1,2,3 or 4
+0x05 | 16              | GetMin        | Data has x and y as uint64
+0x06 | 16              | GetMax        | Data has x and y as uint64
 
 ## Proposed But Not Allocated
 

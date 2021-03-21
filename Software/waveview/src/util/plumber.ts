@@ -38,7 +38,7 @@ export interface PlumberArgs {
   bodyCheck: (args: PlumberArgs, bytesRead: number, body: Int8Array) => boolean;
   cmd: CMD;
   id: number;
-  writeData: number[];
+  writeData: number[] | Int8Array;
 }
 
 export class Plumber {
