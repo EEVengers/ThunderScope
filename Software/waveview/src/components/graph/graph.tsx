@@ -69,8 +69,9 @@ class Graph extends React.Component<any, any> {
   }
 }
 
-function mapStateToProps(state: { settings: any }) {
+function mapStateToProps(state: { graph: any, settings: any }) {
   return {
+    graph: state.graph,
     settings: state.settings
   };
 }
