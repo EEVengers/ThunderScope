@@ -61,7 +61,7 @@ export class Plumber {
   }
 
   private nextCycle() {
-    console.log("nextCycle");
+    //console.log("nextCycle");
     var args = this.cmdQueue.shift();
     this.ready = true;
     if(args) {
@@ -103,17 +103,17 @@ export class Plumber {
   }
 
   public cycle(args: PlumberArgs) {
-    console.log("cycle: " + args.cmd);
+    //console.log("cycle: " + args.cmd);
     if(this.ready) {
       var packet8 = this.argsToPacket(args);
       this.ready = false;
-      console.log("write: " + args.cmd);
+      //console.log("write: " + args.cmd);
       this.bridge.write(packet8,() => {
         this.doRead(args);
       });
     }
     else if(args.cmd >= 0x20 || args.cmd == 0x11) {
-      console.log("queue: " + args.cmd);
+      //console.log("queue: " + args.cmd);
       this.cmdQueue.push(args);
     }
   }
