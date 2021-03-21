@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import './../../../css/sidebar/core/singleButton.css';
 
 class SingleButton extends React.Component<any, any> {
@@ -24,4 +25,10 @@ class SingleButton extends React.Component<any, any> {
   }
 }
 
-export default SingleButton;
+function mapStateToProps(state: { graph: any }) {
+  return {
+    graph: state.graph
+  };
+}
+
+export default connect(mapStateToProps)(SingleButton);
