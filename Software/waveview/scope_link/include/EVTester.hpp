@@ -15,4 +15,6 @@ void testCsv(char * filename);
 
 void runSocketTest();
 
+void runPCIeTest();
+
 #endif /* EVTester_hpp */

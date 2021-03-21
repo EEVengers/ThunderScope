@@ -6,7 +6,10 @@
 #include "postProcessor.hpp"
 #include "bridge.hpp"
 #include "dspPipeline.hpp"
+#include "PCIe.hpp"
 #include <boost/tokenizer.hpp>
+#include <fstream>
+#include <iostream>
 
 uint32_t testSize = 1000;
 
@@ -170,7 +173,7 @@ void testTriggerThroughput()
  * Arguments:
  *   None
  * Return:
- *   int - 0 on success, error code on failure
+ *   None
  ******************************************************************************/
 void runSocketTest ()
 {
@@ -201,4 +204,42 @@ void runSocketTest ()
     std::cin >> in;
 
     delete bridgeThread_1;
+}
+
+
+/*******************************************************************************
+ * runPCIeTEST()
+ *
+ * Attempts to connect to the Xilinx FPGA through PCIe, and attempts to write and read 8Mbytes
+ *
+ * Arguments:
+ *   None
+ * Return:
+ *   None
+ ******************************************************************************/
+void runPCIeTest() {
+    PCIeLink* pcieLink = new PCIeLink();
+
+    pcieLink->Connect();
+    pcieLink->Write(board_enable,nullptr);
+    pcieLink->Write(clk_enable,nullptr);
+    pcieLink->Write(adc_enable,nullptr);
+    pcieLink->Write(dataMover_enable,nullptr);
+    
+    uint8_t* buff = (uint8_t*)malloc(sizeof(uint8_t) * (1 << 23));
+    pcieLink->ClockTick1();
+    pcieLink->Read(buff);
+    pcieLink->ClockTick2();
+
+    pcieLink->PrintTimeDelta();
+
+    FILE* fp = fopen("TestData.txt","w");
+    for(int i = 0; i < (1 << 23); i+= 8) {
+        fprintf(fp,"%X,%X,%X,%X,%X,%X,%X,%X\n",
+            buff[i],buff[i + 1],buff[i + 2],buff[i + 3],buff[i + 4],buff[i + 5],buff[i + 6],buff[i + 7]);
+    }
+
+    fclose(fp);
+    free(buff);
+    delete pcieLink;
 }
