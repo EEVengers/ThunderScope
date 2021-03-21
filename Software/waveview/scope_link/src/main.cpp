@@ -42,6 +42,11 @@ void parseCommandLineArgs(int argc, char** args) {
             INFO << "Running socket test";
 
             runSocketTest();
+          
+        } else if(std::string(args[1]) == "--PCIE") {
+            INFO << "Running PCIE test";
+
+            runPCIeTest();
         } else if(std::string(args[1]) == "--controller" || std::string(args[1]) == "-c") {
             parseCli("controller");
             runCli();
