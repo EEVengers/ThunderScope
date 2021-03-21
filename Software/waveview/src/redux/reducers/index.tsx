@@ -4,6 +4,7 @@ import verticalWidgetReducer from './widgets/verticalWidgetReducer';
 import measurementsWidgetReducer from './widgets/measurementsWidgetReducer';
 import triggerWidgetReducer from './widgets/triggerWidgetReducer';
 import settingsReducer from './settingsReducer';
+import graphReducer from './graphReducer';
 
 export default combineReducers(
   {
@@ -11,6 +12,7 @@ export default combineReducers(
     verticalWidget: verticalWidgetReducer,
     measurementsWidget: measurementsWidgetReducer,
     triggerWidget: triggerWidgetReducer,
-    settings: settingsReducer
+    settings: settingsReducer,
+    graph: graphReducer
   }
 );
