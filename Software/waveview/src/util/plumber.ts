@@ -4,6 +4,8 @@ export enum CMD {
   CMD_GetData2 = 0x02,
   CMD_GetData3 = 0x03,
   CMD_GetData4 = 0x04,
+  CMD_GetMin = 0x05,
+  CMD_GetMax = 0x06,
 
   //Demo commands
   CMD_SetFile = 0x11,
@@ -36,7 +38,7 @@ export interface PlumberArgs {
   bodyCheck: (args: PlumberArgs, bytesRead: number, body: Int8Array) => boolean;
   cmd: CMD;
   id: number;
-  writeData: number[];
+  writeData: number[] | Int8Array;
 }
 
 export class Plumber {
@@ -59,7 +61,7 @@ export class Plumber {
   }
 
   private nextCycle() {
-    console.log("nextCycle");
+    //console.log("nextCycle");
     var args = this.cmdQueue.shift();
     this.ready = true;
     if(args) {
@@ -100,23 +102,39 @@ export class Plumber {
     return packet8;
   }
 
+  private commandNeedsQueueing(args: PlumberArgs) {
+    if(args.cmd <= CMD.CMD_GetData4) {
+      return false;
+    }
+    else if(args.cmd == CMD.CMD_RampDemo) {
+      return false;
+    }
+    return true;
+  }
+
   public cycle(args: PlumberArgs) {
-    console.log("cycle: " + args.cmd);
+    //console.log("cycle: " + args.cmd);
     if(this.ready) {
       var packet8 = this.argsToPacket(args);
       this.ready = false;
-      console.log("write: " + args.cmd);
+      //console.log("write: " + args.cmd);
       this.bridge.write(packet8,() => {
         this.doRead(args);
       });
     }
-    else if(args.cmd >= 0x20 || args.cmd == 0x11) {
-      console.log("queue: " + args.cmd);
+    else if(this.commandNeedsQueueing(args)) {
+      //console.log("queue: " + args.cmd);
       this.cmdQueue.push(args);
     }
   }
 
   public makeSetMathData(lhsChan: number, rhsChan: number, op: SetMathOp) {
     return [lhsChan, rhsChan, op, 0];
+  }
+
+  public decodeGetMinMax(a: Int8Array) {
+    var a64u = new BigUint64Array(a.buffer);
+    var a64s = new BigInt64Array(a.buffer);
+    return {x: Number(a64u[0]), y: Number(a64s[1])};
   }
 }

@@ -21,7 +21,7 @@ class App extends React.Component {
   constructor(props: any) {
     super(props);
     this.state = initialState;
-    this.generator = new TestPoints(1000, 30);
+    this.generator = new TestPoints(50, 50);
     this.conf = new TestConf();
   }
 
@@ -41,7 +41,8 @@ class App extends React.Component {
     let tickCount = this.state.tickCount + 1;
     this.generator.update();
     if(tickCount % 100 === 0) {
-      //this.conf.update(tickCount % 1000 !== 0);
+      console.log(tickCount);
+      this.conf.update(tickCount % 500 !== 0);
       //this.conf.mathUpdate();
     }
     this.setState({tickCount: tickCount});

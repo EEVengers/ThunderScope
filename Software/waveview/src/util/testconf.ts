@@ -1,31 +1,15 @@
-import { CMD, PlumberArgs, Plumber, SetMathOp } from './plumber';
+import { CMD, PlumberArgs, Plumber } from './plumber';
 
 class TestConf {
-  getChArgs: PlumberArgs;
-  setChArgs: PlumberArgs;
-  setMathArgs: PlumberArgs;
   getEdgeArgs: PlumberArgs;
   setEdgeArgs: PlumberArgs;
+  getWinArgs: PlumberArgs;
+  setWinArgs: PlumberArgs;
+
+  getMinArgs: PlumberArgs;
+  getMaxArgs: PlumberArgs;
 
   constructor() {
-    this.getChArgs = {
-      headCheck: (a, head) => true,
-      bodyCheck: (a, bytesRead, body) => {
-        console.log("C++ channel count: " + body[0]);
-        return true;
-      },
-      cmd: CMD.CMD_GetCh,
-      id: 0,
-      writeData: [0, 0]
-    }
-
-    this.setChArgs = {
-      headCheck: () => true,
-      bodyCheck: () => true,
-      cmd: CMD.CMD_SetCh,
-      id: 0,
-      writeData: [4, 0]
-    }
 
     this.getEdgeArgs = {
       headCheck: (a, head) => true,
@@ -46,29 +30,61 @@ class TestConf {
       writeData: [2, 0]
     }
 
-    this.setMathArgs = {
+    this.getWinArgs = {
       headCheck: () => true,
-      bodyCheck: () => {
-        console.log("I did it, I set the math");
+      bodyCheck: (args, bytesRead, body) => {
+        var body32 = new Uint32Array(body.buffer);
+        console.log(body32);
         return true;
       },
-      cmd: CMD.CMD_SetMath,
+      cmd: CMD.CMD_GetWindowSize,
       id: 0,
-      writeData: Plumber.getInstance().makeSetMathData(0, 2, SetMathOp.SetMath_Plus)
+      writeData: [0, 0]
     }
+
+    this.setWinArgs = {
+      headCheck: () => {
+        console.log("I set win");
+        return true;
+      },
+      bodyCheck: () => true,
+      cmd: CMD.CMD_SetWindowSize,
+      id: 0,
+      writeData: new Int8Array((new Uint32Array([20])).buffer)
+    }
+
+    this.getMinArgs = {
+      headCheck: () => true,
+      bodyCheck: (args, bytesRead, body) => {
+        console.log(Plumber.getInstance().decodeGetMinMax(body));
+        return true;
+      },
+      cmd: CMD.CMD_GetMin,
+      id: 0,
+      writeData: [3, 0]
+    }
+
+    this.getMaxArgs = {
+      headCheck: () => true,
+      bodyCheck: (args, bytesRead, body) => {
+        console.log(Plumber.getInstance().decodeGetMinMax(body));
+        return true;
+      },
+      cmd: CMD.CMD_GetMax,
+      id: 0,
+      writeData: [3, 0]
+    }
+
   }
 
   update(get: boolean) {
-    if(get) {
-      Plumber.getInstance().cycle(this.getChArgs);
+    /*if(get) {
+      Plumber.getInstance().cycle(this.getWinArgs);
     }
     else {
-      Plumber.getInstance().cycle(this.setChArgs);
-    }
-  }
-
-  mathUpdate() {
-    Plumber.getInstance().cycle(this.setMathArgs);
+      Plumber.getInstance().cycle(this.setWinArgs);
+    }*/
+    Plumber.getInstance().cycle(this.getMaxArgs);
   }
 }
 

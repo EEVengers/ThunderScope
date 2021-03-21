@@ -105,6 +105,64 @@ void controller::controllerLoop()
                 case CMD_GetData4:
                     ERROR << "Packet command: Reserved";
                     break;
+                case CMD_GetMin: {
+                        INFO << "Packet command: GetMin";
+                        const int incomingPacketSize = 2;
+                        int ch = 1;
+                        if(currentPacket->dataSize != incomingPacketSize) {
+                            ERROR << "Unexpected size for GetMin packet";
+                        }
+                        else {
+                            ch = currentPacket->data[0];
+                        }
+                        int8_t val;
+                        uint64_t pos;
+                        getMin(ch, &val, &pos);
+
+                        const int outgoingPacketSize = 2*sizeof(uint64_t);
+                        uint64_t* outgoingU = (uint64_t*) malloc(outgoingPacketSize);
+                        int64_t* outgoingS = (int64_t*) outgoingU;
+                        outgoingU[0] = pos;
+                        outgoingS[1] = val;
+
+                        EVPacket* tempPacket = (EVPacket*) malloc(sizeof(EVPacket));
+                        tempPacket->data = (int8_t*)outgoingU;
+                        tempPacket->dataSize = outgoingPacketSize;
+                        tempPacket->packetID = 0;
+                        tempPacket->command = CMD_GetMin;
+                        controllerQueue_tx.push(tempPacket);
+                    }
+                    break;
+                case CMD_GetMax: {
+                        INFO << "Packet command: GetMax";
+                        const int incomingPacketSize = 2;
+                        int ch = 1;
+                        if(currentPacket->dataSize != incomingPacketSize) {
+                            ERROR << "Unexpected size for GetMax packet";
+                        }
+                        else {
+                            ch = currentPacket->data[0];
+                        }
+                        int8_t val;
+                        uint64_t pos;
+                        getMax(ch, &val, &pos);
+
+                        INFO << "val: " << convert_int(val) << ", pos: " << convert_int(pos);
+
+                        const int outgoingPacketSize = 2*sizeof(uint64_t);
+                        uint64_t* outgoingU = (uint64_t*) malloc(outgoingPacketSize);
+                        int64_t* outgoingS = (int64_t*) outgoingU;
+                        outgoingU[0] = pos;
+                        outgoingS[1] = val;
+
+                        EVPacket* tempPacket = (EVPacket*) malloc(sizeof(EVPacket));
+                        tempPacket->data = (int8_t*)outgoingU;
+                        tempPacket->dataSize = outgoingPacketSize;
+                        tempPacket->packetID = 0;
+                        tempPacket->command = CMD_GetMax;
+                        controllerQueue_tx.push(tempPacket);
+                    }
+                    break;
                 case CMD_SetFile: {
                         INFO << "Packet command: SetFile";
                         const int packetSize = 2;
@@ -118,7 +176,7 @@ void controller::controllerLoop()
                         tempPacket->data = NULL;
                         tempPacket->dataSize = 0;
                         tempPacket->packetID = 0;
-                        tempPacket->command = CMD_SetCh;
+                        tempPacket->command = CMD_SetFile;
                         controllerQueue_tx.push(tempPacket);
                     }
                     break;
@@ -135,19 +193,15 @@ void controller::controllerLoop()
                     break;
                 case CMD_GetWindowSize: {
                         INFO << "Packet command: GetWindowSize";
-                        const int packetSize = 4;
 
                         EVPacket* tempPacket = (EVPacket*) malloc(sizeof(EVPacket));
-                        tempPacket->data = (int8_t*) malloc(packetSize);
+                        const int packetSize = sizeof(uint32_t);
+                        uint32_t* windata = (uint32_t*) malloc(packetSize);
+                        windata[0] = getWindowSize();
+                        tempPacket->data = (int8_t*) windata;
                         tempPacket->dataSize = packetSize;
                         tempPacket->packetID = 0;
                         tempPacket->command = CMD_GetWindowSize;
-
-                        int32_t windowSize = getWindowSize();
-                        tempPacket->data[0] = (windowSize >> 24) & 0xFF;
-                        tempPacket->data[1] = (windowSize >> 16) & 0xFF;
-                        tempPacket->data[2] = (windowSize >> 8) & 0xFF;
-                        tempPacket->data[3] = windowSize & 0xFF;
                         controllerQueue_tx.push(tempPacket);
                     }
                     break;
@@ -210,12 +264,8 @@ void controller::controllerLoop()
                             ERROR << "Unexpected size for SetWindowSize packet";
                         }
                         else {
-                            int32_t windowSize = 0;
-                            windowSize |= currentPacket->data[0] << 24;
-                            windowSize |= currentPacket->data[1] << 16;
-                            windowSize |= currentPacket->data[2] << 8;
-                            windowSize |= currentPacket->data[3];
-                            setWindowSize(windowSize);
+                            uint32_t* windowSize = (uint32_t*)currentPacket->data;
+                            setWindowSize(windowSize[0]);
                         }
                         EVPacket* tempPacket = (EVPacket*) malloc(sizeof(EVPacket));
                         tempPacket->data = NULL;
@@ -333,6 +383,9 @@ void controller::controllerLoop()
                                 rhsChan = -1;
                             }
                             //Do something with these.
+                            setMathCh_1(lhsChan);
+                            setMathCh_2(rhsChan);
+                            setMathSign(op == 1);
                         }
                         EVPacket* tempPacket = (EVPacket*) malloc(sizeof(EVPacket));
                         tempPacket->data = NULL;
