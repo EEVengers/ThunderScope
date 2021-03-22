@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import './../../../css/sidebar/core/singleButton.css';
 import Graph from '../../graph/graph';
+import MeasurementsWidget from '../widgets/measurementsWidget';
 
 class SingleButton extends React.Component<any, any> {
 
@@ -10,6 +11,10 @@ class SingleButton extends React.Component<any, any> {
     if(Graph.instanceList.length > 0) {
       this.props.dispatch({type: 'graph/tick'});
       Graph.instanceList[0].generator.update();
+    }
+    if(MeasurementsWidget.instanceList.length > 0) {
+      this.props.dispatch({type: 'measurements/tick'});
+      MeasurementsWidget.instanceList[0].update();
     }
   }
 

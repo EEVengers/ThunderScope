@@ -8,9 +8,11 @@ import CMD from '../../../configuration/enums/cmd';
 import {Plumber, PlumberArgs} from '../../../util/plumber';
 
 class MeasurementsWidget extends React.Component<any, any> {
+  static instanceList: MeasurementsWidget[] = [];
   timerID: number = 0;
 
   componentDidMount() {
+    MeasurementsWidget.instanceList.push(this);
     this.timerID = window.setInterval(
       () => this.tick(),
       1000
