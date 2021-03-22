@@ -14,10 +14,12 @@ import GraphStatus from '../../configuration/enums/graphStatus';
 import TestPoints from '../../util/testpoints';
 
 class Graph extends React.Component<any, any> {
+  static instanceList: Graph[] = [];
   timerID: number = 0;
   generator: TestPoints = new TestPoints(50, 50);
 
   componentDidMount() {
+    Graph.instanceList.push(this);
     this.timerID = window.setInterval(
       () => this.tick(),
       16.67
@@ -30,7 +32,7 @@ class Graph extends React.Component<any, any> {
   }
 
   tick() {
-    if(!this.props.graph.singleMode && this.props.graph.currentStatus === GraphStatus.On) {
+    if(this.props.graph.currentStatus === GraphStatus.On) {
       this.props.dispatch({type: 'graph/tick'});
       this.generator.update();
     }

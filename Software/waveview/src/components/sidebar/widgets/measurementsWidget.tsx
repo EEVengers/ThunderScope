@@ -17,7 +17,7 @@ class MeasurementsWidget extends React.Component<any, any> {
   }
 
   tick() {
-    if(!this.props.graph.singleMode && this.props.graph.currentStatus === GraphStatus.On) {
+    if(this.props.graph.currentStatus === GraphStatus.On) {
       this.props.dispatch({type: 'measurements/tick'});
       this.update();
     }
