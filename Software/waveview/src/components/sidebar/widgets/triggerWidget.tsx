@@ -18,6 +18,14 @@ class TriggerWidget extends React.Component<any, any> {
   }
 
   changeChannel = (channelNumber: number) => {
+    let args: PlumberArgs = {
+      headCheck: () => true,
+      bodyCheck: () => true,
+      cmd: CMD.CMD_SetTriggerCh,
+      id: 0,
+      writeData: [channelNumber, 0]
+    };
+    Plumber.getInstance().cycle(args);
     this.props.dispatch({type: 'trigger/changeChannel', payload: channelNumber})
   }
 
