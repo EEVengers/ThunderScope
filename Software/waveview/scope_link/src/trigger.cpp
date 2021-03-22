@@ -19,8 +19,8 @@ Trigger::Trigger(boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<fa
     triggerLevel = level;
     clearCount();
 
-    stopTrigger.store(false); 
-    pauseTrigger.store(true); 
+    stopTrigger.store(false);
+    pauseTrigger.store(true);
     triggerMet.store(false);
 
     // start thread paused
@@ -54,7 +54,7 @@ void Trigger::checkTriggerFalling(buffer* currentBuffer)
     DEBUG << "Checking a Trigger with #ch: " << (int)numCh << " triggering on ch: " << (int)triggerCh;
     // Compute the trigger
     for (int i = 0; i < (BUFFER_SIZE/64)/numCh; i++) {
-        currentBuffer->trigger[i] = 
+        currentBuffer->trigger[i] =
                      ((uint64_t)((currentBuffer->data[(i * 64 +  0) * numCh + triggerCh] > triggerLevel) &&
                        (currentBuffer->data[(i * 64 +  0 + 1) * numCh + triggerCh] <= triggerLevel)) << 63) |
                      ((uint64_t)((currentBuffer->data[(i * 64 +  1) * numCh + triggerCh] > triggerLevel) &&
@@ -198,7 +198,7 @@ void Trigger::checkTriggerRising(buffer* currentBuffer)
     DEBUG << "Checking a Trigger with #ch: " << (int)numCh << " triggering on ch: " << (int)triggerCh;
     // Compute the trigger
     for (int i = 0; i < (BUFFER_SIZE/64)/numCh; i++) {
-        currentBuffer->trigger[i] = 
+        currentBuffer->trigger[i] =
                      ((uint64_t)((currentBuffer->data[(i * 64 + 0) * numCh + triggerCh] < triggerLevel) &&
                        (currentBuffer->data[(i * 64 +  0 + 1) * numCh + triggerCh] >= triggerLevel)) << 63) |
                      ((uint64_t)((currentBuffer->data[(i * 64 + 1) * numCh + triggerCh] < triggerLevel) &&
@@ -420,7 +420,7 @@ int8_t Trigger::getTriggerCh ()
 // Sets the channel to trigger off of
 void Trigger::setTriggerCh (int8_t newTriggerCh)
 {
-    if (newTriggerCh == 1 || newTriggerCh == 2 || newTriggerCh == 4) {
+    if (newTriggerCh == 1 || newTriggerCh == 2 || newTriggerCh == 3 || newTriggerCh == 4) {
         triggerCh = newTriggerCh - 1;
     } else {
         ERROR << "Invalid trigger channel: " << newTriggerCh;
