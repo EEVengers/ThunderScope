@@ -53,7 +53,7 @@ export class Plumber {
     this.bridge.read(rxBuff, (err: NodeJS.ErrnoException, bytesRead: number, bytes: Uint8Array) => {
       var bytes16 = new Uint16Array(bytes.buffer);
       var dataSize = bytes16[2];
-      if(!args.headCheck(args, bytes16) || dataSize == 0) {
+      if(!args.headCheck(args, bytes16) || dataSize === 0) {
         this.nextCycle();
         return;
       }
@@ -85,7 +85,7 @@ export class Plumber {
     if(args.cmd <= CMD.CMD_GetData4) {
       return false;
     }
-    else if(args.cmd == CMD.CMD_RampDemo) {
+    else if(args.cmd === CMD.CMD_RampDemo) {
       return false;
     }
     return true;
@@ -117,7 +117,7 @@ export class Plumber {
     let a64s = new BigInt64Array(a.buffer);
     var res: MaxMinResult[] = [];
     for(var i = 0; i < args.writeData.length; i++) {
-      if(args.writeData[i] != 0) {
+      if(args.writeData[i] !== 0) {
         res.push({ch: i + 1, x: Number(a64u[i]), y: Number(a64s[i + maxCh])});
       }
     }

@@ -6,9 +6,9 @@ const SettingsInitialState = {
       DefaultColors.Channel1, 
       DefaultColors.Channel2, 
       DefaultColors.Channel3, 
-      DefaultColors.Channel4
-    ],
-    math: DefaultColors.Math
+      DefaultColors.Channel4,
+      DefaultColors.Math
+    ]
   }
 };
 

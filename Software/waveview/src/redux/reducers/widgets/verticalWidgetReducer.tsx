@@ -81,6 +81,7 @@ export default function(state = VerticalWidgetInitialState, action: {type: any, 
         settings: tmp
       };
     case "vertical/changeChannelStatus":
+      // TODO: Call C and tell them that we want to either start getting or stop receiving data from the channel
       tmp = state.settings;
       var newTotalChannelsUsed = state.totalChannelsUsed;
 
@@ -175,6 +176,15 @@ export default function(state = VerticalWidgetInitialState, action: {type: any, 
         ...state,
         timePerDivision: tmp
       };
+    case "vertical/toggleMathWaveform":
+      tmp = state.settings;
+      var newStatus = (state.settings[4].status === 1) ? 0 : 1;
+
+      state.settings[4].status = newStatus;
+      return {
+        ...state,
+        settings: tmp
+      }
     default:
       return state;
   }

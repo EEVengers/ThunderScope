@@ -85,6 +85,9 @@ const VerticalWidgetInitialState = {
       coupling: MeasurementType.DC,
       bandwidth: 100,
       status: 1
+    },
+    {
+      status: 0
     }
   ],
   verticalOffset: [

@@ -8,6 +8,7 @@ class TriggerWidget extends React.Component<any, any> {
 
   toggleMathMode = (mathEnabled: boolean) => {
     this.props.dispatch({type: 'math/toggleMathMode', payload: mathEnabled });
+    this.props.dispatch({type: 'vertical/toggleMathWaveform' });
   }
 
   changeChannel1 = (channelNumber: number) => {
@@ -179,9 +180,10 @@ class TriggerWidget extends React.Component<any, any> {
   }
 }
 
-function mapStateToProps(state: { mathWidget: any, settings: any}) {
+function mapStateToProps(state: { mathWidget: any, verticalWidget: any, settings: any}) {
   return {
     mathWidget: state.mathWidget,
+    verticalWidget: state.verticalWidget,
     settings: state.settings
   };
 }
