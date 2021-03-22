@@ -35,6 +35,11 @@ export default function(state = MeasurementsWidgetInitialState, action: {type: a
         ...state,
         min: tmp
       }
+    case "measurements/tick":
+      return {
+        ...state,
+        tickCount: state.tickCount + 1
+      }
     default:
       return state;
   }

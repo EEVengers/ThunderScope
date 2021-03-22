@@ -10,13 +10,16 @@ class MeasurementsWidget extends React.Component<any, any> {
 
   componentDidMount() {
     this.timerID = window.setInterval(
-      () => {
-        if(!this.props.graph.singleMode) {
-          this.update();
-        }
-      },
+      () => this.tick(),
       1000
     );
+  }
+
+  tick() {
+    this.props.dispatch({type: 'measurements/tick'});
+    if(!this.props.graph.singleMode) {
+      this.update();
+    }
   }
 
   update() {

@@ -10,36 +10,57 @@ import {
   LineSeries
 } from 'react-vis';
 
-class Graph extends React.Component<any, any> { 
+import TestPoints from '../../util/testpoints';
+
+class Graph extends React.Component<any, any> {
+  timerID: number = 0;
+  generator: TestPoints = new TestPoints(50, 50);
+
+  componentDidMount() {
+    this.timerID = window.setInterval(
+      () => this.tick(),
+      16.67
+    );
+    this.generator.mountCalls();
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.timerID)
+  }
+
+  tick() {
+    this.props.dispatch({type: 'graph/tick'});
+    this.generator.update();
+  }
 
   render() {
     return (
       <div className="graph_view">
-        <div 
+        <div
           className="graph_sidebar"
         >
-          <p 
+          <p
             className = "graph_arrow"
           >
             &#x21b3;
           </p>
         </div>
         <FlexibleXYPlot
-          yDomain={this.props.yDomain}
-          xDomain={this.props.xDomain}
+          yDomain={this.generator.y.getDomain()}
+          xDomain={this.generator.x.getDomain()}
           margin={{right:0, bottom:0}}
         >
-          <HorizontalGridLines 
+          <HorizontalGridLines
             style={{stroke: '#4D4D4D'}}
-            left={0} 
+            left={0}
             top={0}
             width={10000}
             height={10000}
             tickTotal={12}
           />
-          <VerticalGridLines 
+          <VerticalGridLines
             style={{stroke: '#4D4D4D'}}
-            left={0} 
+            left={0}
             top={0}
             width={10000}
             height={10000}
@@ -49,12 +70,12 @@ class Graph extends React.Component<any, any> {
             title=""
             hideTicks
           />
-          <YAxis 
-            title="" 
+          <YAxis
+            title=""
             hideTicks
           />
           {
-            this.props.dataSeries.map((data: any, index: any) => {
+            this.generator.getData().map((data: any, index: any) => {
               return <LineSeries
                 className="data-series"
                 data={data}

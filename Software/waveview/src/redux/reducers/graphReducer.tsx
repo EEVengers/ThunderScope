@@ -16,6 +16,11 @@ export default function(state = GraphInitialState, action: {type: any, payload: 
         currentStatus: GraphStatus.Off,
         singleMode: !state.singleMode
       };
+    case "graph/tick":
+      return {
+        ...state,
+        tickCount: state.tickCount + 1
+      }
     default:
       return state;
   }
