@@ -129,15 +129,21 @@ void PCIeLink::Read(uint8_t* buff) {
     //Once more than 2^23 bytes have been written, halt the datamover
     bool enoughData = false;
     int64_t current_chunk;
-    uint32_t kbytes_4_moved = 0;
+    uint32_t kbytes_32_moved = 0;
+    uint32_t error_code = 0;
+    uint32_t overflow_count = 0;
     while(!enoughData) {
-        _Read(user_handle,DATAMOVER_TRANSFER_COUNTER,(uint8_t*)(&kbytes_4_moved),4);
-        kbytes_4_moved = kbytes_4_moved & 0x0000FFFF;
-        current_chunk = kbytes_4_moved / (1 << 11);
-        INFO << "4k_Bytes Transfered: " << kbytes_4_moved;
+        _Read(user_handle,DATAMOVER_TRANSFER_COUNTER,(uint8_t*)(&kbytes_32_moved),4);
+        error_code = ((kbytes_32_moved & 0xC0000000)>>30);
+        overflow_count = ((kbytes_32_moved & 0x3FFF0000)>>16);
+        kbytes_32_moved = kbytes_32_moved & 0x0000FFFF;
+        current_chunk = kbytes_32_moved / (1 << 8);
+        INFO << "error code: " << error_code;
+        INFO << "overflow count: " << overflow_count;
+        INFO << "32k_Bytes Transfered: " << kbytes_32_moved;
         INFO << "Current Chunk: " << current_chunk;
         if(last_chunk_read == -1) {
-            enoughData = (kbytes_4_moved >= (1 << 11));
+            enoughData = (kbytes_32_moved >= (1 << 8));
             if(enoughData && current_chunk == 0) {
                 enoughData = false;
                 continue;
