@@ -45,15 +45,21 @@ class TriggerWidget extends React.Component<any, any> {
 
   // Trigger Level
   increaseTriggerLevel = () => {
+    //TODO: Plumber call
+    //(TRIGGER LEVEL (V))/((VOLTAGE RANGExDIVISIONS)/256)
     this.props.dispatch({type: 'trigger/increaseTriggerLevelValue'});
   }
 
   decreaseTriggerLevel = () => {
+    //TODO: Plumber call
+    //(TRIGGER LEVEL (V))/((VOLTAGE RANGExDIVISIONS)/256)
     this.props.dispatch({type: 'trigger/decreaseTriggerLevelValue'});
   }
 
   // Trigger Level Unit
   changeTriggerLevelUnit = (voltageUnit: VoltageUnit) => {
+    //TODO: unit analysis, plumber call
+    //(TRIGGER LEVEL (V))/((VOLTAGE RANGExDIVISIONS)/256)
     this.props.dispatch({type: 'trigger/changeTriggerLevelUnit', payload: voltageUnit});
   }
 
