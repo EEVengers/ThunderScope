@@ -12,14 +12,18 @@ class SideBar extends React.Component {
 
   render() {
     return (
-      <div className="SideBarComponent">
-        <RunStopButton />
-        <SingleButton />
-        <HorizontalWidget />
-        <VerticalWidget />
-        <TriggerWidget />
-        <MathWidget />
-        <MeasurementsWidget />
+      <div className="SideBar">
+        <div className="CoreButtonsComponent">
+          <RunStopButton />
+          <SingleButton />
+        </div>
+        <div className="SideBarComponent">
+          <HorizontalWidget />
+          <VerticalWidget />
+          <TriggerWidget />
+          <MathWidget />
+          <MeasurementsWidget />
+        </div>
       </div>
     )
   }
