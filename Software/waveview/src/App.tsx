@@ -4,7 +4,6 @@ import Graph from './components/graph/graph';
 import BottomBar from './components/bottombar/bottombar';
 import Sidebar from './components/sidebar/sidebar';
 import TestPoints from './util/testpoints';
-import TestConf from './util/testconf';
 
 interface IAppState {
   tickCount: number;
@@ -16,13 +15,11 @@ class App extends React.Component {
   state: IAppState;
   timerID: number = 0;
   generator: TestPoints;
-  conf: TestConf;
 
   constructor(props: any) {
     super(props);
     this.state = initialState;
     this.generator = new TestPoints(50, 50);
-    this.conf = new TestConf();
   }
 
   componentDidMount() {
@@ -42,8 +39,6 @@ class App extends React.Component {
     this.generator.update();
     if(tickCount % 100 === 0) {
       console.log(tickCount);
-      this.conf.update(tickCount % 500 !== 0);
-      //this.conf.mathUpdate();
     }
     this.setState({tickCount: tickCount});
   }
