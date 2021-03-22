@@ -114,7 +114,7 @@ class TriggerWidget extends React.Component<any, any> {
           <label
             className="AdditionButtonText"
             style={{fontWeight: this.props.mathWidget.mathOperator === MathOperators.Addition ? "bold" : "normal"}}>
-            {MathOperators.Addition}
+            ADD ({MathOperators.Addition})
           </label>
         </button>
         <button
@@ -123,7 +123,7 @@ class TriggerWidget extends React.Component<any, any> {
           <label
             className="SubtractionButtonText"
             style={{fontWeight: this.props.mathWidget.mathOperator === MathOperators.Subtraction ? "bold" : "normal"}}>
-            {MathOperators.Subtraction}
+            SUBTRACT ({MathOperators.Subtraction})
           </label>
         </button>
       </div>
