@@ -6,6 +6,7 @@ import GraphStatus from '../../../configuration/enums/graphStatus';
 
 import CMD from '../../../configuration/enums/cmd';
 import {Plumber, PlumberArgs} from '../../../util/plumber';
+import ControlMode from '../../../configuration/enums/controlMode';
 
 class MeasurementsWidget extends React.Component<any, any> {
   static instanceList: MeasurementsWidget[] = [];
@@ -128,7 +129,10 @@ class MeasurementsWidget extends React.Component<any, any> {
           className="Channel1-MaxValue"
           style={{color: this.props.settings.colors.channel[0]}}>
           {this.props.measurementsWidget.max[0].value}
-          {this.props.measurementsWidget.max[0].unit}
+          {this.props.verticalWidget.settings[0].controlMode === ControlMode.Course 
+            && this.props.verticalWidget.timePerDivision[0].course.unit.toString()}
+          {this.props.verticalWidget.settings[0].controlMode === ControlMode.Fine 
+            && + this.props.verticalWidget.timePerDivision[0].fine.unit.toString()}
         </label>
       <div className="ClearBlock"></div>
         <label
@@ -140,7 +144,10 @@ class MeasurementsWidget extends React.Component<any, any> {
           className="Channel1-MinValue"
           style={{color: this.props.settings.colors.channel[0]}}>
           {this.props.measurementsWidget.min[0].value}
-          {this.props.measurementsWidget.min[0].unit}
+          {this.props.verticalWidget.settings[0].controlMode === ControlMode.Course 
+            && this.props.verticalWidget.timePerDivision[0].course.unit.toString()}
+          {this.props.verticalWidget.settings[0].controlMode === ControlMode.Fine 
+            && + this.props.verticalWidget.timePerDivision[0].fine.unit.toString()}
         </label>
       <div className="ClearBlock"></div>
       </div>
@@ -162,7 +169,10 @@ class MeasurementsWidget extends React.Component<any, any> {
           className="Channel2-MaxValue"
           style={{color: this.props.settings.colors.channel[1]}}>
           {this.props.measurementsWidget.max[1].value}
-          {this.props.measurementsWidget.max[1].unit}
+          {this.props.verticalWidget.settings[1].controlMode === ControlMode.Course 
+            && this.props.verticalWidget.timePerDivision[1].course.unit.toString()}
+          {this.props.verticalWidget.settings[1].controlMode === ControlMode.Fine 
+            && + this.props.verticalWidget.timePerDivision[1].fine.unit.toString()}
         </label>
       <div className="ClearBlock"></div>
         <label
@@ -174,7 +184,10 @@ class MeasurementsWidget extends React.Component<any, any> {
           className="Channel2-MinValue"
           style={{color: this.props.settings.colors.channel[1]}}>
           {this.props.measurementsWidget.min[1].value}
-          {this.props.measurementsWidget.min[1].unit}
+          {this.props.verticalWidget.settings[1].controlMode === ControlMode.Course 
+            && this.props.verticalWidget.timePerDivision[1].course.unit.toString()}
+          {this.props.verticalWidget.settings[1].controlMode === ControlMode.Fine 
+            && + this.props.verticalWidget.timePerDivision[1].fine.unit.toString()}
         </label>
       <div className="ClearBlock"></div>
       </div>
@@ -196,7 +209,10 @@ class MeasurementsWidget extends React.Component<any, any> {
           className="Channel3-MaxValue"
           style={{color: this.props.settings.colors.channel[2]}}>
           {this.props.measurementsWidget.max[2].value}
-          {this.props.measurementsWidget.max[2].unit}
+          {this.props.verticalWidget.settings[2].controlMode === ControlMode.Course 
+            && this.props.verticalWidget.timePerDivision[2].course.unit.toString()}
+          {this.props.verticalWidget.settings[2].controlMode === ControlMode.Fine 
+            && + this.props.verticalWidget.timePerDivision[2].fine.unit.toString()}
         </label>
       <div className="ClearBlock"></div>
         <label
@@ -208,7 +224,10 @@ class MeasurementsWidget extends React.Component<any, any> {
           className="Channel3-MinValue"
           style={{color: this.props.settings.colors.channel[2]}}>
           {this.props.measurementsWidget.min[2].value}
-          {this.props.measurementsWidget.min[2].unit}
+          {this.props.verticalWidget.settings[2].controlMode === ControlMode.Course 
+            && this.props.verticalWidget.timePerDivision[2].course.unit.toString()}
+          {this.props.verticalWidget.settings[2].controlMode === ControlMode.Fine 
+            && + this.props.verticalWidget.timePerDivision[2].fine.unit.toString()}
         </label>
       <div className="ClearBlock"></div>
       </div>
@@ -230,7 +249,10 @@ class MeasurementsWidget extends React.Component<any, any> {
           className="Channel4-MaxValue"
           style={{color: this.props.settings.colors.channel[3]}}>
           {this.props.measurementsWidget.max[3].value}
-          {this.props.measurementsWidget.max[3].unit}
+          {this.props.verticalWidget.settings[3].controlMode === ControlMode.Course 
+            && this.props.verticalWidget.timePerDivision[3].course.unit.toString()}
+          {this.props.verticalWidget.settings[3].controlMode === ControlMode.Fine 
+            && + this.props.verticalWidget.timePerDivision[3].fine.unit.toString()}
         </label>
       <div className="ClearBlock"></div>
         <label
@@ -242,7 +264,10 @@ class MeasurementsWidget extends React.Component<any, any> {
           className="Channel4-MinValue"
           style={{color: this.props.settings.colors.channel[3]}}>
           {this.props.measurementsWidget.min[3].value}
-          {this.props.measurementsWidget.min[3].unit}
+          {this.props.verticalWidget.settings[3].controlMode === ControlMode.Course 
+            && this.props.verticalWidget.timePerDivision[3].course.unit.toString()}
+          {this.props.verticalWidget.settings[3].controlMode === ControlMode.Fine 
+            && + this.props.verticalWidget.timePerDivision[3].fine.unit.toString()}
         </label>
       <div className="ClearBlock"></div>
       </div>
@@ -253,9 +278,10 @@ class MeasurementsWidget extends React.Component<any, any> {
   }
 }
 
-function mapStateToProps(state: { measurementsWidget: any, settings: any, graph: any }) {
+function mapStateToProps(state: { measurementsWidget: any, verticalWidget: any, settings: any, graph: any }) {
   return {
     measurementsWidget: state.measurementsWidget,
+    verticalWidget: state.verticalWidget,
     settings: state.settings,
     graph: state.graph
   };
