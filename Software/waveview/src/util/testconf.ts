@@ -84,7 +84,7 @@ class TestConf {
     else {
       Plumber.getInstance().cycle(this.setWinArgs);
     }*/
-    Plumber.getInstance().cycle(this.getMinArgs);
+    //Plumber.getInstance().cycle(this.getMinArgs);
   }
 }
 
