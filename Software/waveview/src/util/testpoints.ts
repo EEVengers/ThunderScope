@@ -1,4 +1,5 @@
-import { CMD, PlumberArgs, Plumber, SetMathOp } from './plumber';
+import CMD from '../configuration/enums/cmd';
+import { PlumberArgs, Plumber, SetMathOp } from './plumber';
 
 class Range {
   dataMin: number = 0;
@@ -111,6 +112,7 @@ class TestPoints {
 
   getData() {
     var chMax = this.effectiveChCount();
+    console.log(this.scope_data);
     return this.scope_data.slice(0, chMax);
   }
 }

@@ -30,27 +30,28 @@ const MeasurementsWidgetInitialState = {
     }
   ],
   min: [
-    { 
+    {
       value: 10,
       unit: VoltageUnit.MicroVolt,
       display: false
     },
-    { 
+    {
       value: 20,
       unit: VoltageUnit.NanoVolt,
       display: false
     },
-    { 
+    {
       value: 30,
       unit: VoltageUnit.MilliVolt,
       display: false
     },
-    { 
+    {
       value: 40,
       unit: VoltageUnit.Volt,
       display: false
     }
-  ]
+  ],
+  tickCount: 0
 };
 
 export default MeasurementsWidgetInitialState;

@@ -90,6 +90,11 @@ enum CMD {
     CMD_SetLevel = 0x33,
     CMD_SetTriggerCh = 0x34,
     CMD_SetEdgeType = 0x35,
+    CMD_SetBandwidth = 0x36,
+    CMD_SetVerticalScaling = 0x37,
+    CMD_SetVerticalOffset = 0x38,
+    CMD_SetHorizontalOffset = 0x39,
+    CMD_SetCoupling = 0x3A,
     CMD_SetMath = 0x3F
 };
 

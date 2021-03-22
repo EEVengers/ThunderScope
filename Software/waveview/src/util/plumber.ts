@@ -1,36 +1,15 @@
-export enum CMD {
-  //Data commands
-  CMD_GetData1 = 0x01,
-  CMD_GetData2 = 0x02,
-  CMD_GetData3 = 0x03,
-  CMD_GetData4 = 0x04,
-  CMD_GetMin = 0x05,
-  CMD_GetMax = 0x06,
-
-  //Demo commands
-  CMD_SetFile = 0x11,
-  CMD_RampDemo = 0x1F,
-
-  //Get Config commands
-  CMD_GetWindowSize = 0x21,
-  CMD_GetCh = 0x22,
-  CMD_GetLevel = 0x23,
-  CMD_GetTriggerCh = 0x24,
-  CMD_GetEdgeType = 0x25,
-
-  //Set Config commands
-  CMD_SetWindowSize = 0x31,
-  CMD_SetCh = 0x32,
-  CMD_SetLevel = 0x33,
-  CMD_SetTriggerCh = 0x34,
-  CMD_SetEdgeType = 0x35,
-  CMD_SetMath = 0x3F
-}
+import CMD from '../configuration/enums/cmd';
 
 export enum SetMathOp {
   SetMath_None = 0,
   SetMath_Plus = 1,
   SetMath_Minus = 2,
+}
+
+export interface MaxMinResult {
+  ch: number,
+  x: number,
+  y: number
 }
 
 export interface PlumberArgs {
@@ -132,9 +111,16 @@ export class Plumber {
     return [lhsChan, rhsChan, op, 0];
   }
 
-  public decodeGetMinMax(a: Int8Array) {
-    var a64u = new BigUint64Array(a.buffer);
-    var a64s = new BigInt64Array(a.buffer);
-    return {x: Number(a64u[0]), y: Number(a64s[1])};
+  public decodeGetMinMax(args: PlumberArgs, a: Int8Array) {
+    let maxCh = 4;
+    let a64u = new BigUint64Array(a.buffer);
+    let a64s = new BigInt64Array(a.buffer);
+    var res: MaxMinResult[] = [];
+    for(var i = 0; i < args.writeData.length; i++) {
+      if(args.writeData[i] != 0) {
+        res.push({ch: i + 1, x: Number(a64u[i]), y: Number(a64s[i + maxCh])});
+      }
+    }
+    return res;
   }
 }

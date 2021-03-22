@@ -34,8 +34,8 @@ Prepend the name with `CMD_` to find it in the Electron and C++ code.
 Cmd  | DataSize        | Name          | Description
 -----|-----------------|---------------|------------------------
 0x01 | 2 (useless)     | GetData1      |
-0x05 | 2               | GetMin        | Data has ch 1,2,3 or 4
-0x06 | 2               | GetMax        | Data has ch 1,2,3 or 4
+0x05 | 4               | GetMin        | Data: `[ch1, ch2, ch3, ch4]`, each 1 or 0
+0x06 | 4               | GetMax        | Data: `[ch1, ch2, ch3, ch4]`, each 1 or 0
 0x11 | 2               | SetFile       | Number mapped to filename by C++
 0x1F | 2 (useless)     | RampDemo      |
 0x21 | 2 (useless)     | GetWindowSize |
@@ -63,8 +63,8 @@ Note that the encoding used by the protocol might not be same as the encoding us
 Cmd  | DataSize        | Name          | Description
 -----|-----------------|---------------|------------------------
 0x01 | ch * windowSize | GetData1      | Data for all ch
-0x05 | 16              | GetMin        | Data has x and y as uint64 and int64
-0x06 | 16              | GetMax        | Data has x and y as uint64 and int64
+0x05 | 64              | GetMin        | Data has `[x1, x2...]` and `[y1, y2..]` as uint64 and int64
+0x06 | 64              | GetMax        | Data has `[x1, x2...]` and `[y1, y2..]` as uint64 and int64
 0x11 | 0               | SetFile       | Set testdata filename
 0x1F | 4096            | RampDemo      | 4 ch, simple waves
 0x21 | 4               | GetWindowSize | Data has window size as uint32
@@ -83,20 +83,29 @@ Cmd  | DataSize        | Name          | Description
 
 ### Electron -> C++
 
-Cmd  | DataSize        | Name          | Description
------|-----------------|---------------|------------------------
-0x02 | 2 (useless)     | GetData2      | Reserved, If we need 1 command/ch
-0x03 | 2 (useless)     | GetData3      | Reserved, If we need 1 command/ch
-0x04 | 2 (useless)     | GetData4      | Reserved, If we need 1 command/ch
+Cmd  | DataSize        | Name                | Description
+-----|-----------------|---------------------|------------------------
+0x02 | 2 (useless)     | GetData2            | Reserved, If we need 1 command/ch
+0x03 | 2 (useless)     | GetData3            | Reserved, If we need 1 command/ch
+0x04 | 2 (useless)     | GetData4            | Reserved, If we need 1 command/ch
+0x36 | 2?              | SetBandwidth        |
+0x37 | 2?              | SetVerticalScaling  |
+0x38 | 2               | SetVerticalOffset   | Data\[0\] has offset
+0x39 | 2?              | SetHorizontalOffset |
+0x3A | 2               | SetCoupling         | Data\[0\] has 0\1 for AC\DC
 
 ### C++ -> Electron
 
-Cmd  | DataSize        | Name          | Description
------|-----------------|---------------|------------------------
-0x02 | windowSize      | Reserved      | If we need 1 command/ch
-0x03 | windowSize      | Reserved      | If we need 1 command/ch
-0x04 | windowSize      | Reserved      | If we need 1 command/ch
+Cmd  | DataSize        | Name                | Description
+-----|-----------------|---------------------|------------------------
+0x02 | windowSize      | Reserved            | If we need 1 command/ch
+0x03 | windowSize      | Reserved            | If we need 1 command/ch
+0x04 | windowSize      | Reserved            | If we need 1 command/ch
+0x36 | 0               | SetBandwidth        |
+0x37 | 0               | SetVerticalScaling  |
+0x38 | 0               | SetVerticalOffset   |
+0x39 | 0               | SetHorizontalOffset |
+0x3A | 0               | SetCoupling         |
 
 ## Proposed But Not Allocated
 
-+ (none)
