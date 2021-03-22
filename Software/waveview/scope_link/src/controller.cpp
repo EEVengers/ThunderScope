@@ -548,6 +548,12 @@ void controller::setCh(int8_t newCh)
 {
     controllerPause();
 
+    // If the trigger channel will nolonger be active
+    if (getTriggerCh() + 1 > newCh){
+        // Set the trigger ch to ch 1
+        setTriggerCh(1);
+    }
+
     triggerThread->setCh(newCh);
     processorThread->setCh(newCh);
     postProcessorThread->setCh(newCh);
@@ -564,6 +570,7 @@ void controller::setCh(int8_t newCh)
  *   None
  * Return:
  *   int8_t - current trigger channel as known by the trigger thread;
+ *            This value is 0 - 3.
  ******************************************************************************/
 int8_t controller::getTriggerCh()
 {
