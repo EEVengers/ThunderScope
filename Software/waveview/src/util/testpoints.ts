@@ -1,4 +1,5 @@
-import { CMD, PlumberArgs, Plumber, SetMathOp } from './plumber';
+import CMD from '../configuration/enums/cmd';
+import { PlumberArgs, Plumber, SetMathOp } from './plumber';
 
 class Range {
   dataMin: number = 0;

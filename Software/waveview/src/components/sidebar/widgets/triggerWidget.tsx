@@ -4,7 +4,8 @@ import './../../../css/sidebar/widgets/triggerWidget.css';
 import VoltageUnit from '../../../configuration/enums/voltageUnit';
 import TriggerType from '../../../configuration/enums/triggerType';
 
-import {Plumber, PlumberArgs, CMD} from '../../../util/plumber';
+import CMD from '../../../configuration/enums/cmd';
+import {Plumber, PlumberArgs} from '../../../util/plumber';
 
 class TriggerWidget extends React.Component<any, any> {
 

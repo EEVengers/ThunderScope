@@ -4,7 +4,8 @@ import MathType from '../../../configuration/enums/mathType';
 import './../../../css/sidebar/widgets/measurementsWidget.css';
 import GraphStatus from '../../../configuration/enums/graphStatus';
 
-import {Plumber, PlumberArgs, CMD} from '../../../util/plumber';
+import CMD from '../../../configuration/enums/cmd';
+import {Plumber, PlumberArgs} from '../../../util/plumber';
 
 class MeasurementsWidget extends React.Component<any, any> {
   timerID: number = 0;
