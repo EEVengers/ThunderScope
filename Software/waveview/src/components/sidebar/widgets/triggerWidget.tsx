@@ -4,6 +4,8 @@ import './../../../css/sidebar/widgets/triggerWidget.css';
 import VoltageUnit from '../../../configuration/enums/voltageUnit';
 import TriggerType from '../../../configuration/enums/triggerType';
 
+import {Plumber, PlumberArgs, CMD} from '../../../util/plumber';
+
 class TriggerWidget extends React.Component<any, any> {
 
   // Trigger Channel
@@ -21,6 +23,15 @@ class TriggerWidget extends React.Component<any, any> {
 
   // Trigger Type
   changeTriggerType = (triggerType: TriggerType) => {
+    let edgeNum = (triggerType == TriggerType.RisingEdge) ? 1 : 2;
+    let args: PlumberArgs = {
+      headCheck: () => true,
+      bodyCheck: () => true,
+      cmd: CMD.CMD_SetEdgeType,
+      id: 0,
+      writeData: [edgeNum, 0]
+    }
+    Plumber.getInstance().cycle(args);
     this.props.dispatch({type: 'trigger/changeTriggerType', payload: triggerType});
   }
 
@@ -115,19 +126,19 @@ class TriggerWidget extends React.Component<any, any> {
         Trigger Level
       </div>
       <div className="TriggerWidgetAdjustTriggerLevelValue">
-        <button 
+        <button
           className="MinusButton"
           onClick={() => this.decreaseTriggerLevel()}>
           -
         </button>
-        <label 
+        <label
           className="AdjustChannelBlockValue"
           style={{color: this.props.settings.colors.channel[this.props.triggerWidget.triggerChannel-1]}}
         >
           {this.props.triggerWidget.triggerLevel[this.props.triggerWidget.triggerChannel-1].value.toString()}
           {this.props.triggerWidget.triggerLevel[this.props.triggerWidget.triggerChannel-1].unit}
         </label>
-        <button 
+        <button
           className="PlusButton"
           onClick={() => this.increaseTriggerLevel()}>
           +
@@ -172,7 +183,7 @@ class TriggerWidget extends React.Component<any, any> {
           </label>
         </button>
       </div>
-      
+
     </div>
     )
   }
