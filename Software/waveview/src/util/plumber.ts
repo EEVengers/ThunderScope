@@ -38,6 +38,12 @@ export enum SetMathOp {
   SetMath_Minus = 2,
 }
 
+export interface MaxMinResult {
+  ch: number,
+  x: number,
+  y: number
+}
+
 export interface PlumberArgs {
   headCheck: (args: PlumberArgs, head: Uint16Array) => boolean;
   bodyCheck: (args: PlumberArgs, bytesRead: number, body: Int8Array) => boolean;
@@ -137,9 +143,16 @@ export class Plumber {
     return [lhsChan, rhsChan, op, 0];
   }
 
-  public decodeGetMinMax(a: Int8Array) {
-    var a64u = new BigUint64Array(a.buffer);
-    var a64s = new BigInt64Array(a.buffer);
-    return {x: Number(a64u[0]), y: Number(a64s[1])};
+  public decodeGetMinMax(args: PlumberArgs, a: Int8Array) {
+    let maxCh = 4;
+    let a64u = new BigUint64Array(a.buffer);
+    let a64s = new BigInt64Array(a.buffer);
+    var res: MaxMinResult[] = [];
+    for(var i = 0; i < args.writeData.length; i++) {
+      if(args.writeData[i] != 0) {
+        res.push({ch: i + 1, x: Number(a64u[i]), y: Number(a64s[i + maxCh])});
+      }
+    }
+    return res;
   }
 }

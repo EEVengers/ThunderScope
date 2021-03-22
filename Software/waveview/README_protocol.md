@@ -34,8 +34,8 @@ Prepend the name with `CMD_` to find it in the Electron and C++ code.
 Cmd  | DataSize        | Name          | Description
 -----|-----------------|---------------|------------------------
 0x01 | 2 (useless)     | GetData1      |
-0x05 | 2               | GetMin        | Data has ch 1,2,3 or 4
-0x06 | 2               | GetMax        | Data has ch 1,2,3 or 4
+0x05 | 4               | GetMin        | Data: `[ch1, ch2, ch3, ch4]`, each 1 or 0
+0x06 | 4               | GetMax        | Data: `[ch1, ch2, ch3, ch4]`, each 1 or 0
 0x11 | 2               | SetFile       | Number mapped to filename by C++
 0x1F | 2 (useless)     | RampDemo      |
 0x21 | 2 (useless)     | GetWindowSize |
@@ -63,8 +63,8 @@ Note that the encoding used by the protocol might not be same as the encoding us
 Cmd  | DataSize        | Name          | Description
 -----|-----------------|---------------|------------------------
 0x01 | ch * windowSize | GetData1      | Data for all ch
-0x05 | 16              | GetMin        | Data has x and y as uint64 and int64
-0x06 | 16              | GetMax        | Data has x and y as uint64 and int64
+0x05 | 64              | GetMin        | Data has `[x1, x2...]` and `[y1, y2..]` as uint64 and int64
+0x06 | 64              | GetMax        | Data has `[x1, x2...]` and `[y1, y2..]` as uint64 and int64
 0x11 | 0               | SetFile       | Set testdata filename
 0x1F | 4096            | RampDemo      | 4 ch, simple waves
 0x21 | 4               | GetWindowSize | Data has window size as uint32

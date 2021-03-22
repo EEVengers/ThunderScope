@@ -56,23 +56,23 @@ class TestConf {
     this.getMinArgs = {
       headCheck: () => true,
       bodyCheck: (args, bytesRead, body) => {
-        console.log(Plumber.getInstance().decodeGetMinMax(body));
+        console.log(Plumber.getInstance().decodeGetMinMax(args, body));
         return true;
       },
       cmd: CMD.CMD_GetMin,
       id: 0,
-      writeData: [3, 0]
+      writeData: [1, 0, 1, 1]
     }
 
     this.getMaxArgs = {
       headCheck: () => true,
       bodyCheck: (args, bytesRead, body) => {
-        console.log(Plumber.getInstance().decodeGetMinMax(body));
+        console.log(Plumber.getInstance().decodeGetMinMax(args, body));
         return true;
       },
       cmd: CMD.CMD_GetMax,
       id: 0,
-      writeData: [3, 0]
+      writeData: [1, 1, 1, 1]
     }
 
   }
@@ -84,7 +84,7 @@ class TestConf {
     else {
       Plumber.getInstance().cycle(this.setWinArgs);
     }*/
-    Plumber.getInstance().cycle(this.getMaxArgs);
+    Plumber.getInstance().cycle(this.getMinArgs);
   }
 }
 

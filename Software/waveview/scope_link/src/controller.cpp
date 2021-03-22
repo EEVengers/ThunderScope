@@ -107,27 +107,29 @@ void controller::controllerLoop()
                     break;
                 case CMD_GetMin: {
                         INFO << "Packet command: GetMin";
-                        const int incomingPacketSize = 2;
-                        int ch = 1;
-                        if(currentPacket->dataSize != incomingPacketSize) {
+                        const int maxCh = 4;
+                        const int incomingDataSize = maxCh;
+                        //calloc to ensure zero
+                        int8_t* outgoingData = (int8_t*) calloc(2*maxCh, sizeof(uint64_t));
+                        if(currentPacket->dataSize != incomingDataSize) {
                             ERROR << "Unexpected size for GetMin packet";
                         }
                         else {
-                            ch = currentPacket->data[0];
+                            uint64_t* outgoingU = (uint64_t*) outgoingData;
+                            int64_t* outgoingS = (int64_t*) outgoingData;
+                            for(int ch = 0; ch < incomingDataSize; ch++) {
+                                if(currentPacket->data[ch]) {
+                                    int8_t val;
+                                    uint64_t pos;
+                                    getMin(ch + 1, &val, &pos);
+                                    outgoingU[ch] = pos;
+                                    outgoingS[ch + maxCh] = val;
+                                }
+                            }
                         }
-                        int8_t val;
-                        uint64_t pos;
-                        getMin(ch, &val, &pos);
-
-                        const int outgoingPacketSize = 2*sizeof(uint64_t);
-                        uint64_t* outgoingU = (uint64_t*) malloc(outgoingPacketSize);
-                        int64_t* outgoingS = (int64_t*) outgoingU;
-                        outgoingU[0] = pos;
-                        outgoingS[1] = val;
-
                         EVPacket* tempPacket = (EVPacket*) malloc(sizeof(EVPacket));
-                        tempPacket->data = (int8_t*)outgoingU;
-                        tempPacket->dataSize = outgoingPacketSize;
+                        tempPacket->data = outgoingData;
+                        tempPacket->dataSize = 2*maxCh*sizeof(uint64_t);
                         tempPacket->packetID = 0;
                         tempPacket->command = CMD_GetMin;
                         controllerQueue_tx.push(tempPacket);
@@ -135,31 +137,31 @@ void controller::controllerLoop()
                     break;
                 case CMD_GetMax: {
                         INFO << "Packet command: GetMax";
-                        const int incomingPacketSize = 2;
-                        int ch = 1;
-                        if(currentPacket->dataSize != incomingPacketSize) {
-                            ERROR << "Unexpected size for GetMax packet";
+                        const int maxCh = 4;
+                        const int incomingDataSize = maxCh;
+                        //calloc to ensure zero
+                        int8_t* outgoingData = (int8_t*) calloc(2*maxCh, sizeof(uint64_t));
+                        if(currentPacket->dataSize != incomingDataSize) {
+                            ERROR << "Unexpected size for GetMin packet";
                         }
                         else {
-                            ch = currentPacket->data[0];
+                            uint64_t* outgoingU = (uint64_t*) outgoingData;
+                            int64_t* outgoingS = (int64_t*) outgoingData;
+                            for(int ch = 0; ch < incomingDataSize; ch++) {
+                                if(currentPacket->data[ch]) {
+                                    int8_t val;
+                                    uint64_t pos;
+                                    getMax(ch + 1, &val, &pos);
+                                    outgoingU[ch] = pos;
+                                    outgoingS[ch + maxCh] = val;
+                                }
+                            }
                         }
-                        int8_t val;
-                        uint64_t pos;
-                        getMax(ch, &val, &pos);
-
-                        INFO << "val: " << convert_int(val) << ", pos: " << convert_int(pos);
-
-                        const int outgoingPacketSize = 2*sizeof(uint64_t);
-                        uint64_t* outgoingU = (uint64_t*) malloc(outgoingPacketSize);
-                        int64_t* outgoingS = (int64_t*) outgoingU;
-                        outgoingU[0] = pos;
-                        outgoingS[1] = val;
-
                         EVPacket* tempPacket = (EVPacket*) malloc(sizeof(EVPacket));
-                        tempPacket->data = (int8_t*)outgoingU;
-                        tempPacket->dataSize = outgoingPacketSize;
+                        tempPacket->data = outgoingData;
+                        tempPacket->dataSize = 2*maxCh*sizeof(uint64_t);
                         tempPacket->packetID = 0;
-                        tempPacket->command = CMD_GetMax;
+                        tempPacket->command = CMD_GetMin;
                         controllerQueue_tx.push(tempPacket);
                     }
                     break;
