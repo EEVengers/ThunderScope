@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import MathType from '../../../configuration/enums/mathType';
 import './../../../css/sidebar/widgets/measurementsWidget.css';
+import GraphStatus from '../../../configuration/enums/graphStatus';
 
 import {Plumber, PlumberArgs, CMD} from '../../../util/plumber';
 
@@ -16,8 +17,8 @@ class MeasurementsWidget extends React.Component<any, any> {
   }
 
   tick() {
-    this.props.dispatch({type: 'measurements/tick'});
-    if(!this.props.graph.singleMode) {
+    if(!this.props.graph.singleMode && this.props.graph.currentStatus === GraphStatus.On) {
+      this.props.dispatch({type: 'measurements/tick'});
       this.update();
     }
   }

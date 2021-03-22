@@ -10,6 +10,7 @@ import {
   LineSeries
 } from 'react-vis';
 
+import GraphStatus from '../../configuration/enums/graphStatus';
 import TestPoints from '../../util/testpoints';
 
 class Graph extends React.Component<any, any> {
@@ -29,8 +30,10 @@ class Graph extends React.Component<any, any> {
   }
 
   tick() {
-    this.props.dispatch({type: 'graph/tick'});
-    this.generator.update();
+    if(!this.props.graph.singleMode && this.props.graph.currentStatus === GraphStatus.On) {
+      this.props.dispatch({type: 'graph/tick'});
+      this.generator.update();
+    }
   }
 
   render() {
