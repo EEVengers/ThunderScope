@@ -81,12 +81,14 @@ class Graph extends React.Component<any, any> {
           />
           {
             this.generator.getData().map((data: any, index: any) => {
-              return <LineSeries
+              return (
+              <LineSeries
                 className="data-series"
                 data={data}
-                style={{fill:"none", transform: "translate(0,0)"}}
+                style={{fill:"none", transform: "translate(0,0)", opacity: this.props.verticalWidget.settings[index].status}}
                 color={this.props.settings.colors.channel[index]}
               />
+              )
             })
           }
         </FlexibleXYPlot>
@@ -95,10 +97,11 @@ class Graph extends React.Component<any, any> {
   }
 }
 
-function mapStateToProps(state: { graph: any, settings: any }) {
+function mapStateToProps(state: { graph: any, settings: any, verticalWidget: any }) {
   return {
     graph: state.graph,
-    settings: state.settings
+    settings: state.settings,
+    verticalWidget: state.verticalWidget
   };
 }
 
