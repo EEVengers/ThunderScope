@@ -1,7 +1,7 @@
 //Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
-//Date        : Mon Mar 22 18:57:01 2021
+//Date        : Tue Mar 23 12:13:14 2021
 //Host        : DESKTOP-J72MK93 running 64-bit major release  (build 9200)
 //Command     : generate_target design_1.bd
 //Design      : design_1
@@ -66,7 +66,7 @@ module AXI_LITE_IO_imp_1879I2S
   input axi_resetn;
   input [31:0]gpio2_io_i;
   input [31:0]gpio2_io_i_0;
-  output [1:0]gpio_io_o_0;
+  output [31:0]gpio_io_o_0;
   output [31:0]gpio_io_o_1;
 
   wire [31:0]Conn1_TDATA;
@@ -93,7 +93,7 @@ module AXI_LITE_IO_imp_1879I2S
   wire [3:0]S00_AXI_1_WSTRB;
   wire S00_AXI_1_WVALID;
   wire axi_aclk_1;
-  wire [1:0]axi_gpio_0_gpio_io_o;
+  wire [31:0]axi_gpio_0_gpio_io_o;
   wire [31:0]axi_gpio_1_gpio_io_o;
   wire axi_resetn_1;
   wire [31:0]gpio2_io_i_0_1;
@@ -177,7 +177,7 @@ module AXI_LITE_IO_imp_1879I2S
   assign axi_resetn_1 = axi_resetn;
   assign gpio2_io_i_0_1 = gpio2_io_i_0[31:0];
   assign gpio2_io_i_1 = gpio2_io_i[31:0];
-  assign gpio_io_o_0[1:0] = axi_gpio_0_gpio_io_o;
+  assign gpio_io_o_0[31:0] = axi_gpio_0_gpio_io_o;
   assign gpio_io_o_1[31:0] = axi_gpio_1_gpio_io_o;
   design_1_axi_fifo_mm_s_0_0 axi_fifo_mm_s_0
        (.axi_str_txd_tdata(Conn1_TDATA),
@@ -1382,7 +1382,7 @@ module design_1
   output axi_aresetn;
   input [31:0]gpio2_io_i;
   input [31:0]gpio2_io_i_0;
-  output [1:0]gpio_io_o_0;
+  output [31:0]gpio_io_o_0;
   output [31:0]gpio_io_o_1;
   (* X_INTERFACE_INFO = "xilinx.com:interface:diff_clock:1.0 pcie CLK_N" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME pcie, CAN_DEBUG false, FREQ_HZ 100000000" *) input [0:0]pcie_clk_n;
   (* X_INTERFACE_INFO = "xilinx.com:interface:diff_clock:1.0 pcie CLK_P" *) input [0:0]pcie_clk_p;
@@ -1399,6 +1399,7 @@ module design_1
   wire AXI_LITE_IO_AXI_STR_TXD_0_TLAST;
   wire AXI_LITE_IO_AXI_STR_TXD_0_TREADY;
   wire AXI_LITE_IO_AXI_STR_TXD_0_TVALID;
+  wire [31:0]AXI_LITE_IO_gpio_io_o_0;
   wire [31:0]AXI_LITE_IO_gpio_io_o_1;
   wire [0:0]CLK_IN_D_0_1_CLK_N;
   wire [0:0]CLK_IN_D_0_1_CLK_P;
@@ -1450,7 +1451,6 @@ module design_1
   wire [71:0]S_AXIS_S2MM_CMD_0_1_TDATA;
   wire S_AXIS_S2MM_CMD_0_1_TREADY;
   wire S_AXIS_S2MM_CMD_0_1_TVALID;
-  wire [1:0]axi_gpio_0_gpio_io_o;
   wire [31:0]gpio2_io_i_0_1;
   wire [31:0]gpio2_io_i_0_2;
   wire [14:0]mig_7series_0_DDR3_ADDR;
@@ -1542,7 +1542,7 @@ module design_1
   assign axi_aresetn = PCIe_axi_aresetn;
   assign gpio2_io_i_0_1 = gpio2_io_i[31:0];
   assign gpio2_io_i_0_2 = gpio2_io_i_0[31:0];
-  assign gpio_io_o_0[1:0] = axi_gpio_0_gpio_io_o;
+  assign gpio_io_o_0[31:0] = AXI_LITE_IO_gpio_io_o_0;
   assign gpio_io_o_1[31:0] = AXI_LITE_IO_gpio_io_o_1;
   assign pcie_mgt_txn[3:0] = xdma_0_pcie_mgt_txn;
   assign pcie_mgt_txp[3:0] = xdma_0_pcie_mgt_txp;
@@ -1580,7 +1580,7 @@ module design_1
         .axi_resetn(PCIe_axi_aresetn),
         .gpio2_io_i(gpio2_io_i_0_1),
         .gpio2_io_i_0(gpio2_io_i_0_2),
-        .gpio_io_o_0(axi_gpio_0_gpio_io_o),
+        .gpio_io_o_0(AXI_LITE_IO_gpio_io_o_0),
         .gpio_io_o_1(AXI_LITE_IO_gpio_io_o_1));
   Datamover_imp_6RC1MV Datamover
        (.M_AXI_S2MM_awaddr(Datamover_M_AXI_S2MM_AWADDR),
