@@ -51,8 +51,8 @@ class Graph extends React.Component<any, any> {
           </p>
         </div>
         <FlexibleXYPlot
-          yDomain={this.generator.y.getDomain()}
-          xDomain={this.generator.x.getDomain()}
+          yDomain={this.props.graph.yDomain}
+          xDomain={this.props.graph.xDomain}
           margin={{right:0, bottom:0}}
         >
           <HorizontalGridLines

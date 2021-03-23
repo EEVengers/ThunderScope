@@ -1,4 +1,6 @@
 import CMD from '../configuration/enums/cmd';
+import { SetChState } from './setChHelper';
+import MathOperators from '../configuration/enums/mathOperators';
 
 export enum SetMathOp {
   SetMath_None = 0,
@@ -107,8 +109,38 @@ export class Plumber {
     }
   }
 
-  public makeSetMathData(lhsChan: number, rhsChan: number, op: SetMathOp) {
-    return [lhsChan, rhsChan, op, 0];
+  public handleSetchState(s: SetChState) {
+    let setChArgs: PlumberArgs = {
+      headCheck: () => true,
+      bodyCheck: () => true,
+      cmd: CMD.CMD_SetCh,
+      id: 0,
+      writeData: [s.setCh, 0]
+    }
+    let setTriggerChArgs: PlumberArgs = {
+      headCheck: () => true,
+      bodyCheck: () => true,
+      cmd: CMD.CMD_SetTriggerCh,
+      id: 0,
+      writeData: [s.setTriggerCh, 0]
+    }
+    this.cycle(setChArgs);
+    this.cycle(setTriggerChArgs);
+  }
+
+  public handleMath(enable: boolean, lhsChan: number, rhsChan: number, op: MathOperators) {
+    var protcolOp = 0;
+    if(enable) {
+      protcolOp = (op == MathOperators.Addition) ? 1 : 2;
+    }
+    let mathArgs: PlumberArgs = {
+      headCheck: () => true,
+      bodyCheck: () => true,
+      cmd: CMD.CMD_SetMath,
+      id: 0,
+      writeData: [lhsChan, rhsChan, protcolOp, 0]
+    }
+    this.cycle(mathArgs);
   }
 
   public decodeGetMinMax(args: PlumberArgs, a: Int8Array) {
