@@ -141,7 +141,7 @@ void PCIeLink::Read(uint8_t* buff) {
         current_chunk = kbytes_4_moved / (1 << 11);
         //INFO << "error code: " << error_code;
         //INFO << "overflow count: " << overflow_count;
-        //INFO << "32k_Bytes Transfered: " << kbytes_32_moved;
+        //INFO << "4kB Transfered: " << kbytes_4_moved;
         //INFO << "Current Chunk: " << current_chunk;
         if(last_chunk_read == -1) {
             enoughData = (kbytes_4_moved >= (1 << 11));
