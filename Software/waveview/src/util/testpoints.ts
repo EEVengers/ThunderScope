@@ -63,20 +63,22 @@ class TestPoints {
           var chMax = (doMath) ? order.length + 1: order.length;
           var perChannel = Math.floor(body.length/chMax);
           let xOffset = (this.lastX < xLimit) ? this.lastX : 0;
-          for(var channel = 0; channel < this.getDataMaxCh; channel++) {
-            let mathCh = (channel == this.getDataMaxCh-1) && doMath;
-            let dataCh = order.includes(channel + 1);
+          var cppChannel = 0;
+          for(var uiChannel = 0; uiChannel < this.getDataMaxCh; uiChannel++) {
+            let mathCh = (uiChannel == this.getDataMaxCh-1) && doMath;
+            let dataCh = order.includes(uiChannel + 1);
             if(mathCh || dataCh) {
               for(var i = 0; i < perChannel; i++) {
                 var x = xOffset + i;
-                if(x != 0 && !this.scope_data[channel][x-1]) {
+                if(x != 0 && !this.scope_data[uiChannel][x-1]) {
                   //Adding a channel while other channels in middle of screen
                   //causes an error.
                   break;
                 }
-                let y = body[channel*perChannel + i];
-                this.scope_data[channel][x] = {x: x, y: y};
+                let y = body[cppChannel*perChannel + i];
+                this.scope_data[uiChannel][x] = {x: x, y: y};
               }
+              cppChannel++;
             }
           }
           this.lastX = xOffset + perChannel;
