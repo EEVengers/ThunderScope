@@ -167,8 +167,8 @@ void PCIeLink::Read(uint8_t* buff) {
     }
     last_chunk_read = current_chunk;
     int64_t reading_offset = current_chunk * (1 << 23);
-    INFO << "Reading from current current chunk: " << current_chunk;
-    INFO << "Offset: " << reading_offset;
+    //INFO << "Reading from current current chunk: " << current_chunk;
+    //INFO << "Offset: " << reading_offset;
     //Read the data from ddr3 memory
     _Read(c2h_0_handle,reading_offset,buff,1 << 23);
 }
