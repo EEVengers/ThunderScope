@@ -1,10 +1,10 @@
 // Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
-// Date        : Mon Mar 15 11:10:08 2021
+// Date        : Mon Mar 22 18:58:31 2021
 // Host        : DESKTOP-J72MK93 running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode funcsim -rename_top design_1_util_ds_buf_0_0 -prefix
-//               design_1_util_ds_buf_0_0_ design_1_util_ds_buf_0_0_sim_netlist.v
+// Command     : write_verilog -force -mode funcsim
+//               c:/Users/Aleksa/Documents/FPGA_Dev/Artix7_PCIe/dso_top_ddr3_4KB/dso_top_ddr3.srcs/sources_1/bd/design_1/ip/design_1_util_ds_buf_0_0/design_1_util_ds_buf_0_0_sim_netlist.v
 // Design      : design_1_util_ds_buf_0_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -163,7 +163,7 @@ endmodule
 
 (* C_BUFGCE_DIV = "1" *) (* C_BUFG_GT_SYNC = "0" *) (* C_BUF_TYPE = "ibufdsgte2" *) 
 (* C_OBUFDS_GTE5_ADV = "2'b00" *) (* C_REFCLK_ICNTL_TX = "5'b00000" *) (* C_SIM_DEVICE = "VERSAL_AI_CORE_ES1" *) 
-(* C_SIZE = "1" *) 
+(* C_SIZE = "1" *) (* ORIG_REF_NAME = "util_ds_buf" *) 
 module design_1_util_ds_buf_0_0_util_ds_buf
    (IBUF_DS_P,
     IBUF_DS_N,

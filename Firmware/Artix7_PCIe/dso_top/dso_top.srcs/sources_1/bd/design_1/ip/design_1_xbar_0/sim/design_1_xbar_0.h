@@ -82,7 +82,7 @@ public:
 
   sc_core::sc_in< bool > aclk;
   sc_core::sc_in< bool > aresetn;
-  sc_core::sc_in< sc_dt::sc_bv<10> > s_axi_awid;
+  sc_core::sc_in< sc_dt::sc_bv<2> > s_axi_awid;
   sc_core::sc_in< sc_dt::sc_bv<128> > s_axi_awaddr;
   sc_core::sc_in< sc_dt::sc_bv<16> > s_axi_awlen;
   sc_core::sc_in< sc_dt::sc_bv<6> > s_axi_awsize;
@@ -91,19 +91,18 @@ public:
   sc_core::sc_in< sc_dt::sc_bv<8> > s_axi_awcache;
   sc_core::sc_in< sc_dt::sc_bv<6> > s_axi_awprot;
   sc_core::sc_in< sc_dt::sc_bv<8> > s_axi_awqos;
-  sc_core::sc_in< sc_dt::sc_bv<8> > s_axi_awuser;
   sc_core::sc_in< sc_dt::sc_bv<2> > s_axi_awvalid;
   sc_core::sc_out< sc_dt::sc_bv<2> > s_axi_awready;
-  sc_core::sc_in< sc_dt::sc_bv<256> > s_axi_wdata;
-  sc_core::sc_in< sc_dt::sc_bv<32> > s_axi_wstrb;
+  sc_core::sc_in< sc_dt::sc_bv<512> > s_axi_wdata;
+  sc_core::sc_in< sc_dt::sc_bv<64> > s_axi_wstrb;
   sc_core::sc_in< sc_dt::sc_bv<2> > s_axi_wlast;
   sc_core::sc_in< sc_dt::sc_bv<2> > s_axi_wvalid;
   sc_core::sc_out< sc_dt::sc_bv<2> > s_axi_wready;
-  sc_core::sc_out< sc_dt::sc_bv<10> > s_axi_bid;
+  sc_core::sc_out< sc_dt::sc_bv<2> > s_axi_bid;
   sc_core::sc_out< sc_dt::sc_bv<4> > s_axi_bresp;
   sc_core::sc_out< sc_dt::sc_bv<2> > s_axi_bvalid;
   sc_core::sc_in< sc_dt::sc_bv<2> > s_axi_bready;
-  sc_core::sc_in< sc_dt::sc_bv<10> > s_axi_arid;
+  sc_core::sc_in< sc_dt::sc_bv<2> > s_axi_arid;
   sc_core::sc_in< sc_dt::sc_bv<128> > s_axi_araddr;
   sc_core::sc_in< sc_dt::sc_bv<16> > s_axi_arlen;
   sc_core::sc_in< sc_dt::sc_bv<6> > s_axi_arsize;
@@ -114,13 +113,13 @@ public:
   sc_core::sc_in< sc_dt::sc_bv<8> > s_axi_arqos;
   sc_core::sc_in< sc_dt::sc_bv<2> > s_axi_arvalid;
   sc_core::sc_out< sc_dt::sc_bv<2> > s_axi_arready;
-  sc_core::sc_out< sc_dt::sc_bv<10> > s_axi_rid;
-  sc_core::sc_out< sc_dt::sc_bv<256> > s_axi_rdata;
+  sc_core::sc_out< sc_dt::sc_bv<2> > s_axi_rid;
+  sc_core::sc_out< sc_dt::sc_bv<512> > s_axi_rdata;
   sc_core::sc_out< sc_dt::sc_bv<4> > s_axi_rresp;
   sc_core::sc_out< sc_dt::sc_bv<2> > s_axi_rlast;
   sc_core::sc_out< sc_dt::sc_bv<2> > s_axi_rvalid;
   sc_core::sc_in< sc_dt::sc_bv<2> > s_axi_rready;
-  sc_core::sc_out< sc_dt::sc_bv<5> > m_axi_awid;
+  sc_core::sc_out< sc_dt::sc_bv<1> > m_axi_awid;
   sc_core::sc_out< sc_dt::sc_bv<64> > m_axi_awaddr;
   sc_core::sc_out< sc_dt::sc_bv<8> > m_axi_awlen;
   sc_core::sc_out< sc_dt::sc_bv<3> > m_axi_awsize;
@@ -130,19 +129,18 @@ public:
   sc_core::sc_out< sc_dt::sc_bv<3> > m_axi_awprot;
   sc_core::sc_out< sc_dt::sc_bv<4> > m_axi_awregion;
   sc_core::sc_out< sc_dt::sc_bv<4> > m_axi_awqos;
-  sc_core::sc_out< sc_dt::sc_bv<4> > m_axi_awuser;
   sc_core::sc_out< sc_dt::sc_bv<1> > m_axi_awvalid;
   sc_core::sc_in< sc_dt::sc_bv<1> > m_axi_awready;
-  sc_core::sc_out< sc_dt::sc_bv<128> > m_axi_wdata;
-  sc_core::sc_out< sc_dt::sc_bv<16> > m_axi_wstrb;
+  sc_core::sc_out< sc_dt::sc_bv<256> > m_axi_wdata;
+  sc_core::sc_out< sc_dt::sc_bv<32> > m_axi_wstrb;
   sc_core::sc_out< sc_dt::sc_bv<1> > m_axi_wlast;
   sc_core::sc_out< sc_dt::sc_bv<1> > m_axi_wvalid;
   sc_core::sc_in< sc_dt::sc_bv<1> > m_axi_wready;
-  sc_core::sc_in< sc_dt::sc_bv<5> > m_axi_bid;
+  sc_core::sc_in< sc_dt::sc_bv<1> > m_axi_bid;
   sc_core::sc_in< sc_dt::sc_bv<2> > m_axi_bresp;
   sc_core::sc_in< sc_dt::sc_bv<1> > m_axi_bvalid;
   sc_core::sc_out< sc_dt::sc_bv<1> > m_axi_bready;
-  sc_core::sc_out< sc_dt::sc_bv<5> > m_axi_arid;
+  sc_core::sc_out< sc_dt::sc_bv<1> > m_axi_arid;
   sc_core::sc_out< sc_dt::sc_bv<64> > m_axi_araddr;
   sc_core::sc_out< sc_dt::sc_bv<8> > m_axi_arlen;
   sc_core::sc_out< sc_dt::sc_bv<3> > m_axi_arsize;
@@ -154,8 +152,8 @@ public:
   sc_core::sc_out< sc_dt::sc_bv<4> > m_axi_arqos;
   sc_core::sc_out< sc_dt::sc_bv<1> > m_axi_arvalid;
   sc_core::sc_in< sc_dt::sc_bv<1> > m_axi_arready;
-  sc_core::sc_in< sc_dt::sc_bv<5> > m_axi_rid;
-  sc_core::sc_in< sc_dt::sc_bv<128> > m_axi_rdata;
+  sc_core::sc_in< sc_dt::sc_bv<1> > m_axi_rid;
+  sc_core::sc_in< sc_dt::sc_bv<256> > m_axi_rdata;
   sc_core::sc_in< sc_dt::sc_bv<2> > m_axi_rresp;
   sc_core::sc_in< sc_dt::sc_bv<1> > m_axi_rlast;
   sc_core::sc_in< sc_dt::sc_bv<1> > m_axi_rvalid;
@@ -167,9 +165,9 @@ protected:
 
 private:
 
-  xtlm::xaximm_pin2xtlm_t<128,64,5,4,1,1,1,1>* mp_S00_AXI_transactor;
-  xsc::common::vector2vector_converter<10,5>* mp_s_axi_awid_converter_0;
-  sc_signal< sc_bv<5> > m_s_axi_awid_converter_0_signal;
+  xtlm::xaximm_pin2xtlm_t<256,64,1,1,1,1,1,1>* mp_S00_AXI_transactor;
+  xsc::common::vector2vector_converter<2,1>* mp_s_axi_awid_converter_0;
+  sc_signal< sc_bv<1> > m_s_axi_awid_converter_0_signal;
   xsc::common::vector2vector_converter<128,64>* mp_s_axi_awaddr_converter_0;
   sc_signal< sc_bv<64> > m_s_axi_awaddr_converter_0_signal;
   xsc::common::vector2vector_converter<16,8>* mp_s_axi_awlen_converter_0;
@@ -186,32 +184,30 @@ private:
   sc_signal< sc_bv<3> > m_s_axi_awprot_converter_0_signal;
   xsc::common::vector2vector_converter<8,4>* mp_s_axi_awqos_converter_0;
   sc_signal< sc_bv<4> > m_s_axi_awqos_converter_0_signal;
-  xsc::common::vector2vector_converter<8,4>* mp_s_axi_awuser_converter_0;
-  sc_signal< sc_bv<4> > m_s_axi_awuser_converter_0_signal;
   xsc::common::vectorN2scalar_converter<2>* mp_s_axi_awvalid_converter_0;
   sc_signal< bool > m_s_axi_awvalid_converter_0_signal;
   xsc::common::scalar2vectorN_converter<2>* mp_s_axi_awready_converter_0;
   sc_signal< bool > m_s_axi_awready_converter_0_signal;
-  xsc::common::vector2vector_converter<256,128>* mp_s_axi_wdata_converter_0;
-  sc_signal< sc_bv<128> > m_s_axi_wdata_converter_0_signal;
-  xsc::common::vector2vector_converter<32,16>* mp_s_axi_wstrb_converter_0;
-  sc_signal< sc_bv<16> > m_s_axi_wstrb_converter_0_signal;
+  xsc::common::vector2vector_converter<512,256>* mp_s_axi_wdata_converter_0;
+  sc_signal< sc_bv<256> > m_s_axi_wdata_converter_0_signal;
+  xsc::common::vector2vector_converter<64,32>* mp_s_axi_wstrb_converter_0;
+  sc_signal< sc_bv<32> > m_s_axi_wstrb_converter_0_signal;
   xsc::common::vectorN2scalar_converter<2>* mp_s_axi_wlast_converter_0;
   sc_signal< bool > m_s_axi_wlast_converter_0_signal;
   xsc::common::vectorN2scalar_converter<2>* mp_s_axi_wvalid_converter_0;
   sc_signal< bool > m_s_axi_wvalid_converter_0_signal;
   xsc::common::scalar2vectorN_converter<2>* mp_s_axi_wready_converter_0;
   sc_signal< bool > m_s_axi_wready_converter_0_signal;
-  xsc::common::vector2vector_converter<5,10>* mp_s_axi_bid_converter_0;
-  sc_signal< sc_bv<5> > m_s_axi_bid_converter_0_signal;
+  xsc::common::vector2vector_converter<1,2>* mp_s_axi_bid_converter_0;
+  sc_signal< sc_bv<1> > m_s_axi_bid_converter_0_signal;
   xsc::common::vector2vector_converter<2,4>* mp_s_axi_bresp_converter_0;
   sc_signal< sc_bv<2> > m_s_axi_bresp_converter_0_signal;
   xsc::common::scalar2vectorN_converter<2>* mp_s_axi_bvalid_converter_0;
   sc_signal< bool > m_s_axi_bvalid_converter_0_signal;
   xsc::common::vectorN2scalar_converter<2>* mp_s_axi_bready_converter_0;
   sc_signal< bool > m_s_axi_bready_converter_0_signal;
-  xsc::common::vector2vector_converter<10,5>* mp_s_axi_arid_converter_0;
-  sc_signal< sc_bv<5> > m_s_axi_arid_converter_0_signal;
+  xsc::common::vector2vector_converter<2,1>* mp_s_axi_arid_converter_0;
+  sc_signal< sc_bv<1> > m_s_axi_arid_converter_0_signal;
   xsc::common::vector2vector_converter<128,64>* mp_s_axi_araddr_converter_0;
   sc_signal< sc_bv<64> > m_s_axi_araddr_converter_0_signal;
   xsc::common::vector2vector_converter<16,8>* mp_s_axi_arlen_converter_0;
@@ -232,10 +228,10 @@ private:
   sc_signal< bool > m_s_axi_arvalid_converter_0_signal;
   xsc::common::scalar2vectorN_converter<2>* mp_s_axi_arready_converter_0;
   sc_signal< bool > m_s_axi_arready_converter_0_signal;
-  xsc::common::vector2vector_converter<5,10>* mp_s_axi_rid_converter_0;
-  sc_signal< sc_bv<5> > m_s_axi_rid_converter_0_signal;
-  xsc::common::vector2vector_converter<128,256>* mp_s_axi_rdata_converter_0;
-  sc_signal< sc_bv<128> > m_s_axi_rdata_converter_0_signal;
+  xsc::common::vector2vector_converter<1,2>* mp_s_axi_rid_converter_0;
+  sc_signal< sc_bv<1> > m_s_axi_rid_converter_0_signal;
+  xsc::common::vector2vector_converter<256,512>* mp_s_axi_rdata_converter_0;
+  sc_signal< sc_bv<256> > m_s_axi_rdata_converter_0_signal;
   xsc::common::vector2vector_converter<2,4>* mp_s_axi_rresp_converter_0;
   sc_signal< sc_bv<2> > m_s_axi_rresp_converter_0_signal;
   xsc::common::scalar2vectorN_converter<2>* mp_s_axi_rlast_converter_0;
@@ -244,7 +240,7 @@ private:
   sc_signal< bool > m_s_axi_rvalid_converter_0_signal;
   xsc::common::vectorN2scalar_converter<2>* mp_s_axi_rready_converter_0;
   sc_signal< bool > m_s_axi_rready_converter_0_signal;
-  xtlm::xaximm_xtlm2pin_t<128,64,5,4,1,1,1,1>* mp_M00_AXI_transactor;
+  xtlm::xaximm_xtlm2pin_t<256,64,1,1,1,1,1,1>* mp_M00_AXI_transactor;
   xsc::common::scalar2vectorN_converter<1>* mp_m_axi_awlock_converter;
   sc_signal< bool > m_m_axi_awlock_converter_signal;
   xsc::common::scalar2vectorN_converter<1>* mp_m_axi_awvalid_converter;
@@ -273,9 +269,9 @@ private:
   sc_signal< bool > m_m_axi_rvalid_converter_signal;
   xsc::common::scalar2vectorN_converter<1>* mp_m_axi_rready_converter;
   sc_signal< bool > m_m_axi_rready_converter_signal;
-  xtlm::xaximm_pin2xtlm_t<128,64,5,4,1,1,1,1>* mp_S01_AXI_transactor;
-  xsc::common::vector2vector_converter<10,5>* mp_s_axi_awid_converter_1;
-  sc_signal< sc_bv<5> > m_s_axi_awid_converter_1_signal;
+  xtlm::xaximm_pin2xtlm_t<256,64,1,1,1,1,1,1>* mp_S01_AXI_transactor;
+  xsc::common::vector2vector_converter<2,1>* mp_s_axi_awid_converter_1;
+  sc_signal< sc_bv<1> > m_s_axi_awid_converter_1_signal;
   xsc::common::vector2vector_converter<128,64>* mp_s_axi_awaddr_converter_1;
   sc_signal< sc_bv<64> > m_s_axi_awaddr_converter_1_signal;
   xsc::common::vector2vector_converter<16,8>* mp_s_axi_awlen_converter_1;
@@ -292,32 +288,30 @@ private:
   sc_signal< sc_bv<3> > m_s_axi_awprot_converter_1_signal;
   xsc::common::vector2vector_converter<8,4>* mp_s_axi_awqos_converter_1;
   sc_signal< sc_bv<4> > m_s_axi_awqos_converter_1_signal;
-  xsc::common::vector2vector_converter<8,4>* mp_s_axi_awuser_converter_1;
-  sc_signal< sc_bv<4> > m_s_axi_awuser_converter_1_signal;
   xsc::common::vectorN2scalar_converter<2>* mp_s_axi_awvalid_converter_1;
   sc_signal< bool > m_s_axi_awvalid_converter_1_signal;
   xsc::common::scalar2vectorN_converter<2>* mp_s_axi_awready_converter_1;
   sc_signal< bool > m_s_axi_awready_converter_1_signal;
-  xsc::common::vector2vector_converter<256,128>* mp_s_axi_wdata_converter_1;
-  sc_signal< sc_bv<128> > m_s_axi_wdata_converter_1_signal;
-  xsc::common::vector2vector_converter<32,16>* mp_s_axi_wstrb_converter_1;
-  sc_signal< sc_bv<16> > m_s_axi_wstrb_converter_1_signal;
+  xsc::common::vector2vector_converter<512,256>* mp_s_axi_wdata_converter_1;
+  sc_signal< sc_bv<256> > m_s_axi_wdata_converter_1_signal;
+  xsc::common::vector2vector_converter<64,32>* mp_s_axi_wstrb_converter_1;
+  sc_signal< sc_bv<32> > m_s_axi_wstrb_converter_1_signal;
   xsc::common::vectorN2scalar_converter<2>* mp_s_axi_wlast_converter_1;
   sc_signal< bool > m_s_axi_wlast_converter_1_signal;
   xsc::common::vectorN2scalar_converter<2>* mp_s_axi_wvalid_converter_1;
   sc_signal< bool > m_s_axi_wvalid_converter_1_signal;
   xsc::common::scalar2vectorN_converter<2>* mp_s_axi_wready_converter_1;
   sc_signal< bool > m_s_axi_wready_converter_1_signal;
-  xsc::common::vector2vector_converter<5,10>* mp_s_axi_bid_converter_1;
-  sc_signal< sc_bv<5> > m_s_axi_bid_converter_1_signal;
+  xsc::common::vector2vector_converter<1,2>* mp_s_axi_bid_converter_1;
+  sc_signal< sc_bv<1> > m_s_axi_bid_converter_1_signal;
   xsc::common::vector2vector_converter<2,4>* mp_s_axi_bresp_converter_1;
   sc_signal< sc_bv<2> > m_s_axi_bresp_converter_1_signal;
   xsc::common::scalar2vectorN_converter<2>* mp_s_axi_bvalid_converter_1;
   sc_signal< bool > m_s_axi_bvalid_converter_1_signal;
   xsc::common::vectorN2scalar_converter<2>* mp_s_axi_bready_converter_1;
   sc_signal< bool > m_s_axi_bready_converter_1_signal;
-  xsc::common::vector2vector_converter<10,5>* mp_s_axi_arid_converter_1;
-  sc_signal< sc_bv<5> > m_s_axi_arid_converter_1_signal;
+  xsc::common::vector2vector_converter<2,1>* mp_s_axi_arid_converter_1;
+  sc_signal< sc_bv<1> > m_s_axi_arid_converter_1_signal;
   xsc::common::vector2vector_converter<128,64>* mp_s_axi_araddr_converter_1;
   sc_signal< sc_bv<64> > m_s_axi_araddr_converter_1_signal;
   xsc::common::vector2vector_converter<16,8>* mp_s_axi_arlen_converter_1;
@@ -338,10 +332,10 @@ private:
   sc_signal< bool > m_s_axi_arvalid_converter_1_signal;
   xsc::common::scalar2vectorN_converter<2>* mp_s_axi_arready_converter_1;
   sc_signal< bool > m_s_axi_arready_converter_1_signal;
-  xsc::common::vector2vector_converter<5,10>* mp_s_axi_rid_converter_1;
-  sc_signal< sc_bv<5> > m_s_axi_rid_converter_1_signal;
-  xsc::common::vector2vector_converter<128,256>* mp_s_axi_rdata_converter_1;
-  sc_signal< sc_bv<128> > m_s_axi_rdata_converter_1_signal;
+  xsc::common::vector2vector_converter<1,2>* mp_s_axi_rid_converter_1;
+  sc_signal< sc_bv<1> > m_s_axi_rid_converter_1_signal;
+  xsc::common::vector2vector_converter<256,512>* mp_s_axi_rdata_converter_1;
+  sc_signal< sc_bv<256> > m_s_axi_rdata_converter_1_signal;
   xsc::common::vector2vector_converter<2,4>* mp_s_axi_rresp_converter_1;
   sc_signal< sc_bv<2> > m_s_axi_rresp_converter_1_signal;
   xsc::common::scalar2vectorN_converter<2>* mp_s_axi_rlast_converter_1;
@@ -363,9 +357,9 @@ private:
   sc_signal<sc_dt::sc_bv<8> > s_axi_split_arcache_out_0;
   sc_signal<sc_dt::sc_bv<8> > s_axi_split_arcache_out_1;
 
-  xsc::xsc_split<10, 2> * mp_s_axi_split_arid;
-  sc_signal<sc_dt::sc_bv<10> > s_axi_split_arid_out_0;
-  sc_signal<sc_dt::sc_bv<10> > s_axi_split_arid_out_1;
+  xsc::xsc_split<2, 2> * mp_s_axi_split_arid;
+  sc_signal<sc_dt::sc_bv<2> > s_axi_split_arid_out_0;
+  sc_signal<sc_dt::sc_bv<2> > s_axi_split_arid_out_1;
 
   xsc::xsc_split<16, 2> * mp_s_axi_split_arlen;
   sc_signal<sc_dt::sc_bv<16> > s_axi_split_arlen_out_0;
@@ -408,9 +402,9 @@ private:
   sc_signal<sc_dt::sc_bv<8> > s_axi_split_awcache_out_0;
   sc_signal<sc_dt::sc_bv<8> > s_axi_split_awcache_out_1;
 
-  xsc::xsc_split<10, 2> * mp_s_axi_split_awid;
-  sc_signal<sc_dt::sc_bv<10> > s_axi_split_awid_out_0;
-  sc_signal<sc_dt::sc_bv<10> > s_axi_split_awid_out_1;
+  xsc::xsc_split<2, 2> * mp_s_axi_split_awid;
+  sc_signal<sc_dt::sc_bv<2> > s_axi_split_awid_out_0;
+  sc_signal<sc_dt::sc_bv<2> > s_axi_split_awid_out_1;
 
   xsc::xsc_split<16, 2> * mp_s_axi_split_awlen;
   sc_signal<sc_dt::sc_bv<16> > s_axi_split_awlen_out_0;
@@ -436,17 +430,14 @@ private:
   sc_signal<sc_dt::sc_bv<6> > s_axi_split_awsize_out_0;
   sc_signal<sc_dt::sc_bv<6> > s_axi_split_awsize_out_1;
 
-  xsc::xsc_split<8, 2> * mp_s_axi_split_awuser;
-  sc_signal<sc_dt::sc_bv<8> > s_axi_split_awuser_out_0;
-  sc_signal<sc_dt::sc_bv<8> > s_axi_split_awuser_out_1;
 
   xsc::xsc_split<2, 2> * mp_s_axi_split_awvalid;
   sc_signal<sc_dt::sc_bv<2> > s_axi_split_awvalid_out_0;
   sc_signal<sc_dt::sc_bv<2> > s_axi_split_awvalid_out_1;
 
-  xsc::xsc_concatenator<10, 2> * mp_s_axi_concat_bid;
-  sc_signal<sc_dt::sc_bv<10> > s_axi_concat_bid_out_0;
-  sc_signal<sc_dt::sc_bv<10> > s_axi_concat_bid_out_1;
+  xsc::xsc_concatenator<2, 2> * mp_s_axi_concat_bid;
+  sc_signal<sc_dt::sc_bv<2> > s_axi_concat_bid_out_0;
+  sc_signal<sc_dt::sc_bv<2> > s_axi_concat_bid_out_1;
 
   xsc::xsc_split<2, 2> * mp_s_axi_split_bready;
   sc_signal<sc_dt::sc_bv<2> > s_axi_split_bready_out_0;
@@ -461,13 +452,13 @@ private:
   sc_signal<sc_dt::sc_bv<2> > s_axi_concat_bvalid_out_0;
   sc_signal<sc_dt::sc_bv<2> > s_axi_concat_bvalid_out_1;
 
-  xsc::xsc_concatenator<256, 2> * mp_s_axi_concat_rdata;
-  sc_signal<sc_dt::sc_bv<256> > s_axi_concat_rdata_out_0;
-  sc_signal<sc_dt::sc_bv<256> > s_axi_concat_rdata_out_1;
+  xsc::xsc_concatenator<512, 2> * mp_s_axi_concat_rdata;
+  sc_signal<sc_dt::sc_bv<512> > s_axi_concat_rdata_out_0;
+  sc_signal<sc_dt::sc_bv<512> > s_axi_concat_rdata_out_1;
 
-  xsc::xsc_concatenator<10, 2> * mp_s_axi_concat_rid;
-  sc_signal<sc_dt::sc_bv<10> > s_axi_concat_rid_out_0;
-  sc_signal<sc_dt::sc_bv<10> > s_axi_concat_rid_out_1;
+  xsc::xsc_concatenator<2, 2> * mp_s_axi_concat_rid;
+  sc_signal<sc_dt::sc_bv<2> > s_axi_concat_rid_out_0;
+  sc_signal<sc_dt::sc_bv<2> > s_axi_concat_rid_out_1;
 
   xsc::xsc_concatenator<2, 2> * mp_s_axi_concat_rlast;
   sc_signal<sc_dt::sc_bv<2> > s_axi_concat_rlast_out_0;
@@ -486,9 +477,9 @@ private:
   sc_signal<sc_dt::sc_bv<2> > s_axi_concat_rvalid_out_0;
   sc_signal<sc_dt::sc_bv<2> > s_axi_concat_rvalid_out_1;
 
-  xsc::xsc_split<256, 2> * mp_s_axi_split_wdata;
-  sc_signal<sc_dt::sc_bv<256> > s_axi_split_wdata_out_0;
-  sc_signal<sc_dt::sc_bv<256> > s_axi_split_wdata_out_1;
+  xsc::xsc_split<512, 2> * mp_s_axi_split_wdata;
+  sc_signal<sc_dt::sc_bv<512> > s_axi_split_wdata_out_0;
+  sc_signal<sc_dt::sc_bv<512> > s_axi_split_wdata_out_1;
 
 
   xsc::xsc_split<2, 2> * mp_s_axi_split_wlast;
@@ -499,9 +490,9 @@ private:
   sc_signal<sc_dt::sc_bv<2> > s_axi_concat_wready_out_0;
   sc_signal<sc_dt::sc_bv<2> > s_axi_concat_wready_out_1;
 
-  xsc::xsc_split<32, 2> * mp_s_axi_split_wstrb;
-  sc_signal<sc_dt::sc_bv<32> > s_axi_split_wstrb_out_0;
-  sc_signal<sc_dt::sc_bv<32> > s_axi_split_wstrb_out_1;
+  xsc::xsc_split<64, 2> * mp_s_axi_split_wstrb;
+  sc_signal<sc_dt::sc_bv<64> > s_axi_split_wstrb_out_0;
+  sc_signal<sc_dt::sc_bv<64> > s_axi_split_wstrb_out_1;
 
 
   xsc::xsc_split<2, 2> * mp_s_axi_split_wvalid;
@@ -526,7 +517,7 @@ public:
 
   sc_core::sc_in< bool > aclk;
   sc_core::sc_in< bool > aresetn;
-  sc_core::sc_in< sc_dt::sc_bv<10> > s_axi_awid;
+  sc_core::sc_in< sc_dt::sc_bv<2> > s_axi_awid;
   sc_core::sc_in< sc_dt::sc_bv<128> > s_axi_awaddr;
   sc_core::sc_in< sc_dt::sc_bv<16> > s_axi_awlen;
   sc_core::sc_in< sc_dt::sc_bv<6> > s_axi_awsize;
@@ -535,19 +526,18 @@ public:
   sc_core::sc_in< sc_dt::sc_bv<8> > s_axi_awcache;
   sc_core::sc_in< sc_dt::sc_bv<6> > s_axi_awprot;
   sc_core::sc_in< sc_dt::sc_bv<8> > s_axi_awqos;
-  sc_core::sc_in< sc_dt::sc_bv<8> > s_axi_awuser;
   sc_core::sc_in< sc_dt::sc_bv<2> > s_axi_awvalid;
   sc_core::sc_out< sc_dt::sc_bv<2> > s_axi_awready;
-  sc_core::sc_in< sc_dt::sc_bv<256> > s_axi_wdata;
-  sc_core::sc_in< sc_dt::sc_bv<32> > s_axi_wstrb;
+  sc_core::sc_in< sc_dt::sc_bv<512> > s_axi_wdata;
+  sc_core::sc_in< sc_dt::sc_bv<64> > s_axi_wstrb;
   sc_core::sc_in< sc_dt::sc_bv<2> > s_axi_wlast;
   sc_core::sc_in< sc_dt::sc_bv<2> > s_axi_wvalid;
   sc_core::sc_out< sc_dt::sc_bv<2> > s_axi_wready;
-  sc_core::sc_out< sc_dt::sc_bv<10> > s_axi_bid;
+  sc_core::sc_out< sc_dt::sc_bv<2> > s_axi_bid;
   sc_core::sc_out< sc_dt::sc_bv<4> > s_axi_bresp;
   sc_core::sc_out< sc_dt::sc_bv<2> > s_axi_bvalid;
   sc_core::sc_in< sc_dt::sc_bv<2> > s_axi_bready;
-  sc_core::sc_in< sc_dt::sc_bv<10> > s_axi_arid;
+  sc_core::sc_in< sc_dt::sc_bv<2> > s_axi_arid;
   sc_core::sc_in< sc_dt::sc_bv<128> > s_axi_araddr;
   sc_core::sc_in< sc_dt::sc_bv<16> > s_axi_arlen;
   sc_core::sc_in< sc_dt::sc_bv<6> > s_axi_arsize;
@@ -558,13 +548,13 @@ public:
   sc_core::sc_in< sc_dt::sc_bv<8> > s_axi_arqos;
   sc_core::sc_in< sc_dt::sc_bv<2> > s_axi_arvalid;
   sc_core::sc_out< sc_dt::sc_bv<2> > s_axi_arready;
-  sc_core::sc_out< sc_dt::sc_bv<10> > s_axi_rid;
-  sc_core::sc_out< sc_dt::sc_bv<256> > s_axi_rdata;
+  sc_core::sc_out< sc_dt::sc_bv<2> > s_axi_rid;
+  sc_core::sc_out< sc_dt::sc_bv<512> > s_axi_rdata;
   sc_core::sc_out< sc_dt::sc_bv<4> > s_axi_rresp;
   sc_core::sc_out< sc_dt::sc_bv<2> > s_axi_rlast;
   sc_core::sc_out< sc_dt::sc_bv<2> > s_axi_rvalid;
   sc_core::sc_in< sc_dt::sc_bv<2> > s_axi_rready;
-  sc_core::sc_out< sc_dt::sc_bv<5> > m_axi_awid;
+  sc_core::sc_out< sc_dt::sc_bv<1> > m_axi_awid;
   sc_core::sc_out< sc_dt::sc_bv<64> > m_axi_awaddr;
   sc_core::sc_out< sc_dt::sc_bv<8> > m_axi_awlen;
   sc_core::sc_out< sc_dt::sc_bv<3> > m_axi_awsize;
@@ -574,19 +564,18 @@ public:
   sc_core::sc_out< sc_dt::sc_bv<3> > m_axi_awprot;
   sc_core::sc_out< sc_dt::sc_bv<4> > m_axi_awregion;
   sc_core::sc_out< sc_dt::sc_bv<4> > m_axi_awqos;
-  sc_core::sc_out< sc_dt::sc_bv<4> > m_axi_awuser;
   sc_core::sc_out< sc_dt::sc_bv<1> > m_axi_awvalid;
   sc_core::sc_in< sc_dt::sc_bv<1> > m_axi_awready;
-  sc_core::sc_out< sc_dt::sc_bv<128> > m_axi_wdata;
-  sc_core::sc_out< sc_dt::sc_bv<16> > m_axi_wstrb;
+  sc_core::sc_out< sc_dt::sc_bv<256> > m_axi_wdata;
+  sc_core::sc_out< sc_dt::sc_bv<32> > m_axi_wstrb;
   sc_core::sc_out< sc_dt::sc_bv<1> > m_axi_wlast;
   sc_core::sc_out< sc_dt::sc_bv<1> > m_axi_wvalid;
   sc_core::sc_in< sc_dt::sc_bv<1> > m_axi_wready;
-  sc_core::sc_in< sc_dt::sc_bv<5> > m_axi_bid;
+  sc_core::sc_in< sc_dt::sc_bv<1> > m_axi_bid;
   sc_core::sc_in< sc_dt::sc_bv<2> > m_axi_bresp;
   sc_core::sc_in< sc_dt::sc_bv<1> > m_axi_bvalid;
   sc_core::sc_out< sc_dt::sc_bv<1> > m_axi_bready;
-  sc_core::sc_out< sc_dt::sc_bv<5> > m_axi_arid;
+  sc_core::sc_out< sc_dt::sc_bv<1> > m_axi_arid;
   sc_core::sc_out< sc_dt::sc_bv<64> > m_axi_araddr;
   sc_core::sc_out< sc_dt::sc_bv<8> > m_axi_arlen;
   sc_core::sc_out< sc_dt::sc_bv<3> > m_axi_arsize;
@@ -598,8 +587,8 @@ public:
   sc_core::sc_out< sc_dt::sc_bv<4> > m_axi_arqos;
   sc_core::sc_out< sc_dt::sc_bv<1> > m_axi_arvalid;
   sc_core::sc_in< sc_dt::sc_bv<1> > m_axi_arready;
-  sc_core::sc_in< sc_dt::sc_bv<5> > m_axi_rid;
-  sc_core::sc_in< sc_dt::sc_bv<128> > m_axi_rdata;
+  sc_core::sc_in< sc_dt::sc_bv<1> > m_axi_rid;
+  sc_core::sc_in< sc_dt::sc_bv<256> > m_axi_rdata;
   sc_core::sc_in< sc_dt::sc_bv<2> > m_axi_rresp;
   sc_core::sc_in< sc_dt::sc_bv<1> > m_axi_rlast;
   sc_core::sc_in< sc_dt::sc_bv<1> > m_axi_rvalid;
@@ -611,9 +600,9 @@ protected:
 
 private:
 
-  xtlm::xaximm_pin2xtlm_t<128,64,5,4,1,1,1,1>* mp_S00_AXI_transactor;
-  xsc::common::vector2vector_converter<10,5>* mp_s_axi_awid_converter_0;
-  sc_signal< sc_bv<5> > m_s_axi_awid_converter_0_signal;
+  xtlm::xaximm_pin2xtlm_t<256,64,1,1,1,1,1,1>* mp_S00_AXI_transactor;
+  xsc::common::vector2vector_converter<2,1>* mp_s_axi_awid_converter_0;
+  sc_signal< sc_bv<1> > m_s_axi_awid_converter_0_signal;
   xsc::common::vector2vector_converter<128,64>* mp_s_axi_awaddr_converter_0;
   sc_signal< sc_bv<64> > m_s_axi_awaddr_converter_0_signal;
   xsc::common::vector2vector_converter<16,8>* mp_s_axi_awlen_converter_0;
@@ -630,32 +619,30 @@ private:
   sc_signal< sc_bv<3> > m_s_axi_awprot_converter_0_signal;
   xsc::common::vector2vector_converter<8,4>* mp_s_axi_awqos_converter_0;
   sc_signal< sc_bv<4> > m_s_axi_awqos_converter_0_signal;
-  xsc::common::vector2vector_converter<8,4>* mp_s_axi_awuser_converter_0;
-  sc_signal< sc_bv<4> > m_s_axi_awuser_converter_0_signal;
   xsc::common::vectorN2scalar_converter<2>* mp_s_axi_awvalid_converter_0;
   sc_signal< bool > m_s_axi_awvalid_converter_0_signal;
   xsc::common::scalar2vectorN_converter<2>* mp_s_axi_awready_converter_0;
   sc_signal< bool > m_s_axi_awready_converter_0_signal;
-  xsc::common::vector2vector_converter<256,128>* mp_s_axi_wdata_converter_0;
-  sc_signal< sc_bv<128> > m_s_axi_wdata_converter_0_signal;
-  xsc::common::vector2vector_converter<32,16>* mp_s_axi_wstrb_converter_0;
-  sc_signal< sc_bv<16> > m_s_axi_wstrb_converter_0_signal;
+  xsc::common::vector2vector_converter<512,256>* mp_s_axi_wdata_converter_0;
+  sc_signal< sc_bv<256> > m_s_axi_wdata_converter_0_signal;
+  xsc::common::vector2vector_converter<64,32>* mp_s_axi_wstrb_converter_0;
+  sc_signal< sc_bv<32> > m_s_axi_wstrb_converter_0_signal;
   xsc::common::vectorN2scalar_converter<2>* mp_s_axi_wlast_converter_0;
   sc_signal< bool > m_s_axi_wlast_converter_0_signal;
   xsc::common::vectorN2scalar_converter<2>* mp_s_axi_wvalid_converter_0;
   sc_signal< bool > m_s_axi_wvalid_converter_0_signal;
   xsc::common::scalar2vectorN_converter<2>* mp_s_axi_wready_converter_0;
   sc_signal< bool > m_s_axi_wready_converter_0_signal;
-  xsc::common::vector2vector_converter<5,10>* mp_s_axi_bid_converter_0;
-  sc_signal< sc_bv<5> > m_s_axi_bid_converter_0_signal;
+  xsc::common::vector2vector_converter<1,2>* mp_s_axi_bid_converter_0;
+  sc_signal< sc_bv<1> > m_s_axi_bid_converter_0_signal;
   xsc::common::vector2vector_converter<2,4>* mp_s_axi_bresp_converter_0;
   sc_signal< sc_bv<2> > m_s_axi_bresp_converter_0_signal;
   xsc::common::scalar2vectorN_converter<2>* mp_s_axi_bvalid_converter_0;
   sc_signal< bool > m_s_axi_bvalid_converter_0_signal;
   xsc::common::vectorN2scalar_converter<2>* mp_s_axi_bready_converter_0;
   sc_signal< bool > m_s_axi_bready_converter_0_signal;
-  xsc::common::vector2vector_converter<10,5>* mp_s_axi_arid_converter_0;
-  sc_signal< sc_bv<5> > m_s_axi_arid_converter_0_signal;
+  xsc::common::vector2vector_converter<2,1>* mp_s_axi_arid_converter_0;
+  sc_signal< sc_bv<1> > m_s_axi_arid_converter_0_signal;
   xsc::common::vector2vector_converter<128,64>* mp_s_axi_araddr_converter_0;
   sc_signal< sc_bv<64> > m_s_axi_araddr_converter_0_signal;
   xsc::common::vector2vector_converter<16,8>* mp_s_axi_arlen_converter_0;
@@ -676,10 +663,10 @@ private:
   sc_signal< bool > m_s_axi_arvalid_converter_0_signal;
   xsc::common::scalar2vectorN_converter<2>* mp_s_axi_arready_converter_0;
   sc_signal< bool > m_s_axi_arready_converter_0_signal;
-  xsc::common::vector2vector_converter<5,10>* mp_s_axi_rid_converter_0;
-  sc_signal< sc_bv<5> > m_s_axi_rid_converter_0_signal;
-  xsc::common::vector2vector_converter<128,256>* mp_s_axi_rdata_converter_0;
-  sc_signal< sc_bv<128> > m_s_axi_rdata_converter_0_signal;
+  xsc::common::vector2vector_converter<1,2>* mp_s_axi_rid_converter_0;
+  sc_signal< sc_bv<1> > m_s_axi_rid_converter_0_signal;
+  xsc::common::vector2vector_converter<256,512>* mp_s_axi_rdata_converter_0;
+  sc_signal< sc_bv<256> > m_s_axi_rdata_converter_0_signal;
   xsc::common::vector2vector_converter<2,4>* mp_s_axi_rresp_converter_0;
   sc_signal< sc_bv<2> > m_s_axi_rresp_converter_0_signal;
   xsc::common::scalar2vectorN_converter<2>* mp_s_axi_rlast_converter_0;
@@ -688,7 +675,7 @@ private:
   sc_signal< bool > m_s_axi_rvalid_converter_0_signal;
   xsc::common::vectorN2scalar_converter<2>* mp_s_axi_rready_converter_0;
   sc_signal< bool > m_s_axi_rready_converter_0_signal;
-  xtlm::xaximm_xtlm2pin_t<128,64,5,4,1,1,1,1>* mp_M00_AXI_transactor;
+  xtlm::xaximm_xtlm2pin_t<256,64,1,1,1,1,1,1>* mp_M00_AXI_transactor;
   xsc::common::scalar2vectorN_converter<1>* mp_m_axi_awlock_converter;
   sc_signal< bool > m_m_axi_awlock_converter_signal;
   xsc::common::scalar2vectorN_converter<1>* mp_m_axi_awvalid_converter;
@@ -717,9 +704,9 @@ private:
   sc_signal< bool > m_m_axi_rvalid_converter_signal;
   xsc::common::scalar2vectorN_converter<1>* mp_m_axi_rready_converter;
   sc_signal< bool > m_m_axi_rready_converter_signal;
-  xtlm::xaximm_pin2xtlm_t<128,64,5,4,1,1,1,1>* mp_S01_AXI_transactor;
-  xsc::common::vector2vector_converter<10,5>* mp_s_axi_awid_converter_1;
-  sc_signal< sc_bv<5> > m_s_axi_awid_converter_1_signal;
+  xtlm::xaximm_pin2xtlm_t<256,64,1,1,1,1,1,1>* mp_S01_AXI_transactor;
+  xsc::common::vector2vector_converter<2,1>* mp_s_axi_awid_converter_1;
+  sc_signal< sc_bv<1> > m_s_axi_awid_converter_1_signal;
   xsc::common::vector2vector_converter<128,64>* mp_s_axi_awaddr_converter_1;
   sc_signal< sc_bv<64> > m_s_axi_awaddr_converter_1_signal;
   xsc::common::vector2vector_converter<16,8>* mp_s_axi_awlen_converter_1;
@@ -736,32 +723,30 @@ private:
   sc_signal< sc_bv<3> > m_s_axi_awprot_converter_1_signal;
   xsc::common::vector2vector_converter<8,4>* mp_s_axi_awqos_converter_1;
   sc_signal< sc_bv<4> > m_s_axi_awqos_converter_1_signal;
-  xsc::common::vector2vector_converter<8,4>* mp_s_axi_awuser_converter_1;
-  sc_signal< sc_bv<4> > m_s_axi_awuser_converter_1_signal;
   xsc::common::vectorN2scalar_converter<2>* mp_s_axi_awvalid_converter_1;
   sc_signal< bool > m_s_axi_awvalid_converter_1_signal;
   xsc::common::scalar2vectorN_converter<2>* mp_s_axi_awready_converter_1;
   sc_signal< bool > m_s_axi_awready_converter_1_signal;
-  xsc::common::vector2vector_converter<256,128>* mp_s_axi_wdata_converter_1;
-  sc_signal< sc_bv<128> > m_s_axi_wdata_converter_1_signal;
-  xsc::common::vector2vector_converter<32,16>* mp_s_axi_wstrb_converter_1;
-  sc_signal< sc_bv<16> > m_s_axi_wstrb_converter_1_signal;
+  xsc::common::vector2vector_converter<512,256>* mp_s_axi_wdata_converter_1;
+  sc_signal< sc_bv<256> > m_s_axi_wdata_converter_1_signal;
+  xsc::common::vector2vector_converter<64,32>* mp_s_axi_wstrb_converter_1;
+  sc_signal< sc_bv<32> > m_s_axi_wstrb_converter_1_signal;
   xsc::common::vectorN2scalar_converter<2>* mp_s_axi_wlast_converter_1;
   sc_signal< bool > m_s_axi_wlast_converter_1_signal;
   xsc::common::vectorN2scalar_converter<2>* mp_s_axi_wvalid_converter_1;
   sc_signal< bool > m_s_axi_wvalid_converter_1_signal;
   xsc::common::scalar2vectorN_converter<2>* mp_s_axi_wready_converter_1;
   sc_signal< bool > m_s_axi_wready_converter_1_signal;
-  xsc::common::vector2vector_converter<5,10>* mp_s_axi_bid_converter_1;
-  sc_signal< sc_bv<5> > m_s_axi_bid_converter_1_signal;
+  xsc::common::vector2vector_converter<1,2>* mp_s_axi_bid_converter_1;
+  sc_signal< sc_bv<1> > m_s_axi_bid_converter_1_signal;
   xsc::common::vector2vector_converter<2,4>* mp_s_axi_bresp_converter_1;
   sc_signal< sc_bv<2> > m_s_axi_bresp_converter_1_signal;
   xsc::common::scalar2vectorN_converter<2>* mp_s_axi_bvalid_converter_1;
   sc_signal< bool > m_s_axi_bvalid_converter_1_signal;
   xsc::common::vectorN2scalar_converter<2>* mp_s_axi_bready_converter_1;
   sc_signal< bool > m_s_axi_bready_converter_1_signal;
-  xsc::common::vector2vector_converter<10,5>* mp_s_axi_arid_converter_1;
-  sc_signal< sc_bv<5> > m_s_axi_arid_converter_1_signal;
+  xsc::common::vector2vector_converter<2,1>* mp_s_axi_arid_converter_1;
+  sc_signal< sc_bv<1> > m_s_axi_arid_converter_1_signal;
   xsc::common::vector2vector_converter<128,64>* mp_s_axi_araddr_converter_1;
   sc_signal< sc_bv<64> > m_s_axi_araddr_converter_1_signal;
   xsc::common::vector2vector_converter<16,8>* mp_s_axi_arlen_converter_1;
@@ -782,10 +767,10 @@ private:
   sc_signal< bool > m_s_axi_arvalid_converter_1_signal;
   xsc::common::scalar2vectorN_converter<2>* mp_s_axi_arready_converter_1;
   sc_signal< bool > m_s_axi_arready_converter_1_signal;
-  xsc::common::vector2vector_converter<5,10>* mp_s_axi_rid_converter_1;
-  sc_signal< sc_bv<5> > m_s_axi_rid_converter_1_signal;
-  xsc::common::vector2vector_converter<128,256>* mp_s_axi_rdata_converter_1;
-  sc_signal< sc_bv<128> > m_s_axi_rdata_converter_1_signal;
+  xsc::common::vector2vector_converter<1,2>* mp_s_axi_rid_converter_1;
+  sc_signal< sc_bv<1> > m_s_axi_rid_converter_1_signal;
+  xsc::common::vector2vector_converter<256,512>* mp_s_axi_rdata_converter_1;
+  sc_signal< sc_bv<256> > m_s_axi_rdata_converter_1_signal;
   xsc::common::vector2vector_converter<2,4>* mp_s_axi_rresp_converter_1;
   sc_signal< sc_bv<2> > m_s_axi_rresp_converter_1_signal;
   xsc::common::scalar2vectorN_converter<2>* mp_s_axi_rlast_converter_1;
@@ -807,9 +792,9 @@ private:
   sc_signal<sc_dt::sc_bv<8> > s_axi_split_arcache_out_0;
   sc_signal<sc_dt::sc_bv<8> > s_axi_split_arcache_out_1;
 
-  xsc::xsc_split<10, 2> * mp_s_axi_split_arid;
-  sc_signal<sc_dt::sc_bv<10> > s_axi_split_arid_out_0;
-  sc_signal<sc_dt::sc_bv<10> > s_axi_split_arid_out_1;
+  xsc::xsc_split<2, 2> * mp_s_axi_split_arid;
+  sc_signal<sc_dt::sc_bv<2> > s_axi_split_arid_out_0;
+  sc_signal<sc_dt::sc_bv<2> > s_axi_split_arid_out_1;
 
   xsc::xsc_split<16, 2> * mp_s_axi_split_arlen;
   sc_signal<sc_dt::sc_bv<16> > s_axi_split_arlen_out_0;
@@ -852,9 +837,9 @@ private:
   sc_signal<sc_dt::sc_bv<8> > s_axi_split_awcache_out_0;
   sc_signal<sc_dt::sc_bv<8> > s_axi_split_awcache_out_1;
 
-  xsc::xsc_split<10, 2> * mp_s_axi_split_awid;
-  sc_signal<sc_dt::sc_bv<10> > s_axi_split_awid_out_0;
-  sc_signal<sc_dt::sc_bv<10> > s_axi_split_awid_out_1;
+  xsc::xsc_split<2, 2> * mp_s_axi_split_awid;
+  sc_signal<sc_dt::sc_bv<2> > s_axi_split_awid_out_0;
+  sc_signal<sc_dt::sc_bv<2> > s_axi_split_awid_out_1;
 
   xsc::xsc_split<16, 2> * mp_s_axi_split_awlen;
   sc_signal<sc_dt::sc_bv<16> > s_axi_split_awlen_out_0;
@@ -880,17 +865,14 @@ private:
   sc_signal<sc_dt::sc_bv<6> > s_axi_split_awsize_out_0;
   sc_signal<sc_dt::sc_bv<6> > s_axi_split_awsize_out_1;
 
-  xsc::xsc_split<8, 2> * mp_s_axi_split_awuser;
-  sc_signal<sc_dt::sc_bv<8> > s_axi_split_awuser_out_0;
-  sc_signal<sc_dt::sc_bv<8> > s_axi_split_awuser_out_1;
 
   xsc::xsc_split<2, 2> * mp_s_axi_split_awvalid;
   sc_signal<sc_dt::sc_bv<2> > s_axi_split_awvalid_out_0;
   sc_signal<sc_dt::sc_bv<2> > s_axi_split_awvalid_out_1;
 
-  xsc::xsc_concatenator<10, 2> * mp_s_axi_concat_bid;
-  sc_signal<sc_dt::sc_bv<10> > s_axi_concat_bid_out_0;
-  sc_signal<sc_dt::sc_bv<10> > s_axi_concat_bid_out_1;
+  xsc::xsc_concatenator<2, 2> * mp_s_axi_concat_bid;
+  sc_signal<sc_dt::sc_bv<2> > s_axi_concat_bid_out_0;
+  sc_signal<sc_dt::sc_bv<2> > s_axi_concat_bid_out_1;
 
   xsc::xsc_split<2, 2> * mp_s_axi_split_bready;
   sc_signal<sc_dt::sc_bv<2> > s_axi_split_bready_out_0;
@@ -905,13 +887,13 @@ private:
   sc_signal<sc_dt::sc_bv<2> > s_axi_concat_bvalid_out_0;
   sc_signal<sc_dt::sc_bv<2> > s_axi_concat_bvalid_out_1;
 
-  xsc::xsc_concatenator<256, 2> * mp_s_axi_concat_rdata;
-  sc_signal<sc_dt::sc_bv<256> > s_axi_concat_rdata_out_0;
-  sc_signal<sc_dt::sc_bv<256> > s_axi_concat_rdata_out_1;
+  xsc::xsc_concatenator<512, 2> * mp_s_axi_concat_rdata;
+  sc_signal<sc_dt::sc_bv<512> > s_axi_concat_rdata_out_0;
+  sc_signal<sc_dt::sc_bv<512> > s_axi_concat_rdata_out_1;
 
-  xsc::xsc_concatenator<10, 2> * mp_s_axi_concat_rid;
-  sc_signal<sc_dt::sc_bv<10> > s_axi_concat_rid_out_0;
-  sc_signal<sc_dt::sc_bv<10> > s_axi_concat_rid_out_1;
+  xsc::xsc_concatenator<2, 2> * mp_s_axi_concat_rid;
+  sc_signal<sc_dt::sc_bv<2> > s_axi_concat_rid_out_0;
+  sc_signal<sc_dt::sc_bv<2> > s_axi_concat_rid_out_1;
 
   xsc::xsc_concatenator<2, 2> * mp_s_axi_concat_rlast;
   sc_signal<sc_dt::sc_bv<2> > s_axi_concat_rlast_out_0;
@@ -930,9 +912,9 @@ private:
   sc_signal<sc_dt::sc_bv<2> > s_axi_concat_rvalid_out_0;
   sc_signal<sc_dt::sc_bv<2> > s_axi_concat_rvalid_out_1;
 
-  xsc::xsc_split<256, 2> * mp_s_axi_split_wdata;
-  sc_signal<sc_dt::sc_bv<256> > s_axi_split_wdata_out_0;
-  sc_signal<sc_dt::sc_bv<256> > s_axi_split_wdata_out_1;
+  xsc::xsc_split<512, 2> * mp_s_axi_split_wdata;
+  sc_signal<sc_dt::sc_bv<512> > s_axi_split_wdata_out_0;
+  sc_signal<sc_dt::sc_bv<512> > s_axi_split_wdata_out_1;
 
 
   xsc::xsc_split<2, 2> * mp_s_axi_split_wlast;
@@ -943,9 +925,9 @@ private:
   sc_signal<sc_dt::sc_bv<2> > s_axi_concat_wready_out_0;
   sc_signal<sc_dt::sc_bv<2> > s_axi_concat_wready_out_1;
 
-  xsc::xsc_split<32, 2> * mp_s_axi_split_wstrb;
-  sc_signal<sc_dt::sc_bv<32> > s_axi_split_wstrb_out_0;
-  sc_signal<sc_dt::sc_bv<32> > s_axi_split_wstrb_out_1;
+  xsc::xsc_split<64, 2> * mp_s_axi_split_wstrb;
+  sc_signal<sc_dt::sc_bv<64> > s_axi_split_wstrb_out_0;
+  sc_signal<sc_dt::sc_bv<64> > s_axi_split_wstrb_out_1;
 
 
   xsc::xsc_split<2, 2> * mp_s_axi_split_wvalid;
@@ -970,7 +952,7 @@ public:
 
   sc_core::sc_in< bool > aclk;
   sc_core::sc_in< bool > aresetn;
-  sc_core::sc_in< sc_dt::sc_bv<10> > s_axi_awid;
+  sc_core::sc_in< sc_dt::sc_bv<2> > s_axi_awid;
   sc_core::sc_in< sc_dt::sc_bv<128> > s_axi_awaddr;
   sc_core::sc_in< sc_dt::sc_bv<16> > s_axi_awlen;
   sc_core::sc_in< sc_dt::sc_bv<6> > s_axi_awsize;
@@ -979,19 +961,18 @@ public:
   sc_core::sc_in< sc_dt::sc_bv<8> > s_axi_awcache;
   sc_core::sc_in< sc_dt::sc_bv<6> > s_axi_awprot;
   sc_core::sc_in< sc_dt::sc_bv<8> > s_axi_awqos;
-  sc_core::sc_in< sc_dt::sc_bv<8> > s_axi_awuser;
   sc_core::sc_in< sc_dt::sc_bv<2> > s_axi_awvalid;
   sc_core::sc_out< sc_dt::sc_bv<2> > s_axi_awready;
-  sc_core::sc_in< sc_dt::sc_bv<256> > s_axi_wdata;
-  sc_core::sc_in< sc_dt::sc_bv<32> > s_axi_wstrb;
+  sc_core::sc_in< sc_dt::sc_bv<512> > s_axi_wdata;
+  sc_core::sc_in< sc_dt::sc_bv<64> > s_axi_wstrb;
   sc_core::sc_in< sc_dt::sc_bv<2> > s_axi_wlast;
   sc_core::sc_in< sc_dt::sc_bv<2> > s_axi_wvalid;
   sc_core::sc_out< sc_dt::sc_bv<2> > s_axi_wready;
-  sc_core::sc_out< sc_dt::sc_bv<10> > s_axi_bid;
+  sc_core::sc_out< sc_dt::sc_bv<2> > s_axi_bid;
   sc_core::sc_out< sc_dt::sc_bv<4> > s_axi_bresp;
   sc_core::sc_out< sc_dt::sc_bv<2> > s_axi_bvalid;
   sc_core::sc_in< sc_dt::sc_bv<2> > s_axi_bready;
-  sc_core::sc_in< sc_dt::sc_bv<10> > s_axi_arid;
+  sc_core::sc_in< sc_dt::sc_bv<2> > s_axi_arid;
   sc_core::sc_in< sc_dt::sc_bv<128> > s_axi_araddr;
   sc_core::sc_in< sc_dt::sc_bv<16> > s_axi_arlen;
   sc_core::sc_in< sc_dt::sc_bv<6> > s_axi_arsize;
@@ -1002,13 +983,13 @@ public:
   sc_core::sc_in< sc_dt::sc_bv<8> > s_axi_arqos;
   sc_core::sc_in< sc_dt::sc_bv<2> > s_axi_arvalid;
   sc_core::sc_out< sc_dt::sc_bv<2> > s_axi_arready;
-  sc_core::sc_out< sc_dt::sc_bv<10> > s_axi_rid;
-  sc_core::sc_out< sc_dt::sc_bv<256> > s_axi_rdata;
+  sc_core::sc_out< sc_dt::sc_bv<2> > s_axi_rid;
+  sc_core::sc_out< sc_dt::sc_bv<512> > s_axi_rdata;
   sc_core::sc_out< sc_dt::sc_bv<4> > s_axi_rresp;
   sc_core::sc_out< sc_dt::sc_bv<2> > s_axi_rlast;
   sc_core::sc_out< sc_dt::sc_bv<2> > s_axi_rvalid;
   sc_core::sc_in< sc_dt::sc_bv<2> > s_axi_rready;
-  sc_core::sc_out< sc_dt::sc_bv<5> > m_axi_awid;
+  sc_core::sc_out< sc_dt::sc_bv<1> > m_axi_awid;
   sc_core::sc_out< sc_dt::sc_bv<64> > m_axi_awaddr;
   sc_core::sc_out< sc_dt::sc_bv<8> > m_axi_awlen;
   sc_core::sc_out< sc_dt::sc_bv<3> > m_axi_awsize;
@@ -1018,19 +999,18 @@ public:
   sc_core::sc_out< sc_dt::sc_bv<3> > m_axi_awprot;
   sc_core::sc_out< sc_dt::sc_bv<4> > m_axi_awregion;
   sc_core::sc_out< sc_dt::sc_bv<4> > m_axi_awqos;
-  sc_core::sc_out< sc_dt::sc_bv<4> > m_axi_awuser;
   sc_core::sc_out< sc_dt::sc_bv<1> > m_axi_awvalid;
   sc_core::sc_in< sc_dt::sc_bv<1> > m_axi_awready;
-  sc_core::sc_out< sc_dt::sc_bv<128> > m_axi_wdata;
-  sc_core::sc_out< sc_dt::sc_bv<16> > m_axi_wstrb;
+  sc_core::sc_out< sc_dt::sc_bv<256> > m_axi_wdata;
+  sc_core::sc_out< sc_dt::sc_bv<32> > m_axi_wstrb;
   sc_core::sc_out< sc_dt::sc_bv<1> > m_axi_wlast;
   sc_core::sc_out< sc_dt::sc_bv<1> > m_axi_wvalid;
   sc_core::sc_in< sc_dt::sc_bv<1> > m_axi_wready;
-  sc_core::sc_in< sc_dt::sc_bv<5> > m_axi_bid;
+  sc_core::sc_in< sc_dt::sc_bv<1> > m_axi_bid;
   sc_core::sc_in< sc_dt::sc_bv<2> > m_axi_bresp;
   sc_core::sc_in< sc_dt::sc_bv<1> > m_axi_bvalid;
   sc_core::sc_out< sc_dt::sc_bv<1> > m_axi_bready;
-  sc_core::sc_out< sc_dt::sc_bv<5> > m_axi_arid;
+  sc_core::sc_out< sc_dt::sc_bv<1> > m_axi_arid;
   sc_core::sc_out< sc_dt::sc_bv<64> > m_axi_araddr;
   sc_core::sc_out< sc_dt::sc_bv<8> > m_axi_arlen;
   sc_core::sc_out< sc_dt::sc_bv<3> > m_axi_arsize;
@@ -1042,8 +1022,8 @@ public:
   sc_core::sc_out< sc_dt::sc_bv<4> > m_axi_arqos;
   sc_core::sc_out< sc_dt::sc_bv<1> > m_axi_arvalid;
   sc_core::sc_in< sc_dt::sc_bv<1> > m_axi_arready;
-  sc_core::sc_in< sc_dt::sc_bv<5> > m_axi_rid;
-  sc_core::sc_in< sc_dt::sc_bv<128> > m_axi_rdata;
+  sc_core::sc_in< sc_dt::sc_bv<1> > m_axi_rid;
+  sc_core::sc_in< sc_dt::sc_bv<256> > m_axi_rdata;
   sc_core::sc_in< sc_dt::sc_bv<2> > m_axi_rresp;
   sc_core::sc_in< sc_dt::sc_bv<1> > m_axi_rlast;
   sc_core::sc_in< sc_dt::sc_bv<1> > m_axi_rvalid;
@@ -1055,9 +1035,9 @@ protected:
 
 private:
 
-  xtlm::xaximm_pin2xtlm_t<128,64,5,4,1,1,1,1>* mp_S00_AXI_transactor;
-  xsc::common::vector2vector_converter<10,5>* mp_s_axi_awid_converter_0;
-  sc_signal< sc_bv<5> > m_s_axi_awid_converter_0_signal;
+  xtlm::xaximm_pin2xtlm_t<256,64,1,1,1,1,1,1>* mp_S00_AXI_transactor;
+  xsc::common::vector2vector_converter<2,1>* mp_s_axi_awid_converter_0;
+  sc_signal< sc_bv<1> > m_s_axi_awid_converter_0_signal;
   xsc::common::vector2vector_converter<128,64>* mp_s_axi_awaddr_converter_0;
   sc_signal< sc_bv<64> > m_s_axi_awaddr_converter_0_signal;
   xsc::common::vector2vector_converter<16,8>* mp_s_axi_awlen_converter_0;
@@ -1074,32 +1054,30 @@ private:
   sc_signal< sc_bv<3> > m_s_axi_awprot_converter_0_signal;
   xsc::common::vector2vector_converter<8,4>* mp_s_axi_awqos_converter_0;
   sc_signal< sc_bv<4> > m_s_axi_awqos_converter_0_signal;
-  xsc::common::vector2vector_converter<8,4>* mp_s_axi_awuser_converter_0;
-  sc_signal< sc_bv<4> > m_s_axi_awuser_converter_0_signal;
   xsc::common::vectorN2scalar_converter<2>* mp_s_axi_awvalid_converter_0;
   sc_signal< bool > m_s_axi_awvalid_converter_0_signal;
   xsc::common::scalar2vectorN_converter<2>* mp_s_axi_awready_converter_0;
   sc_signal< bool > m_s_axi_awready_converter_0_signal;
-  xsc::common::vector2vector_converter<256,128>* mp_s_axi_wdata_converter_0;
-  sc_signal< sc_bv<128> > m_s_axi_wdata_converter_0_signal;
-  xsc::common::vector2vector_converter<32,16>* mp_s_axi_wstrb_converter_0;
-  sc_signal< sc_bv<16> > m_s_axi_wstrb_converter_0_signal;
+  xsc::common::vector2vector_converter<512,256>* mp_s_axi_wdata_converter_0;
+  sc_signal< sc_bv<256> > m_s_axi_wdata_converter_0_signal;
+  xsc::common::vector2vector_converter<64,32>* mp_s_axi_wstrb_converter_0;
+  sc_signal< sc_bv<32> > m_s_axi_wstrb_converter_0_signal;
   xsc::common::vectorN2scalar_converter<2>* mp_s_axi_wlast_converter_0;
   sc_signal< bool > m_s_axi_wlast_converter_0_signal;
   xsc::common::vectorN2scalar_converter<2>* mp_s_axi_wvalid_converter_0;
   sc_signal< bool > m_s_axi_wvalid_converter_0_signal;
   xsc::common::scalar2vectorN_converter<2>* mp_s_axi_wready_converter_0;
   sc_signal< bool > m_s_axi_wready_converter_0_signal;
-  xsc::common::vector2vector_converter<5,10>* mp_s_axi_bid_converter_0;
-  sc_signal< sc_bv<5> > m_s_axi_bid_converter_0_signal;
+  xsc::common::vector2vector_converter<1,2>* mp_s_axi_bid_converter_0;
+  sc_signal< sc_bv<1> > m_s_axi_bid_converter_0_signal;
   xsc::common::vector2vector_converter<2,4>* mp_s_axi_bresp_converter_0;
   sc_signal< sc_bv<2> > m_s_axi_bresp_converter_0_signal;
   xsc::common::scalar2vectorN_converter<2>* mp_s_axi_bvalid_converter_0;
   sc_signal< bool > m_s_axi_bvalid_converter_0_signal;
   xsc::common::vectorN2scalar_converter<2>* mp_s_axi_bready_converter_0;
   sc_signal< bool > m_s_axi_bready_converter_0_signal;
-  xsc::common::vector2vector_converter<10,5>* mp_s_axi_arid_converter_0;
-  sc_signal< sc_bv<5> > m_s_axi_arid_converter_0_signal;
+  xsc::common::vector2vector_converter<2,1>* mp_s_axi_arid_converter_0;
+  sc_signal< sc_bv<1> > m_s_axi_arid_converter_0_signal;
   xsc::common::vector2vector_converter<128,64>* mp_s_axi_araddr_converter_0;
   sc_signal< sc_bv<64> > m_s_axi_araddr_converter_0_signal;
   xsc::common::vector2vector_converter<16,8>* mp_s_axi_arlen_converter_0;
@@ -1120,10 +1098,10 @@ private:
   sc_signal< bool > m_s_axi_arvalid_converter_0_signal;
   xsc::common::scalar2vectorN_converter<2>* mp_s_axi_arready_converter_0;
   sc_signal< bool > m_s_axi_arready_converter_0_signal;
-  xsc::common::vector2vector_converter<5,10>* mp_s_axi_rid_converter_0;
-  sc_signal< sc_bv<5> > m_s_axi_rid_converter_0_signal;
-  xsc::common::vector2vector_converter<128,256>* mp_s_axi_rdata_converter_0;
-  sc_signal< sc_bv<128> > m_s_axi_rdata_converter_0_signal;
+  xsc::common::vector2vector_converter<1,2>* mp_s_axi_rid_converter_0;
+  sc_signal< sc_bv<1> > m_s_axi_rid_converter_0_signal;
+  xsc::common::vector2vector_converter<256,512>* mp_s_axi_rdata_converter_0;
+  sc_signal< sc_bv<256> > m_s_axi_rdata_converter_0_signal;
   xsc::common::vector2vector_converter<2,4>* mp_s_axi_rresp_converter_0;
   sc_signal< sc_bv<2> > m_s_axi_rresp_converter_0_signal;
   xsc::common::scalar2vectorN_converter<2>* mp_s_axi_rlast_converter_0;
@@ -1132,7 +1110,7 @@ private:
   sc_signal< bool > m_s_axi_rvalid_converter_0_signal;
   xsc::common::vectorN2scalar_converter<2>* mp_s_axi_rready_converter_0;
   sc_signal< bool > m_s_axi_rready_converter_0_signal;
-  xtlm::xaximm_xtlm2pin_t<128,64,5,4,1,1,1,1>* mp_M00_AXI_transactor;
+  xtlm::xaximm_xtlm2pin_t<256,64,1,1,1,1,1,1>* mp_M00_AXI_transactor;
   xsc::common::scalar2vectorN_converter<1>* mp_m_axi_awlock_converter;
   sc_signal< bool > m_m_axi_awlock_converter_signal;
   xsc::common::scalar2vectorN_converter<1>* mp_m_axi_awvalid_converter;
@@ -1161,9 +1139,9 @@ private:
   sc_signal< bool > m_m_axi_rvalid_converter_signal;
   xsc::common::scalar2vectorN_converter<1>* mp_m_axi_rready_converter;
   sc_signal< bool > m_m_axi_rready_converter_signal;
-  xtlm::xaximm_pin2xtlm_t<128,64,5,4,1,1,1,1>* mp_S01_AXI_transactor;
-  xsc::common::vector2vector_converter<10,5>* mp_s_axi_awid_converter_1;
-  sc_signal< sc_bv<5> > m_s_axi_awid_converter_1_signal;
+  xtlm::xaximm_pin2xtlm_t<256,64,1,1,1,1,1,1>* mp_S01_AXI_transactor;
+  xsc::common::vector2vector_converter<2,1>* mp_s_axi_awid_converter_1;
+  sc_signal< sc_bv<1> > m_s_axi_awid_converter_1_signal;
   xsc::common::vector2vector_converter<128,64>* mp_s_axi_awaddr_converter_1;
   sc_signal< sc_bv<64> > m_s_axi_awaddr_converter_1_signal;
   xsc::common::vector2vector_converter<16,8>* mp_s_axi_awlen_converter_1;
@@ -1180,32 +1158,30 @@ private:
   sc_signal< sc_bv<3> > m_s_axi_awprot_converter_1_signal;
   xsc::common::vector2vector_converter<8,4>* mp_s_axi_awqos_converter_1;
   sc_signal< sc_bv<4> > m_s_axi_awqos_converter_1_signal;
-  xsc::common::vector2vector_converter<8,4>* mp_s_axi_awuser_converter_1;
-  sc_signal< sc_bv<4> > m_s_axi_awuser_converter_1_signal;
   xsc::common::vectorN2scalar_converter<2>* mp_s_axi_awvalid_converter_1;
   sc_signal< bool > m_s_axi_awvalid_converter_1_signal;
   xsc::common::scalar2vectorN_converter<2>* mp_s_axi_awready_converter_1;
   sc_signal< bool > m_s_axi_awready_converter_1_signal;
-  xsc::common::vector2vector_converter<256,128>* mp_s_axi_wdata_converter_1;
-  sc_signal< sc_bv<128> > m_s_axi_wdata_converter_1_signal;
-  xsc::common::vector2vector_converter<32,16>* mp_s_axi_wstrb_converter_1;
-  sc_signal< sc_bv<16> > m_s_axi_wstrb_converter_1_signal;
+  xsc::common::vector2vector_converter<512,256>* mp_s_axi_wdata_converter_1;
+  sc_signal< sc_bv<256> > m_s_axi_wdata_converter_1_signal;
+  xsc::common::vector2vector_converter<64,32>* mp_s_axi_wstrb_converter_1;
+  sc_signal< sc_bv<32> > m_s_axi_wstrb_converter_1_signal;
   xsc::common::vectorN2scalar_converter<2>* mp_s_axi_wlast_converter_1;
   sc_signal< bool > m_s_axi_wlast_converter_1_signal;
   xsc::common::vectorN2scalar_converter<2>* mp_s_axi_wvalid_converter_1;
   sc_signal< bool > m_s_axi_wvalid_converter_1_signal;
   xsc::common::scalar2vectorN_converter<2>* mp_s_axi_wready_converter_1;
   sc_signal< bool > m_s_axi_wready_converter_1_signal;
-  xsc::common::vector2vector_converter<5,10>* mp_s_axi_bid_converter_1;
-  sc_signal< sc_bv<5> > m_s_axi_bid_converter_1_signal;
+  xsc::common::vector2vector_converter<1,2>* mp_s_axi_bid_converter_1;
+  sc_signal< sc_bv<1> > m_s_axi_bid_converter_1_signal;
   xsc::common::vector2vector_converter<2,4>* mp_s_axi_bresp_converter_1;
   sc_signal< sc_bv<2> > m_s_axi_bresp_converter_1_signal;
   xsc::common::scalar2vectorN_converter<2>* mp_s_axi_bvalid_converter_1;
   sc_signal< bool > m_s_axi_bvalid_converter_1_signal;
   xsc::common::vectorN2scalar_converter<2>* mp_s_axi_bready_converter_1;
   sc_signal< bool > m_s_axi_bready_converter_1_signal;
-  xsc::common::vector2vector_converter<10,5>* mp_s_axi_arid_converter_1;
-  sc_signal< sc_bv<5> > m_s_axi_arid_converter_1_signal;
+  xsc::common::vector2vector_converter<2,1>* mp_s_axi_arid_converter_1;
+  sc_signal< sc_bv<1> > m_s_axi_arid_converter_1_signal;
   xsc::common::vector2vector_converter<128,64>* mp_s_axi_araddr_converter_1;
   sc_signal< sc_bv<64> > m_s_axi_araddr_converter_1_signal;
   xsc::common::vector2vector_converter<16,8>* mp_s_axi_arlen_converter_1;
@@ -1226,10 +1202,10 @@ private:
   sc_signal< bool > m_s_axi_arvalid_converter_1_signal;
   xsc::common::scalar2vectorN_converter<2>* mp_s_axi_arready_converter_1;
   sc_signal< bool > m_s_axi_arready_converter_1_signal;
-  xsc::common::vector2vector_converter<5,10>* mp_s_axi_rid_converter_1;
-  sc_signal< sc_bv<5> > m_s_axi_rid_converter_1_signal;
-  xsc::common::vector2vector_converter<128,256>* mp_s_axi_rdata_converter_1;
-  sc_signal< sc_bv<128> > m_s_axi_rdata_converter_1_signal;
+  xsc::common::vector2vector_converter<1,2>* mp_s_axi_rid_converter_1;
+  sc_signal< sc_bv<1> > m_s_axi_rid_converter_1_signal;
+  xsc::common::vector2vector_converter<256,512>* mp_s_axi_rdata_converter_1;
+  sc_signal< sc_bv<256> > m_s_axi_rdata_converter_1_signal;
   xsc::common::vector2vector_converter<2,4>* mp_s_axi_rresp_converter_1;
   sc_signal< sc_bv<2> > m_s_axi_rresp_converter_1_signal;
   xsc::common::scalar2vectorN_converter<2>* mp_s_axi_rlast_converter_1;
@@ -1251,9 +1227,9 @@ private:
   sc_signal<sc_dt::sc_bv<8> > s_axi_split_arcache_out_0;
   sc_signal<sc_dt::sc_bv<8> > s_axi_split_arcache_out_1;
 
-  xsc::xsc_split<10, 2> * mp_s_axi_split_arid;
-  sc_signal<sc_dt::sc_bv<10> > s_axi_split_arid_out_0;
-  sc_signal<sc_dt::sc_bv<10> > s_axi_split_arid_out_1;
+  xsc::xsc_split<2, 2> * mp_s_axi_split_arid;
+  sc_signal<sc_dt::sc_bv<2> > s_axi_split_arid_out_0;
+  sc_signal<sc_dt::sc_bv<2> > s_axi_split_arid_out_1;
 
   xsc::xsc_split<16, 2> * mp_s_axi_split_arlen;
   sc_signal<sc_dt::sc_bv<16> > s_axi_split_arlen_out_0;
@@ -1296,9 +1272,9 @@ private:
   sc_signal<sc_dt::sc_bv<8> > s_axi_split_awcache_out_0;
   sc_signal<sc_dt::sc_bv<8> > s_axi_split_awcache_out_1;
 
-  xsc::xsc_split<10, 2> * mp_s_axi_split_awid;
-  sc_signal<sc_dt::sc_bv<10> > s_axi_split_awid_out_0;
-  sc_signal<sc_dt::sc_bv<10> > s_axi_split_awid_out_1;
+  xsc::xsc_split<2, 2> * mp_s_axi_split_awid;
+  sc_signal<sc_dt::sc_bv<2> > s_axi_split_awid_out_0;
+  sc_signal<sc_dt::sc_bv<2> > s_axi_split_awid_out_1;
 
   xsc::xsc_split<16, 2> * mp_s_axi_split_awlen;
   sc_signal<sc_dt::sc_bv<16> > s_axi_split_awlen_out_0;
@@ -1324,17 +1300,14 @@ private:
   sc_signal<sc_dt::sc_bv<6> > s_axi_split_awsize_out_0;
   sc_signal<sc_dt::sc_bv<6> > s_axi_split_awsize_out_1;
 
-  xsc::xsc_split<8, 2> * mp_s_axi_split_awuser;
-  sc_signal<sc_dt::sc_bv<8> > s_axi_split_awuser_out_0;
-  sc_signal<sc_dt::sc_bv<8> > s_axi_split_awuser_out_1;
 
   xsc::xsc_split<2, 2> * mp_s_axi_split_awvalid;
   sc_signal<sc_dt::sc_bv<2> > s_axi_split_awvalid_out_0;
   sc_signal<sc_dt::sc_bv<2> > s_axi_split_awvalid_out_1;
 
-  xsc::xsc_concatenator<10, 2> * mp_s_axi_concat_bid;
-  sc_signal<sc_dt::sc_bv<10> > s_axi_concat_bid_out_0;
-  sc_signal<sc_dt::sc_bv<10> > s_axi_concat_bid_out_1;
+  xsc::xsc_concatenator<2, 2> * mp_s_axi_concat_bid;
+  sc_signal<sc_dt::sc_bv<2> > s_axi_concat_bid_out_0;
+  sc_signal<sc_dt::sc_bv<2> > s_axi_concat_bid_out_1;
 
   xsc::xsc_split<2, 2> * mp_s_axi_split_bready;
   sc_signal<sc_dt::sc_bv<2> > s_axi_split_bready_out_0;
@@ -1349,13 +1322,13 @@ private:
   sc_signal<sc_dt::sc_bv<2> > s_axi_concat_bvalid_out_0;
   sc_signal<sc_dt::sc_bv<2> > s_axi_concat_bvalid_out_1;
 
-  xsc::xsc_concatenator<256, 2> * mp_s_axi_concat_rdata;
-  sc_signal<sc_dt::sc_bv<256> > s_axi_concat_rdata_out_0;
-  sc_signal<sc_dt::sc_bv<256> > s_axi_concat_rdata_out_1;
+  xsc::xsc_concatenator<512, 2> * mp_s_axi_concat_rdata;
+  sc_signal<sc_dt::sc_bv<512> > s_axi_concat_rdata_out_0;
+  sc_signal<sc_dt::sc_bv<512> > s_axi_concat_rdata_out_1;
 
-  xsc::xsc_concatenator<10, 2> * mp_s_axi_concat_rid;
-  sc_signal<sc_dt::sc_bv<10> > s_axi_concat_rid_out_0;
-  sc_signal<sc_dt::sc_bv<10> > s_axi_concat_rid_out_1;
+  xsc::xsc_concatenator<2, 2> * mp_s_axi_concat_rid;
+  sc_signal<sc_dt::sc_bv<2> > s_axi_concat_rid_out_0;
+  sc_signal<sc_dt::sc_bv<2> > s_axi_concat_rid_out_1;
 
   xsc::xsc_concatenator<2, 2> * mp_s_axi_concat_rlast;
   sc_signal<sc_dt::sc_bv<2> > s_axi_concat_rlast_out_0;
@@ -1374,9 +1347,9 @@ private:
   sc_signal<sc_dt::sc_bv<2> > s_axi_concat_rvalid_out_0;
   sc_signal<sc_dt::sc_bv<2> > s_axi_concat_rvalid_out_1;
 
-  xsc::xsc_split<256, 2> * mp_s_axi_split_wdata;
-  sc_signal<sc_dt::sc_bv<256> > s_axi_split_wdata_out_0;
-  sc_signal<sc_dt::sc_bv<256> > s_axi_split_wdata_out_1;
+  xsc::xsc_split<512, 2> * mp_s_axi_split_wdata;
+  sc_signal<sc_dt::sc_bv<512> > s_axi_split_wdata_out_0;
+  sc_signal<sc_dt::sc_bv<512> > s_axi_split_wdata_out_1;
 
 
   xsc::xsc_split<2, 2> * mp_s_axi_split_wlast;
@@ -1387,9 +1360,9 @@ private:
   sc_signal<sc_dt::sc_bv<2> > s_axi_concat_wready_out_0;
   sc_signal<sc_dt::sc_bv<2> > s_axi_concat_wready_out_1;
 
-  xsc::xsc_split<32, 2> * mp_s_axi_split_wstrb;
-  sc_signal<sc_dt::sc_bv<32> > s_axi_split_wstrb_out_0;
-  sc_signal<sc_dt::sc_bv<32> > s_axi_split_wstrb_out_1;
+  xsc::xsc_split<64, 2> * mp_s_axi_split_wstrb;
+  sc_signal<sc_dt::sc_bv<64> > s_axi_split_wstrb_out_0;
+  sc_signal<sc_dt::sc_bv<64> > s_axi_split_wstrb_out_1;
 
 
   xsc::xsc_split<2, 2> * mp_s_axi_split_wvalid;
@@ -1418,7 +1391,7 @@ public:
 
   sc_core::sc_in< bool > aclk;
   sc_core::sc_in< bool > aresetn;
-  sc_core::sc_in< sc_dt::sc_bv<10> > s_axi_awid;
+  sc_core::sc_in< sc_dt::sc_bv<2> > s_axi_awid;
   sc_core::sc_in< sc_dt::sc_bv<128> > s_axi_awaddr;
   sc_core::sc_in< sc_dt::sc_bv<16> > s_axi_awlen;
   sc_core::sc_in< sc_dt::sc_bv<6> > s_axi_awsize;
@@ -1427,19 +1400,18 @@ public:
   sc_core::sc_in< sc_dt::sc_bv<8> > s_axi_awcache;
   sc_core::sc_in< sc_dt::sc_bv<6> > s_axi_awprot;
   sc_core::sc_in< sc_dt::sc_bv<8> > s_axi_awqos;
-  sc_core::sc_in< sc_dt::sc_bv<8> > s_axi_awuser;
   sc_core::sc_in< sc_dt::sc_bv<2> > s_axi_awvalid;
   sc_core::sc_out< sc_dt::sc_bv<2> > s_axi_awready;
-  sc_core::sc_in< sc_dt::sc_bv<256> > s_axi_wdata;
-  sc_core::sc_in< sc_dt::sc_bv<32> > s_axi_wstrb;
+  sc_core::sc_in< sc_dt::sc_bv<512> > s_axi_wdata;
+  sc_core::sc_in< sc_dt::sc_bv<64> > s_axi_wstrb;
   sc_core::sc_in< sc_dt::sc_bv<2> > s_axi_wlast;
   sc_core::sc_in< sc_dt::sc_bv<2> > s_axi_wvalid;
   sc_core::sc_out< sc_dt::sc_bv<2> > s_axi_wready;
-  sc_core::sc_out< sc_dt::sc_bv<10> > s_axi_bid;
+  sc_core::sc_out< sc_dt::sc_bv<2> > s_axi_bid;
   sc_core::sc_out< sc_dt::sc_bv<4> > s_axi_bresp;
   sc_core::sc_out< sc_dt::sc_bv<2> > s_axi_bvalid;
   sc_core::sc_in< sc_dt::sc_bv<2> > s_axi_bready;
-  sc_core::sc_in< sc_dt::sc_bv<10> > s_axi_arid;
+  sc_core::sc_in< sc_dt::sc_bv<2> > s_axi_arid;
   sc_core::sc_in< sc_dt::sc_bv<128> > s_axi_araddr;
   sc_core::sc_in< sc_dt::sc_bv<16> > s_axi_arlen;
   sc_core::sc_in< sc_dt::sc_bv<6> > s_axi_arsize;
@@ -1450,13 +1422,13 @@ public:
   sc_core::sc_in< sc_dt::sc_bv<8> > s_axi_arqos;
   sc_core::sc_in< sc_dt::sc_bv<2> > s_axi_arvalid;
   sc_core::sc_out< sc_dt::sc_bv<2> > s_axi_arready;
-  sc_core::sc_out< sc_dt::sc_bv<10> > s_axi_rid;
-  sc_core::sc_out< sc_dt::sc_bv<256> > s_axi_rdata;
+  sc_core::sc_out< sc_dt::sc_bv<2> > s_axi_rid;
+  sc_core::sc_out< sc_dt::sc_bv<512> > s_axi_rdata;
   sc_core::sc_out< sc_dt::sc_bv<4> > s_axi_rresp;
   sc_core::sc_out< sc_dt::sc_bv<2> > s_axi_rlast;
   sc_core::sc_out< sc_dt::sc_bv<2> > s_axi_rvalid;
   sc_core::sc_in< sc_dt::sc_bv<2> > s_axi_rready;
-  sc_core::sc_out< sc_dt::sc_bv<5> > m_axi_awid;
+  sc_core::sc_out< sc_dt::sc_bv<1> > m_axi_awid;
   sc_core::sc_out< sc_dt::sc_bv<64> > m_axi_awaddr;
   sc_core::sc_out< sc_dt::sc_bv<8> > m_axi_awlen;
   sc_core::sc_out< sc_dt::sc_bv<3> > m_axi_awsize;
@@ -1466,19 +1438,18 @@ public:
   sc_core::sc_out< sc_dt::sc_bv<3> > m_axi_awprot;
   sc_core::sc_out< sc_dt::sc_bv<4> > m_axi_awregion;
   sc_core::sc_out< sc_dt::sc_bv<4> > m_axi_awqos;
-  sc_core::sc_out< sc_dt::sc_bv<4> > m_axi_awuser;
   sc_core::sc_out< sc_dt::sc_bv<1> > m_axi_awvalid;
   sc_core::sc_in< sc_dt::sc_bv<1> > m_axi_awready;
-  sc_core::sc_out< sc_dt::sc_bv<128> > m_axi_wdata;
-  sc_core::sc_out< sc_dt::sc_bv<16> > m_axi_wstrb;
+  sc_core::sc_out< sc_dt::sc_bv<256> > m_axi_wdata;
+  sc_core::sc_out< sc_dt::sc_bv<32> > m_axi_wstrb;
   sc_core::sc_out< sc_dt::sc_bv<1> > m_axi_wlast;
   sc_core::sc_out< sc_dt::sc_bv<1> > m_axi_wvalid;
   sc_core::sc_in< sc_dt::sc_bv<1> > m_axi_wready;
-  sc_core::sc_in< sc_dt::sc_bv<5> > m_axi_bid;
+  sc_core::sc_in< sc_dt::sc_bv<1> > m_axi_bid;
   sc_core::sc_in< sc_dt::sc_bv<2> > m_axi_bresp;
   sc_core::sc_in< sc_dt::sc_bv<1> > m_axi_bvalid;
   sc_core::sc_out< sc_dt::sc_bv<1> > m_axi_bready;
-  sc_core::sc_out< sc_dt::sc_bv<5> > m_axi_arid;
+  sc_core::sc_out< sc_dt::sc_bv<1> > m_axi_arid;
   sc_core::sc_out< sc_dt::sc_bv<64> > m_axi_araddr;
   sc_core::sc_out< sc_dt::sc_bv<8> > m_axi_arlen;
   sc_core::sc_out< sc_dt::sc_bv<3> > m_axi_arsize;
@@ -1490,8 +1461,8 @@ public:
   sc_core::sc_out< sc_dt::sc_bv<4> > m_axi_arqos;
   sc_core::sc_out< sc_dt::sc_bv<1> > m_axi_arvalid;
   sc_core::sc_in< sc_dt::sc_bv<1> > m_axi_arready;
-  sc_core::sc_in< sc_dt::sc_bv<5> > m_axi_rid;
-  sc_core::sc_in< sc_dt::sc_bv<128> > m_axi_rdata;
+  sc_core::sc_in< sc_dt::sc_bv<1> > m_axi_rid;
+  sc_core::sc_in< sc_dt::sc_bv<256> > m_axi_rdata;
   sc_core::sc_in< sc_dt::sc_bv<2> > m_axi_rresp;
   sc_core::sc_in< sc_dt::sc_bv<1> > m_axi_rlast;
   sc_core::sc_in< sc_dt::sc_bv<1> > m_axi_rvalid;
@@ -1503,9 +1474,9 @@ protected:
 
 private:
 
-  xtlm::xaximm_pin2xtlm_t<128,64,5,4,1,1,1,1>* mp_S00_AXI_transactor;
-  xsc::common::vector2vector_converter<10,5>* mp_s_axi_awid_converter_0;
-  sc_signal< sc_bv<5> > m_s_axi_awid_converter_0_signal;
+  xtlm::xaximm_pin2xtlm_t<256,64,1,1,1,1,1,1>* mp_S00_AXI_transactor;
+  xsc::common::vector2vector_converter<2,1>* mp_s_axi_awid_converter_0;
+  sc_signal< sc_bv<1> > m_s_axi_awid_converter_0_signal;
   xsc::common::vector2vector_converter<128,64>* mp_s_axi_awaddr_converter_0;
   sc_signal< sc_bv<64> > m_s_axi_awaddr_converter_0_signal;
   xsc::common::vector2vector_converter<16,8>* mp_s_axi_awlen_converter_0;
@@ -1522,32 +1493,30 @@ private:
   sc_signal< sc_bv<3> > m_s_axi_awprot_converter_0_signal;
   xsc::common::vector2vector_converter<8,4>* mp_s_axi_awqos_converter_0;
   sc_signal< sc_bv<4> > m_s_axi_awqos_converter_0_signal;
-  xsc::common::vector2vector_converter<8,4>* mp_s_axi_awuser_converter_0;
-  sc_signal< sc_bv<4> > m_s_axi_awuser_converter_0_signal;
   xsc::common::vectorN2scalar_converter<2>* mp_s_axi_awvalid_converter_0;
   sc_signal< bool > m_s_axi_awvalid_converter_0_signal;
   xsc::common::scalar2vectorN_converter<2>* mp_s_axi_awready_converter_0;
   sc_signal< bool > m_s_axi_awready_converter_0_signal;
-  xsc::common::vector2vector_converter<256,128>* mp_s_axi_wdata_converter_0;
-  sc_signal< sc_bv<128> > m_s_axi_wdata_converter_0_signal;
-  xsc::common::vector2vector_converter<32,16>* mp_s_axi_wstrb_converter_0;
-  sc_signal< sc_bv<16> > m_s_axi_wstrb_converter_0_signal;
+  xsc::common::vector2vector_converter<512,256>* mp_s_axi_wdata_converter_0;
+  sc_signal< sc_bv<256> > m_s_axi_wdata_converter_0_signal;
+  xsc::common::vector2vector_converter<64,32>* mp_s_axi_wstrb_converter_0;
+  sc_signal< sc_bv<32> > m_s_axi_wstrb_converter_0_signal;
   xsc::common::vectorN2scalar_converter<2>* mp_s_axi_wlast_converter_0;
   sc_signal< bool > m_s_axi_wlast_converter_0_signal;
   xsc::common::vectorN2scalar_converter<2>* mp_s_axi_wvalid_converter_0;
   sc_signal< bool > m_s_axi_wvalid_converter_0_signal;
   xsc::common::scalar2vectorN_converter<2>* mp_s_axi_wready_converter_0;
   sc_signal< bool > m_s_axi_wready_converter_0_signal;
-  xsc::common::vector2vector_converter<5,10>* mp_s_axi_bid_converter_0;
-  sc_signal< sc_bv<5> > m_s_axi_bid_converter_0_signal;
+  xsc::common::vector2vector_converter<1,2>* mp_s_axi_bid_converter_0;
+  sc_signal< sc_bv<1> > m_s_axi_bid_converter_0_signal;
   xsc::common::vector2vector_converter<2,4>* mp_s_axi_bresp_converter_0;
   sc_signal< sc_bv<2> > m_s_axi_bresp_converter_0_signal;
   xsc::common::scalar2vectorN_converter<2>* mp_s_axi_bvalid_converter_0;
   sc_signal< bool > m_s_axi_bvalid_converter_0_signal;
   xsc::common::vectorN2scalar_converter<2>* mp_s_axi_bready_converter_0;
   sc_signal< bool > m_s_axi_bready_converter_0_signal;
-  xsc::common::vector2vector_converter<10,5>* mp_s_axi_arid_converter_0;
-  sc_signal< sc_bv<5> > m_s_axi_arid_converter_0_signal;
+  xsc::common::vector2vector_converter<2,1>* mp_s_axi_arid_converter_0;
+  sc_signal< sc_bv<1> > m_s_axi_arid_converter_0_signal;
   xsc::common::vector2vector_converter<128,64>* mp_s_axi_araddr_converter_0;
   sc_signal< sc_bv<64> > m_s_axi_araddr_converter_0_signal;
   xsc::common::vector2vector_converter<16,8>* mp_s_axi_arlen_converter_0;
@@ -1568,10 +1537,10 @@ private:
   sc_signal< bool > m_s_axi_arvalid_converter_0_signal;
   xsc::common::scalar2vectorN_converter<2>* mp_s_axi_arready_converter_0;
   sc_signal< bool > m_s_axi_arready_converter_0_signal;
-  xsc::common::vector2vector_converter<5,10>* mp_s_axi_rid_converter_0;
-  sc_signal< sc_bv<5> > m_s_axi_rid_converter_0_signal;
-  xsc::common::vector2vector_converter<128,256>* mp_s_axi_rdata_converter_0;
-  sc_signal< sc_bv<128> > m_s_axi_rdata_converter_0_signal;
+  xsc::common::vector2vector_converter<1,2>* mp_s_axi_rid_converter_0;
+  sc_signal< sc_bv<1> > m_s_axi_rid_converter_0_signal;
+  xsc::common::vector2vector_converter<256,512>* mp_s_axi_rdata_converter_0;
+  sc_signal< sc_bv<256> > m_s_axi_rdata_converter_0_signal;
   xsc::common::vector2vector_converter<2,4>* mp_s_axi_rresp_converter_0;
   sc_signal< sc_bv<2> > m_s_axi_rresp_converter_0_signal;
   xsc::common::scalar2vectorN_converter<2>* mp_s_axi_rlast_converter_0;
@@ -1580,7 +1549,7 @@ private:
   sc_signal< bool > m_s_axi_rvalid_converter_0_signal;
   xsc::common::vectorN2scalar_converter<2>* mp_s_axi_rready_converter_0;
   sc_signal< bool > m_s_axi_rready_converter_0_signal;
-  xtlm::xaximm_xtlm2pin_t<128,64,5,4,1,1,1,1>* mp_M00_AXI_transactor;
+  xtlm::xaximm_xtlm2pin_t<256,64,1,1,1,1,1,1>* mp_M00_AXI_transactor;
   xsc::common::scalar2vectorN_converter<1>* mp_m_axi_awlock_converter;
   sc_signal< bool > m_m_axi_awlock_converter_signal;
   xsc::common::scalar2vectorN_converter<1>* mp_m_axi_awvalid_converter;
@@ -1609,9 +1578,9 @@ private:
   sc_signal< bool > m_m_axi_rvalid_converter_signal;
   xsc::common::scalar2vectorN_converter<1>* mp_m_axi_rready_converter;
   sc_signal< bool > m_m_axi_rready_converter_signal;
-  xtlm::xaximm_pin2xtlm_t<128,64,5,4,1,1,1,1>* mp_S01_AXI_transactor;
-  xsc::common::vector2vector_converter<10,5>* mp_s_axi_awid_converter_1;
-  sc_signal< sc_bv<5> > m_s_axi_awid_converter_1_signal;
+  xtlm::xaximm_pin2xtlm_t<256,64,1,1,1,1,1,1>* mp_S01_AXI_transactor;
+  xsc::common::vector2vector_converter<2,1>* mp_s_axi_awid_converter_1;
+  sc_signal< sc_bv<1> > m_s_axi_awid_converter_1_signal;
   xsc::common::vector2vector_converter<128,64>* mp_s_axi_awaddr_converter_1;
   sc_signal< sc_bv<64> > m_s_axi_awaddr_converter_1_signal;
   xsc::common::vector2vector_converter<16,8>* mp_s_axi_awlen_converter_1;
@@ -1628,32 +1597,30 @@ private:
   sc_signal< sc_bv<3> > m_s_axi_awprot_converter_1_signal;
   xsc::common::vector2vector_converter<8,4>* mp_s_axi_awqos_converter_1;
   sc_signal< sc_bv<4> > m_s_axi_awqos_converter_1_signal;
-  xsc::common::vector2vector_converter<8,4>* mp_s_axi_awuser_converter_1;
-  sc_signal< sc_bv<4> > m_s_axi_awuser_converter_1_signal;
   xsc::common::vectorN2scalar_converter<2>* mp_s_axi_awvalid_converter_1;
   sc_signal< bool > m_s_axi_awvalid_converter_1_signal;
   xsc::common::scalar2vectorN_converter<2>* mp_s_axi_awready_converter_1;
   sc_signal< bool > m_s_axi_awready_converter_1_signal;
-  xsc::common::vector2vector_converter<256,128>* mp_s_axi_wdata_converter_1;
-  sc_signal< sc_bv<128> > m_s_axi_wdata_converter_1_signal;
-  xsc::common::vector2vector_converter<32,16>* mp_s_axi_wstrb_converter_1;
-  sc_signal< sc_bv<16> > m_s_axi_wstrb_converter_1_signal;
+  xsc::common::vector2vector_converter<512,256>* mp_s_axi_wdata_converter_1;
+  sc_signal< sc_bv<256> > m_s_axi_wdata_converter_1_signal;
+  xsc::common::vector2vector_converter<64,32>* mp_s_axi_wstrb_converter_1;
+  sc_signal< sc_bv<32> > m_s_axi_wstrb_converter_1_signal;
   xsc::common::vectorN2scalar_converter<2>* mp_s_axi_wlast_converter_1;
   sc_signal< bool > m_s_axi_wlast_converter_1_signal;
   xsc::common::vectorN2scalar_converter<2>* mp_s_axi_wvalid_converter_1;
   sc_signal< bool > m_s_axi_wvalid_converter_1_signal;
   xsc::common::scalar2vectorN_converter<2>* mp_s_axi_wready_converter_1;
   sc_signal< bool > m_s_axi_wready_converter_1_signal;
-  xsc::common::vector2vector_converter<5,10>* mp_s_axi_bid_converter_1;
-  sc_signal< sc_bv<5> > m_s_axi_bid_converter_1_signal;
+  xsc::common::vector2vector_converter<1,2>* mp_s_axi_bid_converter_1;
+  sc_signal< sc_bv<1> > m_s_axi_bid_converter_1_signal;
   xsc::common::vector2vector_converter<2,4>* mp_s_axi_bresp_converter_1;
   sc_signal< sc_bv<2> > m_s_axi_bresp_converter_1_signal;
   xsc::common::scalar2vectorN_converter<2>* mp_s_axi_bvalid_converter_1;
   sc_signal< bool > m_s_axi_bvalid_converter_1_signal;
   xsc::common::vectorN2scalar_converter<2>* mp_s_axi_bready_converter_1;
   sc_signal< bool > m_s_axi_bready_converter_1_signal;
-  xsc::common::vector2vector_converter<10,5>* mp_s_axi_arid_converter_1;
-  sc_signal< sc_bv<5> > m_s_axi_arid_converter_1_signal;
+  xsc::common::vector2vector_converter<2,1>* mp_s_axi_arid_converter_1;
+  sc_signal< sc_bv<1> > m_s_axi_arid_converter_1_signal;
   xsc::common::vector2vector_converter<128,64>* mp_s_axi_araddr_converter_1;
   sc_signal< sc_bv<64> > m_s_axi_araddr_converter_1_signal;
   xsc::common::vector2vector_converter<16,8>* mp_s_axi_arlen_converter_1;
@@ -1674,10 +1641,10 @@ private:
   sc_signal< bool > m_s_axi_arvalid_converter_1_signal;
   xsc::common::scalar2vectorN_converter<2>* mp_s_axi_arready_converter_1;
   sc_signal< bool > m_s_axi_arready_converter_1_signal;
-  xsc::common::vector2vector_converter<5,10>* mp_s_axi_rid_converter_1;
-  sc_signal< sc_bv<5> > m_s_axi_rid_converter_1_signal;
-  xsc::common::vector2vector_converter<128,256>* mp_s_axi_rdata_converter_1;
-  sc_signal< sc_bv<128> > m_s_axi_rdata_converter_1_signal;
+  xsc::common::vector2vector_converter<1,2>* mp_s_axi_rid_converter_1;
+  sc_signal< sc_bv<1> > m_s_axi_rid_converter_1_signal;
+  xsc::common::vector2vector_converter<256,512>* mp_s_axi_rdata_converter_1;
+  sc_signal< sc_bv<256> > m_s_axi_rdata_converter_1_signal;
   xsc::common::vector2vector_converter<2,4>* mp_s_axi_rresp_converter_1;
   sc_signal< sc_bv<2> > m_s_axi_rresp_converter_1_signal;
   xsc::common::scalar2vectorN_converter<2>* mp_s_axi_rlast_converter_1;
@@ -1699,9 +1666,9 @@ private:
   sc_signal<sc_dt::sc_bv<8> > s_axi_split_arcache_out_0;
   sc_signal<sc_dt::sc_bv<8> > s_axi_split_arcache_out_1;
 
-  xsc::xsc_split<10, 2> * mp_s_axi_split_arid;
-  sc_signal<sc_dt::sc_bv<10> > s_axi_split_arid_out_0;
-  sc_signal<sc_dt::sc_bv<10> > s_axi_split_arid_out_1;
+  xsc::xsc_split<2, 2> * mp_s_axi_split_arid;
+  sc_signal<sc_dt::sc_bv<2> > s_axi_split_arid_out_0;
+  sc_signal<sc_dt::sc_bv<2> > s_axi_split_arid_out_1;
 
   xsc::xsc_split<16, 2> * mp_s_axi_split_arlen;
   sc_signal<sc_dt::sc_bv<16> > s_axi_split_arlen_out_0;
@@ -1744,9 +1711,9 @@ private:
   sc_signal<sc_dt::sc_bv<8> > s_axi_split_awcache_out_0;
   sc_signal<sc_dt::sc_bv<8> > s_axi_split_awcache_out_1;
 
-  xsc::xsc_split<10, 2> * mp_s_axi_split_awid;
-  sc_signal<sc_dt::sc_bv<10> > s_axi_split_awid_out_0;
-  sc_signal<sc_dt::sc_bv<10> > s_axi_split_awid_out_1;
+  xsc::xsc_split<2, 2> * mp_s_axi_split_awid;
+  sc_signal<sc_dt::sc_bv<2> > s_axi_split_awid_out_0;
+  sc_signal<sc_dt::sc_bv<2> > s_axi_split_awid_out_1;
 
   xsc::xsc_split<16, 2> * mp_s_axi_split_awlen;
   sc_signal<sc_dt::sc_bv<16> > s_axi_split_awlen_out_0;
@@ -1772,17 +1739,14 @@ private:
   sc_signal<sc_dt::sc_bv<6> > s_axi_split_awsize_out_0;
   sc_signal<sc_dt::sc_bv<6> > s_axi_split_awsize_out_1;
 
-  xsc::xsc_split<8, 2> * mp_s_axi_split_awuser;
-  sc_signal<sc_dt::sc_bv<8> > s_axi_split_awuser_out_0;
-  sc_signal<sc_dt::sc_bv<8> > s_axi_split_awuser_out_1;
 
   xsc::xsc_split<2, 2> * mp_s_axi_split_awvalid;
   sc_signal<sc_dt::sc_bv<2> > s_axi_split_awvalid_out_0;
   sc_signal<sc_dt::sc_bv<2> > s_axi_split_awvalid_out_1;
 
-  xsc::xsc_concatenator<10, 2> * mp_s_axi_concat_bid;
-  sc_signal<sc_dt::sc_bv<10> > s_axi_concat_bid_out_0;
-  sc_signal<sc_dt::sc_bv<10> > s_axi_concat_bid_out_1;
+  xsc::xsc_concatenator<2, 2> * mp_s_axi_concat_bid;
+  sc_signal<sc_dt::sc_bv<2> > s_axi_concat_bid_out_0;
+  sc_signal<sc_dt::sc_bv<2> > s_axi_concat_bid_out_1;
 
   xsc::xsc_split<2, 2> * mp_s_axi_split_bready;
   sc_signal<sc_dt::sc_bv<2> > s_axi_split_bready_out_0;
@@ -1797,13 +1761,13 @@ private:
   sc_signal<sc_dt::sc_bv<2> > s_axi_concat_bvalid_out_0;
   sc_signal<sc_dt::sc_bv<2> > s_axi_concat_bvalid_out_1;
 
-  xsc::xsc_concatenator<256, 2> * mp_s_axi_concat_rdata;
-  sc_signal<sc_dt::sc_bv<256> > s_axi_concat_rdata_out_0;
-  sc_signal<sc_dt::sc_bv<256> > s_axi_concat_rdata_out_1;
+  xsc::xsc_concatenator<512, 2> * mp_s_axi_concat_rdata;
+  sc_signal<sc_dt::sc_bv<512> > s_axi_concat_rdata_out_0;
+  sc_signal<sc_dt::sc_bv<512> > s_axi_concat_rdata_out_1;
 
-  xsc::xsc_concatenator<10, 2> * mp_s_axi_concat_rid;
-  sc_signal<sc_dt::sc_bv<10> > s_axi_concat_rid_out_0;
-  sc_signal<sc_dt::sc_bv<10> > s_axi_concat_rid_out_1;
+  xsc::xsc_concatenator<2, 2> * mp_s_axi_concat_rid;
+  sc_signal<sc_dt::sc_bv<2> > s_axi_concat_rid_out_0;
+  sc_signal<sc_dt::sc_bv<2> > s_axi_concat_rid_out_1;
 
   xsc::xsc_concatenator<2, 2> * mp_s_axi_concat_rlast;
   sc_signal<sc_dt::sc_bv<2> > s_axi_concat_rlast_out_0;
@@ -1822,9 +1786,9 @@ private:
   sc_signal<sc_dt::sc_bv<2> > s_axi_concat_rvalid_out_0;
   sc_signal<sc_dt::sc_bv<2> > s_axi_concat_rvalid_out_1;
 
-  xsc::xsc_split<256, 2> * mp_s_axi_split_wdata;
-  sc_signal<sc_dt::sc_bv<256> > s_axi_split_wdata_out_0;
-  sc_signal<sc_dt::sc_bv<256> > s_axi_split_wdata_out_1;
+  xsc::xsc_split<512, 2> * mp_s_axi_split_wdata;
+  sc_signal<sc_dt::sc_bv<512> > s_axi_split_wdata_out_0;
+  sc_signal<sc_dt::sc_bv<512> > s_axi_split_wdata_out_1;
 
 
   xsc::xsc_split<2, 2> * mp_s_axi_split_wlast;
@@ -1835,9 +1799,9 @@ private:
   sc_signal<sc_dt::sc_bv<2> > s_axi_concat_wready_out_0;
   sc_signal<sc_dt::sc_bv<2> > s_axi_concat_wready_out_1;
 
-  xsc::xsc_split<32, 2> * mp_s_axi_split_wstrb;
-  sc_signal<sc_dt::sc_bv<32> > s_axi_split_wstrb_out_0;
-  sc_signal<sc_dt::sc_bv<32> > s_axi_split_wstrb_out_1;
+  xsc::xsc_split<64, 2> * mp_s_axi_split_wstrb;
+  sc_signal<sc_dt::sc_bv<64> > s_axi_split_wstrb_out_0;
+  sc_signal<sc_dt::sc_bv<64> > s_axi_split_wstrb_out_1;
 
 
   xsc::xsc_split<2, 2> * mp_s_axi_split_wvalid;
@@ -1876,7 +1840,7 @@ public:
 
   sc_core::sc_in< bool > aclk;
   sc_core::sc_in< bool > aresetn;
-  sc_core::sc_in< sc_dt::sc_bv<10> > s_axi_awid;
+  sc_core::sc_in< sc_dt::sc_bv<2> > s_axi_awid;
   sc_core::sc_in< sc_dt::sc_bv<128> > s_axi_awaddr;
   sc_core::sc_in< sc_dt::sc_bv<16> > s_axi_awlen;
   sc_core::sc_in< sc_dt::sc_bv<6> > s_axi_awsize;
@@ -1885,19 +1849,18 @@ public:
   sc_core::sc_in< sc_dt::sc_bv<8> > s_axi_awcache;
   sc_core::sc_in< sc_dt::sc_bv<6> > s_axi_awprot;
   sc_core::sc_in< sc_dt::sc_bv<8> > s_axi_awqos;
-  sc_core::sc_in< sc_dt::sc_bv<8> > s_axi_awuser;
   sc_core::sc_in< sc_dt::sc_bv<2> > s_axi_awvalid;
   sc_core::sc_out< sc_dt::sc_bv<2> > s_axi_awready;
-  sc_core::sc_in< sc_dt::sc_bv<256> > s_axi_wdata;
-  sc_core::sc_in< sc_dt::sc_bv<32> > s_axi_wstrb;
+  sc_core::sc_in< sc_dt::sc_bv<512> > s_axi_wdata;
+  sc_core::sc_in< sc_dt::sc_bv<64> > s_axi_wstrb;
   sc_core::sc_in< sc_dt::sc_bv<2> > s_axi_wlast;
   sc_core::sc_in< sc_dt::sc_bv<2> > s_axi_wvalid;
   sc_core::sc_out< sc_dt::sc_bv<2> > s_axi_wready;
-  sc_core::sc_out< sc_dt::sc_bv<10> > s_axi_bid;
+  sc_core::sc_out< sc_dt::sc_bv<2> > s_axi_bid;
   sc_core::sc_out< sc_dt::sc_bv<4> > s_axi_bresp;
   sc_core::sc_out< sc_dt::sc_bv<2> > s_axi_bvalid;
   sc_core::sc_in< sc_dt::sc_bv<2> > s_axi_bready;
-  sc_core::sc_in< sc_dt::sc_bv<10> > s_axi_arid;
+  sc_core::sc_in< sc_dt::sc_bv<2> > s_axi_arid;
   sc_core::sc_in< sc_dt::sc_bv<128> > s_axi_araddr;
   sc_core::sc_in< sc_dt::sc_bv<16> > s_axi_arlen;
   sc_core::sc_in< sc_dt::sc_bv<6> > s_axi_arsize;
@@ -1908,13 +1871,13 @@ public:
   sc_core::sc_in< sc_dt::sc_bv<8> > s_axi_arqos;
   sc_core::sc_in< sc_dt::sc_bv<2> > s_axi_arvalid;
   sc_core::sc_out< sc_dt::sc_bv<2> > s_axi_arready;
-  sc_core::sc_out< sc_dt::sc_bv<10> > s_axi_rid;
-  sc_core::sc_out< sc_dt::sc_bv<256> > s_axi_rdata;
+  sc_core::sc_out< sc_dt::sc_bv<2> > s_axi_rid;
+  sc_core::sc_out< sc_dt::sc_bv<512> > s_axi_rdata;
   sc_core::sc_out< sc_dt::sc_bv<4> > s_axi_rresp;
   sc_core::sc_out< sc_dt::sc_bv<2> > s_axi_rlast;
   sc_core::sc_out< sc_dt::sc_bv<2> > s_axi_rvalid;
   sc_core::sc_in< sc_dt::sc_bv<2> > s_axi_rready;
-  sc_core::sc_out< sc_dt::sc_bv<5> > m_axi_awid;
+  sc_core::sc_out< sc_dt::sc_bv<1> > m_axi_awid;
   sc_core::sc_out< sc_dt::sc_bv<64> > m_axi_awaddr;
   sc_core::sc_out< sc_dt::sc_bv<8> > m_axi_awlen;
   sc_core::sc_out< sc_dt::sc_bv<3> > m_axi_awsize;
@@ -1924,19 +1887,18 @@ public:
   sc_core::sc_out< sc_dt::sc_bv<3> > m_axi_awprot;
   sc_core::sc_out< sc_dt::sc_bv<4> > m_axi_awregion;
   sc_core::sc_out< sc_dt::sc_bv<4> > m_axi_awqos;
-  sc_core::sc_out< sc_dt::sc_bv<4> > m_axi_awuser;
   sc_core::sc_out< sc_dt::sc_bv<1> > m_axi_awvalid;
   sc_core::sc_in< sc_dt::sc_bv<1> > m_axi_awready;
-  sc_core::sc_out< sc_dt::sc_bv<128> > m_axi_wdata;
-  sc_core::sc_out< sc_dt::sc_bv<16> > m_axi_wstrb;
+  sc_core::sc_out< sc_dt::sc_bv<256> > m_axi_wdata;
+  sc_core::sc_out< sc_dt::sc_bv<32> > m_axi_wstrb;
   sc_core::sc_out< sc_dt::sc_bv<1> > m_axi_wlast;
   sc_core::sc_out< sc_dt::sc_bv<1> > m_axi_wvalid;
   sc_core::sc_in< sc_dt::sc_bv<1> > m_axi_wready;
-  sc_core::sc_in< sc_dt::sc_bv<5> > m_axi_bid;
+  sc_core::sc_in< sc_dt::sc_bv<1> > m_axi_bid;
   sc_core::sc_in< sc_dt::sc_bv<2> > m_axi_bresp;
   sc_core::sc_in< sc_dt::sc_bv<1> > m_axi_bvalid;
   sc_core::sc_out< sc_dt::sc_bv<1> > m_axi_bready;
-  sc_core::sc_out< sc_dt::sc_bv<5> > m_axi_arid;
+  sc_core::sc_out< sc_dt::sc_bv<1> > m_axi_arid;
   sc_core::sc_out< sc_dt::sc_bv<64> > m_axi_araddr;
   sc_core::sc_out< sc_dt::sc_bv<8> > m_axi_arlen;
   sc_core::sc_out< sc_dt::sc_bv<3> > m_axi_arsize;
@@ -1948,8 +1910,8 @@ public:
   sc_core::sc_out< sc_dt::sc_bv<4> > m_axi_arqos;
   sc_core::sc_out< sc_dt::sc_bv<1> > m_axi_arvalid;
   sc_core::sc_in< sc_dt::sc_bv<1> > m_axi_arready;
-  sc_core::sc_in< sc_dt::sc_bv<5> > m_axi_rid;
-  sc_core::sc_in< sc_dt::sc_bv<128> > m_axi_rdata;
+  sc_core::sc_in< sc_dt::sc_bv<1> > m_axi_rid;
+  sc_core::sc_in< sc_dt::sc_bv<256> > m_axi_rdata;
   sc_core::sc_in< sc_dt::sc_bv<2> > m_axi_rresp;
   sc_core::sc_in< sc_dt::sc_bv<1> > m_axi_rlast;
   sc_core::sc_in< sc_dt::sc_bv<1> > m_axi_rvalid;
@@ -1961,9 +1923,9 @@ protected:
 
 private:
 
-  xtlm::xaximm_pin2xtlm_t<128,64,5,4,1,1,1,1>* mp_S00_AXI_transactor;
-  xsc::common::vector2vector_converter<10,5>* mp_s_axi_awid_converter_0;
-  sc_signal< sc_bv<5> > m_s_axi_awid_converter_0_signal;
+  xtlm::xaximm_pin2xtlm_t<256,64,1,1,1,1,1,1>* mp_S00_AXI_transactor;
+  xsc::common::vector2vector_converter<2,1>* mp_s_axi_awid_converter_0;
+  sc_signal< sc_bv<1> > m_s_axi_awid_converter_0_signal;
   xsc::common::vector2vector_converter<128,64>* mp_s_axi_awaddr_converter_0;
   sc_signal< sc_bv<64> > m_s_axi_awaddr_converter_0_signal;
   xsc::common::vector2vector_converter<16,8>* mp_s_axi_awlen_converter_0;
@@ -1980,32 +1942,30 @@ private:
   sc_signal< sc_bv<3> > m_s_axi_awprot_converter_0_signal;
   xsc::common::vector2vector_converter<8,4>* mp_s_axi_awqos_converter_0;
   sc_signal< sc_bv<4> > m_s_axi_awqos_converter_0_signal;
-  xsc::common::vector2vector_converter<8,4>* mp_s_axi_awuser_converter_0;
-  sc_signal< sc_bv<4> > m_s_axi_awuser_converter_0_signal;
   xsc::common::vectorN2scalar_converter<2>* mp_s_axi_awvalid_converter_0;
   sc_signal< bool > m_s_axi_awvalid_converter_0_signal;
   xsc::common::scalar2vectorN_converter<2>* mp_s_axi_awready_converter_0;
   sc_signal< bool > m_s_axi_awready_converter_0_signal;
-  xsc::common::vector2vector_converter<256,128>* mp_s_axi_wdata_converter_0;
-  sc_signal< sc_bv<128> > m_s_axi_wdata_converter_0_signal;
-  xsc::common::vector2vector_converter<32,16>* mp_s_axi_wstrb_converter_0;
-  sc_signal< sc_bv<16> > m_s_axi_wstrb_converter_0_signal;
+  xsc::common::vector2vector_converter<512,256>* mp_s_axi_wdata_converter_0;
+  sc_signal< sc_bv<256> > m_s_axi_wdata_converter_0_signal;
+  xsc::common::vector2vector_converter<64,32>* mp_s_axi_wstrb_converter_0;
+  sc_signal< sc_bv<32> > m_s_axi_wstrb_converter_0_signal;
   xsc::common::vectorN2scalar_converter<2>* mp_s_axi_wlast_converter_0;
   sc_signal< bool > m_s_axi_wlast_converter_0_signal;
   xsc::common::vectorN2scalar_converter<2>* mp_s_axi_wvalid_converter_0;
   sc_signal< bool > m_s_axi_wvalid_converter_0_signal;
   xsc::common::scalar2vectorN_converter<2>* mp_s_axi_wready_converter_0;
   sc_signal< bool > m_s_axi_wready_converter_0_signal;
-  xsc::common::vector2vector_converter<5,10>* mp_s_axi_bid_converter_0;
-  sc_signal< sc_bv<5> > m_s_axi_bid_converter_0_signal;
+  xsc::common::vector2vector_converter<1,2>* mp_s_axi_bid_converter_0;
+  sc_signal< sc_bv<1> > m_s_axi_bid_converter_0_signal;
   xsc::common::vector2vector_converter<2,4>* mp_s_axi_bresp_converter_0;
   sc_signal< sc_bv<2> > m_s_axi_bresp_converter_0_signal;
   xsc::common::scalar2vectorN_converter<2>* mp_s_axi_bvalid_converter_0;
   sc_signal< bool > m_s_axi_bvalid_converter_0_signal;
   xsc::common::vectorN2scalar_converter<2>* mp_s_axi_bready_converter_0;
   sc_signal< bool > m_s_axi_bready_converter_0_signal;
-  xsc::common::vector2vector_converter<10,5>* mp_s_axi_arid_converter_0;
-  sc_signal< sc_bv<5> > m_s_axi_arid_converter_0_signal;
+  xsc::common::vector2vector_converter<2,1>* mp_s_axi_arid_converter_0;
+  sc_signal< sc_bv<1> > m_s_axi_arid_converter_0_signal;
   xsc::common::vector2vector_converter<128,64>* mp_s_axi_araddr_converter_0;
   sc_signal< sc_bv<64> > m_s_axi_araddr_converter_0_signal;
   xsc::common::vector2vector_converter<16,8>* mp_s_axi_arlen_converter_0;
@@ -2026,10 +1986,10 @@ private:
   sc_signal< bool > m_s_axi_arvalid_converter_0_signal;
   xsc::common::scalar2vectorN_converter<2>* mp_s_axi_arready_converter_0;
   sc_signal< bool > m_s_axi_arready_converter_0_signal;
-  xsc::common::vector2vector_converter<5,10>* mp_s_axi_rid_converter_0;
-  sc_signal< sc_bv<5> > m_s_axi_rid_converter_0_signal;
-  xsc::common::vector2vector_converter<128,256>* mp_s_axi_rdata_converter_0;
-  sc_signal< sc_bv<128> > m_s_axi_rdata_converter_0_signal;
+  xsc::common::vector2vector_converter<1,2>* mp_s_axi_rid_converter_0;
+  sc_signal< sc_bv<1> > m_s_axi_rid_converter_0_signal;
+  xsc::common::vector2vector_converter<256,512>* mp_s_axi_rdata_converter_0;
+  sc_signal< sc_bv<256> > m_s_axi_rdata_converter_0_signal;
   xsc::common::vector2vector_converter<2,4>* mp_s_axi_rresp_converter_0;
   sc_signal< sc_bv<2> > m_s_axi_rresp_converter_0_signal;
   xsc::common::scalar2vectorN_converter<2>* mp_s_axi_rlast_converter_0;
@@ -2038,7 +1998,7 @@ private:
   sc_signal< bool > m_s_axi_rvalid_converter_0_signal;
   xsc::common::vectorN2scalar_converter<2>* mp_s_axi_rready_converter_0;
   sc_signal< bool > m_s_axi_rready_converter_0_signal;
-  xtlm::xaximm_xtlm2pin_t<128,64,5,4,1,1,1,1>* mp_M00_AXI_transactor;
+  xtlm::xaximm_xtlm2pin_t<256,64,1,1,1,1,1,1>* mp_M00_AXI_transactor;
   xsc::common::scalar2vectorN_converter<1>* mp_m_axi_awlock_converter;
   sc_signal< bool > m_m_axi_awlock_converter_signal;
   xsc::common::scalar2vectorN_converter<1>* mp_m_axi_awvalid_converter;
@@ -2067,9 +2027,9 @@ private:
   sc_signal< bool > m_m_axi_rvalid_converter_signal;
   xsc::common::scalar2vectorN_converter<1>* mp_m_axi_rready_converter;
   sc_signal< bool > m_m_axi_rready_converter_signal;
-  xtlm::xaximm_pin2xtlm_t<128,64,5,4,1,1,1,1>* mp_S01_AXI_transactor;
-  xsc::common::vector2vector_converter<10,5>* mp_s_axi_awid_converter_1;
-  sc_signal< sc_bv<5> > m_s_axi_awid_converter_1_signal;
+  xtlm::xaximm_pin2xtlm_t<256,64,1,1,1,1,1,1>* mp_S01_AXI_transactor;
+  xsc::common::vector2vector_converter<2,1>* mp_s_axi_awid_converter_1;
+  sc_signal< sc_bv<1> > m_s_axi_awid_converter_1_signal;
   xsc::common::vector2vector_converter<128,64>* mp_s_axi_awaddr_converter_1;
   sc_signal< sc_bv<64> > m_s_axi_awaddr_converter_1_signal;
   xsc::common::vector2vector_converter<16,8>* mp_s_axi_awlen_converter_1;
@@ -2086,32 +2046,30 @@ private:
   sc_signal< sc_bv<3> > m_s_axi_awprot_converter_1_signal;
   xsc::common::vector2vector_converter<8,4>* mp_s_axi_awqos_converter_1;
   sc_signal< sc_bv<4> > m_s_axi_awqos_converter_1_signal;
-  xsc::common::vector2vector_converter<8,4>* mp_s_axi_awuser_converter_1;
-  sc_signal< sc_bv<4> > m_s_axi_awuser_converter_1_signal;
   xsc::common::vectorN2scalar_converter<2>* mp_s_axi_awvalid_converter_1;
   sc_signal< bool > m_s_axi_awvalid_converter_1_signal;
   xsc::common::scalar2vectorN_converter<2>* mp_s_axi_awready_converter_1;
   sc_signal< bool > m_s_axi_awready_converter_1_signal;
-  xsc::common::vector2vector_converter<256,128>* mp_s_axi_wdata_converter_1;
-  sc_signal< sc_bv<128> > m_s_axi_wdata_converter_1_signal;
-  xsc::common::vector2vector_converter<32,16>* mp_s_axi_wstrb_converter_1;
-  sc_signal< sc_bv<16> > m_s_axi_wstrb_converter_1_signal;
+  xsc::common::vector2vector_converter<512,256>* mp_s_axi_wdata_converter_1;
+  sc_signal< sc_bv<256> > m_s_axi_wdata_converter_1_signal;
+  xsc::common::vector2vector_converter<64,32>* mp_s_axi_wstrb_converter_1;
+  sc_signal< sc_bv<32> > m_s_axi_wstrb_converter_1_signal;
   xsc::common::vectorN2scalar_converter<2>* mp_s_axi_wlast_converter_1;
   sc_signal< bool > m_s_axi_wlast_converter_1_signal;
   xsc::common::vectorN2scalar_converter<2>* mp_s_axi_wvalid_converter_1;
   sc_signal< bool > m_s_axi_wvalid_converter_1_signal;
   xsc::common::scalar2vectorN_converter<2>* mp_s_axi_wready_converter_1;
   sc_signal< bool > m_s_axi_wready_converter_1_signal;
-  xsc::common::vector2vector_converter<5,10>* mp_s_axi_bid_converter_1;
-  sc_signal< sc_bv<5> > m_s_axi_bid_converter_1_signal;
+  xsc::common::vector2vector_converter<1,2>* mp_s_axi_bid_converter_1;
+  sc_signal< sc_bv<1> > m_s_axi_bid_converter_1_signal;
   xsc::common::vector2vector_converter<2,4>* mp_s_axi_bresp_converter_1;
   sc_signal< sc_bv<2> > m_s_axi_bresp_converter_1_signal;
   xsc::common::scalar2vectorN_converter<2>* mp_s_axi_bvalid_converter_1;
   sc_signal< bool > m_s_axi_bvalid_converter_1_signal;
   xsc::common::vectorN2scalar_converter<2>* mp_s_axi_bready_converter_1;
   sc_signal< bool > m_s_axi_bready_converter_1_signal;
-  xsc::common::vector2vector_converter<10,5>* mp_s_axi_arid_converter_1;
-  sc_signal< sc_bv<5> > m_s_axi_arid_converter_1_signal;
+  xsc::common::vector2vector_converter<2,1>* mp_s_axi_arid_converter_1;
+  sc_signal< sc_bv<1> > m_s_axi_arid_converter_1_signal;
   xsc::common::vector2vector_converter<128,64>* mp_s_axi_araddr_converter_1;
   sc_signal< sc_bv<64> > m_s_axi_araddr_converter_1_signal;
   xsc::common::vector2vector_converter<16,8>* mp_s_axi_arlen_converter_1;
@@ -2132,10 +2090,10 @@ private:
   sc_signal< bool > m_s_axi_arvalid_converter_1_signal;
   xsc::common::scalar2vectorN_converter<2>* mp_s_axi_arready_converter_1;
   sc_signal< bool > m_s_axi_arready_converter_1_signal;
-  xsc::common::vector2vector_converter<5,10>* mp_s_axi_rid_converter_1;
-  sc_signal< sc_bv<5> > m_s_axi_rid_converter_1_signal;
-  xsc::common::vector2vector_converter<128,256>* mp_s_axi_rdata_converter_1;
-  sc_signal< sc_bv<128> > m_s_axi_rdata_converter_1_signal;
+  xsc::common::vector2vector_converter<1,2>* mp_s_axi_rid_converter_1;
+  sc_signal< sc_bv<1> > m_s_axi_rid_converter_1_signal;
+  xsc::common::vector2vector_converter<256,512>* mp_s_axi_rdata_converter_1;
+  sc_signal< sc_bv<256> > m_s_axi_rdata_converter_1_signal;
   xsc::common::vector2vector_converter<2,4>* mp_s_axi_rresp_converter_1;
   sc_signal< sc_bv<2> > m_s_axi_rresp_converter_1_signal;
   xsc::common::scalar2vectorN_converter<2>* mp_s_axi_rlast_converter_1;
@@ -2157,9 +2115,9 @@ private:
   sc_signal<sc_dt::sc_bv<8> > s_axi_split_arcache_out_0;
   sc_signal<sc_dt::sc_bv<8> > s_axi_split_arcache_out_1;
 
-  xsc::xsc_split<10, 2> * mp_s_axi_split_arid;
-  sc_signal<sc_dt::sc_bv<10> > s_axi_split_arid_out_0;
-  sc_signal<sc_dt::sc_bv<10> > s_axi_split_arid_out_1;
+  xsc::xsc_split<2, 2> * mp_s_axi_split_arid;
+  sc_signal<sc_dt::sc_bv<2> > s_axi_split_arid_out_0;
+  sc_signal<sc_dt::sc_bv<2> > s_axi_split_arid_out_1;
 
   xsc::xsc_split<16, 2> * mp_s_axi_split_arlen;
   sc_signal<sc_dt::sc_bv<16> > s_axi_split_arlen_out_0;
@@ -2202,9 +2160,9 @@ private:
   sc_signal<sc_dt::sc_bv<8> > s_axi_split_awcache_out_0;
   sc_signal<sc_dt::sc_bv<8> > s_axi_split_awcache_out_1;
 
-  xsc::xsc_split<10, 2> * mp_s_axi_split_awid;
-  sc_signal<sc_dt::sc_bv<10> > s_axi_split_awid_out_0;
-  sc_signal<sc_dt::sc_bv<10> > s_axi_split_awid_out_1;
+  xsc::xsc_split<2, 2> * mp_s_axi_split_awid;
+  sc_signal<sc_dt::sc_bv<2> > s_axi_split_awid_out_0;
+  sc_signal<sc_dt::sc_bv<2> > s_axi_split_awid_out_1;
 
   xsc::xsc_split<16, 2> * mp_s_axi_split_awlen;
   sc_signal<sc_dt::sc_bv<16> > s_axi_split_awlen_out_0;
@@ -2230,17 +2188,14 @@ private:
   sc_signal<sc_dt::sc_bv<6> > s_axi_split_awsize_out_0;
   sc_signal<sc_dt::sc_bv<6> > s_axi_split_awsize_out_1;
 
-  xsc::xsc_split<8, 2> * mp_s_axi_split_awuser;
-  sc_signal<sc_dt::sc_bv<8> > s_axi_split_awuser_out_0;
-  sc_signal<sc_dt::sc_bv<8> > s_axi_split_awuser_out_1;
 
   xsc::xsc_split<2, 2> * mp_s_axi_split_awvalid;
   sc_signal<sc_dt::sc_bv<2> > s_axi_split_awvalid_out_0;
   sc_signal<sc_dt::sc_bv<2> > s_axi_split_awvalid_out_1;
 
-  xsc::xsc_concatenator<10, 2> * mp_s_axi_concat_bid;
-  sc_signal<sc_dt::sc_bv<10> > s_axi_concat_bid_out_0;
-  sc_signal<sc_dt::sc_bv<10> > s_axi_concat_bid_out_1;
+  xsc::xsc_concatenator<2, 2> * mp_s_axi_concat_bid;
+  sc_signal<sc_dt::sc_bv<2> > s_axi_concat_bid_out_0;
+  sc_signal<sc_dt::sc_bv<2> > s_axi_concat_bid_out_1;
 
   xsc::xsc_split<2, 2> * mp_s_axi_split_bready;
   sc_signal<sc_dt::sc_bv<2> > s_axi_split_bready_out_0;
@@ -2255,13 +2210,13 @@ private:
   sc_signal<sc_dt::sc_bv<2> > s_axi_concat_bvalid_out_0;
   sc_signal<sc_dt::sc_bv<2> > s_axi_concat_bvalid_out_1;
 
-  xsc::xsc_concatenator<256, 2> * mp_s_axi_concat_rdata;
-  sc_signal<sc_dt::sc_bv<256> > s_axi_concat_rdata_out_0;
-  sc_signal<sc_dt::sc_bv<256> > s_axi_concat_rdata_out_1;
+  xsc::xsc_concatenator<512, 2> * mp_s_axi_concat_rdata;
+  sc_signal<sc_dt::sc_bv<512> > s_axi_concat_rdata_out_0;
+  sc_signal<sc_dt::sc_bv<512> > s_axi_concat_rdata_out_1;
 
-  xsc::xsc_concatenator<10, 2> * mp_s_axi_concat_rid;
-  sc_signal<sc_dt::sc_bv<10> > s_axi_concat_rid_out_0;
-  sc_signal<sc_dt::sc_bv<10> > s_axi_concat_rid_out_1;
+  xsc::xsc_concatenator<2, 2> * mp_s_axi_concat_rid;
+  sc_signal<sc_dt::sc_bv<2> > s_axi_concat_rid_out_0;
+  sc_signal<sc_dt::sc_bv<2> > s_axi_concat_rid_out_1;
 
   xsc::xsc_concatenator<2, 2> * mp_s_axi_concat_rlast;
   sc_signal<sc_dt::sc_bv<2> > s_axi_concat_rlast_out_0;
@@ -2280,9 +2235,9 @@ private:
   sc_signal<sc_dt::sc_bv<2> > s_axi_concat_rvalid_out_0;
   sc_signal<sc_dt::sc_bv<2> > s_axi_concat_rvalid_out_1;
 
-  xsc::xsc_split<256, 2> * mp_s_axi_split_wdata;
-  sc_signal<sc_dt::sc_bv<256> > s_axi_split_wdata_out_0;
-  sc_signal<sc_dt::sc_bv<256> > s_axi_split_wdata_out_1;
+  xsc::xsc_split<512, 2> * mp_s_axi_split_wdata;
+  sc_signal<sc_dt::sc_bv<512> > s_axi_split_wdata_out_0;
+  sc_signal<sc_dt::sc_bv<512> > s_axi_split_wdata_out_1;
 
 
   xsc::xsc_split<2, 2> * mp_s_axi_split_wlast;
@@ -2293,9 +2248,9 @@ private:
   sc_signal<sc_dt::sc_bv<2> > s_axi_concat_wready_out_0;
   sc_signal<sc_dt::sc_bv<2> > s_axi_concat_wready_out_1;
 
-  xsc::xsc_split<32, 2> * mp_s_axi_split_wstrb;
-  sc_signal<sc_dt::sc_bv<32> > s_axi_split_wstrb_out_0;
-  sc_signal<sc_dt::sc_bv<32> > s_axi_split_wstrb_out_1;
+  xsc::xsc_split<64, 2> * mp_s_axi_split_wstrb;
+  sc_signal<sc_dt::sc_bv<64> > s_axi_split_wstrb_out_0;
+  sc_signal<sc_dt::sc_bv<64> > s_axi_split_wstrb_out_1;
 
 
   xsc::xsc_split<2, 2> * mp_s_axi_split_wvalid;

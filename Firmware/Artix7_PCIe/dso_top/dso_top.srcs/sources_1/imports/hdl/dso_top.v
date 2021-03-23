@@ -8,10 +8,10 @@ module dso_top
     output [0:0] DDR3_ck_p,
     output [0:0] DDR3_cke,
     output [0:0] DDR3_cs_n,
-    output [1:0] DDR3_dm,
-    inout [15:0] DDR3_dq,
-    inout [1:0] DDR3_dqs_n,
-    inout [1:0] DDR3_dqs_p,
+    output [3:0] DDR3_dm,
+    inout [31:0] DDR3_dq,
+    inout [3:0] DDR3_dqs_n,
+    inout [3:0] DDR3_dqs_p,
     output [0:0] DDR3_odt,
     output DDR3_ras_n,
     output DDR3_reset_n,
@@ -63,6 +63,7 @@ module dso_top
   wire [127:0]S_AXIS_S2MM_tdata;
   wire S_AXIS_S2MM_tready;
   wire S_AXIS_S2MM_tvalid;
+  wire S_AXIS_S2MM_tlast;
   
   wire axi_aclk;
   wire axi_aresetn;
@@ -114,8 +115,6 @@ module dso_top
   end
   assign probe_comp = probe_div_clk;
   
-  wire[7:0] fclk_deser;
-  //assign adc_data = {~data_deser[63:24],fclk_deser,~data_deser[15:0]};
   assign adc_data = {~data_deser[63:24],data_deser[23:16],~data_deser[15:0]};
   //assign adc_data = {8'h77,8'h66,8'h55,8'h44,8'h33,8'h22,8'h11,8'h00};
   
@@ -136,7 +135,6 @@ module dso_top
 	.axi_aclk       (axi_aclk),
 	.divclk			(divclk),
 	.data_deser		(data_deser),
-	.fclk_deser     (fclk_deser),
 	.ready          (serdes_ready)
 	);
 
@@ -150,6 +148,7 @@ module dso_top
     .axis_data_tready(S_AXIS_S2MM_tready),
     .axis_data_tdata(S_AXIS_S2MM_tdata),
     .axis_data_tvalid(S_AXIS_S2MM_tvalid),
+    .axis_data_tlast(S_AXIS_S2MM_tlast),
     .adc_data(adc_data),
     .adc_divclk(divclk),
     .s2mm_err(s2mm_err),
@@ -202,8 +201,10 @@ module dso_top
     .S_AXIS_S2MM_CMD_tready(S_AXIS_S2MM_CMD_tready),
     .S_AXIS_S2MM_CMD_tvalid(S_AXIS_S2MM_CMD_tvalid),
     .S_AXIS_S2MM_tdata(S_AXIS_S2MM_tdata),
+    .S_AXIS_S2MM_tkeep(16'hFFFF),
     .S_AXIS_S2MM_tready(S_AXIS_S2MM_tready),
     .S_AXIS_S2MM_tvalid(S_AXIS_S2MM_tvalid),
+    .S_AXIS_S2MM_tlast(S_AXIS_S2MM_tlast),
     .axi_aclk(axi_aclk),
     .axi_aresetn(axi_aresetn),
     .gpio2_io_i(gpio2_io_i),

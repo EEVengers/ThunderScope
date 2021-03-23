@@ -61,15 +61,15 @@ design_1_auto_cc_0_sc::design_1_auto_cc_0_sc(const sc_core::sc_module_name& nm) 
 
   // initialize module
     xsc::common_cpp::properties model_param_props;
-    model_param_props.addLong("C_AXI_ID_WIDTH", "5");
-    model_param_props.addLong("C_AXI_ADDR_WIDTH", "29");
-    model_param_props.addLong("C_AXI_DATA_WIDTH", "128");
+    model_param_props.addLong("C_AXI_ID_WIDTH", "1");
+    model_param_props.addLong("C_AXI_ADDR_WIDTH", "30");
+    model_param_props.addLong("C_AXI_DATA_WIDTH", "256");
     model_param_props.addLong("C_S_AXI_ACLK_RATIO", "1");
     model_param_props.addLong("C_M_AXI_ACLK_RATIO", "2");
     model_param_props.addLong("C_AXI_IS_ACLK_ASYNC", "1");
     model_param_props.addLong("C_AXI_PROTOCOL", "0");
-    model_param_props.addLong("C_AXI_SUPPORTS_USER_SIGNALS", "1");
-    model_param_props.addLong("C_AXI_AWUSER_WIDTH", "4");
+    model_param_props.addLong("C_AXI_SUPPORTS_USER_SIGNALS", "0");
+    model_param_props.addLong("C_AXI_AWUSER_WIDTH", "1");
     model_param_props.addLong("C_AXI_ARUSER_WIDTH", "1");
     model_param_props.addLong("C_AXI_WUSER_WIDTH", "1");
     model_param_props.addLong("C_AXI_RUSER_WIDTH", "1");

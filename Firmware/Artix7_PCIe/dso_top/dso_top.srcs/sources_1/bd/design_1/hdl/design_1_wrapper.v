@@ -1,7 +1,7 @@
 //Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
-//Date        : Mon Mar 15 13:12:07 2021
+//Date        : Mon Mar 22 18:57:01 2021
 //Host        : DESKTOP-J72MK93 running 64-bit major release  (build 9200)
 //Command     : generate_target design_1_wrapper.bd
 //Design      : design_1_wrapper
@@ -34,6 +34,8 @@ module design_1_wrapper
     S_AXIS_S2MM_CMD_tready,
     S_AXIS_S2MM_CMD_tvalid,
     S_AXIS_S2MM_tdata,
+    S_AXIS_S2MM_tkeep,
+    S_AXIS_S2MM_tlast,
     S_AXIS_S2MM_tready,
     S_AXIS_S2MM_tvalid,
     axi_aclk,
@@ -63,10 +65,10 @@ module design_1_wrapper
   output [0:0]DDR3_ck_p;
   output [0:0]DDR3_cke;
   output [0:0]DDR3_cs_n;
-  output [1:0]DDR3_dm;
-  inout [15:0]DDR3_dq;
-  inout [1:0]DDR3_dqs_n;
-  inout [1:0]DDR3_dqs_p;
+  output [3:0]DDR3_dm;
+  inout [31:0]DDR3_dq;
+  inout [3:0]DDR3_dqs_n;
+  inout [3:0]DDR3_dqs_p;
   output [0:0]DDR3_odt;
   output DDR3_ras_n;
   output DDR3_reset_n;
@@ -76,6 +78,8 @@ module design_1_wrapper
   output S_AXIS_S2MM_CMD_tready;
   input S_AXIS_S2MM_CMD_tvalid;
   input [127:0]S_AXIS_S2MM_tdata;
+  input [15:0]S_AXIS_S2MM_tkeep;
+  input S_AXIS_S2MM_tlast;
   output S_AXIS_S2MM_tready;
   input S_AXIS_S2MM_tvalid;
   output axi_aclk;
@@ -106,10 +110,10 @@ module design_1_wrapper
   wire [0:0]DDR3_ck_p;
   wire [0:0]DDR3_cke;
   wire [0:0]DDR3_cs_n;
-  wire [1:0]DDR3_dm;
-  wire [15:0]DDR3_dq;
-  wire [1:0]DDR3_dqs_n;
-  wire [1:0]DDR3_dqs_p;
+  wire [3:0]DDR3_dm;
+  wire [31:0]DDR3_dq;
+  wire [3:0]DDR3_dqs_n;
+  wire [3:0]DDR3_dqs_p;
   wire [0:0]DDR3_odt;
   wire DDR3_ras_n;
   wire DDR3_reset_n;
@@ -119,6 +123,8 @@ module design_1_wrapper
   wire S_AXIS_S2MM_CMD_tready;
   wire S_AXIS_S2MM_CMD_tvalid;
   wire [127:0]S_AXIS_S2MM_tdata;
+  wire [15:0]S_AXIS_S2MM_tkeep;
+  wire S_AXIS_S2MM_tlast;
   wire S_AXIS_S2MM_tready;
   wire S_AXIS_S2MM_tvalid;
   wire axi_aclk;
@@ -163,6 +169,8 @@ module design_1_wrapper
         .S_AXIS_S2MM_CMD_tready(S_AXIS_S2MM_CMD_tready),
         .S_AXIS_S2MM_CMD_tvalid(S_AXIS_S2MM_CMD_tvalid),
         .S_AXIS_S2MM_tdata(S_AXIS_S2MM_tdata),
+        .S_AXIS_S2MM_tkeep(S_AXIS_S2MM_tkeep),
+        .S_AXIS_S2MM_tlast(S_AXIS_S2MM_tlast),
         .S_AXIS_S2MM_tready(S_AXIS_S2MM_tready),
         .S_AXIS_S2MM_tvalid(S_AXIS_S2MM_tvalid),
         .axi_aclk(axi_aclk),

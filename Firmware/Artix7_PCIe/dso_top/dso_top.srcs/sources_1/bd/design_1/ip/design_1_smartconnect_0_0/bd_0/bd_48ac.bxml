@@ -2,10 +2,10 @@
 <Root MajorVersion="0" MinorVersion="39">
   <CompositeFile CompositeFileTopName="bd_48ac" CanBeSetAsTop="true" CanDisplayChildGraph="true">
     <Description>Composite Fileset</Description>
-    <Generation Name="SYNTHESIS" State="GENERATED" Timestamp="1615828360"/>
-    <Generation Name="IMPLEMENTATION" State="GENERATED" Timestamp="1615828360"/>
-    <Generation Name="SIMULATION" State="GENERATED" Timestamp="1615828360"/>
-    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1615828360"/>
+    <Generation Name="SYNTHESIS" State="GENERATED" Timestamp="1616453864"/>
+    <Generation Name="IMPLEMENTATION" State="GENERATED" Timestamp="1616453864"/>
+    <Generation Name="SIMULATION" State="GENERATED" Timestamp="1616453864"/>
+    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1616453864"/>
     <FileCollection Name="SOURCES" Type="SOURCES">
       <File Name="ip\ip_0\bd_48ac_one_0.xci" Type="IP">
         <Instance HierarchyPath="clk_map/one"/>
@@ -408,6 +408,11 @@
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="HW_HANDOFF"/>
+      </File>
+      <File Name="sim\bd_48ac.protoinst">
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SIMULATION"/>
       </File>
     </FileCollection>
   </CompositeFile>
