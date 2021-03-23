@@ -62,13 +62,17 @@ class PCIeLink {
 
 public:
     bool connected;
-    PCIeLink();
     PCIeLink(boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> *outputQueue);
 
     int Connect();
+    void InitBoard();
     
     void Read(uint8_t* buff);
     void Write(ScopeCommand command, void* val);
+
+    void Pause();
+    void UnPause();
+    void Stop();
 
     void ClockTick1();
     void ClockTick2();
@@ -88,6 +92,10 @@ private:
     char c2h_0_connection_string[261] = "";
     LARGE_INTEGER freq; //used for perforamnce testing
     int64_t last_chunk_read;
+
+    std::atomic<bool> _run;
+    std::atomic<bool> _pause;
+    std::thread PCIeReadThread;
 
     //output queue in which read data from the FPGA is shoved into
     boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> *outputQueue;

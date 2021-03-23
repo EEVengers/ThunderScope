@@ -167,10 +167,29 @@ void PCIeLink::Read(uint8_t* buff) {
     }
     last_chunk_read = current_chunk;
     int64_t reading_offset = current_chunk * (1 << 23);
-    //INFO << "Reading from current current chunk: " << current_chunk;
-    //INFO << "Offset: " << reading_offset;
+    INFO << "Reading from current current chunk: " << current_chunk;
+    INFO << "Offset: " << reading_offset;
     //Read the data from ddr3 memory
     _Read(c2h_0_handle,reading_offset,buff,1 << 23);
+}
+
+void PCIeLink::InitBoard() {
+    Write(board_enable,nullptr);
+    Write(clk_enable,nullptr);
+    Write(adc_enable,nullptr);
+    Write(dataMover_enable,nullptr);
+}
+
+void PCIeLink::Pause() {
+    _pause.store(true);
+}
+
+void PCIeLink::UnPause() {
+    _pause.store(false);
+}
+
+void PCIeLink::Stop() {
+    _run.store(false);
 }
 
 /************************************************************
@@ -380,12 +399,20 @@ void PCIeLink::_Write(HANDLE hPCIE, int64_t address, uint8_t* buff, int bytesToW
     }
 }
 
-PCIeLink::PCIeLink() {
-    user_handle = INVALID_HANDLE_VALUE;
-    c2h_0_handle = INVALID_HANDLE_VALUE;
-    dataMoverReg[0] = 0x00;
-    last_chunk_read = -1;
-    QueryPerformanceFrequency(&freq);
+void PCIeLink::_Job() {
+    while(_run.load()) {
+        while(_pause.load()) {
+            std::this_thread::sleep_for(std::chrono::milliseconds(2));
+        }
+        //allocate a buffer
+        buffer* buff;
+        buff = bufferAllocator.allocate(1);
+        bufferAllocator.construct(buff);
+        //read from the PCIeLink
+        Read((uint8_t*)buff->data);
+        //push to queue
+        outputQueue->push(buff);
+    }
 }
 
 PCIeLink::PCIeLink(boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> *outputQueue) {
@@ -393,8 +420,13 @@ PCIeLink::PCIeLink(boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<
     c2h_0_handle = INVALID_HANDLE_VALUE;
     dataMoverReg[0] = 0x00;
     last_chunk_read = -1;
+    _run = true;
+    _pause = true;
     QueryPerformanceFrequency(&freq);
     this->outputQueue = outputQueue;
+    Connect();
+    InitBoard();
+    PCIeReadThread = std::thread(&PCIeLink::_Job, this);
 }
 
 PCIeLink::~PCIeLink() {
@@ -402,6 +434,11 @@ PCIeLink::~PCIeLink() {
         CloseHandle(user_handle);
     if(c2h_0_handle != INVALID_HANDLE_VALUE)
         CloseHandle(c2h_0_handle);
+
+    _pause.store(false);
+    _run.store(true);
+    
+    PCIeReadThread.join();
 }
 
 void PCIeLink::ClockTick1() {

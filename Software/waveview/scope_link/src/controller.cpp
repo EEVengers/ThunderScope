@@ -24,7 +24,7 @@ controller::controller(boost::lockfree::queue<buffer*, boost::lockfree::fixed_si
     triggerThread = new Trigger(dataQueue, &triggerProcessorQueue, triggerLevel);
     processorThread = new Processor(&triggerProcessorQueue, &processorPostProcessorQueue_1);
     postProcessorThread = new postProcessor(&processorPostProcessorQueue_1, &controllerQueue_tx);
-    
+    pcieLinkThread = new PCIeLink(dataQueue);
 
     // set default values
     setCh(1);
@@ -427,6 +427,7 @@ void controller::controllerPause()
     processorThread->processorPause();
     triggerThread->triggerPause();
     postProcessorThread->postProcessorPause();
+    pcieLinkThread->Pause();
 }
 
 /*******************************************************************************
@@ -446,6 +447,7 @@ void controller::controllerUnPause()
     processorThread->processorUnpause();
     triggerThread->triggerUnpause();
     postProcessorThread->postProcessorUnpause();
+    pcieLinkThread->UnPause();
 }
 
 /*******************************************************************************

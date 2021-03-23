@@ -21,8 +21,9 @@
 #define BUFFER_256K  262144
 #define BUFFER_512K  524288
 #define BUFFER_1024K 1048576
+#define BUFFER_8M    (1 << 23)
 
-#define BUFFER_SIZE BUFFER_8K
+#define BUFFER_SIZE BUFFER_8M
 
 // Window size in buffers
 #define DEFAULT_WINDOW 10
