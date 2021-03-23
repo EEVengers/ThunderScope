@@ -16,7 +16,7 @@ import TestPoints from '../../util/testpoints';
 class Graph extends React.Component<any, any> {
   static instanceList: Graph[] = [];
   timerID: number = 0;
-  generator: TestPoints = new TestPoints(50, 50);
+  generator: TestPoints = new TestPoints(1000, 128);
 
   componentDidMount() {
     Graph.instanceList.push(this);

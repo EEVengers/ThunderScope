@@ -1,7 +1,7 @@
 #include "controller.hpp"
 #include "logger.hpp"
 
-#define NOHARDWARE
+//#define NOHARDWARE
 
 //RampDemo Related
 int8_t RD_PACKET_ORIGINAL[RD_PACKET_SIZE];
