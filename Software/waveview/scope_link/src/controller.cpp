@@ -31,6 +31,7 @@ controller::controller(boost::lockfree::queue<buffer*, boost::lockfree::fixed_si
     setTriggerCh(1);
     setLevel(50);
     setPerSize(1);
+    setWindowSize(1000);
 
     //RampDemo related
     for(int ch = 0; ch < RD_CHAN_COUNT; ch++) {
