@@ -1,4 +1,5 @@
 import CMD from '../configuration/enums/cmd';
+import { SetChState } from './setChHelper';
 
 export enum SetMathOp {
   SetMath_None = 0,
@@ -105,6 +106,25 @@ export class Plumber {
       //console.log("queue: " + args.cmd);
       this.cmdQueue.push(args);
     }
+  }
+
+  public handleSetchState(s: SetChState) {
+    let setChArgs: PlumberArgs = {
+      headCheck: () => true,
+      bodyCheck: () => true,
+      cmd: CMD.CMD_SetCh,
+      id: 0,
+      writeData: [s.setCh, 0]
+    }
+    let setTriggerChArgs: PlumberArgs = {
+      headCheck: () => true,
+      bodyCheck: () => true,
+      cmd: CMD.CMD_SetTriggerCh,
+      id: 0,
+      writeData: [s.setTriggerCh, 0]
+    }
+    this.cycle(setChArgs);
+    this.cycle(setTriggerChArgs);
   }
 
   public makeSetMathData(lhsChan: number, rhsChan: number, op: SetMathOp) {

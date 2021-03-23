@@ -5,10 +5,7 @@ import { LineSeriesPoint } from 'react-vis';
 
 class TestPoints {
   scope_data: LineSeriesPoint[][] = []; //[ch-1] for channel, [5] for math
-  scope_data_max_idx = 5;
-
-  chCount: number = 4;
-  doMath: Boolean = true;
+  getDataMaxCh = 5;
   lastX: number = 0;
 
   setChArgs: PlumberArgs;
@@ -22,7 +19,8 @@ class TestPoints {
     store.dispatch({type: "graph/xDomain", payload: [0, xRange]});
     store.dispatch({type: "graph/yDomain", payload: [-yRange, yRange]})
 
-    for(var j = 0; j < this.scope_data_max_idx; j++) {
+    let state = store.getState();
+    for(var j = 0; j < this.getDataMaxCh; j++) {
       this.scope_data[j] = [{x: 0, y: 0}];
     }
 
@@ -34,7 +32,7 @@ class TestPoints {
       bodyCheck: () => true,
       cmd: CMD.CMD_SetCh,
       id: 0,
-      writeData: [this.chCount, 0]
+      writeData: [state.verticalWidget.getDataChannelOrder.length, 0]
     }
 
     this.setFileArgs = {
@@ -63,20 +61,28 @@ class TestPoints {
   mountCalls() {
     Plumber.getInstance().cycle(this.setChArgs);
     Plumber.getInstance().cycle(this.setFileArgs);
-    Plumber.getInstance().cycle(this.setMathArgs);
+    //Plumber.getInstance().cycle(this.setMathArgs);
   }
 
   update() {
-    if(this.setChDone && this.setFileDone && this.setMathDone) {
-      let state = store.getState();
-      let xLimit = state.graph.xDomain[1];
+    if(this.setChDone && this.setFileDone /*&& this.setMathDone*/) {
       let args: PlumberArgs = {
         headCheck: () => true,
         bodyCheck: (a, bytesRead, body) => {
-          var chMax = this.effectiveChCount();
+          let state = store.getState();
+          let xLimit = state.graph.xDomain[1];
+          let doMath = state.mathWidget.mathEnabled as boolean;
+          let order = state.verticalWidget.getDataChannelOrder as number[];
+          var chMax = (doMath) ? order.length + 1: order.length;
           var perChannel = Math.floor(body.length/chMax);
           let xOffset = (this.lastX < xLimit) ? this.lastX : 0;
-          for(var channel = 0; channel < chMax; channel++) {
+          for(var channel = 0; channel < this.getDataMaxCh; channel++) {
+            let mathCh = (channel == this.getDataMaxCh-1) && doMath;
+            let dataCh = order.includes(channel + 1);
+            if(!mathCh && !dataCh) {
+              continue;
+            }
+
             for(var i = 0; i < perChannel; i++) {
               let x = xOffset + i;
               let y = body[channel*perChannel + i];
@@ -95,13 +101,8 @@ class TestPoints {
     }
   }
 
-  effectiveChCount() {
-    return (this.doMath) ? this.chCount + 1: this.chCount;
-  }
-
   getData() {
-    var chMax = this.effectiveChCount();
-    return this.scope_data.slice(0, chMax);
+    return this.scope_data;
   }
 }
 

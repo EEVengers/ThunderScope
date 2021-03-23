@@ -19,7 +19,7 @@ const VerticalWidgetInitialState = {
         unit: VoltageUnit.MilliVolt
       },
       index: 6
-    }, 
+    },
     {
       course: {
         value: DefaultValues.x1ProbeValues[6].value,
@@ -31,7 +31,7 @@ const VerticalWidgetInitialState = {
         unit: VoltageUnit.MilliVolt
       },
       index: 6
-    }, 
+    },
     {
       course: {
         value: DefaultValues.x1ProbeValues[6].value,
@@ -43,7 +43,7 @@ const VerticalWidgetInitialState = {
         unit: VoltageUnit.MilliVolt
       },
       index: 6
-    }, 
+    },
     {
       course: {
         value: DefaultValues.x1ProbeValues[6].value,
@@ -92,22 +92,23 @@ const VerticalWidgetInitialState = {
   ],
   verticalOffset: [
     {
-      value: 0, 
+      value: 0,
       unit: VoltageUnit.MilliVolt
     },
     {
-      value: 0, 
+      value: 0,
       unit: VoltageUnit.MilliVolt
     },
     {
-      value: 0, 
+      value: 0,
       unit: VoltageUnit.MilliVolt
     },
     {
-      value: 0, 
+      value: 0,
       unit: VoltageUnit.MilliVolt
     }
-  ]
+  ],
+  getDataChannelOrder: [1, 2, 3, 4]
 };
 
 export default VerticalWidgetInitialState;

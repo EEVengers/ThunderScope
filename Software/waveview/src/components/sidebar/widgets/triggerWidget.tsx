@@ -6,6 +6,7 @@ import TriggerType from '../../../configuration/enums/triggerType';
 
 import CMD from '../../../configuration/enums/cmd';
 import {Plumber, PlumberArgs} from '../../../util/plumber';
+import { setChHelper } from '../../../util/setChHelper';
 
 class TriggerWidget extends React.Component<any, any> {
 
@@ -19,15 +20,12 @@ class TriggerWidget extends React.Component<any, any> {
   }
 
   changeChannel = (channelNumber: number) => {
-    let args: PlumberArgs = {
-      headCheck: () => true,
-      bodyCheck: () => true,
-      cmd: CMD.CMD_SetTriggerCh,
-      id: 0,
-      writeData: [channelNumber, 0]
-    };
-    Plumber.getInstance().cycle(args);
-    this.props.dispatch({type: 'trigger/changeChannel', payload: channelNumber})
+    let chStatus = (this.props.verticalWidget.settings as any[]).map(x => x.status > 0);
+    let setChState = setChHelper(chStatus[0], chStatus[1], chStatus[2], chStatus[3], channelNumber);
+    Plumber.getInstance().handleSetchState(setChState);
+    this.props.dispatch({type: 'vertical/setChannelOrder', payload: setChState.chOrder});
+    this.props.dispatch({type: 'trigger/changeChannel', payload: channelNumber});
+    this.props.dispatch({type: 'vertical/changeChannelStatus', payload: channelNumber});
   }
 
   // Trigger Type
@@ -204,10 +202,11 @@ class TriggerWidget extends React.Component<any, any> {
   }
 }
 
-function mapStateToProps(state: { triggerWidget: any, settings: any }) {
+function mapStateToProps(state: { triggerWidget: any, settings: any, verticalWidget: any }) {
   return {
     triggerWidget: state.triggerWidget,
-    settings: state.settings
+    settings: state.settings,
+    verticalWidget: state.verticalWidget
   };
 }
 

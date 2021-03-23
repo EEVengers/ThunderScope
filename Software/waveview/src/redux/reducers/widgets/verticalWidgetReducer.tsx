@@ -55,12 +55,12 @@ export default function(state = VerticalWidgetInitialState, action: {type: any, 
       tmp[channelIndex].probeMode = action.payload;
 
       tmp2 = state.timePerDivision;
-      
-      tmp2[channelIndex].course.value = action.payload === ProbeMode.x1 
-        ? DefaultValues.x1ProbeValues[state.timePerDivision[channelIndex].index].value 
+
+      tmp2[channelIndex].course.value = action.payload === ProbeMode.x1
+        ? DefaultValues.x1ProbeValues[state.timePerDivision[channelIndex].index].value
         : DefaultValues.x10ProbeValues[state.timePerDivision[channelIndex].index].value;
-      tmp2[channelIndex].course.unit = action.payload === ProbeMode.x1 
-        ? DefaultValues.x1ProbeValues[state.timePerDivision[channelIndex].index].unit 
+      tmp2[channelIndex].course.unit = action.payload === ProbeMode.x1
+        ? DefaultValues.x1ProbeValues[state.timePerDivision[channelIndex].index].unit
         : DefaultValues.x10ProbeValues[state.timePerDivision[channelIndex].index].unit;
 
       tmp3 = state.verticalOffset;
@@ -81,7 +81,6 @@ export default function(state = VerticalWidgetInitialState, action: {type: any, 
         settings: tmp
       };
     case "vertical/changeChannelStatus":
-      // TODO: Call C and tell them that we want to either start getting or stop receiving data from the channel
       tmp = state.settings;
       var newTotalChannelsUsed = state.totalChannelsUsed;
 
@@ -121,17 +120,17 @@ export default function(state = VerticalWidgetInitialState, action: {type: any, 
       tmp = state.timePerDivision;
 
       tmp[channelIndex].index = state.timePerDivision[channelIndex].index - 1;
-      tmp[channelIndex].course.value = state.settings[channelIndex].probeMode === ProbeMode.x1 
-        ? DefaultValues.x1ProbeValues[tmp[channelIndex].index].value 
+      tmp[channelIndex].course.value = state.settings[channelIndex].probeMode === ProbeMode.x1
+        ? DefaultValues.x1ProbeValues[tmp[channelIndex].index].value
         : DefaultValues.x10ProbeValues[tmp[channelIndex].index].value;
-      tmp[channelIndex].course.unit = state.settings[channelIndex].probeMode === ProbeMode.x1 
-        ? DefaultValues.x1ProbeValues[tmp[channelIndex].index].unit 
+      tmp[channelIndex].course.unit = state.settings[channelIndex].probeMode === ProbeMode.x1
+        ? DefaultValues.x1ProbeValues[tmp[channelIndex].index].unit
         : DefaultValues.x10ProbeValues[tmp[channelIndex].index].unit;
 
       tmp2 = state.verticalOffset;
 
       tmp2[channelIndex].unit = tmp[channelIndex].course.unit;
-      return { 
+      return {
         ...state,
         timePerDivision: tmp,
         verticalOffset: tmp2
@@ -143,17 +142,17 @@ export default function(state = VerticalWidgetInitialState, action: {type: any, 
       tmp = state.timePerDivision;
 
       tmp[channelIndex].index = state.timePerDivision[channelIndex].index + 1;
-      tmp[channelIndex].course.value = state.settings[channelIndex].probeMode === ProbeMode.x1 
-        ? DefaultValues.x1ProbeValues[tmp[channelIndex].index].value 
+      tmp[channelIndex].course.value = state.settings[channelIndex].probeMode === ProbeMode.x1
+        ? DefaultValues.x1ProbeValues[tmp[channelIndex].index].value
         : DefaultValues.x10ProbeValues[tmp[channelIndex].index].value;
-      tmp[channelIndex].course.unit = state.settings[channelIndex].probeMode === ProbeMode.x1 
-        ? DefaultValues.x1ProbeValues[tmp[channelIndex].index].unit 
+      tmp[channelIndex].course.unit = state.settings[channelIndex].probeMode === ProbeMode.x1
+        ? DefaultValues.x1ProbeValues[tmp[channelIndex].index].unit
         : DefaultValues.x10ProbeValues[tmp[channelIndex].index].unit;
 
       tmp2 = state.verticalOffset;
 
       tmp2[channelIndex].unit = tmp[channelIndex].course.unit;
-      return { 
+      return {
         ...state,
         timePerDivision: tmp,
         verticalOffset: tmp2
@@ -184,6 +183,11 @@ export default function(state = VerticalWidgetInitialState, action: {type: any, 
       return {
         ...state,
         settings: tmp
+      }
+    case "vertical/setChannelOrder":
+      return {
+        ...state,
+        getDataChannelOrder: action.payload
       }
     default:
       return state;
