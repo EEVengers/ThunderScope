@@ -8,7 +8,7 @@ module adc_to_datamover(
     output[71:0] axis_cmd_tdata,
     output axis_cmd_tvalid,
     input axis_data_tready,
-    output[127:0] axis_data_tdata,
+    output reg[127:0] axis_data_tdata,
     output axis_data_tvalid,
     output axis_data_tlast,
     input[63:0] adc_data,
@@ -16,7 +16,7 @@ module adc_to_datamover(
     input s2mm_err,
     output s2mm_halt,
     input s2mm_wr_xfer_cmplt,
-    input[1:0] gpio_io_o_0,
+    input[31:0] gpio_io_o_0,
     output[31:0] gpio2_io_i,
     input serdes_ready
     );
@@ -69,7 +69,17 @@ module adc_to_datamover(
 
   assign axis_data_tlast = data_tlast; 
   assign axis_data_tvalid = data_tvalid;
-  assign axis_data_tdata = {fifo_data[63:0],fifo_data[127:64]}; //Need state machine for dual and quad channel
+  
+  always @(*)
+    begin
+        case(gpio_io_o_0[5:4]) // pga_cs demux
+            2'b00: axis_data_tdata = {fifo_data[63:0],fifo_data[127:64]};
+            2'b01: axis_data_tdata = {fifo_data[63:56],fifo_data[31:24],fifo_data[55:48],fifo_data[23:16],fifo_data[47:40],fifo_data[15:8],fifo_data[39:32],fifo_data[7:0],fifo_data[127:120],fifo_data[95:88],fifo_data[119:112],fifo_data[87:80],fifo_data[111:104],fifo_data[79:72],fifo_data[103:96],fifo_data[71:64]};
+            2'b10: axis_data_tdata = {fifo_data[63:56],fifo_data[47:40],fifo_data[31:24],fifo_data[15:8],fifo_data[55:48],fifo_data[39:32],fifo_data[23:16],fifo_data[7:0],fifo_data[127:120],fifo_data[111:104],fifo_data[95:88],fifo_data[79:72],fifo_data[119:112],fifo_data[103:96],fifo_data[87:80],fifo_data[71:64]};		
+            2'b11: axis_data_tdata = {fifo_data[63:56],fifo_data[47:40],fifo_data[31:24],fifo_data[15:8],fifo_data[55:48],fifo_data[39:32],fifo_data[23:16],fifo_data[7:0],fifo_data[127:120],fifo_data[111:104],fifo_data[95:88],fifo_data[79:72],fifo_data[119:112],fifo_data[103:96],fifo_data[87:80],fifo_data[71:64]};
+    endcase
+  end
+  
   assign fifo_rd_en = rd_en;
 
   //Transfer Counter

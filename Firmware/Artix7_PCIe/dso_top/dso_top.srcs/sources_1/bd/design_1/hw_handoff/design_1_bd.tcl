@@ -662,7 +662,7 @@ proc create_hier_cell_AXI_LITE_IO { parentCell nameHier } {
   create_bd_pin -dir I -type rst axi_resetn
   create_bd_pin -dir I -from 31 -to 0 gpio2_io_i
   create_bd_pin -dir I -from 31 -to 0 gpio2_io_i_0
-  create_bd_pin -dir O -from 1 -to 0 gpio_io_o_0
+  create_bd_pin -dir O -from 31 -to 0 gpio_io_o_0
   create_bd_pin -dir O -from 31 -to 0 gpio_io_o_1
 
   # Create instance: axi_fifo_mm_s_0, and set properties
@@ -677,7 +677,7 @@ proc create_hier_cell_AXI_LITE_IO { parentCell nameHier } {
   set_property -dict [ list \
    CONFIG.C_ALL_INPUTS_2 {1} \
    CONFIG.C_ALL_OUTPUTS {1} \
-   CONFIG.C_GPIO_WIDTH {2} \
+   CONFIG.C_GPIO_WIDTH {32} \
    CONFIG.C_IS_DUAL {1} \
  ] $axi_gpio_0
 
@@ -796,7 +796,7 @@ proc create_root_design { parentCell } {
   set axi_aresetn [ create_bd_port -dir O axi_aresetn ]
   set gpio2_io_i [ create_bd_port -dir I -from 31 -to 0 gpio2_io_i ]
   set gpio2_io_i_0 [ create_bd_port -dir I -from 31 -to 0 gpio2_io_i_0 ]
-  set gpio_io_o_0 [ create_bd_port -dir O -from 1 -to 0 gpio_io_o_0 ]
+  set gpio_io_o_0 [ create_bd_port -dir O -from 31 -to 0 gpio_io_o_0 ]
   set gpio_io_o_1 [ create_bd_port -dir O -from 31 -to 0 gpio_io_o_1 ]
   set pcie_perstn [ create_bd_port -dir I -type rst pcie_perstn ]
   set s2mm_err [ create_bd_port -dir O s2mm_err ]
@@ -827,12 +827,12 @@ proc create_root_design { parentCell } {
   connect_bd_intf_net -intf_net xdma_0_pcie_mgt [get_bd_intf_ports pcie_mgt] [get_bd_intf_pins PCIe/pcie_mgt]
 
   # Create port connections
+  connect_bd_net -net AXI_LITE_IO_gpio_io_o_0 [get_bd_ports gpio_io_o_0] [get_bd_pins AXI_LITE_IO/gpio_io_o_0]
   connect_bd_net -net AXI_LITE_IO_gpio_io_o_1 [get_bd_ports gpio_io_o_1] [get_bd_pins AXI_LITE_IO/gpio_io_o_1]
   connect_bd_net -net Datamover_s2mm_err_0 [get_bd_ports s2mm_err] [get_bd_pins Datamover/s2mm_err]
   connect_bd_net -net Datamover_s2mm_wr_xfer_cmplt_0 [get_bd_ports s2mm_wr_xfer_cmplt] [get_bd_pins Datamover/s2mm_wr_xfer_cmplt]
   connect_bd_net -net PCIe_axi_aresetn [get_bd_ports axi_aresetn] [get_bd_pins AXI_LITE_IO/axi_resetn] [get_bd_pins Memory/S00_ARESETN] [get_bd_pins PCIe/axi_aresetn]
   connect_bd_net -net S01_ARESETN_0_1 [get_bd_ports S01_ARESETN] [get_bd_pins Datamover/axi_aresetn] [get_bd_pins Memory/S01_ARESETN]
-  connect_bd_net -net axi_gpio_0_gpio_io_o [get_bd_ports gpio_io_o_0] [get_bd_pins AXI_LITE_IO/gpio_io_o_0]
   connect_bd_net -net gpio2_io_i_0_1 [get_bd_ports gpio2_io_i] [get_bd_pins AXI_LITE_IO/gpio2_io_i]
   connect_bd_net -net gpio2_io_i_0_2 [get_bd_ports gpio2_io_i_0] [get_bd_pins AXI_LITE_IO/gpio2_io_i_0]
   connect_bd_net -net s2mm_halt_0_1 [get_bd_ports s2mm_halt] [get_bd_pins Datamover/s2mm_halt]

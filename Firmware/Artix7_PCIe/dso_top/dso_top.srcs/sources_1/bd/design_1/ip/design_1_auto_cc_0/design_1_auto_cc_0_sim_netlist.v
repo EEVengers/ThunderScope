@@ -1,10 +1,10 @@
 // Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
-// Date        : Mon Mar 22 18:59:27 2021
+// Date        : Tue Mar 23 12:14:43 2021
 // Host        : DESKTOP-J72MK93 running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
-//               c:/Users/Aleksa/Documents/FPGA_Dev/Artix7_PCIe/dso_top_ddr3_4KB/dso_top_ddr3.srcs/sources_1/bd/design_1/ip/design_1_auto_cc_0/design_1_auto_cc_0_sim_netlist.v
+//               c:/Users/Aleksa/Documents/FPGA_Dev/Artix7_PCIe/dso_top_ddr3/dso_top_ddr3.srcs/sources_1/bd/design_1/ip/design_1_auto_cc_0/design_1_auto_cc_0_sim_netlist.v
 // Design      : design_1_auto_cc_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.

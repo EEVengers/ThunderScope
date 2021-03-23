@@ -70,7 +70,7 @@ module dso_top
  
   wire [31:0]gpio2_io_i;
   wire [31:0]gpio2_io_i_0;
-  wire [1:0]gpio_io_o_0;
+  wire [31:0]gpio_io_o_0;
   wire [31:0]gpio_io_o_1;
 
   wire s2mm_err;
