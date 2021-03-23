@@ -15,7 +15,7 @@
 
   <DataDepth_En>1024</DataDepth_En>
 
-  <LowPower_En>ON</LowPower_En>
+  <LowPower_En>OFF</LowPower_En>
 
   <XADC_En>Enabled</XADC_En>
 
@@ -54,8 +54,8 @@
     <DeepMemory>1</DeepMemory>
     <DataMask>1</DataMask>
     <ECC>Disabled</ECC>
-    <Ordering>Strict</Ordering>
-    <BankMachineCnt>4</BankMachineCnt>
+    <Ordering>Normal</Ordering>
+    <BankMachineCnt>8</BankMachineCnt>
     <CustomPart>FALSE</CustomPart>
     <NewPartName/>
     <RowAddress>15</RowAddress>
@@ -145,7 +145,7 @@
     <mr2RTTWR name="RTT_WR - Dynamic On Die Termination (ODT)">Dynamic ODT off</mr2RTTWR>
     <PortInterface>AXI</PortInterface>
     <AXIParameters>
-      <C0_C_RD_WR_ARB_ALGORITHM>ROUND_ROBIN</C0_C_RD_WR_ARB_ALGORITHM>
+      <C0_C_RD_WR_ARB_ALGORITHM>RD_PRI_REG_STARVE_LIMIT</C0_C_RD_WR_ARB_ALGORITHM>
       <C0_S_AXI_ADDR_WIDTH>29</C0_S_AXI_ADDR_WIDTH>
       <C0_S_AXI_DATA_WIDTH>128</C0_S_AXI_DATA_WIDTH>
       <C0_S_AXI_ID_WIDTH>5</C0_S_AXI_ID_WIDTH>

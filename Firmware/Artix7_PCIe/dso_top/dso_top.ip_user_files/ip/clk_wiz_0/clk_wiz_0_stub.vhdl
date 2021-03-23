@@ -1,10 +1,10 @@
 -- Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
--- Date        : Fri Mar 19 19:26:27 2021
+-- Date        : Mon Mar 22 18:58:31 2021
 -- Host        : DESKTOP-J72MK93 running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode synth_stub -rename_top clk_wiz_0 -prefix
---               clk_wiz_0_ clk_wiz_0_stub.vhdl
+-- Command     : write_vhdl -force -mode synth_stub
+--               C:/Users/Aleksa/Documents/FPGA_Dev/Artix7_PCIe/dso_top_ddr3_4KB/dso_top_ddr3.runs/clk_wiz_0_synth_1/clk_wiz_0_stub.vhdl
 -- Design      : clk_wiz_0
 -- Purpose     : Stub declaration of top-level module interface
 -- Device      : xc7a100tfgg484-2

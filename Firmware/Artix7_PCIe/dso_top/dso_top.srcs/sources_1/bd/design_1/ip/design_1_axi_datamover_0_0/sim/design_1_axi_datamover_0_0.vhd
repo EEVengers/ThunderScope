@@ -315,7 +315,7 @@ BEGIN
       C_S2MM_ADDR_PIPE_DEPTH => 4,
       C_FAMILY => "artix7",
       C_MM2S_INCLUDE_SF => 0,
-      C_S2MM_INCLUDE_SF => 0,
+      C_S2MM_INCLUDE_SF => 1,
       C_ENABLE_CACHE_USER => 0,
       C_ENABLE_MM2S_TKEEP => 1,
       C_ENABLE_S2MM_TKEEP => 1,

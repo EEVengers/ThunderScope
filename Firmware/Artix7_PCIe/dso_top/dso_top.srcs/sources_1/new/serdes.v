@@ -11,12 +11,11 @@ module serdes(
 	input axi_aclk,
 	output divclk,
 	output[63:0] data_deser,
-	output[7:0] fclk_deser,
 	output reg ready
    );
 	
 	wire clk0;
-	//wire[7:0] fclk_deser;
+	wire[7:0] fclk_deser;
 	
 	reg state = 1'b0;
 	reg bitslip;
@@ -69,26 +68,6 @@ module serdes(
     .divclk(divclk),                       
     .io_reset(rst)
     ); 
-	
-//	fclk_serdes fclk_serdes (
-//	.clk0			(clk0),
-//	.rst            (rst),
-//	.divclk			(divclk),
-//	.bitslip		(bitslip),
-//	.adc_fclk_p		(adc_fclk_p),
-//	.adc_fclk_n		(adc_fclk_n),
-//	.fclk_deser		(fclk_deser) 
-//	);
-	
-//	data_serdes data_serdes (
-//	.clk0			(clk0),
-//	.rst            (rst),
-//	.divclk			(divclk),
-//	.bitslip		(bitslip),
-//	.adc_data_p		(adc_data_p),
-//	.adc_data_n		(adc_data_n),
-//	.data_deser		(data_deser)
-//	);
 
 endmodule
 
