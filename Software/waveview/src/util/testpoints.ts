@@ -10,10 +10,8 @@ class TestPoints {
 
   setChArgs: PlumberArgs;
   setFileArgs: PlumberArgs;
-  setMathArgs: PlumberArgs;
   setChDone: Boolean = false;
   setFileDone: Boolean = false;
-  setMathDone: Boolean = false;
 
   constructor(xRange: number, yRange: number) {
     store.dispatch({type: "graph/xDomain", payload: [0, xRange]});
@@ -45,48 +43,40 @@ class TestPoints {
       id: 0,
       writeData: [74, 0]
     }
-
-    this.setMathArgs = {
-      headCheck: () => {
-        this.setMathDone = true;
-        return true;
-      },
-      bodyCheck: () => true,
-      cmd: CMD.CMD_SetMath,
-      id: 0,
-      writeData: Plumber.getInstance().makeSetMathData(2, 4, SetMathOp.SetMath_Plus)
-    }
   }
 
   mountCalls() {
     Plumber.getInstance().cycle(this.setChArgs);
     Plumber.getInstance().cycle(this.setFileArgs);
-    //Plumber.getInstance().cycle(this.setMathArgs);
   }
 
   update() {
-    if(this.setChDone && this.setFileDone /*&& this.setMathDone*/) {
+    if(this.setChDone && this.setFileDone) {
+      let state = store.getState();
+      let xLimit = state.graph.xDomain[1];
+      let doMath = state.mathWidget.mathEnabled as boolean;
+      let order = state.verticalWidget.getDataChannelOrder as number[];
+
       let args: PlumberArgs = {
         headCheck: () => true,
         bodyCheck: (a, bytesRead, body) => {
-          let state = store.getState();
-          let xLimit = state.graph.xDomain[1];
-          let doMath = state.mathWidget.mathEnabled as boolean;
-          let order = state.verticalWidget.getDataChannelOrder as number[];
           var chMax = (doMath) ? order.length + 1: order.length;
           var perChannel = Math.floor(body.length/chMax);
           let xOffset = (this.lastX < xLimit) ? this.lastX : 0;
           for(var channel = 0; channel < this.getDataMaxCh; channel++) {
             let mathCh = (channel == this.getDataMaxCh-1) && doMath;
             let dataCh = order.includes(channel + 1);
-            if(!mathCh && !dataCh) {
-              continue;
-            }
-
-            for(var i = 0; i < perChannel; i++) {
-              let x = xOffset + i;
-              let y = body[channel*perChannel + i];
-              this.scope_data[channel][x] = {x: x, y: y};
+            if(mathCh || dataCh) {
+              for(var i = 0; i < perChannel; i++) {
+                var x = xOffset + i;
+                if(x != 0 && !this.scope_data[channel][x-1]) {
+                  //Adding a channel while other channels in middle of screen
+                  //causes an error.
+                  break;
+                }
+                let y = body[channel*perChannel + i];
+                this.scope_data[channel][x] = {x: x, y: y};
+              }
             }
           }
           this.lastX = xOffset + perChannel;
