@@ -225,13 +225,17 @@ void runPCIeTest() {
     pcieLink->Write(clk_enable,nullptr);
     pcieLink->Write(adc_enable,nullptr);
     pcieLink->Write(dataMover_enable,nullptr);
+    //pcieLink->Write(dataMover_disable,nullptr);
     
     uint8_t* buff = (uint8_t*)malloc(sizeof(uint8_t) * (1 << 23));
-    pcieLink->ClockTick1();
-    pcieLink->Read(buff);
-    pcieLink->ClockTick2();
 
-    pcieLink->PrintTimeDelta();
+    //read 5 times
+    for(int i = 0; i < 3; i++) {
+        pcieLink->ClockTick1();
+        pcieLink->Read(buff);
+        pcieLink->ClockTick2();
+        pcieLink->PrintTimeDelta();
+    }
 
     FILE* fp = fopen("TestData.txt","w");
     for(int i = 0; i < (1 << 23); i+= 8) {

@@ -129,21 +129,22 @@ void PCIeLink::Read(uint8_t* buff) {
     //Once more than 2^23 bytes have been written, halt the datamover
     bool enoughData = false;
     int64_t current_chunk;
-    uint32_t kbytes_32_moved = 0;
+    uint32_t kbytes_4_moved = 0;
     uint32_t error_code = 0;
     uint32_t overflow_count = 0;
+
     while(!enoughData) {
-        _Read(user_handle,DATAMOVER_TRANSFER_COUNTER,(uint8_t*)(&kbytes_32_moved),4);
-        error_code = ((kbytes_32_moved & 0xC0000000)>>30);
-        overflow_count = ((kbytes_32_moved & 0x3FFF0000)>>16);
-        kbytes_32_moved = kbytes_32_moved & 0x0000FFFF;
-        current_chunk = kbytes_32_moved / (1 << 8);
-        INFO << "error code: " << error_code;
-        INFO << "overflow count: " << overflow_count;
-        INFO << "32k_Bytes Transfered: " << kbytes_32_moved;
-        INFO << "Current Chunk: " << current_chunk;
+        _Read(user_handle,DATAMOVER_TRANSFER_COUNTER,(uint8_t*)(&kbytes_4_moved),4);
+        error_code = ((kbytes_4_moved & 0xC0000000)>>30);
+        overflow_count = ((kbytes_4_moved & 0x3FFF0000)>>16);
+        kbytes_4_moved = kbytes_4_moved & 0x0000FFFF;
+        current_chunk = kbytes_4_moved / (1 << 11);
+        //INFO << "error code: " << error_code;
+        //INFO << "overflow count: " << overflow_count;
+        //INFO << "32k_Bytes Transfered: " << kbytes_32_moved;
+        //INFO << "Current Chunk: " << current_chunk;
         if(last_chunk_read == -1) {
-            enoughData = (kbytes_32_moved >= (1 << 8));
+            enoughData = (kbytes_4_moved >= (1 << 11));
             if(enoughData && current_chunk == 0) {
                 enoughData = false;
                 continue;
@@ -166,8 +167,8 @@ void PCIeLink::Read(uint8_t* buff) {
     }
     last_chunk_read = current_chunk;
     int64_t reading_offset = current_chunk * (1 << 23);
-    INFO << "Reading from current current chunk: " << current_chunk;
-    INFO << "Offset: " << reading_offset;
+    //INFO << "Reading from current current chunk: " << current_chunk;
+    //INFO << "Offset: " << reading_offset;
     //Read the data from ddr3 memory
     _Read(c2h_0_handle,reading_offset,buff,1 << 23);
 }
@@ -387,13 +388,21 @@ PCIeLink::PCIeLink() {
     QueryPerformanceFrequency(&freq);
 }
 
+PCIeLink::PCIeLink(boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> *outputQueue) {
+    user_handle = INVALID_HANDLE_VALUE;
+    c2h_0_handle = INVALID_HANDLE_VALUE;
+    dataMoverReg[0] = 0x00;
+    last_chunk_read = -1;
+    QueryPerformanceFrequency(&freq);
+    this->outputQueue = outputQueue;
+}
+
 PCIeLink::~PCIeLink() {
     if(user_handle != INVALID_HANDLE_VALUE)
         CloseHandle(user_handle);
     if(c2h_0_handle != INVALID_HANDLE_VALUE)
         CloseHandle(c2h_0_handle);
 }
-
 
 void PCIeLink::ClockTick1() {
     QueryPerformanceCounter(&tick1);
@@ -413,6 +422,10 @@ void PCIeLink::ClockTick2() {
 void PCIeLink::PrintTimeDelta() {
     double time_sec = (unsigned long long)(tick2.QuadPart - tick1.QuadPart) / (double)freq.QuadPart;
     INFO << "Time Delta is: " << time_sec;
+}
+
+double PCIeLink::GetTimeDelta() {
+    return (unsigned long long)(tick2.QuadPart - tick1.QuadPart) / (double)freq.QuadPart;
 }
 
 

@@ -24,6 +24,7 @@ controller::controller(boost::lockfree::queue<buffer*, boost::lockfree::fixed_si
     triggerThread = new Trigger(dataQueue, &triggerProcessorQueue, triggerLevel);
     processorThread = new Processor(&triggerProcessorQueue, &processorPostProcessorQueue_1);
     postProcessorThread = new postProcessor(&processorPostProcessorQueue_1, &controllerQueue_tx);
+    
 
     // set default values
     setCh(1);
