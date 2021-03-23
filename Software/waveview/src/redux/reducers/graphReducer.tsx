@@ -21,6 +21,16 @@ export default function(state = GraphInitialState, action: {type: any, payload: 
         ...state,
         tickCount: state.tickCount + 1
       }
+    case "graph/xDomain":
+      return {
+        ...state,
+        xDomain: action.payload
+      }
+    case "graph/yDomain":
+      return {
+        ...state,
+        yDomain: action.payload
+      }
     default:
       return state;
   }

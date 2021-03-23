@@ -1,30 +1,16 @@
 import CMD from '../configuration/enums/cmd';
 import { PlumberArgs, Plumber, SetMathOp } from './plumber';
-
-class Range {
-  dataMin: number = 0;
-  dataMax: number = 0;
-
-  constructor(min: number, max: number){
-    this.dataMin = min;
-    this.dataMax = max;
-  }
-
-  getDomain() {
-    return [this.dataMin, this.dataMax];
-  }
-}
+import store from '../redux/store';
+import { LineSeriesPoint } from 'react-vis';
 
 class TestPoints {
-  x: Range;
-  y: Range;
-  scope_data: any[][] = []; //[ch-1] for channel, [5] for math
+  scope_data: LineSeriesPoint[][] = []; //[ch-1] for channel, [5] for math
   scope_data_max_idx = 5;
 
   chCount: number = 4;
   doMath: Boolean = true;
+  lastX: number = 0;
 
-  rampArgs: PlumberArgs;
   setChArgs: PlumberArgs;
   setFileArgs: PlumberArgs;
   setMathArgs: PlumberArgs;
@@ -33,32 +19,12 @@ class TestPoints {
   setMathDone: Boolean = false;
 
   constructor(xRange: number, yRange: number) {
-    this.x = new Range(0, xRange);
-    this.y = new Range(-yRange, yRange);
+    store.dispatch({type: "graph/xDomain", payload: [0, xRange]});
+    store.dispatch({type: "graph/yDomain", payload: [-yRange, yRange]})
 
     for(var j = 0; j < this.scope_data_max_idx; j++) {
-      this.scope_data[j] = [];
-      for(var i = 0; i < 1; i++) {
-        this.scope_data[j][i] = {x: i, y: 0};
-      }
+      this.scope_data[j] = [{x: 0, y: 0}];
     }
-
-    this.rampArgs = {
-      headCheck: () => true,
-      bodyCheck: (a, bytesRead, body) => {
-        var chMax = this.effectiveChCount();
-        var perChannel = Math.floor(body.length/chMax);
-        for(var channel = 0; channel < chMax; channel++) {
-          for(var i = 0; i < perChannel; i++) {
-            this.scope_data[channel][i] = {x: i, y: body[channel*perChannel + i]};
-          }
-        }
-        return true;
-      },
-      cmd: CMD.CMD_GetData1,
-      id: 0x1F2C,
-      writeData: [0, 0]
-    };
 
     this.setChArgs = {
       headCheck: () => {
@@ -102,7 +68,30 @@ class TestPoints {
 
   update() {
     if(this.setChDone && this.setFileDone && this.setMathDone) {
-      Plumber.getInstance().cycle(this.rampArgs);
+      let state = store.getState();
+      let xLimit = state.graph.xDomain[1];
+      let args: PlumberArgs = {
+        headCheck: () => true,
+        bodyCheck: (a, bytesRead, body) => {
+          var chMax = this.effectiveChCount();
+          var perChannel = Math.floor(body.length/chMax);
+          let xOffset = (this.lastX < xLimit) ? this.lastX : 0;
+          for(var channel = 0; channel < chMax; channel++) {
+            for(var i = 0; i < perChannel; i++) {
+              let x = xOffset + i;
+              let y = body[channel*perChannel + i];
+              this.scope_data[channel][x] = {x: x, y: y};
+            }
+          }
+          this.lastX = xOffset + perChannel;
+          return true;
+        },
+        cmd: CMD.CMD_GetData1,
+        id: 0,
+        writeData: [0, 0]
+      };
+
+      Plumber.getInstance().cycle(args);
     }
   }
 
@@ -112,7 +101,6 @@ class TestPoints {
 
   getData() {
     var chMax = this.effectiveChCount();
-    console.log(this.scope_data);
     return this.scope_data.slice(0, chMax);
   }
 }
