@@ -876,3 +876,8 @@ void controller::hardWareCommand(int command, int channel, int val1, double val2
         break;
     }
 }
+
+
+void controller::testADCData() {
+    pcieLinkThread->Write(test_adc_data,nullptr);
+}

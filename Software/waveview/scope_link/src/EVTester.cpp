@@ -223,7 +223,10 @@ void runPCIeTest() {
 
     controller* troller = new controller(&testerDataQueue);
     troller->setWindowSize(1000);
-    troller->controllerUnPause();
+    troller->testADCData();
+    //troller->controllerUnPause();
+
+    
 
     int x;
     std::cin >> x;

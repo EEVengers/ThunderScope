@@ -309,28 +309,6 @@ void PCIeLink::Write(ScopeCommand command, void* val) {
             _FIFO_WRITE(user_handle,adcActiveMode,4);
         }
         break;
-        case test_write:
-        {
-            INFO << "TESTING WRITING TO SCOPE";
-            //test the following register: address 0, val 0x03
-            uint8_t txBuff[1] = {0x03};
-            uint8_t rxBuff[1] = {0xFF};
-            uint8_t rxBuff_org[1] = {0xFF};
-            //read original value
-            _Read(user_handle,0,rxBuff_org,1);
-            //write to user space
-            _Write(user_handle,0,txBuff,1);
-            //read back from user space
-            _Read(user_handle,0,rxBuff,1);
-            printf("Original val: %d, written val: %d, read val: %d\n",rxBuff_org[0],
-                                                        txBuff[0],rxBuff[0]);
-            txBuff[0] = 0;
-            _Write(user_handle,0,txBuff,1);
-            //read original value
-            _Read(user_handle,0,rxBuff,1);
-            printf("After writting 0 again, the read value is: %d\n",rxBuff[0]);
-        }
-        break;
         case dataMover_enable:
         INFO << "Enabling DataMover";
         {
@@ -378,6 +356,55 @@ void PCIeLink::Write(ScopeCommand command, void* val) {
             BandwidthSetParam* param = (BandwidthSetParam*)val;
             DEBUG << "Setting Channel " << param->ch_num << " Bandwidth To: " << param->bw;
             _bw_set(param->ch_num,param->bw);
+        }
+        break;
+        case test_write:
+        {
+            INFO << "TESTING WRITING TO SCOPE";
+            //test the following register: address 0, val 0x03
+            uint8_t txBuff[1] = {0x03};
+            uint8_t rxBuff[1] = {0xFF};
+            uint8_t rxBuff_org[1] = {0xFF};
+            //read original value
+            _Read(user_handle,0,rxBuff_org,1);
+            //write to user space
+            _Write(user_handle,0,txBuff,1);
+            //read back from user space
+            _Read(user_handle,0,rxBuff,1);
+            printf("Original val: %d, written val: %d, read val: %d\n",rxBuff_org[0],
+                                                        txBuff[0],rxBuff[0]);
+            txBuff[0] = 0;
+            _Write(user_handle,0,txBuff,1);
+            //read original value
+            _Read(user_handle,0,rxBuff,1);
+            printf("After writting 0 again, the read value is: %d\n",rxBuff[0]);
+        }
+        break;
+        case test_adc_data:
+        {
+            int num_buffers = 4;
+            uint8_t **buffers = (uint8_t**)malloc(num_buffers * sizeof(uint8_t*));
+            for(int i = 0; i < num_buffers; i++) {
+                buffers[i] = (uint8_t*)malloc(BUFFER_SIZE * sizeof(uint8_t));
+            }
+
+            for(int i = 0; i < num_buffers; i++) {
+                Read(buffers[i]);
+            }
+
+            for(int i = 0; i < num_buffers; i++) {
+                char name[100];
+                sprintf(name,"ADC_DATA_FILE%d.csv",i);
+                FILE* file = fopen(name,"w");
+                for(int q = 0; q < BUFFER_SIZE; q++) {
+                    fprintf(file,"%X\n",buffers[i][q]);
+                }
+            }
+
+            for(int i = 0; i < num_buffers; i++) {
+                free(buffers[i]);
+            }
+            free(buffers);
         }
         break;
         default:

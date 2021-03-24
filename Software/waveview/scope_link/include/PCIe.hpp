@@ -47,14 +47,15 @@ enum ScopeCommand {
     adc_enable_ramp_test,
     dataMover_enable,
     dataMover_disable,
-    test_write,
     enable_channel,
     disable_channel,
     ac_couple,
     dc_couple,
     voltage_divison_set,
     voltage_offset_set,
-    bandwidth_set
+    bandwidth_set,
+    test_write,
+    test_adc_data
 };
 
 struct VoltageDivSetParam {
