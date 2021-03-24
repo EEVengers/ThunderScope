@@ -206,7 +206,7 @@ void PCIeLink::Write(ScopeCommand command, void* val) {
         INFO << "Enabling Board";
         {
             currentBoardState.board_reg_out |= 0x0100; //acq->on fe->off
-            _Write(user_handle,BOARD_REG_OUT,(uint8_t*)currentBoardState.board_reg_out,4);
+            _Write32(user_handle,BOARD_REG_OUT,currentBoardState.board_reg_out);
             std::this_thread::sleep_for(std::chrono::milliseconds(5));
         }
 
@@ -231,7 +231,7 @@ void PCIeLink::Write(ScopeCommand command, void* val) {
             }
 
             currentBoardState.board_reg_out |= 0x0200;
-            _Write(user_handle,BOARD_REG_OUT,(uint8_t*)&currentBoardState.board_reg_out,4);
+            _Write32(user_handle,BOARD_REG_OUT,currentBoardState.board_reg_out);
         }
 
         INFO << "Enabling ADC";
@@ -241,6 +241,9 @@ void PCIeLink::Write(ScopeCommand command, void* val) {
             _FIFO_WRITE(user_handle,resetADC,4);
             //Power Down ADC
             _adc_power_down();
+            //Set adc test mode OFF
+            uint8_t adcRampTest[] = {0xFD,0x25,0x00,0x00};
+            _FIFO_WRITE(user_handle,adcRampTest,4);
             //Set Channel and Clock Div
             uint8_t setChannelClock[] = {0xFD,0x31,0x00,0x01};
             _FIFO_WRITE(user_handle,setChannelClock,4);
@@ -260,7 +263,7 @@ void PCIeLink::Write(ScopeCommand command, void* val) {
         INFO << "Enabling the front end";
         {
             currentBoardState.board_reg_out |= 0x0400; //fe->on
-            _Write(user_handle,BOARD_REG_OUT,(uint8_t*)currentBoardState.board_reg_out,4);
+            _Write32(user_handle,BOARD_REG_OUT,currentBoardState.board_reg_out);
             std::this_thread::sleep_for(std::chrono::milliseconds(5));
             //enable the pga
             for(int i = 0; i < 4; i++) {
@@ -326,16 +329,16 @@ void PCIeLink::Write(ScopeCommand command, void* val) {
         INFO << "Enabling DataMover";
         {
             currentBoardState.datamover_reg_out |= 0x03;
-            _Write(user_handle,DATAMOVER_REG_OUT,(uint8_t*)&currentBoardState.datamover_reg_out,4);
+            _Write32(user_handle,DATAMOVER_REG_OUT,currentBoardState.datamover_reg_out);
         }
         break;
         case dataMover_disable:
         INFO << "Disabling DataMover";
         {
             currentBoardState.datamover_reg_out &= ~(0x01);
-            _Write(user_handle,DATAMOVER_REG_OUT,(uint8_t*)&currentBoardState.datamover_reg_out,4);
+            _Write32(user_handle,DATAMOVER_REG_OUT,currentBoardState.datamover_reg_out);
             currentBoardState.datamover_reg_out &= ~(0x02);
-            _Write(user_handle,DATAMOVER_REG_OUT,(uint8_t*)&currentBoardState.datamover_reg_out,4);
+            _Write32(user_handle,DATAMOVER_REG_OUT,currentBoardState.datamover_reg_out);
         }
         break;
         case enable_channel:
@@ -457,6 +460,31 @@ void PCIeLink::_Write(HANDLE hPCIE, int64_t address, uint8_t* buff, int bytesToW
     // write from buffer to device
     DWORD bytesWritten;
     if (!WriteFile(hPCIE, buff, bytesToWrite, &bytesWritten, NULL)) {
+        ERROR << "_Write() failed with Win32 error code: " << GetLastError();
+    }
+}
+
+void PCIeLink::_Write32(HANDLE hPCIE, long long address, uint32_t val) {
+    if(hPCIE == INVALID_HANDLE_VALUE) {
+        ERROR << "INVALID HANDLE PASSED INTO PCIeLink::_Write(): " << hPCIE;
+        return;
+    }
+
+    LARGE_INTEGER offset;
+    offset.QuadPart = address;
+    // set file pointer to offset of target address within PCIe BAR
+    if (INVALID_SET_FILE_POINTER == SetFilePointerEx(hPCIE, offset, NULL, FILE_BEGIN)) {
+        ERROR << "Error setting file pointer for PCIeLink::_Write(), win32 error code: " << GetLastError();
+    }
+
+    // write from buffer to device
+    DWORD bytesWritten;
+    uint8_t bytes[4];
+    bytes[3] = (uint8_t)( (val & 0xFF000000) >> 24);
+    bytes[2] = (uint8_t)( (val & 0x00FF0000) >> 16);
+    bytes[1] = (uint8_t)( (val & 0x0000FF00) >> 8);
+    bytes[0] = (uint8_t)( (val & 0x000000FF));
+    if (!WriteFile(hPCIE, bytes, 4, &bytesWritten, NULL)) {
         ERROR << "_Write() failed with Win32 error code: " << GetLastError();
     }
 }
@@ -617,7 +645,7 @@ int PCIeLink::_dc_cpl(int ch_num){
     else if (ch_num == 3)
         currentBoardState.board_reg_out |= (1 << 7);
 
-    _Write(user_handle,BOARD_REG_OUT,(uint8_t*)&currentBoardState.board_reg_out,4);
+    _Write32(user_handle,BOARD_REG_OUT,currentBoardState.board_reg_out);
 
     return 1;
 }
@@ -632,7 +660,7 @@ int PCIeLink::_ac_cpl(int ch_num){
     else if (ch_num == 3)
         currentBoardState.board_reg_out &= ~(1 << 7);
 
-    _Write(user_handle,BOARD_REG_OUT,(uint8_t*)&currentBoardState.board_reg_out,4);
+    _Write32(user_handle,BOARD_REG_OUT,currentBoardState.board_reg_out);
 
     return 1;
 }
@@ -690,7 +718,7 @@ int PCIeLink::_vdiv_set(int ch_num, int vdiv){
         currentBoardState.pga[ch_num][3] |= 0x10;
     }
 
-    _Write(user_handle,BOARD_REG_OUT,(uint8_t*)currentBoardState.board_reg_out,4);
+    _Write32(user_handle,BOARD_REG_OUT,currentBoardState.board_reg_out);
     _FIFO_WRITE(user_handle,currentBoardState.pga[ch_num],sizeof(currentBoardState.pga[ch_num]));
 
     return 1;
