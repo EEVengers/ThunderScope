@@ -4,6 +4,7 @@
 #include "dspPipeline.hpp"
 #include "bridge.hpp"
 #include "common.hpp"
+#include "PCIe.hpp"
 
 class controller
 {
@@ -55,6 +56,8 @@ private:
     Trigger* triggerThread = NULL;
     Processor* processorThread = NULL;
     postProcessor* postProcessorThread = NULL;
+    PCIeLink* pcieLinkThread = NULL;
+    
 
     // Control Command Processor
     std::thread controllerThread;

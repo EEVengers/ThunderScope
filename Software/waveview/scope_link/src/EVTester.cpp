@@ -10,6 +10,7 @@
 #include <boost/tokenizer.hpp>
 #include <fstream>
 #include <iostream>
+#include "controller.hpp"
 
 uint32_t testSize = 1000;
 
@@ -206,6 +207,7 @@ void runSocketTest ()
     delete bridgeThread_1;
 }
 
+boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> testerDataQueue{1000};
 
 /*******************************************************************************
  * runPCIeTEST()
@@ -218,28 +220,19 @@ void runSocketTest ()
  *   None
  ******************************************************************************/
 void runPCIeTest() {
-    PCIeLink* pcieLink = new PCIeLink();
 
-    pcieLink->Connect();
-    pcieLink->Write(board_enable,nullptr);
-    pcieLink->Write(clk_enable,nullptr);
-    pcieLink->Write(adc_enable,nullptr);
-    pcieLink->Write(dataMover_enable,nullptr);
-    
-    uint8_t* buff = (uint8_t*)malloc(sizeof(uint8_t) * (1 << 23));
-    pcieLink->ClockTick1();
-    pcieLink->Read(buff);
-    pcieLink->ClockTick2();
+    controller* troller = new controller(&testerDataQueue);
+    troller->controllerUnPause();
 
-    pcieLink->PrintTimeDelta();
+    std::this_thread::sleep_for(std::chrono::milliseconds(500));
 
-    FILE* fp = fopen("TestData.txt","w");
+    /*FILE* fp = fopen("TestData.txt","w");
     for(int i = 0; i < (1 << 23); i+= 8) {
         fprintf(fp,"%X,%X,%X,%X,%X,%X,%X,%X\n",
             buff[i],buff[i + 1],buff[i + 2],buff[i + 3],buff[i + 4],buff[i + 5],buff[i + 6],buff[i + 7]);
     }
+    fclose(fp); */
 
-    fclose(fp);
-    free(buff);
-    delete pcieLink;
+
+    delete troller;
 }

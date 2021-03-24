@@ -208,7 +208,7 @@ void Bridge::TxJob() {
                 send(client_tx_sock,tx_buff,packet_size,0);
 #endif
                 //free the packet
-                free(currentPacket);
+                FreePacket(currentPacket);
         }
         // No more packets, sleep.
         std::this_thread::sleep_for(std::chrono::microseconds(500));

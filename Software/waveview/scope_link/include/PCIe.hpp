@@ -15,6 +15,7 @@
 #include <WinIoCtl.h>
 
 #include "xdma_public.h"
+#include "common.hpp"
 
 #pragma comment(lib, "setupapi.lib")
 
@@ -61,16 +62,22 @@ class PCIeLink {
 
 public:
     bool connected;
-    PCIeLink();
+    PCIeLink(boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> *outputQueue);
 
     int Connect();
+    void InitBoard();
     
     void Read(uint8_t* buff);
     void Write(ScopeCommand command, void* val);
 
+    void Pause();
+    void UnPause();
+    void Stop();
+
     void ClockTick1();
     void ClockTick2();
     void PrintTimeDelta();
+    double GetTimeDelta();
 
     ~PCIeLink();
 
@@ -86,6 +93,13 @@ private:
     LARGE_INTEGER freq; //used for perforamnce testing
     int64_t last_chunk_read;
 
+    std::atomic<bool> _run;
+    std::atomic<bool> _pause;
+    std::thread PCIeReadThread;
+
+    //output queue in which read data from the FPGA is shoved into
+    boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> *outputQueue;
+
     //used for speed testing
     LARGE_INTEGER tick1;
     LARGE_INTEGER tick2;
@@ -93,6 +107,7 @@ private:
     void _Read(HANDLE hPCIE, long long address, uint8_t* buff, int bytesToRead);
     void _Write(HANDLE hPCIE, long long address, uint8_t* buff, int bytesToWrite);
     void _FIFO_WRITE(HANDLE hPCIE, uint8_t* data, uint8_t bytesToWrite);
+    void _Job();
 
 protected:
 
