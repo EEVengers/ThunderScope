@@ -23,7 +23,11 @@
 #define BUFFER_1024K 1048576
 #define BUFFER_8M    (1 << 23)
 
+#ifdef NOHARDWARE
+#define BUFFER_SIZE BUFFER_8K
+#else
 #define BUFFER_SIZE BUFFER_8M
+#endif
 
 // Window size in buffers
 #define DEFAULT_WINDOW 10
