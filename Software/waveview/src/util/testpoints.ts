@@ -10,13 +10,12 @@ class TestPoints {
 
   setChArgs: PlumberArgs;
   setFileArgs: PlumberArgs;
+  setWinArgs: PlumberArgs;
   setChDone: Boolean = false;
   setFileDone: Boolean = false;
+  setWinDone: Boolean = false;
 
-  constructor(xRange: number, yRange: number) {
-    store.dispatch({type: "graph/xDomain", payload: [0, xRange]});
-    store.dispatch({type: "graph/yDomain", payload: [-yRange, yRange]})
-
+  constructor() {
     let state = store.getState();
     for(var j = 0; j < this.getDataMaxCh; j++) {
       this.scope_data[j] = [{x: 0, y: 0}];
@@ -43,15 +42,27 @@ class TestPoints {
       id: 0,
       writeData: [74, 0]
     }
+
+    this.setWinArgs = {
+      headCheck: () => {
+        this.setWinDone = true;
+        return true;
+      },
+      bodyCheck: () => true,
+      cmd: CMD.CMD_SetWindowSize,
+      id: 0,
+      writeData: new Int8Array((new Uint32Array([state.graph.xDomain[1]])).buffer)
+    }
   }
 
   mountCalls() {
     Plumber.getInstance().cycle(this.setChArgs);
     Plumber.getInstance().cycle(this.setFileArgs);
+    Plumber.getInstance().cycle(this.setWinArgs);
   }
 
   update() {
-    if(this.setChDone && this.setFileDone) {
+    if(this.setChDone && this.setFileDone && this.setWinDone) {
       let state = store.getState();
       let xLimit = state.graph.xDomain[1];
       let doMath = state.mathWidget.mathEnabled as boolean;
