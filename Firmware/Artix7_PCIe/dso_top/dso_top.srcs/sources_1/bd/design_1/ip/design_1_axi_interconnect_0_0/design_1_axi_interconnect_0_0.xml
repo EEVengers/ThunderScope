@@ -63,7 +63,7 @@
     <spirit:parameter>
       <spirit:name>STRATEGY</spirit:name>
       <spirit:displayName>Interconnect Optimization Strategy</spirit:displayName>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.STRATEGY" spirit:choiceRef="choice_pairs_ab2668a2" spirit:order="4">0</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.STRATEGY" spirit:choiceRef="choice_pairs_ab2668a2" spirit:order="4">2</spirit:value>
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>ENABLE_ADVANCED_OPTIONS</spirit:name>
@@ -423,7 +423,7 @@
     <spirit:parameter>
       <spirit:name>M00_HAS_DATA_FIFO</spirit:name>
       <spirit:displayName>Enable Data FIFO on interface M00_AXI</spirit:displayName>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.M00_HAS_DATA_FIFO" spirit:choiceRef="choice_pairs_76d086ea" spirit:order="1635348">0</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.M00_HAS_DATA_FIFO" spirit:choiceRef="choice_pairs_76d086ea" spirit:order="1635348">2</spirit:value>
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>M01_HAS_DATA_FIFO</spirit:name>
@@ -823,12 +823,12 @@
     <spirit:parameter>
       <spirit:name>S00_HAS_DATA_FIFO</spirit:name>
       <spirit:displayName>Enable Data FIFO on interface S00_AXI</spirit:displayName>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.S00_HAS_DATA_FIFO" spirit:choiceRef="choice_pairs_76d086ea" spirit:order="1635428">0</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.S00_HAS_DATA_FIFO" spirit:choiceRef="choice_pairs_76d086ea" spirit:order="1635428">2</spirit:value>
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>S01_HAS_DATA_FIFO</spirit:name>
       <spirit:displayName>Enable Data FIFO on interface S01_AXI</spirit:displayName>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.S01_HAS_DATA_FIFO" spirit:choiceRef="choice_pairs_76d086ea" spirit:order="1635429">0</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.S01_HAS_DATA_FIFO" spirit:choiceRef="choice_pairs_76d086ea" spirit:order="1635429">2</spirit:value>
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>S02_HAS_DATA_FIFO</spirit:name>
@@ -1631,8 +1631,12 @@
       <xilinx:coreRevision>22</xilinx:coreRevision>
       <xilinx:configElementInfos>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.ENABLE_ADVANCED_OPTIONS" xilinx:valueSource="user"/>
+        <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.M00_HAS_DATA_FIFO" xilinx:valueSource="user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.NUM_MI" xilinx:valueSource="user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.NUM_SI" xilinx:valueSource="user"/>
+        <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.S00_HAS_DATA_FIFO" xilinx:valueSource="user"/>
+        <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.S01_HAS_DATA_FIFO" xilinx:valueSource="user"/>
+        <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.STRATEGY" xilinx:valueSource="user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.SYNCHRONIZATION_STAGES" xilinx:valuePermission="bd_and_user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.XBAR_DATA_WIDTH" xilinx:valuePermission="bd_and_user"/>
       </xilinx:configElementInfos>

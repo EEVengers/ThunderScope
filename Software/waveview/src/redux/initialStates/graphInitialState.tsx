@@ -1,10 +1,11 @@
 import GraphStatus from "../../configuration/enums/graphStatus";
+import HorizontalWidgetInitialState from "./horizontalWidgetInitialState";
+import TimeUnit from "../../configuration/enums/timeUnit";
+import { convertTime } from "../../util/convert";
 
 const GraphInitialState = {
   currentStatus: GraphStatus.On,
   singleMode: false,
-  xDomain: [0,0],
-  yDomain: [0,0],
   tickCount: 0
 };
 

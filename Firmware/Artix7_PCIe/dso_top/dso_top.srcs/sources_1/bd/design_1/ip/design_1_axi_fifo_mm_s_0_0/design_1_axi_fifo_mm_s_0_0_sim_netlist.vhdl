@@ -1,10 +1,10 @@
 -- Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
--- Date        : Mon Mar 15 13:13:31 2021
+-- Date        : Tue Mar 23 16:45:31 2021
 -- Host        : DESKTOP-J72MK93 running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode funcsim
---               c:/Users/Aleksa/Documents/FPGA_Dev/Artix7_PCIe/dso_top/dso_top.srcs/sources_1/bd/design_1/ip/design_1_axi_fifo_mm_s_0_0/design_1_axi_fifo_mm_s_0_0_sim_netlist.vhdl
+-- Command     : write_vhdl -force -mode funcsim -rename_top design_1_axi_fifo_mm_s_0_0 -prefix
+--               design_1_axi_fifo_mm_s_0_0_ design_1_axi_fifo_mm_s_0_0_sim_netlist.vhdl
 -- Design      : design_1_axi_fifo_mm_s_0_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -19,8 +19,6 @@ entity design_1_axi_fifo_mm_s_0_0_pselect_f is
     ce_expnd_i_12 : out STD_LOGIC;
     \GEN_BKEND_CE_REGISTERS[0].ce_out_i_reg[0]\ : in STD_LOGIC_VECTOR ( 3 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of design_1_axi_fifo_mm_s_0_0_pselect_f : entity is "pselect_f";
 end design_1_axi_fifo_mm_s_0_0_pselect_f;
 
 architecture STRUCTURE of design_1_axi_fifo_mm_s_0_0_pselect_f is
@@ -352,8 +350,6 @@ entity design_1_axi_fifo_mm_s_0_0_xpm_cdc_sync_rst is
   attribute INIT of design_1_axi_fifo_mm_s_0_0_xpm_cdc_sync_rst : entity is "0";
   attribute INIT_SYNC_FF : integer;
   attribute INIT_SYNC_FF of design_1_axi_fifo_mm_s_0_0_xpm_cdc_sync_rst : entity is 1;
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of design_1_axi_fifo_mm_s_0_0_xpm_cdc_sync_rst : entity is "xpm_cdc_sync_rst";
   attribute SIM_ASSERT_CHK : integer;
   attribute SIM_ASSERT_CHK of design_1_axi_fifo_mm_s_0_0_xpm_cdc_sync_rst : entity is 0;
   attribute VERSION : integer;
@@ -2912,8 +2908,6 @@ entity design_1_axi_fifo_mm_s_0_0_xpm_fifo_reg_bit is
     ram_rd_en_pf_q : in STD_LOGIC;
     prog_full : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of design_1_axi_fifo_mm_s_0_0_xpm_fifo_reg_bit : entity is "xpm_fifo_reg_bit";
 end design_1_axi_fifo_mm_s_0_0_xpm_fifo_reg_bit;
 
 architecture STRUCTURE of design_1_axi_fifo_mm_s_0_0_xpm_fifo_reg_bit is
@@ -3021,8 +3015,6 @@ entity design_1_axi_fifo_mm_s_0_0_xpm_fifo_rst is
     \gen_pntr_flags_cc.wrp_eq_rdp_pf_cc.gpe_cc_sym.diff_pntr_pe_reg[3]_1\ : in STD_LOGIC_VECTOR ( 0 to 0 );
     wr_clk : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of design_1_axi_fifo_mm_s_0_0_xpm_fifo_rst : entity is "xpm_fifo_rst";
 end design_1_axi_fifo_mm_s_0_0_xpm_fifo_rst;
 
 architecture STRUCTURE of design_1_axi_fifo_mm_s_0_0_xpm_fifo_rst is
@@ -3211,8 +3203,6 @@ entity design_1_axi_fifo_mm_s_0_0_xpm_memory_base is
   attribute MESSAGE_CONTROL of design_1_axi_fifo_mm_s_0_0_xpm_memory_base : entity is 0;
   attribute NUM_CHAR_LOC : integer;
   attribute NUM_CHAR_LOC of design_1_axi_fifo_mm_s_0_0_xpm_memory_base : entity is 0;
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of design_1_axi_fifo_mm_s_0_0_xpm_memory_base : entity is "xpm_memory_base";
   attribute P_ECC_MODE : string;
   attribute P_ECC_MODE of design_1_axi_fifo_mm_s_0_0_xpm_memory_base : entity is "no_ecc";
   attribute P_ENABLE_BYTE_WRITE_A : integer;
@@ -3711,8 +3701,6 @@ entity design_1_axi_fifo_mm_s_0_0_address_decoder is
     \sig_register_array[0][4]_i_3_0\ : in STD_LOGIC;
     \GEN_BKEND_CE_REGISTERS[9].ce_out_i_reg[9]_0\ : in STD_LOGIC_VECTOR ( 3 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of design_1_axi_fifo_mm_s_0_0_address_decoder : entity is "address_decoder";
 end design_1_axi_fifo_mm_s_0_0_address_decoder;
 
 architecture STRUCTURE of design_1_axi_fifo_mm_s_0_0_address_decoder is
@@ -4662,8 +4650,6 @@ entity design_1_axi_fifo_mm_s_0_0_xpm_fifo_base is
   attribute FULL_RESET_VALUE of design_1_axi_fifo_mm_s_0_0_xpm_fifo_base : entity is 1;
   attribute FULL_RST_VAL : string;
   attribute FULL_RST_VAL of design_1_axi_fifo_mm_s_0_0_xpm_fifo_base : entity is "1'b1";
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of design_1_axi_fifo_mm_s_0_0_xpm_fifo_base : entity is "xpm_fifo_base";
   attribute PE_THRESH_ADJ : integer;
   attribute PE_THRESH_ADJ of design_1_axi_fifo_mm_s_0_0_xpm_fifo_base : entity is 3;
   attribute PE_THRESH_MAX : integer;
@@ -5981,8 +5967,6 @@ entity design_1_axi_fifo_mm_s_0_0_slave_attachment is
     s_axi_awaddr : in STD_LOGIC_VECTOR ( 3 downto 0 );
     \s_axi_rdata_i_reg[31]_0\ : in STD_LOGIC_VECTOR ( 21 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of design_1_axi_fifo_mm_s_0_0_slave_attachment : entity is "slave_attachment";
 end design_1_axi_fifo_mm_s_0_0_slave_attachment;
 
 architecture STRUCTURE of design_1_axi_fifo_mm_s_0_0_slave_attachment is
@@ -6701,8 +6685,6 @@ entity design_1_axi_fifo_mm_s_0_0_xpm_fifo_axis is
   attribute FIFO_MEMORY_TYPE of design_1_axi_fifo_mm_s_0_0_xpm_fifo_axis : entity is "BRAM";
   attribute LOG_DEPTH_AXIS : integer;
   attribute LOG_DEPTH_AXIS of design_1_axi_fifo_mm_s_0_0_xpm_fifo_axis : entity is 9;
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of design_1_axi_fifo_mm_s_0_0_xpm_fifo_axis : entity is "xpm_fifo_axis";
   attribute PACKET_FIFO : string;
   attribute PACKET_FIFO of design_1_axi_fifo_mm_s_0_0_xpm_fifo_axis : entity is "true";
   attribute PKT_SIZE_LT8 : string;
@@ -8572,8 +8554,6 @@ entity design_1_axi_fifo_mm_s_0_0_axi_lite_ipif is
     s_axi_awaddr : in STD_LOGIC_VECTOR ( 3 downto 0 );
     \s_axi_rdata_i_reg[31]\ : in STD_LOGIC_VECTOR ( 21 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of design_1_axi_fifo_mm_s_0_0_axi_lite_ipif : entity is "axi_lite_ipif";
 end design_1_axi_fifo_mm_s_0_0_axi_lite_ipif;
 
 architecture STRUCTURE of design_1_axi_fifo_mm_s_0_0_axi_lite_ipif is
@@ -8682,8 +8662,6 @@ entity design_1_axi_fifo_mm_s_0_0_axis_fg is
     Axi_Str_RxD_AReset : in STD_LOGIC;
     mm2s_prmry_reset_out_n_0 : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of design_1_axi_fifo_mm_s_0_0_axis_fg : entity is "axis_fg";
 end design_1_axi_fifo_mm_s_0_0_axis_fg;
 
 architecture STRUCTURE of design_1_axi_fifo_mm_s_0_0_axis_fg is
@@ -9125,8 +9103,6 @@ entity design_1_axi_fifo_mm_s_0_0_fifo is
     sig_txd_prog_full_d1 : in STD_LOGIC;
     sig_txd_prog_empty_d1 : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of design_1_axi_fifo_mm_s_0_0_fifo : entity is "fifo";
 end design_1_axi_fifo_mm_s_0_0_fifo;
 
 architecture STRUCTURE of design_1_axi_fifo_mm_s_0_0_fifo is
@@ -9810,8 +9786,6 @@ entity design_1_axi_fifo_mm_s_0_0_ipic2axi_s is
     \sig_register_array_reg[1][0]_0\ : in STD_LOGIC_VECTOR ( 12 downto 0 );
     \sig_txd_wr_data_reg[31]_0\ : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of design_1_axi_fifo_mm_s_0_0_ipic2axi_s : entity is "ipic2axi_s";
 end design_1_axi_fifo_mm_s_0_0_ipic2axi_s;
 
 architecture STRUCTURE of design_1_axi_fifo_mm_s_0_0_ipic2axi_s is
@@ -12479,8 +12453,6 @@ entity design_1_axi_fifo_mm_s_0_0_axi_fifo_mm_s is
   attribute C_USE_TX_CUT_THROUGH of design_1_axi_fifo_mm_s_0_0_axi_fifo_mm_s : entity is 0;
   attribute C_USE_TX_DATA : integer;
   attribute C_USE_TX_DATA of design_1_axi_fifo_mm_s_0_0_axi_fifo_mm_s : entity is 1;
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of design_1_axi_fifo_mm_s_0_0_axi_fifo_mm_s : entity is "axi_fifo_mm_s";
 end design_1_axi_fifo_mm_s_0_0_axi_fifo_mm_s;
 
 architecture STRUCTURE of design_1_axi_fifo_mm_s_0_0_axi_fifo_mm_s is

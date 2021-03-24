@@ -247,6 +247,12 @@ void PCIeLink::Write(ScopeCommand command, void* val) {
             //Set Channel and Clock Div
             uint8_t setChannelClock[] = {0xFD,0x31,0x00,0x01};
             _FIFO_WRITE(user_handle,setChannelClock,4);
+            //invert channels
+            uint8_t channel_invert[] = {0xFD,0x24,0x00,0x7F};
+            _FIFO_WRITE(user_handle,channel_invert,4);
+            //twos compliment mode
+            //uint8_t setTwosComp[] = {0xFD,0x46,0x00,0x04};
+            //_FIFO_WRITE(user_handle,setTwosComp,4);
             //Course Gain On
             uint8_t course_gain_on[] = {0xFD,0x33,0x00,0x00};
             _FIFO_WRITE(user_handle,course_gain_on,4);
@@ -561,7 +567,7 @@ PCIeLink::PCIeLink(boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<
 
     //init register values
     currentBoardState.datamover_reg_out = 0x00;
-    currentBoardState.board_reg_out = 0x00;
+    currentBoardState.board_reg_out = 0xFF; // FOR FUCKS SAKE CHANGE THIS!
 
     //connect to the board and start the adc + read thread
     Connect();

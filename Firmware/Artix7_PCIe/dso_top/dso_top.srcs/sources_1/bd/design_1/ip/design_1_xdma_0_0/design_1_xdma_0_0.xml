@@ -1628,7 +1628,7 @@
         </spirit:parameter>
         <spirit:parameter>
           <spirit:name>NUM_WRITE_OUTSTANDING</spirit:name>
-          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.M_AXI.NUM_WRITE_OUTSTANDING">16</spirit:value>
+          <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="BUSIFPARAM_VALUE.M_AXI.NUM_WRITE_OUTSTANDING">32</spirit:value>
           <spirit:vendorExtensions>
             <xilinx:parameterInfo>
               <xilinx:parameterUsage>none</xilinx:parameterUsage>
@@ -19862,11 +19862,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Sun Mar 14 04:23:31 UTC 2021</spirit:value>
+            <spirit:value>Sat Mar 20 21:03:04 UTC 2021</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:cbfa5bd9</spirit:value>
+            <spirit:value>9:58ee8352</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -19882,11 +19882,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Mon Mar 15 15:08:28 UTC 2021</spirit:value>
+            <spirit:value>Tue Mar 23 20:43:53 UTC 2021</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:d50d1513</spirit:value>
+            <spirit:value>9:d1cee62c</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -19897,7 +19897,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:d50d1513</spirit:value>
+            <spirit:value>9:d1cee62c</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -19913,11 +19913,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Mon Mar 15 15:08:28 UTC 2021</spirit:value>
+            <spirit:value>Tue Mar 23 20:43:53 UTC 2021</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:d50d1513</spirit:value>
+            <spirit:value>9:d1cee62c</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -19933,11 +19933,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Mon Mar 15 15:08:28 UTC 2021</spirit:value>
+            <spirit:value>Tue Mar 23 20:43:53 UTC 2021</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:d10bad0c</spirit:value>
+            <spirit:value>9:66a299c2</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -19953,11 +19953,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Mon Mar 15 15:08:29 UTC 2021</spirit:value>
+            <spirit:value>Tue Mar 23 20:43:54 UTC 2021</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:d10bad0c</spirit:value>
+            <spirit:value>9:66a299c2</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -19971,11 +19971,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Mon Mar 15 15:08:29 UTC 2021</spirit:value>
+            <spirit:value>Tue Mar 23 20:43:54 UTC 2021</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:d50d1513</spirit:value>
+            <spirit:value>9:d1cee62c</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -19989,11 +19989,11 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Mon Mar 15 17:12:45 UTC 2021</spirit:value>
+            <spirit:value>Tue Mar 23 22:17:37 UTC 2021</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:d50d1513</spirit:value>
+            <spirit:value>9:d1cee62c</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -51477,7 +51477,7 @@
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>XDMA_WNUM_RIDS</spirit:name>
-        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.XDMA_WNUM_RIDS">16</spirit:value>
+        <spirit:value spirit:format="long" spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.XDMA_WNUM_RIDS">32</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_M_AXI_ID_WIDTH</spirit:name>
@@ -54466,7 +54466,7 @@
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>xdma_wnum_rids</spirit:name>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.xdma_wnum_rids" spirit:order="59" spirit:minimum="2" spirit:maximum="32" spirit:rangeType="long">16</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.xdma_wnum_rids" spirit:order="59" spirit:minimum="2" spirit:maximum="32" spirit:rangeType="long">32</spirit:value>
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>SYS_RST_N_BOARD_INTERFACE</spirit:name>
@@ -61999,6 +61999,8 @@
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.s_axi_id_width" xilinx:valuePermission="bd"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.xdma_pcie_64bit_en" xilinx:valueSource="user"/>
         <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.xdma_pcie_prefetchable" xilinx:valueSource="user"/>
+        <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.xdma_rnum_rids" xilinx:valueSource="user"/>
+        <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.xdma_wnum_rids" xilinx:valueSource="user"/>
       </xilinx:configElementInfos>
     </xilinx:coreExtensions>
     <xilinx:packagingInfo>

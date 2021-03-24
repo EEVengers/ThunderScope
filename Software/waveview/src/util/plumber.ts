@@ -1,4 +1,9 @@
 import CMD from '../configuration/enums/cmd';
+import { SetChState } from './setChHelper';
+import MathOperators from '../configuration/enums/mathOperators';
+import DefaultValues from '../configuration/defaultValues';
+import { convertTime } from './convert';
+import TimeUnit from '../configuration/enums/timeUnit';
 
 export enum SetMathOp {
   SetMath_None = 0,
@@ -107,8 +112,54 @@ export class Plumber {
     }
   }
 
-  public makeSetMathData(lhsChan: number, rhsChan: number, op: SetMathOp) {
-    return [lhsChan, rhsChan, op, 0];
+  public handleSetchState(s: SetChState) {
+    let setChArgs: PlumberArgs = {
+      headCheck: () => true,
+      bodyCheck: () => true,
+      cmd: CMD.CMD_SetCh,
+      id: 0,
+      writeData: [s.setCh, 0]
+    }
+    let setTriggerChArgs: PlumberArgs = {
+      headCheck: () => true,
+      bodyCheck: () => true,
+      cmd: CMD.CMD_SetTriggerCh,
+      id: 0,
+      writeData: [s.setTriggerCh, 0]
+    }
+    this.cycle(setChArgs);
+    this.cycle(setTriggerChArgs);
+  }
+
+  public handleMath(enable: boolean, lhsChan: number, rhsChan: number, op: MathOperators) {
+    var protcolOp = 0;
+    if(enable) {
+      protcolOp = (op == MathOperators.Addition) ? 1 : 2;
+    }
+    let mathArgs: PlumberArgs = {
+      headCheck: () => true,
+      bodyCheck: () => true,
+      cmd: CMD.CMD_SetMath,
+      id: 0,
+      writeData: [lhsChan, rhsChan, protcolOp, 0]
+    }
+    this.cycle(mathArgs);
+  }
+
+  public handleHoriz(idx: number) {
+    let bases = DefaultValues.horizontalTimeBases;
+    let targIdx = (idx < 0) ? 0 : ((idx >= bases.length) ? bases.length : idx);
+    let targ = bases[targIdx];
+    let dCount = DefaultValues.divisions.time;
+    let winSize = dCount * convertTime(targ.value, targ.unit, TimeUnit.NanoSecond);
+    let setWinArgs = {
+      headCheck: () => true,
+      bodyCheck: () => true,
+      cmd: CMD.CMD_SetWindowSize,
+      id: 0,
+      writeData: new Int8Array((new Uint32Array([winSize])).buffer)
+    }
+    this.cycle(setWinArgs);
   }
 
   public decodeGetMinMax(args: PlumberArgs, a: Int8Array) {

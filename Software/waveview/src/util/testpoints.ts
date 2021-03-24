@@ -1,64 +1,28 @@
 import CMD from '../configuration/enums/cmd';
 import { PlumberArgs, Plumber, SetMathOp } from './plumber';
-
-class Range {
-  dataMin: number = 0;
-  dataMax: number = 0;
-
-  constructor(min: number, max: number){
-    this.dataMin = min;
-    this.dataMax = max;
-  }
-
-  getDomain() {
-    return [this.dataMin, this.dataMax];
-  }
-}
+import store from '../redux/store';
+import { LineSeriesPoint } from 'react-vis';
+import DefaultValues from '../configuration/defaultValues';
+import { convertTime } from '../util/convert';
+import TimeUnit from '../configuration/enums/timeUnit';
 
 class TestPoints {
-  x: Range;
-  y: Range;
-  scope_data: any[][] = []; //[ch-1] for channel, [5] for math
-  scope_data_max_idx = 5;
+  scope_data: LineSeriesPoint[][] = []; //[ch-1] for channel, [5] for math
+  getDataMaxCh = 5;
+  lastX: number = 0;
 
-  chCount: number = 4;
-  doMath: Boolean = true;
-
-  rampArgs: PlumberArgs;
   setChArgs: PlumberArgs;
   setFileArgs: PlumberArgs;
-  setMathArgs: PlumberArgs;
+  setWinArgs: PlumberArgs;
   setChDone: Boolean = false;
   setFileDone: Boolean = false;
-  setMathDone: Boolean = false;
+  setWinDone: Boolean = false;
 
-  constructor(xRange: number, yRange: number) {
-    this.x = new Range(0, xRange);
-    this.y = new Range(-yRange, yRange);
-
-    for(var j = 0; j < this.scope_data_max_idx; j++) {
-      this.scope_data[j] = [];
-      for(var i = 0; i < 1; i++) {
-        this.scope_data[j][i] = {x: i, y: 0};
-      }
+  constructor() {
+    let state = store.getState();
+    for(var j = 0; j < this.getDataMaxCh; j++) {
+      this.scope_data[j] = [{x: 0, y: 0}];
     }
-
-    this.rampArgs = {
-      headCheck: () => true,
-      bodyCheck: (a, bytesRead, body) => {
-        var chMax = this.effectiveChCount();
-        var perChannel = Math.floor(body.length/chMax);
-        for(var channel = 0; channel < chMax; channel++) {
-          for(var i = 0; i < perChannel; i++) {
-            this.scope_data[channel][i] = {x: i, y: body[channel*perChannel + i]};
-          }
-        }
-        return true;
-      },
-      cmd: CMD.CMD_GetData1,
-      id: 0x1F2C,
-      writeData: [0, 0]
-    };
 
     this.setChArgs = {
       headCheck: () => {
@@ -68,7 +32,7 @@ class TestPoints {
       bodyCheck: () => true,
       cmd: CMD.CMD_SetCh,
       id: 0,
-      writeData: [this.chCount, 0]
+      writeData: [state.verticalWidget.getDataChannelOrder.length, 0]
     }
 
     this.setFileArgs = {
@@ -82,38 +46,73 @@ class TestPoints {
       writeData: [74, 0]
     }
 
-    this.setMathArgs = {
+    let base = state.horizontalWidget.horizontalTimeBase.course;
+    let dCount = DefaultValues.divisions.time;
+    let xLimit = dCount * convertTime(base.value, base.unit, TimeUnit.NanoSecond);
+    this.setWinArgs = {
       headCheck: () => {
-        this.setMathDone = true;
+        this.setWinDone = true;
         return true;
       },
       bodyCheck: () => true,
-      cmd: CMD.CMD_SetMath,
+      cmd: CMD.CMD_SetWindowSize,
       id: 0,
-      writeData: Plumber.getInstance().makeSetMathData(2, 4, SetMathOp.SetMath_Plus)
+      writeData: new Int8Array((new Uint32Array([xLimit])).buffer)
     }
   }
 
   mountCalls() {
     Plumber.getInstance().cycle(this.setChArgs);
     Plumber.getInstance().cycle(this.setFileArgs);
-    Plumber.getInstance().cycle(this.setMathArgs);
+    Plumber.getInstance().cycle(this.setWinArgs);
   }
 
   update() {
-    if(this.setChDone && this.setFileDone && this.setMathDone) {
-      Plumber.getInstance().cycle(this.rampArgs);
+    if(this.setChDone && this.setFileDone && this.setWinDone) {
+      let state = store.getState();
+      let base = state.horizontalWidget.horizontalTimeBase.course;
+      let xLimit = convertTime(base.value, base.unit, TimeUnit.NanoSecond);
+      let doMath = state.mathWidget.mathEnabled as boolean;
+      let order = state.verticalWidget.getDataChannelOrder as number[];
+
+      let args: PlumberArgs = {
+        headCheck: () => true,
+        bodyCheck: (a, bytesRead, body) => {
+          var chMax = (doMath) ? order.length + 1: order.length;
+          var perChannel = Math.floor(body.length/chMax);
+          let xOffset = (this.lastX < xLimit) ? this.lastX : 0;
+          var cppChannel = 0;
+          for(var uiChannel = 0; uiChannel < this.getDataMaxCh; uiChannel++) {
+            let mathCh = (uiChannel == this.getDataMaxCh-1) && doMath;
+            let dataCh = order.includes(uiChannel + 1);
+            if(mathCh || dataCh) {
+              for(var i = 0; i < perChannel; i++) {
+                var x = xOffset + i;
+                if(x != 0 && !this.scope_data[uiChannel][x-1]) {
+                  //Adding a channel while other channels in middle of screen
+                  //causes an error.
+                  break;
+                }
+                let y = body[cppChannel*perChannel + i];
+                this.scope_data[uiChannel][x] = {x: x, y: y};
+              }
+              cppChannel++;
+            }
+          }
+          this.lastX = xOffset + perChannel;
+          return true;
+        },
+        cmd: CMD.CMD_GetData1,
+        id: 0,
+        writeData: [0, 0]
+      };
+
+      Plumber.getInstance().cycle(args);
     }
   }
 
-  effectiveChCount() {
-    return (this.doMath) ? this.chCount + 1: this.chCount;
-  }
-
   getData() {
-    var chMax = this.effectiveChCount();
-    console.log(this.scope_data);
-    return this.scope_data.slice(0, chMax);
+    return this.scope_data;
   }
 }
 

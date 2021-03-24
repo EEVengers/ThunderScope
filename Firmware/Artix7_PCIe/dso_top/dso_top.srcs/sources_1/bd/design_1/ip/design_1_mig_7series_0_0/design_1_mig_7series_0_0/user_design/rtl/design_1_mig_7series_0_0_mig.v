@@ -91,20 +91,20 @@ module design_1_mig_7series_0_0_mig #
    parameter CKE_WIDTH             = 1,
                                      // # of CKE outputs to memory.
    parameter DATA_BUF_ADDR_WIDTH   = 5,
-   parameter DQ_CNT_WIDTH          = 4,
+   parameter DQ_CNT_WIDTH          = 5,
                                      // = ceil(log2(DQ_WIDTH))
    parameter DQ_PER_DM             = 8,
-   parameter DM_WIDTH              = 2,
+   parameter DM_WIDTH              = 4,
                                      // # of DM (data mask)
-   parameter DQ_WIDTH              = 16,
+   parameter DQ_WIDTH              = 32,
                                      // # of DQ (data)
-   parameter DQS_WIDTH             = 2,
-   parameter DQS_CNT_WIDTH         = 1,
+   parameter DQS_WIDTH             = 4,
+   parameter DQS_CNT_WIDTH         = 2,
                                      // = ceil(log2(DQS_WIDTH))
    parameter DRAM_WIDTH            = 8,
                                      // # of DQ per DQS
    parameter ECC                   = "OFF",
-   parameter DATA_WIDTH            = 16,
+   parameter DATA_WIDTH            = 32,
    parameter ECC_TEST              = "OFF",
    parameter PAYLOAD_WIDTH         = (ECC_TEST == "OFF") ? DATA_WIDTH : DQ_WIDTH,
    parameter MEM_ADDR_ORDER        = "BANK_ROW_COLUMN",
@@ -117,7 +117,7 @@ module design_1_mig_7series_0_0_mig #
                                       //            for distributed Addressing.
       
    //parameter nBANK_MACHS           = 4,
-   parameter nBANK_MACHS           = 4,
+   parameter nBANK_MACHS           = 8,
    parameter RANKS                 = 1,
                                      // # of Ranks.
    parameter ODT_WIDTH             = 1,
@@ -303,7 +303,7 @@ module design_1_mig_7series_0_0_mig #
    //***************************************************************************
    parameter BYTE_LANES_B0         = 4'b1111,
                                      // Byte lanes used in an IO column.
-   parameter BYTE_LANES_B1         = 4'b1001,
+   parameter BYTE_LANES_B1         = 4'b1111,
                                      // Byte lanes used in an IO column.
    parameter BYTE_LANES_B2         = 4'b0000,
                                      // Byte lanes used in an IO column.
@@ -316,7 +316,7 @@ module design_1_mig_7series_0_0_mig #
                                      // or control Byte lane. '1' in a bit
                                      // position indicates a data byte lane and
                                      // a '0' indicates a control byte lane
-   parameter DATA_CTL_B1           = 4'b1001,
+   parameter DATA_CTL_B1           = 4'b1111,
                                      // Indicates Byte lane is data byte lane
                                      // or control Byte lane. '1' in a bit
                                      // position indicates a data byte lane and
@@ -337,7 +337,7 @@ module design_1_mig_7series_0_0_mig #
                                      // position indicates a data byte lane and
                                      // a '0' indicates a control byte lane
    parameter PHY_0_BITLANES        = 48'h008_FB0_CF1_D3F,
-   parameter PHY_1_BITLANES        = 48'h3FE_000_000_2FF,
+   parameter PHY_1_BITLANES        = 48'h3FE_3FB_1FF_2FF,
    parameter PHY_2_BITLANES        = 48'h000_000_000_000,
 
    // control/address/data pin mapping parameters
@@ -355,11 +355,11 @@ module design_1_mig_7series_0_0_mig #
    parameter RAS_MAP    = 12'h003,
    parameter WE_MAP     = 12'h02A,
    parameter DQS_BYTE_MAP
-     = 144'h00_00_00_00_00_00_00_00_00_00_00_00_00_00_00_00_10_13,
+     = 144'h00_00_00_00_00_00_00_00_00_00_00_00_00_00_11_12_10_13,
    parameter DATA0_MAP  = 96'h136_138_132_137_134_131_133_139,
    parameter DATA1_MAP  = 96'h101_106_100_105_109_107_103_104,
-   parameter DATA2_MAP  = 96'h000_000_000_000_000_000_000_000,
-   parameter DATA3_MAP  = 96'h000_000_000_000_000_000_000_000,
+   parameter DATA2_MAP  = 96'h129_128_123_126_120_127_125_124,
+   parameter DATA3_MAP  = 96'h116_118_110_117_115_112_111_113,
    parameter DATA4_MAP  = 96'h000_000_000_000_000_000_000_000,
    parameter DATA5_MAP  = 96'h000_000_000_000_000_000_000_000,
    parameter DATA6_MAP  = 96'h000_000_000_000_000_000_000_000,
@@ -374,7 +374,7 @@ module design_1_mig_7series_0_0_mig #
    parameter DATA15_MAP = 96'h000_000_000_000_000_000_000_000,
    parameter DATA16_MAP = 96'h000_000_000_000_000_000_000_000,
    parameter DATA17_MAP = 96'h000_000_000_000_000_000_000_000,
-   parameter MASK0_MAP  = 108'h000_000_000_000_000_000_000_102_135,
+   parameter MASK0_MAP  = 108'h000_000_000_000_000_114_121_102_135,
    parameter MASK1_MAP  = 108'h000_000_000_000_000_000_000_000_000,
 
    parameter SLOT_0_CONFIG         = 8'b0000_0001,
@@ -387,18 +387,18 @@ module design_1_mig_7series_0_0_mig #
    //***************************************************************************
    parameter IBUF_LPWR_MODE        = "OFF",
                                      // to phy_top
-   parameter DATA_IO_IDLE_PWRDWN   = "ON",
+   parameter DATA_IO_IDLE_PWRDWN   = "OFF",
                                      // # = "ON", "OFF"
    parameter BANK_TYPE             = "HR_IO",
                                      // # = "HP_IO", "HPL_IO", "HR_IO", "HRL_IO"
-   parameter DATA_IO_PRIM_TYPE     = "HR_LP",
+   parameter DATA_IO_PRIM_TYPE     = "DEFAULT",
                                      // # = "HP_LP", "HR_LP", "DEFAULT"
    parameter CKE_ODT_AUX           = "FALSE",
    parameter USER_REFRESH          = "OFF",
    parameter WRLVL                 = "ON",
                                      // # = "ON" - DDR3 SDRAM
                                      //   = "OFF" - DDR2 SDRAM.
-   parameter ORDERING              = "STRICT",
+   parameter ORDERING              = "NORM",
                                      // # = "NORM", "STRICT", "RELAXED".
    parameter CALIB_ROW_ADD         = 16'h0000,
                                      // Calibration row address will be used for
@@ -476,16 +476,16 @@ module design_1_mig_7series_0_0_mig #
                                      // 1/2, 1/4 and 1/8 of fabrick clock.
                                      // Valid for DDR2/DDR3 AXI interfaces
                                      // based on GUI selection
-   parameter C_S_AXI_ID_WIDTH              = 5,
+   parameter C_S_AXI_ID_WIDTH              = 1,
                                              // Width of all master and slave ID signals.
                                              // # = >= 1.
-   parameter C_S_AXI_MEM_SIZE              = "536870912",
+   parameter C_S_AXI_MEM_SIZE              = "1073741824",
                                      // Address Space required for this component
-   parameter C_S_AXI_ADDR_WIDTH            = 29,
+   parameter C_S_AXI_ADDR_WIDTH            = 30,
                                              // Width of S_AXI_AWADDR, S_AXI_ARADDR, M_AXI_AWADDR and
                                              // M_AXI_ARADDR for all SI/MI slots.
                                              // # = 32.
-   parameter C_S_AXI_DATA_WIDTH            = 128,
+   parameter C_S_AXI_DATA_WIDTH            = 256,
                                              // Width of WDATA and RDATA on SI slot.
                                              // Must be <= APP_DATA_WIDTH.
                                              // # = 32, 64, 128, 256.
@@ -495,7 +495,7 @@ module design_1_mig_7series_0_0_mig #
    parameter C_S_AXI_SUPPORTS_NARROW_BURST = 0,
                                              // Indicates whether to instatiate upsizer
                                              // Range: 0, 1
-   parameter C_RD_WR_ARB_ALGORITHM          = "ROUND_ROBIN",
+   parameter C_RD_WR_ARB_ALGORITHM          = "RD_PRI_REG_STARVE_LIMIT",
                                              // Indicates the Arbitration
                                              // Allowed values - "TDM", "ROUND_ROBIN",
                                              // "RD_PRI_REG", "RD_PRI_REG_STARVE_LIMIT"

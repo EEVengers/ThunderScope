@@ -6,7 +6,11 @@ import MeasurementType from '../../../configuration/enums/measurementType';
 import ProbeMode from '../../../configuration/enums/probeMode';
 import './../../../css/sidebar/widgets/verticalWidget.css';
 
-class VerticalWidget extends React.Component<any, any> { 
+import { setChHelper } from '../../../util/setChHelper';
+import CMD from '../../../configuration/enums/cmd';
+import { Plumber, PlumberArgs } from '../../../util/plumber';
+
+class VerticalWidget extends React.Component<any, any> {
    // Active Channel
   changeChannel = (channelNumber: number) => {
     this.props.dispatch({type: 'vertical/changeChannel', payload: channelNumber})
@@ -50,6 +54,13 @@ class VerticalWidget extends React.Component<any, any> {
   }
 
   changeChannelStatus = (channelNumber: number) => {
+    let chStatus = (this.props.verticalWidget.settings as any[]).map(x => x.status > 0);
+    chStatus[channelNumber] = !chStatus[channelNumber];
+    let triggerCh = this.props.triggerWidget.triggerChannel;
+    let setChState = setChHelper(chStatus[0], chStatus[1], chStatus[2], chStatus[3], triggerCh);
+    Plumber.getInstance().handleSetchState(setChState);
+    this.props.dispatch({type: 'vertical/setChannelOrder', payload: setChState.chOrder})
+    this.props.dispatch({type: 'trigger/changeChannel', payload: triggerCh});
     this.props.dispatch({type: 'vertical/changeChannelStatus', payload: channelNumber});
   }
 
@@ -141,25 +152,25 @@ class VerticalWidget extends React.Component<any, any> {
       </div>
 
       <div className="VerticalWidgetAdjustBlock-TimePerDivision">
-        <button 
+        <button
           className="MinusButton"
           onClick={() => this.props.verticalWidget.settings[this.props.verticalWidget.activeChannel-1].controlMode === ControlMode.Course ? this.decrementTimePerDivision() : this.decrementTimePerDivisionFine()}>
           -
         </button>
-        <label 
+        <label
           className="AdjustValueBlockTimePerDivision"
           style={{color: this.props.settings.colors.channel[this.props.verticalWidget.activeChannel-1]}}
         >
-          {this.props.verticalWidget.settings[this.props.verticalWidget.activeChannel-1].controlMode === ControlMode.Course 
+          {this.props.verticalWidget.settings[this.props.verticalWidget.activeChannel-1].controlMode === ControlMode.Course
             && this.props.verticalWidget.timePerDivision[this.props.verticalWidget.activeChannel-1].course.value.toString()
             + this.props.verticalWidget.timePerDivision[this.props.verticalWidget.activeChannel-1].course.unit.toString() + "/div"}
-          {this.props.verticalWidget.settings[this.props.verticalWidget.activeChannel-1].controlMode === ControlMode.Fine 
-            && (this.props.verticalWidget.settings[this.props.verticalWidget.activeChannel-1].probeMode === ProbeMode.x1 
+          {this.props.verticalWidget.settings[this.props.verticalWidget.activeChannel-1].controlMode === ControlMode.Fine
+            && (this.props.verticalWidget.settings[this.props.verticalWidget.activeChannel-1].probeMode === ProbeMode.x1
               ? this.props.verticalWidget.timePerDivision[this.props.verticalWidget.activeChannel-1].fine.value.toString()
               : this.props.verticalWidget.timePerDivision[this.props.verticalWidget.activeChannel-1].fine.x10value.toString())
             + this.props.verticalWidget.timePerDivision[this.props.verticalWidget.activeChannel-1].fine.unit.toString() + "/div"}
         </label>
-        <button 
+        <button
           className="PlusButton"
           onClick={() => this.props.verticalWidget.settings[this.props.verticalWidget.activeChannel-1].controlMode === ControlMode.Course ? this.incrementTimePerDivision() : this.incrementTimePerDivisionFine()}>
           +
@@ -211,19 +222,19 @@ class VerticalWidget extends React.Component<any, any> {
         Offset
       </div>
       <div className="VerticalWidgetAdjustBlock-VerticalOffset">
-        <button 
+        <button
           className="MinusButton"
           onClick={() => this.decrementVerticalOffset()}>
           -
         </button>
-        <label 
+        <label
           className="AdjustValueBlockVerticalOffset"
           style={{color: this.props.settings.colors.channel[this.props.verticalWidget.activeChannel-1]}}
         >
           {this.props.verticalWidget.verticalOffset[this.props.verticalWidget.activeChannel-1].value}
           {this.props.verticalWidget.verticalOffset[this.props.verticalWidget.activeChannel-1].unit}
         </label>
-        <button 
+        <button
           className="PlusButton"
           onClick={() => this.incrementVerticalOffset()}>
           +
@@ -258,7 +269,7 @@ class VerticalWidget extends React.Component<any, any> {
         Probe Mode
       </div>
       <div className="VerticalWidgetProbeButtons">
-        <button 
+        <button
           className="x1-Button"
           onClick={() => this.changeProbeMode(ProbeMode.x1)}>
           <label
@@ -267,7 +278,7 @@ class VerticalWidget extends React.Component<any, any> {
             x1
           </label>
         </button>
-        <button 
+        <button
           className="x10-Button"
           onClick={() => this.changeProbeMode(ProbeMode.x10)}>
           <label
@@ -325,10 +336,11 @@ class VerticalWidget extends React.Component<any, any> {
   }
 }
 
-function mapStateToProps(state: { verticalWidget: any, settings: any }) {
+function mapStateToProps(state: { verticalWidget: any, settings: any, triggerWidget: any }) {
   return {
     verticalWidget: state.verticalWidget,
-    settings: state.settings
+    settings: state.settings,
+    triggerWidget: state.triggerWidget
   };
 }
 

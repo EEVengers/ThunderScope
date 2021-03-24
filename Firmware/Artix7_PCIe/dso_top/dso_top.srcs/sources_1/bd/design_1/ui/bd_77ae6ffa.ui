@@ -6,8 +6,8 @@
    "Color Coded_ScaleFactor":"1.0",
    "Color Coded_TopLeft":"-540,-2",
    "Default View_Layers":"/AXI_LITE_IO/axi_aclk_1:true|/AXI_LITE_IO/axi_resetn_1:true|",
-   "Default View_ScaleFactor":"0.596632",
-   "Default View_TopLeft":"-340,-166",
+   "Default View_ScaleFactor":"0.969232",
+   "Default View_TopLeft":"4,5",
    "Display-PortTypeClock":"true",
    "Display-PortTypeOthers":"true",
    "Display-PortTypeReset":"true",
@@ -28,24 +28,24 @@ preplace port S00_AXI -pg 1 -lvl 0 -x -20 -y 190 -defaultsOSRD
 preplace port AXI_STR_TXD_0 -pg 1 -lvl 3 -x 670 -y 60 -defaultsOSRD
 preplace port axi_aclk -pg 1 -lvl 0 -x -20 -y 210 -defaultsOSRD
 preplace port axi_resetn -pg 1 -lvl 0 -x -20 -y 230 -defaultsOSRD
-preplace portBus gpio_io_o_0 -pg 1 -lvl 3 -x 670 -y 220 -defaultsOSRD
 preplace portBus gpio2_io_i -pg 1 -lvl 0 -x -20 -y 320 -defaultsOSRD
 preplace portBus gpio_io_o_1 -pg 1 -lvl 3 -x 670 -y 400 -defaultsOSRD
 preplace portBus gpio2_io_i_0 -pg 1 -lvl 0 -x -20 -y 500 -defaultsOSRD
-preplace inst axi_gpio_0 -pg 1 -lvl 2 -x 490 -y 230 -defaultsOSRD
-preplace inst axi_gpio_1 -pg 1 -lvl 2 -x 490 -y 410 -defaultsOSRD
+preplace portBus gpio_io_o_0 -pg 1 -lvl 3 -x 670 -y 230 -defaultsOSRD
+preplace inst axi_gpio_0 -pg 1 -lvl 2 -x 490 -y 240 -defaultsOSRD
+preplace inst axi_gpio_1 -pg 1 -lvl 2 -x 490 -y 430 -defaultsOSRD
 preplace inst smartconnect_0 -pg 1 -lvl 1 -x 150 -y 210 -defaultsOSRD
 preplace inst axi_fifo_mm_s_0 -pg 1 -lvl 2 -x 490 -y 80 -defaultsOSRD
-preplace netloc axi_gpio_0_gpio_io_o 1 2 1 NJ 220
-preplace netloc gpio2_io_i_1 1 0 3 NJ 320 NJ 320 650
-preplace netloc axi_gpio_1_gpio_io_o 1 2 1 NJ 400
-preplace netloc gpio2_io_i_0_1 1 0 3 NJ 500 NJ 500 650
-preplace netloc axi_aclk_1 1 0 2 0 290 300
-preplace netloc axi_resetn_1 1 0 2 10 130 310
-preplace netloc smartconnect_0_M02_AXI 1 1 1 290 230n
-preplace netloc smartconnect_0_M00_AXI 1 1 1 290 60n
-preplace netloc smartconnect_0_M01_AXI 1 1 1 N 210
+preplace netloc gpio2_io_i_1 1 0 3 0J 330 NJ 330 650
+preplace netloc axi_gpio_1_gpio_io_o 1 2 1 650J 400n
+preplace netloc gpio2_io_i_0_1 1 0 3 10J 520 NJ 520 650
+preplace netloc axi_aclk_1 1 0 2 10 290 300
+preplace netloc axi_resetn_1 1 0 2 0 130 310
+preplace netloc axi_gpio_0_gpio_io_o 1 2 1 N 230
 preplace netloc S00_AXI_1 1 0 1 NJ 190
+preplace netloc smartconnect_0_M00_AXI 1 1 1 290 60n
+preplace netloc smartconnect_0_M01_AXI 1 1 1 290 210n
+preplace netloc smartconnect_0_M02_AXI 1 1 1 290 230n
 preplace netloc Conn1 1 2 1 N 60
 levelinfo -pg 1 -20 150 490 670
 pagesize -pg 1 -db -bbox -sgen -190 0 840 590

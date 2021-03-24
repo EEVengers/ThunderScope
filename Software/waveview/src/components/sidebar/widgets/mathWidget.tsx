@@ -3,23 +3,37 @@ import { connect } from 'react-redux';
 import MathOperators from '../../../configuration/enums/mathOperators';
 import '../../../css/sidebar/widgets/mathWidget.css';
 
+import { Plumber } from '../../../util/plumber';
 
 class TriggerWidget extends React.Component<any, any> {
 
   toggleMathMode = (mathEnabled: boolean) => {
+    let w = this.props.mathWidget;
+    Plumber.getInstance().handleMath(mathEnabled, w.channel1, w.channel2, w.mathOperator);
+
     this.props.dispatch({type: 'math/toggleMathMode', payload: mathEnabled });
     this.props.dispatch({type: 'vertical/toggleMathWaveform' });
   }
 
   changeChannel1 = (channelNumber: number) => {
+    let w = this.props.mathWidget;
+    if(w.channel2 != channelNumber) {
+      Plumber.getInstance().handleMath(w.mathEnabled, channelNumber, w.channel2, w.mathOperator);
+    }
     this.props.dispatch({type: 'math/changeChannel1', payload: channelNumber });
   }
 
   changeChannel2 = (channelNumber: number) => {
+    let w = this.props.mathWidget;
+    if(w.channel1 != channelNumber) {
+      Plumber.getInstance().handleMath(w.mathEnabled, w.channel1, channelNumber, w.mathOperator);
+    }
     this.props.dispatch({type: 'math/changeChannel2', payload: channelNumber });
   }
 
   changeOperator = (operator: MathOperators) => {
+    let w = this.props.mathWidget;
+    Plumber.getInstance().handleMath(w.mathEnabled, w.channel1, w.channel2, operator);
     this.props.dispatch({type: 'math/changeOperator', payload: operator });
   }
 
@@ -55,7 +69,7 @@ class TriggerWidget extends React.Component<any, any> {
         </button>
       </div>
 
-      {this.props.mathWidget.mathEnabled === true && 
+      {this.props.mathWidget.mathEnabled === true &&
       <div className="Channel1Title">
         Channel 1
       </div>
