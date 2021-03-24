@@ -1,6 +1,9 @@
 import CMD from '../configuration/enums/cmd';
 import { SetChState } from './setChHelper';
 import MathOperators from '../configuration/enums/mathOperators';
+import DefaultValues from '../configuration/defaultValues';
+import { convertTime } from './convert';
+import TimeUnit from '../configuration/enums/timeUnit';
 
 export enum SetMathOp {
   SetMath_None = 0,
@@ -141,6 +144,22 @@ export class Plumber {
       writeData: [lhsChan, rhsChan, protcolOp, 0]
     }
     this.cycle(mathArgs);
+  }
+
+  public handleHoriz(idx: number) {
+    let bases = DefaultValues.horizontalTimeBases;
+    let targIdx = (idx < 0) ? 0 : ((idx >= bases.length) ? bases.length : idx);
+    let targ = bases[targIdx];
+    let dCount = DefaultValues.divisions.time;
+    let winSize = dCount * convertTime(targ.value, targ.unit, TimeUnit.NanoSecond);
+    let setWinArgs = {
+      headCheck: () => true,
+      bodyCheck: () => true,
+      cmd: CMD.CMD_SetWindowSize,
+      id: 0,
+      writeData: new Int8Array((new Uint32Array([winSize])).buffer)
+    }
+    this.cycle(setWinArgs);
   }
 
   public decodeGetMinMax(args: PlumberArgs, a: Int8Array) {
