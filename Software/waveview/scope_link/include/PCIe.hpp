@@ -143,6 +143,7 @@ private:
 
     void _Read(HANDLE hPCIE, long long address, uint8_t* buff, int bytesToRead);
     void _Write(HANDLE hPCIE, long long address, uint8_t* buff, int bytesToWrite);
+    void _Write32(HANDLE hPCIE, long long address, uint32_t val);
     void _FIFO_WRITE(HANDLE hPCIE, uint8_t* data, uint8_t bytesToWrite);
     void _Job();
 
