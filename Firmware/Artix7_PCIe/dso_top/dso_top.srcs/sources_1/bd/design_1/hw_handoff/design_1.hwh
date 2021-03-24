@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Tue Mar 23 12:13:50 2021" VIVADOVERSION="2020.1">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Tue Mar 23 23:20:11 2021" VIVADOVERSION="2020.1">
 
   <SYSTEMINFO ARCH="artix7" DEVICE="7a100t" NAME="design_1" PACKAGE="fgg484" SPEEDGRADE="-2"/>
 
@@ -56,29 +56,9 @@
         <CONNECTION INSTANCE="AXI_LITE_IO_axi_gpio_1" PORT="gpio2_io_i"/>
       </CONNECTIONS>
     </PORT>
-    <PORT DIR="I" LEFT="127" NAME="S_AXIS_S2MM_tdata" RIGHT="0" SIGIS="undef" SIGNAME="Datamover_axi_datamover_0_s_axis_s2mm_tdata">
+    <PORT DIR="O" LEFT="31" NAME="gpio_io_o_0" RIGHT="0" SIGIS="undef" SIGNAME="AXI_LITE_IO_axi_gpio_0_gpio_io_o">
       <CONNECTIONS>
-        <CONNECTION INSTANCE="Datamover_axi_datamover_0" PORT="s_axis_s2mm_tdata"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="I" LEFT="15" NAME="S_AXIS_S2MM_tkeep" RIGHT="0" SIGIS="undef" SIGNAME="Datamover_axi_datamover_0_s_axis_s2mm_tkeep">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="Datamover_axi_datamover_0" PORT="s_axis_s2mm_tkeep"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="I" NAME="S_AXIS_S2MM_tlast" SIGIS="undef" SIGNAME="Datamover_axi_datamover_0_s_axis_s2mm_tlast">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="Datamover_axi_datamover_0" PORT="s_axis_s2mm_tlast"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="O" NAME="S_AXIS_S2MM_tready" SIGIS="undef" SIGNAME="Datamover_axi_datamover_0_s_axis_s2mm_tready">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="Datamover_axi_datamover_0" PORT="s_axis_s2mm_tready"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="I" NAME="S_AXIS_S2MM_tvalid" SIGIS="undef" SIGNAME="Datamover_axi_datamover_0_s_axis_s2mm_tvalid">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="Datamover_axi_datamover_0" PORT="s_axis_s2mm_tvalid"/>
+        <CONNECTION INSTANCE="AXI_LITE_IO_axi_gpio_0" PORT="gpio_io_o"/>
       </CONNECTIONS>
     </PORT>
     <PORT DIR="I" LEFT="71" NAME="S_AXIS_S2MM_CMD_tdata" RIGHT="0" SIGIS="undef" SIGNAME="Datamover_axi_datamover_0_s_axis_s2mm_cmd_tdata">
@@ -116,14 +96,24 @@
         <CONNECTION INSTANCE="AXI_LITE_IO_axi_fifo_mm_s_0" PORT="axi_str_txd_tvalid"/>
       </CONNECTIONS>
     </PORT>
-    <PORT CLKFREQUENCY="100000000" DIR="I" LEFT="0" NAME="pcie_clk_p" RIGHT="0" SIGIS="clk" SIGNAME="PCIe_util_ds_buf_0_IBUF_DS_P">
+    <PORT DIR="I" LEFT="3" NAME="pcie_mgt_rxn" RIGHT="0" SIGIS="undef" SIGNAME="PCIe_xdma_0_pci_exp_rxn">
       <CONNECTIONS>
-        <CONNECTION INSTANCE="PCIe_util_ds_buf_0" PORT="IBUF_DS_P"/>
+        <CONNECTION INSTANCE="PCIe_xdma_0" PORT="pci_exp_rxn"/>
       </CONNECTIONS>
     </PORT>
-    <PORT CLKFREQUENCY="100000000" DIR="I" LEFT="0" NAME="pcie_clk_n" RIGHT="0" SIGIS="clk" SIGNAME="PCIe_util_ds_buf_0_IBUF_DS_N">
+    <PORT DIR="I" LEFT="3" NAME="pcie_mgt_rxp" RIGHT="0" SIGIS="undef" SIGNAME="PCIe_xdma_0_pci_exp_rxp">
       <CONNECTIONS>
-        <CONNECTION INSTANCE="PCIe_util_ds_buf_0" PORT="IBUF_DS_N"/>
+        <CONNECTION INSTANCE="PCIe_xdma_0" PORT="pci_exp_rxp"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" LEFT="3" NAME="pcie_mgt_txn" RIGHT="0" SIGIS="undef" SIGNAME="PCIe_xdma_0_pci_exp_txn">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="PCIe_xdma_0" PORT="pci_exp_txn"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" LEFT="3" NAME="pcie_mgt_txp" RIGHT="0" SIGIS="undef" SIGNAME="PCIe_xdma_0_pci_exp_txp">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="PCIe_xdma_0" PORT="pci_exp_txp"/>
       </CONNECTIONS>
     </PORT>
     <PORT DIR="IO" LEFT="31" NAME="DDR3_dq" RIGHT="0" SIGIS="undef" SIGNAME="Memory_mig_7series_0_ddr3_dq">
@@ -201,29 +191,39 @@
         <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="ddr3_odt"/>
       </CONNECTIONS>
     </PORT>
-    <PORT DIR="I" LEFT="3" NAME="pcie_mgt_rxn" RIGHT="0" SIGIS="undef" SIGNAME="PCIe_xdma_0_pci_exp_rxn">
+    <PORT CLKFREQUENCY="100000000" DIR="I" LEFT="0" NAME="pcie_clk_p" RIGHT="0" SIGIS="clk" SIGNAME="PCIe_util_ds_buf_0_IBUF_DS_P">
       <CONNECTIONS>
-        <CONNECTION INSTANCE="PCIe_xdma_0" PORT="pci_exp_rxn"/>
+        <CONNECTION INSTANCE="PCIe_util_ds_buf_0" PORT="IBUF_DS_P"/>
       </CONNECTIONS>
     </PORT>
-    <PORT DIR="I" LEFT="3" NAME="pcie_mgt_rxp" RIGHT="0" SIGIS="undef" SIGNAME="PCIe_xdma_0_pci_exp_rxp">
+    <PORT CLKFREQUENCY="100000000" DIR="I" LEFT="0" NAME="pcie_clk_n" RIGHT="0" SIGIS="clk" SIGNAME="PCIe_util_ds_buf_0_IBUF_DS_N">
       <CONNECTIONS>
-        <CONNECTION INSTANCE="PCIe_xdma_0" PORT="pci_exp_rxp"/>
+        <CONNECTION INSTANCE="PCIe_util_ds_buf_0" PORT="IBUF_DS_N"/>
       </CONNECTIONS>
     </PORT>
-    <PORT DIR="O" LEFT="3" NAME="pcie_mgt_txn" RIGHT="0" SIGIS="undef" SIGNAME="PCIe_xdma_0_pci_exp_txn">
+    <PORT DIR="I" LEFT="127" NAME="S_AXIS_S2MM_tdata" RIGHT="0" SIGIS="undef" SIGNAME="Datamover_axi_datamover_0_s_axis_s2mm_tdata">
       <CONNECTIONS>
-        <CONNECTION INSTANCE="PCIe_xdma_0" PORT="pci_exp_txn"/>
+        <CONNECTION INSTANCE="Datamover_axi_datamover_0" PORT="s_axis_s2mm_tdata"/>
       </CONNECTIONS>
     </PORT>
-    <PORT DIR="O" LEFT="3" NAME="pcie_mgt_txp" RIGHT="0" SIGIS="undef" SIGNAME="PCIe_xdma_0_pci_exp_txp">
+    <PORT DIR="I" LEFT="15" NAME="S_AXIS_S2MM_tkeep" RIGHT="0" SIGIS="undef" SIGNAME="Datamover_axi_datamover_0_s_axis_s2mm_tkeep">
       <CONNECTIONS>
-        <CONNECTION INSTANCE="PCIe_xdma_0" PORT="pci_exp_txp"/>
+        <CONNECTION INSTANCE="Datamover_axi_datamover_0" PORT="s_axis_s2mm_tkeep"/>
       </CONNECTIONS>
     </PORT>
-    <PORT DIR="O" LEFT="31" NAME="gpio_io_o_0" RIGHT="0" SIGIS="undef" SIGNAME="AXI_LITE_IO_axi_gpio_0_gpio_io_o">
+    <PORT DIR="I" NAME="S_AXIS_S2MM_tlast" SIGIS="undef" SIGNAME="Datamover_axi_datamover_0_s_axis_s2mm_tlast">
       <CONNECTIONS>
-        <CONNECTION INSTANCE="AXI_LITE_IO_axi_gpio_0" PORT="gpio_io_o"/>
+        <CONNECTION INSTANCE="Datamover_axi_datamover_0" PORT="s_axis_s2mm_tlast"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="S_AXIS_S2MM_tready" SIGIS="undef" SIGNAME="Datamover_axi_datamover_0_s_axis_s2mm_tready">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="Datamover_axi_datamover_0" PORT="s_axis_s2mm_tready"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" NAME="S_AXIS_S2MM_tvalid" SIGIS="undef" SIGNAME="Datamover_axi_datamover_0_s_axis_s2mm_tvalid">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="Datamover_axi_datamover_0" PORT="s_axis_s2mm_tvalid"/>
       </CONNECTIONS>
     </PORT>
   </EXTERNALPORTS>
@@ -298,28 +298,6 @@
         <PORTMAP LOGICAL="TVALID" PHYSICAL="S_AXIS_S2MM_CMD_tvalid"/>
       </PORTMAPS>
     </BUSINTERFACE>
-    <BUSINTERFACE BUSNAME="External_Interface_S_AXIS_S2MM" NAME="S_AXIS_S2MM" TYPE="TARGET">
-      <PARAMETER NAME="TDATA_NUM_BYTES" VALUE="16"/>
-      <PARAMETER NAME="TDEST_WIDTH" VALUE="0"/>
-      <PARAMETER NAME="TID_WIDTH" VALUE="0"/>
-      <PARAMETER NAME="TUSER_WIDTH" VALUE="0"/>
-      <PARAMETER NAME="HAS_TREADY" VALUE="1"/>
-      <PARAMETER NAME="HAS_TSTRB" VALUE="0"/>
-      <PARAMETER NAME="HAS_TKEEP" VALUE="0"/>
-      <PARAMETER NAME="HAS_TLAST" VALUE="0"/>
-      <PARAMETER NAME="FREQ_HZ" VALUE="125000000"/>
-      <PARAMETER NAME="PHASE" VALUE="0.000"/>
-      <PARAMETER NAME="CLK_DOMAIN"/>
-      <PARAMETER NAME="LAYERED_METADATA" VALUE="undef"/>
-      <PARAMETER NAME="INSERT_VIP" VALUE="0"/>
-      <PORTMAPS>
-        <PORTMAP LOGICAL="TDATA" PHYSICAL="S_AXIS_S2MM_tdata"/>
-        <PORTMAP LOGICAL="TKEEP" PHYSICAL="S_AXIS_S2MM_tkeep"/>
-        <PORTMAP LOGICAL="TLAST" PHYSICAL="S_AXIS_S2MM_tlast"/>
-        <PORTMAP LOGICAL="TREADY" PHYSICAL="S_AXIS_S2MM_tready"/>
-        <PORTMAP LOGICAL="TVALID" PHYSICAL="S_AXIS_S2MM_tvalid"/>
-      </PORTMAPS>
-    </BUSINTERFACE>
     <BUSINTERFACE BUSNAME="AXI_LITE_IO_axi_fifo_mm_s_0_AXI_STR_TXD" NAME="AXI_STR_TXD_0" TYPE="INITIATOR">
       <PARAMETER NAME="TDATA_NUM_BYTES" VALUE="4"/>
       <PARAMETER NAME="TDEST_WIDTH" VALUE="0"/>
@@ -339,6 +317,28 @@
         <PORTMAP LOGICAL="TLAST" PHYSICAL="AXI_STR_TXD_0_tlast"/>
         <PORTMAP LOGICAL="TREADY" PHYSICAL="AXI_STR_TXD_0_tready"/>
         <PORTMAP LOGICAL="TVALID" PHYSICAL="AXI_STR_TXD_0_tvalid"/>
+      </PORTMAPS>
+    </BUSINTERFACE>
+    <BUSINTERFACE BUSNAME="External_Interface_S_AXIS_S2MM" NAME="S_AXIS_S2MM" TYPE="TARGET">
+      <PARAMETER NAME="TDATA_NUM_BYTES" VALUE="16"/>
+      <PARAMETER NAME="TDEST_WIDTH" VALUE="0"/>
+      <PARAMETER NAME="TID_WIDTH" VALUE="0"/>
+      <PARAMETER NAME="TUSER_WIDTH" VALUE="0"/>
+      <PARAMETER NAME="HAS_TREADY" VALUE="1"/>
+      <PARAMETER NAME="HAS_TSTRB" VALUE="0"/>
+      <PARAMETER NAME="HAS_TKEEP" VALUE="1"/>
+      <PARAMETER NAME="HAS_TLAST" VALUE="1"/>
+      <PARAMETER NAME="FREQ_HZ" VALUE="125000000"/>
+      <PARAMETER NAME="PHASE" VALUE="0.000"/>
+      <PARAMETER NAME="CLK_DOMAIN"/>
+      <PARAMETER NAME="LAYERED_METADATA" VALUE="undef"/>
+      <PARAMETER NAME="INSERT_VIP" VALUE="0"/>
+      <PORTMAPS>
+        <PORTMAP LOGICAL="TDATA" PHYSICAL="S_AXIS_S2MM_tdata"/>
+        <PORTMAP LOGICAL="TKEEP" PHYSICAL="S_AXIS_S2MM_tkeep"/>
+        <PORTMAP LOGICAL="TLAST" PHYSICAL="S_AXIS_S2MM_tlast"/>
+        <PORTMAP LOGICAL="TREADY" PHYSICAL="S_AXIS_S2MM_tready"/>
+        <PORTMAP LOGICAL="TVALID" PHYSICAL="S_AXIS_S2MM_tvalid"/>
       </PORTMAPS>
     </BUSINTERFACE>
   </EXTERNALINTERFACES>
@@ -2355,95 +2355,6 @@
             <CONNECTION INSTANCE="External_Ports" PORT="S01_ARESETN"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="3" NAME="S01_AXI_awid" RIGHT="0" SIGIS="undef" SIGNAME="Datamover_axi_datamover_0_m_axi_s2mm_awid">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="Datamover_axi_datamover_0" PORT="m_axi_s2mm_awid"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="31" NAME="S01_AXI_awaddr" RIGHT="0" SIGIS="undef" SIGNAME="Datamover_axi_datamover_0_m_axi_s2mm_awaddr">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="Datamover_axi_datamover_0" PORT="m_axi_s2mm_awaddr"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="7" NAME="S01_AXI_awlen" RIGHT="0" SIGIS="undef" SIGNAME="Datamover_axi_datamover_0_m_axi_s2mm_awlen">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="Datamover_axi_datamover_0" PORT="m_axi_s2mm_awlen"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="2" NAME="S01_AXI_awsize" RIGHT="0" SIGIS="undef" SIGNAME="Datamover_axi_datamover_0_m_axi_s2mm_awsize">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="Datamover_axi_datamover_0" PORT="m_axi_s2mm_awsize"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="1" NAME="S01_AXI_awburst" RIGHT="0" SIGIS="undef" SIGNAME="Datamover_axi_datamover_0_m_axi_s2mm_awburst">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="Datamover_axi_datamover_0" PORT="m_axi_s2mm_awburst"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="S01_AXI_awlock" SIGIS="undef"/>
-        <PORT DIR="I" LEFT="3" NAME="S01_AXI_awcache" RIGHT="0" SIGIS="undef" SIGNAME="Datamover_axi_datamover_0_m_axi_s2mm_awcache">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="Datamover_axi_datamover_0" PORT="m_axi_s2mm_awcache"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="2" NAME="S01_AXI_awprot" RIGHT="0" SIGIS="undef" SIGNAME="Datamover_axi_datamover_0_m_axi_s2mm_awprot">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="Datamover_axi_datamover_0" PORT="m_axi_s2mm_awprot"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="S01_AXI_awregion" SIGIS="undef"/>
-        <PORT DIR="I" NAME="S01_AXI_awqos" SIGIS="undef"/>
-        <PORT DIR="I" NAME="S01_AXI_awvalid" SIGIS="undef" SIGNAME="Datamover_axi_datamover_0_m_axi_s2mm_awvalid">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="Datamover_axi_datamover_0" PORT="m_axi_s2mm_awvalid"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="S01_AXI_awready" SIGIS="undef" SIGNAME="Datamover_axi_datamover_0_m_axi_s2mm_awready">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="Datamover_axi_datamover_0" PORT="m_axi_s2mm_awready"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="127" NAME="S01_AXI_wdata" RIGHT="0" SIGIS="undef" SIGNAME="Datamover_axi_datamover_0_m_axi_s2mm_wdata">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="Datamover_axi_datamover_0" PORT="m_axi_s2mm_wdata"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="15" NAME="S01_AXI_wstrb" RIGHT="0" SIGIS="undef" SIGNAME="Datamover_axi_datamover_0_m_axi_s2mm_wstrb">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="Datamover_axi_datamover_0" PORT="m_axi_s2mm_wstrb"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="S01_AXI_wlast" SIGIS="undef" SIGNAME="Datamover_axi_datamover_0_m_axi_s2mm_wlast">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="Datamover_axi_datamover_0" PORT="m_axi_s2mm_wlast"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="S01_AXI_wvalid" SIGIS="undef" SIGNAME="Datamover_axi_datamover_0_m_axi_s2mm_wvalid">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="Datamover_axi_datamover_0" PORT="m_axi_s2mm_wvalid"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="S01_AXI_wready" SIGIS="undef" SIGNAME="Datamover_axi_datamover_0_m_axi_s2mm_wready">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="Datamover_axi_datamover_0" PORT="m_axi_s2mm_wready"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="S01_AXI_bid" SIGIS="undef"/>
-        <PORT DIR="O" LEFT="1" NAME="S01_AXI_bresp" RIGHT="0" SIGIS="undef" SIGNAME="Datamover_axi_datamover_0_m_axi_s2mm_bresp">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="Datamover_axi_datamover_0" PORT="m_axi_s2mm_bresp"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="S01_AXI_bvalid" SIGIS="undef" SIGNAME="Datamover_axi_datamover_0_m_axi_s2mm_bvalid">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="Datamover_axi_datamover_0" PORT="m_axi_s2mm_bvalid"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="S01_AXI_bready" SIGIS="undef" SIGNAME="Datamover_axi_datamover_0_m_axi_s2mm_bready">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="Datamover_axi_datamover_0" PORT="m_axi_s2mm_bready"/>
-          </CONNECTIONS>
-        </PORT>
         <PORT DIR="I" LEFT="3" NAME="S00_AXI_awid" RIGHT="0" SIGIS="undef" SIGNAME="Memory_axi_interconnect_0_S00_AXI_awid">
           <CONNECTIONS>
             <CONNECTION INSTANCE="PCIe_xdma_0" PORT="m_axi_awid"/>
@@ -2808,6 +2719,95 @@
         <PORT DIR="O" NAME="M00_AXI_rready" SIGIS="undef" SIGNAME="Memory_axi_interconnect_0_M00_AXI_rready">
           <CONNECTIONS>
             <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="s_axi_rready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="3" NAME="S01_AXI_awid" RIGHT="0" SIGIS="undef" SIGNAME="Datamover_axi_datamover_0_m_axi_s2mm_awid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Datamover_axi_datamover_0" PORT="m_axi_s2mm_awid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="31" NAME="S01_AXI_awaddr" RIGHT="0" SIGIS="undef" SIGNAME="Datamover_axi_datamover_0_m_axi_s2mm_awaddr">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Datamover_axi_datamover_0" PORT="m_axi_s2mm_awaddr"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="7" NAME="S01_AXI_awlen" RIGHT="0" SIGIS="undef" SIGNAME="Datamover_axi_datamover_0_m_axi_s2mm_awlen">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Datamover_axi_datamover_0" PORT="m_axi_s2mm_awlen"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="2" NAME="S01_AXI_awsize" RIGHT="0" SIGIS="undef" SIGNAME="Datamover_axi_datamover_0_m_axi_s2mm_awsize">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Datamover_axi_datamover_0" PORT="m_axi_s2mm_awsize"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="1" NAME="S01_AXI_awburst" RIGHT="0" SIGIS="undef" SIGNAME="Datamover_axi_datamover_0_m_axi_s2mm_awburst">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Datamover_axi_datamover_0" PORT="m_axi_s2mm_awburst"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="S01_AXI_awlock" SIGIS="undef"/>
+        <PORT DIR="I" LEFT="3" NAME="S01_AXI_awcache" RIGHT="0" SIGIS="undef" SIGNAME="Datamover_axi_datamover_0_m_axi_s2mm_awcache">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Datamover_axi_datamover_0" PORT="m_axi_s2mm_awcache"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="2" NAME="S01_AXI_awprot" RIGHT="0" SIGIS="undef" SIGNAME="Datamover_axi_datamover_0_m_axi_s2mm_awprot">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Datamover_axi_datamover_0" PORT="m_axi_s2mm_awprot"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="S01_AXI_awregion" SIGIS="undef"/>
+        <PORT DIR="I" NAME="S01_AXI_awqos" SIGIS="undef"/>
+        <PORT DIR="I" NAME="S01_AXI_awvalid" SIGIS="undef" SIGNAME="Datamover_axi_datamover_0_m_axi_s2mm_awvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Datamover_axi_datamover_0" PORT="m_axi_s2mm_awvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="S01_AXI_awready" SIGIS="undef" SIGNAME="Datamover_axi_datamover_0_m_axi_s2mm_awready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Datamover_axi_datamover_0" PORT="m_axi_s2mm_awready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="127" NAME="S01_AXI_wdata" RIGHT="0" SIGIS="undef" SIGNAME="Datamover_axi_datamover_0_m_axi_s2mm_wdata">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Datamover_axi_datamover_0" PORT="m_axi_s2mm_wdata"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="15" NAME="S01_AXI_wstrb" RIGHT="0" SIGIS="undef" SIGNAME="Datamover_axi_datamover_0_m_axi_s2mm_wstrb">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Datamover_axi_datamover_0" PORT="m_axi_s2mm_wstrb"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="S01_AXI_wlast" SIGIS="undef" SIGNAME="Datamover_axi_datamover_0_m_axi_s2mm_wlast">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Datamover_axi_datamover_0" PORT="m_axi_s2mm_wlast"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="S01_AXI_wvalid" SIGIS="undef" SIGNAME="Datamover_axi_datamover_0_m_axi_s2mm_wvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Datamover_axi_datamover_0" PORT="m_axi_s2mm_wvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="S01_AXI_wready" SIGIS="undef" SIGNAME="Datamover_axi_datamover_0_m_axi_s2mm_wready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Datamover_axi_datamover_0" PORT="m_axi_s2mm_wready"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="S01_AXI_bid" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="1" NAME="S01_AXI_bresp" RIGHT="0" SIGIS="undef" SIGNAME="Datamover_axi_datamover_0_m_axi_s2mm_bresp">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Datamover_axi_datamover_0" PORT="m_axi_s2mm_bresp"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="S01_AXI_bvalid" SIGIS="undef" SIGNAME="Datamover_axi_datamover_0_m_axi_s2mm_bvalid">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Datamover_axi_datamover_0" PORT="m_axi_s2mm_bvalid"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="S01_AXI_bready" SIGIS="undef" SIGNAME="Datamover_axi_datamover_0_m_axi_s2mm_bready">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="Datamover_axi_datamover_0" PORT="m_axi_s2mm_bready"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -4675,7 +4675,7 @@
         <PARAMETER NAME="C7_RLDIII_ADDR_WIDTH" VALUE="29"/>
         <PARAMETER NAME="C7_RLDIII_nCK_PER_CLK" VALUE="1"/>
         <PARAMETER NAME="C7_POLARITY" VALUE="ACTIVE_LOW"/>
-        <PARAMETER NAME="XML_INPUT_FILE" VALUE="mig_a.prj"/>
+        <PARAMETER NAME="XML_INPUT_FILE" VALUE="mig_b.prj"/>
         <PARAMETER NAME="RESET_BOARD_INTERFACE" VALUE="Custom"/>
         <PARAMETER NAME="MIG_DONT_TOUCH_PARAM" VALUE="Custom"/>
         <PARAMETER NAME="BOARD_MIG_PARAM" VALUE="Custom"/>

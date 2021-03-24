@@ -9,8 +9,8 @@ preplace port pcie -pg 1 -lvl 0 -x 0 -y 300 -defaultsOSRD
 preplace port pcie_mgt -pg 1 -lvl 3 -x 760 -y 290 -defaultsOSRD
 preplace port DDR3 -pg 1 -lvl 3 -x 760 -y 100 -defaultsOSRD
 preplace port S_AXIS_S2MM_CMD -pg 1 -lvl 0 -x 0 -y 60 -defaultsOSRD
-preplace port S_AXIS_S2MM -pg 1 -lvl 0 -x 0 -y 80 -defaultsOSRD
 preplace port AXI_STR_TXD_0 -pg 1 -lvl 3 -x 760 -y 400 -defaultsOSRD
+preplace port S_AXIS_S2MM -pg 1 -lvl 0 -x 0 -y 80 -defaultsOSRD
 preplace port pcie_perstn -pg 1 -lvl 0 -x 0 -y 320 -defaultsOSRD
 preplace port s2mm_err -pg 1 -lvl 3 -x 760 -y 190 -defaultsOSRD
 preplace port s2mm_wr_xfer_cmplt -pg 1 -lvl 3 -x 760 -y 210 -defaultsOSRD
@@ -18,7 +18,7 @@ preplace port axi_aresetn -pg 1 -lvl 3 -x 760 -y 330 -defaultsOSRD
 preplace port S01_ARESETN -pg 1 -lvl 0 -x 0 -y 120 -defaultsOSRD
 preplace port s2mm_halt -pg 1 -lvl 0 -x 0 -y 140 -defaultsOSRD
 preplace port axi_aclk -pg 1 -lvl 3 -x 760 -y 310 -defaultsOSRD
-preplace portBus gpio2_io_i -pg 1 -lvl 0 -x 0 -y 400 -defaultsOSRD
+preplace portBus gpio2_io_i -pg 1 -lvl 0 -x 0 -y 210 -defaultsOSRD
 preplace portBus gpio_io_o_1 -pg 1 -lvl 3 -x 760 -y 420 -defaultsOSRD
 preplace portBus gpio2_io_i_0 -pg 1 -lvl 0 -x 0 -y 420 -defaultsOSRD
 preplace portBus gpio_io_o_0 -pg 1 -lvl 3 -x 760 -y 440 -defaultsOSRD
@@ -27,25 +27,25 @@ preplace inst Memory -pg 1 -lvl 2 -x 590 -y 100 -defaultsOSRD
 preplace inst Datamover -pg 1 -lvl 1 -x 200 -y 100 -defaultsOSRD
 preplace inst AXI_LITE_IO -pg 1 -lvl 2 -x 590 -y 420 -defaultsOSRD
 preplace netloc sys_rst_n_0_1 1 0 1 NJ 320
-preplace netloc xdma_0_axi_aclk 1 0 3 30 200 410 310 NJ
-preplace netloc Datamover_s2mm_err_0 1 1 2 400J 190 NJ
-preplace netloc Datamover_s2mm_wr_xfer_cmplt_0 1 1 2 380J 210 NJ
-preplace netloc gpio2_io_i_0_1 1 0 2 NJ 400 NJ
-preplace netloc PCIe_axi_aresetn 1 1 2 420 320 740J
-preplace netloc S01_ARESETN_0_1 1 0 2 20 190 390J
+preplace netloc xdma_0_axi_aclk 1 0 3 30 200 430 310 NJ
+preplace netloc Datamover_s2mm_err_0 1 1 2 420J 190 NJ
+preplace netloc Datamover_s2mm_wr_xfer_cmplt_0 1 1 2 410J 210 NJ
+preplace netloc gpio2_io_i_0_1 1 0 2 NJ 210 380J
+preplace netloc PCIe_axi_aresetn 1 1 2 440 320 740J
+preplace netloc S01_ARESETN_0_1 1 0 2 20 190 400J
 preplace netloc s2mm_halt_0_1 1 0 1 NJ 140
 preplace netloc AXI_LITE_IO_gpio_io_o_1 1 2 1 NJ 420
 preplace netloc gpio2_io_i_0_2 1 0 2 NJ 420 NJ
 preplace netloc AXI_LITE_IO_gpio_io_o_0 1 2 1 NJ 440
-preplace netloc PCIe_M_AXI_LITE 1 1 1 390 310n
-preplace netloc S_AXIS_S2MM_1 1 0 1 NJ 80
 preplace netloc S_AXIS_S2MM_CMD_0_1 1 0 1 NJ 60
-preplace netloc AXI_LITE_IO_AXI_STR_TXD_0 1 2 1 NJ 400
-preplace netloc CLK_IN_D_0_1 1 0 1 NJ 300
-preplace netloc mig_7series_0_DDR3 1 2 1 NJ 100
-preplace netloc xdma_0_M_AXI 1 1 1 370 60n
 preplace netloc Datamover_M_AXI_S2MM 1 1 1 N 80
+preplace netloc xdma_0_M_AXI 1 1 1 390 60n
+preplace netloc AXI_LITE_IO_AXI_STR_TXD_0 1 2 1 NJ 400
 preplace netloc xdma_0_pcie_mgt 1 1 2 NJ 290 NJ
+preplace netloc PCIe_M_AXI_LITE 1 1 1 370 310n
+preplace netloc mig_7series_0_DDR3 1 2 1 NJ 100
+preplace netloc CLK_IN_D_0_1 1 0 1 NJ 300
+preplace netloc S_AXIS_S2MM_0_1 1 0 1 NJ 80
 levelinfo -pg 1 0 200 590 760
 pagesize -pg 1 -db -bbox -sgen -190 0 950 510
 "

@@ -488,7 +488,7 @@ proc create_hier_cell_Memory { parentCell nameHier } {
 
   # Generate the PRJ File for MIG
   set str_mig_folder [get_property IP_DIR [ get_ips [ get_property CONFIG.Component_Name $mig_7series_0 ] ] ]
-  set str_mig_file_name mig_a.prj
+  set str_mig_file_name mig_b.prj
   set str_mig_file_path ${str_mig_folder}/${str_mig_file_name}
 
   write_mig_file_design_1_mig_7series_0_0 $str_mig_file_path
@@ -496,7 +496,7 @@ proc create_hier_cell_Memory { parentCell nameHier } {
   set_property -dict [ list \
    CONFIG.BOARD_MIG_PARAM {Custom} \
    CONFIG.RESET_BOARD_INTERFACE {Custom} \
-   CONFIG.XML_INPUT_FILE {mig_a.prj} \
+   CONFIG.XML_INPUT_FILE {mig_b.prj} \
  ] $mig_7series_0
 
   # Create instance: util_vector_logic_0, and set properties
@@ -606,10 +606,10 @@ proc create_hier_cell_Datamover { parentCell nameHier } {
   connect_bd_intf_net -intf_net S_AXIS_S2MM_1 [get_bd_intf_pins S_AXIS_S2MM] [get_bd_intf_pins axi_datamover_0/S_AXIS_S2MM]
 
   # Create port connections
+  connect_bd_net -net axi_aclk_1 [get_bd_pins axi_aclk] [get_bd_pins axi_datamover_0/m_axi_s2mm_aclk] [get_bd_pins axi_datamover_0/m_axis_s2mm_cmdsts_awclk]
+  connect_bd_net -net axi_aresetn_1 [get_bd_pins axi_aresetn] [get_bd_pins axi_datamover_0/m_axi_s2mm_aresetn] [get_bd_pins axi_datamover_0/m_axis_s2mm_cmdsts_aresetn]
   connect_bd_net -net axi_datamover_0_s2mm_err [get_bd_pins s2mm_err] [get_bd_pins axi_datamover_0/s2mm_err]
   connect_bd_net -net axi_datamover_0_s2mm_wr_xfer_cmplt [get_bd_pins s2mm_wr_xfer_cmplt] [get_bd_pins axi_datamover_0/s2mm_wr_xfer_cmplt]
-  connect_bd_net -net m_axi_s2mm_aclk_0_1 [get_bd_pins axi_aclk] [get_bd_pins axi_datamover_0/m_axi_s2mm_aclk] [get_bd_pins axi_datamover_0/m_axis_s2mm_cmdsts_awclk]
-  connect_bd_net -net m_axi_s2mm_aresetn_0_1 [get_bd_pins axi_aresetn] [get_bd_pins axi_datamover_0/m_axi_s2mm_aresetn] [get_bd_pins axi_datamover_0/m_axis_s2mm_cmdsts_aresetn]
   connect_bd_net -net s2mm_halt_0_1 [get_bd_pins s2mm_halt] [get_bd_pins axi_datamover_0/s2mm_halt]
   connect_bd_net -net xlconstant_0_dout [get_bd_pins axi_datamover_0/s2mm_allow_addr_req] [get_bd_pins xlconstant_0/dout]
 
@@ -760,8 +760,8 @@ proc create_root_design { parentCell } {
   set S_AXIS_S2MM [ create_bd_intf_port -mode Slave -vlnv xilinx.com:interface:axis_rtl:1.0 S_AXIS_S2MM ]
   set_property -dict [ list \
    CONFIG.FREQ_HZ {125000000} \
-   CONFIG.HAS_TKEEP {0} \
-   CONFIG.HAS_TLAST {0} \
+   CONFIG.HAS_TKEEP {1} \
+   CONFIG.HAS_TLAST {1} \
    CONFIG.HAS_TREADY {1} \
    CONFIG.HAS_TSTRB {0} \
    CONFIG.LAYERED_METADATA {undef} \
@@ -820,7 +820,7 @@ proc create_root_design { parentCell } {
   connect_bd_intf_net -intf_net CLK_IN_D_0_1 [get_bd_intf_ports pcie] [get_bd_intf_pins PCIe/pcie]
   connect_bd_intf_net -intf_net Datamover_M_AXI_S2MM [get_bd_intf_pins Datamover/M_AXI_S2MM] [get_bd_intf_pins Memory/S01_AXI]
   connect_bd_intf_net -intf_net PCIe_M_AXI_LITE [get_bd_intf_pins AXI_LITE_IO/S00_AXI] [get_bd_intf_pins PCIe/M_AXI_LITE]
-  connect_bd_intf_net -intf_net S_AXIS_S2MM_1 [get_bd_intf_ports S_AXIS_S2MM] [get_bd_intf_pins Datamover/S_AXIS_S2MM]
+  connect_bd_intf_net -intf_net S_AXIS_S2MM_0_1 [get_bd_intf_ports S_AXIS_S2MM] [get_bd_intf_pins Datamover/S_AXIS_S2MM]
   connect_bd_intf_net -intf_net S_AXIS_S2MM_CMD_0_1 [get_bd_intf_ports S_AXIS_S2MM_CMD] [get_bd_intf_pins Datamover/S_AXIS_S2MM_CMD]
   connect_bd_intf_net -intf_net mig_7series_0_DDR3 [get_bd_intf_ports DDR3] [get_bd_intf_pins Memory/DDR3]
   connect_bd_intf_net -intf_net xdma_0_M_AXI [get_bd_intf_pins Memory/S00_AXI] [get_bd_intf_pins PCIe/M_AXI]

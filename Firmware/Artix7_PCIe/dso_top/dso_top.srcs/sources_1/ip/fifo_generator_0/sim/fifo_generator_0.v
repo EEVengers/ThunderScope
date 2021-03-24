@@ -63,6 +63,7 @@ module fifo_generator_0 (
   dout,
   full,
   empty,
+  valid,
   wr_rst_busy,
   rd_rst_busy
 );
@@ -86,6 +87,7 @@ output wire [127 : 0] dout;
 output wire full;
 (* X_INTERFACE_INFO = "xilinx.com:interface:fifo_read:1.0 FIFO_READ EMPTY" *)
 output wire empty;
+output wire valid;
 output wire wr_rst_busy;
 output wire rd_rst_busy;
 
@@ -113,7 +115,7 @@ output wire rd_rst_busy;
     .C_HAS_RST(1),
     .C_HAS_SRST(0),
     .C_HAS_UNDERFLOW(0),
-    .C_HAS_VALID(0),
+    .C_HAS_VALID(1),
     .C_HAS_WR_ACK(0),
     .C_HAS_WR_DATA_COUNT(0),
     .C_HAS_WR_RST(0),
@@ -322,7 +324,7 @@ output wire rd_rst_busy;
     .overflow(),
     .empty(empty),
     .almost_empty(),
-    .valid(),
+    .valid(valid),
     .underflow(),
     .data_count(),
     .rd_data_count(),

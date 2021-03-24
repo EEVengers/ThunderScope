@@ -13,10 +13,10 @@ module combined_serdes(
   output [71:0] deser
   );
   
-  parameter integer PARAM_ARRAY [8:0] = {7, 7, 7, 7, 7, 7, 7, 7, 7};
+  parameter integer PARAM_ARRAY [8:0] = {7, 7, 8, 7, 7, 7, 7, 7, 7};
   
   wire [8:0] data_in_from_pins_int;
-  wire [8:0]  data_in_from_pins_delay;
+  wire [8:0] data_in_from_pins_delay;
 
   // We have multiple bits- step over every bit, instantiating the required elements
    genvar i;

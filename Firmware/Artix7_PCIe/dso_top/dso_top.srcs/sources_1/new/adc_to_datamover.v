@@ -23,6 +23,7 @@ module adc_to_datamover(
 
   wire fifo_full;
   wire fifo_empty;
+  wire fifo_valid;
   wire fifo_rd_en;
   wire[127:0] fifo_data;
 
@@ -35,40 +36,34 @@ module adc_to_datamover(
         cmd_tvalid <= 0;
     end
     else if (axis_cmd_tready) begin
-        address <= address + 16'h8000;
+        address <= address + 16'h1000;
     end
   end
 
   assign axis_cmd_tvalid = cmd_tvalid;
   //Reserved[3:0], Tag[3:0], SADDR[31:0], DRE, EOF, DSA[3:0], Type, BTT[22:0]
-  assign axis_cmd_tdata = {4'h0,4'h0,4'h0,address,1'b0,1'b1,6'h00,1'b1,23'h008000};
+  assign axis_cmd_tdata = {4'h0,4'h0,4'h0,address,1'b0,1'b1,6'h00,1'b1,23'h001000};
   
-  reg rd_en;
-  reg data_tvalid;
-  reg [10:0] data_counter;
-  reg data_tlast;
   wire new_sample;
-  assign new_sample = axis_data_tready & data_tvalid;
+  assign new_sample = axis_data_tready & ~fifo_empty;
+  assign fifo_rd_en = new_sample;
+  assign axis_data_tvalid = new_sample & fifo_valid;
   
+  reg [7:0] data_counter;
+  reg data_tlast;
   always @(posedge axi_aclk) begin
-    data_tvalid <= ~fifo_empty;
-    rd_en <= 1'b0;
     if (!S01_ARESETN) begin
         data_counter <= 0;
-        data_tvalid <= 0;
     end
     else if (new_sample) begin
-        rd_en <= 1'b1;
         data_counter <= data_counter + 1;
         data_tlast <= 0;
-        if (data_counter==16'd2046) begin
+        if (data_counter==16'd254) begin
             data_tlast <= 1;
         end
     end
   end
-
   assign axis_data_tlast = data_tlast; 
-  assign axis_data_tvalid = data_tvalid;
   
   always @(*)
     begin
@@ -79,8 +74,6 @@ module adc_to_datamover(
             2'b11: axis_data_tdata = {fifo_data[63:56],fifo_data[47:40],fifo_data[31:24],fifo_data[15:8],fifo_data[55:48],fifo_data[39:32],fifo_data[23:16],fifo_data[7:0],fifo_data[127:120],fifo_data[111:104],fifo_data[95:88],fifo_data[79:72],fifo_data[119:112],fifo_data[103:96],fifo_data[87:80],fifo_data[71:64]};
     endcase
   end
-  
-  assign fifo_rd_en = rd_en;
 
   //Transfer Counter
   reg [15:0] transfer_counter;
@@ -124,7 +117,8 @@ module adc_to_datamover(
    	.rd_en(fifo_rd_en),
    	.dout(fifo_data),
    	.full(fifo_full),
-  	.empty(fifo_empty)
+  	.empty(fifo_empty),
+  	.valid(fifo_valid)
 	);
 
 endmodule

@@ -1,10 +1,10 @@
 -- Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
--- Date        : Mon Mar 22 18:49:47 2021
+-- Date        : Tue Mar 23 21:32:57 2021
 -- Host        : DESKTOP-J72MK93 running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
---               c:/Users/Aleksa/Documents/FPGA_Dev/Artix7_PCIe/dso_top_ddr3_4KB/dso_top_ddr3.srcs/sources_1/ip/fifo_generator_0/fifo_generator_0_sim_netlist.vhdl
+--               c:/Users/Aleksa/Documents/FPGA_Dev/Artix7_PCIe/dso_top_ddr3/dso_top_ddr3.srcs/sources_1/ip/fifo_generator_0/fifo_generator_0_sim_netlist.vhdl
 -- Design      : fifo_generator_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -8175,6 +8175,7 @@ entity fifo_generator_0_rd_fwft is
   port (
     \out\ : out STD_LOGIC_VECTOR ( 1 downto 0 );
     empty : out STD_LOGIC;
+    valid : out STD_LOGIC;
     E : out STD_LOGIC_VECTOR ( 0 to 0 );
     ram_rd_en : out STD_LOGIC;
     ENB_I_1 : out STD_LOGIC;
@@ -8239,6 +8240,7 @@ begin
   empty <= empty_fwft_i;
   \out\(1 downto 0) <= curr_fwft_state(1 downto 0);
   ram_rd_en <= \^ram_rd_en\;
+  valid <= user_valid;
 \DEVICE_7SERIES.NO_BMM_INFO.SDP.SIMPLE_PRIM18.ram_i_2\: unisim.vcomponents.LUT4
     generic map(
       INIT => X"EEFE"
@@ -11561,6 +11563,7 @@ use UNISIM.VCOMPONENTS.ALL;
 entity fifo_generator_0_rd_logic is
   port (
     empty : out STD_LOGIC;
+    valid : out STD_LOGIC;
     ENB_I : out STD_LOGIC;
     Q : out STD_LOGIC_VECTOR ( 11 downto 0 );
     ENB_I_0 : out STD_LOGIC;
@@ -11600,7 +11603,8 @@ begin
       \out\(0) => p_0_in(0),
       ram_rd_en => ram_rd_en,
       rd_clk => rd_clk,
-      rd_en => rd_en
+      rd_en => rd_en,
+      valid => valid
     );
 \gras.rsts\: entity work.fifo_generator_0_rd_status_flags_as
      port map (
@@ -13385,6 +13389,7 @@ entity fifo_generator_0_fifo_generator_ramfifo is
     \ngwrdrst.grst.g7serrst.gsckt_wrst.gic_rst.sckt_rd_rst_ic_reg\ : out STD_LOGIC;
     wr_rst_busy : out STD_LOGIC;
     empty : out STD_LOGIC;
+    valid : out STD_LOGIC;
     full : out STD_LOGIC;
     dout : out STD_LOGIC_VECTOR ( 127 downto 0 );
     rd_clk : in STD_LOGIC;
@@ -13408,7 +13413,7 @@ architecture STRUCTURE of fifo_generator_0_fifo_generator_ramfifo is
   signal \gbm.gbmg.gbmga.ngecc.bmg/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[13].ram.r/ram_rstram_b\ : STD_LOGIC;
   signal \gbm.gbmg.gbmga.ngecc.bmg/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[14].ram.r/ENA_I\ : STD_LOGIC;
   signal \gbm.gbmg.gbmga.ngecc.bmg/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[14].ram.r/ENB_I\ : STD_LOGIC;
-  signal \gntv_or_sync_fifo.gl0.rd_n_17\ : STD_LOGIC;
+  signal \gntv_or_sync_fifo.gl0.rd_n_18\ : STD_LOGIC;
   signal \gntv_or_sync_fifo.gl0.wr_n_1\ : STD_LOGIC;
   signal \gntv_or_sync_fifo.gl0.wr_n_17\ : STD_LOGIC;
   signal \gntv_or_sync_fifo.gl0.wr_n_18\ : STD_LOGIC;
@@ -13446,11 +13451,12 @@ begin
       Q(11 downto 0) => rd_pntr(11 downto 0),
       WR_PNTR_RD(11 downto 0) => wr_pntr_rd(12 downto 1),
       empty => empty,
-      \gc0.count_d1_reg[11]\ => \gntv_or_sync_fifo.gl0.rd_n_17\,
+      \gc0.count_d1_reg[11]\ => \gntv_or_sync_fifo.gl0.rd_n_18\,
       \gc0.count_reg[0]\ => \^ngwrdrst.grst.g7serrst.gsckt_wrst.gic_rst.sckt_rd_rst_ic_reg\,
       rd_clk => rd_clk,
       rd_en => rd_en,
-      sel_pipe => sel_pipe
+      sel_pipe => sel_pipe,
+      valid => valid
     );
 \gntv_or_sync_fifo.gl0.wr\: entity work.fifo_generator_0_wr_logic
      port map (
@@ -13495,7 +13501,7 @@ begin
       WEA(0) => \gntv_or_sync_fifo.gl0.wr_n_18\,
       din(63 downto 0) => din(63 downto 0),
       dout(127 downto 0) => dout(127 downto 0),
-      \no_softecc_sel_reg.ce_pri.sel_pipe_reg[0]\ => \gntv_or_sync_fifo.gl0.rd_n_17\,
+      \no_softecc_sel_reg.ce_pri.sel_pipe_reg[0]\ => \gntv_or_sync_fifo.gl0.rd_n_18\,
       ram_rstram_b => \gbm.gbmg.gbmga.ngecc.bmg/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[13].ram.r/ram_rstram_b\,
       rd_clk => rd_clk,
       sel_pipe => sel_pipe,
@@ -13524,6 +13530,7 @@ entity fifo_generator_0_fifo_generator_top is
     \ngwrdrst.grst.g7serrst.gsckt_wrst.gic_rst.sckt_rd_rst_ic_reg\ : out STD_LOGIC;
     wr_rst_busy : out STD_LOGIC;
     empty : out STD_LOGIC;
+    valid : out STD_LOGIC;
     full : out STD_LOGIC;
     dout : out STD_LOGIC_VECTOR ( 127 downto 0 );
     rd_clk : in STD_LOGIC;
@@ -13549,6 +13556,7 @@ begin
       rd_clk => rd_clk,
       rd_en => rd_en,
       rst => rst,
+      valid => valid,
       wr_clk => wr_clk,
       wr_en => wr_en,
       wr_rst_busy => wr_rst_busy
@@ -13563,6 +13571,7 @@ entity fifo_generator_0_fifo_generator_v13_2_5_synth is
     \ngwrdrst.grst.g7serrst.gsckt_wrst.gic_rst.sckt_rd_rst_ic_reg\ : out STD_LOGIC;
     wr_rst_busy : out STD_LOGIC;
     empty : out STD_LOGIC;
+    valid : out STD_LOGIC;
     full : out STD_LOGIC;
     dout : out STD_LOGIC_VECTOR ( 127 downto 0 );
     rd_clk : in STD_LOGIC;
@@ -13588,6 +13597,7 @@ begin
       rd_clk => rd_clk,
       rd_en => rd_en,
       rst => rst,
+      valid => valid,
       wr_clk => wr_clk,
       wr_en => wr_en,
       wr_rst_busy => wr_rst_busy
@@ -14016,7 +14026,7 @@ entity fifo_generator_0_fifo_generator_v13_2_5 is
   attribute C_HAS_UNDERFLOW : integer;
   attribute C_HAS_UNDERFLOW of fifo_generator_0_fifo_generator_v13_2_5 : entity is 0;
   attribute C_HAS_VALID : integer;
-  attribute C_HAS_VALID of fifo_generator_0_fifo_generator_v13_2_5 : entity is 0;
+  attribute C_HAS_VALID of fifo_generator_0_fifo_generator_v13_2_5 : entity is 1;
   attribute C_HAS_WR_ACK : integer;
   attribute C_HAS_WR_ACK of fifo_generator_0_fifo_generator_v13_2_5 : entity is 0;
   attribute C_HAS_WR_DATA_COUNT : integer;
@@ -14759,7 +14769,6 @@ begin
   s_axis_tready <= \<const0>\;
   sbiterr <= \<const0>\;
   underflow <= \<const0>\;
-  valid <= \<const0>\;
   wr_ack <= \<const0>\;
   wr_data_count(12) <= \<const0>\;
   wr_data_count(11) <= \<const0>\;
@@ -14792,6 +14801,7 @@ inst_fifo_gen: entity work.fifo_generator_0_fifo_generator_v13_2_5_synth
       rd_clk => rd_clk,
       rd_en => rd_en,
       rst => rst,
+      valid => valid,
       wr_clk => wr_clk,
       wr_en => wr_en,
       wr_rst_busy => wr_rst_busy
@@ -14812,6 +14822,7 @@ entity fifo_generator_0 is
     dout : out STD_LOGIC_VECTOR ( 127 downto 0 );
     full : out STD_LOGIC;
     empty : out STD_LOGIC;
+    valid : out STD_LOGIC;
     wr_rst_busy : out STD_LOGIC;
     rd_rst_busy : out STD_LOGIC
   );
@@ -14885,7 +14896,6 @@ architecture STRUCTURE of fifo_generator_0 is
   signal NLW_U0_s_axis_tready_UNCONNECTED : STD_LOGIC;
   signal NLW_U0_sbiterr_UNCONNECTED : STD_LOGIC;
   signal NLW_U0_underflow_UNCONNECTED : STD_LOGIC;
-  signal NLW_U0_valid_UNCONNECTED : STD_LOGIC;
   signal NLW_U0_wr_ack_UNCONNECTED : STD_LOGIC;
   signal NLW_U0_axi_ar_data_count_UNCONNECTED : STD_LOGIC_VECTOR ( 4 downto 0 );
   signal NLW_U0_axi_ar_rd_data_count_UNCONNECTED : STD_LOGIC_VECTOR ( 4 downto 0 );
@@ -15132,7 +15142,7 @@ architecture STRUCTURE of fifo_generator_0 is
   attribute C_HAS_UNDERFLOW : integer;
   attribute C_HAS_UNDERFLOW of U0 : label is 0;
   attribute C_HAS_VALID : integer;
-  attribute C_HAS_VALID of U0 : label is 0;
+  attribute C_HAS_VALID of U0 : label is 1;
   attribute C_HAS_WR_ACK : integer;
   attribute C_HAS_WR_ACK of U0 : label is 0;
   attribute C_HAS_WR_DATA_COUNT : integer;
@@ -15592,7 +15602,7 @@ U0: entity work.fifo_generator_0_fifo_generator_v13_2_5
       sleep => '0',
       srst => '0',
       underflow => NLW_U0_underflow_UNCONNECTED,
-      valid => NLW_U0_valid_UNCONNECTED,
+      valid => valid,
       wr_ack => NLW_U0_wr_ack_UNCONNECTED,
       wr_clk => wr_clk,
       wr_data_count(12 downto 0) => NLW_U0_wr_data_count_UNCONNECTED(12 downto 0),
