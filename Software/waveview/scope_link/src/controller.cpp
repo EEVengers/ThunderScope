@@ -1,8 +1,6 @@
 #include "controller.hpp"
 #include "logger.hpp"
 
-//#define NOHARDWARE
-
 //RampDemo Related
 int8_t RD_PACKET_ORIGINAL[RD_PACKET_SIZE];
 
@@ -24,7 +22,10 @@ controller::controller(boost::lockfree::queue<buffer*, boost::lockfree::fixed_si
     triggerThread = new Trigger(dataQueue, &triggerProcessorQueue, triggerLevel);
     processorThread = new Processor(&triggerProcessorQueue, &processorPostProcessorQueue_1);
     postProcessorThread = new postProcessor(&processorPostProcessorQueue_1, &controllerQueue_tx);
+
+#ifndef NOHARDWARE
     pcieLinkThread = new PCIeLink(dataQueue);
+#endif
 
     // set default values
     setCh(1);
@@ -428,7 +429,9 @@ void controller::controllerPause()
     processorThread->processorPause();
     triggerThread->triggerPause();
     postProcessorThread->postProcessorPause();
+#ifndef NOHARDWARE
     pcieLinkThread->Pause();
+#endif
 }
 
 /*******************************************************************************
@@ -448,7 +451,9 @@ void controller::controllerUnPause()
     processorThread->processorUnpause();
     triggerThread->triggerUnpause();
     postProcessorThread->postProcessorUnpause();
+#ifndef NOHARDWARE
     pcieLinkThread->UnPause();
+#endif
 }
 
 /*******************************************************************************
