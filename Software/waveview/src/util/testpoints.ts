@@ -2,6 +2,9 @@ import CMD from '../configuration/enums/cmd';
 import { PlumberArgs, Plumber, SetMathOp } from './plumber';
 import store from '../redux/store';
 import { LineSeriesPoint } from 'react-vis';
+import DefaultValues from '../configuration/defaultValues';
+import { convertTime } from '../util/convert';
+import TimeUnit from '../configuration/enums/timeUnit';
 
 class TestPoints {
   scope_data: LineSeriesPoint[][] = []; //[ch-1] for channel, [5] for math
@@ -43,6 +46,9 @@ class TestPoints {
       writeData: [74, 0]
     }
 
+    let base = state.horizontalWidget.horizontalTimeBase.course;
+    let dCount = DefaultValues.divisions.time;
+    let xLimit = dCount * convertTime(base.value, base.unit, TimeUnit.NanoSecond);
     this.setWinArgs = {
       headCheck: () => {
         this.setWinDone = true;
@@ -51,7 +57,7 @@ class TestPoints {
       bodyCheck: () => true,
       cmd: CMD.CMD_SetWindowSize,
       id: 0,
-      writeData: new Int8Array((new Uint32Array([state.graph.xDomain[1]])).buffer)
+      writeData: new Int8Array((new Uint32Array([xLimit])).buffer)
     }
   }
 
@@ -64,7 +70,8 @@ class TestPoints {
   update() {
     if(this.setChDone && this.setFileDone && this.setWinDone) {
       let state = store.getState();
-      let xLimit = state.graph.xDomain[1];
+      let base = state.horizontalWidget.horizontalTimeBase.course;
+      let xLimit = convertTime(base.value, base.unit, TimeUnit.NanoSecond);
       let doMath = state.mathWidget.mathEnabled as boolean;
       let order = state.verticalWidget.getDataChannelOrder as number[];
 

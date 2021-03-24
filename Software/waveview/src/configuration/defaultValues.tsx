@@ -112,7 +112,7 @@ const x10ProbeValues = [
 ];
 
 // 13 different voltages per divison presets
-// Start at x1ProbeValues[6] and change accordingly 
+// Start at x1ProbeValues[6] and change accordingly
 
 const horizontalTimeBases = [
   {
@@ -243,8 +243,14 @@ const horizontalTimeBases = [
 // 31 different voltages per division presets
 // Start at horizontalTimeBases[15] and change accordingly
 
+let divisions = {
+  voltage: 10, //TODO: change graph to 8, make this 8
+  time: 10
+}
+
 export default {
   x1ProbeValues,
   x10ProbeValues,
-  horizontalTimeBases
+  horizontalTimeBases,
+  divisions
 };

@@ -32,7 +32,7 @@ export default function(state = HorizontalWidgetInitialState, action: {type: any
         }
       }
     case "horizontal/increaseTimeBase":
-      if (state.horizontalTimeBase.index >= 30) {
+      if (state.horizontalTimeBase.index >= DefaultValues.horizontalTimeBases.length) {
         return { ...state };
       }
       return {

@@ -12,6 +12,9 @@ import {
 
 import GraphStatus from '../../configuration/enums/graphStatus';
 import TestPoints from '../../util/testpoints';
+import { convertTime } from '../../util/convert';
+import TimeUnit from '../../configuration/enums/timeUnit';
+import DefaultValues from '../../configuration/defaultValues';
 
 class Graph extends React.Component<any, any> {
   static instanceList: Graph[] = [];
@@ -39,6 +42,9 @@ class Graph extends React.Component<any, any> {
   }
 
   render() {
+    let base = this.props.horizontalWidget.horizontalTimeBase.course;
+    let dCount = DefaultValues.divisions.time;
+    let winSize = dCount * convertTime(base.value, base.unit, TimeUnit.NanoSecond);
     return (
       <div className="graph_view">
         <div
@@ -51,8 +57,8 @@ class Graph extends React.Component<any, any> {
           </p>
         </div>
         <FlexibleXYPlot
-          yDomain={this.props.graph.yDomain}
-          xDomain={this.props.graph.xDomain}
+          yDomain={[-128,128]}
+          xDomain={[0, winSize]}
           margin={{right:0, bottom:0}}
         >
           <HorizontalGridLines
@@ -97,11 +103,12 @@ class Graph extends React.Component<any, any> {
   }
 }
 
-function mapStateToProps(state: { graph: any, settings: any, verticalWidget: any }) {
+function mapStateToProps(state: { graph: any, settings: any, verticalWidget: any, horizontalWidget: any }) {
   return {
     graph: state.graph,
     settings: state.settings,
-    verticalWidget: state.verticalWidget
+    verticalWidget: state.verticalWidget,
+    horizontalWidget: state.horizontalWidget
   };
 }
 
