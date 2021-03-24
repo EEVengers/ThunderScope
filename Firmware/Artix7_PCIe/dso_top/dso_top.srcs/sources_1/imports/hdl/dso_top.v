@@ -115,16 +115,16 @@ module dso_top
   end
   assign probe_comp = probe_div_clk;
   
-  //assign adc_data = {~data_deser[63:24],data_deser[23:16],~data_deser[15:0]};
+  assign adc_data = {~data_deser[63:24],data_deser[23:16],~data_deser[15:0]};
   //assign adc_data = {8'h77,8'h66,8'h55,8'h44,8'h33,8'h22,8'h11,8'h00};
-  reg[7:0] adc_ramp_counter;
-  always @(posedge divclk) begin
-    if (!S01_ARESETN) 
-        adc_ramp_counter <= 0;
-    else
-        adc_ramp_counter <= adc_ramp_counter + 1;
-  end
-  assign adc_data = {8{adc_ramp_counter}};
+//  reg[7:0] adc_ramp_counter;
+//  always @(posedge divclk) begin
+//    if (!S01_ARESETN) 
+//        adc_ramp_counter <= 0;
+//    else
+//        adc_ramp_counter <= adc_ramp_counter + 1;
+//  end
+//  assign adc_data = {8{adc_ramp_counter}};
   
   wire serdes_rst;
   reg [2:0] serdes_rst_cdc = 3'b111;
