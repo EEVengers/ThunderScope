@@ -2,6 +2,9 @@ import CMD from '../configuration/enums/cmd';
 import { PlumberArgs, Plumber, SetMathOp } from './plumber';
 import store from '../redux/store';
 import { LineSeriesPoint } from 'react-vis';
+import DefaultValues from '../configuration/defaultValues';
+import { convertTime } from '../util/convert';
+import TimeUnit from '../configuration/enums/timeUnit';
 
 class TestPoints {
   scope_data: LineSeriesPoint[][] = []; //[ch-1] for channel, [5] for math
@@ -10,13 +13,12 @@ class TestPoints {
 
   setChArgs: PlumberArgs;
   setFileArgs: PlumberArgs;
+  setWinArgs: PlumberArgs;
   setChDone: Boolean = false;
   setFileDone: Boolean = false;
+  setWinDone: Boolean = false;
 
-  constructor(xRange: number, yRange: number) {
-    store.dispatch({type: "graph/xDomain", payload: [0, xRange]});
-    store.dispatch({type: "graph/yDomain", payload: [-yRange, yRange]})
-
+  constructor() {
     let state = store.getState();
     for(var j = 0; j < this.getDataMaxCh; j++) {
       this.scope_data[j] = [{x: 0, y: 0}];
@@ -43,17 +45,33 @@ class TestPoints {
       id: 0,
       writeData: [74, 0]
     }
+
+    let base = state.horizontalWidget.horizontalTimeBase.course;
+    let dCount = DefaultValues.divisions.time;
+    let xLimit = dCount * convertTime(base.value, base.unit, TimeUnit.NanoSecond);
+    this.setWinArgs = {
+      headCheck: () => {
+        this.setWinDone = true;
+        return true;
+      },
+      bodyCheck: () => true,
+      cmd: CMD.CMD_SetWindowSize,
+      id: 0,
+      writeData: new Int8Array((new Uint32Array([xLimit])).buffer)
+    }
   }
 
   mountCalls() {
     Plumber.getInstance().cycle(this.setChArgs);
     Plumber.getInstance().cycle(this.setFileArgs);
+    Plumber.getInstance().cycle(this.setWinArgs);
   }
 
   update() {
-    if(this.setChDone && this.setFileDone) {
+    if(this.setChDone && this.setFileDone && this.setWinDone) {
       let state = store.getState();
-      let xLimit = state.graph.xDomain[1];
+      let base = state.horizontalWidget.horizontalTimeBase.course;
+      let xLimit = convertTime(base.value, base.unit, TimeUnit.NanoSecond);
       let doMath = state.mathWidget.mathEnabled as boolean;
       let order = state.verticalWidget.getDataChannelOrder as number[];
 
