@@ -600,6 +600,14 @@ PCIeLink::PCIeLink(boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<
 }
 
 PCIeLink::~PCIeLink() {
+
+    //turn off the adc
+    _adc_power_down();
+    //disable the front end and board power
+    currentBoardState.board_reg_out = 0;
+    _Write32(user_handle,BOARD_REG_OUT,currentBoardState.board_reg_out);
+
+
     if(user_handle != INVALID_HANDLE_VALUE)
         CloseHandle(user_handle);
     if(c2h_0_handle != INVALID_HANDLE_VALUE)
