@@ -241,8 +241,6 @@ void PCIeLink::Write(ScopeCommand command, void* val) {
             _FIFO_WRITE(user_handle,resetADC,4);
             //Power Down ADC
             _adc_power_down();
-            //Set Channel and Clock Div
-            _FIFO_WRITE(user_handle,currentBoardState.adc_chnum_clkdiv,sizeof(currentBoardState.adc_chnum_clkdiv));
             //invert channels
             uint8_t channel_invert[] = {0xFD,0x24,0x00,0x7F};
             _FIFO_WRITE(user_handle,channel_invert,4);
@@ -259,9 +257,7 @@ void PCIeLink::Write(ScopeCommand command, void* val) {
             uint8_t course_gain12[] = {0xFD,0x2B,0x0A,0xAA};
             _FIFO_WRITE(user_handle,course_gain12,4);
             //Set adc into active mode
-            _adc_active();
-            _FIFO_WRITE(user_handle,currentBoardState.adc_in_sel_12,sizeof(currentBoardState.adc_in_sel_12));
-            _FIFO_WRITE(user_handle,currentBoardState.adc_in_sel_34,sizeof(currentBoardState.adc_in_sel_34));
+            _ch_on(0);
         }
         
         INFO << "Enabling the front end";
