@@ -249,7 +249,9 @@ void PCIeLink::Write(ScopeCommand command, void* val) {
             _FIFO_WRITE(user_handle,channel_invert,4);
             
             _ch_on(0);
-
+            //twos compliment mode TURN OFF
+            uint8_t setTwosComp[] = {0xFD,0x46,0x00,0x00};
+            _FIFO_WRITE(user_handle,setTwosComp,4);
             //Course Gain On
             uint8_t course_gain_on[] = {0xFD,0x33,0x00,0x00};
             _FIFO_WRITE(user_handle,course_gain_on,4);
@@ -380,13 +382,23 @@ void PCIeLink::Write(ScopeCommand command, void* val) {
         case test_adc_data:
         {
             int num_buffers = 4;
-            uint8_t **buffers = (uint8_t**)malloc(num_buffers * sizeof(uint8_t*));
+            uint8_t* preBuff = (uint8_t*)malloc(BUFFER_SIZE * sizeof(uint8_t));
+            int8_t **buffers = (int8_t**)malloc(num_buffers * sizeof(int8_t*));
             for(int i = 0; i < num_buffers; i++) {
-                buffers[i] = (uint8_t*)malloc(BUFFER_SIZE * sizeof(uint8_t));
+                buffers[i] = (int8_t*)malloc(BUFFER_SIZE * sizeof(int8_t));
             }
 
             for(int i = 0; i < num_buffers; i++) {
-                Read(buffers[i]);
+                Read(preBuff);
+                for(int q = 0; q < BUFFER_SIZE; q++) {
+                    if(preBuff[i] & 0x80) {
+                        //postive
+                        buffers[i][q] = (int)(preBuff[q] & 0x7F);
+                    } else {
+                        //negative
+                        buffers[i][q] = (-128 + ((int)(preBuff[q] & 0x7F)));
+                    }
+                }
             }
 
             for(int i = 0; i < num_buffers; i++) {
@@ -394,15 +406,14 @@ void PCIeLink::Write(ScopeCommand command, void* val) {
                 sprintf(name,"ADC_DATA_FILE%d.csv",i);
                 FILE* file = fopen(name,"w");
                 for(int q = 0; q < BUFFER_SIZE;) {
-                    int8_t* valp1 = (int8_t*)(&(buffers[i][q]));
-                    fprintf(file,"%d,",(int8_t)buffers[i][q++]);
-                    fprintf(file,"%d,",(int8_t)buffers[i][q++]);
-                    fprintf(file,"%d,",(int8_t)buffers[i][q++]);
-                    fprintf(file,"%d,",(int8_t)buffers[i][q++]);
-                    fprintf(file,"%d,",(int8_t)buffers[i][q++]);
-                    fprintf(file,"%d,",(int8_t)buffers[i][q++]);
-                    fprintf(file,"%d,",(int8_t)buffers[i][q++]);
-                    fprintf(file,"%d\n",(int8_t)buffers[i][q++]);
+                    fprintf(file,"%d,",buffers[i][q++]);
+                    fprintf(file,"%d,",buffers[i][q++]);
+                    fprintf(file,"%d,",buffers[i][q++]);
+                    fprintf(file,"%d,",buffers[i][q++]);
+                    fprintf(file,"%d,",buffers[i][q++]);
+                    fprintf(file,"%d,",buffers[i][q++]);
+                    fprintf(file,"%d,",buffers[i][q++]);
+                    fprintf(file,"%d\n",buffers[i][q++]);
                 }
             }
 
