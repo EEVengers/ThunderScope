@@ -45,21 +45,32 @@ class TriggerWidget extends React.Component<any, any> {
 
   // Trigger Level
   increaseTriggerLevel = () => {
-    //TODO: Plumber call
-    //(TRIGGER LEVEL (V))/((VOLTAGE RANGExDIVISIONS)/256)
+    let tw = this.props.triggerWidget;
+    let lvl = tw.triggerLevel[tw.triggerChannel-1];
+    let vw = this.props.verticalWidget;
+    let div = vw.timePerDivision[tw.triggerChannel-1].coarse;
+    console.log(lvl);
+    Plumber.getInstance().handleSetLevel(lvl.value+1, lvl.unit, div.value, div.unit);
     this.props.dispatch({type: 'trigger/increaseTriggerLevelValue'});
   }
 
   decreaseTriggerLevel = () => {
-    //TODO: Plumber call
-    //(TRIGGER LEVEL (V))/((VOLTAGE RANGExDIVISIONS)/256)
+    let tw = this.props.triggerWidget;
+    let lvl = tw.triggerLevel[tw.triggerChannel-1];
+    let vw = this.props.verticalWidget;
+    let div = vw.timePerDivision[tw.triggerChannel-1].coarse;
+    console.log(lvl);
+    Plumber.getInstance().handleSetLevel(lvl.value-1, lvl.unit, div.value, div.unit);
     this.props.dispatch({type: 'trigger/decreaseTriggerLevelValue'});
   }
 
   // Trigger Level Unit
   changeTriggerLevelUnit = (voltageUnit: VoltageUnit) => {
-    //TODO: unit analysis, plumber call
-    //(TRIGGER LEVEL (V))/((VOLTAGE RANGExDIVISIONS)/256)
+    let tw = this.props.triggerWidget;
+    let lvl = tw.triggerLevel[tw.triggerChannel-1];
+    let vw = this.props.verticalWidget;
+    let div = vw.timePerDivision[tw.triggerChannel-1].coarse;
+    Plumber.getInstance().handleSetLevel(lvl.value, voltageUnit, div.value, div.unit);
     this.props.dispatch({type: 'trigger/changeTriggerLevelUnit', payload: voltageUnit});
   }
 

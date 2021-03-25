@@ -108,7 +108,7 @@ const VerticalWidgetInitialState = {
       unit: VoltageUnit.MilliVolt
     }
   ],
-  getDataChannelOrder: [1, 2, 3, 4]
+  getDataChannelOrder: [1]
 };
 
 export default VerticalWidgetInitialState;

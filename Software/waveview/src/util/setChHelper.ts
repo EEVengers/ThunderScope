@@ -1,7 +1,5 @@
-import setChMode from '../configuration/enums/setChMode';
-
 export interface SetChState {
-  setCh: setChMode,
+  setCh: number[],
   setTriggerCh: number,
   chOrder: number[]
 }
@@ -18,10 +16,10 @@ export function setChHelper(
   let quadChOrder = [1, 2, 3, 4];
 
   var chOrder = quadChOrder.filter((a, i) => chList[i] || triggerChIdx === i);
-  var setCh = chOrder.length as setChMode;
-  if(setCh === 3) {
+  var setCh = chList.map(x => x ? 1 : 0);
+  if(setCh.length === 3) {
     chOrder = quadChOrder;
-    setCh = quadChOrder.length;
+    setCh = quadChOrder.map(x => (x > 0) ? 1 : 0);
   }
   let setTriggerCh = chOrder.indexOf(triggerCh) + 1;
 

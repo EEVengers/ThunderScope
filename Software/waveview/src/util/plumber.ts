@@ -2,8 +2,9 @@ import CMD from '../configuration/enums/cmd';
 import { SetChState } from './setChHelper';
 import MathOperators from '../configuration/enums/mathOperators';
 import DefaultValues from '../configuration/defaultValues';
-import { convertTime } from './convert';
+import { convertTime, convertVoltage } from './convert';
 import TimeUnit from '../configuration/enums/timeUnit';
+import VoltageUnit from '../configuration/enums/voltageUnit';
 
 export enum SetMathOp {
   SetMath_None = 0,
@@ -118,7 +119,7 @@ export class Plumber {
       bodyCheck: () => true,
       cmd: CMD.CMD_SetCh,
       id: 0,
-      writeData: [s.setCh, 0]
+      writeData: s.setCh
     }
     let setTriggerChArgs: PlumberArgs = {
       headCheck: () => true,
@@ -160,6 +161,34 @@ export class Plumber {
       writeData: new Int8Array((new Uint32Array([winSize])).buffer)
     }
     this.cycle(setWinArgs);
+  }
+
+  public handleVert(ch: number, idx: number) {
+    let bases = DefaultValues.x1ProbeValues;
+    let targIdx = (idx < 0) ? 0 : ((idx >= bases.length) ? bases.length : idx);
+    let targ = bases[targIdx];
+    let targMillivolt = convertVoltage(targ.value, targ.unit, VoltageUnit.MilliVolt);
+    let args = {
+      headCheck: () => true,
+      bodyCheck: () => true,
+      cmd: CMD.CMD_SetVerticalScaling,
+      id: 0,
+      writeData: new Int8Array((new Int16Array([ch,targMillivolt])).buffer)
+    }
+    this.cycle(args);
+  }
+
+  public handleSetLevel(lvl: number, lvlUnit: VoltageUnit, div: number, divUnit: VoltageUnit) {
+    let convertedLvl = convertVoltage(lvl, lvlUnit, divUnit);
+    let normLvl = 256 * convertedLvl/(div*DefaultValues.divisions.voltage);
+    let args = {
+      headCheck: () => true,
+      bodyCheck: () => true,
+      cmd: CMD.CMD_SetLevel,
+      id: 0,
+      writeData: new Int8Array([normLvl, 0])
+    }
+    this.cycle(args);
   }
 
   public decodeGetMinMax(args: PlumberArgs, a: Int8Array) {

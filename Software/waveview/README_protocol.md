@@ -44,7 +44,7 @@ Cmd  | DataSize        | Name          | Description
 0x24 | 2 (useless)     | GetTriggerCh  |
 0x25 | 2 (useless)     | GetEdgeType   |
 0x31 | 4               | SetWindowSize | Data has new window size as uint32
-0x32 | 2               | SetCh         | Data has ch 1, 2 or 4
+0x32 | 4               | SetCh         | Data: `[ch1, ch2, ch3, ch4]`, each 1 or 0
 0x33 | 2               | SetLevel      | Data has new level
 0x34 | 2               | SetTriggerCh  | Data has channel 1,2,3,4
 0x35 | 2               | SetEdgeType   | Data has 1 (rising) or 2 (falling)
@@ -89,7 +89,7 @@ Cmd  | DataSize        | Name                | Description
 0x03 | 2 (useless)     | GetData3            | Reserved, If we need 1 command/ch
 0x04 | 2 (useless)     | GetData4            | Reserved, If we need 1 command/ch
 0x36 | 2?              | SetBandwidth        |
-0x37 | 2?              | SetVerticalScaling  |
+0x37 | 4               | SetVerticalScaling  | Data has ch, mV/div as int16
 0x38 | 2               | SetVerticalOffset   | Data\[0\] has offset
 0x39 | 2?              | SetHorizontalOffset |
 0x3A | 2               | SetCoupling         | Data\[0\] has 0\1 for AC\DC

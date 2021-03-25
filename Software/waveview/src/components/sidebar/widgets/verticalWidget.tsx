@@ -18,22 +18,20 @@ class VerticalWidget extends React.Component<any, any> {
 
   // Time Per Division
   incrementTimePerDivision = () => {
-    let currentChannel = this.props.verticalWidget.activeChannel - 1;
-    let index = this.props.verticalWidget.timePerDivision[currentChannel].index;
-
-    if (index !== 0)
-    {
-      // Call C
+    let v = this.props.verticalWidget;
+    let idx = v.timePerDivision[v.activeChannel-1].index - 1;
+    Plumber.getInstance().handleVert(v.activeChannel, idx);
+    if(idx !== 0) {
       this.props.dispatch({type: 'vertical/increaseTimePerDivision'});
-    };
+    }
+
   }
 
   decrementTimePerDivision = () => {
-    let currentChannel = this.props.verticalWidget.activeChannel - 1;
-    let index = this.props.verticalWidget.timePerDivision[currentChannel].index;
-
-    if (index < 12) {
-      // Call C
+    let v = this.props.verticalWidget;
+    let idx = v.timePerDivision[v.activeChannel-1].index + 1;
+    Plumber.getInstance().handleVert(v.activeChannel, idx);
+    if(idx < 12) {
       this.props.dispatch({type: 'vertical/decreaseTimePerDivision'});
     }
   }

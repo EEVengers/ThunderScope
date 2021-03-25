@@ -32,7 +32,7 @@ class TestPoints {
       bodyCheck: () => true,
       cmd: CMD.CMD_SetCh,
       id: 0,
-      writeData: [state.verticalWidget.getDataChannelOrder.length, 0]
+      writeData: [1, 0, 0, 0]
     }
 
     this.setFileArgs = {
@@ -71,7 +71,8 @@ class TestPoints {
     if(this.setChDone && this.setFileDone && this.setWinDone) {
       let state = store.getState();
       let base = state.horizontalWidget.horizontalTimeBase.coarse;
-      let xLimit = convertTime(base.value, base.unit, TimeUnit.NanoSecond);
+      let dCount = DefaultValues.divisions.time;
+      let xLimit = dCount * convertTime(base.value, base.unit, TimeUnit.NanoSecond);
       let doMath = state.mathWidget.mathEnabled as boolean;
       let order = state.verticalWidget.getDataChannelOrder as number[];
 
@@ -112,6 +113,7 @@ class TestPoints {
   }
 
   getData() {
+    console.log(this.scope_data);
     return this.scope_data;
   }
 }

@@ -20,14 +20,14 @@ export default function TriggerWidgetReducer(state = TriggerWidgetInitialState, 
       };
     case "trigger/increaseTriggerLevelValue":
       tmp = state.triggerLevel;
-      tmp[channelIndex].value = Number((state.triggerLevel[channelIndex].value + 0.1).toFixed(1));
+      tmp[channelIndex].value = Number((state.triggerLevel[channelIndex].value + 1).toFixed(1));
       return {
         ...state,
         triggerLevel: tmp
       };
     case "trigger/decreaseTriggerLevelValue":
       tmp = state.triggerLevel;
-      tmp[channelIndex].value = Number((state.triggerLevel[channelIndex].value - 0.1).toFixed(1));
+      tmp[channelIndex].value = Number((state.triggerLevel[channelIndex].value - 1).toFixed(1));
       return {
         ...state,
         triggerLevel: tmp

@@ -30,7 +30,7 @@ controller::controller(boost::lockfree::queue<buffer*, boost::lockfree::fixed_si
     // set default values
     setCh(1);
     setTriggerCh(1);
-    setLevel(50);
+    setLevel(64);
     setPerSize(1);
     setWindowSize(1000);
 
@@ -283,18 +283,33 @@ void controller::controllerLoop()
                     break;
                 case CMD_SetCh: {
                         INFO << "Packet command: SetCh";
-                        const int packetSize = 2;
+                        const int packetSize = 4;
                         if(currentPacket->dataSize != packetSize) {
                             ERROR << "Unexpected size for SetCh packet";
                         }
                         else {
-                            int8_t ch = currentPacket->data[0];
-                            if(ch == 1 || ch == 2 || ch == 4) {
-                                setCh(currentPacket->data[0]);
+                            int chCount = 0;
+                            for(int i = 0; i < 4; i++) {
+                                if(currentPacket->data[i]) {
+                                    chCount++;
+                                }
+                            }
+                            if(chCount == 1 || chCount == 2 || chCount == 4) {
+                                setCh(chCount);
                             }
                             else {
-                                ERROR << "Bad Ch value";
+                                ERROR << "Bad chCount for SetCh";
                             }
+#ifndef NOHARDWARE
+                            for(int i = 0; i < 4; i++) {
+                                if(currentPacket->data[i]) {
+                                    hardWareCommand((int)enable_channel, i, 0, 0);
+                                }
+                                else {
+                                    hardWareCommand((int)disable_channel, i, 0, 0);
+                                }
+                            }
+#endif
                         }
                         EVPacket* tempPacket = (EVPacket*) malloc(sizeof(EVPacket));
                         tempPacket->data = NULL;
@@ -363,6 +378,34 @@ void controller::controllerLoop()
                             else {
                                 ERROR << "Unexpected edgeType";
                             }
+                        }
+                        EVPacket* tempPacket = (EVPacket*) malloc(sizeof(EVPacket));
+                        tempPacket->data = NULL;
+                        tempPacket->dataSize = 0;
+                        tempPacket->packetID = 0;
+                        tempPacket->command = CMD_SetEdgeType;
+                        controllerQueue_tx.push(tempPacket);
+                    }
+                    break;
+                case CMD_SetVerticalScaling: {
+                        INFO << "Packet command: SetVerticalScaling";
+                        const int packetSize = 4;
+                        if(currentPacket->dataSize != packetSize) {
+                            ERROR << "Unexpected size for SetVerticalScaling packet";
+                        }
+                        else {
+                            int16_t* data16 = (int16_t*) currentPacket->data;
+                            int ch = data16[0];
+                            int millivoltPerDiv = data16[1];
+                            if(ch < 1 || ch > 4) {
+                                ERROR << "Bad channel for SetVerticalScaling";
+                            }
+                            if(millivoltPerDiv < 0 || millivoltPerDiv > 10000) {
+                                ERROR << "Bad millivoltPerDiv for SetVerticalScaling";
+                            }
+#ifndef NOHARDWARE
+                            hardWareCommand((int)voltage_divison_set, ch-1, millivoltPerDiv, 0);
+#endif
                         }
                         EVPacket* tempPacket = (EVPacket*) malloc(sizeof(EVPacket));
                         tempPacket->data = NULL;
@@ -822,7 +865,7 @@ void controller::hardWareCommand(int command, int channel, int val1, double val2
 
     switch(cmd) {
         case init_board:
-            
+
         break;
         case adc_enable_ramp_test:
 
