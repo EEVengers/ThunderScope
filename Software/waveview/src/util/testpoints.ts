@@ -46,7 +46,7 @@ class TestPoints {
       writeData: [74, 0]
     }
 
-    let base = state.horizontalWidget.horizontalTimeBase.course;
+    let base = state.horizontalWidget.horizontalTimeBase.coarse;
     let dCount = DefaultValues.divisions.time;
     let xLimit = dCount * convertTime(base.value, base.unit, TimeUnit.NanoSecond);
     this.setWinArgs = {
@@ -70,7 +70,7 @@ class TestPoints {
   update() {
     if(this.setChDone && this.setFileDone && this.setWinDone) {
       let state = store.getState();
-      let base = state.horizontalWidget.horizontalTimeBase.course;
+      let base = state.horizontalWidget.horizontalTimeBase.coarse;
       let xLimit = convertTime(base.value, base.unit, TimeUnit.NanoSecond);
       let doMath = state.mathWidget.mathEnabled as boolean;
       let order = state.verticalWidget.getDataChannelOrder as number[];
@@ -83,12 +83,12 @@ class TestPoints {
           let xOffset = (this.lastX < xLimit) ? this.lastX : 0;
           var cppChannel = 0;
           for(var uiChannel = 0; uiChannel < this.getDataMaxCh; uiChannel++) {
-            let mathCh = (uiChannel == this.getDataMaxCh-1) && doMath;
+            let mathCh = (uiChannel === this.getDataMaxCh-1) && doMath;
             let dataCh = order.includes(uiChannel + 1);
             if(mathCh || dataCh) {
               for(var i = 0; i < perChannel; i++) {
                 var x = xOffset + i;
-                if(x != 0 && !this.scope_data[uiChannel][x-1]) {
+                if(x !== 0 && !this.scope_data[uiChannel][x-1]) {
                   //Adding a channel while other channels in middle of screen
                   //causes an error.
                   break;

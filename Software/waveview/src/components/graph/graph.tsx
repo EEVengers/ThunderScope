@@ -42,7 +42,7 @@ class Graph extends React.Component<any, any> {
   }
 
   render() {
-    let base = this.props.horizontalWidget.horizontalTimeBase.course;
+    let base = this.props.horizontalWidget.horizontalTimeBase.coarse;
     let dCount = DefaultValues.divisions.time;
     let winSize = dCount * convertTime(base.value, base.unit, TimeUnit.NanoSecond);
     let yTicks = [-128, -96, -64, -32, 0, 32, 64, 96, 128]

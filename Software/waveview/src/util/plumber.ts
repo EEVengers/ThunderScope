@@ -112,7 +112,7 @@ export class Plumber {
     }
   }
 
-  public handleSetchState(s: SetChState) {
+  public handleSetChState(s: SetChState) {
     let setChArgs: PlumberArgs = {
       headCheck: () => true,
       bodyCheck: () => true,
@@ -134,7 +134,7 @@ export class Plumber {
   public handleMath(enable: boolean, lhsChan: number, rhsChan: number, op: MathOperators) {
     var protcolOp = 0;
     if(enable) {
-      protcolOp = (op == MathOperators.Addition) ? 1 : 2;
+      protcolOp = (op === MathOperators.Addition) ? 1 : 2;
     }
     let mathArgs: PlumberArgs = {
       headCheck: () => true,

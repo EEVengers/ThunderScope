@@ -2,7 +2,7 @@ import DefaultValues from '../../../configuration/defaultValues';
 import ControlMode from '../../../configuration/enums/controlMode';
 import HorizontalWidgetInitialState from '../../initialStates/horizontalWidgetInitialState';
 
-export default function(state = HorizontalWidgetInitialState, action: {type: any, payload: any}) {
+export default function HorizontalWidgetReducer(state = HorizontalWidgetInitialState, action: {type: any, payload: any}) {
   switch(action.type) {
     case "horizontal/changeTimeBaseMode":
       return {
@@ -13,7 +13,7 @@ export default function(state = HorizontalWidgetInitialState, action: {type: any
         },
         horizontalOffset: {
           ...state.horizontalOffset,
-          unit: action.payload === ControlMode.Fine ? state.horizontalTimeBase.fine.unit : state.horizontalTimeBase.course.unit
+          unit: action.payload === ControlMode.Fine ? state.horizontalTimeBase.fine.unit : state.horizontalTimeBase.coarse.unit
         }
       }
     case "horizontal/changeTimeBaseUnit":
@@ -39,7 +39,7 @@ export default function(state = HorizontalWidgetInitialState, action: {type: any
         ...state,
         horizontalTimeBase: {
           ...state.horizontalTimeBase,
-          course: {
+          coarse: {
             value: DefaultValues.horizontalTimeBases[state.horizontalTimeBase.index + 1].value,
             unit: DefaultValues.horizontalTimeBases[state.horizontalTimeBase.index + 1].unit
           },
@@ -58,7 +58,7 @@ export default function(state = HorizontalWidgetInitialState, action: {type: any
         ...state,
         horizontalTimeBase: {
           ...state.horizontalTimeBase,
-          course: {
+          coarse: {
             value: DefaultValues.horizontalTimeBases[state.horizontalTimeBase.index - 1].value,
             unit: DefaultValues.horizontalTimeBases[state.horizontalTimeBase.index - 1].unit
           },

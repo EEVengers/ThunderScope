@@ -1,6 +1,6 @@
 import TriggerWidgetInitialState from '../../initialStates/triggerWidgetInitialState';
 
-export default function(state = TriggerWidgetInitialState, action: {type: any, payload: any}) {
+export default function TriggerWidgetReducer(state = TriggerWidgetInitialState, action: {type: any, payload: any}) {
   var channelIndex = state.triggerChannel - 1;
   var tmp;
 
