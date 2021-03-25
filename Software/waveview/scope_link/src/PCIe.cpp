@@ -393,8 +393,15 @@ void PCIeLink::Write(ScopeCommand command, void* val) {
                 char name[100];
                 sprintf(name,"ADC_DATA_FILE%d.csv",i);
                 FILE* file = fopen(name,"w");
-                for(int q = 0; q < BUFFER_SIZE; q++) {
-                    fprintf(file,"%u\n",buffers[i][q]);
+                for(int q = 0; q < BUFFER_SIZE;) {
+                    fprintf(file,"%d,",(int8_t)buffers[i][q++]);
+                    fprintf(file,"%d,",(int8_t)buffers[i][q++]);
+                    fprintf(file,"%d,",(int8_t)buffers[i][q++]);
+                    fprintf(file,"%d,",(int8_t)buffers[i][q++]);
+                    fprintf(file,"%d,",(int8_t)buffers[i][q++]);
+                    fprintf(file,"%d,",(int8_t)buffers[i][q++]);
+                    fprintf(file,"%d,",(int8_t)buffers[i][q++]);
+                    fprintf(file,"%d\n",(int8_t)buffers[i][q++]);
                 }
             }
 
@@ -607,8 +614,14 @@ PCIeLink::~PCIeLink() {
     //disable the front end and board power
     INFO << "Turning Off Power To Front End";
     currentBoardState.board_reg_out = 0;
-    _Write32(user_handle,BOARD_REG_OUT,currentBoardState.board_reg_out);
+    _Write32(user_handle,BOARD_REG_OUT,currentBoardState.board_reg_out);        
 
+    _pause.store(false);
+    _run.store(false);
+    
+    DEBUG << "Waiting to join PCIeReadThread";
+    PCIeReadThread.join();
+    DEBUG << "Joined PCIeReadThread";
 
     if(user_handle != INVALID_HANDLE_VALUE) {
         CloseHandle(user_handle);   
@@ -618,14 +631,6 @@ PCIeLink::~PCIeLink() {
         CloseHandle(c2h_0_handle);
         c2h_0_handle = INVALID_HANDLE_VALUE;
     }
-        
-
-    _pause.store(false);
-    _run.store(false);
-    
-    DEBUG << "Waiting to join PCIeReadThread";
-    PCIeReadThread.join();
-    DEBUG << "Joined PCIeReadThread";
 }
 
 void PCIeLink::ClockTick1() {
