@@ -89,7 +89,7 @@ Cmd  | DataSize        | Name                | Description
 0x03 | 2 (useless)     | GetData3            | Reserved, If we need 1 command/ch
 0x04 | 2 (useless)     | GetData4            | Reserved, If we need 1 command/ch
 0x36 | 2?              | SetBandwidth        |
-0x37 | 2?              | SetVerticalScaling  |
+0x37 | 4               | SetVerticalScaling  | Data has ch, mV/div as int16
 0x38 | 2               | SetVerticalOffset   | Data\[0\] has offset
 0x39 | 2?              | SetHorizontalOffset |
 0x3A | 2               | SetCoupling         | Data\[0\] has 0\1 for AC\DC

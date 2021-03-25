@@ -371,6 +371,32 @@ void controller::controllerLoop()
                         controllerQueue_tx.push(tempPacket);
                     }
                     break;
+                case CMD_SetVerticalScaling: {
+                        INFO << "Packet command: SetVerticalScaling";
+                        const int packetSize = 4;
+                        if(currentPacket->dataSize != packetSize) {
+                            ERROR << "Unexpected size for SetVerticalScaling packet";
+                        }
+                        else {
+                            int16_t* data16 = (int16_t*) currentPacket->data;
+                            int ch = data16[0];
+                            int millivoltPerDiv = data16[1];
+                            if(ch < 1 || ch > 4) {
+                                ERROR << "Bad channel for SetVerticalScaling";
+                            }
+                            if(millivoltPerDiv < 0 || millivoltPerDiv > 10000) {
+                                ERROR << "Bad millivoltPerDiv for SetVerticalScaling";
+                            }
+                            //Do something...
+                        }
+                        EVPacket* tempPacket = (EVPacket*) malloc(sizeof(EVPacket));
+                        tempPacket->data = NULL;
+                        tempPacket->dataSize = 0;
+                        tempPacket->packetID = 0;
+                        tempPacket->command = CMD_SetEdgeType;
+                        controllerQueue_tx.push(tempPacket);
+                    }
+                    break;
                 case CMD_SetMath: {
                         INFO << "Packet command: SetMath";
                         const int packetSize = 4;
