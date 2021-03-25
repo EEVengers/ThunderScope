@@ -119,7 +119,7 @@ export class Plumber {
       bodyCheck: () => true,
       cmd: CMD.CMD_SetCh,
       id: 0,
-      writeData: [s.setCh, 0]
+      writeData: s.setCh
     }
     let setTriggerChArgs: PlumberArgs = {
       headCheck: () => true,

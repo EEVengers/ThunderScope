@@ -283,18 +283,33 @@ void controller::controllerLoop()
                     break;
                 case CMD_SetCh: {
                         INFO << "Packet command: SetCh";
-                        const int packetSize = 2;
+                        const int packetSize = 4;
                         if(currentPacket->dataSize != packetSize) {
                             ERROR << "Unexpected size for SetCh packet";
                         }
                         else {
-                            int8_t ch = currentPacket->data[0];
-                            if(ch == 1 || ch == 2 || ch == 4) {
-                                setCh(currentPacket->data[0]);
+                            int chCount = 0;
+                            for(int i = 0; i < 4; i++) {
+                                if(currentPacket->data[i]) {
+                                    chCount++;
+                                }
+                            }
+                            if(chCount == 1 || chCount == 2 || chCount == 4) {
+                                setCh(chCount);
                             }
                             else {
-                                ERROR << "Bad Ch value";
+                                ERROR << "Bad chCount for SetCh";
                             }
+#ifndef NOHARDWARE
+                            for(int i = 0; i < 4; i++) {
+                                if(currentPacket->data[i]) {
+                                    hardWareCommand((int)enable_channel, i, 0, 0);
+                                }
+                                else {
+                                    hardWareCommand((int)disable_channel, i, 0, 0);
+                                }
+                            }
+#endif
                         }
                         EVPacket* tempPacket = (EVPacket*) malloc(sizeof(EVPacket));
                         tempPacket->data = NULL;
@@ -388,7 +403,9 @@ void controller::controllerLoop()
                             if(millivoltPerDiv < 0 || millivoltPerDiv > 10000) {
                                 ERROR << "Bad millivoltPerDiv for SetVerticalScaling";
                             }
-                            //Do something...
+#ifndef NOHARDWARE
+                            hardWareCommand((int)voltage_divison_set, ch-1, millivoltPerDiv, 0);
+#endif
                         }
                         EVPacket* tempPacket = (EVPacket*) malloc(sizeof(EVPacket));
                         tempPacket->data = NULL;
