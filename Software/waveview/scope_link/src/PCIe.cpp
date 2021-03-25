@@ -529,7 +529,7 @@ void PCIeLink::_Write32(HANDLE hPCIE, long long address, uint32_t val) {
 
 void PCIeLink::_Job() {
 
-    uint8_t preBuff = (uint8_t)malloc(sizeof(uint8_t) * BUFFER_SIZE);
+    uint8_t* preBuff = (uint8_t*)malloc(sizeof(uint8_t) * BUFFER_SIZE);
     while(_run.load()) {
         while(_pause.load()) {
             std::this_thread::sleep_for(std::chrono::milliseconds(2));
@@ -552,6 +552,7 @@ void PCIeLink::_Job() {
         //push to queue
         outputQueue->push(buff);
     }
+    free(preBuff);
 }
 
 PCIeLink::PCIeLink(boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> *outputQueue) {
