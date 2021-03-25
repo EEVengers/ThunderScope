@@ -247,9 +247,9 @@ void PCIeLink::Write(ScopeCommand command, void* val) {
             //invert channels
             uint8_t channel_invert[] = {0xFD,0x24,0x00,0x7F};
             _FIFO_WRITE(user_handle,channel_invert,4);
-            //twos compliment mode
-            uint8_t setTwosComp[] = {0xFD,0x46,0x00,0x04};
-            _FIFO_WRITE(user_handle,setTwosComp,4);
+            
+            _ch_on(0);
+
             //Course Gain On
             uint8_t course_gain_on[] = {0xFD,0x33,0x00,0x00};
             _FIFO_WRITE(user_handle,course_gain_on,4);
@@ -394,6 +394,7 @@ void PCIeLink::Write(ScopeCommand command, void* val) {
                 sprintf(name,"ADC_DATA_FILE%d.csv",i);
                 FILE* file = fopen(name,"w");
                 for(int q = 0; q < BUFFER_SIZE;) {
+                    int8_t* valp1 = (int8_t*)(&(buffers[i][q]));
                     fprintf(file,"%d,",(int8_t)buffers[i][q++]);
                     fprintf(file,"%d,",(int8_t)buffers[i][q++]);
                     fprintf(file,"%d,",(int8_t)buffers[i][q++]);
@@ -527,6 +528,8 @@ void PCIeLink::_Write32(HANDLE hPCIE, long long address, uint32_t val) {
 }
 
 void PCIeLink::_Job() {
+
+    uint8_t preBuff = (uint8_t)malloc(sizeof(uint8_t) * BUFFER_SIZE);
     while(_run.load()) {
         while(_pause.load()) {
             std::this_thread::sleep_for(std::chrono::milliseconds(2));
@@ -536,7 +539,16 @@ void PCIeLink::_Job() {
         buff = bufferAllocator.allocate(1);
         bufferAllocator.construct(buff);
         //read from the PCIeLink
-        Read((uint8_t*)buff->data);
+        Read(preBuff);
+        for(int i = 0; i < BUFFER_SIZE; i++) {
+            if(preBuff[i] & 0x80) {
+                //postive
+                buff->data[i] = (int)(preBuff[i] & 0x7F);
+            } else {
+                //negative
+                buff->data[i] = (-128 + ((int)(preBuff[i] & 0x7F)));
+            }
+        }
         //push to queue
         outputQueue->push(buff);
     }
