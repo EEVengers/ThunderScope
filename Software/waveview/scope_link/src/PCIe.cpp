@@ -241,9 +241,6 @@ void PCIeLink::Write(ScopeCommand command, void* val) {
             _FIFO_WRITE(user_handle,resetADC,4);
             //Power Down ADC
             _adc_power_down();
-            //Set adc test mode OFF
-            uint8_t adcRampTest[] = {0xFD,0x25,0x00,0x00};
-            _FIFO_WRITE(user_handle,adcRampTest,4);
             //Set Channel and Clock Div
             uint8_t setChannelClock[] = {0xFD,0x31,0x00,0x01};
             _FIFO_WRITE(user_handle,setChannelClock,4);
@@ -251,8 +248,8 @@ void PCIeLink::Write(ScopeCommand command, void* val) {
             uint8_t channel_invert[] = {0xFD,0x24,0x00,0x7F};
             _FIFO_WRITE(user_handle,channel_invert,4);
             //twos compliment mode
-            //uint8_t setTwosComp[] = {0xFD,0x46,0x00,0x04};
-            //_FIFO_WRITE(user_handle,setTwosComp,4);
+            uint8_t setTwosComp[] = {0xFD,0x46,0x00,0x04};
+            _FIFO_WRITE(user_handle,setTwosComp,4);
             //Course Gain On
             uint8_t course_gain_on[] = {0xFD,0x33,0x00,0x00};
             _FIFO_WRITE(user_handle,course_gain_on,4);
@@ -397,7 +394,7 @@ void PCIeLink::Write(ScopeCommand command, void* val) {
                 sprintf(name,"ADC_DATA_FILE%d.csv",i);
                 FILE* file = fopen(name,"w");
                 for(int q = 0; q < BUFFER_SIZE; q++) {
-                    fprintf(file,"%X\n",buffers[i][q]);
+                    fprintf(file,"%u\n",buffers[i][q]);
                 }
             }
 
@@ -573,7 +570,7 @@ PCIeLink::PCIeLink(boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<
         currentBoardState.ch_is_on[i] = 0;
         //init dac state
         currentBoardState.dac[i][0] = 0xFF;
-        currentBoardState.dac[i][1] = 0xC0;
+        currentBoardState.dac[i][1] = 0xC2;
         currentBoardState.dac[i][3] = 0x08;
         currentBoardState.dac[i][4] = 0x00;
         //init pga state
