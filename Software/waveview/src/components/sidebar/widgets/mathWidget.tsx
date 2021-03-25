@@ -19,16 +19,16 @@ class TriggerWidget extends React.Component<any, any> {
     let w = this.props.mathWidget;
     if(w.channel2 !== channelNumber) {
       Plumber.getInstance().handleMath(w.mathEnabled, channelNumber, w.channel2, w.mathOperator);
+      this.props.dispatch({type: 'math/changeChannel1', payload: channelNumber });
     }
-    this.props.dispatch({type: 'math/changeChannel1', payload: channelNumber });
   }
 
   changeChannel2 = (channelNumber: number) => {
     let w = this.props.mathWidget;
     if(w.channel1 !== channelNumber) {
       Plumber.getInstance().handleMath(w.mathEnabled, w.channel1, channelNumber, w.mathOperator);
+      this.props.dispatch({type: 'math/changeChannel2', payload: channelNumber });
     }
-    this.props.dispatch({type: 'math/changeChannel2', payload: channelNumber });
   }
 
   changeOperator = (operator: MathOperators) => {
