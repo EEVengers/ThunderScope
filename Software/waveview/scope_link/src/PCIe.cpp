@@ -242,27 +242,26 @@ void PCIeLink::Write(ScopeCommand command, void* val) {
             //Power Down ADC
             _adc_power_down();
             //Set Channel and Clock Div
-            uint8_t setChannelClock[] = {0xFD,0x31,0x00,0x01};
-            _FIFO_WRITE(user_handle,setChannelClock,4);
+            _FIFO_WRITE(user_handle,currentBoardState.adc_chnum_clkdiv,sizeof(currentBoardState.adc_chnum_clkdiv));
             //invert channels
             uint8_t channel_invert[] = {0xFD,0x24,0x00,0x7F};
             _FIFO_WRITE(user_handle,channel_invert,4);
-            
-            _ch_on(0);
-            //twos compliment mode TURN OFF
-            uint8_t setTwosComp[] = {0xFD,0x46,0x00,0x00};
-            _FIFO_WRITE(user_handle,setTwosComp,4);
+            //Adjust full scale value
+            uint8_t full_scale_adjust[] = {0xFD,0x55,0x00,0x10};
+            _FIFO_WRITE(user_handle,full_scale_adjust,4);
             //Course Gain On
             uint8_t course_gain_on[] = {0xFD,0x33,0x00,0x00};
             _FIFO_WRITE(user_handle,course_gain_on,4);
             //Course Gain 4-CH set
-            uint8_t course_gain4[] = {0xFD,0x2A,0x99,0x99};
+            uint8_t course_gain4[] = {0xFD,0x2A,0xAA,0xAA};
             _FIFO_WRITE(user_handle,course_gain4,4);
             //Course Gain 1-CH & 2-CH set
-            uint8_t course_gain12[] = {0xFD,0x2B,0x09,0x99};
+            uint8_t course_gain12[] = {0xFD,0x2B,0x0A,0xAA};
             _FIFO_WRITE(user_handle,course_gain12,4);
             //Set adc into active mode
             _adc_active();
+            _FIFO_WRITE(user_handle,currentBoardState.adc_in_sel_12,sizeof(currentBoardState.adc_in_sel_12));
+            _FIFO_WRITE(user_handle,currentBoardState.adc_in_sel_34,sizeof(currentBoardState.adc_in_sel_34));
         }
         
         INFO << "Enabling the front end";
@@ -585,25 +584,25 @@ PCIeLink::PCIeLink(boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<
     currentBoardState.adc_chnum_clkdiv[0] = 0xFD;
     currentBoardState.adc_chnum_clkdiv[1] = 0x31;
     currentBoardState.adc_chnum_clkdiv[2] = 0x00;
-    currentBoardState.adc_chnum_clkdiv[3] = 0x01;
+    currentBoardState.adc_chnum_clkdiv[3] = 0x01; //default single channel
 
     currentBoardState.adc_in_sel_12[0] = 0xFD;
     currentBoardState.adc_in_sel_12[1] = 0x3A;
-    currentBoardState.adc_in_sel_12[2] = 0x10;
-    currentBoardState.adc_in_sel_12[3] = 0x10;
+    currentBoardState.adc_in_sel_12[2] = 0x02; //default CH1
+    currentBoardState.adc_in_sel_12[3] = 0x02; //default CH1
 
     currentBoardState.adc_in_sel_34[0] = 0xFD;
     currentBoardState.adc_in_sel_34[1] = 0x3B;
-    currentBoardState.adc_in_sel_34[2] = 0x10;
-    currentBoardState.adc_in_sel_34[3] = 0x10;
+    currentBoardState.adc_in_sel_34[2] = 0x02; //default CH1
+    currentBoardState.adc_in_sel_34[3] = 0x02; //default CH1
 
     for(int i = 0; i < 4; i++) {
         currentBoardState.ch_is_on[i] = 0;
         //init dac state
         currentBoardState.dac[i][0] = 0xFF;
         currentBoardState.dac[i][1] = 0xC2;
-        currentBoardState.dac[i][3] = 0x08;
-        currentBoardState.dac[i][4] = 0x00;
+        currentBoardState.dac[i][3] = 0x07;
+        currentBoardState.dac[i][4] = 0x80;
         //init pga state
         currentBoardState.pga[i][1] = 0x00;
         currentBoardState.pga[i][2] = 0x04;
