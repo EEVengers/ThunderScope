@@ -244,7 +244,7 @@ const horizontalTimeBases = [
 // Start at horizontalTimeBases[15] and change accordingly
 
 let divisions = {
-  voltage: 10, //TODO: change graph to 8, make this 8
+  voltage: 8,
   time: 10
 }
 
