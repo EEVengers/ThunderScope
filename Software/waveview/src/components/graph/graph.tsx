@@ -45,6 +45,20 @@ class Graph extends React.Component<any, any> {
     let base = this.props.horizontalWidget.horizontalTimeBase.course;
     let dCount = DefaultValues.divisions.time;
     let winSize = dCount * convertTime(base.value, base.unit, TimeUnit.NanoSecond);
+    let yTicks = [-128, -96, -64, -32, 0, 32, 64, 96, 128]
+    let xTicks = [
+      0,
+      1*winSize/10,
+      2*winSize/10,
+      3*winSize/10,
+      4*winSize/10,
+      5*winSize/10,
+      6*winSize/10,
+      7*winSize/10,
+      8*winSize/10,
+      9*winSize/10,
+      winSize
+    ]
     return (
       <div className="graph_view">
         <div
@@ -67,7 +81,7 @@ class Graph extends React.Component<any, any> {
             top={0}
             width={10000}
             height={10000}
-            tickTotal={12}
+            tickValues={yTicks}
           />
           <VerticalGridLines
             style={{stroke: '#4D4D4D'}}
@@ -75,7 +89,7 @@ class Graph extends React.Component<any, any> {
             top={0}
             width={10000}
             height={10000}
-            tickTotal={10}
+            tickValues={xTicks}
           />
           <XAxis
             title=""
