@@ -114,9 +114,6 @@ export default function VerticalWidgetReducer(state = VerticalWidgetInitialState
         verticalOffset: tmp
       }
     case "vertical/increaseTimePerDivision":
-      if (state.timePerDivision[state.activeChannel - 1].index === 0) {
-        return { ...state }
-      };
       tmp = state.timePerDivision;
 
       tmp[channelIndex].index = state.timePerDivision[channelIndex].index - 1;
@@ -136,9 +133,6 @@ export default function VerticalWidgetReducer(state = VerticalWidgetInitialState
         verticalOffset: tmp2
       }
     case "vertical/decreaseTimePerDivision":
-      if (state.timePerDivision[state.activeChannel - 1].index >= 12) {
-        return { ...state }
-      };
       tmp = state.timePerDivision;
 
       tmp[channelIndex].index = state.timePerDivision[channelIndex].index + 1;
