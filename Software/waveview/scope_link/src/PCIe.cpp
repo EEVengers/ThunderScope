@@ -390,7 +390,7 @@ void PCIeLink::Write(ScopeCommand command, void* val) {
             for(int i = 0; i < num_buffers; i++) {
                 Read(preBuff);
                 for(int q = 0; q < BUFFER_SIZE; q++) {
-                    if(preBuff[i] & 0x80) {
+                    if(preBuff[q] & 0x80) {
                         //postive
                         buffers[i][q] = (int)(preBuff[q] & 0x7F);
                     } else {
@@ -419,6 +419,7 @@ void PCIeLink::Write(ScopeCommand command, void* val) {
             for(int i = 0; i < num_buffers; i++) {
                 free(buffers[i]);
             }
+            free(preBuff);
             free(buffers);
         }
         break;
