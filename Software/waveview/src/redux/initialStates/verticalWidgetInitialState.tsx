@@ -70,21 +70,21 @@ const VerticalWidgetInitialState = {
       probeMode: ProbeMode.x1,
       coupling: MeasurementType.DC,
       bandwidth: 100,
-      status: 1
+      status: 0
     },
     {
       controlMode: ControlMode.Coarse,
       probeMode: ProbeMode.x1,
       coupling: MeasurementType.DC,
       bandwidth: 100,
-      status: 1
+      status: 0
     },
     {
       controlMode: ControlMode.Coarse,
       probeMode: ProbeMode.x1,
       coupling: MeasurementType.DC,
       bandwidth: 100,
-      status: 1
+      status: 0
     },
     {
       status: 0
