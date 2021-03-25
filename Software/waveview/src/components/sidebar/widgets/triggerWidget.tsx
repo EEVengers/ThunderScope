@@ -25,7 +25,8 @@ class TriggerWidget extends React.Component<any, any> {
     Plumber.getInstance().handleSetChState(setChState);
     this.props.dispatch({type: 'vertical/setChannelOrder', payload: setChState.chOrder});
     this.props.dispatch({type: 'trigger/changeChannel', payload: channelNumber});
-    this.props.dispatch({type: 'vertical/changeChannelStatus', payload: channelNumber - 1});
+    // this.props.dispatch({type: 'vertical/changeChannelStatus', payload: channelNumber - 1});
+    // This was making it so that clicking on Trigger will activate that channel in the UX. We do not want the UX to show this, only the backend needs to know.
   }
 
   // Trigger Type
