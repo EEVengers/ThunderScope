@@ -112,7 +112,7 @@ export class Plumber {
     }
   }
 
-  public handleSetchState(s: SetChState) {
+  public handleSetChState(s: SetChState) {
     let setChArgs: PlumberArgs = {
       headCheck: () => true,
       bodyCheck: () => true,

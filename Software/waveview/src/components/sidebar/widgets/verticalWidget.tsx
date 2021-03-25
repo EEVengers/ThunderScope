@@ -58,7 +58,7 @@ class VerticalWidget extends React.Component<any, any> {
     chStatus[channelNumber] = !chStatus[channelNumber];
     let triggerCh = this.props.triggerWidget.triggerChannel;
     let setChState = setChHelper(chStatus[0], chStatus[1], chStatus[2], chStatus[3], triggerCh);
-    Plumber.getInstance().handleSetchState(setChState);
+    Plumber.getInstance().handleSetChState(setChState);
     this.props.dispatch({type: 'vertical/setChannelOrder', payload: setChState.chOrder})
     this.props.dispatch({type: 'trigger/changeChannel', payload: triggerCh});
     this.props.dispatch({type: 'vertical/changeChannelStatus', payload: channelNumber});
