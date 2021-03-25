@@ -602,21 +602,30 @@ PCIeLink::PCIeLink(boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<
 PCIeLink::~PCIeLink() {
 
     //turn off the adc
+    INFO << "Powering down adc";
     _adc_power_down();
     //disable the front end and board power
+    INFO << "Turning Off Power To Front End";
     currentBoardState.board_reg_out = 0;
     _Write32(user_handle,BOARD_REG_OUT,currentBoardState.board_reg_out);
 
 
-    if(user_handle != INVALID_HANDLE_VALUE)
-        CloseHandle(user_handle);
-    if(c2h_0_handle != INVALID_HANDLE_VALUE)
+    if(user_handle != INVALID_HANDLE_VALUE) {
+        CloseHandle(user_handle);   
+        user_handle = INVALID_HANDLE_VALUE;
+    }
+    if(c2h_0_handle != INVALID_HANDLE_VALUE) {
         CloseHandle(c2h_0_handle);
+        c2h_0_handle = INVALID_HANDLE_VALUE;
+    }
+        
 
     _pause.store(false);
-    _run.store(true);
+    _run.store(false);
     
+    DEBUG << "Waiting to join PCIeReadThread";
     PCIeReadThread.join();
+    DEBUG << "Joined PCIeReadThread";
 }
 
 void PCIeLink::ClockTick1() {

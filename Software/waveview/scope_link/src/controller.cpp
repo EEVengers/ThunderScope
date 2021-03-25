@@ -69,6 +69,7 @@ controller::~controller()
     delete processorThread;
     delete postProcessorThread;
     delete bridgeThread;
+    delete pcieLinkThread;
 
     DEBUG << "Controller Destroyed";
 }
