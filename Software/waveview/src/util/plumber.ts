@@ -178,6 +178,19 @@ export class Plumber {
     this.cycle(args);
   }
 
+  public handleSetLevel(lvl: number, lvlUnit: VoltageUnit, div: number, divUnit: VoltageUnit) {
+    let convertedLvl = convertVoltage(lvl, lvlUnit, divUnit);
+    let normLvl = 256 * convertedLvl/(div*DefaultValues.divisions.voltage);
+    let args = {
+      headCheck: () => true,
+      bodyCheck: () => true,
+      cmd: CMD.CMD_SetLevel,
+      id: 0,
+      writeData: new Int8Array([normLvl, 0])
+    }
+    this.cycle(args);
+  }
+
   public decodeGetMinMax(args: PlumberArgs, a: Int8Array) {
     let maxCh = 4;
     let a64u = new BigUint64Array(a.buffer);
