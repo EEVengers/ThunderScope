@@ -407,6 +407,9 @@ void runCli() {
 
         parseThings = parseCli(line);
     }
+
+    if(controllerThread != NULL)
+        delete controllerThread;
 }
 int main(int argc, char** args)
 {

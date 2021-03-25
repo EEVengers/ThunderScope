@@ -11,19 +11,19 @@ const TriggerWidgetInitialState = {
   ],
   triggerLevel: [
     {
-      value: 0.0, 
+      value: 200.0,
       unit: VoltageUnit.MilliVolt
     },
     {
-      value: 0.0, 
+      value: 200.0,
       unit: VoltageUnit.MilliVolt
     },
     {
-      value: 0.0, 
+      value: 200.0,
       unit: VoltageUnit.MilliVolt
     },
     {
-      value: 0.0, 
+      value: 200.0,
       unit: VoltageUnit.MilliVolt
     }
   ]

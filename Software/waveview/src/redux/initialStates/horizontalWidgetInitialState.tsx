@@ -6,9 +6,9 @@ let index = 3; //originally 15
 
 const HorizontalWidgetInitialState = {
   horizontalTimeBase: {
-    mode: ControlMode.Course,
+    mode: ControlMode.Coarse,
     index: index,
-    course: {
+    coarse: {
       value: DefaultValues.horizontalTimeBases[index].value, //originally index 15
       unit: DefaultValues.horizontalTimeBases[index].unit //originally index 15
     },

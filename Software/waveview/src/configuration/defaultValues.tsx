@@ -248,9 +248,11 @@ let divisions = {
   time: 10
 }
 
-export default {
+let DefaultValues = {
   x1ProbeValues,
   x10ProbeValues,
   horizontalTimeBases,
   divisions
-};
+}
+
+export default DefaultValues;

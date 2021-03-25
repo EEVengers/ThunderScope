@@ -30,7 +30,7 @@ controller::controller(boost::lockfree::queue<buffer*, boost::lockfree::fixed_si
     // set default values
     setCh(1);
     setTriggerCh(1);
-    setLevel(50);
+    setLevel(64);
     setPerSize(1);
     setWindowSize(1000);
 
@@ -69,6 +69,7 @@ controller::~controller()
     delete processorThread;
     delete postProcessorThread;
     delete bridgeThread;
+    delete pcieLinkThread;
 
     DEBUG << "Controller Destroyed";
 }
@@ -434,7 +435,7 @@ void controller::controllerLoop()
         }
 
         //Sleep, but don't oversleep
-        std::this_thread::sleep_for(std::chrono::milliseconds(5));
+        std::this_thread::sleep_for(std::chrono::microseconds(250));
     }
 }
 
@@ -840,4 +841,70 @@ void controller::setFileName(int8_t newFile)
     std::strcpy(filename, newName.c_str());
     free(inputFile);
     inputFile = filename;
+}
+
+void controller::hardWareCommand(int command, int channel, int val1, double val2) {
+    ScopeCommand cmd = static_cast<ScopeCommand>(command);
+
+    switch(cmd) {
+        case init_board:
+
+        break;
+        case adc_enable_ramp_test:
+
+        break;
+        case dataMover_enable:
+
+        break;
+        case dataMover_disable:
+
+        break;
+        case test_write:
+
+        break;
+        case enable_channel:
+            pcieLinkThread->Write(cmd,(void*)&channel);
+        break;
+        case disable_channel:
+            pcieLinkThread->Write(cmd,(void*)&channel);
+        break;
+        case ac_couple:
+            pcieLinkThread->Write(cmd,(void*)&channel);
+        break;
+        case dc_couple:
+            pcieLinkThread->Write(cmd,(void*)&channel);
+        break;
+        case voltage_divison_set:
+        {
+            VoltageDivSetParam param;
+            param.ch_num = channel;
+            param.voltage_div = val1;
+            pcieLinkThread->Write(cmd,(void*)&param);
+        }
+        break;
+        case voltage_offset_set:
+        {
+            VoltageOffsetParam param;
+            param.ch_num = channel;
+            param.voltage = val2;
+            pcieLinkThread->Write(cmd,(void*)&param);
+        }
+        break;
+        case bandwidth_set:
+        {
+            BandwidthSetParam param;
+            param.ch_num = channel;
+            param.bw = val1;
+            pcieLinkThread->Write(cmd,(void*)&param);
+        }
+        break;
+        default:
+
+        break;
+    }
+}
+
+
+void controller::testADCData() {
+    pcieLinkThread->Write(test_adc_data,nullptr);
 }

@@ -9,7 +9,7 @@ const VerticalWidgetInitialState = {
   totalChannelsUsed: 4,
   timePerDivision: [
     {
-      course: {
+      coarse: {
         value: DefaultValues.x1ProbeValues[6].value,
         unit: DefaultValues.x1ProbeValues[6].unit
       },
@@ -21,7 +21,7 @@ const VerticalWidgetInitialState = {
       index: 6
     },
     {
-      course: {
+      coarse: {
         value: DefaultValues.x1ProbeValues[6].value,
         unit: DefaultValues.x1ProbeValues[6].unit
       },
@@ -33,7 +33,7 @@ const VerticalWidgetInitialState = {
       index: 6
     },
     {
-      course: {
+      coarse: {
         value: DefaultValues.x1ProbeValues[6].value,
         unit: DefaultValues.x1ProbeValues[6].unit
       },
@@ -45,7 +45,7 @@ const VerticalWidgetInitialState = {
       index: 6
     },
     {
-      course: {
+      coarse: {
         value: DefaultValues.x1ProbeValues[6].value,
         unit: DefaultValues.x1ProbeValues[6].unit
       },
@@ -59,32 +59,32 @@ const VerticalWidgetInitialState = {
   ],
   settings: [
     {
-      controlMode: ControlMode.Course,
+      controlMode: ControlMode.Coarse,
       probeMode: ProbeMode.x1,
       coupling: MeasurementType.DC,
       bandwidth: 100,
       status: 1
     },
     {
-      controlMode: ControlMode.Course,
+      controlMode: ControlMode.Coarse,
       probeMode: ProbeMode.x1,
       coupling: MeasurementType.DC,
       bandwidth: 100,
-      status: 1
+      status: 0
     },
     {
-      controlMode: ControlMode.Course,
+      controlMode: ControlMode.Coarse,
       probeMode: ProbeMode.x1,
       coupling: MeasurementType.DC,
       bandwidth: 100,
-      status: 1
+      status: 0
     },
     {
-      controlMode: ControlMode.Course,
+      controlMode: ControlMode.Coarse,
       probeMode: ProbeMode.x1,
       coupling: MeasurementType.DC,
       bandwidth: 100,
-      status: 1
+      status: 0
     },
     {
       status: 0

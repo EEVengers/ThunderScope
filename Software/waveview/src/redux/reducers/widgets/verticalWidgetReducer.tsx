@@ -3,7 +3,7 @@ import ProbeMode from '../../../configuration/enums/probeMode';
 import DefaultValues from '../../../configuration/defaultValues';
 import VerticalWidgetInitialState from '../../initialStates/verticalWidgetInitialState';
 
-export default function(state = VerticalWidgetInitialState, action: {type: any, payload: any}) {
+export default function VerticalWidgetReducer(state = VerticalWidgetInitialState, action: {type: any, payload: any}) {
   var channelIndex = state.activeChannel - 1;
   var tmp;
   var tmp2;
@@ -17,7 +17,7 @@ export default function(state = VerticalWidgetInitialState, action: {type: any, 
 
       tmp2 = state.verticalOffset;
 
-      tmp2[channelIndex].unit = action.payload === ControlMode.Fine ? state.timePerDivision[channelIndex].fine.unit : state.timePerDivision[channelIndex].course.unit;
+      tmp2[channelIndex].unit = action.payload === ControlMode.Fine ? state.timePerDivision[channelIndex].fine.unit : state.timePerDivision[channelIndex].coarse.unit;
       return {
         ...state,
         settings: tmp,
@@ -56,16 +56,16 @@ export default function(state = VerticalWidgetInitialState, action: {type: any, 
 
       tmp2 = state.timePerDivision;
 
-      tmp2[channelIndex].course.value = action.payload === ProbeMode.x1
+      tmp2[channelIndex].coarse.value = action.payload === ProbeMode.x1
         ? DefaultValues.x1ProbeValues[state.timePerDivision[channelIndex].index].value
         : DefaultValues.x10ProbeValues[state.timePerDivision[channelIndex].index].value;
-      tmp2[channelIndex].course.unit = action.payload === ProbeMode.x1
+      tmp2[channelIndex].coarse.unit = action.payload === ProbeMode.x1
         ? DefaultValues.x1ProbeValues[state.timePerDivision[channelIndex].index].unit
         : DefaultValues.x10ProbeValues[state.timePerDivision[channelIndex].index].unit;
 
       tmp3 = state.verticalOffset;
 
-      tmp3[channelIndex].unit = tmp2[channelIndex].course.unit;
+      tmp3[channelIndex].unit = tmp2[channelIndex].coarse.unit;
       return {
         ...state,
         settings: tmp,
@@ -114,44 +114,38 @@ export default function(state = VerticalWidgetInitialState, action: {type: any, 
         verticalOffset: tmp
       }
     case "vertical/increaseTimePerDivision":
-      if (state.timePerDivision[state.activeChannel - 1].index === 0) {
-        return { ...state }
-      };
       tmp = state.timePerDivision;
 
       tmp[channelIndex].index = state.timePerDivision[channelIndex].index - 1;
-      tmp[channelIndex].course.value = state.settings[channelIndex].probeMode === ProbeMode.x1
+      tmp[channelIndex].coarse.value = state.settings[channelIndex].probeMode === ProbeMode.x1
         ? DefaultValues.x1ProbeValues[tmp[channelIndex].index].value
         : DefaultValues.x10ProbeValues[tmp[channelIndex].index].value;
-      tmp[channelIndex].course.unit = state.settings[channelIndex].probeMode === ProbeMode.x1
+      tmp[channelIndex].coarse.unit = state.settings[channelIndex].probeMode === ProbeMode.x1
         ? DefaultValues.x1ProbeValues[tmp[channelIndex].index].unit
         : DefaultValues.x10ProbeValues[tmp[channelIndex].index].unit;
 
       tmp2 = state.verticalOffset;
 
-      tmp2[channelIndex].unit = tmp[channelIndex].course.unit;
+      tmp2[channelIndex].unit = tmp[channelIndex].coarse.unit;
       return {
         ...state,
         timePerDivision: tmp,
         verticalOffset: tmp2
       }
     case "vertical/decreaseTimePerDivision":
-      if (state.timePerDivision[state.activeChannel - 1].index >= 12) {
-        return { ...state }
-      };
       tmp = state.timePerDivision;
 
       tmp[channelIndex].index = state.timePerDivision[channelIndex].index + 1;
-      tmp[channelIndex].course.value = state.settings[channelIndex].probeMode === ProbeMode.x1
+      tmp[channelIndex].coarse.value = state.settings[channelIndex].probeMode === ProbeMode.x1
         ? DefaultValues.x1ProbeValues[tmp[channelIndex].index].value
         : DefaultValues.x10ProbeValues[tmp[channelIndex].index].value;
-      tmp[channelIndex].course.unit = state.settings[channelIndex].probeMode === ProbeMode.x1
+      tmp[channelIndex].coarse.unit = state.settings[channelIndex].probeMode === ProbeMode.x1
         ? DefaultValues.x1ProbeValues[tmp[channelIndex].index].unit
         : DefaultValues.x10ProbeValues[tmp[channelIndex].index].unit;
 
       tmp2 = state.verticalOffset;
 
-      tmp2[channelIndex].unit = tmp[channelIndex].course.unit;
+      tmp2[channelIndex].unit = tmp[channelIndex].coarse.unit;
       return {
         ...state,
         timePerDivision: tmp,

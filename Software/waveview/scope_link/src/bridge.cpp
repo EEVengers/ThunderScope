@@ -436,8 +436,8 @@ int Bridge::InitTxBridge() {
                                // pipe already exists...
                                PIPE_TYPE_MESSAGE | PIPE_READMODE_MESSAGE | PIPE_WAIT | PIPE_REJECT_REMOTE_CLIENTS,
                                1,
-                               4096 * 16,
-                               4096 * 16,
+                               4096 * 4096 * 16,
+                               4096 * 4096 * 16,
                                NMPWAIT_USE_DEFAULT_WAIT,
                                NULL);
 
@@ -503,8 +503,8 @@ int Bridge::InitRxBridge() {
                                PIPE_TYPE_MESSAGE | PIPE_READMODE_MESSAGE |
                                PIPE_WAIT | PIPE_REJECT_REMOTE_CLIENTS,
                                1,
-                               4096 * 16,
-                               4096 * 16,
+                               4096 * 4096 * 16,
+                               4096 * 4096 * 16,
                                NMPWAIT_USE_DEFAULT_WAIT,
                                NULL);
 

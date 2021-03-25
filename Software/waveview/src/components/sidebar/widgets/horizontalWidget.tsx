@@ -60,12 +60,12 @@ class HorizontalWidget extends React.Component<any, any> {
 
         <div className="TimeBaseMode">
           <button
-            className="CourseControlButton"
-            onClick={() => this.changeTimeBaseMode(ControlMode.Course)}>
+            className="CoarseControlButton"
+            onClick={() => this.changeTimeBaseMode(ControlMode.Coarse)}>
               <label
                 className=""
-                style={{fontWeight: this.props.horizontalWidget.horizontalTimeBase.mode ===  ControlMode.Course ? "bold" : "normal"}}>
-                Course
+                style={{fontWeight: this.props.horizontalWidget.horizontalTimeBase.mode ===  ControlMode.Coarse ? "bold" : "normal"}}>
+                Coarse
               </label>
           </button>
           <button
@@ -82,21 +82,21 @@ class HorizontalWidget extends React.Component<any, any> {
         <div className="HorizontalWidgetAdjustBlock-HorizontalTimeBase">
           <button
             className="MinusButton"
-            onClick={() => this.props.horizontalWidget.horizontalTimeBase.mode === ControlMode.Course ? this.decrementTimeBase() : this.decrementTimeBaseFine()}>
+            onClick={() => this.props.horizontalWidget.horizontalTimeBase.mode === ControlMode.Coarse ? this.decrementTimeBase() : this.decrementTimeBaseFine()}>
             -
           </button>
           <label
             className="AdjustValueBlockHorizontalTimeBase"
             style={{color: "white"}}
           >
-            {this.props.horizontalWidget.horizontalTimeBase.mode === ControlMode.Course && this.props.horizontalWidget.horizontalTimeBase.course.value.toString()}
-            {this.props.horizontalWidget.horizontalTimeBase.mode === ControlMode.Course && this.props.horizontalWidget.horizontalTimeBase.course.unit.toString() + "/div"}
+            {this.props.horizontalWidget.horizontalTimeBase.mode === ControlMode.Coarse && this.props.horizontalWidget.horizontalTimeBase.coarse.value.toString()}
+            {this.props.horizontalWidget.horizontalTimeBase.mode === ControlMode.Coarse && this.props.horizontalWidget.horizontalTimeBase.coarse.unit.toString() + "/div"}
             {this.props.horizontalWidget.horizontalTimeBase.mode === ControlMode.Fine && this.props.horizontalWidget.horizontalTimeBase.fine.value.toString()}
             {this.props.horizontalWidget.horizontalTimeBase.mode === ControlMode.Fine && this.props.horizontalWidget.horizontalTimeBase.fine.unit.toString() + "/div"}
           </label>
           <button
             className="PlusButton"
-            onClick={() => this.props.horizontalWidget.horizontalTimeBase.mode === ControlMode.Course ? this.incrementTimeBase() : this.incrementTimeBaseFine()}>
+            onClick={() => this.props.horizontalWidget.horizontalTimeBase.mode === ControlMode.Coarse ? this.incrementTimeBase() : this.incrementTimeBaseFine()}>
             +
           </button>
         </div>

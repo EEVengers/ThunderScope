@@ -17,9 +17,9 @@ export function setChHelper(
   let triggerChIdx = triggerCh - 1;
   let quadChOrder = [1, 2, 3, 4];
 
-  var chOrder = quadChOrder.filter((a, i) => chList[i] || triggerChIdx == i);
+  var chOrder = quadChOrder.filter((a, i) => chList[i] || triggerChIdx === i);
   var setCh = chOrder.length as setChMode;
-  if(setCh == 3) {
+  if(setCh === 3) {
     chOrder = quadChOrder;
     setCh = quadChOrder.length;
   }

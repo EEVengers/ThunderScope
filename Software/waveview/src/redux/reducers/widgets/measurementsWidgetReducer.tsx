@@ -1,7 +1,7 @@
 import MeasurementsWidgetInitialState from '../../initialStates/measurementsWidgetInitialState';
 import { MaxMinResult } from '../../../util/plumber';
 
-export default function(state = MeasurementsWidgetInitialState, action: {type: any, payload: any}) {
+export default function MeasurementsWidgetReducer(state = MeasurementsWidgetInitialState, action: {type: any, payload: any}) {
   var tmp;
 
   switch(action.type) {
