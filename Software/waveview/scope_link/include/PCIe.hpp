@@ -22,7 +22,7 @@
 #define USER_DEVICE_PATH "user"
 #define C2H_0_DEVICE_PATH "c2h_0"
 
-#define DATAMOVER_REG_OUT                   0x00000 // bit 0: halt, bit 1: reset
+#define DATAMOVER_REG_OUT                   0x00000 // bit 0: !halt, bit 1: !reset
 #define DATAMOVER_TRANSFER_COUNTER          0x00008 // A 32 bit value, low 16 is transfer counter, bit 31 error bit
 #define BOARD_REG_OUT                       0x10000 // A 32 bit value, bit 0:3: attenuation, bit 4:7: dc_cpl, bit 8: acq_en, bit 9: clk_oe, bit 10: fe_en, 21bits unused
 #define BOARD_REG_IN                        0x10008 // unused for now
@@ -43,19 +43,55 @@
 #define CLOCK_GEN_I2C_ADDRESS_READ          0b10110001 //IF WE COULD
 
 enum ScopeCommand {
-    board_enable,
-    adc_enable,
-    adc_rest,
-    adc_power_down,
-    adc_active,
-    adc_cgain_cfg,
-    adc_btc_mode,
-    adc_chnum_clkdiv_init,
-    clk_enable,
+    init_board,
+    adc_enable_ramp_test,
     dataMover_enable,
-    dataMover_halt,
     dataMover_disable,
-    test_write
+    enable_channel,
+    disable_channel,
+    ac_couple,
+    dc_couple,
+    voltage_divison_set,
+    voltage_offset_set,
+    bandwidth_set,
+    test_write,
+    test_adc_data
+};
+
+struct VoltageDivSetParam {
+    int ch_num;
+    int voltage_div;
+};
+
+struct VoltageOffsetParam {
+    int ch_num;
+    double voltage;
+};
+
+struct BandwidthSetParam {
+    int ch_num;
+    int bw;
+};
+
+struct BoardState {
+    //general front end en
+    bool        board_en;
+    //adc values
+    bool        adc_en;
+    uint8_t     num_ch_on;
+    bool        ch_is_on[4];
+    uint8_t     adc_chnum_clkdiv [4];
+    uint8_t     adc_in_sel_12[4];
+    uint8_t     adc_in_sel_34[4];
+    //pga's 
+    uint8_t     pga[4][4];
+    //dac
+    uint8_t     dac[4][5];
+    //clock values
+    bool        clk_en;
+    //Board Register Values
+    uint32_t    board_reg_out; // A 32 bit value, bit 0:3: attenuation, bit 4:7: dc_cpl, bit 8: acq_en, bit 9: clk_oe, bit 10: fe_en, 21bits unused
+    uint32_t    datamover_reg_out; // bit 0: !halt, bit 1: !reset, bit 4:6: channel 
 };
 
 class PCIeLink {
@@ -85,13 +121,15 @@ private:
 
     char user_device[20] = USER_DEVICE_PATH; //write/read registers
     char c2h_0_device[20] = C2H_0_DEVICE_PATH; //read memory
-    uint8_t dataMoverReg[1] = {0x00};
     HANDLE user_handle;
     char user_connection_string[261] = "";
     HANDLE c2h_0_handle;
     char c2h_0_connection_string[261] = "";
     LARGE_INTEGER freq; //used for perforamnce testing
     int64_t last_chunk_read;
+
+    //current state
+    BoardState currentBoardState;
 
     std::atomic<bool> _run;
     std::atomic<bool> _pause;
@@ -106,8 +144,22 @@ private:
 
     void _Read(HANDLE hPCIE, long long address, uint8_t* buff, int bytesToRead);
     void _Write(HANDLE hPCIE, long long address, uint8_t* buff, int bytesToWrite);
+    void _Write32(HANDLE hPCIE, long long address, uint32_t val);
     void _FIFO_WRITE(HANDLE hPCIE, uint8_t* data, uint8_t bytesToWrite);
     void _Job();
+
+
+    //scope control stuff
+    int _ch_on(int ch_num);
+    int _ch_off(int ch_num);
+    int _dc_cpl(int ch_num);
+    int _ac_cpl(int ch_num);
+    int _vdiv_set(int ch_num, int vdiv);
+    int _voffset_set(int ch_num, double voffset);
+    int _bw_set(int ch_num, int bw);
+    int _adc_ch_cfg();
+    void _adc_power_down();
+    void _adc_active();
 
 protected:
 

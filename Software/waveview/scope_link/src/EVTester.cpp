@@ -222,17 +222,7 @@ boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> testerDataQ
 void runPCIeTest() {
 
     controller* troller = new controller(&testerDataQueue);
-    troller->controllerUnPause();
-
-    std::this_thread::sleep_for(std::chrono::milliseconds(500));
-
-    /*FILE* fp = fopen("TestData.txt","w");
-    for(int i = 0; i < (1 << 23); i+= 8) {
-        fprintf(fp,"%X,%X,%X,%X,%X,%X,%X,%X\n",
-            buff[i],buff[i + 1],buff[i + 2],buff[i + 3],buff[i + 4],buff[i + 5],buff[i + 6],buff[i + 7]);
-    }
-    fclose(fp); */
-
-
+    troller->setWindowSize(1000);
+    troller->testADCData();
     delete troller;
 }

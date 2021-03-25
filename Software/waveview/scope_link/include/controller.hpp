@@ -39,6 +39,8 @@ public:
     void setMathSign(bool newSign);
     void getData();
     void setFileName(int8_t newFile);
+    void hardWareCommand(int command, int channel, int val1, double val2);
+    void testADCData();
 
 private:
     // external queue
