@@ -46,7 +46,7 @@ class TestPoints {
       writeData: [74, 0]
     }
 
-    let base = state.horizontalWidget.horizontalTimeBase.course;
+    let base = state.horizontalWidget.horizontalTimeBase.coarse;
     let dCount = DefaultValues.divisions.time;
     let xLimit = dCount * convertTime(base.value, base.unit, TimeUnit.NanoSecond);
     this.setWinArgs = {
@@ -70,7 +70,7 @@ class TestPoints {
   update() {
     if(this.setChDone && this.setFileDone && this.setWinDone) {
       let state = store.getState();
-      let base = state.horizontalWidget.horizontalTimeBase.course;
+      let base = state.horizontalWidget.horizontalTimeBase.coarse;
       let xLimit = convertTime(base.value, base.unit, TimeUnit.NanoSecond);
       let doMath = state.mathWidget.mathEnabled as boolean;
       let order = state.verticalWidget.getDataChannelOrder as number[];

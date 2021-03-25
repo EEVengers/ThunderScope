@@ -129,8 +129,8 @@ class MeasurementsWidget extends React.Component<any, any> {
           className="Channel1-MaxValue"
           style={{color: this.props.settings.colors.channel[0]}}>
           {this.props.measurementsWidget.max[0].value}
-          {this.props.verticalWidget.settings[0].controlMode === ControlMode.Course 
-            && this.props.verticalWidget.timePerDivision[0].course.unit.toString()}
+          {this.props.verticalWidget.settings[0].controlMode === ControlMode.Coarse 
+            && this.props.verticalWidget.timePerDivision[0].coarse.unit.toString()}
           {this.props.verticalWidget.settings[0].controlMode === ControlMode.Fine 
             && + this.props.verticalWidget.timePerDivision[0].fine.unit.toString()}
         </label>
@@ -144,8 +144,8 @@ class MeasurementsWidget extends React.Component<any, any> {
           className="Channel1-MinValue"
           style={{color: this.props.settings.colors.channel[0]}}>
           {this.props.measurementsWidget.min[0].value}
-          {this.props.verticalWidget.settings[0].controlMode === ControlMode.Course 
-            && this.props.verticalWidget.timePerDivision[0].course.unit.toString()}
+          {this.props.verticalWidget.settings[0].controlMode === ControlMode.Coarse 
+            && this.props.verticalWidget.timePerDivision[0].coarse.unit.toString()}
           {this.props.verticalWidget.settings[0].controlMode === ControlMode.Fine 
             && + this.props.verticalWidget.timePerDivision[0].fine.unit.toString()}
         </label>
@@ -169,8 +169,8 @@ class MeasurementsWidget extends React.Component<any, any> {
           className="Channel2-MaxValue"
           style={{color: this.props.settings.colors.channel[1]}}>
           {this.props.measurementsWidget.max[1].value}
-          {this.props.verticalWidget.settings[1].controlMode === ControlMode.Course 
-            && this.props.verticalWidget.timePerDivision[1].course.unit.toString()}
+          {this.props.verticalWidget.settings[1].controlMode === ControlMode.Coarse 
+            && this.props.verticalWidget.timePerDivision[1].coarse.unit.toString()}
           {this.props.verticalWidget.settings[1].controlMode === ControlMode.Fine 
             && + this.props.verticalWidget.timePerDivision[1].fine.unit.toString()}
         </label>
@@ -184,8 +184,8 @@ class MeasurementsWidget extends React.Component<any, any> {
           className="Channel2-MinValue"
           style={{color: this.props.settings.colors.channel[1]}}>
           {this.props.measurementsWidget.min[1].value}
-          {this.props.verticalWidget.settings[1].controlMode === ControlMode.Course 
-            && this.props.verticalWidget.timePerDivision[1].course.unit.toString()}
+          {this.props.verticalWidget.settings[1].controlMode === ControlMode.Coarse 
+            && this.props.verticalWidget.timePerDivision[1].coarse.unit.toString()}
           {this.props.verticalWidget.settings[1].controlMode === ControlMode.Fine 
             && + this.props.verticalWidget.timePerDivision[1].fine.unit.toString()}
         </label>
@@ -209,8 +209,8 @@ class MeasurementsWidget extends React.Component<any, any> {
           className="Channel3-MaxValue"
           style={{color: this.props.settings.colors.channel[2]}}>
           {this.props.measurementsWidget.max[2].value}
-          {this.props.verticalWidget.settings[2].controlMode === ControlMode.Course 
-            && this.props.verticalWidget.timePerDivision[2].course.unit.toString()}
+          {this.props.verticalWidget.settings[2].controlMode === ControlMode.Coarse 
+            && this.props.verticalWidget.timePerDivision[2].coarse.unit.toString()}
           {this.props.verticalWidget.settings[2].controlMode === ControlMode.Fine 
             && + this.props.verticalWidget.timePerDivision[2].fine.unit.toString()}
         </label>
@@ -224,8 +224,8 @@ class MeasurementsWidget extends React.Component<any, any> {
           className="Channel3-MinValue"
           style={{color: this.props.settings.colors.channel[2]}}>
           {this.props.measurementsWidget.min[2].value}
-          {this.props.verticalWidget.settings[2].controlMode === ControlMode.Course 
-            && this.props.verticalWidget.timePerDivision[2].course.unit.toString()}
+          {this.props.verticalWidget.settings[2].controlMode === ControlMode.Coarse 
+            && this.props.verticalWidget.timePerDivision[2].coarse.unit.toString()}
           {this.props.verticalWidget.settings[2].controlMode === ControlMode.Fine 
             && + this.props.verticalWidget.timePerDivision[2].fine.unit.toString()}
         </label>
@@ -249,8 +249,8 @@ class MeasurementsWidget extends React.Component<any, any> {
           className="Channel4-MaxValue"
           style={{color: this.props.settings.colors.channel[3]}}>
           {this.props.measurementsWidget.max[3].value}
-          {this.props.verticalWidget.settings[3].controlMode === ControlMode.Course 
-            && this.props.verticalWidget.timePerDivision[3].course.unit.toString()}
+          {this.props.verticalWidget.settings[3].controlMode === ControlMode.Coarse 
+            && this.props.verticalWidget.timePerDivision[3].coarse.unit.toString()}
           {this.props.verticalWidget.settings[3].controlMode === ControlMode.Fine 
             && + this.props.verticalWidget.timePerDivision[3].fine.unit.toString()}
         </label>
@@ -264,8 +264,8 @@ class MeasurementsWidget extends React.Component<any, any> {
           className="Channel4-MinValue"
           style={{color: this.props.settings.colors.channel[3]}}>
           {this.props.measurementsWidget.min[3].value}
-          {this.props.verticalWidget.settings[3].controlMode === ControlMode.Course 
-            && this.props.verticalWidget.timePerDivision[3].course.unit.toString()}
+          {this.props.verticalWidget.settings[3].controlMode === ControlMode.Coarse 
+            && this.props.verticalWidget.timePerDivision[3].coarse.unit.toString()}
           {this.props.verticalWidget.settings[3].controlMode === ControlMode.Fine 
             && + this.props.verticalWidget.timePerDivision[3].fine.unit.toString()}
         </label>
