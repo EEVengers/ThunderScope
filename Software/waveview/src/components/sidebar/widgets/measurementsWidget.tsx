@@ -31,7 +31,7 @@ class MeasurementsWidget extends React.Component<any, any> {
     //TODO: unit analysis
     let channels = this.props.measurementsWidget.displayChannel as boolean[];
     let channelNum = channels.map(v => v ? 1 : 0) as number[];
-    if(channelNum.reduce((a, b) => a + b) == 0) {
+    if(channelNum.reduce((a, b) => a + b) === 0) {
       return; //Don't bother C if we don't need to.
     }
     let maxArgs: PlumberArgs = {

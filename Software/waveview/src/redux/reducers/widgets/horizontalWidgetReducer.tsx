@@ -2,7 +2,7 @@ import DefaultValues from '../../../configuration/defaultValues';
 import ControlMode from '../../../configuration/enums/controlMode';
 import HorizontalWidgetInitialState from '../../initialStates/horizontalWidgetInitialState';
 
-export default function(state = HorizontalWidgetInitialState, action: {type: any, payload: any}) {
+export default function HorizontalWidgetReducer(state = HorizontalWidgetInitialState, action: {type: any, payload: any}) {
   switch(action.type) {
     case "horizontal/changeTimeBaseMode":
       return {

@@ -3,7 +3,7 @@ import ProbeMode from '../../../configuration/enums/probeMode';
 import DefaultValues from '../../../configuration/defaultValues';
 import VerticalWidgetInitialState from '../../initialStates/verticalWidgetInitialState';
 
-export default function(state = VerticalWidgetInitialState, action: {type: any, payload: any}) {
+export default function VerticalWidgetReducer(state = VerticalWidgetInitialState, action: {type: any, payload: any}) {
   var channelIndex = state.activeChannel - 1;
   var tmp;
   var tmp2;

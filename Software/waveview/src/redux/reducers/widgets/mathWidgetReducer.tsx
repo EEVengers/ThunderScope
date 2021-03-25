@@ -1,6 +1,6 @@
 import MathWidgetInitialState from '../../initialStates/mathWidgetInitialState';
 
-export default function(state = MathWidgetInitialState, action: {type: any, payload: any}) {
+export default function MathWidgetReducer(state = MathWidgetInitialState, action: {type: any, payload: any}) {
   switch(action.type) {
     case "math/toggleMathMode":
       return {

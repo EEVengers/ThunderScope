@@ -30,7 +30,7 @@ class TriggerWidget extends React.Component<any, any> {
 
   // Trigger Type
   changeTriggerType = (triggerType: TriggerType) => {
-    let edgeNum = (triggerType == TriggerType.RisingEdge) ? 1 : 2;
+    let edgeNum = (triggerType === TriggerType.RisingEdge) ? 1 : 2;
     let args: PlumberArgs = {
       headCheck: () => true,
       bodyCheck: () => true,

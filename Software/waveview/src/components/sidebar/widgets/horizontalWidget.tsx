@@ -65,7 +65,7 @@ class HorizontalWidget extends React.Component<any, any> {
               <label
                 className=""
                 style={{fontWeight: this.props.horizontalWidget.horizontalTimeBase.mode ===  ControlMode.Coarse ? "bold" : "normal"}}>
-                coarse
+                Coarse
               </label>
           </button>
           <button
