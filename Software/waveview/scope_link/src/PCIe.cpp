@@ -251,10 +251,10 @@ void PCIeLink::Write(ScopeCommand command, void* val) {
             uint8_t course_gain_on[] = {0xFD,0x33,0x00,0x00};
             _FIFO_WRITE(user_handle,course_gain_on,4);
             //Course Gain 4-CH set
-            uint8_t course_gain4[] = {0xFD,0x2A,0xAA,0xAA};
+            uint8_t course_gain4[] = {0xFD,0x2A,0x99,0x99};
             _FIFO_WRITE(user_handle,course_gain4,4);
             //Course Gain 1-CH & 2-CH set
-            uint8_t course_gain12[] = {0xFD,0x2B,0x0A,0xAA};
+            uint8_t course_gain12[] = {0xFD,0x2B,0x0A,0x99};
             _FIFO_WRITE(user_handle,course_gain12,4);
             //Set adc into active mode
             currentBoardState.num_ch_on++;
