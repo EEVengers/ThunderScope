@@ -207,7 +207,6 @@ void PCIeLink::Write(ScopeCommand command, void* val) {
         {
             currentBoardState.board_reg_out |= 0x0100; //acq->on fe->off
             _Write32(user_handle,BOARD_REG_OUT,currentBoardState.board_reg_out);
-            std::this_thread::sleep_for(std::chrono::milliseconds(5));
         }
 
         INFO << "Enabling PLL";
@@ -888,6 +887,8 @@ int PCIeLink::_adc_ch_cfg(){
     _FIFO_WRITE(user_handle,currentBoardState.adc_in_sel_34,sizeof(currentBoardState.adc_in_sel_34));
 
     //write to datamover reg
+    _Write32(user_handle,DATAMOVER_REG_OUT,0);
+    std::this_thread::sleep_for(std::chrono::milliseconds(5));
     _Write32(user_handle,DATAMOVER_REG_OUT,currentBoardState.datamover_reg_out);
 
     return 1;
