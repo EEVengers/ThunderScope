@@ -887,6 +887,9 @@ int PCIeLink::_adc_ch_cfg(){
     _FIFO_WRITE(user_handle,currentBoardState.adc_in_sel_12,sizeof(currentBoardState.adc_in_sel_12));
     _FIFO_WRITE(user_handle,currentBoardState.adc_in_sel_34,sizeof(currentBoardState.adc_in_sel_34));
 
+    //write to datamover reg
+    _Write32(user_handle,DATAMOVER_REG_OUT,currentBoardState.datamover_reg_out);
+
     return 1;
 }
 
