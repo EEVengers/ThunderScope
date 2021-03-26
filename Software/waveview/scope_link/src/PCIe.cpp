@@ -257,7 +257,12 @@ void PCIeLink::Write(ScopeCommand command, void* val) {
             uint8_t course_gain12[] = {0xFD,0x2B,0x0A,0xAA};
             _FIFO_WRITE(user_handle,course_gain12,4);
             //Set adc into active mode
-            _ch_on(0);
+            currentBoardState.num_ch_on++;
+            currentBoardState.ch_is_on[0] = true;
+            _FIFO_WRITE(user_handle,currentBoardState.adc_chnum_clkdiv,sizeof(currentBoardState.adc_chnum_clkdiv));
+            _adc_active();
+            _FIFO_WRITE(user_handle,currentBoardState.adc_in_sel_12,sizeof(currentBoardState.adc_in_sel_12));
+            _FIFO_WRITE(user_handle,currentBoardState.adc_in_sel_34,sizeof(currentBoardState.adc_in_sel_34));
         }
         
         INFO << "Enabling the front end";
@@ -852,12 +857,10 @@ int PCIeLink::_adc_ch_cfg(){
         currentBoardState.adc_chnum_clkdiv[2] = 0x01;
 
         for (i=0; !currentBoardState.ch_is_on[i]; i++);   //Find first on channel
-
         currentBoardState.adc_in_sel_12[3] = (2 << i);    //Set 2 ADCs to sample first channel
         currentBoardState.adc_in_sel_12[2] = (2 << i);
-
+        i++;
         for (; !currentBoardState.ch_is_on[i]; i++);      //Find second on channel
-
         currentBoardState.adc_in_sel_34[3] = (2 << i);    //Set 2 ADCs to sample second channel
         currentBoardState.adc_in_sel_34[2] = (2 << i);
 

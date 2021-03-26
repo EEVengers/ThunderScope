@@ -297,6 +297,9 @@ void controller::controllerLoop()
                             if(chCount == 1 || chCount == 2 || chCount == 4) {
                                 setCh(chCount);
                             }
+                            else if (chCount == 3){
+                                setCh(4);
+                            }
                             else {
                                 ERROR << "Bad chCount for SetCh";
                             }
