@@ -594,7 +594,7 @@ PCIeLink::PCIeLink(boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<
     currentBoardState.adc_in_sel_34[3] = 0x02; //default CH1
 
     for(int i = 0; i < 4; i++) {
-        currentBoardState.ch_is_on[i] = 0;
+        currentBoardState.ch_is_on[i] = false;
         //init dac state
         currentBoardState.dac[i][0] = 0xFF;
         currentBoardState.dac[i][1] = 0xC2;
