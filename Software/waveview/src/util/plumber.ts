@@ -5,6 +5,7 @@ import DefaultValues from '../configuration/defaultValues';
 import { convertTime, convertVoltage } from './convert';
 import TimeUnit from '../configuration/enums/timeUnit';
 import VoltageUnit from '../configuration/enums/voltageUnit';
+import store from '../redux/store';
 
 export enum SetMathOp {
   SetMath_None = 0,
@@ -196,9 +197,14 @@ export class Plumber {
     let a64u = new BigUint64Array(a.buffer);
     let a64s = new BigInt64Array(a.buffer);
     var res: MaxMinResult[] = [];
+
+    let state = store.getState();
+    let verticalWidget = state.verticalWidget.timePerDivision;
     for(var i = 0; i < args.writeData.length; i++) {
       if(args.writeData[i] !== 0) {
-        res.push({ch: i + 1, x: Number(a64u[i]), y: Number(a64s[i + maxCh])});
+        let div = verticalWidget[i].coarse;
+        let y = Number(a64s[i + maxCh]) * ((8 * div.value)/256);
+        res.push({ch: i + 1, x: Number(a64u[i]), y: y});
       }
     }
     return res;
