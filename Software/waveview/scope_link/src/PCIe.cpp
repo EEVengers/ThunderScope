@@ -205,6 +205,7 @@ void PCIeLink::Write(ScopeCommand command, void* val) {
         case init_board:
         INFO << "Enabling Board";
         {
+            _Write32(user_handle,DATAMOVER_REG_OUT,0);
             currentBoardState.board_reg_out |= 0x0100; //acq->on fe->off
             _Write32(user_handle,BOARD_REG_OUT,currentBoardState.board_reg_out);
         }
