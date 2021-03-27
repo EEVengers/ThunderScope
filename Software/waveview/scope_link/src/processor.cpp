@@ -18,40 +18,50 @@ Processor::Processor(
 
     windowProcessed = NULL;
 
-    threadExists.store(false);
     stopTransfer.store(false);
     pauseTransfer.store(true);
     windowStored.store(false);
 
-    updateWindowSize(windowSize, persistanceSize);
+    updateWinPerSize(windowSize, persistanceSize);
+
+    // create new thread
+    processorThread = std::thread(&Processor::coreLoop, this);
+
+    INFO << "Created processor thread";
 }
 
 Processor::~Processor(void)
 {
-    INFO << "Processor Destructor Called";
-    destroyThread();
+    DEBUG << "Processor Destructor Called";
+
+    // Stop the transer and join thread
+    processorPause();
+    processorStop();
+    processorThread.join();
+
+    DEBUG << "Destroyed processor thread";
 }
 
 // Returns the offset of the next trigger in the current buffer
 bool Processor::findNextTrigger(buffer *currentBuffer, uint32_t* p_bufCol)
 {
-    INFO << "** Finding Next Trigger **";
-    INFO << "p_bufCol: " << *p_bufCol;
+    DEBUG << "** Finding Next Trigger **";
+    DEBUG << "p_bufCol: " << *p_bufCol;
     uint32_t t_offset = 0;
 
     // Find which 64 block the buffer is in
     uint32_t t_64offset = (*p_bufCol / 64);
-    INFO << "p_bufCol: " << *p_bufCol
-         << " t_offset: " << t_offset 
+    DEBUG << "p_bufCol: " << *p_bufCol
+         << " t_offset: " << t_offset
          << " t_64offset: " << t_64offset;
 
     if (windowCol != 0) {
         // Partialy filled window
         if (*p_bufCol == 0) {
-            INFO << "Partial Window. Fill the rest of the widow";
+            DEBUG << "Partial Window. Fill the rest of the widow";
             return true;
         } else {
-            INFO << "Partial Window. bufferCol = 0 and get new buffer";
+            DEBUG << "Partial Window. bufferCol = 0 and get new buffer";
             *p_bufCol = 0;
             return false;
         }
@@ -64,13 +74,13 @@ bool Processor::findNextTrigger(buffer *currentBuffer, uint32_t* p_bufCol)
             // Found a trigger, find exact position
             t_offset = (int)(log2(currentBuffer->trigger[t_64offset]));
 #ifdef DBG
-            INFO << "found Trigger in 64: " << t_64offset
+            DEBUG << "found Trigger in 64: " << t_64offset
                  << " with val: " << currentBuffer->trigger[t_64offset]
                  << " t_offset: " << t_offset;
-#endif 
+#endif
             t_offset = (64 - 1) - t_offset;
 #ifdef DBG
-            INFO << "t_64offset corrected: " << t_64offset;
+            DEBUG << "t_64offset corrected: " << t_64offset;
 #endif
             break;
         }
@@ -79,11 +89,11 @@ bool Processor::findNextTrigger(buffer *currentBuffer, uint32_t* p_bufCol)
     if (t_64offset >= BUFFER_SIZE/64) {
         // No trigger found in buffer
         *p_bufCol = BUFFER_SIZE;
-        INFO << "End of buffer reached, go to next one";
+        DEBUG << "End of buffer reached, go to next one";
         return false;
     } else {
         *p_bufCol = ((t_offset) + (t_64offset * 64));
-        INFO << "t_offset: " << t_offset
+        DEBUG << "t_offset: " << t_offset
              << " t_64_offset: " << t_64offset;
         return true;
     }
@@ -108,31 +118,33 @@ void Processor::coreLoop()
                windowStored.load() == false &&
                inputQueue->pop(currentBuffer)) {
 
-            INFO << "*** New Buffer ***";
+            DEBUG << "*** New Buffer ***";
             // New buffer, reset variables
             count++;
             bufferCol = 0;
 
             // find a trigger in current buffer
-            while (findNextTrigger( currentBuffer, &bufferCol) && windowStored.load() == false) {
+            while (findNextTrigger( currentBuffer, &bufferCol)
+                    && windowStored.load() == false
+                    && pauseTransfer.load() == false) {
 
                 // Determin how much to copy. Min of:
                 // - remaining space in the window
                 // - remaining space in a buffer
-                copyCount = std::min(windowSize - windowCol, BUFFER_SIZE - bufferCol);
+                copyCount = std::min(windowSize - windowCol, BUFFER_SIZE/numCh - bufferCol);
 
-                INFO << "bufferCol: " << bufferCol
+                DEBUG << "bufferCol: " << bufferCol
                      << " copyCount: " << copyCount;
 
                 // Copy samples into the window
-                std::memcpy(windowProcessed + (windowCol + windowRow * windowSize),
-                            (currentBuffer->data + bufferCol),
-                            copyCount);
+                std::memcpy(windowProcessed + (windowCol * numCh + windowRow * windowSize * numCh),
+                            (currentBuffer->data + bufferCol * numCh),
+                            copyCount * numCh);
 
                 bufferCol += copyCount;
                 windowCol += copyCount;
 
-                INFO << "bufferCol: " << bufferCol 
+                DEBUG << "bufferCol: " << bufferCol
                      << " windowCol: " << windowCol
                      << " windowSize: " << windowSize
                      << std::endl;
@@ -142,10 +154,7 @@ void Processor::coreLoop()
                 if (windowCol == windowSize) {
                     windowCol = 0;
 
-                    // TODO: Find a better way to do this. Its not very thread
-                    //       safe to pass a pointer to data held in one thread
-                    //       to another thread. Making it immutable might help.
-                    outputQueue->push(windowProcessed + (windowCol + windowRow * windowSize));
+                    outputQueue->push(windowProcessed + (windowCol * numCh + windowRow * windowSize * numCh));
 
                     // Setup next trigger in persistance buffer
                     windowRow++;
@@ -153,11 +162,11 @@ void Processor::coreLoop()
                     // Push it into the next 64 space so we don't
                     // trigger on the same spot twice
                     bufferCol += 64;
-                    INFO << "full window. windowCol: "
+                    DEBUG << "full window. windowCol: "
                          << windowCol;
                 } else {
                     // Partial window coppied
-                    INFO << "partial window. windowCol: "
+                    DEBUG << "partial window. windowCol: "
                          << windowCol;
                 }
 
@@ -168,7 +177,8 @@ void Processor::coreLoop()
                     writeToCsv(filename,
                                windowProcessed,
                                persistanceSize,
-                               windowSize);
+                               windowSize * numCh,
+                               numCh);
 
                     windowStored.store(true);
                 }
@@ -176,13 +186,46 @@ void Processor::coreLoop()
 
             bufferAllocator.deallocate(currentBuffer, 1);
         }
+
+        if (windowStored.load() == true || pauseTransfer.load() == true) {
+            // flush the input queue so it doesn't overflow
+            size_t count = 0;
+            count = (*inputQueue).consume_all(bufferFunctor);
+            TRACE << "Flushed processor inputQueue: " << count;
+        }
         // Queue empty, Sleep for a bit
         std::this_thread::sleep_for(std::chrono::microseconds(100));
     }
 }
 
-void Processor::updateWindowSize(uint32_t newWinSize, uint32_t newPerSize)
+void Processor::setCh (int8_t newCh)
 {
+    if (newCh == 1 || newCh == 2 || newCh == 4) {
+        numCh = newCh;
+    } else {
+        ERROR << "not a valid number of channels: " << numCh;
+    }
+}
+
+void Processor::flushPersistence()
+{
+    updateWinPerSize(windowSize, persistanceSize);
+}
+
+void Processor::updatePerSize(uint32_t newPerSize)
+{
+    updateWinPerSize(windowSize, newPerSize);
+}
+
+void Processor::updateWinSize(uint32_t newWinSize)
+{
+    updateWinPerSize(newWinSize, persistanceSize);
+}
+
+void Processor::updateWinPerSize(uint32_t newWinSize, uint32_t newPerSize)
+{
+    processorPause();
+
     // Delete old window space
     if (windowProcessed != NULL) {
         delete windowProcessed;
@@ -197,46 +240,9 @@ void Processor::updateWindowSize(uint32_t newWinSize, uint32_t newPerSize)
     windowRow = 0;
 
     // Create a new window space as a single array
-    windowProcessed = new int8_t [windowSize * persistanceSize];
+    windowProcessed = new int8_t [windowSize * persistanceSize * numCh];
+    windowStored.store(false);
 }
-
-void Processor::createThread()
-{
-    const std::lock_guard<std::mutex> lock(lockThread);
-
-    // Check it thread created
-    if (threadExists.load() == false) {
-        // create new thread
-        processorThread = std::thread(&Processor::coreLoop, this);
-
-        // set thread exists flag
-        threadExists.store(true);
-    } else {
-        // Thread already created
-        throw EVException(10, "Processor::createThread(): Thread already created");
-    }
-    INFO << "Created processor thread";
-}
-
-void Processor::destroyThread()
-{
-    const std::lock_guard<std::mutex> lock(lockThread);
-
-    if (threadExists.load() == true) {
-        // Stop the transer and join thread
-        processorPause();
-        processorStop();
-        processorThread.join();
-
-        // clear thread exists flag
-        threadExists.store(false);
-    } else {
-        // Thread does not exist
-        throw EVException(10, "createThread(): thread does not exist");
-    }
-    INFO << "Destroyed processor thread";
-}
-
 
 std::chrono::high_resolution_clock::time_point Processor::getTimeFilled()
 {
@@ -252,26 +258,26 @@ std::chrono::high_resolution_clock::time_point Processor::getTimeWritten()
 void Processor::processorStart()
 {
     stopTransfer.store(false);
-    INFO << "Starting processing";
+    DEBUG << "Starting processing";
 }
 
 void Processor::processorStop()
 {
     stopTransfer.store(true);
-    INFO << "Stopping processing";
+    DEBUG << "Stopping processing";
 }
 
 // Control the inner loop
 void Processor::processorUnpause()
 {
     pauseTransfer.store(false);
-    INFO << "unpausing processing";
+    DEBUG << "unpausing processing";
 }
 
 void Processor::processorPause()
 {
     pauseTransfer.store(true);
-    INFO << "pausing processing";
+    DEBUG << "pausing processing";
 }
 
 // Statistics
@@ -298,4 +304,40 @@ void Processor::clearCount()
 bool Processor::getWindowStatus()
 {
     return windowStored.load();
+}
+
+void Processor::getMax(int8_t chNum, int8_t* value, uint64_t* pos)
+{
+    *value = INT8_MIN;
+    *pos = chNum - 1;
+    for (uint64_t i = chNum - 1; i < windowSize * numCh; i += numCh) {
+        DEBUG << "windowProcessed[i]: " << (int)windowProcessed[i] << " i: " << i << " value: " << (int)*value << " pos: " << *pos;
+        if ((int)*value < (int)windowProcessed[i]) {
+            *value = windowProcessed[i];
+            *pos = i / numCh;
+        }
+    }
+}
+
+void Processor::getMin(int8_t chNum, int8_t* value, uint64_t* pos)
+{
+    *value = INT8_MAX;
+    *pos = chNum - 1;
+    for (uint64_t i = chNum - 1; i < windowSize * numCh; i += numCh) {
+        if (*value > windowProcessed[i]) {
+            *value = windowProcessed[i];
+            *pos = i / numCh;
+        }
+    }
+}
+
+void Processor::reProcess()
+{
+    if (windowStored.load() == true) {
+        for (uint32_t i = 0; i < persistanceSize; i++) {
+            outputQueue->push(windowProcessed + (i * windowSize * numCh));
+        }
+    } else {
+        DEBUG << "Not a full persistence buffer yet";
+    }
 }

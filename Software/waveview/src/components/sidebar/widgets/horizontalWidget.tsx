@@ -3,23 +3,30 @@ import { connect } from 'react-redux';
 import './../../../css/sidebar/widgets/horizontalWidget.css';
 import ControlMode from '../../../configuration/enums/controlMode';
 import TimeUnit from '../../../configuration/enums/timeUnit';
+import { Plumber } from '../../../util/plumber';
 
-class HorizontalWidget extends React.Component<any, any> { 
+class HorizontalWidget extends React.Component<any, any> {
 
   // Horizontal Time Base
   incrementTimeBase = () => {
+    let i = this.props.horizontalWidget.horizontalTimeBase.index + 1;
+    Plumber.getInstance().handleHoriz(i);
     this.props.dispatch({ type: 'horizontal/increaseTimeBase'});
   }
 
   decrementTimeBase = () => {
+    let i = this.props.horizontalWidget.horizontalTimeBase.index - 1;
+    Plumber.getInstance().handleHoriz(i);
     this.props.dispatch({ type: 'horizontal/decreaseTimeBase'});
   }
 
   incrementTimeBaseFine = () => {
+    //TODO: actually scale
     this.props.dispatch({ type: 'horizontal/increaseTimeBaseFine'});
   }
 
   decrementTimeBaseFine = () => {
+    //TODO: actually scale
     this.props.dispatch({ type: 'horizontal/decreaseTimeBaseFine'});
   }
 
@@ -53,12 +60,12 @@ class HorizontalWidget extends React.Component<any, any> {
 
         <div className="TimeBaseMode">
           <button
-            className="CourseControlButton"
-            onClick={() => this.changeTimeBaseMode(ControlMode.Course)}>
+            className="CoarseControlButton"
+            onClick={() => this.changeTimeBaseMode(ControlMode.Coarse)}>
               <label
                 className=""
-                style={{fontWeight: this.props.horizontalWidget.horizontalTimeBase.mode ==  ControlMode.Course ? "bold" : "normal"}}>
-                Course
+                style={{fontWeight: this.props.horizontalWidget.horizontalTimeBase.mode ===  ControlMode.Coarse ? "bold" : "normal"}}>
+                Coarse
               </label>
           </button>
           <button
@@ -66,41 +73,42 @@ class HorizontalWidget extends React.Component<any, any> {
             onClick={() => this.changeTimeBaseMode(ControlMode.Fine)}>
               <label
                   className=""
-                  style={{fontWeight: this.props.horizontalWidget.horizontalTimeBase.mode ==  ControlMode.Fine ? "bold" : "normal"}}>
+                  style={{fontWeight: this.props.horizontalWidget.horizontalTimeBase.mode ===  ControlMode.Fine ? "bold" : "normal"}}>
                   Fine
               </label>
           </button>
         </div>
 
         <div className="HorizontalWidgetAdjustBlock-HorizontalTimeBase">
-          <button 
+          <button
             className="MinusButton"
-            onClick={() => this.props.horizontalWidget.horizontalTimeBase.mode == ControlMode.Course ? this.decrementTimeBase() : this.decrementTimeBaseFine()}>
+            onClick={() => this.props.horizontalWidget.horizontalTimeBase.mode === ControlMode.Coarse ? this.decrementTimeBase() : this.decrementTimeBaseFine()}>
             -
           </button>
-          <label 
+          <label
             className="AdjustValueBlockHorizontalTimeBase"
             style={{color: "white"}}
           >
-            {this.props.horizontalWidget.horizontalTimeBase.mode == ControlMode.Course && this.props.horizontalWidget.horizontalTimeBase.value.toString()}
-            {this.props.horizontalWidget.horizontalTimeBase.mode == ControlMode.Fine && this.props.horizontalWidget.horizontalTimeBase.fineValue.toString()}
-            {this.props.horizontalWidget.horizontalTimeBase.mode == ControlMode.Fine && this.props.horizontalWidget.horizontalTimeBase.fineUnit.toString() + "/div"}
+            {this.props.horizontalWidget.horizontalTimeBase.mode === ControlMode.Coarse && this.props.horizontalWidget.horizontalTimeBase.coarse.value.toString()}
+            {this.props.horizontalWidget.horizontalTimeBase.mode === ControlMode.Coarse && this.props.horizontalWidget.horizontalTimeBase.coarse.unit.toString() + "/div"}
+            {this.props.horizontalWidget.horizontalTimeBase.mode === ControlMode.Fine && this.props.horizontalWidget.horizontalTimeBase.fine.value.toString()}
+            {this.props.horizontalWidget.horizontalTimeBase.mode === ControlMode.Fine && this.props.horizontalWidget.horizontalTimeBase.fine.unit.toString() + "/div"}
           </label>
-          <button 
+          <button
             className="PlusButton"
-            onClick={() => this.props.horizontalWidget.horizontalTimeBase.mode == ControlMode.Course ? this.incrementTimeBase() : this.incrementTimeBaseFine()}>
+            onClick={() => this.props.horizontalWidget.horizontalTimeBase.mode === ControlMode.Coarse ? this.incrementTimeBase() : this.incrementTimeBaseFine()}>
             +
           </button>
         </div>
 
-        {this.props.horizontalWidget.horizontalTimeBase.mode == ControlMode.Fine &&
+        {this.props.horizontalWidget.horizontalTimeBase.mode === ControlMode.Fine &&
         <div className="FineModeUnitButtons">
         <button
           className="NanoSecondButton"
           onClick={() => this.changeTimeBaseUnit(TimeUnit.NanoSecond)}>
           <label
             className={"NanoSecondButtonText"}
-            style={{fontWeight: this.props.horizontalWidget.horizontalTimeBase.fineUnit == TimeUnit.NanoSecond ? "bold" : "normal"}}>
+            style={{fontWeight: this.props.horizontalWidget.horizontalTimeBase.fine.unit === TimeUnit.NanoSecond ? "bold" : "normal"}}>
             {TimeUnit.NanoSecond}
           </label>
         </button>
@@ -109,7 +117,7 @@ class HorizontalWidget extends React.Component<any, any> {
           onClick={() => this.changeTimeBaseUnit(TimeUnit.MicroSecond)}>
           <label
             className={"MicroSecondButtonText"}
-            style={{fontWeight: this.props.horizontalWidget.horizontalTimeBase.fineUnit == TimeUnit.MicroSecond ? "bold" : "normal"}}>
+            style={{fontWeight: this.props.horizontalWidget.horizontalTimeBase.fine.unit === TimeUnit.MicroSecond ? "bold" : "normal"}}>
             {TimeUnit.MicroSecond}
           </label>
         </button>
@@ -118,7 +126,7 @@ class HorizontalWidget extends React.Component<any, any> {
           onClick={() => this.changeTimeBaseUnit(TimeUnit.MilliSecond)}>
           <label
             className={"MilliSecondButtonText"}
-            style={{fontWeight: this.props.horizontalWidget.horizontalTimeBase.fineUnit == TimeUnit.MilliSecond ? "bold" : "normal"}}>
+            style={{fontWeight: this.props.horizontalWidget.horizontalTimeBase.fine.unit === TimeUnit.MilliSecond ? "bold" : "normal"}}>
             {TimeUnit.MilliSecond}
           </label>
         </button>
@@ -127,7 +135,7 @@ class HorizontalWidget extends React.Component<any, any> {
           onClick={() => this.changeTimeBaseUnit(TimeUnit.Second)}>
           <label
             className={"SecondButtonText"}
-            style={{fontWeight: this.props.horizontalWidget.horizontalTimeBase.fineUnit == TimeUnit.Second ? "bold" : "normal"}}>
+            style={{fontWeight: this.props.horizontalWidget.horizontalTimeBase.fine.unit === TimeUnit.Second ? "bold" : "normal"}}>
             {TimeUnit.Second}
           </label>
         </button>
@@ -136,27 +144,27 @@ class HorizontalWidget extends React.Component<any, any> {
 
 
         <div className="HorizontalOffsetTitle">
-          Horizontal Offset
+          Offset
         </div>
         <div className="HorizontalWidgetAdjustBlock-HorizontalOffset">
-          <button 
+          <button
             className="MinusButton"
             onClick={() => this.decrementOffset()}>
             -
           </button>
-          <label 
+          <label
             className="AdjustValueBlockHorizontalOffset"
             style={{color: "white"}}
           >
             {this.props.horizontalWidget.horizontalOffset.value.toString()}{this.props.horizontalWidget.horizontalOffset.unit}
           </label>
-          <button 
+          <button
             className="PlusButton"
             onClick={() => this.incrementOffset()}>
             +
           </button>
         </div>
-        
+
       </div>
     )
   }

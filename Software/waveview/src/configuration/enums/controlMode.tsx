@@ -1,5 +1,5 @@
 enum ControlMode {
-  Course,
+  Coarse,
   Fine
 }
 

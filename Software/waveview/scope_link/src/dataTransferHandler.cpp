@@ -67,7 +67,7 @@ void DataTransferHandler::transferPause()
 void DataTransferHandler::FTDITransferThread()
 {
     uint64_t bytesReadFromPipe = 0;
-    uint64_t errorCode;
+    uint64_t errorCode = 0;
 
     // Outerloop
     while(!stopTransfer.load()) {
@@ -78,13 +78,6 @@ void DataTransferHandler::FTDITransferThread()
     
             asyncDataBuffers[0] = bufferAllocator.allocate(1);
             bufferAllocator.construct(asyncDataBuffers[0]);
-
-            errorCode = FT_ReadPipe(superSpeedFIFOBridgeHandle,
-                                    FTDI_FLAG_READ_CHIP_TO_COMPUTER,
-                                    (unsigned char*)asyncDataBuffers[0]->data,
-                                    BUFFER_SIZE,
-                                    (PULONG)&bytesReadFromPipe,
-                                    nullptr);
     
             assert(bytesReadFromPipe == BUFFER_SIZE);
             assert(errorCode == 0);
@@ -273,7 +266,6 @@ DataTransferHandler::~DataTransferHandler()
 
     if(superSpeedFIFOBridgeHandle != 0)
     {
-        FT_Close(superSpeedFIFOBridgeHandle);
     }
 }
 

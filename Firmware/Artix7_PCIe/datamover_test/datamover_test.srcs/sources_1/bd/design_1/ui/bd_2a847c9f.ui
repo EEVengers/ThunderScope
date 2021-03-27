@@ -1,0 +1,29 @@
+{
+   "ActiveEmotionalView":"Default View",
+   "Default View_ScaleFactor":"1.0",
+   "Default View_TopLeft":"-614,-122",
+   "ExpandedHierarchyInLayout":"",
+   "guistr":"# # String gsaved with Nlview 7.0r6  2020-01-29 bk=1.5227 VDI=41 GEI=36 GUI=JA:9.0 non-TLS
+#  -string -flagsOSRD
+preplace port pcie -pg 1 -lvl 0 -x -10 -y 60 -defaultsOSRD
+preplace port M_AXI -pg 1 -lvl 3 -x 640 -y 50 -defaultsOSRD
+preplace port pcie_mgt -pg 1 -lvl 3 -x 640 -y 90 -defaultsOSRD
+preplace port M_AXI_LITE -pg 1 -lvl 3 -x 640 -y 70 -defaultsOSRD
+preplace port pcie_perstn -pg 1 -lvl 0 -x -10 -y 130 -defaultsOSRD
+preplace port axi_aclk -pg 1 -lvl 3 -x 640 -y 130 -defaultsOSRD
+preplace port axi_aresetn -pg 1 -lvl 3 -x 640 -y 150 -defaultsOSRD
+preplace inst util_ds_buf_0 -pg 1 -lvl 1 -x 160 -y 60 -defaultsOSRD
+preplace inst xdma_0 -pg 1 -lvl 2 -x 460 -y 130 -defaultsOSRD
+preplace netloc util_ds_buf_0_IBUF_OUT 1 1 1 310J 50n
+preplace netloc sys_rst_n_0_1 1 0 2 NJ 130 NJ
+preplace netloc xdma_0_axi_aclk 1 2 1 NJ 130
+preplace netloc xdma_0_axi_aresetn 1 2 1 NJ 150
+preplace netloc xdma_0_pcie_mgt 1 2 1 NJ 90
+preplace netloc CLK_IN_D_0_1 1 0 1 NJ 60
+preplace netloc Conn1 1 2 1 N 70
+preplace netloc xdma_0_M_AXI 1 2 1 NJ 50
+levelinfo -pg 1 -10 160 460 640
+pagesize -pg 1 -db -bbox -sgen -140 -10 770 270
+"
+}
+0

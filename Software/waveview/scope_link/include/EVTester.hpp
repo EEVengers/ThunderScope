@@ -11,10 +11,10 @@ void TestDataThroughput();
 
 void testTriggerThroughput();
 
-void testBenchmark();
-
 void testCsv(char * filename);
 
-void initializePipeline();
+void runSocketTest();
+
+void runPCIeTest();
 
 #endif /* EVTester_hpp */

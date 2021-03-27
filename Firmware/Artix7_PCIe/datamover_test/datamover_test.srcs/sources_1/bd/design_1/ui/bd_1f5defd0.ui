@@ -1,0 +1,49 @@
+{
+   "ActiveEmotionalView":"Default View",
+   "Default View_ScaleFactor":"1.0",
+   "Default View_TopLeft":"-581,-19",
+   "ExpandedHierarchyInLayout":"",
+   "guistr":"# # String gsaved with Nlview 7.0r6  2020-01-29 bk=1.5227 VDI=41 GEI=36 GUI=JA:9.0 non-TLS
+#  -string -flagsOSRD
+preplace port pcie -pg 1 -lvl 0 -x 0 -y 290 -defaultsOSRD
+preplace port pcie_mgt -pg 1 -lvl 3 -x 720 -y 280 -defaultsOSRD
+preplace port DDR3 -pg 1 -lvl 3 -x 720 -y 100 -defaultsOSRD
+preplace port S_AXIS_S2MM_CMD -pg 1 -lvl 0 -x 0 -y 60 -defaultsOSRD
+preplace port S_AXIS_S2MM -pg 1 -lvl 0 -x 0 -y 80 -defaultsOSRD
+preplace port pcie_perstn -pg 1 -lvl 0 -x 0 -y 310 -defaultsOSRD
+preplace port s2mm_err -pg 1 -lvl 3 -x 720 -y 190 -defaultsOSRD
+preplace port s2mm_wr_xfer_cmplt -pg 1 -lvl 3 -x 720 -y 210 -defaultsOSRD
+preplace port axi_aresetn -pg 1 -lvl 3 -x 720 -y 320 -defaultsOSRD
+preplace port S01_ARESETN -pg 1 -lvl 0 -x 0 -y 120 -defaultsOSRD
+preplace port s2mm_halt -pg 1 -lvl 0 -x 0 -y 140 -defaultsOSRD
+preplace port axi_aclk -pg 1 -lvl 3 -x 720 -y 300 -defaultsOSRD
+preplace portBus gpio2_io_i -pg 1 -lvl 0 -x 0 -y 420 -defaultsOSRD
+preplace portBus gpio_io_o_0 -pg 1 -lvl 3 -x 720 -y 410 -defaultsOSRD
+preplace inst PCIe -pg 1 -lvl 1 -x 200 -y 300 -defaultsOSRD
+preplace inst Memory -pg 1 -lvl 2 -x 560 -y 100 -defaultsOSRD
+preplace inst Datamover -pg 1 -lvl 1 -x 200 -y 100 -defaultsOSRD
+preplace inst AXI_LITE_IO -pg 1 -lvl 2 -x 560 -y 410 -defaultsOSRD
+preplace netloc sys_rst_n_0_1 1 0 1 NJ 310
+preplace netloc xdma_0_axi_aclk 1 0 3 30 200 410 300 NJ
+preplace netloc Datamover_s2mm_err_0 1 1 2 390J 190 NJ
+preplace netloc Datamover_s2mm_wr_xfer_cmplt_0 1 1 2 400J 210 NJ
+preplace netloc gpio2_io_i_0_1 1 0 2 NJ 420 NJ
+preplace netloc PCIe_axi_aresetn 1 1 2 420 320 NJ
+preplace netloc S01_ARESETN_0_1 1 0 2 20 190 370J
+preplace netloc axi_gpio_0_gpio_io_o 1 2 1 NJ 410
+preplace netloc s2mm_halt_0_1 1 0 1 NJ 140
+preplace netloc S_AXIS_S2MM_CMD_0_1 1 0 1 NJ 60
+preplace netloc S_AXIS_S2MM_1 1 0 1 NJ 80
+preplace netloc xdma_0_M_AXI 1 1 1 380 60n
+preplace netloc CLK_IN_D_0_1 1 0 1 NJ 290
+preplace netloc PCIe_M_AXI_LITE 1 1 1 370 300n
+preplace netloc mig_7series_0_DDR3 1 2 1 NJ 100
+preplace netloc xdma_0_pcie_mgt 1 1 2 NJ 280 NJ
+preplace netloc Datamover_M_AXI_S2MM 1 1 1 N 80
+levelinfo -pg 1 0 200 560 720
+pagesize -pg 1 -db -bbox -sgen -190 0 910 490
+"
+}
+{
+   "da_clkrst_cnt":"1"
+}

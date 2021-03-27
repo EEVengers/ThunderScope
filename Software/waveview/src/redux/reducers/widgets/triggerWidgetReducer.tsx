@@ -1,30 +1,6 @@
-import TriggerType from '../../../configuration/enums/triggerType';
-import DefaultChannelColor from '../../../configuration/enums/defaultChannelColor';
-import VoltageUnit from '../../../configuration/enums/voltageUnit';
+import TriggerWidgetInitialState from '../../initialStates/triggerWidgetInitialState';
 
-const initialState = {
-  triggerChannel: 1,
-  channelColorsList: [
-    DefaultChannelColor.Channel1, 
-    DefaultChannelColor.Channel2, 
-    DefaultChannelColor.Channel3, 
-    DefaultChannelColor.Channel4
-  ],
-  triggerType: [
-    TriggerType.RisingEdge,
-    TriggerType.RisingEdge,
-    TriggerType.RisingEdge,
-    TriggerType.RisingEdge
-  ],
-  triggerLevel: [
-    {value: 0.0, unit: VoltageUnit.MilliVolt},
-    {value: 0.0, unit: VoltageUnit.MilliVolt},
-    {value: 0.0, unit: VoltageUnit.MilliVolt},
-    {value: 0.0, unit: VoltageUnit.MilliVolt}
-  ]
-};
-
-export default function(state = initialState, action: {type: any, payload: any}) {
+export default function TriggerWidgetReducer(state = TriggerWidgetInitialState, action: {type: any, payload: any}) {
   var channelIndex = state.triggerChannel - 1;
   var tmp;
 
@@ -44,14 +20,14 @@ export default function(state = initialState, action: {type: any, payload: any})
       };
     case "trigger/increaseTriggerLevelValue":
       tmp = state.triggerLevel;
-      tmp[channelIndex].value = Number((state.triggerLevel[channelIndex].value + 0.1).toFixed(1));
+      tmp[channelIndex].value = Number((state.triggerLevel[channelIndex].value + 1).toFixed(1));
       return {
         ...state,
         triggerLevel: tmp
       };
     case "trigger/decreaseTriggerLevelValue":
       tmp = state.triggerLevel;
-      tmp[channelIndex].value = Number((state.triggerLevel[channelIndex].value - 0.1).toFixed(1));
+      tmp[channelIndex].value = Number((state.triggerLevel[channelIndex].value - 1).toFixed(1));
       return {
         ...state,
         triggerLevel: tmp

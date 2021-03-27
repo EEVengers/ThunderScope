@@ -19,15 +19,14 @@ public:
 
     void coreLoop();
 
-    void createThread();
-    void destroyThread();
-
     uint32_t getCount();
     uint32_t getCountBytes();
     void setCount(uint32_t);
     void clearCount();
 
     bool getWindowStatus();
+
+    void flushPersistence();
 
     void processorStop();
     void processorStart();
@@ -37,6 +36,13 @@ public:
     std::chrono::high_resolution_clock::time_point getTimeFilled();
     std::chrono::high_resolution_clock::time_point getTimeWritten();
 
+    void setCh(int8_t newCh);
+
+    void getMax(int8_t chNum, int8_t* value, uint64_t* pos);
+    void getMin(int8_t chNum, int8_t* value, uint64_t* pos);
+
+    void reProcess();
+
     /* variables */
     uint32_t windowCol;
     uint32_t windowRow;
@@ -45,7 +51,11 @@ public:
 private:
     /* functions */
     void copyProcess(int8_t * src, int8_t * dst, uint32_t count);
-    void updateWindowSize(uint32_t newWinSize, uint32_t newPerSize);
+
+    void updateWinSize(uint32_t newWinSize);
+    void updatePerSize(uint32_t newPerSize);
+    void updateWinPerSize(uint32_t newWinSize, uint32_t newPerSize);
+
     bool findNextTrigger(buffer *currentBuffer, uint32_t* p_column);
 
     /* variables */
@@ -66,8 +76,9 @@ private:
 
     std::atomic<bool> stopTransfer;
     std::atomic<bool> pauseTransfer;
-    std::atomic<bool> threadExists;
     std::atomic<bool> windowStored;
+
+    int8_t numCh = 1;
 };
 
 #endif
