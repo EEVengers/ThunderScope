@@ -2,13 +2,12 @@
 // It has the same sandbox as a Chrome extension.
 
 import * as fs from 'fs';
+import * as path from 'path';
 import { spawn } from 'child_process';
 import { contextBridge, app } from 'electron';
 
-const cwd = process.cwd();
-const cpp_suffix_win = "\\build_cpp\\Release\\scope.exe";
-const cpp_suffix_nix = "/build_cpp/Debug/scope";
-const cpp_path = cwd + ((process.platform == "win32") ? cpp_suffix_win : cpp_suffix_nix);
+const cpp_subdir = (process.platform == "win32") ? "Release" : "Debug"; //see `npm run make-cpp-win`
+const cpp_path = path.join(process.cwd(), "build_cpp", cpp_subdir, "scope");
 const cpp = spawn(cpp_path, ["-c"]);
 
 var did_open = false;
