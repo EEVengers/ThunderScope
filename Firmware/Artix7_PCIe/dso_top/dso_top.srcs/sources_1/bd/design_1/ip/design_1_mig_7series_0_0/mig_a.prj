@@ -15,7 +15,7 @@
 
   <DataDepth_En>1024</DataDepth_En>
 
-  <LowPower_En>OFF</LowPower_En>
+  <LowPower_En>ON</LowPower_En>
 
   <XADC_En>Enabled</XADC_En>
 
@@ -37,6 +37,13 @@
 
   <dci_cascade>0</dci_cascade>
 
+  <FPGADevice>
+    <selected>7a/xc7a35t-fgg484</selected>
+    <selected>7a/xc7a50t-fgg484</selected>
+    <selected>7a/xc7a75t-fgg484</selected>
+    <selected>7a/xc7a15t-fgg484</selected>
+  </FPGADevice>
+
   <Controller number="0">
     <MemoryDevice>DDR3_SDRAM/Components/MT41K256M16XX-125</MemoryDevice>
     <TimePeriod>2500</TimePeriod>
@@ -55,7 +62,7 @@
     <DataMask>1</DataMask>
     <ECC>Disabled</ECC>
     <Ordering>Normal</Ordering>
-    <BankMachineCnt>8</BankMachineCnt>
+    <BankMachineCnt>4</BankMachineCnt>
     <CustomPart>FALSE</CustomPart>
     <NewPartName/>
     <RowAddress>15</RowAddress>
@@ -170,7 +177,7 @@
       <C0_C_RD_WR_ARB_ALGORITHM>RD_PRI_REG_STARVE_LIMIT</C0_C_RD_WR_ARB_ALGORITHM>
       <C0_S_AXI_ADDR_WIDTH>30</C0_S_AXI_ADDR_WIDTH>
       <C0_S_AXI_DATA_WIDTH>256</C0_S_AXI_DATA_WIDTH>
-      <C0_S_AXI_ID_WIDTH>1</C0_S_AXI_ID_WIDTH>
+      <C0_S_AXI_ID_WIDTH>3</C0_S_AXI_ID_WIDTH>
       <C0_S_AXI_SUPPORTS_NARROW_BURST>0</C0_S_AXI_SUPPORTS_NARROW_BURST>
     </AXIParameters>
   </Controller>

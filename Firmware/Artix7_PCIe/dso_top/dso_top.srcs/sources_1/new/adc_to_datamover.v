@@ -8,7 +8,7 @@ module adc_to_datamover(
     output[71:0] axis_cmd_tdata,
     output axis_cmd_tvalid,
     input axis_data_tready,
-    output reg[127:0] axis_data_tdata,
+    output[127:0] axis_data_tdata,
     output axis_data_tvalid,
     output axis_data_tlast,
     input[63:0] adc_data,
@@ -65,15 +65,17 @@ module adc_to_datamover(
   end
   assign axis_data_tlast = data_tlast; 
   
-  always @(*)
+  assign axis_data_tdata = {fifo_data[63:0],fifo_data[127:64]};
+
+/*  always @(*)
     begin
         case(gpio_io_o_0[5:4]) // pga_cs demux
-            2'b00: axis_data_tdata = {fifo_data[63:0],fifo_data[127:64]};
-            2'b01: axis_data_tdata = {fifo_data[63:56],fifo_data[31:24],fifo_data[55:48],fifo_data[23:16],fifo_data[47:40],fifo_data[15:8],fifo_data[39:32],fifo_data[7:0],fifo_data[127:120],fifo_data[95:88],fifo_data[119:112],fifo_data[87:80],fifo_data[111:104],fifo_data[79:72],fifo_data[103:96],fifo_data[71:64]};
-            2'b10: axis_data_tdata = {fifo_data[63:56],fifo_data[47:40],fifo_data[31:24],fifo_data[15:8],fifo_data[55:48],fifo_data[39:32],fifo_data[23:16],fifo_data[7:0],fifo_data[127:120],fifo_data[111:104],fifo_data[95:88],fifo_data[79:72],fifo_data[119:112],fifo_data[103:96],fifo_data[87:80],fifo_data[71:64]};		
-            2'b11: axis_data_tdata = {fifo_data[63:56],fifo_data[47:40],fifo_data[31:24],fifo_data[15:8],fifo_data[55:48],fifo_data[39:32],fifo_data[23:16],fifo_data[7:0],fifo_data[127:120],fifo_data[111:104],fifo_data[95:88],fifo_data[79:72],fifo_data[119:112],fifo_data[103:96],fifo_data[87:80],fifo_data[71:64]};
+            2'b00: axis_data_tdata <= {fifo_data[63:0],fifo_data[127:64]};
+            2'b01: axis_data_tdata <= {fifo_data[63:56],fifo_data[31:24],fifo_data[55:48],fifo_data[23:16],fifo_data[47:40],fifo_data[15:8],fifo_data[39:32],fifo_data[7:0],fifo_data[127:120],fifo_data[95:88],fifo_data[119:112],fifo_data[87:80],fifo_data[111:104],fifo_data[79:72],fifo_data[103:96],fifo_data[71:64]};
+            2'b10: axis_data_tdata <= {fifo_data[63:56],fifo_data[47:40],fifo_data[31:24],fifo_data[15:8],fifo_data[55:48],fifo_data[39:32],fifo_data[23:16],fifo_data[7:0],fifo_data[127:120],fifo_data[111:104],fifo_data[95:88],fifo_data[79:72],fifo_data[119:112],fifo_data[103:96],fifo_data[87:80],fifo_data[71:64]};		
+            2'b11: axis_data_tdata <= {fifo_data[63:56],fifo_data[47:40],fifo_data[31:24],fifo_data[15:8],fifo_data[55:48],fifo_data[39:32],fifo_data[23:16],fifo_data[7:0],fifo_data[127:120],fifo_data[111:104],fifo_data[95:88],fifo_data[79:72],fifo_data[119:112],fifo_data[103:96],fifo_data[87:80],fifo_data[71:64]};
     endcase
-  end
+  end*/
 
   //Transfer Counter
   reg [15:0] transfer_counter;

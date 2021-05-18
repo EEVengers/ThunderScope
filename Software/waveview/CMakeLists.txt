@@ -42,7 +42,7 @@ if(MSVC)
 add_definitions(-DNOGDI)
 endif()
 
-add_definitions(-DNOHARDWARE)
+#add_definitions(-DNOHARDWARE)
 
 add_executable(${PROJECT_NAME} ${SOURCES})
 

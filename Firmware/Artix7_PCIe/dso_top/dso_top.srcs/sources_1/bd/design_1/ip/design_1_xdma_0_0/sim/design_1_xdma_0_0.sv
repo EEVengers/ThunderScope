@@ -120,7 +120,13 @@ module design_1_xdma_0_0 (
   m_axil_rdata,
   m_axil_rresp,
   m_axil_rvalid,
-  m_axil_rready
+  m_axil_rready,
+  h2c_dsc_byp_ready_0,
+  h2c_dsc_byp_src_addr_0,
+  h2c_dsc_byp_dst_addr_0,
+  h2c_dsc_byp_len_0,
+  h2c_dsc_byp_ctl_0,
+  h2c_dsc_byp_load_0
 );
 
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME CLK.SYS_CLK, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.000, CLK_DOMAIN design_1_util_ds_buf_0_0_IBUF_OUT, INSERT_VIP 0" *)
@@ -155,7 +161,7 @@ input wire m_axi_awready;
 (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 M_AXI WREADY" *)
 input wire m_axi_wready;
 (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 M_AXI BID" *)
-input wire [3 : 0] m_axi_bid;
+input wire [1 : 0] m_axi_bid;
 (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 M_AXI BRESP" *)
 input wire [1 : 0] m_axi_bresp;
 (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 M_AXI BVALID" *)
@@ -163,7 +169,7 @@ input wire m_axi_bvalid;
 (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 M_AXI ARREADY" *)
 input wire m_axi_arready;
 (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 M_AXI RID" *)
-input wire [3 : 0] m_axi_rid;
+input wire [1 : 0] m_axi_rid;
 (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 M_AXI RDATA" *)
 input wire [127 : 0] m_axi_rdata;
 (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 M_AXI RRESP" *)
@@ -173,7 +179,7 @@ input wire m_axi_rlast;
 (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 M_AXI RVALID" *)
 input wire m_axi_rvalid;
 (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 M_AXI AWID" *)
-output wire [3 : 0] m_axi_awid;
+output wire [1 : 0] m_axi_awid;
 (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 M_AXI AWADDR" *)
 output wire [63 : 0] m_axi_awaddr;
 (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 M_AXI AWLEN" *)
@@ -201,7 +207,7 @@ output wire m_axi_wvalid;
 (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 M_AXI BREADY" *)
 output wire m_axi_bready;
 (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 M_AXI ARID" *)
-output wire [3 : 0] m_axi_arid;
+output wire [1 : 0] m_axi_arid;
 (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 M_AXI ARADDR" *)
 output wire [63 : 0] m_axi_araddr;
 (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 M_AXI ARLEN" *)
@@ -218,8 +224,8 @@ output wire m_axi_arvalid;
 output wire m_axi_arlock;
 (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 M_AXI ARCACHE" *)
 output wire [3 : 0] m_axi_arcache;
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME M_AXI, SUPPORTS_NARROW_BURST 0, HAS_BURST 0, HAS_BURST.VALUE_SRC CONSTANT, DATA_WIDTH 128, PROTOCOL AXI4, FREQ_HZ 125000000, ID_WIDTH 4, ADDR_WIDTH 64, AWUSER_WIDTH 0, ARUSER_WIDTH 0, WUSER_WIDTH 0, RUSER_WIDTH 0, BUSER_WIDTH 0, READ_WRITE_MODE READ_WRITE, HAS_LOCK 1, HAS_PROT 1, HAS_CACHE 1, HAS_QOS 0, HAS_REGION 0, HAS_WSTRB 1, HAS_BRESP 1, HAS_RRESP 1, NUM_READ_OUTSTANDING 32, NUM_WRITE_OUTSTANDING 32, MAX_BURST_LENGTH 256, PHASE 0.000, CLK_DOMAIN design_1_xdma_0_0_axi_aclk,\
- NUM_READ_THREADS 1, NUM_WRITE_THREADS 1, RUSER_BITS_PER_BYTE 0, WUSER_BITS_PER_BYTE 0, INSERT_VIP 0" *)
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME M_AXI, SUPPORTS_NARROW_BURST 0, HAS_BURST 0, HAS_BURST.VALUE_SRC CONSTANT, DATA_WIDTH 128, PROTOCOL AXI4, FREQ_HZ 125000000, ID_WIDTH 2, ADDR_WIDTH 64, AWUSER_WIDTH 0, ARUSER_WIDTH 0, WUSER_WIDTH 0, RUSER_WIDTH 0, BUSER_WIDTH 0, READ_WRITE_MODE READ_WRITE, HAS_LOCK 1, HAS_PROT 1, HAS_CACHE 1, HAS_QOS 0, HAS_REGION 0, HAS_WSTRB 1, HAS_BRESP 1, HAS_RRESP 1, NUM_READ_OUTSTANDING 2, NUM_WRITE_OUTSTANDING 8, MAX_BURST_LENGTH 256, PHASE 0.000, CLK_DOMAIN design_1_xdma_0_0_axi_aclk, N\
+UM_READ_THREADS 1, NUM_WRITE_THREADS 1, RUSER_BITS_PER_BYTE 0, WUSER_BITS_PER_BYTE 0, INSERT_VIP 0" *)
 (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 M_AXI RREADY" *)
 output wire m_axi_rready;
 (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 M_AXI_LITE AWADDR" *)
@@ -262,6 +268,18 @@ input wire m_axil_rvalid;
 RITE_THREADS 1, RUSER_BITS_PER_BYTE 0, WUSER_BITS_PER_BYTE 0, INSERT_VIP 0" *)
 (* X_INTERFACE_INFO = "xilinx.com:interface:aximm:1.0 M_AXI_LITE RREADY" *)
 output wire m_axil_rready;
+(* X_INTERFACE_INFO = "xilinx.com:display_xdma:dsc_bypass:1.0 dsc_bypass_h2c_0 dsc_byp_ready" *)
+output wire h2c_dsc_byp_ready_0;
+(* X_INTERFACE_INFO = "xilinx.com:display_xdma:dsc_bypass:1.0 dsc_bypass_h2c_0 dsc_byp_src_addr" *)
+input wire [63 : 0] h2c_dsc_byp_src_addr_0;
+(* X_INTERFACE_INFO = "xilinx.com:display_xdma:dsc_bypass:1.0 dsc_bypass_h2c_0 dsc_byp_dst_addr" *)
+input wire [63 : 0] h2c_dsc_byp_dst_addr_0;
+(* X_INTERFACE_INFO = "xilinx.com:display_xdma:dsc_bypass:1.0 dsc_bypass_h2c_0 dsc_byp_len" *)
+input wire [27 : 0] h2c_dsc_byp_len_0;
+(* X_INTERFACE_INFO = "xilinx.com:display_xdma:dsc_bypass:1.0 dsc_bypass_h2c_0 dsc_byp_ctl" *)
+input wire [15 : 0] h2c_dsc_byp_ctl_0;
+(* X_INTERFACE_INFO = "xilinx.com:display_xdma:dsc_bypass:1.0 dsc_bypass_h2c_0 dsc_byp_load" *)
+input wire h2c_dsc_byp_load_0;
 
   design_1_xdma_0_0_core_top #(
     .COMPONENT_NAME("xdma_0"),
@@ -341,12 +359,12 @@ output wire m_axil_rready;
     .XDMA_WNUM_CHNL(1),
     .XDMA_AXILITE_SLAVE("FALSE"),
     .XDMA_NUM_USR_IRQ(1),
-    .XDMA_RNUM_RIDS(32),
-    .XDMA_WNUM_RIDS(32),
-    .C_M_AXI_ID_WIDTH(4),
+    .XDMA_RNUM_RIDS(2),
+    .XDMA_WNUM_RIDS(8),
+    .C_M_AXI_ID_WIDTH(2),
     .C_AXIBAR_NUM(1),
     .C_FAMILY("artix7"),
-    .XDMA_NUM_PCIE_TAG(64),
+    .XDMA_NUM_PCIE_TAG(32),
     .EN_AXI_MASTER_IF("TRUE"),
     .EN_WCHNL_0("TRUE"),
     .EN_WCHNL_1("FALSE"),
@@ -365,13 +383,13 @@ output wire m_axil_rready;
     .EN_RCHNL_6("FALSE"),
     .EN_RCHNL_7("FALSE"),
     .XDMA_DSC_BYPASS("FALSE"),
-    .C_METERING_ON(1),
+    .C_METERING_ON(0),
     .RX_DETECT(0),
     .C_ATS_ENABLE("FALSE"),
     .C_ATS_CAP_NEXTPTR('H000),
     .C_PR_CAP_NEXTPTR('H000),
     .C_PRI_ENABLE("FALSE"),
-    .DSC_BYPASS_RD(0),
+    .DSC_BYPASS_RD(1),
     .DSC_BYPASS_WR(0),
     .XDMA_STS_PORTS("FALSE"),
     .MSIX_ENABLED("FALSE"),
@@ -379,7 +397,7 @@ output wire m_axil_rready;
     .WR_CH1_ENABLED("FALSE"),
     .WR_CH2_ENABLED("FALSE"),
     .WR_CH3_ENABLED("FALSE"),
-    .RD_CH0_ENABLED("FALSE"),
+    .RD_CH0_ENABLED("TRUE"),
     .RD_CH1_ENABLED("FALSE"),
     .RD_CH2_ENABLED("FALSE"),
     .RD_CH3_ENABLED("FALSE"),
@@ -738,7 +756,7 @@ output wire m_axil_rready;
     .m_axib_wvalid(),
     .m_axib_wready(1'B0),
     .m_axib_wuser(),
-    .m_axib_bid(4'B0),
+    .m_axib_bid(2'B0),
     .m_axib_bresp(2'B0),
     .m_axib_bvalid(1'B0),
     .m_axib_bready(),
@@ -753,7 +771,7 @@ output wire m_axil_rready;
     .m_axib_arready(1'B0),
     .m_axib_arlock(),
     .m_axib_arcache(),
-    .m_axib_rid(4'B0),
+    .m_axib_rid(2'B0),
     .m_axib_rdata(128'B0),
     .m_axib_ruser(16'B0),
     .m_axib_rresp(2'B0),
@@ -851,12 +869,12 @@ output wire m_axil_rready;
     .c2h_dsc_byp_len_3(28'B0),
     .c2h_dsc_byp_ctl_3(16'B0),
     .c2h_dsc_byp_load_3(1'B0),
-    .h2c_dsc_byp_ready_0(),
-    .h2c_dsc_byp_src_addr_0(64'B0),
-    .h2c_dsc_byp_dst_addr_0(64'B0),
-    .h2c_dsc_byp_len_0(28'B0),
-    .h2c_dsc_byp_ctl_0(16'B0),
-    .h2c_dsc_byp_load_0(1'B0),
+    .h2c_dsc_byp_ready_0(h2c_dsc_byp_ready_0),
+    .h2c_dsc_byp_src_addr_0(h2c_dsc_byp_src_addr_0),
+    .h2c_dsc_byp_dst_addr_0(h2c_dsc_byp_dst_addr_0),
+    .h2c_dsc_byp_len_0(h2c_dsc_byp_len_0),
+    .h2c_dsc_byp_ctl_0(h2c_dsc_byp_ctl_0),
+    .h2c_dsc_byp_load_0(h2c_dsc_byp_load_0),
     .h2c_dsc_byp_ready_1(),
     .h2c_dsc_byp_src_addr_1(64'B0),
     .h2c_dsc_byp_dst_addr_1(64'B0),

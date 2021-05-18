@@ -69,9 +69,7 @@ module dso_top
   wire axi_aresetn;
  
   wire [31:0]gpio2_io_i;
-  wire [31:0]gpio2_io_i_0;
   wire [31:0]gpio_io_o_0;
-  wire [31:0]gpio_io_o_1;
 
   wire s2mm_err;
   wire s2mm_halt;
@@ -82,23 +80,23 @@ module dso_top
   
   wire divclk;
   wire[63:0] data_deser;
-  wire[63:0] adc_data;	
+  reg[63:0] adc_data;	
   wire serdes_ready;
   
   assign adc_pd = 1'b0;
   assign adc_rstn = 1'b1;
   
-  assign atten = gpio_io_o_1[3:0];
-  assign dc_cpl = gpio_io_o_1[7:4];
+  assign atten = gpio_io_o_0[19:16];
+  assign dc_cpl = gpio_io_o_0[23:20];
    
-  assign led[0] = ~acq_en; //gpio_io_o_1[11:8];
+  assign led[0] = ~acq_en;
   assign led[1] = adc_pg;
   assign led[2] = ~fe_en;
   assign led[3] = fe_pg;
   
-  assign acq_en = gpio_io_o_1[8];
-  assign osc_oe = gpio_io_o_1[9];
-  assign fe_en = gpio_io_o_1[10];  
+  assign acq_en = gpio_io_o_0[24];
+  assign osc_oe = gpio_io_o_0[25];
+  assign fe_en = gpio_io_o_0[26];  
   
   assign i2c_sda = (i2c_sda_buf) ? (1'bz) : (1'b0);
   assign i2c_scl = (i2c_scl_buf) ? (1'bz) : (1'b0);
@@ -115,16 +113,52 @@ module dso_top
   end
   assign probe_comp = probe_div_clk;
   
-  assign adc_data = {~data_deser[63:24],data_deser[23:16],~data_deser[15:0]};
-  //assign adc_data = {8'h77,8'h66,8'h55,8'h44,8'h33,8'h22,8'h11,8'h00};
-//  reg[7:0] adc_ramp_counter;
-//  always @(posedge divclk) begin
-//    if (!S01_ARESETN) 
-//        adc_ramp_counter <= 0;
-//    else
-//        adc_ramp_counter <= adc_ramp_counter + 1;
-//  end
-//  assign adc_data = {8{adc_ramp_counter}};
+  reg[63:0] twos_comp;
+  always @(*) begin 
+    twos_comp[63:56] <= {data_deser[63],~data_deser[62:56]};
+    twos_comp[55:48] <= {data_deser[55],~data_deser[54:48]};
+    twos_comp[47:40] <= {data_deser[47],~data_deser[46:40]};
+    twos_comp[39:32] <= {data_deser[39],~data_deser[38:32]};
+    twos_comp[31:24] <= {data_deser[31],~data_deser[30:24]};
+    twos_comp[23:16] <= {~data_deser[23],data_deser[22:16]};
+    twos_comp[15:8] <= {data_deser[15],~data_deser[14:8]};
+    twos_comp[7:0] <= {data_deser[7],~data_deser[6:0]};
+  end
+  
+  wire[1:0] channel_mux;
+  reg [2:0] channel_mux_cdc_0;
+  reg [2:0] channel_mux_cdc_1;
+  
+  always @(posedge divclk) begin
+    channel_mux_cdc_0 <= { channel_mux_cdc_0[1:0], gpio_io_o_0[4] };
+    channel_mux_cdc_1 <= { channel_mux_cdc_1[1:0], gpio_io_o_0[5] };
+  end
+  
+  assign channel_mux = {channel_mux_cdc_1[2],channel_mux_cdc_0[2]};
+  
+  always @(*)
+    begin
+        case(channel_mux)
+            2'b00: adc_data <= {twos_comp[63:0]};
+            2'b01: adc_data <= {twos_comp[63:56],twos_comp[31:24],twos_comp[55:48],twos_comp[23:16],twos_comp[47:40],twos_comp[15:8],twos_comp[39:32],twos_comp[7:0]};
+            2'b10: adc_data <= {twos_comp[63:56],twos_comp[47:40],twos_comp[31:24],twos_comp[15:8],twos_comp[55:48],twos_comp[39:32],twos_comp[23:16],twos_comp[7:0]};		
+            2'b11: adc_data <= {twos_comp[63:56],twos_comp[47:40],twos_comp[31:24],twos_comp[15:8],twos_comp[55:48],twos_comp[39:32],twos_comp[23:16],twos_comp[7:0]};
+    endcase
+  end
+  
+  /*  
+  assign adc_data = data_deser_twos_comp;
+  
+  assign adc_data = {8'h77,8'h66,8'h55,8'h44,8'h33,8'h22,8'h11,8'h00};
+  reg[7:0] adc_ramp_counter;
+  always @(posedge divclk) begin
+    if (!S01_ARESETN) 
+        adc_ramp_counter <= 0;
+    else
+        adc_ramp_counter <= adc_ramp_counter + 1;
+  end
+  assign adc_data = {8{adc_ramp_counter}};
+  */
   
   wire serdes_rst;
   reg [2:0] serdes_rst_cdc = 3'b111;
@@ -216,9 +250,7 @@ module dso_top
     .axi_aclk(axi_aclk),
     .axi_aresetn(axi_aresetn),
     .gpio2_io_i(gpio2_io_i),
-    .gpio2_io_i_0(gpio2_io_i_0),
     .gpio_io_o_0(gpio_io_o_0),
-    .gpio_io_o_1(gpio_io_o_1),
     .pcie_clk_n(pcie_clk_n),
     .pcie_clk_p(pcie_clk_p),
     .pcie_mgt_rxn(pcie_mgt_rxn),

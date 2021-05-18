@@ -1,31 +1,31 @@
 {
    "ActiveEmotionalView":"Default View",
    "Default View_ScaleFactor":"1.0",
-   "Default View_TopLeft":"-574,-32",
+   "Default View_TopLeft":"-629,-112",
    "ExpandedHierarchyInLayout":"",
    "guistr":"# # String gsaved with Nlview 7.0r6  2020-01-29 bk=1.5227 VDI=41 GEI=36 GUI=JA:9.0 non-TLS
 #  -string -flagsOSRD
-preplace port S_AXIS_S2MM_CMD -pg 1 -lvl 0 -x -110 -y 160 -defaultsOSRD
-preplace port M_AXI_S2MM -pg 1 -lvl 3 -x 830 -y 140 -defaultsOSRD
-preplace port S_AXIS_S2MM -pg 1 -lvl 0 -x -110 -y 60 -defaultsOSRD
-preplace port axi_aclk -pg 1 -lvl 0 -x -110 -y 80 -defaultsOSRD
-preplace port axi_aresetn -pg 1 -lvl 0 -x -110 -y 100 -defaultsOSRD
-preplace port s2mm_err -pg 1 -lvl 3 -x 830 -y 200 -defaultsOSRD
-preplace port s2mm_wr_xfer_cmplt -pg 1 -lvl 3 -x 830 -y 240 -defaultsOSRD
-preplace port s2mm_halt -pg 1 -lvl 0 -x -110 -y 220 -defaultsOSRD
-preplace inst axi_datamover_0 -pg 1 -lvl 2 -x 610 -y 220 -defaultsOSRD
-preplace inst xlconstant_0 -pg 1 -lvl 1 -x 160 -y 340 -defaultsOSRD
-preplace netloc xlconstant_0_dout 1 1 1 250J 280n
-preplace netloc axi_datamover_0_s2mm_err 1 2 1 NJ 200
-preplace netloc axi_datamover_0_s2mm_wr_xfer_cmplt 1 2 1 NJ 240
-preplace netloc s2mm_halt_0_1 1 0 2 NJ 220 NJ
-preplace netloc axi_aclk_1 1 0 2 N 80 250
-preplace netloc axi_aresetn_1 1 0 2 N 100 240
-preplace netloc Conn3 1 2 1 NJ 140
-preplace netloc Conn2 1 0 2 NJ 160 NJ
-preplace netloc S_AXIS_S2MM_1 1 0 2 NJ 60 260
-levelinfo -pg 1 -110 160 610 830
-pagesize -pg 1 -db -bbox -sgen -300 0 1020 460
+preplace port S_AXIS_S2MM_CMD -pg 1 -lvl 0 -x 0 -y 80 -defaultsOSRD
+preplace port M_AXI_S2MM -pg 1 -lvl 3 -x 610 -y 60 -defaultsOSRD
+preplace port S_AXIS_S2MM -pg 1 -lvl 0 -x 0 -y 60 -defaultsOSRD
+preplace port axi_aclk -pg 1 -lvl 0 -x 0 -y 100 -defaultsOSRD
+preplace port axi_aresetn -pg 1 -lvl 0 -x 0 -y 120 -defaultsOSRD
+preplace port s2mm_err -pg 1 -lvl 3 -x 610 -y 120 -defaultsOSRD
+preplace port s2mm_wr_xfer_cmplt -pg 1 -lvl 3 -x 610 -y 160 -defaultsOSRD
+preplace port s2mm_halt -pg 1 -lvl 0 -x 0 -y 140 -defaultsOSRD
+preplace inst axi_datamover_0 -pg 1 -lvl 2 -x 390 -y 140 -defaultsOSRD
+preplace inst xlconstant_0 -pg 1 -lvl 1 -x 100 -y 200 -defaultsOSRD
+preplace netloc xlconstant_0_dout 1 1 1 NJ 200
+preplace netloc axi_datamover_0_s2mm_err 1 2 1 NJ 120
+preplace netloc axi_datamover_0_s2mm_wr_xfer_cmplt 1 2 1 NJ 160
+preplace netloc s2mm_halt_0_1 1 0 2 NJ 140 NJ
+preplace netloc axi_aclk_1 1 0 2 NJ 100 190
+preplace netloc axi_aresetn_1 1 0 2 NJ 120 180
+preplace netloc Conn3 1 2 1 NJ 60
+preplace netloc Conn2 1 0 2 NJ 80 NJ
+preplace netloc S_AXIS_S2MM_1 1 0 2 NJ 60 NJ
+levelinfo -pg 1 0 100 390 610
+pagesize -pg 1 -db -bbox -sgen -190 0 800 280
 "
 }
 0

@@ -1,7 +1,7 @@
 //Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
-//Date        : Tue Mar 23 23:19:37 2021
+//Date        : Tue May 18 14:31:21 2021
 //Host        : DESKTOP-J72MK93 running 64-bit major release  (build 9200)
 //Command     : generate_target design_1_wrapper.bd
 //Design      : design_1_wrapper
@@ -41,9 +41,7 @@ module design_1_wrapper
     axi_aclk,
     axi_aresetn,
     gpio2_io_i,
-    gpio2_io_i_0,
     gpio_io_o_0,
-    gpio_io_o_1,
     pcie_clk_n,
     pcie_clk_p,
     pcie_mgt_rxn,
@@ -85,9 +83,7 @@ module design_1_wrapper
   output axi_aclk;
   output axi_aresetn;
   input [31:0]gpio2_io_i;
-  input [31:0]gpio2_io_i_0;
   output [31:0]gpio_io_o_0;
-  output [31:0]gpio_io_o_1;
   input [0:0]pcie_clk_n;
   input [0:0]pcie_clk_p;
   input [3:0]pcie_mgt_rxn;
@@ -130,9 +126,7 @@ module design_1_wrapper
   wire axi_aclk;
   wire axi_aresetn;
   wire [31:0]gpio2_io_i;
-  wire [31:0]gpio2_io_i_0;
   wire [31:0]gpio_io_o_0;
-  wire [31:0]gpio_io_o_1;
   wire [0:0]pcie_clk_n;
   wire [0:0]pcie_clk_p;
   wire [3:0]pcie_mgt_rxn;
@@ -176,9 +170,7 @@ module design_1_wrapper
         .axi_aclk(axi_aclk),
         .axi_aresetn(axi_aresetn),
         .gpio2_io_i(gpio2_io_i),
-        .gpio2_io_i_0(gpio2_io_i_0),
         .gpio_io_o_0(gpio_io_o_0),
-        .gpio_io_o_1(gpio_io_o_1),
         .pcie_clk_n(pcie_clk_n),
         .pcie_clk_p(pcie_clk_p),
         .pcie_mgt_rxn(pcie_mgt_rxn),
