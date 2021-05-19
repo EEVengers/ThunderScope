@@ -1,7 +1,7 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
-| Date         : Tue May 18 14:08:03 2021
+| Date         : Wed May 19 10:55:21 2021
 | Host         : DESKTOP-J72MK93 running 64-bit major release  (build 9200)
 | Command      : report_utilization -file design_1_mig_7series_0_0_utilization_synth.rpt -pb design_1_mig_7series_0_0_utilization_synth.pb
 | Design       : design_1_mig_7series_0_0
@@ -30,13 +30,13 @@ Table of Contents
 +----------------------------+------+-------+-----------+-------+
 |          Site Type         | Used | Fixed | Available | Util% |
 +----------------------------+------+-------+-----------+-------+
-| Slice LUTs*                | 6829 |     0 |     63400 | 10.77 |
-|   LUT as Logic             | 5664 |     0 |     63400 |  8.93 |
-|   LUT as Memory            | 1165 |     0 |     19000 |  6.13 |
-|     LUT as Distributed RAM |  888 |     0 |           |       |
+| Slice LUTs*                | 6349 |     0 |     63400 | 10.01 |
+|   LUT as Logic             | 5364 |     0 |     63400 |  8.46 |
+|   LUT as Memory            |  985 |     0 |     19000 |  5.18 |
+|     LUT as Distributed RAM |  708 |     0 |           |       |
 |     LUT as Shift Register  |  277 |     0 |           |       |
-| Slice Registers            | 5864 |     0 |    126800 |  4.62 |
-|   Register as Flip Flop    | 5864 |     0 |    126800 |  4.62 |
+| Slice Registers            | 5572 |     0 |    126800 |  4.39 |
+|   Register as Flip Flop    | 5572 |     0 |    126800 |  4.39 |
 |   Register as Latch        |    0 |     0 |    126800 |  0.00 |
 | F7 Muxes                   |    2 |     0 |     31700 | <0.01 |
 | F8 Muxes                   |    0 |     0 |     15850 |  0.00 |
@@ -58,8 +58,8 @@ Table of Contents
 | 0     |          Yes |           - |            - |
 | 76    |          Yes |           - |          Set |
 | 3     |          Yes |           - |        Reset |
-| 260   |          Yes |         Set |            - |
-| 5525  |          Yes |       Reset |            - |
+| 259   |          Yes |         Set |            - |
+| 5234  |          Yes |       Reset |            - |
 +-------+--------------+-------------+--------------+
 
 
@@ -158,17 +158,17 @@ Table of Contents
 +--------------------------+------+---------------------+
 |         Ref Name         | Used | Functional Category |
 +--------------------------+------+---------------------+
-| FDRE                     | 5525 |        Flop & Latch |
-| LUT3                     | 2175 |                 LUT |
-| LUT5                     | 1520 |                 LUT |
-| RAMD32                   | 1332 |  Distributed Memory |
-| LUT4                     | 1188 |                 LUT |
-| LUT6                     | 1177 |                 LUT |
-| LUT2                     |  661 |                 LUT |
-| LUT1                     |  454 |                 LUT |
-| RAMS32                   |  444 |  Distributed Memory |
-| FDSE                     |  260 |        Flop & Latch |
+| FDRE                     | 5234 |        Flop & Latch |
+| LUT3                     | 1932 |                 LUT |
+| LUT5                     | 1531 |                 LUT |
+| LUT6                     | 1169 |                 LUT |
+| LUT4                     | 1168 |                 LUT |
+| RAMD32                   | 1062 |  Distributed Memory |
+| LUT2                     |  641 |                 LUT |
+| LUT1                     |  447 |                 LUT |
+| RAMS32                   |  354 |  Distributed Memory |
 | SRLC32E                  |  259 |  Distributed Memory |
+| FDSE                     |  259 |        Flop & Latch |
 | CARRY4                   |  127 |          CarryLogic |
 | FDPE                     |   76 |        Flop & Latch |
 | OSERDESE2                |   64 |                  IO |

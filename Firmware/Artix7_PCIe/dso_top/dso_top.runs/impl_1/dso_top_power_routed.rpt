@@ -1,7 +1,7 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
-| Date             : Tue May 18 14:39:04 2021
+| Date             : Wed May 19 11:02:45 2021
 | Host             : DESKTOP-J72MK93 running 64-bit major release  (build 9200)
 | Command          : report_power -file dso_top_power_routed.rpt -pb dso_top_power_summary_routed.pb -rpx dso_top_power_routed.rpx
 | Design           : dso_top
@@ -30,14 +30,14 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 2.675        |
+| Total On-Chip Power (W)  | 2.671        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 2.549        |
+| Dynamic (W)              | 2.546        |
 | Device Static (W)        | 0.125        |
 | Effective TJA (C/W)      | 2.7          |
-| Max Ambient (C)          | 77.8         |
-| Junction Temperature (C) | 32.2         |
+| Max Ambient (C)          | 77.9         |
+| Junction Temperature (C) | 32.1         |
 | Confidence Level         | Low          |
 | Setting File             | ---          |
 | Simulation Activity File | ---          |
@@ -52,17 +52,17 @@ Table of Contents
 +--------------------------+-----------+----------+-----------+-----------------+
 | On-Chip                  | Power (W) | Used     | Available | Utilization (%) |
 +--------------------------+-----------+----------+-----------+-----------------+
-| Clocks                   |     0.155 |       48 |       --- |             --- |
-| Slice Logic              |     0.051 |    57442 |       --- |             --- |
-|   LUT as Logic           |     0.042 |    17824 |     63400 |           28.11 |
-|   Register               |     0.004 |    26010 |    126800 |           20.51 |
-|   LUT as Distributed RAM |     0.004 |     2780 |     19000 |           14.63 |
+| Clocks                   |     0.154 |       48 |       --- |             --- |
+| Slice Logic              |     0.049 |    56509 |       --- |             --- |
+|   LUT as Logic           |     0.041 |    17669 |     63400 |           27.87 |
+|   Register               |     0.003 |    25719 |    126800 |           20.28 |
+|   LUT as Distributed RAM |     0.003 |     2600 |     19000 |           13.68 |
 |   CARRY4                 |     0.002 |      666 |     15850 |            4.20 |
-|   LUT as Shift Register  |    <0.001 |      422 |     19000 |            2.22 |
+|   LUT as Shift Register  |    <0.001 |      423 |     19000 |            2.23 |
 |   F7/F8 Muxes            |    <0.001 |       51 |     63400 |            0.08 |
 |   Others                 |     0.000 |      825 |       --- |             --- |
-| Signals                  |     0.076 |    44701 |       --- |             --- |
-| Block RAM                |     0.086 |       36 |       135 |           26.67 |
+| Signals                  |     0.074 |    44131 |       --- |             --- |
+| Block RAM                |     0.087 |       36 |       135 |           26.67 |
 | MMCM                     |     0.313 |        3 |         6 |           50.00 |
 | PLL                      |     0.202 |        2 |         6 |           33.33 |
 | I/O                      |     0.659 |      123 |       285 |           43.16 |
@@ -72,7 +72,7 @@ Table of Contents
 | Hard IPs                 |     0.058 |        1 |       --- |             --- |
 |   PCIE                   |     0.058 |        1 |         1 |          100.00 |
 | Static Power             |     0.125 |          |           |                 |
-| Total                    |     2.675 |          |           |                 |
+| Total                    |     2.671 |          |           |                 |
 +--------------------------+-----------+----------+-----------+-----------------+
 
 
@@ -82,8 +82,8 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) | Powerup (A) | Budget (A)  | Margin (A) |
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
-| Vccint    |       1.000 |     0.625 |       0.604 |      0.020 |       NA    | Unspecified | NA         |
-| Vccaux    |       1.800 |     0.563 |       0.544 |      0.019 |       NA    | Unspecified | NA         |
+| Vccint    |       1.000 |     0.621 |       0.601 |      0.020 |       NA    | Unspecified | NA         |
+| Vccaux    |       1.800 |     0.562 |       0.544 |      0.019 |       NA    | Unspecified | NA         |
 | Vcco33    |       3.300 |     0.007 |       0.003 |      0.004 |       NA    | Unspecified | NA         |
 | Vcco25    |       2.500 |     0.016 |       0.012 |      0.004 |       NA    | Unspecified | NA         |
 | Vcco18    |       1.800 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
@@ -196,25 +196,25 @@ Table of Contents
 +------------------------------+-----------+
 | Name                         | Power (W) |
 +------------------------------+-----------+
-| dso_top                      |     2.549 |
+| dso_top                      |     2.546 |
 |   adc_to_datamover           |     0.003 |
 |     adc_fifo                 |     0.003 |
 |       U0                     |     0.003 |
-|   design_1_i                 |     2.289 |
-|     AXI_LITE_IO              |     0.007 |
+|   design_1_i                 |     2.285 |
+|     AXI_LITE_IO              |     0.006 |
 |       axi_crossbar_0         |     0.002 |
 |       axi_fifo_mm_s_0        |     0.003 |
 |       axi_gpio_0             |     0.002 |
-|     Datamover                |     0.013 |
-|       axi_datamover_0        |     0.013 |
-|     Memory                   |     1.172 |
-|       axi_clock_converter_0  |     0.013 |
-|       axi_crossbar_0         |     0.005 |
+|     Datamover                |     0.014 |
+|       axi_datamover_0        |     0.014 |
+|     Memory                   |     1.166 |
+|       axi_clock_converter_0  |     0.014 |
+|       axi_crossbar_0         |     0.004 |
 |       clk_wiz_0              |     0.111 |
-|       mig_7series_0          |     1.044 |
-|     PCIe                     |     1.097 |
+|       mig_7series_0          |     1.037 |
+|     PCIe                     |     1.099 |
 |       axi_dwidth_converter_0 |     0.005 |
-|       xdma_0                 |     1.092 |
+|       xdma_0                 |     1.093 |
 |   serdes                     |     0.245 |
 |     combined_serdes          |     0.125 |
 |     serdes_clocking          |     0.119 |

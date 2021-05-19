@@ -398,7 +398,7 @@ module design_1_mig_7series_0_0_mig #
    parameter WRLVL                 = "ON",
                                      // # = "ON" - DDR3 SDRAM
                                      //   = "OFF" - DDR2 SDRAM.
-   parameter ORDERING              = "NORM",
+   parameter ORDERING              = "STRICT",
                                      // # = "NORM", "STRICT", "RELAXED".
    parameter CALIB_ROW_ADD         = 16'h0000,
                                      // Calibration row address will be used for

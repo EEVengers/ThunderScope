@@ -2,8 +2,8 @@
 # Vivado v2020.1 (64-bit)
 # SW Build 2902540 on Wed May 27 19:54:49 MDT 2020
 # IP Build 2902112 on Wed May 27 22:43:36 MDT 2020
-# Start of session at: Tue May 18 14:05:23 2021
-# Process ID: 3096
+# Start of session at: Wed May 19 10:52:45 2021
+# Process ID: 4108
 # Current directory: C:/Users/Aleksa/Documents/FPGA_Dev/Artix7_PCIe/DDR3_Optimization/dso_top/dso_top.runs/design_1_mig_7series_0_0_synth_1
 # Command line: vivado.exe -log design_1_mig_7series_0_0.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source design_1_mig_7series_0_0.tcl
 # Log file: C:/Users/Aleksa/Documents/FPGA_Dev/Artix7_PCIe/DDR3_Optimization/dso_top/dso_top.runs/design_1_mig_7series_0_0_synth_1/design_1_mig_7series_0_0.vds
@@ -17,9 +17,9 @@ INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a100
 INFO: [Device 21-403] Loading part xc7a100tfgg484-2
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 12052
+INFO: [Synth 8-7075] Helper process launched with PID 11080
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 1015.949 ; gain = 0.000
+Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 1015.938 ; gain = 0.000
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-6157] synthesizing module 'design_1_mig_7series_0_0' [c:/Users/Aleksa/Documents/FPGA_Dev/Artix7_PCIe/DDR3_Optimization/dso_top/dso_top.srcs/sources_1/bd/design_1/ip/design_1_mig_7series_0_0/design_1_mig_7series_0_0/user_design/rtl/design_1_mig_7series_0_0.v:70]
 INFO: [Synth 8-6157] synthesizing module 'design_1_mig_7series_0_0_mig' [c:/Users/Aleksa/Documents/FPGA_Dev/Artix7_PCIe/DDR3_Optimization/dso_top/dso_top.srcs/sources_1/bd/design_1/ip/design_1_mig_7series_0_0/design_1_mig_7series_0_0/user_design/rtl/design_1_mig_7series_0_0_mig.v:75]
@@ -148,7 +148,7 @@ INFO: [Synth 8-6157] synthesizing module 'design_1_mig_7series_0_0_mig' [c:/User
 	Parameter CKE_ODT_AUX bound to: FALSE - type: string 
 	Parameter USER_REFRESH bound to: OFF - type: string 
 	Parameter WRLVL bound to: ON - type: string 
-	Parameter ORDERING bound to: NORM - type: string 
+	Parameter ORDERING bound to: STRICT - type: string 
 	Parameter CALIB_ROW_ADD bound to: 16'b0000000000000000 
 	Parameter CALIB_COL_ADD bound to: 12'b000000000000 
 	Parameter CALIB_BA_ADD bound to: 3'b000 
@@ -442,7 +442,7 @@ INFO: [Synth 8-6157] synthesizing module 'mig_7series_v4_2_memc_ui_top_axi' [c:/
 	Parameter nBANK_MACHS bound to: 3 - type: integer 
 	Parameter nCK_PER_CLK bound to: 4 - type: integer 
 	Parameter nCS_PER_RANK bound to: 1 - type: integer 
-	Parameter ORDERING bound to: NORM - type: string 
+	Parameter ORDERING bound to: STRICT - type: string 
 	Parameter IBUF_LPWR_MODE bound to: OFF - type: string 
 	Parameter BANK_TYPE bound to: HR_IO - type: string 
 	Parameter DATA_IO_PRIM_TYPE bound to: HR_LP - type: string 
@@ -648,7 +648,7 @@ INFO: [Synth 8-6157] synthesizing module 'mig_7series_v4_2_mem_intfc' [c:/Users/
 	Parameter nCK_PER_CLK bound to: 4 - type: integer 
 	Parameter nCS_PER_RANK bound to: 1 - type: integer 
 	Parameter PHYCTL_CMD_FIFO bound to: FALSE - type: string 
-	Parameter ORDERING bound to: NORM - type: string 
+	Parameter ORDERING bound to: STRICT - type: string 
 	Parameter PHASE_DETECT bound to: OFF - type: string 
 	Parameter IBUF_LPWR_MODE bound to: OFF - type: string 
 	Parameter BANK_TYPE bound to: HR_IO - type: string 
@@ -741,7 +741,7 @@ INFO: [Synth 8-6157] synthesizing module 'mig_7series_v4_2_mc' [c:/Users/Aleksa/
 	Parameter nCS_PER_RANK bound to: 1 - type: integer 
 	Parameter nREFRESH_BANK bound to: 1 - type: integer 
 	Parameter nSLOTS bound to: 1 - type: integer 
-	Parameter ORDERING bound to: NORM - type: string 
+	Parameter ORDERING bound to: STRICT - type: string 
 	Parameter PAYLOAD_WIDTH bound to: 32 - type: integer 
 	Parameter RANK_WIDTH bound to: 1 - type: integer 
 	Parameter RANKS bound to: 1 - type: integer 
@@ -919,7 +919,7 @@ INFO: [Synth 8-6157] synthesizing module 'mig_7series_v4_2_bank_mach' [c:/Users/
 	Parameter nSLOTS bound to: 1 - type: integer 
 	Parameter nWR bound to: 6 - type: integer 
 	Parameter nXSDLL bound to: 512 - type: integer 
-	Parameter ORDERING bound to: NORM - type: string 
+	Parameter ORDERING bound to: STRICT - type: string 
 	Parameter RANK_BM_BV_WIDTH bound to: 3 - type: integer 
 	Parameter RANK_WIDTH bound to: 1 - type: integer 
 	Parameter RANKS bound to: 1 - type: integer 
@@ -958,7 +958,7 @@ INFO: [Synth 8-6157] synthesizing module 'mig_7series_v4_2_bank_cntrl' [c:/Users
 	Parameter nRTP bound to: 4 - type: integer 
 	Parameter nRP bound to: 6 - type: integer 
 	Parameter nWTP_CLKS bound to: 5 - type: integer 
-	Parameter ORDERING bound to: NORM - type: string 
+	Parameter ORDERING bound to: STRICT - type: string 
 	Parameter RANK_WIDTH bound to: 1 - type: integer 
 	Parameter RANKS bound to: 1 - type: integer 
 	Parameter RAS_TIMER_WIDTH bound to: 2 - type: integer 
@@ -994,7 +994,7 @@ INFO: [Synth 8-6157] synthesizing module 'mig_7series_v4_2_bank_state' [c:/Users
 	Parameter nRTP bound to: 4 - type: integer 
 	Parameter nRCD bound to: 6 - type: integer 
 	Parameter nWTP_CLKS bound to: 5 - type: integer 
-	Parameter ORDERING bound to: NORM - type: string 
+	Parameter ORDERING bound to: STRICT - type: string 
 	Parameter RANKS bound to: 1 - type: integer 
 	Parameter RANK_WIDTH bound to: 1 - type: integer 
 	Parameter RAS_TIMER_WIDTH bound to: 2 - type: integer 
@@ -1019,7 +1019,7 @@ INFO: [Synth 8-6157] synthesizing module 'mig_7series_v4_2_bank_queue' [c:/Users
 	Parameter TCQ bound to: 100 - type: integer 
 	Parameter BM_CNT_WIDTH bound to: 2 - type: integer 
 	Parameter nBANK_MACHS bound to: 3 - type: integer 
-	Parameter ORDERING bound to: NORM - type: string 
+	Parameter ORDERING bound to: STRICT - type: string 
 	Parameter ID bound to: 0 - type: integer 
 	Parameter ZERO bound to: 0 - type: integer 
 	Parameter ONE bound to: 1 - type: integer 
@@ -1047,7 +1047,7 @@ INFO: [Synth 8-6157] synthesizing module 'mig_7series_v4_2_bank_cntrl__parameter
 	Parameter nRTP bound to: 4 - type: integer 
 	Parameter nRP bound to: 6 - type: integer 
 	Parameter nWTP_CLKS bound to: 5 - type: integer 
-	Parameter ORDERING bound to: NORM - type: string 
+	Parameter ORDERING bound to: STRICT - type: string 
 	Parameter RANK_WIDTH bound to: 1 - type: integer 
 	Parameter RANKS bound to: 1 - type: integer 
 	Parameter RAS_TIMER_WIDTH bound to: 2 - type: integer 
@@ -1071,7 +1071,7 @@ INFO: [Synth 8-6157] synthesizing module 'mig_7series_v4_2_bank_state__parameter
 	Parameter nRTP bound to: 4 - type: integer 
 	Parameter nRCD bound to: 6 - type: integer 
 	Parameter nWTP_CLKS bound to: 5 - type: integer 
-	Parameter ORDERING bound to: NORM - type: string 
+	Parameter ORDERING bound to: STRICT - type: string 
 	Parameter RANKS bound to: 1 - type: integer 
 	Parameter RANK_WIDTH bound to: 1 - type: integer 
 	Parameter RAS_TIMER_WIDTH bound to: 2 - type: integer 
@@ -1096,7 +1096,7 @@ INFO: [Synth 8-6157] synthesizing module 'mig_7series_v4_2_bank_queue__parameter
 	Parameter TCQ bound to: 100 - type: integer 
 	Parameter BM_CNT_WIDTH bound to: 2 - type: integer 
 	Parameter nBANK_MACHS bound to: 3 - type: integer 
-	Parameter ORDERING bound to: NORM - type: string 
+	Parameter ORDERING bound to: STRICT - type: string 
 	Parameter ID bound to: 1 - type: integer 
 	Parameter ZERO bound to: 0 - type: integer 
 	Parameter ONE bound to: 1 - type: integer 
@@ -1124,7 +1124,7 @@ INFO: [Synth 8-6157] synthesizing module 'mig_7series_v4_2_bank_cntrl__parameter
 	Parameter nRTP bound to: 4 - type: integer 
 	Parameter nRP bound to: 6 - type: integer 
 	Parameter nWTP_CLKS bound to: 5 - type: integer 
-	Parameter ORDERING bound to: NORM - type: string 
+	Parameter ORDERING bound to: STRICT - type: string 
 	Parameter RANK_WIDTH bound to: 1 - type: integer 
 	Parameter RANKS bound to: 1 - type: integer 
 	Parameter RAS_TIMER_WIDTH bound to: 2 - type: integer 
@@ -1148,7 +1148,7 @@ INFO: [Synth 8-6157] synthesizing module 'mig_7series_v4_2_bank_state__parameter
 	Parameter nRTP bound to: 4 - type: integer 
 	Parameter nRCD bound to: 6 - type: integer 
 	Parameter nWTP_CLKS bound to: 5 - type: integer 
-	Parameter ORDERING bound to: NORM - type: string 
+	Parameter ORDERING bound to: STRICT - type: string 
 	Parameter RANKS bound to: 1 - type: integer 
 	Parameter RANK_WIDTH bound to: 1 - type: integer 
 	Parameter RAS_TIMER_WIDTH bound to: 2 - type: integer 
@@ -1173,7 +1173,7 @@ INFO: [Synth 8-6157] synthesizing module 'mig_7series_v4_2_bank_queue__parameter
 	Parameter TCQ bound to: 100 - type: integer 
 	Parameter BM_CNT_WIDTH bound to: 2 - type: integer 
 	Parameter nBANK_MACHS bound to: 3 - type: integer 
-	Parameter ORDERING bound to: NORM - type: string 
+	Parameter ORDERING bound to: STRICT - type: string 
 	Parameter ID bound to: 2 - type: integer 
 	Parameter ZERO bound to: 0 - type: integer 
 	Parameter ONE bound to: 1 - type: integer 
@@ -4046,7 +4046,7 @@ INFO: [Synth 8-6157] synthesizing module 'mig_7series_v4_2_ui_top' [c:/Users/Ale
 	Parameter DATA_BUF_ADDR_WIDTH bound to: 5 - type: integer 
 	Parameter ECC bound to: OFF - type: string 
 	Parameter ECC_TEST bound to: OFF - type: string 
-	Parameter ORDERING bound to: NORM - type: string 
+	Parameter ORDERING bound to: STRICT - type: string 
 	Parameter nCK_PER_CLK bound to: 4 - type: integer 
 	Parameter RANKS bound to: 1 - type: integer 
 	Parameter REG_CTRL bound to: ON - type: string 
@@ -4090,18 +4090,12 @@ INFO: [Common 17-14] Message 'Synth 8-6157' appears 100 times and further instan
 	Parameter DATA_BUF_ADDR_WIDTH bound to: 5 - type: integer 
 	Parameter ECC bound to: OFF - type: string 
 	Parameter nCK_PER_CLK bound to: 4 - type: integer 
-	Parameter ORDERING bound to: NORM - type: string 
+	Parameter ORDERING bound to: STRICT - type: string 
 	Parameter RD_BUF_WIDTH bound to: 256 - type: integer 
 	Parameter FULL_RAM_CNT bound to: 42 - type: integer 
 	Parameter REMAINDER bound to: 4 - type: integer 
 	Parameter RAM_CNT bound to: 43 - type: integer 
 	Parameter RAM_WIDTH bound to: 258 - type: integer 
-INFO: [Synth 8-155] case statement is not full and has no default [c:/Users/Aleksa/Documents/FPGA_Dev/Artix7_PCIe/DDR3_Optimization/dso_top/dso_top.srcs/sources_1/bd/design_1/ip/design_1_mig_7series_0_0/design_1_mig_7series_0_0/user_design/rtl/ui/mig_7series_v4_2_ui_rd_data.v:406]
-WARNING: [Synth 8-567] referenced signal 'not_strict_mode.occ_cnt_r' should be on the sensitivity list [c:/Users/Aleksa/Documents/FPGA_Dev/Artix7_PCIe/DDR3_Optimization/dso_top/dso_top.srcs/sources_1/bd/design_1/ip/design_1_mig_7series_0_0/design_1_mig_7series_0_0/user_design/rtl/ui/mig_7series_v4_2_ui_rd_data.v:403]
-WARNING: [Synth 8-567] referenced signal 'not_strict_mode.free_rd_buf' should be on the sensitivity list [c:/Users/Aleksa/Documents/FPGA_Dev/Artix7_PCIe/DDR3_Optimization/dso_top/dso_top.srcs/sources_1/bd/design_1/ip/design_1_mig_7series_0_0/design_1_mig_7series_0_0/user_design/rtl/ui/mig_7series_v4_2_ui_rd_data.v:403]
-WARNING: [Synth 8-567] referenced signal 'not_strict_mode.occ_minus_one' should be on the sensitivity list [c:/Users/Aleksa/Documents/FPGA_Dev/Artix7_PCIe/DDR3_Optimization/dso_top/dso_top.srcs/sources_1/bd/design_1/ip/design_1_mig_7series_0_0/design_1_mig_7series_0_0/user_design/rtl/ui/mig_7series_v4_2_ui_rd_data.v:403]
-WARNING: [Synth 8-567] referenced signal 'not_strict_mode.occ_plus_one' should be on the sensitivity list [c:/Users/Aleksa/Documents/FPGA_Dev/Artix7_PCIe/DDR3_Optimization/dso_top/dso_top.srcs/sources_1/bd/design_1/ip/design_1_mig_7series_0_0/design_1_mig_7series_0_0/user_design/rtl/ui/mig_7series_v4_2_ui_rd_data.v:403]
-WARNING: [Synth 8-567] referenced signal 'not_strict_mode.rd_data_buf_addr_r_lcl' should be on the sensitivity list [c:/Users/Aleksa/Documents/FPGA_Dev/Artix7_PCIe/DDR3_Optimization/dso_top/dso_top.srcs/sources_1/bd/design_1/ip/design_1_mig_7series_0_0/design_1_mig_7series_0_0/user_design/rtl/ui/mig_7series_v4_2_ui_rd_data.v:432]
 INFO: [Synth 8-6155] done synthesizing module 'mig_7series_v4_2_ui_rd_data' (67#1) [c:/Users/Aleksa/Documents/FPGA_Dev/Artix7_PCIe/DDR3_Optimization/dso_top/dso_top.srcs/sources_1/bd/design_1/ip/design_1_mig_7series_0_0/design_1_mig_7series_0_0/user_design/rtl/ui/mig_7series_v4_2_ui_rd_data.v:140]
 INFO: [Synth 8-6155] done synthesizing module 'mig_7series_v4_2_ui_top' (68#1) [c:/Users/Aleksa/Documents/FPGA_Dev/Artix7_PCIe/DDR3_Optimization/dso_top/dso_top.srcs/sources_1/bd/design_1/ip/design_1_mig_7series_0_0/design_1_mig_7series_0_0/user_design/rtl/ui/mig_7series_v4_2_ui_top.v:71]
 	Parameter C_FAMILY bound to: virtex7 - type: string 
@@ -4374,19 +4368,19 @@ INFO: [Synth 8-155] case statement is not full and has no default [c:/Users/Alek
 	Parameter C_AXI_STARVE_CNT_WIDTH bound to: 8 - type: integer 
 	Parameter C_RD_WR_ARB_ALGORITHM bound to: RD_PRI_REG_STARVE_LIMIT - type: string 
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 1210.234 ; gain = 194.285
+Finished RTL Elaboration : Time (s): cpu = 00:00:13 ; elapsed = 00:00:14 . Memory (MB): peak = 1207.121 ; gain = 191.184
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:16 ; elapsed = 00:00:17 . Memory (MB): peak = 1210.234 ; gain = 194.285
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 1207.121 ; gain = 191.184
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:16 ; elapsed = 00:00:17 . Memory (MB): peak = 1210.234 ; gain = 194.285
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 1207.121 ; gain = 191.184
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.696 . Memory (MB): peak = 1210.234 ; gain = 0.000
-INFO: [Netlist 29-17] Analyzing 213 Unisim elements for replacement
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.643 . Memory (MB): peak = 1207.121 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 169 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
@@ -4403,24 +4397,24 @@ Resolution: To avoid this warning, move constraints listed in [.Xil/design_1_mig
 INFO: [Timing 38-2] Deriving generated clocks
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.008 . Memory (MB): peak = 1335.184 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.008 . Memory (MB): peak = 1332.695 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
-  A total of 133 instances were transformed.
+  A total of 89 instances were transformed.
   IOBUFDS_DIFF_OUT_INTERMDISABLE => IOBUFDS_DIFF_OUT_INTERMDISABLE (IBUFDS_INTERMDISABLE_INT(x2), INV, OBUFTDS(x2)): 4 instances
   IOBUF_INTERMDISABLE => IOBUF_INTERMDISABLE (IBUF_INTERMDISABLE, OBUFT): 32 instances
   OBUFDS => OBUFDS_DUAL_BUF (INV, OBUFDS(x2)): 1 instance 
-  RAM32M => RAM32M (RAMD32(x6), RAMS32(x2)): 96 instances
+  RAM32M => RAM32M (RAMD32(x6), RAMS32(x2)): 52 instances
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.353 . Memory (MB): peak = 1335.309 ; gain = 0.125
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.292 . Memory (MB): peak = 1332.918 ; gain = 0.223
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:31 ; elapsed = 00:00:31 . Memory (MB): peak = 1335.309 ; gain = 319.359
+Finished Constraint Validation : Time (s): cpu = 00:00:29 ; elapsed = 00:00:29 . Memory (MB): peak = 1332.918 ; gain = 316.980
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a100tfgg484-2
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:31 ; elapsed = 00:00:31 . Memory (MB): peak = 1335.309 ; gain = 319.359
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:29 ; elapsed = 00:00:29 . Memory (MB): peak = 1332.918 ; gain = 316.980
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
@@ -4428,7 +4422,7 @@ Start Applying 'set_property' XDC Constraints
 Applied set_property IO_BUFFER_TYPE = NONE for ddr3_ck_n[0]. (constraint file  c:/Users/Aleksa/Documents/FPGA_Dev/Artix7_PCIe/DDR3_Optimization/dso_top/dso_top.srcs/sources_1/bd/design_1/ip/design_1_mig_7series_0_0/design_1_mig_7series_0_0/user_design/constraints/design_1_mig_7series_0_0.xdc, line 27).
 Applied set_property IO_BUFFER_TYPE = NONE for ddr3_ck_p[0]. (constraint file  c:/Users/Aleksa/Documents/FPGA_Dev/Artix7_PCIe/DDR3_Optimization/dso_top/dso_top.srcs/sources_1/bd/design_1/ip/design_1_mig_7series_0_0/design_1_mig_7series_0_0/user_design/constraints/design_1_mig_7series_0_0.xdc, line 28).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:31 ; elapsed = 00:00:31 . Memory (MB): peak = 1335.309 ; gain = 319.359
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:30 ; elapsed = 00:00:30 . Memory (MB): peak = 1332.918 ; gain = 316.980
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-802] inferred FSM for state register 'xadc_supplied_temperature.tempmon_state_reg' in module 'mig_7series_v4_2_tempmon'
 INFO: [Synth 8-802] inferred FSM for state register 'wl_state_r_reg' in module 'mig_7series_v4_2_ddr_phy_wrlvl'
@@ -4554,7 +4548,7 @@ INFO: [Synth 8-3898] No Re-encoding of one hot register 'tempmon_state_reg' in m
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'sequential' in module 'mig_7series_v4_2_axi_mc_r_channel'
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:46 ; elapsed = 00:00:49 . Memory (MB): peak = 1335.309 ; gain = 319.359
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:44 ; elapsed = 00:00:46 . Memory (MB): peak = 1332.918 ; gain = 316.980
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
@@ -4571,7 +4565,7 @@ Detailed RTL Component Info :
 	   2 Input    9 Bit       Adders := 5     
 	   2 Input    8 Bit       Adders := 11    
 	   2 Input    7 Bit       Adders := 6     
-	   2 Input    6 Bit       Adders := 50    
+	   2 Input    6 Bit       Adders := 49    
 	   3 Input    6 Bit       Adders := 22    
 	   4 Input    6 Bit       Adders := 1     
 	   2 Input    5 Bit       Adders := 47    
@@ -4594,7 +4588,7 @@ Detailed RTL Component Info :
 	   2 Input      1 Bit         XORs := 1     
 +---Registers : 
 	              288 Bit    Registers := 1     
-	              256 Bit    Registers := 5     
+	              256 Bit    Registers := 4     
 	              160 Bit    Registers := 1     
 	               88 Bit    Registers := 1     
 	               80 Bit    Registers := 4     
@@ -4612,14 +4606,14 @@ Detailed RTL Component Info :
 	                9 Bit    Registers := 18    
 	                8 Bit    Registers := 30    
 	                7 Bit    Registers := 3     
-	                6 Bit    Registers := 125   
-	                5 Bit    Registers := 57    
+	                6 Bit    Registers := 124   
+	                5 Bit    Registers := 55    
 	                4 Bit    Registers := 89    
 	                3 Bit    Registers := 76    
-	                2 Bit    Registers := 63    
-	                1 Bit    Registers := 1896  
+	                2 Bit    Registers := 62    
+	                1 Bit    Registers := 1891  
 +---Muxes : 
-	   2 Input  256 Bit        Muxes := 11    
+	   2 Input  256 Bit        Muxes := 10    
 	   4 Input  256 Bit        Muxes := 1     
 	   2 Input  255 Bit        Muxes := 1     
 	   2 Input   80 Bit        Muxes := 12    
@@ -4651,15 +4645,15 @@ Detailed RTL Component Info :
 	   3 Input    7 Bit        Muxes := 2     
 	   4 Input    7 Bit        Muxes := 1     
 	   5 Input    7 Bit        Muxes := 2     
-	   2 Input    6 Bit        Muxes := 131   
+	   2 Input    6 Bit        Muxes := 126   
 	   4 Input    6 Bit        Muxes := 19    
 	  27 Input    6 Bit        Muxes := 6     
 	   5 Input    6 Bit        Muxes := 2     
 	  16 Input    6 Bit        Muxes := 1     
 	  24 Input    6 Bit        Muxes := 5     
 	  23 Input    6 Bit        Muxes := 6     
-	   3 Input    6 Bit        Muxes := 3     
-	   2 Input    5 Bit        Muxes := 39    
+	   3 Input    6 Bit        Muxes := 1     
+	   2 Input    5 Bit        Muxes := 38    
 	   8 Input    5 Bit        Muxes := 4     
 	  27 Input    5 Bit        Muxes := 1     
 	  58 Input    5 Bit        Muxes := 1     
@@ -4679,14 +4673,14 @@ Detailed RTL Component Info :
 	   8 Input    3 Bit        Muxes := 2     
 	   9 Input    3 Bit        Muxes := 1     
 	  10 Input    3 Bit        Muxes := 1     
-	   2 Input    2 Bit        Muxes := 91    
-	   3 Input    2 Bit        Muxes := 7     
+	   2 Input    2 Bit        Muxes := 90    
+	   3 Input    2 Bit        Muxes := 6     
 	   8 Input    2 Bit        Muxes := 8     
 	  24 Input    2 Bit        Muxes := 1     
 	  23 Input    2 Bit        Muxes := 3     
 	   4 Input    2 Bit        Muxes := 3     
 	   5 Input    2 Bit        Muxes := 1     
-	   2 Input    1 Bit        Muxes := 774   
+	   2 Input    1 Bit        Muxes := 772   
 	   3 Input    1 Bit        Muxes := 31    
 	   4 Input    1 Bit        Muxes := 150   
 	   8 Input    1 Bit        Muxes := 8     
@@ -4713,7 +4707,7 @@ Finished Part Resource Summary
 Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:01:53 ; elapsed = 00:01:58 . Memory (MB): peak = 1397.359 ; gain = 381.410
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:01:52 ; elapsed = 00:01:56 . Memory (MB): peak = 1396.910 ; gain = 380.973
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP and Shift Register Reporting
@@ -4755,13 +4749,13 @@ Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 WARNING: [Synth 8-3321] set_false_path : Empty through list for constraint at line 509 of c:/Users/Aleksa/Documents/FPGA_Dev/Artix7_PCIe/DDR3_Optimization/dso_top/dso_top.srcs/sources_1/bd/design_1/ip/design_1_mig_7series_0_0/design_1_mig_7series_0_0/user_design/constraints/design_1_mig_7series_0_0.xdc. [c:/Users/Aleksa/Documents/FPGA_Dev/Artix7_PCIe/DDR3_Optimization/dso_top/dso_top.srcs/sources_1/bd/design_1/ip/design_1_mig_7series_0_0/design_1_mig_7series_0_0/user_design/constraints/design_1_mig_7series_0_0.xdc:509]
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:59 ; elapsed = 00:02:05 . Memory (MB): peak = 1397.359 ; gain = 381.410
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:58 ; elapsed = 00:02:03 . Memory (MB): peak = 1396.910 ; gain = 380.973
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:02:02 ; elapsed = 00:02:07 . Memory (MB): peak = 1397.359 ; gain = 381.410
+Finished Timing Optimization : Time (s): cpu = 00:02:01 ; elapsed = 00:02:05 . Memory (MB): peak = 1396.910 ; gain = 380.973
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP and Shift Register Reporting
@@ -4792,7 +4786,7 @@ Finished ROM, RAM, DSP and Shift Register Reporting
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:02:07 ; elapsed = 00:02:13 . Memory (MB): peak = 1397.359 ; gain = 381.410
+Finished Technology Mapping : Time (s): cpu = 00:02:06 ; elapsed = 00:02:11 . Memory (MB): peak = 1396.910 ; gain = 380.973
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -4810,37 +4804,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:02:11 ; elapsed = 00:02:16 . Memory (MB): peak = 1397.359 ; gain = 381.410
+Finished IO Insertion : Time (s): cpu = 00:02:09 ; elapsed = 00:02:14 . Memory (MB): peak = 1396.910 ; gain = 380.973
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:02:11 ; elapsed = 00:02:16 . Memory (MB): peak = 1397.359 ; gain = 381.410
+Finished Renaming Generated Instances : Time (s): cpu = 00:02:09 ; elapsed = 00:02:14 . Memory (MB): peak = 1396.910 ; gain = 380.973
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:02:13 ; elapsed = 00:02:18 . Memory (MB): peak = 1397.359 ; gain = 381.410
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:02:11 ; elapsed = 00:02:16 . Memory (MB): peak = 1396.910 ; gain = 380.973
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:02:13 ; elapsed = 00:02:18 . Memory (MB): peak = 1397.359 ; gain = 381.410
+Finished Renaming Generated Ports : Time (s): cpu = 00:02:11 ; elapsed = 00:02:16 . Memory (MB): peak = 1396.910 ; gain = 380.973
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:02:13 ; elapsed = 00:02:18 . Memory (MB): peak = 1397.359 ; gain = 381.410
+Finished Handling Custom Attributes : Time (s): cpu = 00:02:12 ; elapsed = 00:02:16 . Memory (MB): peak = 1396.910 ; gain = 380.973
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:02:13 ; elapsed = 00:02:19 . Memory (MB): peak = 1397.359 ; gain = 381.410
+Finished Renaming Generated Nets : Time (s): cpu = 00:02:12 ; elapsed = 00:02:16 . Memory (MB): peak = 1396.910 ; gain = 380.973
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP and Shift Register Reporting
@@ -4902,12 +4896,12 @@ Report Cell Usage:
 |7     |IDELAYE2                       |    32|
 |8     |IN_FIFO                        |     4|
 |9     |ISERDESE2                      |    32|
-|10    |LUT1                           |   458|
-|11    |LUT2                           |   661|
-|12    |LUT3                           |  2175|
-|13    |LUT4                           |  1188|
-|14    |LUT5                           |  1520|
-|15    |LUT6                           |  1177|
+|10    |LUT1                           |   451|
+|11    |LUT2                           |   641|
+|12    |LUT3                           |  1932|
+|13    |LUT4                           |  1168|
+|14    |LUT5                           |  1531|
+|15    |LUT6                           |  1169|
 |16    |MMCME2_ADV                     |     1|
 |17    |MUXF7                          |     2|
 |18    |ODDR                           |     9|
@@ -4918,14 +4912,14 @@ Report Cell Usage:
 |27    |PHASER_REF                     |     2|
 |28    |PHY_CONTROL                    |     2|
 |29    |PLLE2_ADV                      |     1|
-|30    |RAM32M                         |   222|
+|30    |RAM32M                         |   177|
 |31    |SRL16E                         |    18|
 |32    |SRLC32E                        |   259|
 |33    |XADC                           |     1|
 |34    |FDCE                           |     3|
 |35    |FDPE                           |    76|
-|36    |FDRE                           |  5525|
-|37    |FDSE                           |   260|
+|36    |FDRE                           |  5234|
+|37    |FDSE                           |   259|
 |38    |IOBUFDS_DIFF_OUT_INTERMDISABLE |     4|
 |39    |IOBUF_INTERMDISABLE            |    32|
 |40    |OBUF                           |    25|
@@ -4933,37 +4927,37 @@ Report Cell Usage:
 |42    |OBUFT                          |     4|
 +------+-------------------------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:02:13 ; elapsed = 00:02:19 . Memory (MB): peak = 1397.359 ; gain = 381.410
+Finished Writing Synthesis Report : Time (s): cpu = 00:02:12 ; elapsed = 00:02:16 . Memory (MB): peak = 1396.910 ; gain = 380.973
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 1 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:01:46 ; elapsed = 00:02:09 . Memory (MB): peak = 1397.359 ; gain = 256.336
-Synthesis Optimization Complete : Time (s): cpu = 00:02:13 ; elapsed = 00:02:19 . Memory (MB): peak = 1397.359 ; gain = 381.410
+Synthesis Optimization Runtime : Time (s): cpu = 00:01:47 ; elapsed = 00:02:07 . Memory (MB): peak = 1396.910 ; gain = 255.176
+Synthesis Optimization Complete : Time (s): cpu = 00:02:12 ; elapsed = 00:02:16 . Memory (MB): peak = 1396.910 ; gain = 380.973
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.554 . Memory (MB): peak = 1397.359 ; gain = 0.000
-INFO: [Netlist 29-17] Analyzing 468 Unisim elements for replacement
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.463 . Memory (MB): peak = 1396.910 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 423 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 4 inverter(s) to 32 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.004 . Memory (MB): peak = 1397.359 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.004 . Memory (MB): peak = 1396.910 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
-  A total of 259 instances were transformed.
+  A total of 214 instances were transformed.
   IOBUFDS_DIFF_OUT_INTERMDISABLE => IOBUFDS_DIFF_OUT_INTERMDISABLE (IBUFDS_INTERMDISABLE_INT(x2), INV, OBUFTDS(x2)): 4 instances
   IOBUF_INTERMDISABLE => IOBUF_INTERMDISABLE (IBUF_INTERMDISABLE, OBUFT): 32 instances
   OBUFDS => OBUFDS_DUAL_BUF (INV, OBUFDS(x2)): 1 instance 
-  RAM32M => RAM32M (RAMD32(x6), RAMS32(x2)): 222 instances
+  RAM32M => RAM32M (RAMD32(x6), RAMS32(x2)): 177 instances
 
 INFO: [Common 17-83] Releasing license: Synthesis
-245 Infos, 34 Warnings, 0 Critical Warnings and 0 Errors encountered.
+244 Infos, 29 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:02:22 ; elapsed = 00:02:28 . Memory (MB): peak = 1397.359 ; gain = 381.410
+synth_design: Time (s): cpu = 00:02:20 ; elapsed = 00:02:25 . Memory (MB): peak = 1396.910 ; gain = 380.973
 WARNING: [Constraints 18-5210] No constraints selected for write.
 Resolution: This message can indicate that there are no constraints for the design, or it can indicate that the used_in flags are set such that the constraints are ignored. This later case is used when running synth_design to not write synthesis constraints to the resulting checkpoint. Instead, project constraints are read when the synthesized design is opened.
 INFO: [Common 17-1381] The checkpoint 'C:/Users/Aleksa/Documents/FPGA_Dev/Artix7_PCIe/DDR3_Optimization/dso_top/dso_top.runs/design_1_mig_7series_0_0_synth_1/design_1_mig_7series_0_0.dcp' has been generated.
 WARNING: [Common 17-576] 'use_project_ipc' is deprecated. This option is deprecated and no longer used.
-INFO: [Coretcl 2-1648] Added synthesis output to IP cache for IP design_1_mig_7series_0_0, cache-ID = de240defa7bad4ca
+INFO: [Coretcl 2-1648] Added synthesis output to IP cache for IP design_1_mig_7series_0_0, cache-ID = 8abae3f1fc384d9a
 INFO: [Coretcl 2-1174] Renamed 106 cell refs.
 WARNING: [Constraints 18-5210] No constraints selected for write.
 Resolution: This message can indicate that there are no constraints for the design, or it can indicate that the used_in flags are set such that the constraints are ignored. This later case is used when running synth_design to not write synthesis constraints to the resulting checkpoint. Instead, project constraints are read when the synthesized design is opened.
 INFO: [Common 17-1381] The checkpoint 'C:/Users/Aleksa/Documents/FPGA_Dev/Artix7_PCIe/DDR3_Optimization/dso_top/dso_top.runs/design_1_mig_7series_0_0_synth_1/design_1_mig_7series_0_0.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file design_1_mig_7series_0_0_utilization_synth.rpt -pb design_1_mig_7series_0_0_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Tue May 18 14:08:07 2021...
+INFO: [Common 17-206] Exiting Vivado at Wed May 19 10:55:24 2021...

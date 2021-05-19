@@ -169,7 +169,7 @@ proc write_mig_file_design_1_mig_7series_0_0 { str_mig_prj_filepath } {
    puts $mig_prj_file {    <DeepMemory>1</DeepMemory>}
    puts $mig_prj_file {    <DataMask>1</DataMask>}
    puts $mig_prj_file {    <ECC>Disabled</ECC>}
-   puts $mig_prj_file {    <Ordering>Normal</Ordering>}
+   puts $mig_prj_file {    <Ordering>Strict</Ordering>}
    puts $mig_prj_file {    <BankMachineCnt>3</BankMachineCnt>}
    puts $mig_prj_file {    <CustomPart>FALSE</CustomPart>}
    puts $mig_prj_file {    <NewPartName/>}
@@ -511,15 +511,16 @@ proc create_hier_cell_Memory { parentCell nameHier } {
 
   # Generate the PRJ File for MIG
   set str_mig_folder [get_property IP_DIR [ get_ips [ get_property CONFIG.Component_Name $mig_7series_0 ] ] ]
-  set str_mig_file_name mig_b.prj
+  set str_mig_file_name mig_a.prj
   set str_mig_file_path ${str_mig_folder}/${str_mig_file_name}
 
   write_mig_file_design_1_mig_7series_0_0 $str_mig_file_path
 
   set_property -dict [ list \
    CONFIG.BOARD_MIG_PARAM {Custom} \
+   CONFIG.MIG_DONT_TOUCH_PARAM {Custom} \
    CONFIG.RESET_BOARD_INTERFACE {Custom} \
-   CONFIG.XML_INPUT_FILE {mig_b.prj} \
+   CONFIG.XML_INPUT_FILE {mig_a.prj} \
  ] $mig_7series_0
 
   # Create instance: util_vector_logic_0, and set properties
