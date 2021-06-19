@@ -1,3 +1,17 @@
+# TL;DR for Windows Testing
+
+All commands need to be run from the `Software/waveview` directory in PowerShell.
+
+1. Initial setup of node_modules folder (first time only)
+    - `npm install`
+2. Building the backend
+    - `npm run make-cpp-win`
+3. Running the backend
+    - `.\build\Release\scope.exe -c`
+4. Run the electron
+    - `npm run electron-dev-win`
+
+
 # Custom Script Info
 
 Skip to "Scope Link Build Commands" for building the `scope_link` (C++) portion.
@@ -70,7 +84,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
-### 'npm install'
+### `npm install`
 
 Runs the MakeFile and compiles the NAPI addon.
 
