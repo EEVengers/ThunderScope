@@ -5,7 +5,8 @@ enum DefaultColors {
   Channel4 = "#FF0000",
   Math = "#FF00FF",
   StopButton = "#FF0000",
-  RunButton = "#00FF00"
+  RunButton = "#00FF00",
+  SingleButton = "#EBFF00"
 };
 
 export default DefaultColors;

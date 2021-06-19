@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import DefaultColors from '../../../configuration/enums/defaultColors';
 import GraphStatus from '../../../configuration/enums/graphStatus';
 import './../../../css/sidebar/core/runStopButton.css';
+import Button from '@material-ui/core/Button';
 
 class RunStopButton extends React.Component<any,any> {
 
@@ -13,7 +14,7 @@ class RunStopButton extends React.Component<any,any> {
   render() {
     return (
       <div className={"RunStopButtonComponent"}>
-        <button
+        <Button
           className={"RunStopButton"}
           style={{background: this.props.graph.currentStatus === GraphStatus.On ? DefaultColors.StopButton : DefaultColors.RunButton}}
           onClick={() => this.changeGraphStatus()}
@@ -22,7 +23,7 @@ class RunStopButton extends React.Component<any,any> {
             className={"RunStopButtonText"}>
             {this.props.graph.currentStatus}
           </label>
-        </button>
+        </Button>
       </div>
     )
   }
