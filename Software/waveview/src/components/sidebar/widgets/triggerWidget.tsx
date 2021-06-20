@@ -8,6 +8,10 @@ import CMD from '../../../configuration/enums/cmd';
 import {Plumber, PlumberArgs} from '../../../util/plumber';
 import { setChHelper } from '../../../util/setChHelper';
 
+import Box from '@material-ui/core/Box';
+import Button from '@material-ui/core/Button';
+import ButtonGroup from '@material-ui/core/ButtonGroup';
+
 class TriggerWidget extends React.Component<any, any> {
 
   // Trigger Channel
@@ -77,15 +81,15 @@ class TriggerWidget extends React.Component<any, any> {
   render() {
     return (
       <div className="TriggerWidget">
-      <div className="WidgetTitle">
+      <Box className="WidgetTitle">
         Trigger
-      </div>
+      </Box>
 
-      <div className="ChannelTitle">
+      <Box className="ChannelTitle">
         Channel
-      </div>
-      <div className="ChannelSelectionButtons">
-        <button
+      </Box>
+      <ButtonGroup variant="contained" className="ChannelSelectionButtons">
+        <Button
           className="Channel1Button"
           onClick={() => this.changeChannel(1)}>
           <label
@@ -93,8 +97,8 @@ class TriggerWidget extends React.Component<any, any> {
             style={{color: this.props.triggerWidget.triggerChannel === 1 ? this.props.settings.colors.channel[this.props.triggerWidget.triggerChannel-1] : "black"}}>
             CH1
           </label>
-        </button>
-        <button
+        </Button>
+        <Button
           className="Channel2Button"
           onClick={() => this.changeChannel(2)}>
           <label
@@ -102,8 +106,8 @@ class TriggerWidget extends React.Component<any, any> {
             style={{color: this.props.triggerWidget.triggerChannel === 2 ? this.props.settings.colors.channel[this.props.triggerWidget.triggerChannel-1] : "black"}}>
             CH2
           </label>
-        </button>
-        <button
+        </Button>
+        <Button
           className="Channel3Button"
           onClick={() => this.changeChannel(3)}>
           <label
@@ -111,8 +115,8 @@ class TriggerWidget extends React.Component<any, any> {
             style={{color: this.props.triggerWidget.triggerChannel === 3 ? this.props.settings.colors.channel[this.props.triggerWidget.triggerChannel-1] : "black"}}>
             CH3
           </label>
-        </button>
-        <button
+        </Button>
+        <Button
           className="Channel4Button"
           onClick={() => this.changeChannel(4)}>
           <label
@@ -120,14 +124,14 @@ class TriggerWidget extends React.Component<any, any> {
             style={{color: this.props.triggerWidget.triggerChannel === 4 ? this.props.settings.colors.channel[this.props.triggerWidget.triggerChannel-1] : "black"}}>
             CH4
           </label>
-        </button>
-      </div>
+        </Button>
+      </ButtonGroup>
 
-      <div className="TriggerModeTitle">
+      <Box className="TriggerModeTitle">
         Trigger Mode
-      </div>
-      <div className="TriggerModeButtons">
-        <button
+      </Box>
+      <ButtonGroup variant="contained" className="TriggerModeButtons">
+        <Button
           className="FallingEdgeButton"
           onClick={() => this.changeTriggerType(TriggerType.FallingEdge)}>
           <label
@@ -135,8 +139,8 @@ class TriggerWidget extends React.Component<any, any> {
             style={{fontWeight: this.props.triggerWidget.triggerType[this.props.triggerWidget.triggerChannel-1] === TriggerType.FallingEdge ? "bold" : "normal"}}>
             Falling Edge
           </label>
-        </button>
-        <button
+        </Button>
+        <Button
           className="RisingEdgeButton"
           onClick={() => this.changeTriggerType(TriggerType.RisingEdge)}>
           <label
@@ -144,18 +148,21 @@ class TriggerWidget extends React.Component<any, any> {
             style={{fontWeight: this.props.triggerWidget.triggerType[this.props.triggerWidget.triggerChannel-1] === TriggerType.RisingEdge ? "bold" : "normal"}}>
             Rising Edge
           </label>
-        </button>
-      </div>
+        </Button>
+      </ButtonGroup>
 
-      <div className="TriggerLevelTitle">
+      <Box className="TriggerLevelTitle">
         Trigger Level
-      </div>
-      <div className="TriggerWidgetAdjustTriggerLevelValue">
-        <button
+      </Box>
+      <Box className="TriggerWidgetAdjustTriggerLevelValue">
+        <Button
+          variant="contained"
+          size="small"
           className="MinusButton"
+          style={{maxWidth: '30px', maxHeight: '30px', minWidth: '30px', minHeight: '30px'}}
           onClick={() => this.decreaseTriggerLevel()}>
           -
-        </button>
+        </Button>
         <label
           className="AdjustChannelBlockValue"
           style={{color: this.props.settings.colors.channel[this.props.triggerWidget.triggerChannel-1]}}
@@ -163,15 +170,18 @@ class TriggerWidget extends React.Component<any, any> {
           {this.props.triggerWidget.triggerLevel[this.props.triggerWidget.triggerChannel-1].value.toString()}
           {this.props.triggerWidget.triggerLevel[this.props.triggerWidget.triggerChannel-1].unit}
         </label>
-        <button
+        <Button
+          variant="contained"
+          size="small"
           className="PlusButton"
+          style={{maxWidth: '30px', maxHeight: '30px', minWidth: '30px', minHeight: '30px'}}
           onClick={() => this.increaseTriggerLevel()}>
           +
-        </button>
-      </div>
+        </Button>
+      </Box>
 
-      <div className="TriggerWidgetAdjustTriggerLevelUnit">
-        <button
+      <ButtonGroup variant="contained" className="TriggerWidgetAdjustTriggerLevelUnit">
+        <Button
           className="NanoVoltButton"
           onClick={() => this.changeTriggerLevelUnit(VoltageUnit.NanoVolt)}>
           <label
@@ -179,8 +189,8 @@ class TriggerWidget extends React.Component<any, any> {
             style={{fontWeight: this.props.triggerWidget.triggerLevel[this.props.triggerWidget.triggerChannel-1].unit === VoltageUnit.NanoVolt ? "bold" : "normal"}}>
             {VoltageUnit.NanoVolt}
           </label>
-        </button>
-        <button
+        </Button>
+        <Button
           className="MicroVoltButton"
           onClick={() => this.changeTriggerLevelUnit(VoltageUnit.MicroVolt)}>
           <label
@@ -188,8 +198,8 @@ class TriggerWidget extends React.Component<any, any> {
             style={{fontWeight: this.props.triggerWidget.triggerLevel[this.props.triggerWidget.triggerChannel-1].unit === VoltageUnit.MicroVolt ? "bold" : "normal"}}>
             {VoltageUnit.MicroVolt}
           </label>
-        </button>
-        <button
+        </Button>
+        <Button
           className="MilliVoltButton"
           onClick={() => this.changeTriggerLevelUnit(VoltageUnit.MilliVolt)}>
           <label
@@ -197,8 +207,8 @@ class TriggerWidget extends React.Component<any, any> {
             style={{fontWeight: this.props.triggerWidget.triggerLevel[this.props.triggerWidget.triggerChannel-1].unit === VoltageUnit.MilliVolt ? "bold" : "normal"}}>
             {VoltageUnit.MilliVolt}
           </label>
-        </button>
-        <button
+        </Button>
+        <Button
           className="VoltButton"
           onClick={() => this.changeTriggerLevelUnit(VoltageUnit.Volt)}>
           <label
@@ -206,8 +216,8 @@ class TriggerWidget extends React.Component<any, any> {
             style={{fontWeight: this.props.triggerWidget.triggerLevel[this.props.triggerWidget.triggerChannel-1].unit === VoltageUnit.Volt ? "bold" : "normal"}}>
             {VoltageUnit.Volt}
           </label>
-        </button>
-      </div>
+        </Button>
+      </ButtonGroup>
 
     </div>
     )
