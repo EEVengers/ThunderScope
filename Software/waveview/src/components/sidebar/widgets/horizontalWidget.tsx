@@ -52,7 +52,7 @@ class HorizontalWidget extends React.Component<any, any> {
 
   render() {
     return (
-      <div className="HorizontalWidget">
+      <Box className="HorizontalWidget">
         <Box className="WidgetTitle">
           Horizontal
         </Box>
@@ -182,7 +182,7 @@ class HorizontalWidget extends React.Component<any, any> {
           </Button>
         </Box>
 
-      </div>
+      </Box>
     )
   }
 }

@@ -43,7 +43,7 @@ class TriggerWidget extends React.Component<any, any> {
 
   render() {
     return (
-      <div className="MathWidget">
+      <Box className="MathWidget">
 
       <Box className="WidgetTitle">
         Math
@@ -193,7 +193,7 @@ class TriggerWidget extends React.Component<any, any> {
       </ButtonGroup>
       }
 
-      </div>
+      </Box>
     )
   }
 }

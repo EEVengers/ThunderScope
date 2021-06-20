@@ -8,6 +8,10 @@ import CMD from '../../../configuration/enums/cmd';
 import {Plumber, PlumberArgs} from '../../../util/plumber';
 import ControlMode from '../../../configuration/enums/controlMode';
 
+import Box from '@material-ui/core/Box';
+import Button from '@material-ui/core/Button';
+import ButtonGroup from '@material-ui/core/ButtonGroup';
+
 class MeasurementsWidget extends React.Component<any, any> {
   static instanceList: MeasurementsWidget[] = [];
   timerID: number = 0;
@@ -66,16 +70,16 @@ class MeasurementsWidget extends React.Component<any, any> {
 
   render() {
     return (
-      <div className="MeasurementsWidget">
-        <div className="WidgetTitle">
+      <Box className="MeasurementsWidget">
+        <Box className="WidgetTitle">
           Measurements
-        </div>
+        </Box>
 
-      <div className="ChannelTitle">
+      <Box className="ChannelTitle">
         Channel
-      </div>
-      <div className="ChannelSelectionButtons">
-        <button
+      </Box>
+      <ButtonGroup variant="contained" className="ChannelSelectionButtons">
+        <Button
           className="Channel1Button"
           onClick={() => this.measureChannel(1)}>
           <label
@@ -83,8 +87,8 @@ class MeasurementsWidget extends React.Component<any, any> {
             style={{color: this.props.measurementsWidget.displayChannel[0] === true ? this.props.settings.colors.channel[0] : "black"}}>
             CH1
           </label>
-        </button>
-        <button
+        </Button>
+        <Button
           className="Channel2Button"
           onClick={() => this.measureChannel(2)}>
           <label
@@ -92,8 +96,8 @@ class MeasurementsWidget extends React.Component<any, any> {
             style={{color: this.props.measurementsWidget.displayChannel[1] === true ? this.props.settings.colors.channel[1] : "black"}}>
             CH2
           </label>
-        </button>
-        <button
+        </Button>
+        <Button
           className="Channel3Button"
           onClick={() => this.measureChannel(3)}>
           <label
@@ -101,8 +105,8 @@ class MeasurementsWidget extends React.Component<any, any> {
             style={{color: this.props.measurementsWidget.displayChannel[2] === true ? this.props.settings.colors.channel[2] : "black"}}>
             CH3
           </label>
-        </button>
-        <button
+        </Button>
+        <Button
           className="Channel4Button"
           onClick={() => this.measureChannel(4)}>
           <label
@@ -110,16 +114,16 @@ class MeasurementsWidget extends React.Component<any, any> {
             style={{color: this.props.measurementsWidget.displayChannel[3] === true ? this.props.settings.colors.channel[3] : "black"}}>
             CH4
           </label>
-        </button>
-      </div>
+        </Button>
+      </ButtonGroup>
 
       {this.props.measurementsWidget.displayChannel[0] === true &&
-      <div className="Channel1Measurements-Title">
+      <Box className="Channel1Measurements-Title">
         CH1 Measurements
-      </div>
+      </Box>
       }
       {this.props.measurementsWidget.displayChannel[0] === true &&
-      <div className="Channel1Measurements">
+      <Box className="Channel1Measurements">
         <label
           className="Channel1-MaxLabel"
           style={{color: this.props.settings.colors.channel[0]}}>
@@ -134,7 +138,7 @@ class MeasurementsWidget extends React.Component<any, any> {
           {this.props.verticalWidget.settings[0].controlMode === ControlMode.Fine 
             && + this.props.verticalWidget.timePerDivision[0].fine.unit.toString()}
         </label>
-      <div className="ClearBlock"></div>
+      <Box className="ClearBlock"></Box>
         <label
           className="Channel1-MinLabel"
           style={{color: this.props.settings.colors.channel[0]}}>
@@ -149,17 +153,17 @@ class MeasurementsWidget extends React.Component<any, any> {
           {this.props.verticalWidget.settings[0].controlMode === ControlMode.Fine 
             && + this.props.verticalWidget.timePerDivision[0].fine.unit.toString()}
         </label>
-      <div className="ClearBlock"></div>
-      </div>
+      <Box className="ClearBlock"></Box>
+      </Box>
       }
 
       {this.props.measurementsWidget.displayChannel[1] === true &&
-      <div className="Channel2Measurements-Title">
+      <Box className="Channel2Measurements-Title">
         CH2 Measurements
-      </div>
+      </Box>
       }
       {this.props.measurementsWidget.displayChannel[1] === true &&
-      <div className="Channel2Measurements">
+      <Box className="Channel2Measurements">
         <label
           className="Channel2-MaxLabel"
           style={{color: this.props.settings.colors.channel[1]}}>
@@ -174,7 +178,7 @@ class MeasurementsWidget extends React.Component<any, any> {
           {this.props.verticalWidget.settings[1].controlMode === ControlMode.Fine 
             && + this.props.verticalWidget.timePerDivision[1].fine.unit.toString()}
         </label>
-      <div className="ClearBlock"></div>
+      <Box className="ClearBlock"></Box>
         <label
           className="Channel2-MinLabel"
           style={{color: this.props.settings.colors.channel[1]}}>
@@ -189,17 +193,17 @@ class MeasurementsWidget extends React.Component<any, any> {
           {this.props.verticalWidget.settings[1].controlMode === ControlMode.Fine 
             && + this.props.verticalWidget.timePerDivision[1].fine.unit.toString()}
         </label>
-      <div className="ClearBlock"></div>
-      </div>
+      <Box className="ClearBlock"></Box>
+      </Box>
       }
 
       {this.props.measurementsWidget.displayChannel[2] === true &&
-      <div className="Channel3Measurements-Title">
+      <Box className="Channel3Measurements-Title">
         CH3 Measurements
-      </div>
+      </Box>
       }
       {this.props.measurementsWidget.displayChannel[2] === true &&
-      <div className="Channel3Measurements">
+      <Box className="Channel3Measurements">
         <label
           className="Channel3-MaxLabel"
           style={{color: this.props.settings.colors.channel[2]}}>
@@ -214,7 +218,7 @@ class MeasurementsWidget extends React.Component<any, any> {
           {this.props.verticalWidget.settings[2].controlMode === ControlMode.Fine 
             && + this.props.verticalWidget.timePerDivision[2].fine.unit.toString()}
         </label>
-      <div className="ClearBlock"></div>
+      <Box className="ClearBlock"></Box>
         <label
           className="Channel3-MinLabel"
           style={{color: this.props.settings.colors.channel[2]}}>
@@ -229,17 +233,17 @@ class MeasurementsWidget extends React.Component<any, any> {
           {this.props.verticalWidget.settings[2].controlMode === ControlMode.Fine 
             && + this.props.verticalWidget.timePerDivision[2].fine.unit.toString()}
         </label>
-      <div className="ClearBlock"></div>
-      </div>
+      <Box className="ClearBlock"></Box>
+      </Box>
       }
 
       {this.props.measurementsWidget.displayChannel[3] === true &&
-      <div className="Channel4Measurements-Title">
+      <Box className="Channel4Measurements-Title">
         CH4 Measurements
-      </div>
+      </Box>
       }
       {this.props.measurementsWidget.displayChannel[3] === true &&
-      <div className="Channel4Measurements">
+      <Box className="Channel4Measurements">
         <label
           className="Channel4-MaxLabel"
           style={{color: this.props.settings.colors.channel[3]}}>
@@ -254,7 +258,7 @@ class MeasurementsWidget extends React.Component<any, any> {
           {this.props.verticalWidget.settings[3].controlMode === ControlMode.Fine 
             && + this.props.verticalWidget.timePerDivision[3].fine.unit.toString()}
         </label>
-      <div className="ClearBlock"></div>
+      <Box className="ClearBlock"></Box>
         <label
           className="Channel4-MinLabel"
           style={{color: this.props.settings.colors.channel[3]}}>
@@ -269,11 +273,11 @@ class MeasurementsWidget extends React.Component<any, any> {
           {this.props.verticalWidget.settings[3].controlMode === ControlMode.Fine 
             && + this.props.verticalWidget.timePerDivision[3].fine.unit.toString()}
         </label>
-      <div className="ClearBlock"></div>
-      </div>
+      <Box className="ClearBlock"></Box>
+      </Box>
       }
 
-      </div>
+      </Box>
     )
   }
 }

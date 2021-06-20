@@ -91,7 +91,7 @@ class VerticalWidget extends React.Component<any, any> {
 
   render() {
     return (
-      <div className="VerticalWidget">
+      <Box className="VerticalWidget">
         <Box className="WidgetTitle">
           Vertical
         </Box>
@@ -360,7 +360,7 @@ class VerticalWidget extends React.Component<any, any> {
         </Button>
       </ButtonGroup>
 
-      </div>
+      </Box>
     )
   }
 }
