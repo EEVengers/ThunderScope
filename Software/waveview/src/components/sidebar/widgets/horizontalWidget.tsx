@@ -61,7 +61,7 @@ class HorizontalWidget extends React.Component<any, any> {
           Time Base
         </Box>
 
-        <Box className="TimeBaseMode">
+        <ButtonGroup variant="contained" className="TimeBaseMode">
           <Button
             variant="contained"
             className="CoarseControlButton"
@@ -82,7 +82,7 @@ class HorizontalWidget extends React.Component<any, any> {
                   Fine
               </label>
           </Button>
-        </Box>
+        </ButtonGroup>
 
         <Box className="HorizontalWidgetAdjustBlock-HorizontalTimeBase">
           <Button
