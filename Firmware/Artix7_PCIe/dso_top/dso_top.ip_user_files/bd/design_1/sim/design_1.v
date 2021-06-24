@@ -1,7 +1,7 @@
 //Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
-//Date        : Tue Mar 23 16:43:50 2021
+//Date        : Tue May  4 11:47:33 2021
 //Host        : DESKTOP-J72MK93 running 64-bit major release  (build 9200)
 //Command     : generate_target design_1.bd
 //Design      : design_1
@@ -409,10 +409,10 @@ module Datamover_imp_6RC1MV
   wire S_AXIS_S2MM_1_TLAST;
   wire S_AXIS_S2MM_1_TREADY;
   wire S_AXIS_S2MM_1_TVALID;
+  wire axi_aclk_1;
+  wire axi_aresetn_1;
   wire axi_datamover_0_s2mm_err;
   wire axi_datamover_0_s2mm_wr_xfer_cmplt;
-  wire m_axi_s2mm_aclk_0_1;
-  wire m_axi_s2mm_aresetn_0_1;
   wire s2mm_halt_0_1;
   wire [0:0]xlconstant_0_dout;
 
@@ -441,14 +441,14 @@ module Datamover_imp_6RC1MV
   assign S_AXIS_S2MM_1_TVALID = S_AXIS_S2MM_tvalid;
   assign S_AXIS_S2MM_CMD_tready = Conn2_TREADY;
   assign S_AXIS_S2MM_tready = S_AXIS_S2MM_1_TREADY;
-  assign m_axi_s2mm_aclk_0_1 = axi_aclk;
-  assign m_axi_s2mm_aresetn_0_1 = axi_aresetn;
+  assign axi_aclk_1 = axi_aclk;
+  assign axi_aresetn_1 = axi_aresetn;
   assign s2mm_err = axi_datamover_0_s2mm_err;
   assign s2mm_halt_0_1 = s2mm_halt;
   assign s2mm_wr_xfer_cmplt = axi_datamover_0_s2mm_wr_xfer_cmplt;
   design_1_axi_datamover_0_0 axi_datamover_0
-       (.m_axi_s2mm_aclk(m_axi_s2mm_aclk_0_1),
-        .m_axi_s2mm_aresetn(m_axi_s2mm_aresetn_0_1),
+       (.m_axi_s2mm_aclk(axi_aclk_1),
+        .m_axi_s2mm_aresetn(axi_aresetn_1),
         .m_axi_s2mm_awaddr(Conn3_AWADDR),
         .m_axi_s2mm_awburst(Conn3_AWBURST),
         .m_axi_s2mm_awcache(Conn3_AWCACHE),
@@ -466,8 +466,8 @@ module Datamover_imp_6RC1MV
         .m_axi_s2mm_wready(Conn3_WREADY),
         .m_axi_s2mm_wstrb(Conn3_WSTRB),
         .m_axi_s2mm_wvalid(Conn3_WVALID),
-        .m_axis_s2mm_cmdsts_aresetn(m_axi_s2mm_aresetn_0_1),
-        .m_axis_s2mm_cmdsts_awclk(m_axi_s2mm_aclk_0_1),
+        .m_axis_s2mm_cmdsts_aresetn(axi_aresetn_1),
+        .m_axis_s2mm_cmdsts_awclk(axi_aclk_1),
         .m_axis_s2mm_sts_tready(1'b1),
         .s2mm_allow_addr_req(xlconstant_0_dout),
         .s2mm_dbg_sel({1'b0,1'b0,1'b0,1'b0}),
@@ -1373,7 +1373,7 @@ module design_1
   (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 S_AXIS_S2MM_CMD TDATA" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME S_AXIS_S2MM_CMD, FREQ_HZ 125000000, HAS_TKEEP 0, HAS_TLAST 0, HAS_TREADY 1, HAS_TSTRB 0, INSERT_VIP 0, LAYERED_METADATA undef, PHASE 0.000, TDATA_NUM_BYTES 9, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0" *) input [71:0]S_AXIS_S2MM_CMD_tdata;
   (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 S_AXIS_S2MM_CMD TREADY" *) output S_AXIS_S2MM_CMD_tready;
   (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 S_AXIS_S2MM_CMD TVALID" *) input S_AXIS_S2MM_CMD_tvalid;
-  (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 S_AXIS_S2MM TDATA" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME S_AXIS_S2MM, FREQ_HZ 125000000, HAS_TKEEP 0, HAS_TLAST 0, HAS_TREADY 1, HAS_TSTRB 0, INSERT_VIP 0, LAYERED_METADATA undef, PHASE 0.000, TDATA_NUM_BYTES 16, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0" *) input [127:0]S_AXIS_S2MM_tdata;
+  (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 S_AXIS_S2MM TDATA" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME S_AXIS_S2MM, FREQ_HZ 125000000, HAS_TKEEP 1, HAS_TLAST 1, HAS_TREADY 1, HAS_TSTRB 0, INSERT_VIP 0, LAYERED_METADATA undef, PHASE 0.000, TDATA_NUM_BYTES 16, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0" *) input [127:0]S_AXIS_S2MM_tdata;
   (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 S_AXIS_S2MM TKEEP" *) input [15:0]S_AXIS_S2MM_tkeep;
   (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 S_AXIS_S2MM TLAST" *) input S_AXIS_S2MM_tlast;
   (* X_INTERFACE_INFO = "xilinx.com:interface:axis:1.0 S_AXIS_S2MM TREADY" *) output S_AXIS_S2MM_tready;
@@ -1443,11 +1443,11 @@ module design_1
   wire PCIe_M_AXI_LITE_WVALID;
   wire PCIe_axi_aresetn;
   wire S01_ARESETN_0_1;
-  wire [127:0]S_AXIS_S2MM_1_TDATA;
-  wire [15:0]S_AXIS_S2MM_1_TKEEP;
-  wire S_AXIS_S2MM_1_TLAST;
-  wire S_AXIS_S2MM_1_TREADY;
-  wire S_AXIS_S2MM_1_TVALID;
+  wire [127:0]S_AXIS_S2MM_0_1_TDATA;
+  wire [15:0]S_AXIS_S2MM_0_1_TKEEP;
+  wire S_AXIS_S2MM_0_1_TLAST;
+  wire S_AXIS_S2MM_0_1_TREADY;
+  wire S_AXIS_S2MM_0_1_TVALID;
   wire [71:0]S_AXIS_S2MM_CMD_0_1_TDATA;
   wire S_AXIS_S2MM_CMD_0_1_TREADY;
   wire S_AXIS_S2MM_CMD_0_1_TVALID;
@@ -1530,14 +1530,14 @@ module design_1
   assign DDR3_reset_n = mig_7series_0_DDR3_RESET_N;
   assign DDR3_we_n = mig_7series_0_DDR3_WE_N;
   assign S01_ARESETN_0_1 = S01_ARESETN;
-  assign S_AXIS_S2MM_1_TDATA = S_AXIS_S2MM_tdata[127:0];
-  assign S_AXIS_S2MM_1_TKEEP = S_AXIS_S2MM_tkeep[15:0];
-  assign S_AXIS_S2MM_1_TLAST = S_AXIS_S2MM_tlast;
-  assign S_AXIS_S2MM_1_TVALID = S_AXIS_S2MM_tvalid;
+  assign S_AXIS_S2MM_0_1_TDATA = S_AXIS_S2MM_tdata[127:0];
+  assign S_AXIS_S2MM_0_1_TKEEP = S_AXIS_S2MM_tkeep[15:0];
+  assign S_AXIS_S2MM_0_1_TLAST = S_AXIS_S2MM_tlast;
+  assign S_AXIS_S2MM_0_1_TVALID = S_AXIS_S2MM_tvalid;
   assign S_AXIS_S2MM_CMD_0_1_TDATA = S_AXIS_S2MM_CMD_tdata[71:0];
   assign S_AXIS_S2MM_CMD_0_1_TVALID = S_AXIS_S2MM_CMD_tvalid;
   assign S_AXIS_S2MM_CMD_tready = S_AXIS_S2MM_CMD_0_1_TREADY;
-  assign S_AXIS_S2MM_tready = S_AXIS_S2MM_1_TREADY;
+  assign S_AXIS_S2MM_tready = S_AXIS_S2MM_0_1_TREADY;
   assign axi_aclk = xdma_0_axi_aclk;
   assign axi_aresetn = PCIe_axi_aresetn;
   assign gpio2_io_i_0_1 = gpio2_io_i[31:0];
@@ -1603,11 +1603,11 @@ module design_1
         .S_AXIS_S2MM_CMD_tdata(S_AXIS_S2MM_CMD_0_1_TDATA),
         .S_AXIS_S2MM_CMD_tready(S_AXIS_S2MM_CMD_0_1_TREADY),
         .S_AXIS_S2MM_CMD_tvalid(S_AXIS_S2MM_CMD_0_1_TVALID),
-        .S_AXIS_S2MM_tdata(S_AXIS_S2MM_1_TDATA),
-        .S_AXIS_S2MM_tkeep(S_AXIS_S2MM_1_TKEEP),
-        .S_AXIS_S2MM_tlast(S_AXIS_S2MM_1_TLAST),
-        .S_AXIS_S2MM_tready(S_AXIS_S2MM_1_TREADY),
-        .S_AXIS_S2MM_tvalid(S_AXIS_S2MM_1_TVALID),
+        .S_AXIS_S2MM_tdata(S_AXIS_S2MM_0_1_TDATA),
+        .S_AXIS_S2MM_tkeep(S_AXIS_S2MM_0_1_TKEEP),
+        .S_AXIS_S2MM_tlast(S_AXIS_S2MM_0_1_TLAST),
+        .S_AXIS_S2MM_tready(S_AXIS_S2MM_0_1_TREADY),
+        .S_AXIS_S2MM_tvalid(S_AXIS_S2MM_0_1_TVALID),
         .axi_aclk(xdma_0_axi_aclk),
         .axi_aresetn(S01_ARESETN_0_1),
         .s2mm_err(Datamover_s2mm_err_0),

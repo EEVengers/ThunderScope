@@ -559,7 +559,7 @@ input wire sys_rst_n;
     .c_pcie_cap_slot_implemented("FALSE"),
     .mps("010"),
     .cmps("2"),
-    .ext_tag_fld_sup("TRUE"),
+    .ext_tag_fld_sup("FALSE"),
     .c_dev_control_ext_tag_default("FALSE"),
     .phantm_func_sup("00"),
     .c_phantom_functions("0"),

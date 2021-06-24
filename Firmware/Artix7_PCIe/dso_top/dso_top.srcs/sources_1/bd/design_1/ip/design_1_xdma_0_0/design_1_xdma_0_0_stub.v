@@ -1,10 +1,10 @@
 // Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
-// Date        : Tue Mar 23 16:49:05 2021
+// Date        : Sun May 16 19:27:07 2021
 // Host        : DESKTOP-J72MK93 running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode synth_stub -rename_top design_1_xdma_0_0 -prefix
-//               design_1_xdma_0_0_ design_1_xdma_0_0_stub.v
+// Command     : write_verilog -force -mode synth_stub
+//               c:/Users/Aleksa/Documents/FPGA_Dev/Artix7_PCIe/DDR3_Optimization/dso_top/dso_top.srcs/sources_1/bd/design_1/ip/design_1_xdma_0_0/design_1_xdma_0_0_stub.v
 // Design      : design_1_xdma_0_0
 // Purpose     : Stub declaration of top-level module interface
 // Device      : xc7a100tfgg484-2
@@ -25,8 +25,9 @@ module design_1_xdma_0_0(sys_clk, sys_rst_n, user_lnk_up, pci_exp_txp,
   m_axil_awaddr, m_axil_awprot, m_axil_awvalid, m_axil_awready, m_axil_wdata, m_axil_wstrb, 
   m_axil_wvalid, m_axil_wready, m_axil_bvalid, m_axil_bresp, m_axil_bready, m_axil_araddr, 
   m_axil_arprot, m_axil_arvalid, m_axil_arready, m_axil_rdata, m_axil_rresp, m_axil_rvalid, 
-  m_axil_rready)
-/* synthesis syn_black_box black_box_pad_pin="sys_clk,sys_rst_n,user_lnk_up,pci_exp_txp[3:0],pci_exp_txn[3:0],pci_exp_rxp[3:0],pci_exp_rxn[3:0],axi_aclk,axi_aresetn,usr_irq_req[0:0],usr_irq_ack[0:0],msi_enable,msi_vector_width[2:0],m_axi_awready,m_axi_wready,m_axi_bid[3:0],m_axi_bresp[1:0],m_axi_bvalid,m_axi_arready,m_axi_rid[3:0],m_axi_rdata[127:0],m_axi_rresp[1:0],m_axi_rlast,m_axi_rvalid,m_axi_awid[3:0],m_axi_awaddr[63:0],m_axi_awlen[7:0],m_axi_awsize[2:0],m_axi_awburst[1:0],m_axi_awprot[2:0],m_axi_awvalid,m_axi_awlock,m_axi_awcache[3:0],m_axi_wdata[127:0],m_axi_wstrb[15:0],m_axi_wlast,m_axi_wvalid,m_axi_bready,m_axi_arid[3:0],m_axi_araddr[63:0],m_axi_arlen[7:0],m_axi_arsize[2:0],m_axi_arburst[1:0],m_axi_arprot[2:0],m_axi_arvalid,m_axi_arlock,m_axi_arcache[3:0],m_axi_rready,m_axil_awaddr[31:0],m_axil_awprot[2:0],m_axil_awvalid,m_axil_awready,m_axil_wdata[31:0],m_axil_wstrb[3:0],m_axil_wvalid,m_axil_wready,m_axil_bvalid,m_axil_bresp[1:0],m_axil_bready,m_axil_araddr[31:0],m_axil_arprot[2:0],m_axil_arvalid,m_axil_arready,m_axil_rdata[31:0],m_axil_rresp[1:0],m_axil_rvalid,m_axil_rready" */;
+  m_axil_rready, h2c_dsc_byp_ready_0, h2c_dsc_byp_src_addr_0, h2c_dsc_byp_dst_addr_0, 
+  h2c_dsc_byp_len_0, h2c_dsc_byp_ctl_0, h2c_dsc_byp_load_0)
+/* synthesis syn_black_box black_box_pad_pin="sys_clk,sys_rst_n,user_lnk_up,pci_exp_txp[3:0],pci_exp_txn[3:0],pci_exp_rxp[3:0],pci_exp_rxn[3:0],axi_aclk,axi_aresetn,usr_irq_req[0:0],usr_irq_ack[0:0],msi_enable,msi_vector_width[2:0],m_axi_awready,m_axi_wready,m_axi_bid[1:0],m_axi_bresp[1:0],m_axi_bvalid,m_axi_arready,m_axi_rid[1:0],m_axi_rdata[127:0],m_axi_rresp[1:0],m_axi_rlast,m_axi_rvalid,m_axi_awid[1:0],m_axi_awaddr[63:0],m_axi_awlen[7:0],m_axi_awsize[2:0],m_axi_awburst[1:0],m_axi_awprot[2:0],m_axi_awvalid,m_axi_awlock,m_axi_awcache[3:0],m_axi_wdata[127:0],m_axi_wstrb[15:0],m_axi_wlast,m_axi_wvalid,m_axi_bready,m_axi_arid[1:0],m_axi_araddr[63:0],m_axi_arlen[7:0],m_axi_arsize[2:0],m_axi_arburst[1:0],m_axi_arprot[2:0],m_axi_arvalid,m_axi_arlock,m_axi_arcache[3:0],m_axi_rready,m_axil_awaddr[31:0],m_axil_awprot[2:0],m_axil_awvalid,m_axil_awready,m_axil_wdata[31:0],m_axil_wstrb[3:0],m_axil_wvalid,m_axil_wready,m_axil_bvalid,m_axil_bresp[1:0],m_axil_bready,m_axil_araddr[31:0],m_axil_arprot[2:0],m_axil_arvalid,m_axil_arready,m_axil_rdata[31:0],m_axil_rresp[1:0],m_axil_rvalid,m_axil_rready,h2c_dsc_byp_ready_0,h2c_dsc_byp_src_addr_0[63:0],h2c_dsc_byp_dst_addr_0[63:0],h2c_dsc_byp_len_0[27:0],h2c_dsc_byp_ctl_0[15:0],h2c_dsc_byp_load_0" */;
   input sys_clk;
   input sys_rst_n;
   output user_lnk_up;
@@ -42,16 +43,16 @@ module design_1_xdma_0_0(sys_clk, sys_rst_n, user_lnk_up, pci_exp_txp,
   output [2:0]msi_vector_width;
   input m_axi_awready;
   input m_axi_wready;
-  input [3:0]m_axi_bid;
+  input [1:0]m_axi_bid;
   input [1:0]m_axi_bresp;
   input m_axi_bvalid;
   input m_axi_arready;
-  input [3:0]m_axi_rid;
+  input [1:0]m_axi_rid;
   input [127:0]m_axi_rdata;
   input [1:0]m_axi_rresp;
   input m_axi_rlast;
   input m_axi_rvalid;
-  output [3:0]m_axi_awid;
+  output [1:0]m_axi_awid;
   output [63:0]m_axi_awaddr;
   output [7:0]m_axi_awlen;
   output [2:0]m_axi_awsize;
@@ -65,7 +66,7 @@ module design_1_xdma_0_0(sys_clk, sys_rst_n, user_lnk_up, pci_exp_txp,
   output m_axi_wlast;
   output m_axi_wvalid;
   output m_axi_bready;
-  output [3:0]m_axi_arid;
+  output [1:0]m_axi_arid;
   output [63:0]m_axi_araddr;
   output [7:0]m_axi_arlen;
   output [2:0]m_axi_arsize;
@@ -94,4 +95,10 @@ module design_1_xdma_0_0(sys_clk, sys_rst_n, user_lnk_up, pci_exp_txp,
   input [1:0]m_axil_rresp;
   input m_axil_rvalid;
   output m_axil_rready;
+  output h2c_dsc_byp_ready_0;
+  input [63:0]h2c_dsc_byp_src_addr_0;
+  input [63:0]h2c_dsc_byp_dst_addr_0;
+  input [27:0]h2c_dsc_byp_len_0;
+  input [15:0]h2c_dsc_byp_ctl_0;
+  input h2c_dsc_byp_load_0;
 endmodule

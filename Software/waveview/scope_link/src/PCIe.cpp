@@ -139,8 +139,10 @@ void PCIeLink::Read(uint8_t* buff) {
         overflow_count = ((kbytes_4_moved & 0x3FFF0000)>>16);
         kbytes_4_moved = kbytes_4_moved & 0x0000FFFF;
         current_chunk = kbytes_4_moved / (1 << 11);
+        
+        if (overflow_count != 0)
+            INFO << "O V E R F L O W";
         //INFO << "error code: " << error_code;
-        //INFO << "overflow count: " << overflow_count;
         //INFO << "4kB Transfered: " << kbytes_4_moved;
         //INFO << "Current Chunk: " << current_chunk;
         if(last_chunk_read == -1) {
@@ -165,10 +167,14 @@ void PCIeLink::Read(uint8_t* buff) {
             }
         }
     }
+    if ((current_chunk - last_chunk_read != -31)&&(current_chunk - last_chunk_read != 1))
+        INFO << "M I S S E D       C H U N K";
+
     last_chunk_read = current_chunk;
     int64_t reading_offset = current_chunk * (1 << 23);
     //INFO << "Reading from current current chunk: " << current_chunk;
     //INFO << "Offset: " << reading_offset;
+    
     //Read the data from ddr3 memory
     _Read(c2h_0_handle,reading_offset,buff,1 << 23);
 }
@@ -206,8 +212,8 @@ void PCIeLink::Write(ScopeCommand command, void* val) {
         INFO << "Enabling Board";
         {
             _Write32(user_handle,DATAMOVER_REG_OUT,0);
-            currentBoardState.board_reg_out |= 0x0100; //acq->on fe->off
-            _Write32(user_handle,BOARD_REG_OUT,currentBoardState.board_reg_out);
+            currentBoardState.datamover_reg_out |= 0x01000000; //acq->on fe->off
+            _Write32(user_handle,DATAMOVER_REG_OUT,currentBoardState.datamover_reg_out);
         }
 
         INFO << "Enabling PLL";
@@ -230,8 +236,8 @@ void PCIeLink::Write(ScopeCommand command, void* val) {
                 _FIFO_WRITE(user_handle,data,4);
             }
 
-            currentBoardState.board_reg_out |= 0x0200;
-            _Write32(user_handle,BOARD_REG_OUT,currentBoardState.board_reg_out);
+            currentBoardState.datamover_reg_out |= 0x02000000;
+            _Write32(user_handle,DATAMOVER_REG_OUT,currentBoardState.datamover_reg_out);
         }
 
         INFO << "Enabling ADC";
@@ -267,8 +273,8 @@ void PCIeLink::Write(ScopeCommand command, void* val) {
         
         INFO << "Enabling the front end";
         {
-            currentBoardState.board_reg_out |= 0x0400; //fe->on
-            _Write32(user_handle,BOARD_REG_OUT,currentBoardState.board_reg_out);
+            currentBoardState.datamover_reg_out |= 0x04000000; //fe->on
+            _Write32(user_handle,DATAMOVER_REG_OUT,currentBoardState.datamover_reg_out);
             std::this_thread::sleep_for(std::chrono::milliseconds(5));
             //enable the pga
             for(int i = 0; i < 4; i++) {
@@ -540,31 +546,27 @@ void PCIeLink::_Write32(HANDLE hPCIE, long long address, uint32_t val) {
 }
 
 void PCIeLink::_Job() {
-
-    uint8_t* preBuff = (uint8_t*)malloc(sizeof(uint8_t) * BUFFER_SIZE);
+    bool priority = SetThreadPriority(GetCurrentThread(), THREAD_PRIORITY_TIME_CRITICAL);
+    INFO << "THREAD_PRIORITY_TIME_CRITICAL: " << priority;
     while(_run.load()) {
         while(_pause.load()) {
-            std::this_thread::sleep_for(std::chrono::milliseconds(2));
+            std::this_thread::sleep_for(std::chrono::microseconds(100)); 
         }
+        
+        //ClockTick1();
+
         //allocate a buffer
         buffer* buff;
         buff = bufferAllocator.allocate(1);
         bufferAllocator.construct(buff);
         //read from the PCIeLink
-        Read(preBuff);
-        for(int i = 0; i < BUFFER_SIZE; i++) {
-            if(preBuff[i] & 0x80) {
-                //postive
-                buff->data[i] = (int)(preBuff[i] & 0x7F);
-            } else {
-                //negative
-                buff->data[i] = (-128 + ((int)(preBuff[i] & 0x7F)));
-            }
-        }
+        Read((uint8_t*)buff->data);
         //push to queue
         outputQueue->push(buff);
+
+        //ClockTick2();
+        //PrintTimeDelta();
     }
-    free(preBuff);
 }
 
 PCIeLink::PCIeLink(boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> *outputQueue) {
@@ -622,8 +624,7 @@ PCIeLink::PCIeLink(boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<
     currentBoardState.dac[3][2] = 0x46;
 
     //init register values
-    currentBoardState.datamover_reg_out = 0x00;
-    currentBoardState.board_reg_out = 0xFF; // FOR FUCKS SAKE CHANGE THIS!
+    currentBoardState.datamover_reg_out = 0x00FF0000;
 
     //connect to the board and start the adc + read thread
     Connect();
@@ -638,8 +639,8 @@ PCIeLink::~PCIeLink() {
     _adc_power_down();
     //disable the front end and board power
     INFO << "Turning Off Power To Front End";
-    currentBoardState.board_reg_out = 0;
-    _Write32(user_handle,BOARD_REG_OUT,currentBoardState.board_reg_out);        
+    currentBoardState.datamover_reg_out = 0;
+    _Write32(user_handle,DATAMOVER_REG_OUT,currentBoardState.datamover_reg_out);        
 
     _pause.store(false);
     _run.store(false);
@@ -714,30 +715,30 @@ int PCIeLink::_ch_off(int ch_num){
 
 int PCIeLink::_dc_cpl(int ch_num){
     if (ch_num == 0)
-        currentBoardState.board_reg_out |= (1 << 4);
+        currentBoardState.datamover_reg_out |= (1 << 20);
     else if (ch_num == 1)
-        currentBoardState.board_reg_out |= (1 << 5);
+        currentBoardState.datamover_reg_out |= (1 << 21);
     else if (ch_num == 2)
-        currentBoardState.board_reg_out |= (1 << 6);
+        currentBoardState.datamover_reg_out |= (1 << 22);
     else if (ch_num == 3)
-        currentBoardState.board_reg_out |= (1 << 7);
+        currentBoardState.datamover_reg_out |= (1 << 23);
 
-    _Write32(user_handle,BOARD_REG_OUT,currentBoardState.board_reg_out);
+    _Write32(user_handle,DATAMOVER_REG_OUT,currentBoardState.datamover_reg_out);
 
     return 1;
 }
 
 int PCIeLink::_ac_cpl(int ch_num){
     if (ch_num == 0)
-        currentBoardState.board_reg_out &= ~(1 << 4);
+        currentBoardState.datamover_reg_out &= ~(1 << 20);
     else if (ch_num == 1)
-        currentBoardState.board_reg_out &= ~(1 << 5);
+        currentBoardState.datamover_reg_out &= ~(1 << 21);
     else if (ch_num == 2)
-        currentBoardState.board_reg_out &= ~(1 << 6);
+        currentBoardState.datamover_reg_out &= ~(1 << 22);
     else if (ch_num == 3)
-        currentBoardState.board_reg_out &= ~(1 << 7);
+        currentBoardState.datamover_reg_out &= ~(1 << 23);
 
-    _Write32(user_handle,BOARD_REG_OUT,currentBoardState.board_reg_out);
+    _Write32(user_handle,DATAMOVER_REG_OUT,currentBoardState.datamover_reg_out);
 
     return 1;
 }
@@ -747,23 +748,23 @@ int PCIeLink::_vdiv_set(int ch_num, int vdiv){
 
     if (vdiv <= 100){              //Attenuator relay on for higher v/divs
         if (ch_num == 0)
-            currentBoardState.board_reg_out |= (1 << 0);
+            currentBoardState.datamover_reg_out |= (1 << 16);
         else if (ch_num == 1)
-            currentBoardState.board_reg_out |= (1 << 1);
+            currentBoardState.datamover_reg_out |= (1 << 17);
         else if (ch_num == 2)
-            currentBoardState.board_reg_out |= (1 << 2);
+            currentBoardState.datamover_reg_out |= (1 << 18);
         else if (ch_num == 3)
-            currentBoardState.board_reg_out |= (1 << 3);
+            currentBoardState.datamover_reg_out |= (1 << 19);
     }
     else{                         //Attenuator relay off for lower v/divs
         if (ch_num == 0)
-            currentBoardState.board_reg_out &= ~(1 << 0);
+            currentBoardState.datamover_reg_out &= ~(1 << 16);
         else if (ch_num == 1)
-            currentBoardState.board_reg_out &= ~(1 << 1);
+            currentBoardState.datamover_reg_out &= ~(1 << 17);
         else if (ch_num == 2)
-            currentBoardState.board_reg_out &= ~(1 << 2);
+            currentBoardState.datamover_reg_out &= ~(1 << 18);
         else if (ch_num == 3)
-            currentBoardState.board_reg_out &= ~(1 << 3);
+            currentBoardState.datamover_reg_out &= ~(1 << 19);
     }
 
     if (vdiv == 10000 || vdiv == 100){
@@ -795,7 +796,7 @@ int PCIeLink::_vdiv_set(int ch_num, int vdiv){
         currentBoardState.pga[ch_num][3] |= 0x10;
     }
 
-    _Write32(user_handle,BOARD_REG_OUT,currentBoardState.board_reg_out);
+    _Write32(user_handle,DATAMOVER_REG_OUT,currentBoardState.datamover_reg_out);
     _FIFO_WRITE(user_handle,currentBoardState.pga[ch_num],sizeof(currentBoardState.pga[ch_num]));
 
     return 1;
@@ -888,7 +889,7 @@ int PCIeLink::_adc_ch_cfg(){
     _FIFO_WRITE(user_handle,currentBoardState.adc_in_sel_34,sizeof(currentBoardState.adc_in_sel_34));
 
     //write to datamover reg
-    _Write32(user_handle,DATAMOVER_REG_OUT,0);
+    _Write32(user_handle,DATAMOVER_REG_OUT,(currentBoardState.datamover_reg_out & ~(0x0F)));
     std::this_thread::sleep_for(std::chrono::milliseconds(5));
     _Write32(user_handle,DATAMOVER_REG_OUT,currentBoardState.datamover_reg_out);
 

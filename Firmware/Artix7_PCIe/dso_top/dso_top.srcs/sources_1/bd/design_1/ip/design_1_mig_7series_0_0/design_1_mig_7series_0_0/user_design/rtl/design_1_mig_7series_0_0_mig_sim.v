@@ -117,7 +117,7 @@ module design_1_mig_7series_0_0_mig #
                                       //            for distributed Addressing.
       
    //parameter nBANK_MACHS           = 4,
-   parameter nBANK_MACHS           = 8,
+   parameter nBANK_MACHS           = 3,
    parameter RANKS                 = 1,
                                      // # of Ranks.
    parameter ODT_WIDTH             = 1,
@@ -387,18 +387,18 @@ module design_1_mig_7series_0_0_mig #
    //***************************************************************************
    parameter IBUF_LPWR_MODE        = "OFF",
                                      // to phy_top
-   parameter DATA_IO_IDLE_PWRDWN   = "OFF",
+   parameter DATA_IO_IDLE_PWRDWN   = "ON",
                                      // # = "ON", "OFF"
    parameter BANK_TYPE             = "HR_IO",
                                      // # = "HP_IO", "HPL_IO", "HR_IO", "HRL_IO"
-   parameter DATA_IO_PRIM_TYPE     = "DEFAULT",
+   parameter DATA_IO_PRIM_TYPE     = "HR_LP",
                                      // # = "HP_LP", "HR_LP", "DEFAULT"
    parameter CKE_ODT_AUX           = "FALSE",
    parameter USER_REFRESH          = "OFF",
    parameter WRLVL                 = "ON",
                                      // # = "ON" - DDR3 SDRAM
                                      //   = "OFF" - DDR2 SDRAM.
-   parameter ORDERING              = "NORM",
+   parameter ORDERING              = "STRICT",
                                      // # = "NORM", "STRICT", "RELAXED".
    parameter CALIB_ROW_ADD         = 16'h0000,
                                      // Calibration row address will be used for
