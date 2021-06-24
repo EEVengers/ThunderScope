@@ -4,6 +4,9 @@ import './../../../css/sidebar/widgets/horizontalWidget.css';
 import ControlMode from '../../../configuration/enums/controlMode';
 import TimeUnit from '../../../configuration/enums/timeUnit';
 import { Plumber } from '../../../util/plumber';
+import Box from '@material-ui/core/Box';
+import Button from '@material-ui/core/Button';
+import ButtonGroup from '@material-ui/core/ButtonGroup';
 
 class HorizontalWidget extends React.Component<any, any> {
 
@@ -49,17 +52,18 @@ class HorizontalWidget extends React.Component<any, any> {
 
   render() {
     return (
-      <div className="HorizontalWidget">
-        <div className="WidgetTitle">
+      <Box className="HorizontalWidget">
+        <Box className="WidgetTitle">
           Horizontal
-        </div>
+        </Box>
 
-        <div className="TimeBaseTitle">
+        <Box className="TimeBaseTitle">
           Time Base
-        </div>
+        </Box>
 
-        <div className="TimeBaseMode">
-          <button
+        <ButtonGroup variant="contained" className="TimeBaseMode">
+          <Button
+            variant="contained"
             className="CoarseControlButton"
             onClick={() => this.changeTimeBaseMode(ControlMode.Coarse)}>
               <label
@@ -67,8 +71,9 @@ class HorizontalWidget extends React.Component<any, any> {
                 style={{fontWeight: this.props.horizontalWidget.horizontalTimeBase.mode ===  ControlMode.Coarse ? "bold" : "normal"}}>
                 Coarse
               </label>
-          </button>
-          <button
+          </Button>
+          <Button
+            variant="contained"
             className="FineControlButton"
             onClick={() => this.changeTimeBaseMode(ControlMode.Fine)}>
               <label
@@ -76,15 +81,18 @@ class HorizontalWidget extends React.Component<any, any> {
                   style={{fontWeight: this.props.horizontalWidget.horizontalTimeBase.mode ===  ControlMode.Fine ? "bold" : "normal"}}>
                   Fine
               </label>
-          </button>
-        </div>
+          </Button>
+        </ButtonGroup>
 
-        <div className="HorizontalWidgetAdjustBlock-HorizontalTimeBase">
-          <button
+        <Box className="HorizontalWidgetAdjustBlock-HorizontalTimeBase">
+          <Button
+            variant="contained"
+            size="small"
             className="MinusButton"
+            style={{maxWidth: '30px', maxHeight: '30px', minWidth: '30px', minHeight: '30px'}}
             onClick={() => this.props.horizontalWidget.horizontalTimeBase.mode === ControlMode.Coarse ? this.decrementTimeBase() : this.decrementTimeBaseFine()}>
             -
-          </button>
+          </Button>
           <label
             className="AdjustValueBlockHorizontalTimeBase"
             style={{color: "white"}}
@@ -94,16 +102,19 @@ class HorizontalWidget extends React.Component<any, any> {
             {this.props.horizontalWidget.horizontalTimeBase.mode === ControlMode.Fine && this.props.horizontalWidget.horizontalTimeBase.fine.value.toString()}
             {this.props.horizontalWidget.horizontalTimeBase.mode === ControlMode.Fine && this.props.horizontalWidget.horizontalTimeBase.fine.unit.toString() + "/div"}
           </label>
-          <button
+          <Button
+            variant="contained"
+            size="small"
             className="PlusButton"
+            style={{maxWidth: '30px', maxHeight: '30px', minWidth: '30px', minHeight: '30px'}}
             onClick={() => this.props.horizontalWidget.horizontalTimeBase.mode === ControlMode.Coarse ? this.incrementTimeBase() : this.incrementTimeBaseFine()}>
             +
-          </button>
-        </div>
+          </Button>
+        </Box>
 
         {this.props.horizontalWidget.horizontalTimeBase.mode === ControlMode.Fine &&
-        <div className="FineModeUnitButtons">
-        <button
+        <ButtonGroup variant="contained" className="FineModeUnitButtons">
+        <Button
           className="NanoSecondButton"
           onClick={() => this.changeTimeBaseUnit(TimeUnit.NanoSecond)}>
           <label
@@ -111,8 +122,8 @@ class HorizontalWidget extends React.Component<any, any> {
             style={{fontWeight: this.props.horizontalWidget.horizontalTimeBase.fine.unit === TimeUnit.NanoSecond ? "bold" : "normal"}}>
             {TimeUnit.NanoSecond}
           </label>
-        </button>
-        <button
+        </Button>
+        <Button
           className="MicroSecondButton"
           onClick={() => this.changeTimeBaseUnit(TimeUnit.MicroSecond)}>
           <label
@@ -120,8 +131,8 @@ class HorizontalWidget extends React.Component<any, any> {
             style={{fontWeight: this.props.horizontalWidget.horizontalTimeBase.fine.unit === TimeUnit.MicroSecond ? "bold" : "normal"}}>
             {TimeUnit.MicroSecond}
           </label>
-        </button>
-        <button
+        </Button>
+        <Button
           className="MilliSecondButton"
           onClick={() => this.changeTimeBaseUnit(TimeUnit.MilliSecond)}>
           <label
@@ -129,8 +140,8 @@ class HorizontalWidget extends React.Component<any, any> {
             style={{fontWeight: this.props.horizontalWidget.horizontalTimeBase.fine.unit === TimeUnit.MilliSecond ? "bold" : "normal"}}>
             {TimeUnit.MilliSecond}
           </label>
-        </button>
-        <button
+        </Button>
+        <Button
           className="SecondButton"
           onClick={() => this.changeTimeBaseUnit(TimeUnit.Second)}>
           <label
@@ -138,34 +149,40 @@ class HorizontalWidget extends React.Component<any, any> {
             style={{fontWeight: this.props.horizontalWidget.horizontalTimeBase.fine.unit === TimeUnit.Second ? "bold" : "normal"}}>
             {TimeUnit.Second}
           </label>
-        </button>
-        </div>
+        </Button>
+        </ButtonGroup>
         }
 
 
-        <div className="HorizontalOffsetTitle">
+        <Box className="HorizontalOffsetTitle">
           Offset
-        </div>
-        <div className="HorizontalWidgetAdjustBlock-HorizontalOffset">
-          <button
+        </Box>
+        <Box className="HorizontalWidgetAdjustBlock-HorizontalOffset">
+          <Button
             className="MinusButton"
+            variant="contained"
+            size="small"
+            style={{maxWidth: '30px', maxHeight: '30px', minWidth: '30px', minHeight: '30px'}}
             onClick={() => this.decrementOffset()}>
             -
-          </button>
+          </Button>
           <label
             className="AdjustValueBlockHorizontalOffset"
             style={{color: "white"}}
           >
             {this.props.horizontalWidget.horizontalOffset.value.toString()}{this.props.horizontalWidget.horizontalOffset.unit}
           </label>
-          <button
+          <Button
             className="PlusButton"
+            variant="contained"
+            size="small"
+            style={{maxWidth: '30px', maxHeight: '30px', minWidth: '30px', minHeight: '30px'}}
             onClick={() => this.incrementOffset()}>
             +
-          </button>
-        </div>
+          </Button>
+        </Box>
 
-      </div>
+      </Box>
     )
   }
 }

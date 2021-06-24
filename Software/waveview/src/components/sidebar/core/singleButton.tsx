@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import './../../../css/sidebar/core/singleButton.css';
 import Graph from '../../graph/graph';
 import MeasurementsWidget from '../widgets/measurementsWidget';
+import Button from '@material-ui/core/Button';
+import DefaultColors from '../../../configuration/enums/defaultColors';
 
 class SingleButton extends React.Component<any, any> {
 
@@ -21,15 +23,16 @@ class SingleButton extends React.Component<any, any> {
   render() {
     return (
       <div className={"SingleButtonComponent"}>
-        <button
+        <Button
           className={"SingleButton"}
+          style={{background: DefaultColors.SingleButton}}
           onClick={() => this.toggleSingleMode()}
         >
           <label
             className={"SingleButtonText"}>
             Single
           </label>
-        </button>
+        </Button>
       </div>
     )
   }

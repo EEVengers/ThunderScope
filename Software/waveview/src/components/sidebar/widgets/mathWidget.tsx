@@ -5,6 +5,10 @@ import '../../../css/sidebar/widgets/mathWidget.css';
 
 import { Plumber } from '../../../util/plumber';
 
+import Box from '@material-ui/core/Box';
+import Button from '@material-ui/core/Button';
+import ButtonGroup from '@material-ui/core/ButtonGroup';
+
 class TriggerWidget extends React.Component<any, any> {
 
   toggleMathMode = (mathEnabled: boolean) => {
@@ -39,17 +43,17 @@ class TriggerWidget extends React.Component<any, any> {
 
   render() {
     return (
-      <div className="MathWidget">
+      <Box className="MathWidget">
 
-      <div className="WidgetTitle">
+      <Box className="WidgetTitle">
         Math
-      </div>
+      </Box>
 
-      <div className="MathModeTitle">
+      <Box className="MathModeTitle">
         Math Mode
-      </div>
-      <div className="MathModeButtons">
-        <button
+      </Box>
+      <ButtonGroup variant="contained" className="MathModeButtons">
+        <Button
           className="OnButton"
           onClick={() => this.toggleMathMode(true)}>
           <label
@@ -57,8 +61,8 @@ class TriggerWidget extends React.Component<any, any> {
             style={{fontWeight: this.props.mathWidget.mathEnabled === true ? "bold" : "normal"}}>
             ON
           </label>
-        </button>
-        <button
+        </Button>
+        <Button
           className="OffButton"
           onClick={() => this.toggleMathMode(false)}>
           <label
@@ -66,17 +70,17 @@ class TriggerWidget extends React.Component<any, any> {
             style={{fontWeight: this.props.mathWidget.mathEnabled === false ? "bold" : "normal"}}>
             OFF
           </label>
-        </button>
-      </div>
+        </Button>
+      </ButtonGroup>
 
       {this.props.mathWidget.mathEnabled === true &&
-      <div className="Channel1Title">
+      <Box className="Channel1Title">
         Channel 1
-      </div>
+      </Box>
       }
       {this.props.mathWidget.mathEnabled === true &&
-      <div className="ChannelSelectionButtons">
-        <button
+      <ButtonGroup variant="contained" className="ChannelSelectionButtons">
+        <Button
           className="Channel1Button"
           onClick={() => this.changeChannel1(1)}>
           <label
@@ -84,8 +88,8 @@ class TriggerWidget extends React.Component<any, any> {
             style={{color: this.props.mathWidget.channel1 === 1 ? this.props.settings.colors.channel[0] : "black"}}>
             CH1
           </label>
-        </button>
-        <button
+        </Button>
+        <Button
           className="Channel2Button"
           onClick={() => this.changeChannel1(2)}>
           <label
@@ -93,8 +97,8 @@ class TriggerWidget extends React.Component<any, any> {
             style={{color: this.props.mathWidget.channel1 === 2 ? this.props.settings.colors.channel[1] : "black"}}>
             CH2
           </label>
-        </button>
-        <button
+        </Button>
+        <Button
           className="Channel3Button"
           onClick={() => this.changeChannel1(3)}>
           <label
@@ -102,8 +106,8 @@ class TriggerWidget extends React.Component<any, any> {
             style={{color: this.props.mathWidget.channel1 === 3 ? this.props.settings.colors.channel[2] : "black"}}>
             CH3
           </label>
-        </button>
-        <button
+        </Button>
+        <Button
           className="Channel4Button"
           onClick={() => this.changeChannel1(4)}>
           <label
@@ -111,18 +115,18 @@ class TriggerWidget extends React.Component<any, any> {
             style={{color: this.props.mathWidget.channel1 === 4 ? this.props.settings.colors.channel[3] : "black"}}>
             CH4
           </label>
-        </button>
-      </div>
+        </Button>
+      </ButtonGroup>
       }
 
       {this.props.mathWidget.mathEnabled === true &&
-      <div className="OperatorTitle">
+      <Box className="OperatorTitle">
         Operation
-      </div>
+      </Box>
       }
       {this.props.mathWidget.mathEnabled === true &&
-      <div className="OperatorButtons">
-        <button
+      <ButtonGroup variant="contained" className="OperatorButtons">
+        <Button
           className="AdditionButton"
           onClick={() => this.changeOperator(MathOperators.Addition)}>
           <label
@@ -130,8 +134,8 @@ class TriggerWidget extends React.Component<any, any> {
             style={{fontWeight: this.props.mathWidget.mathOperator === MathOperators.Addition ? "bold" : "normal"}}>
             ADD ({MathOperators.Addition})
           </label>
-        </button>
-        <button
+        </Button>
+        <Button
           className="SubtractionButton"
           onClick={() => this.changeOperator(MathOperators.Subtraction)}>
           <label
@@ -139,18 +143,18 @@ class TriggerWidget extends React.Component<any, any> {
             style={{fontWeight: this.props.mathWidget.mathOperator === MathOperators.Subtraction ? "bold" : "normal"}}>
             SUBTRACT ({MathOperators.Subtraction})
           </label>
-        </button>
-      </div>
+        </Button>
+      </ButtonGroup>
       }
 
       {this.props.mathWidget.mathEnabled === true &&
-      <div className="Channel2Title">
+      <Box className="Channel2Title">
         Channel 2
-      </div>
+      </Box>
       }
       {this.props.mathWidget.mathEnabled === true &&
-      <div className="ChannelSelectionButtons">
-        <button
+      <ButtonGroup variant="contained" className="ChannelSelectionButtons">
+        <Button
           className="Channel1Button"
           onClick={() => this.changeChannel2(1)}>
           <label
@@ -158,8 +162,8 @@ class TriggerWidget extends React.Component<any, any> {
             style={{color: this.props.mathWidget.channel2 === 1 ? this.props.settings.colors.channel[0] : "black"}}>
             CH1
           </label>
-        </button>
-        <button
+        </Button>
+        <Button
           className="Channel2Button"
           onClick={() => this.changeChannel2(2)}>
           <label
@@ -167,8 +171,8 @@ class TriggerWidget extends React.Component<any, any> {
             style={{color: this.props.mathWidget.channel2 === 2 ? this.props.settings.colors.channel[1] : "black"}}>
             CH2
           </label>
-        </button>
-        <button
+        </Button>
+        <Button
           className="Channel3Button"
           onClick={() => this.changeChannel2(3)}>
           <label
@@ -176,8 +180,8 @@ class TriggerWidget extends React.Component<any, any> {
             style={{color: this.props.mathWidget.channel2 === 3 ? this.props.settings.colors.channel[2] : "black"}}>
             CH3
           </label>
-        </button>
-        <button
+        </Button>
+        <Button
           className="Channel4Button"
           onClick={() => this.changeChannel2(4)}>
           <label
@@ -185,11 +189,11 @@ class TriggerWidget extends React.Component<any, any> {
             style={{color: this.props.mathWidget.channel2 === 4 ? this.props.settings.colors.channel[3] : "black"}}>
             CH4
           </label>
-        </button>
-      </div>
+        </Button>
+      </ButtonGroup>
       }
 
-      </div>
+      </Box>
     )
   }
 }

@@ -10,6 +10,10 @@ import { setChHelper } from '../../../util/setChHelper';
 import CMD from '../../../configuration/enums/cmd';
 import { Plumber, PlumberArgs } from '../../../util/plumber';
 
+import Box from '@material-ui/core/Box';
+import Button from '@material-ui/core/Button';
+import ButtonGroup from '@material-ui/core/ButtonGroup';
+
 class VerticalWidget extends React.Component<any, any> {
    // Active Channel
   changeChannel = (channelNumber: number) => {
@@ -87,16 +91,16 @@ class VerticalWidget extends React.Component<any, any> {
 
   render() {
     return (
-      <div className="VerticalWidget">
-        <div className="WidgetTitle">
+      <Box className="VerticalWidget">
+        <Box className="WidgetTitle">
           Vertical
-        </div>
+        </Box>
 
-      <div className="ChannelTitle">
+      <Box className="ChannelTitle">
         Channel
-      </div>
-      <div className="ChannelSelectionButtons">
-        <button
+      </Box>
+      <ButtonGroup variant="contained" className="ChannelSelectionButtons">
+        <Button
           className="Channel1Button"
           onClick={() => this.props.verticalWidget.settings[0].status && this.changeChannel(1)}
           onDoubleClick={() => this.changeChannelStatus(0)}>
@@ -105,8 +109,8 @@ class VerticalWidget extends React.Component<any, any> {
             style={{color: this.props.verticalWidget.settings[0].status === 1 ? this.props.settings.colors.channel[0] : "black"}}>
             CH1
           </label>
-        </button>
-        <button
+        </Button>
+        <Button
           className="Channel2Button"
           onClick={() => this.props.verticalWidget.settings[1].status && this.changeChannel(2)}
           onDoubleClick={() => this.changeChannelStatus(1)}>
@@ -115,8 +119,8 @@ class VerticalWidget extends React.Component<any, any> {
             style={{color: this.props.verticalWidget.settings[1].status === 1 ? this.props.settings.colors.channel[1] : "black"}}>
             CH2
           </label>
-        </button>
-        <button
+        </Button>
+        <Button
           className="Channel3Button"
           onClick={() => this.props.verticalWidget.settings[2].status && this.changeChannel(3)}
           onDoubleClick={() => this.changeChannelStatus(2)}>
@@ -125,8 +129,8 @@ class VerticalWidget extends React.Component<any, any> {
             style={{color: this.props.verticalWidget.settings[2].status === 1 ? this.props.settings.colors.channel[2]: "black"}}>
             CH3
           </label>
-        </button>
-        <button
+        </Button>
+        <Button
           className="Channel4Button"
           onClick={() => this.props.verticalWidget.settings[3].status && this.changeChannel(4)}
           onDoubleClick={() => this.changeChannelStatus(3)}>
@@ -135,14 +139,15 @@ class VerticalWidget extends React.Component<any, any> {
             style={{color: this.props.verticalWidget.settings[3].status === 1 ? this.props.settings.colors.channel[3] : "black"}}>
             CH4
           </label>
-        </button>
-      </div>
+        </Button>
+      </ButtonGroup>
 
-      <div className="DivisionTitle">
+      <Box className="DivisionTitle">
         Division
-      </div>
-      <div className="DivisionMode">
-          <button
+      </Box>
+      <ButtonGroup variant="contained" className="DivisionMode">
+          <Button
+            variant="contained"
             className="CoarseControlButton"
             onClick={() => this.changeControlMode(ControlMode.Coarse)}>
               <label
@@ -150,8 +155,9 @@ class VerticalWidget extends React.Component<any, any> {
                 style={{fontWeight: this.props.verticalWidget.settings[this.props.verticalWidget.activeChannel-1].controlMode ===  ControlMode.Coarse ? "bold" : "normal"}}>
                 Coarse
               </label>
-          </button>
-          <button
+          </Button>
+          <Button
+            variant="contained"
             className="FineControlButton"
             onClick={() => this.changeControlMode(ControlMode.Fine)}>
               <label
@@ -159,15 +165,18 @@ class VerticalWidget extends React.Component<any, any> {
                   style={{fontWeight: this.props.verticalWidget.settings[this.props.verticalWidget.activeChannel-1].controlMode ===  ControlMode.Fine ? "bold" : "normal"}}>
                   Fine
               </label>
-          </button>
-      </div>
+          </Button>
+      </ButtonGroup>
 
-      <div className="VerticalWidgetAdjustBlock-TimePerDivision">
-        <button
+      <Box className="VerticalWidgetAdjustBlock-TimePerDivision">
+        <Button
+          variant="contained"
+          size="small"
           className="MinusButton"
+          style={{maxWidth: '30px', maxHeight: '30px', minWidth: '30px', minHeight: '30px'}}
           onClick={() => this.props.verticalWidget.settings[this.props.verticalWidget.activeChannel-1].controlMode === ControlMode.Coarse ? this.decrementTimePerDivision() : this.decrementTimePerDivisionFine()}>
           -
-        </button>
+        </Button>
         <label
           className="AdjustValueBlockTimePerDivision"
           style={{color: this.props.settings.colors.channel[this.props.verticalWidget.activeChannel-1]}}
@@ -181,16 +190,19 @@ class VerticalWidget extends React.Component<any, any> {
               : this.props.verticalWidget.timePerDivision[this.props.verticalWidget.activeChannel-1].fine.x10value.toString())
             + this.props.verticalWidget.timePerDivision[this.props.verticalWidget.activeChannel-1].fine.unit.toString() + "/div"}
         </label>
-        <button
+        <Button
+          variant="contained"
+          size="small"
           className="PlusButton"
+          style={{maxWidth: '30px', maxHeight: '30px', minWidth: '30px', minHeight: '30px'}}
           onClick={() => this.props.verticalWidget.settings[this.props.verticalWidget.activeChannel-1].controlMode === ControlMode.Coarse ? this.incrementTimePerDivision() : this.incrementTimePerDivisionFine()}>
           +
-        </button>
-      </div>
+        </Button>
+      </Box>
 
       {this.props.verticalWidget.settings[this.props.verticalWidget.activeChannel-1].controlMode === ControlMode.Fine &&
-        <div className="FineModeUnitButtons">
-        <button
+        <ButtonGroup variant="contained" className="FineModeUnitButtons">
+        <Button
           className="NanoVoltButtonVertical"
           onClick={() => this.changeDivisionUnit(VoltageUnit.NanoVolt)}>
           <label
@@ -198,8 +210,8 @@ class VerticalWidget extends React.Component<any, any> {
             style={{fontWeight: this.props.verticalWidget.timePerDivision[this.props.verticalWidget.activeChannel-1].fine.unit === VoltageUnit.NanoVolt? "bold" : "normal"}}>
             {VoltageUnit.NanoVolt}
           </label>
-        </button>
-        <button
+        </Button>
+        <Button
           className="MicroVoltButton"
           onClick={() => this.changeDivisionUnit(VoltageUnit.MicroVolt)}>
           <label
@@ -207,8 +219,8 @@ class VerticalWidget extends React.Component<any, any> {
             style={{fontWeight: this.props.verticalWidget.timePerDivision[this.props.verticalWidget.activeChannel-1].fine.unit === VoltageUnit.MicroVolt? "bold" : "normal"}}>
             {VoltageUnit.MicroVolt}
           </label>
-        </button>
-        <button
+        </Button>
+        <Button
           className="MilliVoltButton"
           onClick={() => this.changeDivisionUnit(VoltageUnit.MilliVolt)}>
           <label
@@ -216,8 +228,8 @@ class VerticalWidget extends React.Component<any, any> {
             style={{fontWeight: this.props.verticalWidget.timePerDivision[this.props.verticalWidget.activeChannel-1].fine.unit === VoltageUnit.MilliVolt ? "bold" : "normal"}}>
             {VoltageUnit.MilliVolt}
           </label>
-        </button>
-        <button
+        </Button>
+        <Button
           className="VoltButton"
           onClick={() => this.changeDivisionUnit(VoltageUnit.Volt)}>
           <label
@@ -225,19 +237,22 @@ class VerticalWidget extends React.Component<any, any> {
             style={{fontWeight: this.props.verticalWidget.timePerDivision[this.props.verticalWidget.activeChannel-1].fine.unit === VoltageUnit.Volt ? "bold" : "normal"}}>
             {VoltageUnit.Volt}
           </label>
-        </button>
-        </div>
+        </Button>
+        </ButtonGroup>
         }
 
-      <div className="OffsetTitle">
+      <Box className="OffsetTitle">
         Offset
-      </div>
-      <div className="VerticalWidgetAdjustBlock-VerticalOffset">
-        <button
+      </Box>
+      <Box className="VerticalWidgetAdjustBlock-VerticalOffset">
+        <Button
+          variant="contained"
+          size="small"
           className="MinusButton"
+          style={{maxWidth: '30px', maxHeight: '30px', minWidth: '30px', minHeight: '30px'}}
           onClick={() => this.decrementVerticalOffset()}>
           -
-        </button>
+        </Button>
         <label
           className="AdjustValueBlockVerticalOffset"
           style={{color: this.props.settings.colors.channel[this.props.verticalWidget.activeChannel-1]}}
@@ -245,18 +260,21 @@ class VerticalWidget extends React.Component<any, any> {
           {this.props.verticalWidget.verticalOffset[this.props.verticalWidget.activeChannel-1].value}
           {this.props.verticalWidget.verticalOffset[this.props.verticalWidget.activeChannel-1].unit}
         </label>
-        <button
+        <Button
+          variant="contained"
+          size="small"
           className="PlusButton"
+          style={{maxWidth: '30px', maxHeight: '30px', minWidth: '30px', minHeight: '30px'}}
           onClick={() => this.incrementVerticalOffset()}>
           +
-        </button>
-      </div>
+        </Button>
+      </Box>
 
-      <div className="CouplingTitle">
+      <Box className="CouplingTitle">
         Coupling
-      </div>
-      <div className="VerticalWidgetCouplingButtons">
-        <button
+      </Box>
+      <ButtonGroup variant="contained" className="VerticalWidgetCouplingButtons">
+        <Button
           className="AC-Button"
           onClick={() => this.changeCouplingMode(MeasurementType.AC)}>
           <label
@@ -264,8 +282,8 @@ class VerticalWidget extends React.Component<any, any> {
             style={{fontWeight: this.props.verticalWidget.settings[this.props.verticalWidget.activeChannel-1].coupling === MeasurementType.AC ? "bold" : "normal"}}>
             {MeasurementType.AC}
           </label>
-        </button>
-        <button
+        </Button>
+        <Button
           className="DC-Button"
           onClick={() => this.changeCouplingMode(MeasurementType.DC)}>
           <label
@@ -273,14 +291,14 @@ class VerticalWidget extends React.Component<any, any> {
             style={{fontWeight: this.props.verticalWidget.settings[this.props.verticalWidget.activeChannel-1].coupling === MeasurementType.DC ? "bold" : "normal"}}>
             {MeasurementType.DC}
           </label>
-        </button>
-      </div>
+        </Button>
+      </ButtonGroup>
 
-      <div className="ProbeTitle">
+      <Box className="ProbeTitle">
         Probe Mode
-      </div>
-      <div className="VerticalWidgetProbeButtons">
-        <button
+      </Box>
+      <ButtonGroup variant="contained" className="VerticalWidgetProbeButtons">
+        <Button
           className="x1-Button"
           onClick={() => this.changeProbeMode(ProbeMode.x1)}>
           <label
@@ -288,8 +306,8 @@ class VerticalWidget extends React.Component<any, any> {
             style={{fontWeight: this.props.verticalWidget.settings[this.props.verticalWidget.activeChannel-1].probeMode === ProbeMode.x1 ? "bold" : "normal"}}>
             x1
           </label>
-        </button>
-        <button
+        </Button>
+        <Button
           className="x10-Button"
           onClick={() => this.changeProbeMode(ProbeMode.x10)}>
           <label
@@ -297,14 +315,14 @@ class VerticalWidget extends React.Component<any, any> {
             style={{fontWeight: this.props.verticalWidget.settings[this.props.verticalWidget.activeChannel-1].probeMode === ProbeMode.x10 ? "bold" : "normal"}}>
             x10
           </label>
-        </button>
-      </div>
+        </Button>
+      </ButtonGroup>
 
-      <div className="BandwidthTitle">
+      <Box className="BandwidthTitle">
         Bandwidth
-      </div>
-      <div className="VerticalWidgetBandwidthButtons">
-        <button
+      </Box>
+      <ButtonGroup variant="contained" className="VerticalWidgetBandwidthButtons">
+        <Button
           className="20MHz-Button"
           onClick={() => this.changeBandwidth(20)}>
           <label
@@ -312,8 +330,8 @@ class VerticalWidget extends React.Component<any, any> {
             style={{fontWeight: this.props.verticalWidget.settings[this.props.verticalWidget.activeChannel-1].bandwidth === 20 ? "bold" : "normal"}}>
             20MHz
           </label>
-        </button>
-        <button
+        </Button>
+        <Button
           className="100MHz-Button"
           onClick={() => this.changeBandwidth(100)}>
           <label
@@ -321,8 +339,8 @@ class VerticalWidget extends React.Component<any, any> {
             style={{fontWeight: this.props.verticalWidget.settings[this.props.verticalWidget.activeChannel-1].bandwidth === 100 ? "bold" : "normal"}}>
             100MHz
           </label>
-        </button>
-        <button
+        </Button>
+        <Button
           className="200MHz-Button"
           onClick={() => (this.props.verticalWidget.totalChannelsUsed <= 2) && this.changeBandwidth(200)}>
           <label
@@ -330,8 +348,8 @@ class VerticalWidget extends React.Component<any, any> {
             style={{fontWeight: this.props.verticalWidget.settings[this.props.verticalWidget.activeChannel-1].bandwidth === 200 ? "bold" : "normal"}}>
             200MHz
           </label>
-        </button>
-        <button
+        </Button>
+        <Button
           className="350MHz-Button"
           onClick={() => (this.props.verticalWidget.totalChannelsUsed <= 1) && this.changeBandwidth(350)}>
           <label
@@ -339,10 +357,10 @@ class VerticalWidget extends React.Component<any, any> {
             style={{fontWeight: this.props.verticalWidget.settings[this.props.verticalWidget.activeChannel-1].bandwidth === 350 ? "bold" : "normal"}}>
             350MHz
           </label>
-        </button>
-      </div>
+        </Button>
+      </ButtonGroup>
 
-      </div>
+      </Box>
     )
   }
 }
