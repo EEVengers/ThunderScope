@@ -2,17 +2,45 @@
 // It has the same sandbox as a Chrome extension.
 
 import * as fs from 'fs';
-import { exec } from 'child_process';
-import { contextBridge } from 'electron';
+import * as path from 'path';
+import { spawn } from 'child_process';
+import { contextBridge, app } from 'electron';
 
+const cpp_subdir = (process.platform == "win32") ? "Release" : "Debug"; //see `npm run make-cpp-win`
+const cpp_path = path.join(process.cwd(), "build_cpp", cpp_subdir, "scope");
+const cpp = spawn(cpp_path, ["-c"]);
+
+var did_open = false;
 const SOCKET_PREFIX = (process.platform == "win32") ? "\\\\.\\pipe\\" : "/tmp/";
 const SOCKETFILE_TX = SOCKET_PREFIX + "testPipeRX";
 const SOCKETFILE_RX = SOCKET_PREFIX + "testPipeTX";
-
 var TX_FD = -1;
 var RX_FD = -1;
-fs.open(SOCKETFILE_TX, "w", (err, fd) => {TX_FD = fd;});
-fs.open(SOCKETFILE_RX, "r", (err, fd) => {RX_FD = fd;});
+
+cpp.stdout.on('data', (data) => {
+  console.log(`cpp stdout:\n${data}`);
+  if(!did_open) {
+    console.log(`cpp_path: ${cpp_path}`);
+
+    fs.open(SOCKETFILE_TX, "w", (err, fd) => {
+      if(err) {
+        console.error(err);
+      }
+      TX_FD = fd;
+    });
+    fs.open(SOCKETFILE_RX, "r", (err, fd) => {
+      if(err) {
+        console.error(err);
+      }
+      RX_FD = fd;
+    });
+  }
+  did_open = true;
+});
+
+cpp.stderr.on('data', (data) => {
+  console.error(`cpp stderr:\n${data}`);
+});
 
 //Welcome to the future: https://www.electronjs.org/docs/tutorial/context-isolation
 contextBridge.exposeInMainWorld("thunderBridge", {
