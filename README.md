@@ -1,7 +1,7 @@
-# The EEVengers Oscilliscope Project
-Low-Cost Four Channel 1GSPS Oscilliscope using USB 3 Gen 2 (10Gbps) to stream data to PC for processing and display.
+# ThunderScope
+Low-Cost Four Channel 1GSPS Oscilliscope using Thunderbolt/USB4 to stream data to PC for processing and display. Check out the Hackaday.io project here: https://hackaday.io/project/180090-thunderscope
 ___
-## Hardware
+## Hardware (TODO: Update this) 
 ![Picture](Hardware/DSO.jpg?raw=true "Photo of prototype hardware")
 
 ### [Front End](Hardware/FE)
