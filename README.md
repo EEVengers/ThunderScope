@@ -33,13 +33,27 @@ The 8 serial data pairs and 2 clocking pairs from the ADC are routed to the [Spa
 # Schematics
 <details>
   <summary>Click to expand!</summary>
-  
+
+  ## ThunderScope
+  ![Picture](/Hardware/The Next Generation/Thunderscope_E/Schematics/Main.jpg?raw=true "Photo of the ThunderScope Schematic")
   ## ADC
-  <object data="Hardware/The Next Generation/schematics/Thunderscope_E/Schematics/ADC.pdf" type="application/pdf" width="700px" height="700px">
-          <embed src="Hardware/The Next Generation/schematics/Thunderscope_E/Schematics/ADC.pdf">
-          <p>This browser does not support PDFs. Please download the PDF to view it: <a href="http://yoursite.com/the.pdf">Download PDF</a>.</p>
-   </embed>
-  </object>
+  ![Picture](/Hardware/The Next Generation/Thunderscope_E/Schematics/ADC.jpg?raw=true "Photo of the ADC Schematic")
+  ## Buffer
+  ![Picture](/Hardware/The Next Generation/Thunderscope_E/Schematics/Buffer.jpg?raw=true "Photo of the Buffer Schematic")
+  ## FE
+  ![Picture](/Hardware/The Next Generation/Thunderscope_E/Schematics/FE.jpg?raw=true "Photo of the FE Schematic")
+  ## FE_Channel
+  ![Picture](/Hardware/The Next Generation/Thunderscope_E/Schematics/FE_Channel.jpg?raw=true "Photo of the FE_Channel Schematic")
+  ## FPGA
+  ![Picture](/Hardware/The Next Generation/Thunderscope_E/Schematics/FPGA.jpg?raw=true "Photo of the FPGA Schematic")
+  ## Input
+  ![Picture](/Hardware/The Next Generation/Thunderscope_E/Schematics/Input.jpg?raw=true "Photo of the Input Schematic")
+  ## LEDs
+  ![Picture](/Hardware/The Next Generation/Thunderscope_E/Schematics/LEDs.jpg?raw=true "Photo of the LEDs Schematic")
+  ## PGA
+  ![Picture](/Hardware/The Next Generation/Thunderscope_E/Schematics/PGA.jpg?raw=true "Photo of the PGA Schematic")
+
+
 </details>
 
 ___
