@@ -30,6 +30,32 @@ The 8 serial data pairs and 2 clocking pairs from the ADC are routed to the [Spa
 1. TMS & TDO are swapped (fixed on all dev units)
 2. M1 configuration pin not connected to ground due to duplicate pin in symbol (1k pulldown installed on all dev units)
 
+# Schematics
+<details>
+  <summary>Click to expand!</summary>
+
+  ## ThunderScope
+  ![Picture](Hardware/The%20Next%20Generation/Thunderscope_E/Schematics/Main.jpg?raw=true "Photo of the ThunderScope Schematic")
+  ## ADC
+  ![Picture](Hardware/The%20Next%20Generation/Thunderscope_E/Schematics/ADC.jpg?raw=true "Photo of the ADC Schematic")
+  ## Buffer
+  ![Picture](Hardware/The%20Next%20Generation/Thunderscope_E/Schematics/Buffer.jpg?raw=true "Photo of the Buffer Schematic")
+  ## FE
+  ![Picture](Hardware/The%20Next%20Generation/Thunderscope_E/Schematics/FE.jpg?raw=true "Photo of the FE Schematic")
+  ## FE_Channel
+  ![Picture](Hardware/The%20Next%20Generation/Thunderscope_E/Schematics/FE_Channel.jpg?raw=true "Photo of the FE_Channel Schematic")
+  ## FPGA
+  ![Picture](Hardware/The%20Next%20Generation/Thunderscope_E/Schematics/FPGA.jpg?raw=true "Photo of the FPGA Schematic")
+  ## Input
+  ![Picture](Hardware/The%20Next%20Generation/Thunderscope_E/Schematics/Input.jpg?raw=true "Photo of the Input Schematic")
+  ## LEDs
+  ![Picture](Hardware/The%20Next%20Generation/Thunderscope_E/Schematics/LEDs.jpg?raw=true "Photo of the LEDs Schematic")
+  ## PGA
+  ![Picture](Hardware/The%20Next%20Generation/Thunderscope_E/Schematics/PGA.jpg?raw=true "Photo of the PGA Schematic")
+
+
+</details>
+
 ___
 ## Firmware
 ### Setup
