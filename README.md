@@ -30,6 +30,18 @@ The 8 serial data pairs and 2 clocking pairs from the ADC are routed to the [Spa
 1. TMS & TDO are swapped (fixed on all dev units)
 2. M1 configuration pin not connected to ground due to duplicate pin in symbol (1k pulldown installed on all dev units)
 
+# Schematics
+<details>
+  <summary>Click to expand!</summary>
+  
+  ## ADC
+  <object data="Hardware/The Next Generation/schematics/Thunderscope_E/Schematics/ADC.pdf" type="application/pdf" width="700px" height="700px">
+          <embed src="Hardware/The Next Generation/schematics/Thunderscope_E/Schematics/ADC.pdf">
+          <p>This browser does not support PDFs. Please download the PDF to view it: <a href="http://yoursite.com/the.pdf">Download PDF</a>.</p>
+   </embed>
+  </object>
+</details>
+
 ___
 ## Firmware
 ### Setup
