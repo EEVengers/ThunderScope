@@ -1,0 +1,39 @@
+v2020.2.0
+=========
+- renamed module parameter "enable_credit_mp" to "enable_st_c2h_credit" to 
+  accurately describe its usage.
+- turn off the ST C2H credit as default (i.e., enable_st_c2h_credit = 0)
+- fixed c2h streaming credit issue when data buffers uses >= 1K descriptors.
+
+v2020.1.08
+===============
+- replaced module parameter "sgdma_timeout" to "h2c_timeout" and "c2h_timeout"
+  for H2C and C2H channels.
+  value of 0 means no timeout: wait forever for the dma completion.
+- added new "-e" option to dma_from_device
+  this is for streaming mode only, when -e is set, the driver will end the dma
+     and return the data when an EOP (end-of-packet) is received or the
+     specified bytes of data is received. 
+  without "-e" option, the driver will end the dma when the specified bytes of
+     data is received.
+- added gen4 device ids
+- fixed next adjacent descriptors when dma_alloc_coherent doesn't return a
+  page-aligned address
+
+v2020.1.06
+===============
+- added memory aperture support (-k) option in dma_from_device and dma_to_device.
+- fixed holding spinlock while doing wait_event_interruptible_xxx
+- kernel 5.0 support
+- fixed next adjacent descriptors crossing the 4K boundary
+
+Release: 2019.2
+===============
+
+Change list:
+- Updated data rate for performance run. Now it will print data rate based on the size.
+- remove BUG_ON, return proper error code instead
+- Streaming mode: enable credit mechanism by default 
+- Streaming mode: Do not read more than user supplied buffer size on C2H
+- Streaming mode: Added support for Async-IO for both streaming and MM transfers
+- fixed performance appliaction crash
