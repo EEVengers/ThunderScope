@@ -39,7 +39,9 @@ static ssize_t char_ctrl_read(struct file *fp, char __user *buf, size_t count,
 	struct xdma_cdev *xcdev = (struct xdma_cdev *)fp->private_data;
 	struct xdma_dev *xdev;
 	void __iomem *reg;
-	u32 w;
+	u32 w32;
+	u16 w16;
+	u8 w8;
 	int rv;
 
 	rv = xcdev_check(__func__, xcdev, 0);
@@ -47,21 +49,41 @@ static ssize_t char_ctrl_read(struct file *fp, char __user *buf, size_t count,
 		return rv;
 	xdev = xcdev->xdev;
 
-	/* only 32-bit aligned and 32-bit multiples */
-	if (*pos & 3)
-		return -EPROTO;
+	if (count != 1 && count != 2 && count != 4)
+	  return -EPROTO;
+
+	/* check alignment */
+	if (*pos & (count -1))
+	  return -EPROTO;
 	/* first address is BAR base plus file position offset */
 	reg = xdev->bar[xcdev->bar] + *pos;
 	//w = read_register(reg);
-	w = ioread32(reg);
-	dbg_sg("%s(@%p, count=%ld, pos=%d) value = 0x%08x\n",
-			__func__, reg, (long)count, (int)*pos, w);
-	rv = copy_to_user(buf, &w, 4);
-	if (rv)
-		dbg_sg("Copy to userspace failed but continuing\n");
+	switch (count) {
+	  case 4:
+	    w32 = ioread32(reg);
+	    dbg_sg("%s(@%p, count=%ld, pos=%d) value = 0x%08x\n",
+		   __func__, reg, (long)count, (int)*pos, w32);
+	    rv = copy_to_user(buf, &w32, 4);
+	    break;
+	  case 2:
+	    w16 = ioread16(reg);
+	    dbg_sg("%s(@%p, count=%ld, pos=%d) value = 0x%04x\n",
+		   __func__, reg, (long)count, (int)*pos, w16);
+	    rv = copy_to_user(buf, &w16, 2);
+	    break;
+	  case 1:
+	    w8 = ioread16(reg);
+	    dbg_sg("%s(@%p, count=%ld, pos=%d) value = 0x%02x\n",
+		   __func__, reg, (long)count, (int)*pos, w8);
+	    rv = copy_to_user(buf, &w8, 1);
+	    break;
+	}
 
-	*pos += 4;
-	return 4;
+	if (rv)
+	  dbg_sg("Copy to userspace failed but continuing\n");
+
+	*pos += count;
+	return count;
 }
 
 static ssize_t char_ctrl_write(struct file *file, const char __user *buf,
@@ -70,30 +92,49 @@ static ssize_t char_ctrl_write(struct file *file, const char __user *buf,
 	struct xdma_cdev *xcdev = (struct xdma_cdev *)file->private_data;
 	struct xdma_dev *xdev;
 	void __iomem *reg;
-	u32 w;
+	u32 w32;
+	u16 w16;
+	u8 w8;
 	int rv;
 
 	rv = xcdev_check(__func__, xcdev, 0);
 	if (rv < 0)
 		return rv;
 	xdev = xcdev->xdev;
+	if (count != 1 && count != 2 && count != 4)
+	  return -EPROTO;
 
-	/* only 32-bit aligned and 32-bit multiples */
-	if (*pos & 3)
-		return -EPROTO;
+	/* check alignment */
+	if (*pos & (count-1))
+	  return -EPROTO;
 
 	/* first address is BAR base plus file position offset */
 	reg = xdev->bar[xcdev->bar] + *pos;
-	rv = copy_from_user(&w, buf, 4);
+	switch (count) {
+	  case 4:
+	    rv = copy_from_user(&w32, buf, count);
+	    iowrite32(w32, reg);
+	    dbg_sg("%s(0x%08x @%p, count=%ld, pos=%d)\n",
+		   __func__, w32, reg, (long)count, (int)*pos);
+	    break;
+	  case 2:
+	    rv = copy_from_user(&w16, buf, count);
+	    iowrite16(w16, reg);
+	    dbg_sg("%s(0x%04x @%p, count=%ld, pos=%d)\n",
+		   __func__, w16, reg, (long)count, (int)*pos);
+	    break;
+	  case 1:
+	    rv = copy_from_user(&w8, buf, count);
+	    iowrite8(w8, reg);
+	    dbg_sg("%s(0x%02x @%p, count=%ld, pos=%d)\n",
+		   __func__, w8, reg, (long)count, (int)*pos);
+	    break;
+	}
 	if (rv)
-		pr_info("copy from user failed %d/4, but continuing.\n", rv);
+	  pr_info("copy from user failed %d/4, but continuing.\n", rv);
 
-	dbg_sg("%s(0x%08x @%p, count=%ld, pos=%d)\n",
-			__func__, w, reg, (long)count, (int)*pos);
-	//write_register(w, reg);
-	iowrite32(w, reg);
-	*pos += 4;
-	return 4;
+	*pos += count;
+	return count;
 }
 
 static long version_ioctl(struct xdma_cdev *xcdev, void __user *arg)
