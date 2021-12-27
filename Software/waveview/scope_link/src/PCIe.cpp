@@ -1,15 +1,23 @@
-
-
 #include "PCIe.hpp"
 #include "logger.hpp"
 
+
+#ifdef __linux__
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <errno.h>
+#include <unistd.h>
+#endif
+
+
+#ifdef WIN32
 
 /*
 * get_devices -- Ripped from Xilinx examples
 * returns the number of XDMA devices
 */
 static int get_devices(GUID guid, char* devpath, size_t len_devpath) {
-
     HDEVINFO device_info = SetupDiGetClassDevs((LPGUID)&guid, NULL, NULL, DIGCF_PRESENT | DIGCF_DEVICEINTERFACE);
     if (device_info == INVALID_HANDLE_VALUE) {
         fprintf(stderr, "GetDevices INVALID_HANDLE_VALUE\n");
@@ -22,7 +30,7 @@ static int get_devices(GUID guid, char* devpath, size_t len_devpath) {
     // enumerate through devices
     DWORD index;
     for (index = 0; SetupDiEnumDeviceInterfaces(device_info, NULL, &guid, index, &device_interface); ++index) {
-#ifdef WIN32 //So i dont know how to change this is work on unix, since HeapAlloc is windows specific, so since Unix does not work with PCIe yet, just ingore this code
+ngore this code
         // get required buffer size
         ULONG detailLength = 0;
         if (!SetupDiGetDeviceInterfaceDetail(device_info, &device_interface, NULL, 0, &detailLength, NULL) && GetLastError() != ERROR_INSUFFICIENT_BUFFER) {
@@ -45,7 +53,6 @@ static int get_devices(GUID guid, char* devpath, size_t len_devpath) {
         }
         StringCchCopy(devpath, len_devpath, dev_detail->DevicePath);
         HeapFree(GetProcessHeap(), 0, dev_detail);
-#endif
     }
 
     SetupDiDestroyDeviceInfoList(device_info);
@@ -111,8 +118,39 @@ int PCIeLink::Connect() {
     }
 
     return status;
-
 }
+
+#endif
+
+#ifdef __linux__
+
+#define CloseHandle(X) close(X)
+#define QueryPerformanceFrequency(X) do{ *(X)=1; }while(0)
+#define QueryPerformanceCounter(X) do{}while(0)
+
+static int OpenHelper(int n, const char* postfix) {
+    char device_path[128];
+    snprintf(device_path, sizeof(device_path), "/dev/xdma%d_%s", n, postfix);
+    int fd = open(device_path, O_RDWR);
+    if (fd < 0) {
+        perror("open");
+        fprintf(stderr, "failed to open: %s, errno=%d\n", device_path, errno);
+    }
+    return fd;
+}
+
+int PCIeLink::Connect() {
+    int device_num = 0;
+    connected = false;
+    user_handle = OpenHelper(device_num, USER_DEVICE_PATH);
+    if (user_handle <= 0) return -1;
+    c2h_0_handle = OpenHelper(device_num, C2H_0_DEVICE_PATH);
+    if (c2h_0_handle <= 0) return -1;
+    connected = true;
+    return 0;
+}
+#endif
+
 
 /************************************************************
  * Read()
@@ -480,14 +518,15 @@ void PCIeLink::_FIFO_WRITE(HANDLE hPCIE, uint8_t* data, uint8_t bytesToWrite) {
     _Read(user_handle,SERIAL_FIFO_TDFV_ADDRESS,tdfvBuff,4);
 }
 
-void PCIeLink::_Read(HANDLE hPCIE, int64_t address, uint8_t* buff, int bytesToRead) {
+
+#ifdef WIN32
+void PCIeLink::_Read(HANDLE hPCIE, long long address, uint8_t* buff, int bytesToRead) {
     if(hPCIE == INVALID_HANDLE_VALUE) {
         ERROR << "INVALID HANDLE PASSED INTO PCIeLink::_Read(): " << hPCIE;
         return;
     }
 
-    LARGE_INTEGER offset;
-    offset.QuadPart = address;
+    uint64_t offset = address;
     // set file pointer to offset of target address within PCIe BAR
     if (INVALID_SET_FILE_POINTER == SetFilePointerEx(hPCIE, offset, NULL, FILE_BEGIN)) {
         ERROR << "Error setting file pointer for PCIeLink::_Read(), win32 error code: " << GetLastError();
@@ -500,14 +539,13 @@ void PCIeLink::_Read(HANDLE hPCIE, int64_t address, uint8_t* buff, int bytesToRe
     }
 }
 
-void PCIeLink::_Write(HANDLE hPCIE, int64_t address, uint8_t* buff, int bytesToWrite) {
+void PCIeLink::_Write(HANDLE hPCIE, long long address, uint8_t* buff, int bytesToWrite) {
     if(hPCIE == INVALID_HANDLE_VALUE) {
         ERROR << "INVALID HANDLE PASSED INTO PCIeLink::_Write(): " << hPCIE;
         return;
     }
 
-    LARGE_INTEGER offset;
-    offset.QuadPart = address;
+    int64_t offset = address;
     // set file pointer to offset of target address within PCIe BAR
     if (INVALID_SET_FILE_POINTER == SetFilePointerEx(hPCIE, offset, NULL, FILE_BEGIN)) {
         ERROR << "Error setting file pointer for PCIeLink::_Write(), win32 error code: " << GetLastError();
@@ -519,35 +557,43 @@ void PCIeLink::_Write(HANDLE hPCIE, int64_t address, uint8_t* buff, int bytesToW
         ERROR << "_Write() failed with Win32 error code: " << GetLastError();
     }
 }
+#endif
+
+#ifdef __linux__
+
+void PCIeLink::_Read(HANDLE hPCIE, long long address, uint8_t* buff, int bytesToRead) {
+    // TODO: EINTR handling if needed.
+    ssize_t ret = pread(hPCIE, buff, bytesToRead, address);
+    if (ret != bytesToRead) {
+        perror("pread");
+    }
+}
+
+void PCIeLink::_Write(HANDLE hPCIE, long long address, uint8_t* buff, int bytesToWrite) {
+    // TODO: EINTR handling if needed.
+    ssize_t ret = pwrite(hPCIE, buff, bytesToWrite, address);
+    if (ret != bytesToWrite) {
+        perror("pwrite");
+    }
+}
+
+#endif
 
 void PCIeLink::_Write32(HANDLE hPCIE, long long address, uint32_t val) {
-    if(hPCIE == INVALID_HANDLE_VALUE) {
-        ERROR << "INVALID HANDLE PASSED INTO PCIeLink::_Write(): " << hPCIE;
-        return;
-    }
-
-    LARGE_INTEGER offset;
-    offset.QuadPart = address;
-    // set file pointer to offset of target address within PCIe BAR
-    if (INVALID_SET_FILE_POINTER == SetFilePointerEx(hPCIE, offset, NULL, FILE_BEGIN)) {
-        ERROR << "Error setting file pointer for PCIeLink::_Write(), win32 error code: " << GetLastError();
-    }
-
     // write from buffer to device
-    DWORD bytesWritten;
     uint8_t bytes[4];
     bytes[3] = (uint8_t)( (val & 0xFF000000) >> 24);
     bytes[2] = (uint8_t)( (val & 0x00FF0000) >> 16);
     bytes[1] = (uint8_t)( (val & 0x0000FF00) >> 8);
     bytes[0] = (uint8_t)( (val & 0x000000FF));
-    if (!WriteFile(hPCIE, bytes, 4, &bytesWritten, NULL)) {
-        ERROR << "_Write() failed with Win32 error code: " << GetLastError();
-    }
+    _Write(hPCIE, address, bytes, 4);
 }
 
 void PCIeLink::_Job() {
-    bool priority = SetThreadPriority(GetCurrentThread(), THREAD_PRIORITY_TIME_CRITICAL);
+#ifdef WIN32
+  bool priority = SetThreadPriority(GetCurrentThread(), THREAD_PRIORITY_TIME_CRITICAL);
     INFO << "THREAD_PRIORITY_TIME_CRITICAL: " << priority;
+#endif
     while(_run.load()) {
         while(_pause.load()) {
             std::this_thread::sleep_for(std::chrono::microseconds(100)); 
@@ -675,12 +721,12 @@ void PCIeLink::ClockTick2() {
  * 
 *************************************************************/
 void PCIeLink::PrintTimeDelta() {
-    double time_sec = (unsigned long long)(tick2.QuadPart - tick1.QuadPart) / (double)freq.QuadPart;
+    double time_sec = (unsigned long long)(tick2 - tick1) / (double)freq;
     INFO << "Time Delta is: " << time_sec;
 }
 
 double PCIeLink::GetTimeDelta() {
-    return (unsigned long long)(tick2.QuadPart - tick1.QuadPart) / (double)freq.QuadPart;
+    return (unsigned long long)(tick2 - tick1) / (double)freq;
 }
 
 

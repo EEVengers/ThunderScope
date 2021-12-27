@@ -1,5 +1,3 @@
-
-
 #ifndef PCIe_HPP
 #define PCIe_HPP
 
@@ -7,17 +5,28 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <stdint.h>
-#include <strsafe.h>
+#include <thread>
 
+#ifdef __WIN32__
+#include <strsafe.h>
 #include <Windows.h>
 #include <SetupAPI.h>
 #include <INITGUID.H>
 #include <WinIoCtl.h>
 
 #include "xdma_public.h"
+#endif
+
+#ifdef __linux__
+#define HANDLE int
+#define INVALID_HANDLE_VALUE -1
+#endif
+
 #include "common.hpp"
 
+#ifdef __WIN32__
 #pragma comment(lib, "setupapi.lib")
+#endif
 
 #define USER_DEVICE_PATH "user"
 #define C2H_0_DEVICE_PATH "c2h_0"
@@ -121,11 +130,11 @@ private:
 
     char user_device[20] = USER_DEVICE_PATH; //write/read registers
     char c2h_0_device[20] = C2H_0_DEVICE_PATH; //read memory
-    HANDLE user_handle;
+    HANDLE user_handle = INVALID_HANDLE_VALUE;
     char user_connection_string[261] = "";
-    HANDLE c2h_0_handle;
+    HANDLE c2h_0_handle = INVALID_HANDLE_VALUE;
     char c2h_0_connection_string[261] = "";
-    LARGE_INTEGER freq; //used for perforamnce testing
+    uint64_t freq; //used for perforamnce testing
     int64_t last_chunk_read;
 
     //current state
@@ -139,8 +148,8 @@ private:
     boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> *outputQueue;
 
     //used for speed testing
-    LARGE_INTEGER tick1;
-    LARGE_INTEGER tick2;
+    uint64_t tick1;
+    uint64_t tick2;
 
     void _Read(HANDLE hPCIE, long long address, uint8_t* buff, int bytesToRead);
     void _Write(HANDLE hPCIE, long long address, uint8_t* buff, int bytesToWrite);
