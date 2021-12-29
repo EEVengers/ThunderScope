@@ -525,7 +525,8 @@ void PCIeLink::_Read(HANDLE hPCIE, long long address, uint8_t* buff, int bytesTo
         return;
     }
 
-    uint64_t offset = address;
+    LARGE_INTEGER offset;
+    offset.QuadPart = address;
     // set file pointer to offset of target address within PCIe BAR
     if (INVALID_SET_FILE_POINTER == SetFilePointerEx(hPCIE, offset, NULL, FILE_BEGIN)) {
         ERROR << "Error setting file pointer for PCIeLink::_Read(), win32 error code: " << GetLastError();
@@ -544,7 +545,8 @@ void PCIeLink::_Write(HANDLE hPCIE, long long address, uint8_t* buff, int bytesT
         return;
     }
 
-    int64_t offset = address;
+    LARGE_INTEGER offset;
+    offset.QuadPart = address;
     // set file pointer to offset of target address within PCIe BAR
     if (INVALID_SET_FILE_POINTER == SetFilePointerEx(hPCIE, offset, NULL, FILE_BEGIN)) {
         ERROR << "Error setting file pointer for PCIeLink::_Write(), win32 error code: " << GetLastError();
