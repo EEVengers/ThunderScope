@@ -30,7 +30,6 @@ static int get_devices(GUID guid, char* devpath, size_t len_devpath) {
     // enumerate through devices
     DWORD index;
     for (index = 0; SetupDiEnumDeviceInterfaces(device_info, NULL, &guid, index, &device_interface); ++index) {
-ngore this code
         // get required buffer size
         ULONG detailLength = 0;
         if (!SetupDiGetDeviceInterfaceDetail(device_info, &device_interface, NULL, 0, &detailLength, NULL) && GetLastError() != ERROR_INSUFFICIENT_BUFFER) {
