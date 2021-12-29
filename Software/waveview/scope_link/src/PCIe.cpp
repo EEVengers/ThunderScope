@@ -124,8 +124,6 @@ int PCIeLink::Connect() {
 #ifdef __linux__
 
 #define CloseHandle(X) close(X)
-#define QueryPerformanceFrequency(X) do{ *(X)=1; }while(0)
-#define QueryPerformanceCounter(X) do{}while(0)
 
 static int OpenHelper(int n, const char* postfix) {
     char device_path[128];
@@ -620,7 +618,6 @@ PCIeLink::PCIeLink(boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<
     user_handle = INVALID_HANDLE_VALUE;
     c2h_0_handle = INVALID_HANDLE_VALUE;
     last_chunk_read = -1;
-    QueryPerformanceFrequency(&freq);
     this->outputQueue = outputQueue;
     //keep the read thread alive but paused
     _run = true;
@@ -707,11 +704,11 @@ PCIeLink::~PCIeLink() {
 }
 
 void PCIeLink::ClockTick1() {
-    QueryPerformanceCounter(&tick1);
+    tick1 = std::chrono::high_resolution_clock::now();
 }
 
 void PCIeLink::ClockTick2() {
-    QueryPerformanceCounter(&tick2);
+    tick2 = std::chrono::high_resolution_clock::now();
 }
 
 /************************************************************
@@ -722,14 +719,12 @@ void PCIeLink::ClockTick2() {
  * 
 *************************************************************/
 void PCIeLink::PrintTimeDelta() {
-    double time_sec = (unsigned long long)(tick2 - tick1) / (double)freq;
-    INFO << "Time Delta is: " << time_sec;
+  INFO << "Time Delta is: " << GetTimeDelta();
 }
 
 double PCIeLink::GetTimeDelta() {
-    return (unsigned long long)(tick2 - tick1) / (double)freq;
+  return std::chrono::duration_cast<std::chrono::nanoseconds>(tick2 - tick1).count() / 1000000000.0;
 }
-
 
 /************************************************************************ SCOPE CONTROL STUFF ***********************************************/
 

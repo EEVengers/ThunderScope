@@ -6,6 +6,7 @@
 #include <stdio.h>
 #include <stdint.h>
 #include <thread>
+#include <chrono>
 
 #ifdef WIN32
 #include <strsafe.h>
@@ -134,7 +135,6 @@ private:
     char user_connection_string[261] = "";
     HANDLE c2h_0_handle = INVALID_HANDLE_VALUE;
     char c2h_0_connection_string[261] = "";
-    uint64_t freq; //used for perforamnce testing
     int64_t last_chunk_read;
 
     //current state
@@ -148,8 +148,8 @@ private:
     boost::lockfree::queue<buffer*, boost::lockfree::fixed_sized<false>> *outputQueue;
 
     //used for speed testing
-    uint64_t tick1;
-    uint64_t tick2;
+    std::chrono::high_resolution_clock::time_point tick1;
+    std::chrono::high_resolution_clock::time_point tick2;
 
     void _Read(HANDLE hPCIE, long long address, uint8_t* buff, int bytesToRead);
     void _Write(HANDLE hPCIE, long long address, uint8_t* buff, int bytesToWrite);
