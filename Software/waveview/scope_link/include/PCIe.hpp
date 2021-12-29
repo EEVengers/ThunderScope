@@ -7,7 +7,7 @@
 #include <stdint.h>
 #include <thread>
 
-#ifdef __WIN32__
+#ifdef WIN32
 #include <strsafe.h>
 #include <Windows.h>
 #include <SetupAPI.h>
@@ -24,7 +24,7 @@
 
 #include "common.hpp"
 
-#ifdef __WIN32__
+#ifdef WIN32
 #pragma comment(lib, "setupapi.lib")
 #endif
 
