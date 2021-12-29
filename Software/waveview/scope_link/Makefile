@@ -13,7 +13,7 @@ CPPOPT   := -fopt-info-loop-optimized
 CPPMISS  := -fopt-info-vec-missed
 CFLAGS   := -Wall
 LDFLAGS  := -Llib
-LDLIBS   := -lm -lftd3xx -lstdc++ -pthread -lboost_system -lboost_thread
+LDLIBS   := -lm -lstdc++ -pthread -lboost_system -lboost_thread
 LDLIBS   += -lpthread -lboost_log_setup -lboost_log
 
 .PHONY: all clean
