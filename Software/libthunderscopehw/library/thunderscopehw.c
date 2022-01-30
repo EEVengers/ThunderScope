@@ -28,8 +28,8 @@ struct ThunderScopeHW* thunderscopehw_create()
 		ts->channels[i].coupling = THUNDERSCOPEHW_COUPLING_DC;
 	}
 
-	ts->user_handle = -1;
-	ts->c2h0_handle = -1;
+	ts->user_handle = THUNDERSCOPEHW_INVALID_HANDLE_VALUE;
+	ts->c2h0_handle = THUNDERSCOPEHW_INVALID_HANDLE_VALUE;
 	ts->buffer_head = 0;
 	ts->buffer_tail = 0;
 	ts->ram_size_pages = 0x10000;

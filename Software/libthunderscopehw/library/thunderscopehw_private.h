@@ -3,6 +3,16 @@
 
 #include "thunderscopehw.h"
 
+#ifdef _WIN32
+#include <windows.h>
+#define THUNDERSCOPEHW_FILE_HANDLE HANDLE
+#define THUNDERSCOPEHW_INVALID_HANDLE_VALUE INVALID_HANDLE_VALUE
+#else
+#define THUNDERSCOPEHW_FILE_HANDLE int
+#define THUNDERSCOPEHW_INVALID_HANDLE_VALUE -1
+#endif
+
+
 #define USER_DEVICE_PATH "user"
 #define C2H_0_DEVICE_PATH "c2h_0"
 
@@ -31,12 +41,6 @@
 #define CLOCK_GEN_I2C_ADDRESS_READ          0b10110001 //IF WE COULD
 
 #define THUNDERSCOPEHW_CHANNELS               4
-
-#ifdef WIN32
-#define THUNDERSCOPEHW_FILE_HANDLE HANDLE
-#else
-#define THUNDERSCOPEHW_FILE_HANDLE int
-#endif
 
 #define THUNDERSCOPEHW_RUN(X) do {			\
   enum ThunderScopeHWStatus ret = (thunderscopehw_##X);	\

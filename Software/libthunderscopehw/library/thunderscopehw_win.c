@@ -2,13 +2,17 @@
 
 #ifdef WIN32
 
+#include <SetupAPI.h>
+#include <INITGUID.H>
+#include <stdio.h>
+
 DEFINE_GUID(GUID_DEVINTERFACE_XDMA,
             0x74c7e4a9, 0x6d5d, 0x4a70, 0xbc, 0x0d, 0x20, 0x69, 0x1d, 0xff, 0x9e, 0x9d);
 
 typedef void (*thunderscopehw_iterate_device_callback)(PSP_DEVICE_INTERFACE_DETAIL_DATA dev_detail, void* context);
-void thunderscopehw_iterate_devices(thunderscopehw_iterate_device_calback cb, void* context)
+void thunderscopehw_iterate_devices(thunderscopehw_iterate_device_callback cb, void* context)
 {
-	GUID guid = GUID_DEVINTERACE_XDMA;
+	GUID guid = GUID_DEVINTERFACE_XDMA;
 	HDEVINFO device_info = SetupDiGetClassDevs((LPGUID)&guid, NULL, NULL, DIGCF_PRESENT | DIGCF_DEVICEINTERFACE);
 	if (device_info == INVALID_HANDLE_VALUE) {
 		fprintf(stderr, "GetDevices INVALID_HANDLE_VALUE\n");
@@ -67,7 +71,7 @@ int thunderscopehw_scan(uint64_t* scope_ids, int max_ids)
 	context.max_ids = max_ids;
 	context.count = 0;
 	thunderscopehw_iterate_devices(&thunderscopehw_scan_callback, (void*)&context);
-	return data->count;
+	return context.count;
 }
 
 struct thunderscopehw_connect_callback_context {
@@ -80,13 +84,13 @@ static int thunderscopehw_connect_callback(PSP_DEVICE_INTERFACE_DETAIL_DATA dev_
 	struct thunderscopehw_connect_callback_context* data = context;
 	if (data->count == data->scope_id) {
 		char connection_string[256];
-		sprintf(connection_string,"%s\\%s",dev_detail->DevicePath, USER_DEVICE_PATH);
+		sprintf_s(connection_string, sizeof(connection_string), "%s\\%s",dev_detail->DevicePath, USER_DEVICE_PATH);
 		data->ts->user_handle = CreateFile(connection_string, GENERIC_READ | GENERIC_WRITE, 0, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
 
 		if (data->ts->user_handle == INVALID_HANDLE_VALUE)
 			fprintf(stderr, "Failed to open user handle, win32 error code: %d\n", GetLastError());
 
-		sprintf(connection_string,"%s\\%s",dev_detail->DevicePath, C2H_0_DEVICE_PATH);
+		sprintf_s(connection_string, sizeof(connection_string), "%s\\%s",dev_detail->DevicePath, C2H_0_DEVICE_PATH);
 		data->ts->c2h0_handle = CreateFile(connection_string, GENERIC_READ | GENERIC_WRITE, 0, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
 
 		if (data->ts->c2h0_handle == INVALID_HANDLE_VALUE)
@@ -129,10 +133,10 @@ enum ThunderScopeHWStatus thunderscopehw_disconnect(struct ThunderScopeHW* ts)
 	}
 	ts->connected = false;
 
-	return THUNDERSCOPE_HW_STATUS_OK;
+	return THUNDERSCOPEHW_STATUS_OK;
 }
 
-enum ThunderScopeHWStatus thunderscopehw_read_handle(struct ThunderScopeHW* ts, HANDLE h, uint8_t* data, uint64_t addr, uint64_t bytes)
+enum ThunderScopeHWStatus thunderscopehw_read_handle(struct ThunderScopeHW* ts, HANDLE h, uint8_t* data, uint64_t addr, int64_t bytes)
 {
 	LARGE_INTEGER offset;
 	offset.QuadPart = addr;
@@ -144,14 +148,14 @@ enum ThunderScopeHWStatus thunderscopehw_read_handle(struct ThunderScopeHW* ts, 
 
 	// read from device into buffer
 	DWORD bytesRead;
-	if (!ReadFile(h, buff, bytes, &bytesRead, NULL)) {
+	if (!ReadFile(h, data, bytes, &bytesRead, NULL)) {
 		fprintf(stderr, "read handle failed, win32 error code: %d\n", GetLastError());
 		return THUNDERSCOPEHW_STATUS_READ_ERROR;
 	}
 	return true;
 }
 
-enum ThunderScopeHWStatus thunderscopehw_write_handle(struct ThunderScopeHW* ts, HANDLE h, uint8_t* data, uint64_t addr, uint64_t bytes)
+enum ThunderScopeHWStatus thunderscopehw_write_handle(struct ThunderScopeHW* ts, HANDLE h, uint8_t* data, uint64_t addr, int64_t bytes)
 {
 	LARGE_INTEGER offset;
 	offset.QuadPart = addr;

@@ -35,7 +35,7 @@ enum ThunderScopeHWStatus thunderscopehw_fifo_write(struct ThunderScopeHW* ts, u
 	// read TDFV (vacancy byte)
 	thunderscopehw_read32(ts, SERIAL_FIFO_TDFV_ADDRESS);
 	// write to TLR (the size of the packet)
-	thunderscopehw_write32(ts, SERIAL_FIFO_TLR_ADDRESS, bytes * 4);
+	THUNDERSCOPEHW_RUN(write32(ts, SERIAL_FIFO_TLR_ADDRESS, (uint32_t)(bytes * 4)));
 	// read ISR for a done value
 	while ((thunderscopehw_read32(ts, SERIAL_FIFO_ISR_ADDRESS) & 0xff) != 8) {
 #ifdef WIN32
