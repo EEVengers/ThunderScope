@@ -1,14 +1,18 @@
 #include "thunderscopehw_private.h"
 
 #ifdef WIN32
+
+DEFINE_GUID(GUID_DEVINTERFACE_XDMA,
+            0x74c7e4a9, 0x6d5d, 0x4a70, 0xbc, 0x0d, 0x20, 0x69, 0x1d, 0xff, 0x9e, 0x9d);
+
 typedef void (*thunderscopehw_iterate_device_callback)(PSP_DEVICE_INTERFACE_DETAIL_DATA dev_detail, void* context);
-int thunderscopehw_iterate_devices(thunderscopehw_iterate_device_calback cb, void* context)
+void thunderscopehw_iterate_devices(thunderscopehw_iterate_device_calback cb, void* context)
 {
 	GUID guid = GUID_DEVINTERACE_XDMA;
 	HDEVINFO device_info = SetupDiGetClassDevs((LPGUID)&guid, NULL, NULL, DIGCF_PRESENT | DIGCF_DEVICEINTERFACE);
 	if (device_info == INVALID_HANDLE_VALUE) {
 		fprintf(stderr, "GetDevices INVALID_HANDLE_VALUE\n");
-		return 0;
+		return;
 	}
 	SP_DEVICE_INTERFACE_DATA device_interface;
 	device_interface.cbSize = sizeof(SP_DEVICE_INTERFACE_DATA);
@@ -35,7 +39,7 @@ int thunderscopehw_iterate_devices(thunderscopehw_iterate_device_calback cb, voi
 			HeapFree(GetProcessHeap(), 0, dev_detail);
 			break;
 		}
-		(*cb)(dev_detail);
+		(*cb)(dev_detail, context);
 		HeapFree(GetProcessHeap(), 0, dev_detail);
 	}
 
@@ -67,8 +71,8 @@ int thunderscopehw_scan(uint64_t* scope_ids, int max_ids)
 }
 
 struct thunderscopehw_connect_callback_context {
+	struct ThunderScopeHW* ts;
 	uint64_t scope_id;
-	ThunderScopeHW* ts;
 	int count;
 };
 
@@ -76,19 +80,19 @@ static int thunderscopehw_connect_callback(PSP_DEVICE_INTERFACE_DETAIL_DATA dev_
 	struct thunderscopehw_connect_callback_context* data = context;
 	if (data->count == data->scope_id) {
 		char connection_string[256];
-		sprintf(connection_string,"%s\\%s",dev_detail->DevicePath, user_device);
+		sprintf(connection_string,"%s\\%s",dev_detail->DevicePath, USER_DEVICE_PATH);
 		data->ts->user_handle = CreateFile(connection_string, GENERIC_READ | GENERIC_WRITE, 0, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
 
 		if (data->ts->user_handle == INVALID_HANDLE_VALUE)
 			fprintf(stderr, "Failed to open user handle, win32 error code: %d\n", GetLastError());
 
-		sprintf(connection_string,"%s\\%s",dev_detail->DevicePath, c2h_0_device);
-		data->ts->c2h_0_handle = CreateFile(connection_string, GENERIC_READ | GENERIC_WRITE, 0, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
+		sprintf(connection_string,"%s\\%s",dev_detail->DevicePath, C2H_0_DEVICE_PATH);
+		data->ts->c2h0_handle = CreateFile(connection_string, GENERIC_READ | GENERIC_WRITE, 0, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
 
-		if (data->ts->c2h_0_handle == INVALID_HANDLE_VALUE)
+		if (data->ts->c2h0_handle == INVALID_HANDLE_VALUE)
 			fprintf(stderr, "Failed to open c2h_0 handle, win32 error code: %d\n", GetLastError());
 
-		if (data->ts->c2h_0_handle != INVALID_HANDLE_VALUE &&
+		if (data->ts->c2h0_handle != INVALID_HANDLE_VALUE &&
 		    data->ts->user_handle != INVALID_HANDLE_VALUE) {
 			data->ts->connected = true;
 		}
@@ -98,7 +102,7 @@ static int thunderscopehw_connect_callback(PSP_DEVICE_INTERFACE_DETAIL_DATA dev_
 	data->count++;
 }
 
-int thunderscopehw_connect(struct ThunderScopeHW* ts, uint64_t scope_id)
+enum ThunderScopeHWStatus thunderscopehw_connect(struct ThunderScopeHW* ts, uint64_t scope_id)
 {
 	struct thunderscopehw_connect_callback_context context;
 	context.ts = ts;
@@ -110,58 +114,60 @@ int thunderscopehw_connect(struct ThunderScopeHW* ts, uint64_t scope_id)
 	return thunderscopehw_initboard(ts);
 }
 
-int thunderscopehw_disconnect(struct ThunderScopeHW* ts)
+enum ThunderScopeHWStatus thunderscopehw_disconnect(struct ThunderScopeHW* ts)
 {
 	// adc power down
 	// datamover reg = 0
 
-	if (ts->user_handle != INVALID_USER_HANDLE) {
+	if (ts->user_handle != INVALID_HANDLE_VALUE) {
 		CloseHandle(ts->user_handle);
-		ts->user_handle = INVALID_USER_HANDLE;
+		ts->user_handle = INVALID_HANDLE_VALUE;
 	}
-	if (ts->c2h_0_handle != INVALID_USER_HANDLE) {
-		CloseHandle(ts->c2h_0_handle);
-		ts->c2h_0_handle = INVALID_USER_HANDLE;
+	if (ts->c2h0_handle != INVALID_HANDLE_VALUE) {
+		CloseHandle(ts->c2h0_handle);
+		ts->c2h0_handle = INVALID_HANDLE_VALUE;
 	}
 	ts->connected = false;
+
+	return THUNDERSCOPE_HW_STATUS_OK;
 }
 
-int thunderscopehw_read_handle(struct ThunderScopeHW* ts, HANDLE h, uint8_t* data, uint64_t addr, uint64_t bytes)
+enum ThunderScopeHWStatus thunderscopehw_read_handle(struct ThunderScopeHW* ts, HANDLE h, uint8_t* data, uint64_t addr, uint64_t bytes)
 {
 	LARGE_INTEGER offset;
 	offset.QuadPart = addr;
 	// set file pointer to offset of target address within PCIe BAR
-	if (INVALID_SET_FILE_POINTER == SetFilePointerEx(hPCIE, offset, NULL, FILE_BEGIN)) {
+	if (INVALID_SET_FILE_POINTER == SetFilePointerEx(h, offset, NULL, FILE_BEGIN)) {
 		fprintf(stderr, "Error setting file pointer for PCIeLink::_Read(), win32 error code: %d\n", GetLastError());
-		return false;
+		return THUNDERSCOPEHW_STATUS_READ_ERROR;
 	}
 
 	// read from device into buffer
 	DWORD bytesRead;
-	if (!ReadFile(hPCIE, buff, bytes, &bytesRead, NULL)) {
+	if (!ReadFile(h, buff, bytes, &bytesRead, NULL)) {
 		fprintf(stderr, "read handle failed, win32 error code: %d\n", GetLastError());
-		return false;
+		return THUNDERSCOPEHW_STATUS_READ_ERROR;
 	}
 	return true;
 }
 
-int thunderscopehw_write_handle(struct ThunderScopeHW* ts, HANDLE h, uint8_t* data, uint64_t addr, uint64_t bytes)
+enum ThunderScopeHWStatus thunderscopehw_write_handle(struct ThunderScopeHW* ts, HANDLE h, uint8_t* data, uint64_t addr, uint64_t bytes)
 {
 	LARGE_INTEGER offset;
-	offset.QuadPart = address;
+	offset.QuadPart = addr;
 	// set file pointer to offset of target address within PCIe BAR
-	if (INVALID_SET_FILE_POINTER == SetFilePointerEx(hPCIE, offset, NULL, FILE_BEGIN)) {
+	if (INVALID_SET_FILE_POINTER == SetFilePointerEx(h, offset, NULL, FILE_BEGIN)) {
 		fprintf(stderr, "Error setting file pointer for PCIeLink::_Read(), win32 error code: %d\n", GetLastError());
-		return false;
+		return THUNDERSCOPEHW_STATUS_WRITE_ERROR;
 	}
 
 	// write from buffer to device
 	DWORD bytesWritten;
-	if (!WriteFile(hPCIE, buff, bytesToWrite, &bytesWritten, NULL)) {
+	if (!WriteFile(h, data, bytes, &bytesWritten, NULL)) {
 		fprintf(stderr, "write handle failed, win32 error code: %d\n", GetLastError());
-		return false;
+		return THUNDERSCOPEHW_STATUS_WRITE_ERROR;
 	}
-	return true;
+	return THUNDERSCOPEHW_STATUS_OK;
 }
 
 #endif
