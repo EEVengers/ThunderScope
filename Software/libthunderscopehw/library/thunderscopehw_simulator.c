@@ -3,12 +3,10 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
-#include <dirent.h>
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <errno.h>
-#include <unistd.h>
 
 int thunderscopehw_scan(uint64_t* scope_ids, int max_ids)
 {
@@ -20,8 +18,8 @@ int thunderscopehw_scan(uint64_t* scope_ids, int max_ids)
 enum ThunderScopeHWStatus thunderscopehw_connect(struct ThunderScopeHW* ts, uint64_t scope_id)
 {
 	if (ts->connected) return THUNDERSCOPEHW_STATUS_ALREADY_CONNECTED;
-	ts->user_handle = 101;
-	ts->c2h0_handle = 102;
+	ts->user_handle = (THUNDERSCOPEHW_FILE_HANDLE)101;
+	ts->c2h0_handle = (THUNDERSCOPEHW_FILE_HANDLE)102;
 	ts->connected = true;
 	return thunderscopehw_initboard(ts);
 }
@@ -29,8 +27,8 @@ enum ThunderScopeHWStatus thunderscopehw_connect(struct ThunderScopeHW* ts, uint
 enum ThunderScopeHWStatus thunderscopehw_disconnect(struct ThunderScopeHW* ts)
 {
 	if (!ts->connected) return THUNDERSCOPEHW_STATUS_NOT_CONNECTED;
-	ts->user_handle = -1;
-	ts->c2h0_handle = -1;
+	ts->user_handle = THUNDERSCOPEHW_INVALID_HANDLE_VALUE;
+	ts->c2h0_handle = THUNDERSCOPEHW_INVALID_HANDLE_VALUE;
 	ts->connected = false;
 	return THUNDERSCOPEHW_STATUS_OK;
 }
@@ -38,12 +36,18 @@ enum ThunderScopeHWStatus thunderscopehw_disconnect(struct ThunderScopeHW* ts)
 uint8_t thunderscopehw_simulator_fifo[256];
 uint8_t thunderscopehw_simulator_fifo_length = 0;
 
+static char* thunderscopehw_identify_handle(THUNDERSCOPEHW_FILE_HANDLE h) {
+  if (h == (THUNDERSCOPEHW_FILE_HANDLE)101) return "USER";
+  if (h == (THUNDERSCOPEHW_FILE_HANDLE)102) return "DMA";
+  return "UNKNOWN";
+}
+
 enum ThunderScopeHWStatus thunderscopehw_read_handle(struct ThunderScopeHW* ts, THUNDERSCOPEHW_FILE_HANDLE h, uint8_t* data, uint64_t addr, int64_t bytes)
 {
 	(void)ts;
 	printf("READ  %lld from %s at 0x%06llx :",
 		(long long)bytes,
-		h == 101 ? "USER" : h == 102 ? "DMA" : "UNKNOWN",
+	        thunderscopehw_identify_handle(h),
 		(long long)addr);
 	memset(data, 0, bytes);
 	switch (addr) {
@@ -69,13 +73,13 @@ enum ThunderScopeHWStatus thunderscopehw_write_handle(struct ThunderScopeHW* ts,
 	(void)ts;
 	printf("WRITE %lld to   %s at 0x%06llx :",
 		(long long)bytes,
-		h == 101 ? "USER" : h == 102 ? "DMA" : "UNKNOWN",
+	        thunderscopehw_identify_handle(h),
 		(long long)addr);
 	for (int i = 0; i < bytes; i++) {
 		printf(" 0x%02x", data[i]);
 	}
 	printf("\n");
-	uint32_t tmp;
+	uint32_t tmp = 0;
 	if (bytes == 4) {
 		tmp = (data[3] << 24) | (data[2] << 16) | (data[1] << 8) | data[0];
 	}
