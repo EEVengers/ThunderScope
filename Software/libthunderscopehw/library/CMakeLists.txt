@@ -17,13 +17,6 @@ PRIVATE
   ${CMAKE_CURRENT_SOURCE_DIR}/thunderscopehw_pll.c
 )
 	  
-include(CheckLibraryExists)
-check_library_exists(m pow "" LIBM)
-if(LIBM)
-	target_link_libraries(thunderscopehwlib
-		m)
-endif()
-
 
 target_include_directories(thunderscopehwlib
 	PUBLIC ../include)
@@ -46,8 +39,15 @@ PRIVATE
   ${CMAKE_CURRENT_SOURCE_DIR}/thunderscopehw_simulator.c
 )
 
-target_link_libraries(thunderscopehwtestlib
-	m)
+include(CheckLibraryExists)
+check_library_exists(m pow "" LIBM)
+if(LIBM)
+	target_link_libraries(thunderscopehwlib
+		m)
+	target_link_libraries(thunderscopehwtestlib
+		m)
+endif()
+
 
 target_include_directories(thunderscopehwtestlib
 	PUBLIC ../include)
