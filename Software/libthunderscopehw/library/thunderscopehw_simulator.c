@@ -42,6 +42,7 @@ static char* thunderscopehw_identify_handle(THUNDERSCOPEHW_FILE_HANDLE h) {
   return "UNKNOWN";
 }
 
+static uint16_t blocks = 0;
 enum ThunderScopeHWStatus thunderscopehw_read_handle(struct ThunderScopeHW* ts, THUNDERSCOPEHW_FILE_HANDLE h, uint8_t* data, uint64_t addr, int64_t bytes)
 {
 	(void)ts;
@@ -51,6 +52,12 @@ enum ThunderScopeHWStatus thunderscopehw_read_handle(struct ThunderScopeHW* ts, 
 		(long long)addr);
 	memset(data, 0, bytes);
 	switch (addr) {
+	case 8:
+		blocks++;
+		data[3] = blocks & 255;
+		data[2] = blocks >> 8;
+		break;
+
 	case SERIAL_FIFO_ISR_ADDRESS:
 		if (thunderscopehw_simulator_fifo_length) {
 			data[3] = 0;
@@ -60,8 +67,10 @@ enum ThunderScopeHWStatus thunderscopehw_read_handle(struct ThunderScopeHW* ts, 
 		}
 		break;
 	}
-	for (int i = 0; i < bytes; i++) {
-		printf(" 0x%02x", data[i]);
+	if (bytes <= 4) {
+		for (int i = 0; i < bytes; i++) {
+			printf(" 0x%02x", data[i]);
+		}
 	}
 	printf("\n");
 	return THUNDERSCOPEHW_STATUS_OK;
@@ -75,8 +84,10 @@ enum ThunderScopeHWStatus thunderscopehw_write_handle(struct ThunderScopeHW* ts,
 		(long long)bytes,
 	        thunderscopehw_identify_handle(h),
 		(long long)addr);
-	for (int i = 0; i < bytes; i++) {
-		printf(" 0x%02x", data[i]);
+	if (bytes <= 4) {
+		for (int i = 0; i < bytes; i++) {
+			printf(" 0x%02x", data[i]);
+		}
 	}
 	printf("\n");
 	uint32_t tmp = 0;
