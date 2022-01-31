@@ -72,13 +72,14 @@ int mygetopt(int argc, char** argv) {
 	       if (strncmp(options[i].name, argv[optind] + 2, len)) continue;
 	       if (options[i].needs_argument) {
 	               if (!arg) continue;
-	               if (argv[optind] +2 + len != arg) continue;
+	               if (argv[optind] + 2 + len != arg) continue;
 		       optarg = arg + 1;
 	       } else {
 	               if (arg) continue;
 		       if (argv[optind][2 + len]) continue;
 		       optarg = NULL;
 	       }
+	       optind++;
 	       return options[i].return_value;
 	}
 	return -1;
