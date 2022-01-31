@@ -5,6 +5,11 @@
 #include <inttypes.h>
 #include <string.h>
 
+#ifdef _WIN32
+#include <fcntl.h>
+#include <io.h>
+#endif
+
 void write32(uint64_t x, FILE* f) {
 	uint32_t v = 0;
 	if (x < (uint64_t)0xFFFFFFFF) v = (uint32_t)x;
@@ -217,6 +222,11 @@ int main(int argc, char** argv) {
 			perror("open output file");
 			exit(1);
 		}
+	} else {
+#ifdef _WIN32
+	       // Attempt to set stdout to binary mode.
+	       _setmode( _fileno( stdout ), _O_BINARY );
+#endif
 	}
 
 	struct Fmt {
