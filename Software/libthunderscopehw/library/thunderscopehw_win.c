@@ -3,6 +3,7 @@
 #ifdef WIN32
 
 #include <SetupAPI.h>
+#pragma comment(lib, "setupapi.lib")
 #include <INITGUID.H>
 #include <stdio.h>
 
@@ -56,7 +57,7 @@ struct thunderscopehw_scan_callback_context {
 	int count;
 };
 
-static int thunderscopehw_scan_callback(PSP_DEVICE_INTERFACE_DETAIL_DATA dev_detail, void* context) {
+static void thunderscopehw_scan_callback(PSP_DEVICE_INTERFACE_DETAIL_DATA dev_detail, void* context) {
 	struct thunderscopehw_scan_callback_context* data = context;
 	if (data->count < data->max_ids) {
 		*(data->scope_ids) = data->count;
@@ -80,7 +81,7 @@ struct thunderscopehw_connect_callback_context {
 	int count;
 };
 
-static int thunderscopehw_connect_callback(PSP_DEVICE_INTERFACE_DETAIL_DATA dev_detail, void* context) {
+static void thunderscopehw_connect_callback(PSP_DEVICE_INTERFACE_DETAIL_DATA dev_detail, void* context) {
 	struct thunderscopehw_connect_callback_context* data = context;
 	if (data->count == data->scope_id) {
 		char connection_string[256];
@@ -148,7 +149,7 @@ enum ThunderScopeHWStatus thunderscopehw_read_handle(struct ThunderScopeHW* ts, 
 
 	// read from device into buffer
 	DWORD bytesRead;
-	if (!ReadFile(h, data, bytes, &bytesRead, NULL)) {
+	if (!ReadFile(h, data, (DWORD)bytes, &bytesRead, NULL)) {
 		fprintf(stderr, "read handle failed, win32 error code: %d\n", GetLastError());
 		return THUNDERSCOPEHW_STATUS_READ_ERROR;
 	}
@@ -167,7 +168,7 @@ enum ThunderScopeHWStatus thunderscopehw_write_handle(struct ThunderScopeHW* ts,
 
 	// write from buffer to device
 	DWORD bytesWritten;
-	if (!WriteFile(h, data, bytes, &bytesWritten, NULL)) {
+	if (!WriteFile(h, data, (DWORD)bytes, &bytesWritten, NULL)) {
 		fprintf(stderr, "write handle failed, win32 error code: %d\n", GetLastError());
 		return THUNDERSCOPEHW_STATUS_WRITE_ERROR;
 	}

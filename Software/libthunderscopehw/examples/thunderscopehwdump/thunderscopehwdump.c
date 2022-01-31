@@ -1,73 +1,105 @@
 #include "thunderscopehw.h"
 
-#include <unistd.h>
-#include <getopt.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <inttypes.h>
+#include <string.h>
 
 void write32(uint64_t x, FILE* f) {
 	uint32_t v = 0;
-	if (x < 0xFFFFFFFF) v = x;
+	if (x < (uint64_t)0xFFFFFFFF) v = (uint32_t)x;
 	if (fwrite(&v, 1, 4, f) != 4) {
 		perror("fwrite");
 		exit(1);
 	}
 }
 
+struct Option {
+        const char* name;
+        bool needs_argument;
+        int return_value;
+};
+
+struct Option options[] = {
+	{"device",      true,  1 },
+	{"samples",     true,  2 },
+
+	{"bw-all",      true,  0x10 },
+	{"bw1",         true,  0x11 },
+	{"bw2",         true,  0x12 },
+	{"bw3",         true,  0x13 },
+	{"bw4",         true,  0x14 },
+
+	{"vdiv-all",    true,  0x20 },
+	{"vdiv1",       true,  0x21 },
+	{"vdiv2",       true,  0x22 },
+	{"vdiv3",       true,  0x23 },
+	{"vdiv4",       true,  0x24 },
+
+	{"voffset-all", true,  0x30 },
+	{"voffset1",    true,  0x31 },
+	{"voffset2",    true,  0x32 },
+	{"voffset3",    true,  0x33 },
+	{"voffset4",    true,  0x34 },
+
+	{"ac-all",      false, 0x40 },
+	{"ac1",         false, 0x41 },
+	{"ac2",         false, 0x42 },
+	{"ac3",         false, 0x43 },
+	{"ac4",         false, 0x44 },
+
+	{"dc-all",      false, 0x50 },
+	{"ac1",         false, 0x51 },
+	{"ac2",         false, 0x52 },
+	{"ac3",         false, 0x53 },
+	{"ac4",         false, 0x54 },
+
+	{"enable-all",  false, 0x60 },
+	{"enable1",     false, 0x61 },
+	{"enable2",     false, 0x62 },
+	{"enable3",     false, 0x63 },
+	{"enable4",     false, 0x64 },
+};
+
+char* optarg;
+int optind = 1;
+int mygetopt(int argc, char** argv) {
+        if (optind >= argc) return -1;
+	if (!argv[optind][0] == '-' || argv[optind][1] != '-') return -1;
+	char *arg = strchr(argv[optind], '=');
+	for (size_t i = 0; i < sizeof(options) / sizeof(options[0]); i++) {
+               size_t len = strlen(options[i].name);
+	       if (strncmp(options[i].name, argv[optind] + 2, len)) continue;
+	       if (options[i].needs_argument) {
+	               if (!arg) continue;
+	               if (argv[optind] +2 + len != arg) continue;
+		       optarg = arg + 1;
+	       } else {
+	               if (arg) continue;
+		       if (argv[optind][2 + len]) continue;
+		       optarg = NULL;
+	       }
+	       return options[i].return_value;
+	}
+	return -1;
+}
+
 int main(int argc, char** argv) {
-	static struct option long_options[] = {
-		{"device",      required_argument, 0,  1 },
-		{"samples",     required_argument, 0,  2 },
-
-		{"bw-all",      required_argument, 0,  0x10 },
-		{"bw1",         required_argument, 0,  0x11 },
-		{"bw2",         required_argument, 0,  0x12 },
-		{"bw3",         required_argument, 0,  0x13 },
-		{"bw4",         required_argument, 0,  0x14 },
-
-		{"vdiv-all",    required_argument, 0,  0x20 },
-		{"vdiv1",       required_argument, 0,  0x21 },
-		{"vdiv2",       required_argument, 0,  0x22 },
-		{"vdiv3",       required_argument, 0,  0x23 },
-		{"vdiv4",       required_argument, 0,  0x24 },
-
-		{"voffset-all", required_argument, 0,  0x30 },
-		{"voffset1",    required_argument, 0,  0x31 },
-		{"voffset2",    required_argument, 0,  0x32 },
-		{"voffset3",    required_argument, 0,  0x33 },
-		{"voffset4",    required_argument, 0,  0x34 },
-
-		{"ac-all",      no_argument, 0,  0x40 },
-		{"ac1",         no_argument, 0,  0x41 },
-		{"ac2",         no_argument, 0,  0x42 },
-		{"ac3",         no_argument, 0,  0x43 },
-		{"ac4",         no_argument, 0,  0x44 },
-
-		{"dc-all",      no_argument, 0,  0x50 },
-		{"ac1",         no_argument, 0,  0x51 },
-		{"ac2",         no_argument, 0,  0x52 },
-		{"ac3",         no_argument, 0,  0x53 },
-		{"ac4",         no_argument, 0,  0x54 },
-
-		{"enable-all",  no_argument, 0,  0x60 },
-		{"enable1",     no_argument, 0,  0x61 },
-		{"enable2",     no_argument, 0,  0x62 },
-		{"enable3",     no_argument, 0,  0x63 },
-		{"enable4",     no_argument, 0,  0x64 },
-
-		{0,         0,                 0,  0 }
-	};
-
 	uint64_t scope_id = 0;
 	uint64_t samples = 0;
 	while (1) {
-		switch (getopt_long(argc, argv, "", long_options, NULL)) {
+		switch (mygetopt(argc, argv)) {
 		case 1:
-			sscanf(optarg, "%" PRIx64, &scope_id);
+			if (!sscanf(optarg, "%" PRIx64, &scope_id)) {
+			         fprintf(stderr, "Scope ID must be hexadecimal.\n");
+			         exit(1);
+			}
 			continue;
 		case 2:
-			sscanf(optarg, "%" PRId64, &samples);
+			if (!sscanf(optarg, "%" PRId64, &samples)) {
+			        fprintf(stderr, "Number of samples must be a number.\n");
+				exit(1);
+			}
 		default:
 			continue;
 		case -1:
@@ -106,7 +138,7 @@ int main(int argc, char** argv) {
 	optind = 1;
 
 	while (1) {
-		int c = getopt_long(argc, argv, "", long_options, NULL);
+		int c = mygetopt(argc, argv);
 		if (c == -1) break;
 		if (!(c >> 4)) continue;
 		for (int channel = 0; channel < 4; channel++) {
@@ -220,7 +252,11 @@ int main(int argc, char** argv) {
 	}
 
 	uint8_t* buffer;
+#ifdef _WIN32
+        buffer = _aligned_malloc(1 << 20, 4096);
+#else	
 	posix_memalign((void**)&buffer, 4096, 1 << 20);
+#endif
 
 	while (samples) {
 		int64_t to_copy = samples;
