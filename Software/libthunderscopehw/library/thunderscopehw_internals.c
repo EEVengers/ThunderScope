@@ -154,7 +154,7 @@ enum ThunderScopeHWStatus thunderscopehw_configure_channels(struct ThunderScopeH
 		return false;
 
 	case 1:
-		on_channels[2] = on_channels[3] = on_channels[4] = on_channels[0];
+		on_channels[1] = on_channels[2] = on_channels[3] = on_channels[0];
 		clkdiv = 0;
 		break;
 
