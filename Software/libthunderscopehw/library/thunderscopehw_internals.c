@@ -210,7 +210,7 @@ uint32_t thunderscopehw_read32(struct ThunderScopeHW* ts, size_t addr)
 {
 	uint8_t bytes[4];
 	thunderscopehw_read_handle(ts, ts->user_handle, bytes, addr, 4);
-	return (bytes[0] << 24) | (bytes[1] << 16) | (bytes[2] << 8) | bytes[3];
+	return (bytes[3] << 24) | (bytes[2] << 16) | (bytes[1] << 8) | bytes[0];
 }
 
 enum ThunderScopeHWStatus thunderscopehw_write32(struct ThunderScopeHW* ts, size_t addr, uint32_t value)
