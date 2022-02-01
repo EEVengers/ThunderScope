@@ -1,6 +1,8 @@
 #include "thunderscopehw_private.h"
 
 #include <math.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 #ifdef WIN32
 #else
@@ -209,7 +211,10 @@ enum ThunderScopeHWStatus thunderscopehw_configure_channel(struct ThunderScopeHW
 uint32_t thunderscopehw_read32(struct ThunderScopeHW* ts, size_t addr)
 {
 	uint8_t bytes[4];
-	thunderscopehw_read_handle(ts, ts->user_handle, bytes, addr, 4);
+	if (thunderscopehw_read_handle(ts, ts->user_handle, bytes, addr, 4) != THUNDERSCOPEHW_STATUS_OK) {
+		fprintf(stderr, "Error in thunderscopehw_read32\n");
+		exit(1);
+	}
 	return (bytes[3] << 24) | (bytes[2] << 16) | (bytes[1] << 8) | bytes[0];
 }
 

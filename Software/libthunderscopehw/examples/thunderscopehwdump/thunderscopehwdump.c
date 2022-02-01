@@ -82,7 +82,8 @@ int mygetopt(int argc, char** argv) {
 	       optind++;
 	       return options[i].return_value;
 	}
-	return -1;
+	fprintf(stderr, "Unknown option: %s\n", argv[optind]);
+	exit(1);
 }
 
 int main(int argc, char** argv) {
@@ -252,22 +253,23 @@ int main(int argc, char** argv) {
 		exit(1);
 	}
 
+#define BUFFER_SIZE (1<<20)
 	uint8_t* buffer;
 #ifdef _WIN32
-        buffer = _aligned_malloc(1 << 20, 4096);
-#else	
-	posix_memalign((void**)&buffer, 4096, 1 << 20);
+        buffer = _aligned_malloc(BUFFER_SIZE, 4096);
+#else
+	posix_memalign((void**)&buffer, 4096, BUFFER_SIZE);
 #endif
 
 	while (samples) {
 		int64_t to_copy = samples;
-		if (to_copy > sizeof(buffer)) to_copy = sizeof(buffer);
-		ret = thunderscopehw_read(ts, buffer, sizeof(buffer));
+		if (to_copy > BUFFER_SIZE) to_copy = BUFFER_SIZE;
+		ret = thunderscopehw_read(ts, buffer, to_copy);
 		if (ret != THUNDERSCOPEHW_STATUS_OK) {
 			fprintf(stderr, "Thunderscope read error, error = %s\n", thunderscopehw_describe_error(ret));
 			exit(1);
 		}
-		if (fwrite(buffer, 1, sizeof(buffer), outfile) != sizeof(buffer)) {
+		if (fwrite(buffer, 1, to_copy, outfile) != to_copy) {
 			perror("fwrite");
 			exit(1);
 		}

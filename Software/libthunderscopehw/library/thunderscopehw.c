@@ -119,7 +119,6 @@ static enum ThunderScopeHWStatus thunderscopehw_update_buffer_head(struct Thunde
 
 	uint32_t overflow_cycles = (transfer_counter >> 16) & 0x3FFF;
 	if (overflow_cycles) {
-		fprintf(stderr, "TRANSFER COUNTER = %llx\n", (long long)transfer_counter);
 		return THUNDERSCOPEHW_STATUS_PIPELINE_OVERFLOW;
 	}
 
@@ -168,7 +167,7 @@ enum ThunderScopeHWStatus thunderscopehw_read(struct ThunderScopeHW* ts, uint8_t
 		if (pages_to_read > ts->ram_size_pages - buffer_read_pos) pages_to_read = ts->ram_size_pages - buffer_read_pos;
 		if (pages_to_read > ts->ram_size_pages / 4) pages_to_read = ts->ram_size_pages / 4;
 
-		thunderscopehw_read_handle(ts, ts->user_handle, data, buffer_read_pos << 12, pages_to_read << 12);
+		THUNDERSCOPEHW_RUN(read_handle(ts, ts->c2h0_handle, data, buffer_read_pos << 12, pages_to_read << 12));
 
 		data += pages_to_read << 12;
 		length -= pages_to_read << 12;
