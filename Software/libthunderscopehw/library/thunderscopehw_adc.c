@@ -25,7 +25,7 @@ enum ThunderScopeHWStatus thunderscopehw_configure_adc(struct ThunderScopeHW* ts
 	THUNDERSCOPEHW_RUN(adc_power(ts, false));
 
 	// invert channels
-	THUNDERSCOPEHW_RUN(adc_set_reg(ts, THUNDERSCOPEHW_ADC_REG_INVERT, 0x0074));
+	THUNDERSCOPEHW_RUN(adc_set_reg(ts, THUNDERSCOPEHW_ADC_REG_INVERT, 0x007F));
 
 	// Adjust full scale value
 	THUNDERSCOPEHW_RUN(adc_set_reg(ts, THUNDERSCOPEHW_ADC_REG_FS_CNTRL, 0x0010));
