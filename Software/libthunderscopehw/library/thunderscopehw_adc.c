@@ -14,7 +14,7 @@ enum ThunderScopeHWStatus thunderscopehw_adc_power(struct ThunderScopeHW* ts, bo
 {
 	return thunderscopehw_adc_set_reg(ts,
 					THUNDERSCOPEHW_ADC_REG_POWER,
-					on ? 0x0200 : 0x0000);
+					on ? 0x0000 : 0x0200);
 }
 
 enum ThunderScopeHWStatus thunderscopehw_configure_adc(struct ThunderScopeHW* ts)

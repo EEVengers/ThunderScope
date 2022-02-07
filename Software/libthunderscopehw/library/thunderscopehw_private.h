@@ -33,7 +33,7 @@
 #define SPI_FRONT_END_CHANNEL_3             0xFA
 #define SPI_FRONT_END_CHANNEL_4             0xFB
 
-#define SPI_BYTE_ADC                        0xFC
+#define SPI_BYTE_ADC                        0xFD
 
 #define I2C_BYTE_PLL                        0xFF
 
