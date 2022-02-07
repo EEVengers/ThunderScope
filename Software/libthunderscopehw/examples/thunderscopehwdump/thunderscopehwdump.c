@@ -269,6 +269,10 @@ int main(int argc, char** argv) {
 			fprintf(stderr, "Thunderscope read error, error = %s\n", thunderscopehw_describe_error(ret));
 			exit(1);
 		}
+		// Convert signed output to unsigned output
+		for (size_t i = 0; i < BUFFER_SIZE; i++) {
+			buffer[i] += 0x80;
+		}
 		if (fwrite(buffer, 1, to_copy, outfile) != to_copy) {
 			perror("fwrite");
 			exit(1);
