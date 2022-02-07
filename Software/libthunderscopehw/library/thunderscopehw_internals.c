@@ -65,19 +65,17 @@ enum ThunderScopeHWStatus thunderscopehw_set_datamover_reg(struct ThunderScopeHW
 	if (ts->datamover_en)  datamover_reg |= 0x1;
 	if (ts->fpga_adc_en)  datamover_reg |= 0x2;
 
-#if 1
 	for (int channel = 0; channel < 4; channel++) {
 		if (ts->channels[channel].on == true) {
 			num_channels_on++;
 		}
-		if (ts->channels[channel].vdiv > 100) {
+		if (ts->channels[channel].vdiv <= 100) {
 			datamover_reg |= 1 << (16 + channel);
 		}
 		if (ts->channels[channel].coupling == THUNDERSCOPEHW_COUPLING_DC) {
 			datamover_reg |= 1 << (20 + channel);
 		}
 	}
-#endif
 	switch (num_channels_on) {
 	case 0:
 	case 1: break; // do nothing
