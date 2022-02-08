@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Wed May 19 10:52:41 2021" VIVADOVERSION="2020.1">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Sat Nov 27 13:17:47 2021" VIVADOVERSION="2020.1">
 
   <SYSTEMINFO ARCH="artix7" DEVICE="7a100t" NAME="design_1" PACKAGE="fgg484" SPEEDGRADE="-2"/>
 
@@ -48,6 +48,56 @@
     <PORT DIR="O" LEFT="31" NAME="gpio_io_o_0" RIGHT="0" SIGIS="undef" SIGNAME="AXI_LITE_IO_axi_gpio_0_gpio_io_o">
       <CONNECTIONS>
         <CONNECTION INSTANCE="AXI_LITE_IO_axi_gpio_0" PORT="gpio_io_o"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" LEFT="127" NAME="S_AXIS_S2MM_tdata" RIGHT="0" SIGIS="undef" SIGNAME="Datamover_axi_datamover_0_s_axis_s2mm_tdata">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="Datamover_axi_datamover_0" PORT="s_axis_s2mm_tdata"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" LEFT="15" NAME="S_AXIS_S2MM_tkeep" RIGHT="0" SIGIS="undef" SIGNAME="Datamover_axi_datamover_0_s_axis_s2mm_tkeep">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="Datamover_axi_datamover_0" PORT="s_axis_s2mm_tkeep"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" NAME="S_AXIS_S2MM_tlast" SIGIS="undef" SIGNAME="Datamover_axi_datamover_0_s_axis_s2mm_tlast">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="Datamover_axi_datamover_0" PORT="s_axis_s2mm_tlast"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="S_AXIS_S2MM_tready" SIGIS="undef" SIGNAME="Datamover_axi_datamover_0_s_axis_s2mm_tready">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="Datamover_axi_datamover_0" PORT="s_axis_s2mm_tready"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" NAME="S_AXIS_S2MM_tvalid" SIGIS="undef" SIGNAME="Datamover_axi_datamover_0_s_axis_s2mm_tvalid">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="Datamover_axi_datamover_0" PORT="s_axis_s2mm_tvalid"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" LEFT="71" NAME="S_AXIS_S2MM_CMD_tdata" RIGHT="0" SIGIS="undef" SIGNAME="Datamover_axi_datamover_0_s_axis_s2mm_cmd_tdata">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="Datamover_axi_datamover_0" PORT="s_axis_s2mm_cmd_tdata"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="S_AXIS_S2MM_CMD_tready" SIGIS="undef" SIGNAME="Datamover_axi_datamover_0_s_axis_s2mm_cmd_tready">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="Datamover_axi_datamover_0" PORT="s_axis_s2mm_cmd_tready"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" NAME="S_AXIS_S2MM_CMD_tvalid" SIGIS="undef" SIGNAME="Datamover_axi_datamover_0_s_axis_s2mm_cmd_tvalid">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="Datamover_axi_datamover_0" PORT="s_axis_s2mm_cmd_tvalid"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT CLKFREQUENCY="100000000" DIR="I" LEFT="0" NAME="pcie_clk_p" RIGHT="0" SIGIS="clk" SIGNAME="PCIe_util_ds_buf_0_IBUF_DS_P">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="PCIe_util_ds_buf_0" PORT="IBUF_DS_P"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT CLKFREQUENCY="100000000" DIR="I" LEFT="0" NAME="pcie_clk_n" RIGHT="0" SIGIS="clk" SIGNAME="PCIe_util_ds_buf_0_IBUF_DS_N">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="PCIe_util_ds_buf_0" PORT="IBUF_DS_N"/>
       </CONNECTIONS>
     </PORT>
     <PORT DIR="IO" LEFT="31" NAME="DDR3_dq" RIGHT="0" SIGIS="undef" SIGNAME="Memory_mig_7series_0_ddr3_dq">
@@ -125,31 +175,6 @@
         <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="ddr3_odt"/>
       </CONNECTIONS>
     </PORT>
-    <PORT DIR="I" LEFT="71" NAME="S_AXIS_S2MM_CMD_tdata" RIGHT="0" SIGIS="undef" SIGNAME="Datamover_axi_datamover_0_s_axis_s2mm_cmd_tdata">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="Datamover_axi_datamover_0" PORT="s_axis_s2mm_cmd_tdata"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="O" NAME="S_AXIS_S2MM_CMD_tready" SIGIS="undef" SIGNAME="Datamover_axi_datamover_0_s_axis_s2mm_cmd_tready">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="Datamover_axi_datamover_0" PORT="s_axis_s2mm_cmd_tready"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="I" NAME="S_AXIS_S2MM_CMD_tvalid" SIGIS="undef" SIGNAME="Datamover_axi_datamover_0_s_axis_s2mm_cmd_tvalid">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="Datamover_axi_datamover_0" PORT="s_axis_s2mm_cmd_tvalid"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT CLKFREQUENCY="100000000" DIR="I" LEFT="0" NAME="pcie_clk_p" RIGHT="0" SIGIS="clk" SIGNAME="PCIe_util_ds_buf_0_IBUF_DS_P">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="PCIe_util_ds_buf_0" PORT="IBUF_DS_P"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT CLKFREQUENCY="100000000" DIR="I" LEFT="0" NAME="pcie_clk_n" RIGHT="0" SIGIS="clk" SIGNAME="PCIe_util_ds_buf_0_IBUF_DS_N">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="PCIe_util_ds_buf_0" PORT="IBUF_DS_N"/>
-      </CONNECTIONS>
-    </PORT>
     <PORT DIR="O" LEFT="31" NAME="AXI_STR_TXD_0_tdata" RIGHT="0" SIGIS="undef" SIGNAME="AXI_LITE_IO_axi_fifo_mm_s_0_axi_str_txd_tdata">
       <CONNECTIONS>
         <CONNECTION INSTANCE="AXI_LITE_IO_axi_fifo_mm_s_0" PORT="axi_str_txd_tdata"/>
@@ -188,31 +213,6 @@
     <PORT DIR="O" LEFT="3" NAME="pcie_mgt_txp" RIGHT="0" SIGIS="undef" SIGNAME="PCIe_xdma_0_pci_exp_txp">
       <CONNECTIONS>
         <CONNECTION INSTANCE="PCIe_xdma_0" PORT="pci_exp_txp"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="I" LEFT="127" NAME="S_AXIS_S2MM_tdata" RIGHT="0" SIGIS="undef" SIGNAME="Datamover_axi_datamover_0_s_axis_s2mm_tdata">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="Datamover_axi_datamover_0" PORT="s_axis_s2mm_tdata"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="I" LEFT="15" NAME="S_AXIS_S2MM_tkeep" RIGHT="0" SIGIS="undef" SIGNAME="Datamover_axi_datamover_0_s_axis_s2mm_tkeep">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="Datamover_axi_datamover_0" PORT="s_axis_s2mm_tkeep"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="I" NAME="S_AXIS_S2MM_tlast" SIGIS="undef" SIGNAME="Datamover_axi_datamover_0_s_axis_s2mm_tlast">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="Datamover_axi_datamover_0" PORT="s_axis_s2mm_tlast"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="O" NAME="S_AXIS_S2MM_tready" SIGIS="undef" SIGNAME="Datamover_axi_datamover_0_s_axis_s2mm_tready">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="Datamover_axi_datamover_0" PORT="s_axis_s2mm_tready"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="I" NAME="S_AXIS_S2MM_tvalid" SIGIS="undef" SIGNAME="Datamover_axi_datamover_0_s_axis_s2mm_tvalid">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="Datamover_axi_datamover_0" PORT="s_axis_s2mm_tvalid"/>
       </CONNECTIONS>
     </PORT>
   </EXTERNALPORTS>
@@ -7429,7 +7429,7 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" LEFT="0" NAME="Op1" POLARITY="ACTIVE_HIGH" RIGHT="0" SIGIS="undef" SIGNAME="Memory_mig_7series_0_ui_clk_sync_rst">
+        <PORT DIR="I" LEFT="0" NAME="Op1" RIGHT="0" SIGIS="undef" SIGNAME="Memory_mig_7series_0_ui_clk_sync_rst">
           <CONNECTIONS>
             <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="ui_clk_sync_rst"/>
           </CONNECTIONS>
@@ -8119,7 +8119,7 @@
         <PARAMETER NAME="ENABLE_MORE" VALUE="FALSE"/>
         <PARAMETER NAME="DISABLE_BRAM_PIPELINE" VALUE="FALSE"/>
         <PARAMETER NAME="DISABLE_EQ_SYNCHRONIZER" VALUE="FALSE"/>
-        <PARAMETER NAME="C_ENABLE_RESOURCE_REDUCTION" VALUE="FALSE"/>
+        <PARAMETER NAME="C_ENABLE_RESOURCE_REDUCTION" VALUE="TRUE"/>
         <PARAMETER NAME="GEN4_EIEOS_0S7" VALUE="TRUE"/>
         <PARAMETER NAME="C_S_AXI_SUPPORTS_NARROW_BURST" VALUE="0"/>
         <PARAMETER NAME="ENABLE_ATS_SWITCH" VALUE="FALSE"/>
@@ -8956,7 +8956,7 @@
         <PARAMETER NAME="set_finite_credit" VALUE="false"/>
         <PARAMETER NAME="disable_bram_pipeline" VALUE="false"/>
         <PARAMETER NAME="disable_eq_synchronizer" VALUE="false"/>
-        <PARAMETER NAME="enable_resource_reduction" VALUE="false"/>
+        <PARAMETER NAME="enable_resource_reduction" VALUE="true"/>
         <PARAMETER NAME="c_ats_enable" VALUE="false"/>
         <PARAMETER NAME="c_pri_enable" VALUE="false"/>
         <PARAMETER NAME="usplus_es1_seqnum_bypass" VALUE="false"/>

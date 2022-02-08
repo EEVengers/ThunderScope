@@ -384,6 +384,7 @@ proc create_hier_cell_PCIe { parentCell nameHier } {
    CONFIG.cfg_mgmt_if {false} \
    CONFIG.dsc_bypass_rd {0001} \
    CONFIG.dsc_bypass_wr {0000} \
+   CONFIG.enable_resource_reduction {true} \
    CONFIG.mode_selection {Advanced} \
    CONFIG.pcie_extended_tag {false} \
    CONFIG.pciebar2axibar_axil_master {0x40000000} \

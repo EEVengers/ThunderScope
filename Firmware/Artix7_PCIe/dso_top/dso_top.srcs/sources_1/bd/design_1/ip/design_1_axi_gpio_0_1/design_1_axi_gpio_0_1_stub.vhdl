@@ -1,11 +1,11 @@
 -- Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
--- Date        : Sun May 16 12:50:02 2021
+-- Date        : Sat Nov 27 13:21:16 2021
 -- Host        : DESKTOP-J72MK93 running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode synth_stub -rename_top design_1_axi_gpio_0_1 -prefix
---               design_1_axi_gpio_0_1_ design_1_axi_gpio_1_0_stub.vhdl
--- Design      : design_1_axi_gpio_1_0
+-- Command     : write_vhdl -force -mode synth_stub
+--               c:/Users/Aleksa/Documents/FPGA_Dev/Artix7_PCIe/DDR3_Optimization/dso_top/dso_top.srcs/sources_1/bd/design_1/ip/design_1_axi_gpio_0_1/design_1_axi_gpio_0_1_stub.vhdl
+-- Design      : design_1_axi_gpio_0_1
 -- Purpose     : Stub declaration of top-level module interface
 -- Device      : xc7a100tfgg484-2
 -- --------------------------------------------------------------------------------
