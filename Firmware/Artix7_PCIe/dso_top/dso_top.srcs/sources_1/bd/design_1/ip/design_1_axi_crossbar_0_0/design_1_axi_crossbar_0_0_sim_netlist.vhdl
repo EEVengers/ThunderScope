@@ -1,14 +1,14 @@
 -- Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
--- Date        : Mon May 17 14:17:40 2021
+-- Date        : Thu Jan 20 21:59:58 2022
 -- Host        : DESKTOP-J72MK93 running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
---               c:/Users/Aleksa/Documents/FPGA_Dev/Artix7_PCIe/DDR3_Optimization/dso_top/dso_top.srcs/sources_1/bd/design_1/ip/design_1_axi_crossbar_0_0/design_1_axi_crossbar_0_0_sim_netlist.vhdl
+--               c:/Users/Aleksa/project_1/project_1.srcs/sources_1/bd/design_1/ip/design_1_axi_crossbar_0_0/design_1_axi_crossbar_0_0_sim_netlist.vhdl
 -- Design      : design_1_axi_crossbar_0_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
--- Device      : xc7a100tfgg484-2
+-- Device      : xc7a35tcsg325-2
 -- --------------------------------------------------------------------------------
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
@@ -2454,13 +2454,13 @@ entity design_1_axi_crossbar_0_0_axi_crossbar_v2_1_22_axi_crossbar is
   attribute C_M_AXI_BASE_ADDR : string;
   attribute C_M_AXI_BASE_ADDR of design_1_axi_crossbar_0_0_axi_crossbar_v2_1_22_axi_crossbar : entity is "128'b00000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000001000000000000100000000000000000";
   attribute C_M_AXI_READ_CONNECTIVITY : string;
-  attribute C_M_AXI_READ_CONNECTIVITY of design_1_axi_crossbar_0_0_axi_crossbar_v2_1_22_axi_crossbar : entity is "64'b0000000000000000000000000000000100000000000000000000000000000001";
+  attribute C_M_AXI_READ_CONNECTIVITY of design_1_axi_crossbar_0_0_axi_crossbar_v2_1_22_axi_crossbar : entity is "64'b1111111111111111111111111111111111111111111111111111111111111111";
   attribute C_M_AXI_READ_ISSUING : string;
   attribute C_M_AXI_READ_ISSUING of design_1_axi_crossbar_0_0_axi_crossbar_v2_1_22_axi_crossbar : entity is "64'b0000000000000000000000000000000100000000000000000000000000000001";
   attribute C_M_AXI_SECURE : string;
   attribute C_M_AXI_SECURE of design_1_axi_crossbar_0_0_axi_crossbar_v2_1_22_axi_crossbar : entity is "64'b0000000000000000000000000000000000000000000000000000000000000000";
   attribute C_M_AXI_WRITE_CONNECTIVITY : string;
-  attribute C_M_AXI_WRITE_CONNECTIVITY of design_1_axi_crossbar_0_0_axi_crossbar_v2_1_22_axi_crossbar : entity is "64'b0000000000000000000000000000000100000000000000000000000000000001";
+  attribute C_M_AXI_WRITE_CONNECTIVITY of design_1_axi_crossbar_0_0_axi_crossbar_v2_1_22_axi_crossbar : entity is "64'b1111111111111111111111111111111111111111111111111111111111111111";
   attribute C_M_AXI_WRITE_ISSUING : string;
   attribute C_M_AXI_WRITE_ISSUING of design_1_axi_crossbar_0_0_axi_crossbar_v2_1_22_axi_crossbar : entity is "64'b0000000000000000000000000000000100000000000000000000000000000001";
   attribute C_NUM_ADDR_RANGES : integer;
@@ -2832,13 +2832,13 @@ architecture STRUCTURE of design_1_axi_crossbar_0_0 is
   attribute C_M_AXI_BASE_ADDR : string;
   attribute C_M_AXI_BASE_ADDR of inst : label is "128'b00000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000001000000000000100000000000000000";
   attribute C_M_AXI_READ_CONNECTIVITY : string;
-  attribute C_M_AXI_READ_CONNECTIVITY of inst : label is "64'b0000000000000000000000000000000100000000000000000000000000000001";
+  attribute C_M_AXI_READ_CONNECTIVITY of inst : label is "64'b1111111111111111111111111111111111111111111111111111111111111111";
   attribute C_M_AXI_READ_ISSUING : string;
   attribute C_M_AXI_READ_ISSUING of inst : label is "64'b0000000000000000000000000000000100000000000000000000000000000001";
   attribute C_M_AXI_SECURE : string;
   attribute C_M_AXI_SECURE of inst : label is "64'b0000000000000000000000000000000000000000000000000000000000000000";
   attribute C_M_AXI_WRITE_CONNECTIVITY : string;
-  attribute C_M_AXI_WRITE_CONNECTIVITY of inst : label is "64'b0000000000000000000000000000000100000000000000000000000000000001";
+  attribute C_M_AXI_WRITE_CONNECTIVITY of inst : label is "64'b1111111111111111111111111111111111111111111111111111111111111111";
   attribute C_M_AXI_WRITE_ISSUING : string;
   attribute C_M_AXI_WRITE_ISSUING of inst : label is "64'b0000000000000000000000000000000100000000000000000000000000000001";
   attribute C_NUM_ADDR_RANGES : integer;
@@ -2917,7 +2917,7 @@ architecture STRUCTURE of design_1_axi_crossbar_0_0 is
   attribute X_INTERFACE_INFO of m_axi_bvalid : signal is "xilinx.com:interface:aximm:1.0 M00_AXI BVALID [0:0] [0:0], xilinx.com:interface:aximm:1.0 M01_AXI BVALID [0:0] [1:1]";
   attribute X_INTERFACE_INFO of m_axi_rdata : signal is "xilinx.com:interface:aximm:1.0 M00_AXI RDATA [31:0] [31:0], xilinx.com:interface:aximm:1.0 M01_AXI RDATA [31:0] [63:32]";
   attribute X_INTERFACE_INFO of m_axi_rready : signal is "xilinx.com:interface:aximm:1.0 M00_AXI RREADY [0:0] [0:0], xilinx.com:interface:aximm:1.0 M01_AXI RREADY [0:0] [1:1]";
-  attribute X_INTERFACE_PARAMETER of m_axi_rready : signal is "XIL_INTERFACENAME M00_AXI, DATA_WIDTH 32, PROTOCOL AXI4LITE, FREQ_HZ 125000000, ID_WIDTH 0, ADDR_WIDTH 32, AWUSER_WIDTH 0, ARUSER_WIDTH 0, WUSER_WIDTH 0, RUSER_WIDTH 0, BUSER_WIDTH 0, READ_WRITE_MODE READ_WRITE, HAS_BURST 0, HAS_LOCK 0, HAS_PROT 1, HAS_CACHE 0, HAS_QOS 0, HAS_REGION 0, HAS_WSTRB 1, HAS_BRESP 1, HAS_RRESP 1, SUPPORTS_NARROW_BURST 0, NUM_READ_OUTSTANDING 2, NUM_WRITE_OUTSTANDING 2, MAX_BURST_LENGTH 1, PHASE 0.000, CLK_DOMAIN design_1_xdma_0_0_axi_aclk, NUM_READ_THREADS 1, NUM_WRITE_THREADS 1, RUSER_BITS_PER_BYTE 0, WUSER_BITS_PER_BYTE 0, INSERT_VIP 0, XIL_INTERFACENAME M01_AXI, DATA_WIDTH 32, PROTOCOL AXI4LITE, FREQ_HZ 125000000, ID_WIDTH 0, ADDR_WIDTH 32, AWUSER_WIDTH 0, ARUSER_WIDTH 0, WUSER_WIDTH 0, RUSER_WIDTH 0, BUSER_WIDTH 0, READ_WRITE_MODE READ_WRITE, HAS_BURST 0, HAS_LOCK 0, HAS_PROT 1, HAS_CACHE 0, HAS_QOS 0, HAS_REGION 0, HAS_WSTRB 1, HAS_BRESP 1, HAS_RRESP 1, SUPPORTS_NARROW_BURST 0, NUM_READ_OUTSTANDING 2, NUM_WRITE_OUTSTANDING 2, MAX_BURST_LENGTH 1, PHASE 0.000, CLK_DOMAIN design_1_xdma_0_0_axi_aclk, NUM_READ_THREADS 1, NUM_WRITE_THREADS 1, RUSER_BITS_PER_BYTE 0, WUSER_BITS_PER_BYTE 0, INSERT_VIP 0";
+  attribute X_INTERFACE_PARAMETER of m_axi_rready : signal is "XIL_INTERFACENAME M00_AXI, DATA_WIDTH 32, PROTOCOL AXI4LITE, FREQ_HZ 125000000, ID_WIDTH 0, ADDR_WIDTH 32, AWUSER_WIDTH 0, ARUSER_WIDTH 0, WUSER_WIDTH 0, RUSER_WIDTH 0, BUSER_WIDTH 0, READ_WRITE_MODE READ_WRITE, HAS_BURST 0, HAS_LOCK 0, HAS_PROT 1, HAS_CACHE 0, HAS_QOS 0, HAS_REGION 0, HAS_WSTRB 1, HAS_BRESP 1, HAS_RRESP 1, SUPPORTS_NARROW_BURST 0, NUM_READ_OUTSTANDING 1, NUM_WRITE_OUTSTANDING 1, MAX_BURST_LENGTH 1, PHASE 0.000, CLK_DOMAIN design_1_xdma_0_0_axi_aclk, NUM_READ_THREADS 1, NUM_WRITE_THREADS 1, RUSER_BITS_PER_BYTE 0, WUSER_BITS_PER_BYTE 0, INSERT_VIP 0, XIL_INTERFACENAME M01_AXI, DATA_WIDTH 32, PROTOCOL AXI4LITE, FREQ_HZ 125000000, ID_WIDTH 0, ADDR_WIDTH 32, AWUSER_WIDTH 0, ARUSER_WIDTH 0, WUSER_WIDTH 0, RUSER_WIDTH 0, BUSER_WIDTH 0, READ_WRITE_MODE READ_WRITE, HAS_BURST 0, HAS_LOCK 0, HAS_PROT 1, HAS_CACHE 0, HAS_QOS 0, HAS_REGION 0, HAS_WSTRB 1, HAS_BRESP 1, HAS_RRESP 1, SUPPORTS_NARROW_BURST 0, NUM_READ_OUTSTANDING 1, NUM_WRITE_OUTSTANDING 1, MAX_BURST_LENGTH 1, PHASE 0.000, CLK_DOMAIN design_1_xdma_0_0_axi_aclk, NUM_READ_THREADS 1, NUM_WRITE_THREADS 1, RUSER_BITS_PER_BYTE 0, WUSER_BITS_PER_BYTE 0, INSERT_VIP 0";
   attribute X_INTERFACE_INFO of m_axi_rresp : signal is "xilinx.com:interface:aximm:1.0 M00_AXI RRESP [1:0] [1:0], xilinx.com:interface:aximm:1.0 M01_AXI RRESP [1:0] [3:2]";
   attribute X_INTERFACE_INFO of m_axi_rvalid : signal is "xilinx.com:interface:aximm:1.0 M00_AXI RVALID [0:0] [0:0], xilinx.com:interface:aximm:1.0 M01_AXI RVALID [0:0] [1:1]";
   attribute X_INTERFACE_INFO of m_axi_wdata : signal is "xilinx.com:interface:aximm:1.0 M00_AXI WDATA [31:0] [31:0], xilinx.com:interface:aximm:1.0 M01_AXI WDATA [31:0] [63:32]";

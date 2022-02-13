@@ -1,7 +1,7 @@
 `timescale 1 ps / 1 ps
 
 module dso_top
-   (output [14:0] DDR3_addr,
+   (output [12:0] DDR3_addr,
     output [2:0] DDR3_ba,
     output DDR3_cas_n,
     output [0:0] DDR3_ck_n,
@@ -23,7 +23,7 @@ module dso_top
     output [3:0] pcie_mgt_txn,
     output [3:0] pcie_mgt_txp,
     input pcie_perstn,
-    output [3:0] led,
+    output [1:0] led,
     output [3:0] atten,
     output [3:0] dc_cpl,
     output i2c_sda,					
@@ -49,6 +49,88 @@ module dso_top
 	input[7:0] adc_data_p,
 	input[7:0] adc_data_n
     );
+    
+  wire [31:0]M00_AXI_0_araddr;
+  wire [1:0]M00_AXI_0_arburst;
+  wire [3:0]M00_AXI_0_arcache;
+  wire [0:0]M00_AXI_0_arid;
+  wire [7:0]M00_AXI_0_arlen;
+  wire [0:0]M00_AXI_0_arlock;
+  wire [2:0]M00_AXI_0_arprot;
+  wire [3:0]M00_AXI_0_arqos;
+  wire [0:0]M00_AXI_0_arready;
+  wire [3:0]M00_AXI_0_arregion;
+  wire [2:0]M00_AXI_0_arsize;
+  wire [0:0]M00_AXI_0_arvalid;
+  wire [31:0]M00_AXI_0_awaddr;
+  wire [1:0]M00_AXI_0_awburst;
+  wire [3:0]M00_AXI_0_awcache;
+  wire [0:0]M00_AXI_0_awid;
+  wire [7:0]M00_AXI_0_awlen;
+  wire [0:0]M00_AXI_0_awlock;
+  wire [2:0]M00_AXI_0_awprot;
+  wire [3:0]M00_AXI_0_awqos;
+  wire [0:0]M00_AXI_0_awready;
+  wire [3:0]M00_AXI_0_awregion;
+  wire [2:0]M00_AXI_0_awsize;
+  wire [3:0]M00_AXI_0_awuser;
+  wire [0:0]M00_AXI_0_awvalid;
+  wire [0:0]M00_AXI_0_bid;
+  wire [0:0]M00_AXI_0_bready;
+  wire [1:0]M00_AXI_0_bresp;
+  wire [0:0]M00_AXI_0_bvalid;
+  wire [255:0]M00_AXI_0_rdata;
+  wire [0:0]M00_AXI_0_rid;
+  wire [0:0]M00_AXI_0_rlast;
+  wire [0:0]M00_AXI_0_rready;
+  wire [1:0]M00_AXI_0_rresp;
+  wire [0:0]M00_AXI_0_rvalid;
+  wire [255:0]M00_AXI_0_wdata;
+  wire [0:0]M00_AXI_0_wlast;
+  wire [0:0]M00_AXI_0_wready;
+  wire [31:0]M00_AXI_0_wstrb;
+  wire [0:0]M00_AXI_0_wvalid;
+  
+  wire [27:0]S_AXI_0_araddr;
+  wire [1:0]S_AXI_0_arburst;
+  wire [3:0]S_AXI_0_arcache;
+  wire [0:0]S_AXI_0_arid;
+  wire [7:0]S_AXI_0_arlen;
+  wire S_AXI_0_arlock;
+  wire [2:0]S_AXI_0_arprot;
+  wire [3:0]S_AXI_0_arqos;
+  wire S_AXI_0_arready;
+  wire [2:0]S_AXI_0_arsize;
+  wire S_AXI_0_arvalid;
+  wire [27:0]S_AXI_0_awaddr;
+  wire [1:0]S_AXI_0_awburst;
+  wire [3:0]S_AXI_0_awcache;
+  wire [0:0]S_AXI_0_awid;
+  wire [7:0]S_AXI_0_awlen;
+  wire S_AXI_0_awlock;
+  wire [2:0]S_AXI_0_awprot;
+  wire [3:0]S_AXI_0_awqos;
+  wire S_AXI_0_awready;
+  wire [2:0]S_AXI_0_awsize;
+  wire S_AXI_0_awvalid;
+  wire [0:0]S_AXI_0_bid;
+  wire S_AXI_0_bready;
+  wire [1:0]S_AXI_0_bresp;
+  wire S_AXI_0_bvalid;
+  wire [255:0]S_AXI_0_rdata;
+  wire [0:0]S_AXI_0_rid;
+  wire S_AXI_0_rlast;
+  wire S_AXI_0_rready;
+  wire [1:0]S_AXI_0_rresp;
+  wire S_AXI_0_rvalid;
+  wire [255:0]S_AXI_0_wdata;
+  wire S_AXI_0_wlast;
+  wire S_AXI_0_wready;
+  wire [31:0]S_AXI_0_wstrb;
+  wire S_AXI_0_wvalid;
+  
+  wire ui_clk_sync_rst_0;
+  wire ui_clk_0;
 
   wire [31:0]AXI_STR_TXD_0_tdata;
   wire AXI_STR_TXD_0_tlast;
@@ -83,16 +165,16 @@ module dso_top
   reg[63:0] adc_data;	
   wire serdes_ready;
   
+  wire init_calib_complete_0;
+  
   assign adc_pd = 1'b0;
   assign adc_rstn = 1'b1;
   
   assign atten = gpio_io_o_0[19:16];
   assign dc_cpl = gpio_io_o_0[23:20];
    
-  assign led[0] = ~acq_en;
-  assign led[1] = adc_pg;
-  assign led[2] = ~fe_en;
-  assign led[3] = fe_pg;
+  assign led[0] = ~init_calib_complete_0;
+  assign led[1] = ~(fe_en & acq_en);
   
   assign acq_en = gpio_io_o_0[24];
   assign osc_oe = gpio_io_o_0[25];
@@ -118,11 +200,11 @@ module dso_top
     twos_comp[63:56] <= {data_deser[63],~data_deser[62:56]};
     twos_comp[55:48] <= {data_deser[55],~data_deser[54:48]};
     twos_comp[47:40] <= {data_deser[47],~data_deser[46:40]};
-    twos_comp[39:32] <= {data_deser[39],~data_deser[38:32]};
+    twos_comp[39:32] <= {~data_deser[39],data_deser[38:32]};
     twos_comp[31:24] <= {data_deser[31],~data_deser[30:24]};
-    twos_comp[23:16] <= {~data_deser[23],data_deser[22:16]};
-    twos_comp[15:8] <= {data_deser[15],~data_deser[14:8]};
-    twos_comp[7:0] <= {data_deser[7],~data_deser[6:0]};
+    twos_comp[23:16] <= {data_deser[23],~data_deser[22:16]};
+    twos_comp[15:8] <= {~data_deser[15],data_deser[14:8]};
+    twos_comp[7:0] <= {~data_deser[7],data_deser[6:0]};
   end
   
   wire[1:0] channel_mux;
@@ -260,7 +342,169 @@ module dso_top
     .pcie_perstn(pcie_perstn),
     .s2mm_err(s2mm_err),
     .s2mm_halt(s2mm_halt),
-    .s2mm_wr_xfer_cmplt(s2mm_wr_xfer_cmplt)
+    .s2mm_wr_xfer_cmplt(s2mm_wr_xfer_cmplt),
+    .S_AXI_0_araddr(S_AXI_0_araddr),
+    .S_AXI_0_arburst(S_AXI_0_arburst),
+    .S_AXI_0_arcache(S_AXI_0_arcache),
+    .S_AXI_0_arid(S_AXI_0_arid),
+    .S_AXI_0_arlen(S_AXI_0_arlen),
+    .S_AXI_0_arlock(S_AXI_0_arlock),
+    .S_AXI_0_arprot(S_AXI_0_arprot),
+    .S_AXI_0_arqos(S_AXI_0_arqos),
+    .S_AXI_0_arready(S_AXI_0_arready),
+    .S_AXI_0_arsize(S_AXI_0_arsize),
+    .S_AXI_0_arvalid(S_AXI_0_arvalid),
+    .S_AXI_0_awaddr(S_AXI_0_awaddr),
+    .S_AXI_0_awburst(S_AXI_0_awburst),
+    .S_AXI_0_awcache(S_AXI_0_awcache),
+    .S_AXI_0_awid(S_AXI_0_awid),
+    .S_AXI_0_awlen(S_AXI_0_awlen),
+    .S_AXI_0_awlock(S_AXI_0_awlock),
+    .S_AXI_0_awprot(S_AXI_0_awprot),
+    .S_AXI_0_awqos(S_AXI_0_awqos),
+    .S_AXI_0_awready(S_AXI_0_awready),
+    .S_AXI_0_awsize(S_AXI_0_awsize),
+    .S_AXI_0_awvalid(S_AXI_0_awvalid),
+    .S_AXI_0_bid(S_AXI_0_bid),
+    .S_AXI_0_bready(S_AXI_0_bready),
+    .S_AXI_0_bresp(S_AXI_0_bresp),
+    .S_AXI_0_bvalid(S_AXI_0_bvalid),
+    .S_AXI_0_rdata(S_AXI_0_rdata),
+    .S_AXI_0_rid(S_AXI_0_rid),
+    .S_AXI_0_rlast(S_AXI_0_rlast),
+    .S_AXI_0_rready(S_AXI_0_rready),
+    .S_AXI_0_rresp(S_AXI_0_rresp),
+    .S_AXI_0_rvalid(S_AXI_0_rvalid),
+    .S_AXI_0_wdata(S_AXI_0_wdata),
+    .S_AXI_0_wlast(S_AXI_0_wlast),
+    .S_AXI_0_wready(S_AXI_0_wready),
+    .S_AXI_0_wstrb(S_AXI_0_wstrb),
+    .S_AXI_0_wvalid(S_AXI_0_wvalid),
+    .M00_AXI_0_araddr(M00_AXI_0_araddr),
+    .M00_AXI_0_arburst(M00_AXI_0_arburst),
+    .M00_AXI_0_arcache(M00_AXI_0_arcache),
+    .M00_AXI_0_arid(M00_AXI_0_arid),
+    .M00_AXI_0_arlen(M00_AXI_0_arlen),
+    .M00_AXI_0_arlock(M00_AXI_0_arlock),
+    .M00_AXI_0_arprot(M00_AXI_0_arprot),
+    .M00_AXI_0_arqos(M00_AXI_0_arqos),
+    .M00_AXI_0_arready(M00_AXI_0_arready),
+    .M00_AXI_0_arregion(M00_AXI_0_arregion),
+    .M00_AXI_0_arsize(M00_AXI_0_arsize),
+    .M00_AXI_0_arvalid(M00_AXI_0_arvalid),
+    .M00_AXI_0_awaddr(M00_AXI_0_awaddr),
+    .M00_AXI_0_awburst(M00_AXI_0_awburst),
+    .M00_AXI_0_awcache(M00_AXI_0_awcache),
+    .M00_AXI_0_awid(M00_AXI_0_awid),
+    .M00_AXI_0_awlen(M00_AXI_0_awlen),
+    .M00_AXI_0_awlock(M00_AXI_0_awlock),
+    .M00_AXI_0_awprot(M00_AXI_0_awprot),
+    .M00_AXI_0_awqos(M00_AXI_0_awqos),
+    .M00_AXI_0_awready(M00_AXI_0_awready),
+    .M00_AXI_0_awregion(M00_AXI_0_awregion),
+    .M00_AXI_0_awsize(M00_AXI_0_awsize),
+    .M00_AXI_0_awuser(M00_AXI_0_awuser),
+    .M00_AXI_0_awvalid(M00_AXI_0_awvalid),
+    .M00_AXI_0_bid(M00_AXI_0_bid),
+    .M00_AXI_0_bready(M00_AXI_0_bready),
+    .M00_AXI_0_bresp(M00_AXI_0_bresp),
+    .M00_AXI_0_bvalid(M00_AXI_0_bvalid),
+    .M00_AXI_0_rdata(M00_AXI_0_rdata),
+    .M00_AXI_0_rid(M00_AXI_0_rid),
+    .M00_AXI_0_rlast(M00_AXI_0_rlast),
+    .M00_AXI_0_rready(M00_AXI_0_rready),
+    .M00_AXI_0_rresp(M00_AXI_0_rresp),
+    .M00_AXI_0_rvalid(M00_AXI_0_rvalid),
+    .M00_AXI_0_wdata(M00_AXI_0_wdata),
+    .M00_AXI_0_wlast(M00_AXI_0_wlast),
+    .M00_AXI_0_wready(M00_AXI_0_wready),
+    .M00_AXI_0_wstrb(M00_AXI_0_wstrb),
+    .M00_AXI_0_wvalid(M00_AXI_0_wvalid),
+    .ui_clk_sync_rst_0(ui_clk_sync_rst_0),
+    .ui_clk_0(ui_clk_0),
+    .init_calib_complete_0(init_calib_complete_0)
+    );
+    
+    axixclk axixclk
+    (
+    .S_AXI_ACLK(axi_aclk),
+    .S_AXI_ARESETN(axi_aresetn),
+    .S_AXI_AWID(M00_AXI_0_awid),
+    .S_AXI_AWADDR(M00_AXI_0_awaddr),
+    .S_AXI_AWLEN(M00_AXI_0_awlen),
+    .S_AXI_AWSIZE(M00_AXI_0_awsize),
+    .S_AXI_AWBURST(M00_AXI_0_awburst),
+    .S_AXI_AWLOCK(M00_AXI_0_awlock),
+    .S_AXI_AWCACHE(M00_AXI_0_awcache),
+    .S_AXI_AWPROT(M00_AXI_0_awprot),
+    .S_AXI_AWQOS(M00_AXI_0_awqos),
+    .S_AXI_AWVALID(M00_AXI_0_awvalid),
+    .S_AXI_AWREADY(M00_AXI_0_awready),
+    .S_AXI_WDATA(M00_AXI_0_wdata),
+    .S_AXI_WSTRB(M00_AXI_0_wstrb),
+    .S_AXI_WLAST(M00_AXI_0_wlast),
+    .S_AXI_WVALID(M00_AXI_0_wvalid),
+    .S_AXI_WREADY(M00_AXI_0_wready),
+    .S_AXI_BID(M00_AXI_0_bid),
+    .S_AXI_BRESP(M00_AXI_0_bresp),
+    .S_AXI_BVALID(M00_AXI_0_bvalid),
+    .S_AXI_BREADY(M00_AXI_0_bready),
+    .S_AXI_ARID(M00_AXI_0_arid),
+    .S_AXI_ARADDR(M00_AXI_0_araddr),
+    .S_AXI_ARLEN(M00_AXI_0_arlen),
+    .S_AXI_ARSIZE(M00_AXI_0_arsize),
+    .S_AXI_ARBURST(M00_AXI_0_arburst),
+    .S_AXI_ARLOCK(M00_AXI_0_arlock),
+    .S_AXI_ARCACHE(M00_AXI_0_arcache),
+    .S_AXI_ARPROT(M00_AXI_0_arprot),
+    .S_AXI_ARQOS(M00_AXI_0_arqos),
+    .S_AXI_ARVALID(M00_AXI_0_arvalid),
+    .S_AXI_ARREADY(M00_AXI_0_arready),
+    .S_AXI_RID(M00_AXI_0_rid),
+    .S_AXI_RDATA(M00_AXI_0_rdata),
+    .S_AXI_RRESP(M00_AXI_0_rresp),
+    .S_AXI_RLAST(M00_AXI_0_rlast),
+    .S_AXI_RVALID(M00_AXI_0_rvalid),
+    .S_AXI_RREADY(M00_AXI_0_rready),
+    .M_AXI_ACLK(ui_clk_0),
+    .M_AXI_ARESETN(~ui_clk_sync_rst_0),
+    .M_AXI_AWID(S_AXI_0_awid),
+    .M_AXI_AWADDR(S_AXI_0_awaddr),
+    .M_AXI_AWLEN(S_AXI_0_awlen),
+    .M_AXI_AWSIZE(S_AXI_0_awsize),
+    .M_AXI_AWBURST(S_AXI_0_awburst),
+    .M_AXI_AWLOCK(S_AXI_0_awlock),
+    .M_AXI_AWCACHE(S_AXI_0_awcache),
+    .M_AXI_AWPROT(S_AXI_0_awprot),
+    .M_AXI_AWQOS(S_AXI_0_awqos),
+    .M_AXI_AWVALID(S_AXI_0_awvalid),
+    .M_AXI_AWREADY(S_AXI_0_awready),
+    .M_AXI_WDATA(S_AXI_0_wdata),
+    .M_AXI_WSTRB(S_AXI_0_wstrb),
+    .M_AXI_WLAST(S_AXI_0_wlast),
+    .M_AXI_WVALID(S_AXI_0_wvalid),
+    .M_AXI_WREADY(S_AXI_0_wready),
+    .M_AXI_BID(S_AXI_0_bid),
+    .M_AXI_BRESP(S_AXI_0_bresp),
+    .M_AXI_BVALID(S_AXI_0_bvalid),
+    .M_AXI_BREADY(S_AXI_0_bready),
+    .M_AXI_ARID(S_AXI_0_arid),
+    .M_AXI_ARADDR(S_AXI_0_araddr),
+    .M_AXI_ARLEN(S_AXI_0_arlen),
+    .M_AXI_ARSIZE(S_AXI_0_arsize),
+    .M_AXI_ARBURST(S_AXI_0_arburst),
+    .M_AXI_ARLOCK(S_AXI_0_arlock),
+    .M_AXI_ARCACHE(S_AXI_0_arcache),
+    .M_AXI_ARPROT(S_AXI_0_arprot),
+    .M_AXI_ARQOS(S_AXI_0_arqos),
+    .M_AXI_ARVALID(S_AXI_0_arvalid),
+    .M_AXI_ARREADY(S_AXI_0_arready),
+    .M_AXI_RID(S_AXI_0_rid),
+    .M_AXI_RDATA(S_AXI_0_rdata),
+    .M_AXI_RRESP(S_AXI_0_rresp),
+    .M_AXI_RLAST(S_AXI_0_rlast),
+    .M_AXI_RVALID(S_AXI_0_rvalid),
+    .M_AXI_RREADY(S_AXI_0_rready)
     );
         
 endmodule

@@ -1,4 +1,4 @@
-// (c) Copyright 1995-2021 Xilinx, Inc. All rights reserved.
+// (c) Copyright 1995-2022 Xilinx, Inc. All rights reserved.
 // 
 // This file contains confidential and proprietary information
 // of Xilinx, Inc. and is protected under U.S. and
@@ -81,15 +81,15 @@ design_1_axi_crossbar_0_0_sc::design_1_axi_crossbar_0_0_sc(const sc_core::sc_mod
     model_param_props.addBitString("C_M_AXI_ADDR_WIDTH", "0000000000000000000000000001000000000000000000000000000000010000", 64);
     model_param_props.addBitString("C_S_AXI_BASE_ID", "00000000000000000000000000000000", 32);
     model_param_props.addBitString("C_S_AXI_THREAD_ID_WIDTH", "00000000000000000000000000000000", 32);
-    model_param_props.addBitString("C_M_AXI_WRITE_CONNECTIVITY", "0000000000000000000000000000000100000000000000000000000000000001", 64);
-    model_param_props.addBitString("C_M_AXI_READ_CONNECTIVITY", "0000000000000000000000000000000100000000000000000000000000000001", 64);
+    model_param_props.addBitString("C_M_AXI_WRITE_CONNECTIVITY", "1111111111111111111111111111111111111111111111111111111111111111", 64);
+    model_param_props.addBitString("C_M_AXI_READ_CONNECTIVITY", "1111111111111111111111111111111111111111111111111111111111111111", 64);
     model_param_props.addBitString("C_S_AXI_SINGLE_THREAD", "00000000000000000000000000000001", 32);
     model_param_props.addBitString("C_S_AXI_WRITE_ACCEPTANCE", "00000000000000000000000000000001", 32);
     model_param_props.addBitString("C_S_AXI_READ_ACCEPTANCE", "00000000000000000000000000000001", 32);
     model_param_props.addBitString("C_M_AXI_WRITE_ISSUING", "0000000000000000000000000000000100000000000000000000000000000001", 64);
     model_param_props.addBitString("C_M_AXI_READ_ISSUING", "0000000000000000000000000000000100000000000000000000000000000001", 64);
     model_param_props.addBitString("C_S_AXI_ARB_PRIORITY", "00000000000000000000000000000000", 32);
-    model_param_props.addBitString("C_M_AXI_SECURE", "0000000000000000000000000000000000000000000000000000000000000000", 64);
+    model_param_props.addBitString("C_M_AXI_SECURE", "00000000000000000000000000000000", 32);
 
   mp_impl = new axi_crossbar("inst", model_param_props);
 
