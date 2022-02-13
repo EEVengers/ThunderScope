@@ -113,17 +113,17 @@ module dso_top
   end
   assign probe_comp = probe_div_clk;
   
-//  reg[63:0] twos_comp;
-//  always @(*) begin 
-//    twos_comp[63:56] <= {data_deser[63],~data_deser[62:56]};
-//    twos_comp[55:48] <= {data_deser[55],~data_deser[54:48]};
-//    twos_comp[47:40] <= {data_deser[47],~data_deser[46:40]};
-//    twos_comp[39:32] <= {data_deser[39],~data_deser[38:32]};
-//    twos_comp[31:24] <= {data_deser[31],~data_deser[30:24]};
-//    twos_comp[23:16] <= {~data_deser[23],data_deser[22:16]};
-//    twos_comp[15:8] <= {data_deser[15],~data_deser[14:8]};
-//    twos_comp[7:0] <= {data_deser[7],~data_deser[6:0]};
-//  end
+  reg[63:0] twos_comp;
+  always @(*) begin 
+    twos_comp[63:56] <= ~data_deser[63:56];
+    twos_comp[55:48] <= ~data_deser[55:48];
+    twos_comp[47:40] <= ~data_deser[47:40];
+    twos_comp[39:32] <= ~data_deser[39:32];
+    twos_comp[31:24] <= ~data_deser[31:24];
+    twos_comp[23:16] <= data_deser[23:16];
+    twos_comp[15:8] <= ~data_deser[15:8];
+    twos_comp[7:0] <= ~data_deser[7:0];
+  end
   
   wire[1:0] channel_mux;
   reg [2:0] channel_mux_cdc_0;
@@ -139,10 +139,10 @@ module dso_top
   always @(*)
     begin
         case(channel_mux)
-            2'b00: adc_data <= {data_deser[63:0]};
-            2'b01: adc_data <= {data_deser[63:56],data_deser[31:24],data_deser[55:48],data_deser[23:16],data_deser[47:40],data_deser[15:8],data_deser[39:32],data_deser[7:0]};
-            2'b10: adc_data <= {data_deser[63:56],data_deser[47:40],data_deser[31:24],data_deser[15:8],data_deser[55:48],data_deser[39:32],data_deser[23:16],data_deser[7:0]};		
-            2'b11: adc_data <= {data_deser[63:56],data_deser[47:40],data_deser[31:24],data_deser[15:8],data_deser[55:48],data_deser[39:32],data_deser[23:16],data_deser[7:0]};
+            2'b00: adc_data <= {twos_comp[63:0]};
+            2'b01: adc_data <= {twos_comp[63:56],twos_comp[31:24],twos_comp[55:48],twos_comp[23:16],twos_comp[47:40],twos_comp[15:8],twos_comp[39:32],twos_comp[7:0]};
+            2'b10: adc_data <= {twos_comp[63:56],twos_comp[47:40],twos_comp[31:24],twos_comp[15:8],twos_comp[55:48],twos_comp[39:32],twos_comp[23:16],twos_comp[7:0]};		
+            2'b11: adc_data <= {twos_comp[63:56],twos_comp[47:40],twos_comp[31:24],twos_comp[15:8],twos_comp[55:48],twos_comp[39:32],twos_comp[23:16],twos_comp[7:0]};
     endcase
   end
   
