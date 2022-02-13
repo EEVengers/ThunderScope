@@ -93,6 +93,8 @@ enum ThunderScopeHWStatus thunderscopehw_start(struct ThunderScopeHW* ts) {
 		return THUNDERSCOPEHW_STATUS_ALREADY_STARTED;
 	ts->datamover_en = true;
 	ts->fpga_adc_en = true;
+	ts->buffer_head = 0;
+	ts->buffer_tail = 0;
 	return thunderscopehw_set_datamover_reg(ts);
 }
 
@@ -220,6 +222,10 @@ const char* thunderscopehw_describe_error(enum ThunderScopeHWStatus err) {
 		return "not started";
 	case THUNDERSCOPEHW_STATUS_ALREADY_STOPPED:
 		return "already stopped";
+	case THUNDERSCOPEHW_STATUS_OFFSET_TOO_LOW:
+		return "voffset too low";
+	case THUNDERSCOPEHW_STATUS_OFFSET_TOO_HIGH:
+		return "voffset too high";
 	}
 	return "unkonwn error";
 }

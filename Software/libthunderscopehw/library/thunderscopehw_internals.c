@@ -126,7 +126,12 @@ enum ThunderScopeHWStatus thunderscopehw_set_dac(struct ThunderScopeHW* ts, int 
 {
 	// value is 12-bit
 	// Is this right?? Or is it rounding wrong?
-	unsigned int dac_value = (unsigned int)round((ts->channels[channel].voffset + 0.5) * 4095);
+	int dac_value = (unsigned int)round((ts->channels[channel].voffset + 0.5) * 4095);
+	if (dac_value < 0)
+		return THUNDERSCOPEHW_STATUS_OFFSET_TOO_LOW;
+	if (dac_value > 0xFFF)
+		return THUNDERSCOPEHW_STATUS_OFFSET_TOO_HIGH;
+
 	uint8_t fifo[5];
 	fifo[0] = 0xFF;  // I2C
 	fifo[1] = 0xC2;  // DAC?
@@ -151,7 +156,7 @@ enum ThunderScopeHWStatus thunderscopehw_configure_channels(struct ThunderScopeH
 
 	switch (num_channels_on) {
 	case 0:
-		return false;
+		return THUNDERSCOPEHW_STATUS_NO_CHANNELS;
 
 	case 1:
 		on_channels[1] = on_channels[2] = on_channels[3] = on_channels[0];

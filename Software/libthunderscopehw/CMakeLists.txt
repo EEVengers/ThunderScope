@@ -6,6 +6,7 @@ project(thunderscopehwlib VERSION ${PROJECT_VERSION})
 
 add_subdirectory(library)
 add_subdirectory(examples/thunderscopehwdump)
+add_subdirectory(examples/thunderscopehwcalibrate)
 
 enable_testing()
 add_subdirectory(test)

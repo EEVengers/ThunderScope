@@ -21,44 +21,45 @@ struct Option {
 };
 
 struct Option options[] = {
-	{"device",      true,  1 },
-	{"samples",     true,  2 },
+	{"device",             true,  1 },
+	{"samples",            true,  2 },
+	{"output-samplerate",  true,  3 },
 
-	{"bw-all",      true,  0x10 },
-	{"bw1",         true,  0x11 },
-	{"bw2",         true,  0x12 },
-	{"bw3",         true,  0x13 },
-	{"bw4",         true,  0x14 },
+	{"bw-all",             true,  0x10 },
+	{"bw1",                true,  0x11 },
+	{"bw2",                true,  0x12 },
+	{"bw3",                true,  0x13 },
+	{"bw4",                true,  0x14 },
 
-	{"vdiv-all",    true,  0x20 },
-	{"vdiv1",       true,  0x21 },
-	{"vdiv2",       true,  0x22 },
-	{"vdiv3",       true,  0x23 },
-	{"vdiv4",       true,  0x24 },
+	{"vdiv-all",           true,  0x20 },
+	{"vdiv1",              true,  0x21 },
+	{"vdiv2",              true,  0x22 },
+	{"vdiv3",              true,  0x23 },
+	{"vdiv4",              true,  0x24 },
 
-	{"voffset-all", true,  0x30 },
-	{"voffset1",    true,  0x31 },
-	{"voffset2",    true,  0x32 },
-	{"voffset3",    true,  0x33 },
-	{"voffset4",    true,  0x34 },
+	{"voffset-all",        true,  0x30 },
+	{"voffset1",           true,  0x31 },
+	{"voffset2",           true,  0x32 },
+	{"voffset3",           true,  0x33 },
+	{"voffset4",           true,  0x34 },
 
-	{"ac-all",      false, 0x40 },
-	{"ac1",         false, 0x41 },
-	{"ac2",         false, 0x42 },
-	{"ac3",         false, 0x43 },
-	{"ac4",         false, 0x44 },
+	{"ac-all",             false, 0x40 },
+	{"ac1",                false, 0x41 },
+	{"ac2",                false, 0x42 },
+	{"ac3",                false, 0x43 },
+	{"ac4",                false, 0x44 },
 
-	{"dc-all",      false, 0x50 },
-	{"ac1",         false, 0x51 },
-	{"ac2",         false, 0x52 },
-	{"ac3",         false, 0x53 },
-	{"ac4",         false, 0x54 },
+	{"dc-all",             false, 0x50 },
+	{"ac1",                false, 0x51 },
+	{"ac2",                false, 0x52 },
+	{"ac3",                false, 0x53 },
+	{"ac4",                false, 0x54 },
 
-	{"enable-all",  false, 0x60 },
-	{"enable1",     false, 0x61 },
-	{"enable2",     false, 0x62 },
-	{"enable3",     false, 0x63 },
-	{"enable4",     false, 0x64 },
+	{"enable-all",         false, 0x60 },
+	{"enable1",            false, 0x61 },
+	{"enable2",            false, 0x62 },
+	{"enable3",            false, 0x63 },
+	{"enable4",            false, 0x64 },
 };
 
 char* optarg;
@@ -89,6 +90,7 @@ int mygetopt(int argc, char** argv) {
 int main(int argc, char** argv) {
 	uint64_t scope_id = 0;
 	uint64_t samples = 0;
+	int samplerate = 0;
 	while (1) {
 		switch (mygetopt(argc, argv)) {
 		case 1:
@@ -100,6 +102,11 @@ int main(int argc, char** argv) {
 		case 2:
 			if (!sscanf(optarg, "%" PRId64, &samples)) {
 			        fprintf(stderr, "Number of samples must be a number.\n");
+				exit(1);
+			}
+		case 3:
+			if (!sscanf(optarg, "%d", &samplerate)) {
+			        fprintf(stderr, "Output samplerate must be a number.\n");
 				exit(1);
 			}
 		default:
@@ -232,7 +239,11 @@ int main(int argc, char** argv) {
 	struct Fmt fmt;
 	fmt.pcm = 1;
 	fmt.channels = num_channels;
-	fmt.rate = 1000000000 / fmt.channels;
+	if (samplerate) {
+		fmt.rate = samplerate;
+	} else {
+		fmt.rate = 1000000000 / fmt.channels;
+	}
 	fmt.byterate = 1000000000;
 	fmt.block_align = 0;
 	fmt.bits_per_sample = 8;
