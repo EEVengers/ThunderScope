@@ -50,10 +50,10 @@ struct Option options[] = {
 	{"ac4",                false, 0x44 },
 
 	{"dc-all",             false, 0x50 },
-	{"ac1",                false, 0x51 },
-	{"ac2",                false, 0x52 },
-	{"ac3",                false, 0x53 },
-	{"ac4",                false, 0x54 },
+	{"dc1",                false, 0x51 },
+	{"dc2",                false, 0x52 },
+	{"dc3",                false, 0x53 },
+	{"dc4",                false, 0x54 },
 
 	{"enable-all",         false, 0x60 },
 	{"enable1",            false, 0x61 },
