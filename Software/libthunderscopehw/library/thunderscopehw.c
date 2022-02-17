@@ -114,10 +114,10 @@ static enum ThunderScopeHWStatus thunderscopehw_update_buffer_head(struct Thunde
 	// 1 page = 4k
 	uint32_t transfer_counter = thunderscopehw_read32(ts, DATAMOVER_TRANSFER_COUNTER);
 	uint32_t error_code = transfer_counter >> 30;
-	if (error_code & 1)
+	if (error_code & 2)
 		return THUNDERSCOPEHW_STATUS_DATAMOVER_ERROR;
 
-	if (error_code & 2)
+	if (error_code & 1)
 		return THUNDERSCOPEHW_STATUS_FIFO_OVERFLOW;
 
 	uint32_t overflow_cycles = (transfer_counter >> 16) & 0x3FFF;
