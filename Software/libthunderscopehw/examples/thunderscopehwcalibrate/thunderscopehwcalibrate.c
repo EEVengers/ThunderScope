@@ -17,12 +17,14 @@ struct Option {
 
 struct Option options[] = {
 	{"device",             true,  1 },
+	{"verbose",            false, 2 },
+	{"retries",            true,  3 },
 };
 
 #define TS_RUN(X) do {							\
 	enum ThunderScopeHWStatus ret = thunderscopehw_##X;		\
         if (ret != THUNDERSCOPEHW_STATUS_OK) {				\
-		fprintf(stderr, "thunderscope_%s failed @ line %d, error = %s\n", #X, __LINE__, thunderscopehw_describe_error(ret)); \
+		fprintf(stderr, "thunderscopehw_%s failed @ line %d, error = %s\n", #X, __LINE__, thunderscopehw_describe_error(ret)); \
 		exit(1);						\
 	}								\
 } while(0)
@@ -53,6 +55,8 @@ int mygetopt(int argc, char** argv) {
 }
 
 int main(int argc, char** argv) {
+	int verbose = 0;
+	int retries = 1;
 	uint64_t scope_id = 0;
 	uint64_t samples = 0;
 	int samplerate = 0;
@@ -61,6 +65,15 @@ int main(int argc, char** argv) {
 		case 1:
 			if (!sscanf(optarg, "%" PRIx64, &scope_id)) {
 			         fprintf(stderr, "Scope ID must be hexadecimal.\n");
+			         exit(1);
+			}
+			continue;
+		case 2:
+			verbose++;
+			continue;
+		case 3:
+			if (!sscanf(optarg, "%d", &retries)) {
+			         fprintf(stderr, "--retries needs a number.\n");
 			         exit(1);
 			}
 			continue;
@@ -111,15 +124,20 @@ int main(int argc, char** argv) {
 		usleep(500000);
 #endif
 
-		double minoffset = -0.5;
-		double maxoffset = 0.5;
-
-		for (int i =0; i < 1000; i++) {
+		for (int i = 0; i < retries; i++) {
+			double minoffset = -0.5;
+			double maxoffset = 0.5;
 			for (int j = 0; j < 20; j++) {
 				double midoffset = (minoffset + maxoffset) / 2;
 				TS_RUN(voltage_offset_set(ts, channel, midoffset));
 				TS_RUN(start(ts));
-				TS_RUN(read(ts, buffer, BUFFER_SIZE));
+				enum ThunderScopeHWStatus status = thunderscopehw_read(ts, buffer, BUFFER_SIZE);
+				if (status != THUNDERSCOPEHW_STATUS_OK) {
+					fprintf(stderr, "thunderscopehw_read failed, error = %s\n", thunderscopehw_describe_error(status));
+					j--;
+					TS_RUN(stop(ts));
+					continue;
+				}
 				// Convert signed output to unsigned output
 				for (size_t i = 0; i < BUFFER_SIZE; i++) {
 					buffer[i] += 0x80;
@@ -133,10 +151,12 @@ int main(int argc, char** argv) {
 					if (buffer[i] < 0x80) low++;
 					sum += buffer[i];
 				}
-//			fprintf(stderr," min = %8.4f  max = %8.4f  mid = %8.4f  high=%d low=%d avg=%f\n",
-//				minoffset, maxoffset, midoffset,
-//				high, low,
-//				sum / (double)BUFFER_SIZE);
+				if (verbose) {
+					fprintf(stderr," min = %8.4f  max = %8.4f  mid = %8.4f  high=%d low=%d avg=%f\n",
+						minoffset, maxoffset, midoffset,
+						high, low,
+						sum / (double)BUFFER_SIZE);
+				}
 				if (high > low) {
 					minoffset = midoffset;
 				} else {

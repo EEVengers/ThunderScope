@@ -5,6 +5,10 @@
 #include <inttypes.h>
 #include <string.h>
 
+#ifndef WIN32
+#include <unistd.h>
+#endif
+
 void write32(uint64_t x, FILE* f) {
 	uint32_t v = 0;
 	if (x < (uint64_t)0xFFFFFFFF) v = (uint32_t)x;
@@ -168,7 +172,7 @@ int main(int argc, char** argv) {
 				}
 				break;
 			case 3: // voffset
-				ret = thunderscopehw_voltage_offset_set(ts, channel, atoi(optarg));
+				ret = thunderscopehw_voltage_offset_set(ts, channel, atof(optarg));
 				if (ret != THUNDERSCOPEHW_STATUS_OK) {
 					fprintf(stderr, "Failed to set voffset. error =%s\n", thunderscopehw_describe_error(ret));
 					exit(1);
@@ -235,6 +239,11 @@ int main(int argc, char** argv) {
 		uint16_t block_align;
 		uint16_t bits_per_sample;
 	};
+#ifdef WIN32
+		Sleep(500);
+#else
+		usleep(500000);
+#endif
 
 	struct Fmt fmt;
 	fmt.pcm = 1;

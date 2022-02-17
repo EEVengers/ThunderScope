@@ -156,8 +156,6 @@ enum ThunderScopeHWStatus thunderscopehw_configure_channels(struct ThunderScopeH
 
 	switch (num_channels_on) {
 	case 0:
-		return THUNDERSCOPEHW_STATUS_NO_CHANNELS;
-
 	case 1:
 		on_channels[1] = on_channels[2] = on_channels[3] = on_channels[0];
 		clkdiv = 0;
@@ -200,6 +198,8 @@ enum ThunderScopeHWStatus thunderscopehw_configure_channels(struct ThunderScopeH
 #else
 	usleep(5000);
 #endif
+	/* No channels, leave data mover off. */
+	if (num_channels_on == 0) return THUNDERSCOPEHW_STATUS_OK;
 	return thunderscopehw_set_datamover_reg(ts);
 }
 
