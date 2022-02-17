@@ -273,7 +273,7 @@ int main(int argc, char** argv) {
 		exit(1);
 	}
 
-#define BUFFER_SIZE (1<<20)
+#define BUFFER_SIZE samples
 	uint8_t* buffer;
 #ifdef _WIN32
         buffer = _aligned_malloc(BUFFER_SIZE, 4096);
