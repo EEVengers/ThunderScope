@@ -30,7 +30,7 @@ struct Option options[] = {
 	{"device",             true,  1 },
 	{"samples",            true,  2 },
 	{"output-samplerate",  true,  3 },
-	{"usage",              true,  4 },
+	{"help",               false, 4 },
 
 	{"bw-all",             true,  0x10 },
 	{"bw1",                true,  0x11 },
@@ -71,7 +71,8 @@ struct Option options[] = {
 
 void usage()
 {
-	printf("thunderscopehwdump [options] [filename.wav]\n"
+	fprintf(stderr,
+		"thunderscopehwdump [options] [filename.wav]\n"
 		"  --device=<deviceid>\n"
 		"  --samples=<number of samples> must be divisable by 4096\n"
 		"  --output-samplerate=<rate> samplerate used in wav file\n"
@@ -126,11 +127,13 @@ int main(int argc, char** argv) {
 			        fprintf(stderr, "Number of samples must be a number.\n");
 				exit(1);
 			}
+			break;
 		case 3:
 			if (!sscanf(optarg, "%d", &samplerate)) {
 			        fprintf(stderr, "Output samplerate must be a number.\n");
 				exit(1);
 			}
+			break;
 		case 4:
 			usage();
 			exit(0);
