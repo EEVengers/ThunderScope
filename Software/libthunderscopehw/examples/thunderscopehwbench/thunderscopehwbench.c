@@ -4,8 +4,11 @@
 #include <stdlib.h>
 #include <inttypes.h>
 #include <string.h>
+#include <time.h>
 
-#ifndef WIN32
+#ifdef WIN32
+#include <windows.h>
+#else
 #include <unistd.h>
 #include <sys/time.h>
 #endif
@@ -13,19 +16,13 @@
 
 static uint64_t time_ns(void)
 {
-#ifdef WIN32
-    struct timespec tv;
+    struct timespec ts;
     if (timespec_get(&ts, TIME_UTC) != TIME_UTC)
     {
 	    fprintf(stderr, "timespec_get failed!");
 	    exit(1);
     }
     return 1000000000 * ts.tv_sec + ts.tv_nsec;
-#else
-    struct timeval tv;
-    gettimeofday(&tv, NULL);
-    return 1000000000 * tv.tv_sec + tv.tv_usec * 1000;
-#endif
 }
 
 struct Option {

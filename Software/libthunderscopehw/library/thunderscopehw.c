@@ -2,8 +2,7 @@
 
 #include "thunderscopehw_private.h"
 
-#ifdef WIN32
-#else
+#ifndef WIN32
 #include <unistd.h>
 #endif
 
