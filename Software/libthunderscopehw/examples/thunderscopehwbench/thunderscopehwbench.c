@@ -35,6 +35,7 @@ struct Option options[] = {
 	{"device",             true,  1 },
 	{"verbose",            false, 2 },
 	{"repeat",             true,  3 },
+	{"help",               false, 4 },
 };
 
 #define TS_RUN(X) do {							\
@@ -44,6 +45,13 @@ struct Option options[] = {
 		exit(1);						\
 	}								\
 } while(0)
+
+void usage() {
+	printf("thunderscopehwbench [options]\n"
+		"    --device=<deviceid>\n"
+		"    --verbose\n"
+		"    --repeat=<repetitions>\n");
+}
 
 char* optarg;
 int optind = 1;
@@ -67,6 +75,7 @@ int mygetopt(int argc, char** argv) {
 	       return options[i].return_value;
 	}
 	fprintf(stderr, "Unknown option: %s\n", argv[optind]);
+	usage();
 	exit(1);
 }
 
@@ -93,6 +102,9 @@ int main(int argc, char** argv) {
 			         exit(1);
 			}
 			continue;
+		case 4:
+			usage();
+			exit(1);
 		default:
 			continue;
 		case -1:

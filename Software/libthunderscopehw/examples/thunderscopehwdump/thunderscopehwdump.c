@@ -30,6 +30,7 @@ struct Option options[] = {
 	{"device",             true,  1 },
 	{"samples",            true,  2 },
 	{"output-samplerate",  true,  3 },
+	{"usage",              true,  4 },
 
 	{"bw-all",             true,  0x10 },
 	{"bw1",                true,  0x11 },
@@ -68,6 +69,20 @@ struct Option options[] = {
 	{"enable4",            false, 0x64 },
 };
 
+void usage()
+{
+	printf("thunderscopehwdump [options] [filename.wav]\n"
+		"  --device=<deviceid>\n"
+		"  --samples=<number of samples> must be divisable by 4096\n"
+		"  --output-samplerate=<rate> samplerate used in wav file\n"
+		"  --bw[1/2/3/4/-all]=20/100/200/350 (Hz)\n"
+		"  --vdiv[1/2/3/4/-all]=1/2/5/10/20/50/100/200/500/1000/2000/5000/10000 (mV)\n"
+		"  --voffset[1/2/3/4/-all]=<voltage offset> (volts)\n"
+		"  --ac[1/2/3/4/-all]\n"
+		"  --dc[1/2/3/4/-all]\n"
+		"  --enable[1/2/3/4/-all]\n");
+}
+
 char* optarg;
 int optind = 1;
 int mygetopt(int argc, char** argv) {
@@ -90,6 +105,7 @@ int mygetopt(int argc, char** argv) {
 	       return options[i].return_value;
 	}
 	fprintf(stderr, "Unknown option: %s\n", argv[optind]);
+	usage();
 	exit(1);
 }
 
@@ -115,6 +131,9 @@ int main(int argc, char** argv) {
 			        fprintf(stderr, "Output samplerate must be a number.\n");
 				exit(1);
 			}
+		case 4:
+			usage();
+			exit(0);
 		default:
 			continue;
 		case -1:

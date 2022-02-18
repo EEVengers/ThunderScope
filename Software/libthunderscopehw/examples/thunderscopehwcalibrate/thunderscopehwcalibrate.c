@@ -20,7 +20,8 @@ struct Option {
 struct Option options[] = {
 	{"device",             true,  1 },
 	{"verbose",            false, 2 },
-	{"retries",            true,  3 },
+	{"repeat",             true,  3 },
+	{"help",               false, 4 },
 };
 
 #define TS_RUN(X) do {							\
@@ -30,6 +31,13 @@ struct Option options[] = {
 		exit(1);						\
 	}								\
 } while(0)
+
+void usage() {
+	printf("thunderscopehwcalibrate [options]\n"
+               "   --device=<deviceid>\n"
+	       "   --verbose\n"
+	       "   --repeat=<repetitions>\n");
+}
 
 char* optarg;
 int optind = 1;
@@ -53,12 +61,13 @@ int mygetopt(int argc, char** argv) {
 	       return options[i].return_value;
 	}
 	fprintf(stderr, "Unknown option: %s\n", argv[optind]);
+	usage();
 	exit(1);
 }
 
 int main(int argc, char** argv) {
 	int verbose = 0;
-	int retries = 1;
+	int repeat = 1;
 	uint64_t scope_id = 0;
 	uint64_t samples = 0;
 	int samplerate = 0;
@@ -74,11 +83,14 @@ int main(int argc, char** argv) {
 			verbose++;
 			continue;
 		case 3:
-			if (!sscanf(optarg, "%d", &retries)) {
-			         fprintf(stderr, "--retries needs a number.\n");
+			if (!sscanf(optarg, "%d", &repeat)) {
+			         fprintf(stderr, "--repeat needs a number.\n");
 			         exit(1);
 			}
 			continue;
+		case 4:
+			usage();
+			exit(0);
 		default:
 			continue;
 		case -1:
@@ -126,7 +138,7 @@ int main(int argc, char** argv) {
 		usleep(500000);
 #endif
 
-		for (int i = 0; i < retries; i++) {
+		for (int i = 0; i < repeat; i++) {
 			double minoffset = -0.5;
 			double maxoffset = 0.5;
 			for (int j = 0; j < 20; j++) {
