@@ -153,7 +153,7 @@ enum ThunderScopeHWStatus thunderscopehw_read_handle(struct ThunderScopeHW* ts, 
 		fprintf(stderr, "read handle failed, win32 error code: %d\n", GetLastError());
 		return THUNDERSCOPEHW_STATUS_READ_ERROR;
 	}
-	return true;
+	return THUNDERSCOPEHW_STATUS_OK;
 }
 
 enum ThunderScopeHWStatus thunderscopehw_write_handle(struct ThunderScopeHW* ts, HANDLE h, uint8_t* data, uint64_t addr, int64_t bytes)

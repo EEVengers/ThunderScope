@@ -1,6 +1,8 @@
 #include "thunderscopehw_private.h"
 
 #include <math.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 #ifdef WIN32
 #else
@@ -37,7 +39,7 @@ enum ThunderScopeHWStatus thunderscopehw_fifo_write(struct ThunderScopeHW* ts, u
 	// write to TLR (the size of the packet)
 	THUNDERSCOPEHW_RUN(write32(ts, SERIAL_FIFO_TLR_ADDRESS, (uint32_t)(bytes * 4)));
 	// read ISR for a done value
-	while ((thunderscopehw_read32(ts, SERIAL_FIFO_ISR_ADDRESS) & 0xff) != 8) {
+	while ((thunderscopehw_read32(ts, SERIAL_FIFO_ISR_ADDRESS) >> 24) != 8) {
 #ifdef WIN32
 		Sleep(1);
 #else
@@ -63,19 +65,17 @@ enum ThunderScopeHWStatus thunderscopehw_set_datamover_reg(struct ThunderScopeHW
 	if (ts->datamover_en)  datamover_reg |= 0x1;
 	if (ts->fpga_adc_en)  datamover_reg |= 0x2;
 
-#if 1
 	for (int channel = 0; channel < 4; channel++) {
 		if (ts->channels[channel].on == true) {
 			num_channels_on++;
 		}
-		if (ts->channels[channel].vdiv > 100) {
+		if (ts->channels[channel].vdiv <= 100) {
 			datamover_reg |= 1 << (16 + channel);
 		}
 		if (ts->channels[channel].coupling == THUNDERSCOPEHW_COUPLING_DC) {
 			datamover_reg |= 1 << (20 + channel);
 		}
 	}
-#endif
 	switch (num_channels_on) {
 	case 0:
 	case 1: break; // do nothing
@@ -126,7 +126,12 @@ enum ThunderScopeHWStatus thunderscopehw_set_dac(struct ThunderScopeHW* ts, int 
 {
 	// value is 12-bit
 	// Is this right?? Or is it rounding wrong?
-	unsigned int dac_value = (unsigned int)round((ts->channels[channel].voffset + 0.5) * 4095);
+	int dac_value = (unsigned int)round((ts->channels[channel].voffset + 0.5) * 4095);
+	if (dac_value < 0)
+		return THUNDERSCOPEHW_STATUS_OFFSET_TOO_LOW;
+	if (dac_value > 0xFFF)
+		return THUNDERSCOPEHW_STATUS_OFFSET_TOO_HIGH;
+
 	uint8_t fifo[5];
 	fifo[0] = 0xFF;  // I2C
 	fifo[1] = 0xC2;  // DAC?
@@ -151,8 +156,6 @@ enum ThunderScopeHWStatus thunderscopehw_configure_channels(struct ThunderScopeH
 
 	switch (num_channels_on) {
 	case 0:
-		return false;
-
 	case 1:
 		on_channels[1] = on_channels[2] = on_channels[3] = on_channels[0];
 		clkdiv = 0;
@@ -195,6 +198,8 @@ enum ThunderScopeHWStatus thunderscopehw_configure_channels(struct ThunderScopeH
 #else
 	usleep(5000);
 #endif
+	/* No channels, leave data mover off. */
+	if (num_channels_on == 0) return THUNDERSCOPEHW_STATUS_OK;
 	return thunderscopehw_set_datamover_reg(ts);
 }
 
@@ -209,8 +214,11 @@ enum ThunderScopeHWStatus thunderscopehw_configure_channel(struct ThunderScopeHW
 uint32_t thunderscopehw_read32(struct ThunderScopeHW* ts, size_t addr)
 {
 	uint8_t bytes[4];
-	thunderscopehw_read_handle(ts, ts->user_handle, bytes, addr, 4);
-	return (bytes[0] << 24) | (bytes[1] << 16) | (bytes[2] << 8) | bytes[3];
+	if (thunderscopehw_read_handle(ts, ts->user_handle, bytes, addr, 4) != THUNDERSCOPEHW_STATUS_OK) {
+		fprintf(stderr, "Error in thunderscopehw_read32\n");
+		exit(1);
+	}
+	return (bytes[3] << 24) | (bytes[2] << 16) | (bytes[1] << 8) | bytes[0];
 }
 
 enum ThunderScopeHWStatus thunderscopehw_write32(struct ThunderScopeHW* ts, size_t addr, uint32_t value)

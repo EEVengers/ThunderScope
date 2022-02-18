@@ -93,6 +93,8 @@ enum ThunderScopeHWStatus thunderscopehw_start(struct ThunderScopeHW* ts) {
 		return THUNDERSCOPEHW_STATUS_ALREADY_STARTED;
 	ts->datamover_en = true;
 	ts->fpga_adc_en = true;
+	ts->buffer_head = 0;
+	ts->buffer_tail = 0;
 	return thunderscopehw_set_datamover_reg(ts);
 }
 
@@ -112,16 +114,15 @@ static enum ThunderScopeHWStatus thunderscopehw_update_buffer_head(struct Thunde
 	// 1 page = 4k
 	uint32_t transfer_counter = thunderscopehw_read32(ts, DATAMOVER_TRANSFER_COUNTER);
 	uint32_t error_code = transfer_counter >> 30;
-	if (error_code & 1)
-		return THUNDERSCOPEHW_STATUS_DATAMOVER_ERROR;
 	if (error_code & 2)
+		return THUNDERSCOPEHW_STATUS_DATAMOVER_ERROR;
+
+	if (error_code & 1)
 		return THUNDERSCOPEHW_STATUS_FIFO_OVERFLOW;
 
 	uint32_t overflow_cycles = (transfer_counter >> 16) & 0x3FFF;
-	if (overflow_cycles) {
-		fprintf(stderr, "TRANSFER COUNTER = %llx\n", (long long)transfer_counter);
+	if (overflow_cycles)
 		return THUNDERSCOPEHW_STATUS_PIPELINE_OVERFLOW;
-	}
 
 	uint32_t pages_moved = transfer_counter & 0xFFFF;
 	uint64_t buffer_head = (ts->buffer_head & ~0xFFFFULL) | pages_moved;
@@ -168,7 +169,7 @@ enum ThunderScopeHWStatus thunderscopehw_read(struct ThunderScopeHW* ts, uint8_t
 		if (pages_to_read > ts->ram_size_pages - buffer_read_pos) pages_to_read = ts->ram_size_pages - buffer_read_pos;
 		if (pages_to_read > ts->ram_size_pages / 4) pages_to_read = ts->ram_size_pages / 4;
 
-		thunderscopehw_read_handle(ts, ts->user_handle, data, buffer_read_pos << 12, pages_to_read << 12);
+		THUNDERSCOPEHW_RUN(read_handle(ts, ts->c2h0_handle, data, buffer_read_pos << 12, pages_to_read << 12));
 
 		data += pages_to_read << 12;
 		length -= pages_to_read << 12;
@@ -221,6 +222,10 @@ const char* thunderscopehw_describe_error(enum ThunderScopeHWStatus err) {
 		return "not started";
 	case THUNDERSCOPEHW_STATUS_ALREADY_STOPPED:
 		return "already stopped";
+	case THUNDERSCOPEHW_STATUS_OFFSET_TOO_LOW:
+		return "voffset too low";
+	case THUNDERSCOPEHW_STATUS_OFFSET_TOO_HIGH:
+		return "voffset too high";
 	}
 	return "unkonwn error";
 }

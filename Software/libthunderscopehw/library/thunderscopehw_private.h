@@ -33,7 +33,7 @@
 #define SPI_FRONT_END_CHANNEL_3             0xFA
 #define SPI_FRONT_END_CHANNEL_4             0xFB
 
-#define SPI_BYTE_ADC                        0xFC
+#define SPI_BYTE_ADC                        0xFD
 
 #define I2C_BYTE_PLL                        0xFF
 
@@ -102,7 +102,7 @@ enum ThunderScopeHWAdcRegister {
 	THUNDERSCOPEHW_ADC_REG_CHNUM_CLKDIV = 0x31,
 	THUNDERSCOPEHW_ADC_REG_GAIN_CFG = 0x33,
 	THUNDERSCOPEHW_ADC_REG_INSEL12 = 0x3A,
-	THUNDERSCOPEHW_ADC_REG_INSEL34 = 0x3A,
+	THUNDERSCOPEHW_ADC_REG_INSEL34 = 0x3B,
 	THUNDERSCOPEHW_ADC_REG_FS_CNTRL = 0x55,
 };
 enum ThunderScopeHWStatus thunderscopehw_adc_set_reg(struct ThunderScopeHW* ts, enum ThunderScopeHWAdcRegister reg, uint16_t value);
