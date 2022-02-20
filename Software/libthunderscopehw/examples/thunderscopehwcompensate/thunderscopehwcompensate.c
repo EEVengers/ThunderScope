@@ -32,7 +32,7 @@ struct Option options[] = {
 } while(0)
 
 void usage() {
-	printf("thunderscopehwcalibrate [options]\n"
+	printf("thunderscopehwcompensate [options]\n"
                "   --device=<deviceid>\n"
 	       "   --channel=<channel\n");
 }
