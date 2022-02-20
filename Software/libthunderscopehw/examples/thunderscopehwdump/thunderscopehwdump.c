@@ -127,13 +127,13 @@ int main(int argc, char** argv) {
 			        fprintf(stderr, "Number of samples must be a number.\n");
 				exit(1);
 			}
-			break;
+			continue;
 		case 3:
 			if (!sscanf(optarg, "%d", &samplerate)) {
 			        fprintf(stderr, "Output samplerate must be a number.\n");
 				exit(1);
 			}
-			break;
+			continue;
 		case 4:
 			usage();
 			exit(0);

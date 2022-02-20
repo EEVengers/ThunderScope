@@ -137,6 +137,11 @@ static enum ThunderScopeHWStatus thunderscopehw_update_buffer_head(struct Thunde
 	return THUNDERSCOPEHW_STATUS_OK;
 }
 
+int64_t thunderscopehw_available(struct ThunderScopeHW* ts) {
+	THUNDERSCOPEHW_RUN(update_buffer_head(ts));
+	return (ts->buffer_head - ts->buffer_tail) << 12;
+}
+
 enum ThunderScopeHWStatus thunderscopehw_read(struct ThunderScopeHW* ts, uint8_t* data, int64_t length)
 {
 	if (!ts->datamover_en)

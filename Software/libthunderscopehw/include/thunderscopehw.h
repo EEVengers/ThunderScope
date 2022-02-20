@@ -49,6 +49,8 @@ enum ThunderScopeHWStatus thunderscopehw_bandwidth_set(struct ThunderScopeHW *ts
 enum ThunderScopeHWStatus thunderscopehw_start(struct ThunderScopeHW* ts);
 enum ThunderScopeHWStatus thunderscopehw_stop(struct ThunderScopeHW* ts);
 enum ThunderScopeHWStatus thunderscopehw_read(struct ThunderScopeHW* ts, uint8_t* data, int64_t length);
+int64_t thunderscopehw_available(struct ThunderScopeHW* ts);
+
 
 const char* thunderscopehw_describe_error(enum ThunderScopeHWStatus err);
 
