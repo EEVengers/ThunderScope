@@ -9,6 +9,7 @@ add_subdirectory(examples/thunderscopehwdump)
 add_subdirectory(examples/thunderscopehwcalibrate)
 add_subdirectory(examples/thunderscopehwcompensate)
 add_subdirectory(examples/thunderscopehwbench)
+add_subdirectory(examples/thunderscopehwstresstest)
 
 enable_testing()
 add_subdirectory(test)
