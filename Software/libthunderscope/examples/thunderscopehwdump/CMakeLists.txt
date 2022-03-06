@@ -1,0 +1,4 @@
+add_executable(thunderscopehwdump
+	thunderscopehwdump.c)
+target_link_libraries(thunderscopehwdump
+	thunderscopehwlib)

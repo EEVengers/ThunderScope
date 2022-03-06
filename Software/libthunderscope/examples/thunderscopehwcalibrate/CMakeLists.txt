@@ -1,0 +1,4 @@
+add_executable(thunderscopehwcalibrate
+	thunderscopehwcalibrate.c)
+target_link_libraries(thunderscopehwcalibrate
+	thunderscopehwlib)
