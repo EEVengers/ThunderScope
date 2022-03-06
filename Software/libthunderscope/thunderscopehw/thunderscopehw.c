@@ -102,6 +102,11 @@ enum ThunderScopeHWStatus thunderscopehw_stop(struct ThunderScopeHW* ts) {
 		return THUNDERSCOPEHW_STATUS_ALREADY_STOPPED;
 	ts->datamover_en = false;
 	THUNDERSCOPEHW_RUN(set_datamover_reg(ts));
+#ifdef WIN32
+	Sleep(5);
+#else
+	usleep(5000);
+#endif
 	ts->fpga_adc_en = false;
 	return thunderscopehw_set_datamover_reg(ts);
 }
