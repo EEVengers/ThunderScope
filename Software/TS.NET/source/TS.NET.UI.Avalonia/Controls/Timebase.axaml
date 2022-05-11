@@ -1,0 +1,36 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="150" d:DesignHeight="250"
+             x:Class="TS.NET.UI.Avalonia.Controls.Timebase">
+	<Border
+        BorderBrush="LightGray"
+        BorderThickness="2"
+        CornerRadius="3"
+        Padding="4">
+		<Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto" ColumnDefinitions="Auto" HorizontalAlignment="Center">
+			<Label Grid.Row="0" HorizontalContentAlignment="Center">Horizontal</Label>
+			<Label Grid.Row="1" HorizontalContentAlignment="Center">Channel length</Label>
+			<ComboBox Grid.Row="2" SelectedIndex="0">
+				<ComboBoxItem>100M samples</ComboBoxItem>
+				<ComboBoxItem>10M samples</ComboBoxItem>
+				<ComboBoxItem>1M samples</ComboBoxItem>
+				<ComboBoxItem>100k samples</ComboBoxItem>
+				<ComboBoxItem>10k samples</ComboBoxItem>
+				<ComboBoxItem>1k samples</ComboBoxItem>
+			</ComboBox>
+			<Label Grid.Row="3" HorizontalContentAlignment="Center">Scale (time/div)</Label>
+			<ComboBox Grid.Row="4" SelectedIndex="0">
+				<ComboBoxItem>100M samples</ComboBoxItem>
+				<ComboBoxItem>10M samples</ComboBoxItem>
+				<ComboBoxItem>1M samples</ComboBoxItem>
+				<ComboBoxItem>100k samples</ComboBoxItem>
+				<ComboBoxItem>10k samples</ComboBoxItem>
+				<ComboBoxItem>1k samples</ComboBoxItem>
+			</ComboBox>
+			<Label Grid.Row="5"  HorizontalContentAlignment="Center">Position (time offset)</Label>
+			<NumericUpDown Grid.Row="6" Value="0"></NumericUpDown>
+		</Grid>
+	</Border>
+</UserControl>

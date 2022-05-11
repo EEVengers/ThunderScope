@@ -1,0 +1,25 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:controls="clr-namespace:TS.NET.UI.Avalonia.Controls"
+        mc:Ignorable="d" d:DesignWidth="1100" d:DesignHeight="800"
+        x:Class="TS.NET.UI.Avalonia.MainWindow"
+		xmlns:ScottPlot="clr-namespace:ScottPlot.Avalonia;assembly=ScottPlot.Avalonia"
+        Title="TS.NET.UI.Avalonia">
+	<Grid RowDefinitions="*, Auto" ColumnDefinitions="*, 250" Background="White">
+		<ScottPlot:AvaPlot Name="AvaPlot1" Grid.Row="0"/>
+		<Label Name="LblStatus" Grid.Row="1" Content ="Test" />
+		<StackPanel Grid.Row="0" Grid.Column="1">
+			<TextBlock Name="TextInfo" Grid.Row="0" TextWrapping="Wrap">Waiting for bridge connection...</TextBlock>
+			<!--<TabControl >
+				<TabItem Header="Horizontal">
+					<controls:Timebase Grid.Row="0" Margin="3"></controls:Timebase>
+				</TabItem>
+				<TabItem Header="Channel 1">
+					<controls:Channel Grid.Row="1" Grid.Column="0" MinWidth="100" Margin="3" DataContext="{Binding Channel1}"></controls:Channel>
+				</TabItem>
+			</TabControl>-->
+		</StackPanel>
+	</Grid>
+</Window>
