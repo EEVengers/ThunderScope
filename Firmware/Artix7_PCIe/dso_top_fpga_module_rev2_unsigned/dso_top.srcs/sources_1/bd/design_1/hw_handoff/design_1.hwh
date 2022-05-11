@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Sun Feb 13 11:02:41 2022" VIVADOVERSION="2020.1">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Wed May 11 18:45:20 2022" VIVADOVERSION="2020.1">
 
   <SYSTEMINFO ARCH="artix7" DEVICE="7a35t" NAME="design_1" PACKAGE="csg325" SPEEDGRADE="-2"/>
 
@@ -65,279 +65,14 @@
         <CONNECTION INSTANCE="Memory_util_ds_buf_0" PORT="BUFG_O"/>
       </CONNECTIONS>
     </PORT>
-    <PORT DIR="I" LEFT="0" NAME="S_AXI_0_awid" RIGHT="0" SIGIS="undef" SIGNAME="Memory_mig_7series_0_s_axi_awid">
+    <PORT CLKFREQUENCY="100000000" DIR="I" LEFT="0" NAME="pcie_clk_p" RIGHT="0" SIGIS="clk" SIGNAME="PCIe_util_ds_buf_0_IBUF_DS_P">
       <CONNECTIONS>
-        <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="s_axi_awid"/>
+        <CONNECTION INSTANCE="PCIe_util_ds_buf_0" PORT="IBUF_DS_P"/>
       </CONNECTIONS>
     </PORT>
-    <PORT DIR="I" LEFT="27" NAME="S_AXI_0_awaddr" RIGHT="0" SIGIS="undef" SIGNAME="Memory_mig_7series_0_s_axi_awaddr">
+    <PORT CLKFREQUENCY="100000000" DIR="I" LEFT="0" NAME="pcie_clk_n" RIGHT="0" SIGIS="clk" SIGNAME="PCIe_util_ds_buf_0_IBUF_DS_N">
       <CONNECTIONS>
-        <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="s_axi_awaddr"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="I" LEFT="7" NAME="S_AXI_0_awlen" RIGHT="0" SIGIS="undef" SIGNAME="Memory_mig_7series_0_s_axi_awlen">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="s_axi_awlen"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="I" LEFT="2" NAME="S_AXI_0_awsize" RIGHT="0" SIGIS="undef" SIGNAME="Memory_mig_7series_0_s_axi_awsize">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="s_axi_awsize"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="I" LEFT="1" NAME="S_AXI_0_awburst" RIGHT="0" SIGIS="undef" SIGNAME="Memory_mig_7series_0_s_axi_awburst">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="s_axi_awburst"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="I" NAME="S_AXI_0_awlock" SIGIS="undef" SIGNAME="Memory_mig_7series_0_s_axi_awlock">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="s_axi_awlock"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="I" LEFT="3" NAME="S_AXI_0_awcache" RIGHT="0" SIGIS="undef" SIGNAME="Memory_mig_7series_0_s_axi_awcache">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="s_axi_awcache"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="I" LEFT="2" NAME="S_AXI_0_awprot" RIGHT="0" SIGIS="undef" SIGNAME="Memory_mig_7series_0_s_axi_awprot">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="s_axi_awprot"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="I" LEFT="3" NAME="S_AXI_0_awqos" RIGHT="0" SIGIS="undef" SIGNAME="Memory_mig_7series_0_s_axi_awqos">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="s_axi_awqos"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="I" NAME="S_AXI_0_awvalid" SIGIS="undef" SIGNAME="Memory_mig_7series_0_s_axi_awvalid">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="s_axi_awvalid"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="O" NAME="S_AXI_0_awready" SIGIS="undef" SIGNAME="Memory_mig_7series_0_s_axi_awready">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="s_axi_awready"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="I" LEFT="255" NAME="S_AXI_0_wdata" RIGHT="0" SIGIS="undef" SIGNAME="Memory_mig_7series_0_s_axi_wdata">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="s_axi_wdata"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="I" LEFT="31" NAME="S_AXI_0_wstrb" RIGHT="0" SIGIS="undef" SIGNAME="Memory_mig_7series_0_s_axi_wstrb">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="s_axi_wstrb"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="I" NAME="S_AXI_0_wlast" SIGIS="undef" SIGNAME="Memory_mig_7series_0_s_axi_wlast">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="s_axi_wlast"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="I" NAME="S_AXI_0_wvalid" SIGIS="undef" SIGNAME="Memory_mig_7series_0_s_axi_wvalid">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="s_axi_wvalid"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="O" NAME="S_AXI_0_wready" SIGIS="undef" SIGNAME="Memory_mig_7series_0_s_axi_wready">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="s_axi_wready"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="I" NAME="S_AXI_0_bready" SIGIS="undef" SIGNAME="Memory_mig_7series_0_s_axi_bready">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="s_axi_bready"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="O" LEFT="0" NAME="S_AXI_0_bid" RIGHT="0" SIGIS="undef" SIGNAME="Memory_mig_7series_0_s_axi_bid">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="s_axi_bid"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="O" LEFT="1" NAME="S_AXI_0_bresp" RIGHT="0" SIGIS="undef" SIGNAME="Memory_mig_7series_0_s_axi_bresp">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="s_axi_bresp"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="O" NAME="S_AXI_0_bvalid" SIGIS="undef" SIGNAME="Memory_mig_7series_0_s_axi_bvalid">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="s_axi_bvalid"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="I" LEFT="0" NAME="S_AXI_0_arid" RIGHT="0" SIGIS="undef" SIGNAME="Memory_mig_7series_0_s_axi_arid">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="s_axi_arid"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="I" LEFT="27" NAME="S_AXI_0_araddr" RIGHT="0" SIGIS="undef" SIGNAME="Memory_mig_7series_0_s_axi_araddr">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="s_axi_araddr"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="I" LEFT="7" NAME="S_AXI_0_arlen" RIGHT="0" SIGIS="undef" SIGNAME="Memory_mig_7series_0_s_axi_arlen">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="s_axi_arlen"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="I" LEFT="2" NAME="S_AXI_0_arsize" RIGHT="0" SIGIS="undef" SIGNAME="Memory_mig_7series_0_s_axi_arsize">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="s_axi_arsize"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="I" LEFT="1" NAME="S_AXI_0_arburst" RIGHT="0" SIGIS="undef" SIGNAME="Memory_mig_7series_0_s_axi_arburst">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="s_axi_arburst"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="I" NAME="S_AXI_0_arlock" SIGIS="undef" SIGNAME="Memory_mig_7series_0_s_axi_arlock">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="s_axi_arlock"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="I" LEFT="3" NAME="S_AXI_0_arcache" RIGHT="0" SIGIS="undef" SIGNAME="Memory_mig_7series_0_s_axi_arcache">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="s_axi_arcache"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="I" LEFT="2" NAME="S_AXI_0_arprot" RIGHT="0" SIGIS="undef" SIGNAME="Memory_mig_7series_0_s_axi_arprot">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="s_axi_arprot"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="I" LEFT="3" NAME="S_AXI_0_arqos" RIGHT="0" SIGIS="undef" SIGNAME="Memory_mig_7series_0_s_axi_arqos">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="s_axi_arqos"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="I" NAME="S_AXI_0_arvalid" SIGIS="undef" SIGNAME="Memory_mig_7series_0_s_axi_arvalid">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="s_axi_arvalid"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="O" NAME="S_AXI_0_arready" SIGIS="undef" SIGNAME="Memory_mig_7series_0_s_axi_arready">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="s_axi_arready"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="I" NAME="S_AXI_0_rready" SIGIS="undef" SIGNAME="Memory_mig_7series_0_s_axi_rready">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="s_axi_rready"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="O" LEFT="0" NAME="S_AXI_0_rid" RIGHT="0" SIGIS="undef" SIGNAME="Memory_mig_7series_0_s_axi_rid">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="s_axi_rid"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="O" LEFT="255" NAME="S_AXI_0_rdata" RIGHT="0" SIGIS="undef" SIGNAME="Memory_mig_7series_0_s_axi_rdata">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="s_axi_rdata"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="O" LEFT="1" NAME="S_AXI_0_rresp" RIGHT="0" SIGIS="undef" SIGNAME="Memory_mig_7series_0_s_axi_rresp">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="s_axi_rresp"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="O" NAME="S_AXI_0_rlast" SIGIS="undef" SIGNAME="Memory_mig_7series_0_s_axi_rlast">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="s_axi_rlast"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="O" NAME="S_AXI_0_rvalid" SIGIS="undef" SIGNAME="Memory_mig_7series_0_s_axi_rvalid">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="s_axi_rvalid"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="IO" LEFT="31" NAME="DDR3_dq" RIGHT="0" SIGIS="undef" SIGNAME="Memory_mig_7series_0_ddr3_dq">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="ddr3_dq"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="IO" LEFT="3" NAME="DDR3_dqs_p" RIGHT="0" SIGIS="undef" SIGNAME="Memory_mig_7series_0_ddr3_dqs_p">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="ddr3_dqs_p"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="IO" LEFT="3" NAME="DDR3_dqs_n" RIGHT="0" SIGIS="undef" SIGNAME="Memory_mig_7series_0_ddr3_dqs_n">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="ddr3_dqs_n"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="O" LEFT="12" NAME="DDR3_addr" RIGHT="0" SIGIS="undef" SIGNAME="Memory_mig_7series_0_ddr3_addr">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="ddr3_addr"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="O" LEFT="2" NAME="DDR3_ba" RIGHT="0" SIGIS="undef" SIGNAME="Memory_mig_7series_0_ddr3_ba">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="ddr3_ba"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="O" NAME="DDR3_ras_n" SIGIS="undef" SIGNAME="Memory_mig_7series_0_ddr3_ras_n">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="ddr3_ras_n"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="O" NAME="DDR3_cas_n" SIGIS="undef" SIGNAME="Memory_mig_7series_0_ddr3_cas_n">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="ddr3_cas_n"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="O" NAME="DDR3_we_n" SIGIS="undef" SIGNAME="Memory_mig_7series_0_ddr3_we_n">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="ddr3_we_n"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="O" NAME="DDR3_reset_n" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="Memory_mig_7series_0_ddr3_reset_n">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="ddr3_reset_n"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT CLKFREQUENCY="100000000" DIR="O" LEFT="0" NAME="DDR3_ck_p" RIGHT="0" SIGIS="clk" SIGNAME="Memory_mig_7series_0_ddr3_ck_p">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="ddr3_ck_p"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT CLKFREQUENCY="100000000" DIR="O" LEFT="0" NAME="DDR3_ck_n" RIGHT="0" SIGIS="clk" SIGNAME="Memory_mig_7series_0_ddr3_ck_n">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="ddr3_ck_n"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="O" LEFT="0" NAME="DDR3_cke" RIGHT="0" SIGIS="undef" SIGNAME="Memory_mig_7series_0_ddr3_cke">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="ddr3_cke"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="O" LEFT="0" NAME="DDR3_cs_n" RIGHT="0" SIGIS="undef" SIGNAME="Memory_mig_7series_0_ddr3_cs_n">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="ddr3_cs_n"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="O" LEFT="3" NAME="DDR3_dm" RIGHT="0" SIGIS="undef" SIGNAME="Memory_mig_7series_0_ddr3_dm">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="ddr3_dm"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="O" LEFT="0" NAME="DDR3_odt" RIGHT="0" SIGIS="undef" SIGNAME="Memory_mig_7series_0_ddr3_odt">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="ddr3_odt"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="I" LEFT="71" NAME="S_AXIS_S2MM_CMD_tdata" RIGHT="0" SIGIS="undef" SIGNAME="Datamover_axi_datamover_0_s_axis_s2mm_cmd_tdata">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="Datamover_axi_datamover_0" PORT="s_axis_s2mm_cmd_tdata"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="O" NAME="S_AXIS_S2MM_CMD_tready" SIGIS="undef" SIGNAME="Datamover_axi_datamover_0_s_axis_s2mm_cmd_tready">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="Datamover_axi_datamover_0" PORT="s_axis_s2mm_cmd_tready"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT DIR="I" NAME="S_AXIS_S2MM_CMD_tvalid" SIGIS="undef" SIGNAME="Datamover_axi_datamover_0_s_axis_s2mm_cmd_tvalid">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="Datamover_axi_datamover_0" PORT="s_axis_s2mm_cmd_tvalid"/>
+        <CONNECTION INSTANCE="PCIe_util_ds_buf_0" PORT="IBUF_DS_N"/>
       </CONNECTIONS>
     </PORT>
     <PORT DIR="O" LEFT="0" NAME="M00_AXI_0_awid" RIGHT="0" SIGIS="undef" SIGNAME="Memory_axi_crossbar_0_m_axi_awid">
@@ -540,16 +275,6 @@
         <CONNECTION INSTANCE="Memory_axi_crossbar_0" PORT="m_axi_rready"/>
       </CONNECTIONS>
     </PORT>
-    <PORT CLKFREQUENCY="100000000" DIR="I" LEFT="0" NAME="pcie_clk_p" RIGHT="0" SIGIS="clk" SIGNAME="PCIe_util_ds_buf_0_IBUF_DS_P">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="PCIe_util_ds_buf_0" PORT="IBUF_DS_P"/>
-      </CONNECTIONS>
-    </PORT>
-    <PORT CLKFREQUENCY="100000000" DIR="I" LEFT="0" NAME="pcie_clk_n" RIGHT="0" SIGIS="clk" SIGNAME="PCIe_util_ds_buf_0_IBUF_DS_N">
-      <CONNECTIONS>
-        <CONNECTION INSTANCE="PCIe_util_ds_buf_0" PORT="IBUF_DS_N"/>
-      </CONNECTIONS>
-    </PORT>
     <PORT DIR="I" LEFT="3" NAME="pcie_mgt_rxn" RIGHT="0" SIGIS="undef" SIGNAME="PCIe_xdma_0_pci_exp_rxn">
       <CONNECTIONS>
         <CONNECTION INSTANCE="PCIe_xdma_0" PORT="pci_exp_rxn"/>
@@ -595,6 +320,21 @@
         <CONNECTION INSTANCE="Datamover_axi_datamover_0" PORT="s_axis_s2mm_tvalid"/>
       </CONNECTIONS>
     </PORT>
+    <PORT DIR="I" LEFT="71" NAME="S_AXIS_S2MM_CMD_tdata" RIGHT="0" SIGIS="undef" SIGNAME="Datamover_axi_datamover_0_s_axis_s2mm_cmd_tdata">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="Datamover_axi_datamover_0" PORT="s_axis_s2mm_cmd_tdata"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="S_AXIS_S2MM_CMD_tready" SIGIS="undef" SIGNAME="Datamover_axi_datamover_0_s_axis_s2mm_cmd_tready">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="Datamover_axi_datamover_0" PORT="s_axis_s2mm_cmd_tready"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" NAME="S_AXIS_S2MM_CMD_tvalid" SIGIS="undef" SIGNAME="Datamover_axi_datamover_0_s_axis_s2mm_cmd_tvalid">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="Datamover_axi_datamover_0" PORT="s_axis_s2mm_cmd_tvalid"/>
+      </CONNECTIONS>
+    </PORT>
     <PORT DIR="O" LEFT="31" NAME="AXI_STR_TXD_0_tdata" RIGHT="0" SIGIS="undef" SIGNAME="AXI_LITE_IO_axi_fifo_mm_s_0_axi_str_txd_tdata">
       <CONNECTIONS>
         <CONNECTION INSTANCE="AXI_LITE_IO_axi_fifo_mm_s_0" PORT="axi_str_txd_tdata"/>
@@ -613,6 +353,266 @@
     <PORT DIR="O" NAME="AXI_STR_TXD_0_tvalid" SIGIS="undef" SIGNAME="AXI_LITE_IO_axi_fifo_mm_s_0_axi_str_txd_tvalid">
       <CONNECTIONS>
         <CONNECTION INSTANCE="AXI_LITE_IO_axi_fifo_mm_s_0" PORT="axi_str_txd_tvalid"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="IO" LEFT="31" NAME="DDR3_dq" RIGHT="0" SIGIS="undef" SIGNAME="Memory_mig_7series_0_ddr3_dq">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="ddr3_dq"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="IO" LEFT="3" NAME="DDR3_dqs_p" RIGHT="0" SIGIS="undef" SIGNAME="Memory_mig_7series_0_ddr3_dqs_p">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="ddr3_dqs_p"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="IO" LEFT="3" NAME="DDR3_dqs_n" RIGHT="0" SIGIS="undef" SIGNAME="Memory_mig_7series_0_ddr3_dqs_n">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="ddr3_dqs_n"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" LEFT="12" NAME="DDR3_addr" RIGHT="0" SIGIS="undef" SIGNAME="Memory_mig_7series_0_ddr3_addr">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="ddr3_addr"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" LEFT="2" NAME="DDR3_ba" RIGHT="0" SIGIS="undef" SIGNAME="Memory_mig_7series_0_ddr3_ba">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="ddr3_ba"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="DDR3_ras_n" SIGIS="undef" SIGNAME="Memory_mig_7series_0_ddr3_ras_n">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="ddr3_ras_n"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="DDR3_cas_n" SIGIS="undef" SIGNAME="Memory_mig_7series_0_ddr3_cas_n">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="ddr3_cas_n"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="DDR3_we_n" SIGIS="undef" SIGNAME="Memory_mig_7series_0_ddr3_we_n">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="ddr3_we_n"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="DDR3_reset_n" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="Memory_mig_7series_0_ddr3_reset_n">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="ddr3_reset_n"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT CLKFREQUENCY="100000000" DIR="O" LEFT="0" NAME="DDR3_ck_p" RIGHT="0" SIGIS="clk" SIGNAME="Memory_mig_7series_0_ddr3_ck_p">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="ddr3_ck_p"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT CLKFREQUENCY="100000000" DIR="O" LEFT="0" NAME="DDR3_ck_n" RIGHT="0" SIGIS="clk" SIGNAME="Memory_mig_7series_0_ddr3_ck_n">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="ddr3_ck_n"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" LEFT="0" NAME="DDR3_cke" RIGHT="0" SIGIS="undef" SIGNAME="Memory_mig_7series_0_ddr3_cke">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="ddr3_cke"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" LEFT="0" NAME="DDR3_cs_n" RIGHT="0" SIGIS="undef" SIGNAME="Memory_mig_7series_0_ddr3_cs_n">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="ddr3_cs_n"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" LEFT="3" NAME="DDR3_dm" RIGHT="0" SIGIS="undef" SIGNAME="Memory_mig_7series_0_ddr3_dm">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="ddr3_dm"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" LEFT="0" NAME="DDR3_odt" RIGHT="0" SIGIS="undef" SIGNAME="Memory_mig_7series_0_ddr3_odt">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="ddr3_odt"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" LEFT="0" NAME="S_AXI_0_awid" RIGHT="0" SIGIS="undef" SIGNAME="Memory_mig_7series_0_s_axi_awid">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="s_axi_awid"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" LEFT="27" NAME="S_AXI_0_awaddr" RIGHT="0" SIGIS="undef" SIGNAME="Memory_mig_7series_0_s_axi_awaddr">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="s_axi_awaddr"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" LEFT="7" NAME="S_AXI_0_awlen" RIGHT="0" SIGIS="undef" SIGNAME="Memory_mig_7series_0_s_axi_awlen">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="s_axi_awlen"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" LEFT="2" NAME="S_AXI_0_awsize" RIGHT="0" SIGIS="undef" SIGNAME="Memory_mig_7series_0_s_axi_awsize">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="s_axi_awsize"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" LEFT="1" NAME="S_AXI_0_awburst" RIGHT="0" SIGIS="undef" SIGNAME="Memory_mig_7series_0_s_axi_awburst">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="s_axi_awburst"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" NAME="S_AXI_0_awlock" SIGIS="undef" SIGNAME="Memory_mig_7series_0_s_axi_awlock">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="s_axi_awlock"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" LEFT="3" NAME="S_AXI_0_awcache" RIGHT="0" SIGIS="undef" SIGNAME="Memory_mig_7series_0_s_axi_awcache">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="s_axi_awcache"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" LEFT="2" NAME="S_AXI_0_awprot" RIGHT="0" SIGIS="undef" SIGNAME="Memory_mig_7series_0_s_axi_awprot">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="s_axi_awprot"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" LEFT="3" NAME="S_AXI_0_awqos" RIGHT="0" SIGIS="undef" SIGNAME="Memory_mig_7series_0_s_axi_awqos">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="s_axi_awqos"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" NAME="S_AXI_0_awvalid" SIGIS="undef" SIGNAME="Memory_mig_7series_0_s_axi_awvalid">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="s_axi_awvalid"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="S_AXI_0_awready" SIGIS="undef" SIGNAME="Memory_mig_7series_0_s_axi_awready">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="s_axi_awready"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" LEFT="255" NAME="S_AXI_0_wdata" RIGHT="0" SIGIS="undef" SIGNAME="Memory_mig_7series_0_s_axi_wdata">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="s_axi_wdata"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" LEFT="31" NAME="S_AXI_0_wstrb" RIGHT="0" SIGIS="undef" SIGNAME="Memory_mig_7series_0_s_axi_wstrb">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="s_axi_wstrb"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" NAME="S_AXI_0_wlast" SIGIS="undef" SIGNAME="Memory_mig_7series_0_s_axi_wlast">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="s_axi_wlast"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" NAME="S_AXI_0_wvalid" SIGIS="undef" SIGNAME="Memory_mig_7series_0_s_axi_wvalid">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="s_axi_wvalid"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="S_AXI_0_wready" SIGIS="undef" SIGNAME="Memory_mig_7series_0_s_axi_wready">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="s_axi_wready"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" NAME="S_AXI_0_bready" SIGIS="undef" SIGNAME="Memory_mig_7series_0_s_axi_bready">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="s_axi_bready"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" LEFT="0" NAME="S_AXI_0_bid" RIGHT="0" SIGIS="undef" SIGNAME="Memory_mig_7series_0_s_axi_bid">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="s_axi_bid"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" LEFT="1" NAME="S_AXI_0_bresp" RIGHT="0" SIGIS="undef" SIGNAME="Memory_mig_7series_0_s_axi_bresp">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="s_axi_bresp"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="S_AXI_0_bvalid" SIGIS="undef" SIGNAME="Memory_mig_7series_0_s_axi_bvalid">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="s_axi_bvalid"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" LEFT="0" NAME="S_AXI_0_arid" RIGHT="0" SIGIS="undef" SIGNAME="Memory_mig_7series_0_s_axi_arid">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="s_axi_arid"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" LEFT="27" NAME="S_AXI_0_araddr" RIGHT="0" SIGIS="undef" SIGNAME="Memory_mig_7series_0_s_axi_araddr">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="s_axi_araddr"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" LEFT="7" NAME="S_AXI_0_arlen" RIGHT="0" SIGIS="undef" SIGNAME="Memory_mig_7series_0_s_axi_arlen">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="s_axi_arlen"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" LEFT="2" NAME="S_AXI_0_arsize" RIGHT="0" SIGIS="undef" SIGNAME="Memory_mig_7series_0_s_axi_arsize">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="s_axi_arsize"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" LEFT="1" NAME="S_AXI_0_arburst" RIGHT="0" SIGIS="undef" SIGNAME="Memory_mig_7series_0_s_axi_arburst">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="s_axi_arburst"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" NAME="S_AXI_0_arlock" SIGIS="undef" SIGNAME="Memory_mig_7series_0_s_axi_arlock">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="s_axi_arlock"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" LEFT="3" NAME="S_AXI_0_arcache" RIGHT="0" SIGIS="undef" SIGNAME="Memory_mig_7series_0_s_axi_arcache">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="s_axi_arcache"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" LEFT="2" NAME="S_AXI_0_arprot" RIGHT="0" SIGIS="undef" SIGNAME="Memory_mig_7series_0_s_axi_arprot">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="s_axi_arprot"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" LEFT="3" NAME="S_AXI_0_arqos" RIGHT="0" SIGIS="undef" SIGNAME="Memory_mig_7series_0_s_axi_arqos">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="s_axi_arqos"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" NAME="S_AXI_0_arvalid" SIGIS="undef" SIGNAME="Memory_mig_7series_0_s_axi_arvalid">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="s_axi_arvalid"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="S_AXI_0_arready" SIGIS="undef" SIGNAME="Memory_mig_7series_0_s_axi_arready">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="s_axi_arready"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="I" NAME="S_AXI_0_rready" SIGIS="undef" SIGNAME="Memory_mig_7series_0_s_axi_rready">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="s_axi_rready"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" LEFT="0" NAME="S_AXI_0_rid" RIGHT="0" SIGIS="undef" SIGNAME="Memory_mig_7series_0_s_axi_rid">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="s_axi_rid"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" LEFT="255" NAME="S_AXI_0_rdata" RIGHT="0" SIGIS="undef" SIGNAME="Memory_mig_7series_0_s_axi_rdata">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="s_axi_rdata"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" LEFT="1" NAME="S_AXI_0_rresp" RIGHT="0" SIGIS="undef" SIGNAME="Memory_mig_7series_0_s_axi_rresp">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="s_axi_rresp"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="S_AXI_0_rlast" SIGIS="undef" SIGNAME="Memory_mig_7series_0_s_axi_rlast">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="s_axi_rlast"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" NAME="S_AXI_0_rvalid" SIGIS="undef" SIGNAME="Memory_mig_7series_0_s_axi_rvalid">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="Memory_mig_7series_0" PORT="s_axi_rvalid"/>
       </CONNECTIONS>
     </PORT>
   </EXTERNALPORTS>
@@ -2542,11 +2542,11 @@
         <PARAMETER NAME="C_S_AXI_ADDR_WIDTH" VALUE="32"/>
         <PARAMETER NAME="C_S_AXI_DATA_WIDTH" VALUE="32"/>
         <PARAMETER NAME="C_S_AXI4_DATA_WIDTH" VALUE="32"/>
-        <PARAMETER NAME="C_TX_FIFO_DEPTH" VALUE="512"/>
+        <PARAMETER NAME="C_TX_FIFO_DEPTH" VALUE="4096"/>
         <PARAMETER NAME="C_RX_FIFO_DEPTH" VALUE="512"/>
         <PARAMETER NAME="C_TX_CASCADE_HEIGHT" VALUE="0"/>
         <PARAMETER NAME="C_RX_CASCADE_HEIGHT" VALUE="0"/>
-        <PARAMETER NAME="C_TX_FIFO_PF_THRESHOLD" VALUE="507"/>
+        <PARAMETER NAME="C_TX_FIFO_PF_THRESHOLD" VALUE="4091"/>
         <PARAMETER NAME="C_TX_FIFO_PE_THRESHOLD" VALUE="5"/>
         <PARAMETER NAME="C_RX_FIFO_PF_THRESHOLD" VALUE="507"/>
         <PARAMETER NAME="C_RX_FIFO_PE_THRESHOLD" VALUE="5"/>

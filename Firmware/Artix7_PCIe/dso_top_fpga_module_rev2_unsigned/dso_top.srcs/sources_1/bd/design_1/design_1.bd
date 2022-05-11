@@ -1643,24 +1643,6 @@
           }
         },
         "interface_nets": {
-          "Conn2": {
-            "interface_ports": [
-              "M00_AXI_0",
-              "axi_crossbar_0/M00_AXI"
-            ]
-          },
-          "S00_AXI_1": {
-            "interface_ports": [
-              "S00_AXI",
-              "axi_crossbar_0/S00_AXI"
-            ]
-          },
-          "S01_AXI_1": {
-            "interface_ports": [
-              "S01_AXI",
-              "axi_crossbar_0/S01_AXI"
-            ]
-          },
           "Conn3": {
             "interface_ports": [
               "S_AXI_0",
@@ -1671,6 +1653,24 @@
             "interface_ports": [
               "DDR3",
               "mig_7series_0/DDR3"
+            ]
+          },
+          "S01_AXI_1": {
+            "interface_ports": [
+              "S01_AXI",
+              "axi_crossbar_0/S01_AXI"
+            ]
+          },
+          "Conn2": {
+            "interface_ports": [
+              "M00_AXI_0",
+              "axi_crossbar_0/M00_AXI"
+            ]
+          },
+          "S00_AXI_1": {
+            "interface_ports": [
+              "S00_AXI",
+              "axi_crossbar_0/S00_AXI"
             ]
           }
         },
@@ -1819,10 +1819,10 @@
           }
         },
         "interface_nets": {
-          "S_AXIS_S2MM_1": {
+          "Conn2": {
             "interface_ports": [
-              "S_AXIS_S2MM",
-              "axi_datamover_0/S_AXIS_S2MM"
+              "S_AXIS_S2MM_CMD",
+              "axi_datamover_0/S_AXIS_S2MM_CMD"
             ]
           },
           "Conn3": {
@@ -1831,10 +1831,10 @@
               "axi_datamover_0/M_AXI_S2MM"
             ]
           },
-          "Conn2": {
+          "S_AXIS_S2MM_1": {
             "interface_ports": [
-              "S_AXIS_S2MM_CMD",
-              "axi_datamover_0/S_AXIS_S2MM_CMD"
+              "S_AXIS_S2MM",
+              "axi_datamover_0/S_AXIS_S2MM"
             ]
           }
         },
@@ -2928,6 +2928,15 @@
             "vlnv": "xilinx.com:ip:axi_fifo_mm_s:4.2",
             "xci_name": "design_1_axi_fifo_mm_s_0_0",
             "parameters": {
+              "C_TX_FIFO_DEPTH": {
+                "value": "4096"
+              },
+              "C_TX_FIFO_PE_THRESHOLD": {
+                "value": "5"
+              },
+              "C_TX_FIFO_PF_THRESHOLD": {
+                "value": "4091"
+              },
               "C_USE_RX_DATA": {
                 "value": "0"
               },
@@ -2956,6 +2965,18 @@
           }
         },
         "interface_nets": {
+          "S00_AXI_1": {
+            "interface_ports": [
+              "S00_AXI",
+              "axi_crossbar_0/S00_AXI"
+            ]
+          },
+          "Conn1": {
+            "interface_ports": [
+              "AXI_STR_TXD_0",
+              "axi_fifo_mm_s_0/AXI_STR_TXD"
+            ]
+          },
           "axi_crossbar_0_M00_AXI": {
             "interface_ports": [
               "axi_crossbar_0/M00_AXI",
@@ -2966,18 +2987,6 @@
             "interface_ports": [
               "axi_crossbar_0/M01_AXI",
               "axi_gpio_0/S_AXI"
-            ]
-          },
-          "Conn1": {
-            "interface_ports": [
-              "AXI_STR_TXD_0",
-              "axi_fifo_mm_s_0/AXI_STR_TXD"
-            ]
-          },
-          "S00_AXI_1": {
-            "interface_ports": [
-              "S00_AXI",
-              "axi_crossbar_0/S00_AXI"
             ]
           }
         },
@@ -3202,28 +3211,28 @@
           }
         },
         "interface_nets": {
-          "PCIe_M_AXI_LITE": {
-            "interface_ports": [
-              "M_AXI_LITE",
-              "xdma_0/M_AXI_LITE"
-            ]
-          },
           "xdma_0_M_AXI1": {
             "interface_ports": [
               "xdma_0/M_AXI",
               "axi_dwidth_converter_0/S_AXI"
             ]
           },
-          "xdma_0_pcie_mgt": {
-            "interface_ports": [
-              "pcie_mgt",
-              "xdma_0/pcie_mgt"
-            ]
-          },
           "CLK_IN_D_0_1": {
             "interface_ports": [
               "pcie",
               "util_ds_buf_0/CLK_IN_D"
+            ]
+          },
+          "PCIe_M_AXI_LITE": {
+            "interface_ports": [
+              "M_AXI_LITE",
+              "xdma_0/M_AXI_LITE"
+            ]
+          },
+          "xdma_0_pcie_mgt": {
+            "interface_ports": [
+              "pcie_mgt",
+              "xdma_0/pcie_mgt"
             ]
           },
           "xdma_0_M_AXI": {
@@ -3264,40 +3273,10 @@
       }
     },
     "interface_nets": {
-      "xdma_0_pcie_mgt": {
+      "S_AXI_0_1": {
         "interface_ports": [
-          "pcie_mgt",
-          "PCIe/pcie_mgt"
-        ]
-      },
-      "AXI_LITE_IO_AXI_STR_TXD_0": {
-        "interface_ports": [
-          "AXI_STR_TXD_0",
-          "AXI_LITE_IO/AXI_STR_TXD_0"
-        ]
-      },
-      "S_AXIS_S2MM_0_1": {
-        "interface_ports": [
-          "S_AXIS_S2MM",
-          "Datamover/S_AXIS_S2MM"
-        ]
-      },
-      "CLK_IN_D_0_1": {
-        "interface_ports": [
-          "pcie",
-          "PCIe/pcie"
-        ]
-      },
-      "xdma_0_M_AXI": {
-        "interface_ports": [
-          "PCIe/M_AXI",
-          "Memory/S00_AXI"
-        ]
-      },
-      "S_AXIS_S2MM_CMD_0_1": {
-        "interface_ports": [
-          "S_AXIS_S2MM_CMD",
-          "Datamover/S_AXIS_S2MM_CMD"
+          "S_AXI_0",
+          "Memory/S_AXI_0"
         ]
       },
       "Memory_M00_AXI_0": {
@@ -3306,10 +3285,40 @@
           "Memory/M00_AXI_0"
         ]
       },
-      "Datamover_M_AXI_S2MM": {
+      "xdma_0_M_AXI": {
         "interface_ports": [
-          "Datamover/M_AXI_S2MM",
-          "Memory/S01_AXI"
+          "PCIe/M_AXI",
+          "Memory/S00_AXI"
+        ]
+      },
+      "xdma_0_pcie_mgt": {
+        "interface_ports": [
+          "pcie_mgt",
+          "PCIe/pcie_mgt"
+        ]
+      },
+      "S_AXIS_S2MM_0_1": {
+        "interface_ports": [
+          "S_AXIS_S2MM",
+          "Datamover/S_AXIS_S2MM"
+        ]
+      },
+      "S_AXIS_S2MM_CMD_0_1": {
+        "interface_ports": [
+          "S_AXIS_S2MM_CMD",
+          "Datamover/S_AXIS_S2MM_CMD"
+        ]
+      },
+      "AXI_LITE_IO_AXI_STR_TXD_0": {
+        "interface_ports": [
+          "AXI_STR_TXD_0",
+          "AXI_LITE_IO/AXI_STR_TXD_0"
+        ]
+      },
+      "CLK_IN_D_0_1": {
+        "interface_ports": [
+          "pcie",
+          "PCIe/pcie"
         ]
       },
       "PCIe_M_AXI_LITE": {
@@ -3318,10 +3327,10 @@
           "AXI_LITE_IO/S00_AXI"
         ]
       },
-      "S_AXI_0_1": {
+      "Datamover_M_AXI_S2MM": {
         "interface_ports": [
-          "S_AXI_0",
-          "Memory/S_AXI_0"
+          "Datamover/M_AXI_S2MM",
+          "Memory/S01_AXI"
         ]
       },
       "Memory_DDR3_0": {

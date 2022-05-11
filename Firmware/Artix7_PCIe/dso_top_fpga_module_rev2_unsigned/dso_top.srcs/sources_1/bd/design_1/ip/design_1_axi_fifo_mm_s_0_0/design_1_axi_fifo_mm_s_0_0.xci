@@ -145,9 +145,9 @@
         <spirit:configurableElementValue spirit:referenceId="MODELPARAM_VALUE.C_S_AXI_DATA_WIDTH">32</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="MODELPARAM_VALUE.C_S_AXI_ID_WIDTH">4</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="MODELPARAM_VALUE.C_TX_CASCADE_HEIGHT">0</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="MODELPARAM_VALUE.C_TX_FIFO_DEPTH">512</spirit:configurableElementValue>
+        <spirit:configurableElementValue spirit:referenceId="MODELPARAM_VALUE.C_TX_FIFO_DEPTH">4096</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="MODELPARAM_VALUE.C_TX_FIFO_PE_THRESHOLD">5</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="MODELPARAM_VALUE.C_TX_FIFO_PF_THRESHOLD">507</spirit:configurableElementValue>
+        <spirit:configurableElementValue spirit:referenceId="MODELPARAM_VALUE.C_TX_FIFO_PF_THRESHOLD">4091</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="MODELPARAM_VALUE.C_USE_RX_CUT_THROUGH">0</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="MODELPARAM_VALUE.C_USE_RX_DATA">0</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="MODELPARAM_VALUE.C_USE_TX_CTRL">0</spirit:configurableElementValue>
@@ -183,9 +183,9 @@
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.C_S_AXI_ID_WIDTH">4</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.C_S_AXI_PROTOCOL">AXI4LITE</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.C_TX_CASCADE_HEIGHT">0</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.C_TX_FIFO_DEPTH">512</spirit:configurableElementValue>
+        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.C_TX_FIFO_DEPTH">4096</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.C_TX_FIFO_PE_THRESHOLD">5</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.C_TX_FIFO_PF_THRESHOLD">507</spirit:configurableElementValue>
+        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.C_TX_FIFO_PF_THRESHOLD">4091</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.C_USE_RX_CUT_THROUGH">false</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.C_USE_RX_DATA">0</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.C_USE_TX_CTRL">0</spirit:configurableElementValue>
@@ -269,6 +269,9 @@
             <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_HAS_AXIS_TID" xilinx:valuePermission="bd"/>
             <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_HIGHADDR" xilinx:valueSource="propagated"/>
             <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_S_AXI_ID_WIDTH" xilinx:valuePermission="bd"/>
+            <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_TX_FIFO_DEPTH" xilinx:valueSource="user"/>
+            <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_TX_FIFO_PE_THRESHOLD" xilinx:valueSource="user"/>
+            <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_TX_FIFO_PF_THRESHOLD" xilinx:valueSource="user"/>
             <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_USE_RX_DATA" xilinx:valueSource="user"/>
             <xilinx:configElementInfo xilinx:referenceId="PARAM_VALUE.C_USE_TX_CTRL" xilinx:valueSource="user"/>
           </xilinx:configElementInfos>
