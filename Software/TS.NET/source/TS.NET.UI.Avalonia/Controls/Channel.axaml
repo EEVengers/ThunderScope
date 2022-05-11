@@ -1,0 +1,27 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="150" d:DesignHeight="250"
+             x:Class="TS.NET.UI.Avalonia.Controls.Channel">
+
+
+	<Border
+        BorderBrush="LightGray"
+        BorderThickness="2"
+        CornerRadius="3"
+        Padding="4">
+		<Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto">
+			<Grid Grid.Row="0" ColumnDefinitions="*,Auto,Auto,*">
+				<Label Grid.Column="1" Content="{Binding Name, FallbackValue=Channel X}" VerticalContentAlignment="Center"></Label>
+				<CheckBox Grid.Column="2" IsChecked="{Binding Enabled}" Margin="10,0,0,0"></CheckBox>
+			</Grid>
+
+			<Label Grid.Row="1" Grid.ColumnSpan="2" HorizontalContentAlignment="Center">Offset (V)</Label>
+			<NumericUpDown Grid.Row="2"  Grid.ColumnSpan="2" Value="0"></NumericUpDown>
+			<Label Grid.Row="3" Grid.ColumnSpan="2" HorizontalContentAlignment="Center">Scale (V/div)</Label>
+			<NumericUpDown Grid.Row="4" Grid.ColumnSpan="2" Value="1"></NumericUpDown>
+		</Grid>
+	</Border>
+
+</UserControl>
