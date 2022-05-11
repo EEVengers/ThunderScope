@@ -1,81 +1,72 @@
 {
    "ActiveEmotionalView":"Default View",
-   "Default View_ScaleFactor":"0.507657",
-   "Default View_TopLeft":"37,-985",
-   "ExpandedHierarchyInLayout":"",
+   "Default View_ScaleFactor":"1.0",
+   "Default View_TopLeft":"105,144",
+   "ExpandedHierarchyInLayout":"/AXI_LITE_IO",
    "guistr":"# # String gsaved with Nlview 7.0r6  2020-01-29 bk=1.5227 VDI=41 GEI=36 GUI=JA:9.0 non-TLS
 #  -string -flagsOSRD
 preplace port pcie -pg 1 -lvl 0 -x 0 -y 670 -defaultsOSRD
-preplace port pcie_mgt -pg 1 -lvl 3 -x 1640 -y 680 -defaultsOSRD
+preplace port pcie_mgt -pg 1 -lvl 3 -x 1420 -y 680 -defaultsOSRD
 preplace port S_AXIS_S2MM_CMD -pg 1 -lvl 0 -x 0 -y 430 -defaultsOSRD
-preplace port AXI_STR_TXD_0 -pg 1 -lvl 3 -x 1640 -y 590 -defaultsOSRD
+preplace port AXI_STR_TXD_0 -pg 1 -lvl 3 -x 1420 -y 590 -defaultsOSRD
 preplace port S_AXIS_S2MM -pg 1 -lvl 0 -x 0 -y 450 -defaultsOSRD
-preplace port DDR3 -pg 1 -lvl 3 -x 1640 -y 260 -defaultsOSRD
-preplace port M00_AXI_0 -pg 1 -lvl 3 -x 1640 -y 280 -defaultsOSRD
+preplace port DDR3 -pg 1 -lvl 3 -x 1420 -y 260 -defaultsOSRD
+preplace port M00_AXI_0 -pg 1 -lvl 3 -x 1420 -y 280 -defaultsOSRD
 preplace port S_AXI_0 -pg 1 -lvl 0 -x 0 -y 270 -defaultsOSRD
 preplace port pcie_perstn -pg 1 -lvl 0 -x 0 -y 690 -defaultsOSRD
-preplace port s2mm_err -pg 1 -lvl 3 -x 1640 -y 470 -defaultsOSRD
-preplace port s2mm_wr_xfer_cmplt -pg 1 -lvl 3 -x 1640 -y 490 -defaultsOSRD
-preplace port axi_aresetn -pg 1 -lvl 3 -x 1640 -y 510 -defaultsOSRD
+preplace port s2mm_err -pg 1 -lvl 3 -x 1420 -y 470 -defaultsOSRD
+preplace port s2mm_wr_xfer_cmplt -pg 1 -lvl 3 -x 1420 -y 490 -defaultsOSRD
+preplace port axi_aresetn -pg 1 -lvl 3 -x 1420 -y 510 -defaultsOSRD
 preplace port S01_ARESETN -pg 1 -lvl 0 -x 0 -y 490 -defaultsOSRD
 preplace port s2mm_halt -pg 1 -lvl 0 -x 0 -y 510 -defaultsOSRD
-preplace port axi_aclk -pg 1 -lvl 3 -x 1640 -y 450 -defaultsOSRD
-preplace port ui_clk_0 -pg 1 -lvl 3 -x 1640 -y 300 -defaultsOSRD
-preplace port ui_clk_sync_rst_0 -pg 1 -lvl 3 -x 1640 -y 320 -defaultsOSRD
+preplace port axi_aclk -pg 1 -lvl 3 -x 1420 -y 450 -defaultsOSRD
+preplace port ui_clk_0 -pg 1 -lvl 3 -x 1420 -y 300 -defaultsOSRD
+preplace port ui_clk_sync_rst_0 -pg 1 -lvl 3 -x 1420 -y 320 -defaultsOSRD
 preplace portBus gpio2_io_i -pg 1 -lvl 0 -x 0 -y 580 -defaultsOSRD
-preplace portBus gpio_io_o_0 -pg 1 -lvl 3 -x 1640 -y 610 -defaultsOSRD
-preplace portBus init_calib_complete_0 -pg 1 -lvl 3 -x 1640 -y 380 -defaultsOSRD
+preplace portBus gpio_io_o_0 -pg 1 -lvl 3 -x 1420 -y 610 -defaultsOSRD
+preplace portBus init_calib_complete_0 -pg 1 -lvl 3 -x 1420 -y 380 -defaultsOSRD
 preplace inst Memory -pg 1 -lvl 2 -x 650 -y 100 -defaultsOSRD
 preplace inst Datamover -pg 1 -lvl 1 -x 190 -y 470 -defaultsOSRD
-preplace inst AXI_LITE_IO -pg 1 -lvl 2 -x 650 -y 600 -defaultsOSRD
+preplace inst AXI_LITE_IO -pg 1 -lvl 2 -x 650 -y 604 -defaultsOSRD
 preplace inst PCIe -pg 1 -lvl 1 -x 190 -y 680 -defaultsOSRD
-preplace inst Memory|axi_crossbar_0 -pg 1 -lvl 4 -x 1320 -y 120 -defaultsOSRD
-preplace inst Memory|clk_wiz_0 -pg 1 -lvl 2 -x 820 -y 200 -defaultsOSRD
-preplace inst Memory|xlconstant_0 -pg 1 -lvl 1 -x 640 -y 190 -defaultsOSRD
-preplace inst Memory|xlconstant_1 -pg 1 -lvl 2 -x 820 -y 330 -defaultsOSRD
-preplace inst Memory|mig_7series_0 -pg 1 -lvl 3 -x 1050 -y 300 -defaultsOSRD
-preplace inst Memory|util_ds_buf_0 -pg 1 -lvl 4 -x 1320 -y 380 -defaultsOSRD
+preplace inst AXI_LITE_IO|axi_crossbar_0 -pg 1 -lvl 1 -x 710 -y 624 -defaultsOSRD
+preplace inst AXI_LITE_IO|axi_fifo_mm_s_0 -pg 1 -lvl 2 -x 1030 -y 824 -defaultsOSRD
+preplace inst AXI_LITE_IO|axi_gpio_0 -pg 1 -lvl 2 -x 1030 -y 654 -defaultsOSRD
 preplace netloc sys_rst_n_0_1 1 0 1 NJ 690
-preplace netloc xdma_0_axi_aclk 1 0 3 20 560 380 460 1620J
+preplace netloc xdma_0_axi_aclk 1 0 3 20 560 380 450 NJ
 preplace netloc Datamover_s2mm_err_0 1 1 2 NJ 470 NJ
 preplace netloc Datamover_s2mm_wr_xfer_cmplt_0 1 1 2 NJ 490 NJ
 preplace netloc gpio2_io_i_0_1 1 0 2 NJ 580 370J
-preplace netloc PCIe_axi_aresetn 1 1 2 400 510 NJ
+preplace netloc PCIe_axi_aresetn 1 1 2 390 502 1390J
 preplace netloc S01_ARESETN_0_1 1 0 1 NJ 490
 preplace netloc s2mm_halt_0_1 1 0 1 NJ 510
-preplace netloc AXI_LITE_IO_gpio_io_o_0 1 2 1 NJ 610
-preplace netloc Memory_ui_clk_0 1 2 1 NJ 300
-preplace netloc Memory_ui_clk_sync_rst_0 1 2 1 NJ 320
-preplace netloc Memory_init_calib_complete_0 1 2 1 NJ 380
-preplace netloc S_AXI_0_1 1 0 2 NJ 270 NJ
-preplace netloc Memory_DDR3_0 1 2 1 NJ 260
-preplace netloc PCIe_M_AXI_LITE 1 1 1 390 570n
-preplace netloc xdma_0_M_AXI 1 1 1 360 90n
-preplace netloc Datamover_M_AXI_S2MM 1 1 1 370 110n
-preplace netloc S_AXIS_S2MM_CMD_0_1 1 0 1 NJ 430
-preplace netloc Memory_M00_AXI_0 1 2 1 NJ 280
+preplace netloc AXI_LITE_IO_gpio_io_o_0 1 2 1 1400J 610n
+preplace netloc Memory_ui_clk_0 1 2 1 1380J 100n
+preplace netloc Memory_ui_clk_sync_rst_0 1 2 1 1370J 120n
+preplace netloc Memory_init_calib_complete_0 1 2 1 1360J 140n
 preplace netloc CLK_IN_D_0_1 1 0 1 NJ 670
-preplace netloc xdma_0_pcie_mgt 1 1 2 NJ 680 NJ
+preplace netloc Memory_M00_AXI_0 1 2 1 1390J 80n
+preplace netloc xdma_0_pcie_mgt 1 1 2 400J 512 1370J
+preplace netloc xdma_0_M_AXI 1 1 1 360 60n
 preplace netloc S_AXIS_S2MM_0_1 1 0 1 NJ 450
-preplace netloc AXI_LITE_IO_AXI_STR_TXD_0 1 2 1 NJ 590
-preplace netloc Memory|xlconstant_0_dout 1 1 1 NJ 190
-preplace netloc Memory|S00_ARESETN_1 1 0 4 550J 100 NJ 100 NJ 100 1180
-preplace netloc Memory|xdma_0_axi_aclk 1 0 4 560J 130 720 130 NJ 130 N
-preplace netloc Memory|clk_wiz_0_clk_out1 1 2 1 910 190n
-preplace netloc Memory|xlconstant_1_dout 1 2 1 920 290n
-preplace netloc Memory|mig_7series_0_ui_clk 1 3 2 NJ 300 NJ
-preplace netloc Memory|mig_7series_0_ui_clk_sync_rst 1 3 2 NJ 280 1460J
-preplace netloc Memory|mig_7series_0_init_calib_complete 1 3 1 1180 340n
-preplace netloc Memory|util_ds_buf_0_BUFG_O 1 4 1 NJ 380
-preplace netloc Memory|Conn3 1 0 3 NJ 270 NJ 270 NJ
-preplace netloc Memory|S00_AXI_1 1 0 4 NJ 90 NJ 90 NJ 90 N
-preplace netloc Memory|S01_AXI_1 1 0 4 NJ 110 NJ 110 NJ 110 N
-preplace netloc Memory|Conn2 1 4 1 1470 120n
-preplace netloc Memory|Conn1 1 3 2 NJ 260 NJ
-levelinfo -pg 1 0 190 650 1640
-levelinfo -hier Memory * 640 820 1050 1320 *
-pagesize -pg 1 -db -bbox -sgen -190 0 1860 770
-pagesize -hier Memory -db -bbox -sgen 520 30 1500 440
+preplace netloc S_AXIS_S2MM_CMD_0_1 1 0 1 NJ 430
+preplace netloc AXI_LITE_IO_AXI_STR_TXD_0 1 2 1 1390J 590n
+preplace netloc PCIe_M_AXI_LITE 1 1 1 410 604n
+preplace netloc Datamover_M_AXI_S2MM 1 1 1 370 80n
+preplace netloc Memory_DDR3_0 1 2 1 1400J 60n
+preplace netloc S_AXI_0_1 1 0 2 20J 100 NJ
+preplace netloc AXI_LITE_IO|gpio2_io_i_1 1 0 3 NJ 744 NJ 744 1190
+preplace netloc AXI_LITE_IO|axi_aclk_1 1 0 2 560 754 860
+preplace netloc AXI_LITE_IO|axi_resetn_1 1 0 2 570 764 870
+preplace netloc AXI_LITE_IO|axi_gpio_0_gpio_io_o 1 2 1 1200 644n
+preplace netloc AXI_LITE_IO|axi_crossbar_0_M00_AXI 1 1 1 850 614n
+preplace netloc AXI_LITE_IO|axi_crossbar_0_M01_AXI 1 1 1 N 634
+preplace netloc AXI_LITE_IO|Conn1 1 2 1 N 804
+preplace netloc AXI_LITE_IO|S00_AXI_1 1 0 1 N 604
+levelinfo -pg 1 0 190 650 1420
+levelinfo -hier AXI_LITE_IO * 710 1030 *
+pagesize -pg 1 -db -bbox -sgen -190 0 1640 940
+pagesize -hier AXI_LITE_IO -db -bbox -sgen 530 544 1230 904
 "
 }
 {

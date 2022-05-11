@@ -7,7 +7,7 @@
    "Color Coded_TopLeft":"-540,-2",
    "Default View_Layers":"/AXI_LITE_IO/axi_aclk_1:true|/AXI_LITE_IO/axi_resetn_1:true|",
    "Default View_ScaleFactor":"1.0",
-   "Default View_TopLeft":"-586,-82",
+   "Default View_TopLeft":"-432,-352",
    "Display-PortTypeClock":"true",
    "Display-PortTypeOthers":"true",
    "Display-PortTypeReset":"true",
@@ -30,19 +30,19 @@ preplace port axi_aclk -pg 1 -lvl 0 -x 0 -y 210 -defaultsOSRD
 preplace port axi_resetn -pg 1 -lvl 0 -x 0 -y 230 -defaultsOSRD
 preplace portBus gpio2_io_i -pg 1 -lvl 0 -x 0 -y 320 -defaultsOSRD
 preplace portBus gpio_io_o_0 -pg 1 -lvl 3 -x 680 -y 220 -defaultsOSRD
-preplace inst axi_gpio_0 -pg 1 -lvl 2 -x 500 -y 230 -defaultsOSRD
-preplace inst axi_fifo_mm_s_0 -pg 1 -lvl 2 -x 500 -y 80 -defaultsOSRD
 preplace inst axi_crossbar_0 -pg 1 -lvl 1 -x 170 -y 210 -defaultsOSRD
+preplace inst axi_fifo_mm_s_0 -pg 1 -lvl 2 -x 500 -y 80 -defaultsOSRD
+preplace inst axi_gpio_0 -pg 1 -lvl 2 -x 500 -y 230 -defaultsOSRD
 preplace netloc gpio2_io_i_1 1 0 3 NJ 320 NJ 320 660
-preplace netloc axi_aclk_1 1 0 2 30 130 320
-preplace netloc axi_resetn_1 1 0 2 20 120 330
+preplace netloc axi_aclk_1 1 0 2 30 130 310
+preplace netloc axi_resetn_1 1 0 2 20 120 320
 preplace netloc axi_gpio_0_gpio_io_o 1 2 1 NJ 220
+preplace netloc axi_crossbar_0_M00_AXI 1 1 1 300 60n
+preplace netloc axi_crossbar_0_M01_AXI 1 1 1 330 210n
 preplace netloc Conn1 1 2 1 NJ 60
-preplace netloc axi_crossbar_0_M01_AXI 1 1 1 340 210n
 preplace netloc S00_AXI_1 1 0 1 NJ 190
-preplace netloc axi_crossbar_0_M00_AXI 1 1 1 310 60n
 levelinfo -pg 1 0 170 500 680
-pagesize -pg 1 -db -bbox -sgen -150 0 850 520
+pagesize -pg 1 -db -bbox -sgen -170 0 860 520
 "
 }
 0

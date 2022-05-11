@@ -3,10 +3,10 @@
 <!--                                                         -->
 <!-- Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.   -->
 
-<Project Version="7" Minor="49" Path="C:/Users/Aleksa/Documents/FPGA_Dev/Artix7_PCIe/dso_top/dso_top.xpr">
+<Project Version="7" Minor="49" Path="C:/Users/Aleksa/Documents/EEVengers/Firmware/Artix7_PCIe/dso_top/dso_top.xpr">
   <DefaultLaunch Dir="$PRUNDIR"/>
   <Configuration>
-    <Option Name="Id" Val="6a2f1ab8195f4ae09b52cc5330fbfd9c"/>
+    <Option Name="Id" Val="7f4d46e2a432428bb28f287cc44be7dc"/>
     <Option Name="Part" Val="xc7a35tcsg325-2"/>
     <Option Name="CompiledLibDir" Val="$PCACHEDIR/compile_simlib"/>
     <Option Name="CompiledLibDirXSim" Val=""/>
@@ -66,49 +66,49 @@
       <Filter Type="Srcs"/>
       <File Path="$PSRCDIR/sources_1/bd/design_1/design_1.bd">
         <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../../dso_top_temp/PCIe_Test/PCIe_Test.srcs/sources_1/bd/design_1/design_1.bd"/>
+          <Attr Name="ImportPath" Val="$PPRDIR/../../../../FPGA_Dev/dso_top_temp/PCIe_Test/PCIe_Test.srcs/sources_1/bd/design_1/design_1.bd"/>
           <Attr Name="ImportTime" Val="1615001535"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
-        <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_clk_wiz_0_0/design_1_clk_wiz_0_0.xci">
-          <Proxy FileSetName="design_1_clk_wiz_0_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_util_ds_buf_0_1/design_1_util_ds_buf_0_1.xci">
-          <Proxy FileSetName="design_1_util_ds_buf_0_1"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_mig_7series_0_1/design_1_mig_7series_0_1.xci">
-          <Proxy FileSetName="design_1_mig_7series_0_1"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_axi_crossbar_0_1/design_1_axi_crossbar_0_1.xci">
-          <Proxy FileSetName="design_1_axi_crossbar_0_1"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_axi_crossbar_0_0/design_1_axi_crossbar_0_0.xci">
-          <Proxy FileSetName="design_1_axi_crossbar_0_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_util_ds_buf_0_0/design_1_util_ds_buf_0_0.xci">
-          <Proxy FileSetName="design_1_util_ds_buf_0_0"/>
-        </CompFileExtendedInfo>
         <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_axi_fifo_mm_s_0_0/design_1_axi_fifo_mm_s_0_0.xci">
           <Proxy FileSetName="design_1_axi_fifo_mm_s_0_0"/>
-        </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_xdma_0_0/design_1_xdma_0_0.xci">
-          <Proxy FileSetName="design_1_xdma_0_0"/>
         </CompFileExtendedInfo>
         <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_axi_datamover_0_0/design_1_axi_datamover_0_0.xci">
           <Proxy FileSetName="design_1_axi_datamover_0_0"/>
         </CompFileExtendedInfo>
-        <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_axi_gpio_0_1/design_1_axi_gpio_0_1.xci">
-          <Proxy FileSetName="design_1_axi_gpio_0_1"/>
+        <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_clk_wiz_0_0/design_1_clk_wiz_0_0.xci">
+          <Proxy FileSetName="design_1_clk_wiz_0_0"/>
+        </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_axi_crossbar_0_1/design_1_axi_crossbar_0_1.xci">
+          <Proxy FileSetName="design_1_axi_crossbar_0_1"/>
+        </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_xdma_0_0/design_1_xdma_0_0.xci">
+          <Proxy FileSetName="design_1_xdma_0_0"/>
+        </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_util_ds_buf_0_1/design_1_util_ds_buf_0_1.xci">
+          <Proxy FileSetName="design_1_util_ds_buf_0_1"/>
+        </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_util_ds_buf_0_0/design_1_util_ds_buf_0_0.xci">
+          <Proxy FileSetName="design_1_util_ds_buf_0_0"/>
         </CompFileExtendedInfo>
         <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_axi_dwidth_converter_0_0/design_1_axi_dwidth_converter_0_0.xci">
           <Proxy FileSetName="design_1_axi_dwidth_converter_0_0"/>
         </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_axi_gpio_0_1/design_1_axi_gpio_0_1.xci">
+          <Proxy FileSetName="design_1_axi_gpio_0_1"/>
+        </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_axi_crossbar_0_0/design_1_axi_crossbar_0_0.xci">
+          <Proxy FileSetName="design_1_axi_crossbar_0_0"/>
+        </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_mig_7series_0_1/design_1_mig_7series_0_1.xci">
+          <Proxy FileSetName="design_1_mig_7series_0_1"/>
+        </CompFileExtendedInfo>
       </File>
       <File Path="$PSRCDIR/sources_1/imports/dso_top/I2C_Transmit.v">
         <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../../../EEVengers/Firmware/Spartan6_USB/dso_top/I2C_Transmit.v"/>
+          <Attr Name="ImportPath" Val="$PPRDIR/../../Spartan6_USB/dso_top/I2C_Transmit.v"/>
           <Attr Name="ImportTime" Val="1613141433"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
@@ -117,7 +117,7 @@
       </File>
       <File Path="$PSRCDIR/sources_1/imports/dso_top/SPI_Transmit.v">
         <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../../../EEVengers/Firmware/Spartan6_USB/dso_top/SPI_Transmit.v"/>
+          <Attr Name="ImportPath" Val="$PPRDIR/../../Spartan6_USB/dso_top/SPI_Transmit.v"/>
           <Attr Name="ImportTime" Val="1613141433"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
@@ -126,7 +126,7 @@
       </File>
       <File Path="$PSRCDIR/sources_1/new/adc_to_datamover.v">
         <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../../dso_top_temp/PCIe_Test/PCIe_Test.srcs/sources_1/new/adc_to_datamover.v"/>
+          <Attr Name="ImportPath" Val="$PPRDIR/../../../../FPGA_Dev/dso_top_temp/PCIe_Test/PCIe_Test.srcs/sources_1/new/adc_to_datamover.v"/>
           <Attr Name="ImportTime" Val="1615667337"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
@@ -135,7 +135,7 @@
       </File>
       <File Path="$PSRCDIR/sources_1/imports/new/afifo.v">
         <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../DDR3_Optimization/dso_top_axixclk/dso_top_axixclk.srcs/sources_1/new/afifo.v"/>
+          <Attr Name="ImportPath" Val="$PPRDIR/../../../../FPGA_Dev/Artix7_PCIe/DDR3_Optimization/dso_top_axixclk/dso_top_axixclk.srcs/sources_1/new/afifo.v"/>
           <Attr Name="ImportTime" Val="1638500134"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
@@ -144,7 +144,7 @@
       </File>
       <File Path="$PSRCDIR/sources_1/imports/new/axixclk.v">
         <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../DDR3_Optimization/dso_top_axixclk/dso_top_axixclk.srcs/sources_1/new/axixclk.v"/>
+          <Attr Name="ImportPath" Val="$PPRDIR/../../../../FPGA_Dev/Artix7_PCIe/DDR3_Optimization/dso_top_axixclk/dso_top_axixclk.srcs/sources_1/new/axixclk.v"/>
           <Attr Name="ImportTime" Val="1638500170"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
@@ -153,7 +153,7 @@
       </File>
       <File Path="$PSRCDIR/sources_1/new/serdes.v">
         <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../../dso_top_temp/PCIe_Test/PCIe_Test.srcs/sources_1/new/serdes.v"/>
+          <Attr Name="ImportPath" Val="$PPRDIR/../../../../FPGA_Dev/dso_top_temp/PCIe_Test/PCIe_Test.srcs/sources_1/new/serdes.v"/>
           <Attr Name="ImportTime" Val="1615001055"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
@@ -162,7 +162,7 @@
       </File>
       <File Path="$PSRCDIR/sources_1/new/serial_controller.v">
         <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../../dso_top_temp/PCIe_Test/PCIe_Test.srcs/sources_1/new/serial_controller.v"/>
+          <Attr Name="ImportPath" Val="$PPRDIR/../../../../FPGA_Dev/dso_top_temp/PCIe_Test/PCIe_Test.srcs/sources_1/new/serial_controller.v"/>
           <Attr Name="ImportTime" Val="1614738408"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
@@ -171,7 +171,7 @@
       </File>
       <File Path="$PSRCDIR/sources_1/new/combined_serdes.v">
         <FileInfo SFType="SVerilog">
-          <Attr Name="ImportPath" Val="$PSRCDIR/sources_1/new/combined_serdes.v"/>
+          <Attr Name="ImportPath" Val="$PPRDIR/../../../../FPGA_Dev/Artix7_PCIe/dso_top/dso_top.srcs/sources_1/new/combined_serdes.v"/>
           <Attr Name="ImportTime" Val="1616214758"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
@@ -180,7 +180,7 @@
       </File>
       <File Path="$PSRCDIR/sources_1/imports/hdl/dso_top.v">
         <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../../dso_top/dso_top.srcs/sources_1/new/dso_top.v"/>
+          <Attr Name="ImportPath" Val="$PPRDIR/../../../../FPGA_Dev/dso_top/dso_top.srcs/sources_1/new/dso_top.v"/>
           <Attr Name="ImportTime" Val="1615681017"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
@@ -189,7 +189,7 @@
       </File>
       <File Path="$PSRCDIR/sources_1/bd/design_1/ip/design_1_mig_7series_0_1/mig_a.prj">
         <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../../../../project_1/project_1.srcs/sources_1/bd/design_1/ip/design_1_mig_7series_0_1/mig_a.prj"/>
+          <Attr Name="ImportPath" Val="$PPRDIR/../../../../../project_1/project_1.srcs/sources_1/bd/design_1/ip/design_1_mig_7series_0_1/mig_a.prj"/>
           <Attr Name="ImportTime" Val="1642731951"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="ScopedToCell" Val="design_1_mig_7series_0_1"/>
@@ -197,7 +197,7 @@
       </File>
       <File Path="$PSRCDIR/sources_1/bd/design_1/ip/design_1_mig_7series_0_1/mig_b.prj">
         <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../dso_top_CSG325/dso_top_CSG325.srcs/sources_1/bd/design_1/ip/design_1_mig_7series_0_1/mig_b.prj"/>
+          <Attr Name="ImportPath" Val="$PPRDIR/../../../../FPGA_Dev/Artix7_PCIe/dso_top_CSG325/dso_top_CSG325.srcs/sources_1/bd/design_1/ip/design_1_mig_7series_0_1/mig_b.prj"/>
           <Attr Name="ImportTime" Val="1644768031"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="ScopedToCell" Val="design_1_mig_7series_0_1"/>
@@ -213,7 +213,7 @@
       <Filter Type="Constrs"/>
       <File Path="$PSRCDIR/constrs_1/imports/new/module_bitgen.xdc">
         <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../../Blink/Blink.srcs/constrs_1/new/module_bitgen.xdc"/>
+          <Attr Name="ImportPath" Val="$PPRDIR/../../../../FPGA_Dev/Blink/Blink.srcs/constrs_1/new/module_bitgen.xdc"/>
           <Attr Name="ImportTime" Val="1612726243"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
@@ -221,7 +221,7 @@
       </File>
       <File Path="$PSRCDIR/constrs_1/imports/new/module_io.xdc">
         <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../../Blink/Blink.srcs/constrs_1/new/module_io.xdc"/>
+          <Attr Name="ImportPath" Val="$PPRDIR/../../../../FPGA_Dev/Blink/Blink.srcs/constrs_1/new/module_io.xdc"/>
           <Attr Name="ImportTime" Val="1613089161"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
@@ -229,7 +229,7 @@
       </File>
       <File Path="$PSRCDIR/constrs_1/new/timing.xdc">
         <FileInfo>
-          <Attr Name="ImportPath" Val="$PSRCDIR/constrs_1/new/timing.xdc"/>
+          <Attr Name="ImportPath" Val="$PPRDIR/../../../../FPGA_Dev/Artix7_PCIe/dso_top/dso_top.srcs/constrs_1/new/timing.xdc"/>
           <Attr Name="ImportTime" Val="1616081113"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
@@ -259,9 +259,9 @@
     </FileSet>
     <FileSet Name="utils_1" Type="Utils" RelSrcDir="$PSRCDIR/utils_1">
       <Filter Type="Utils"/>
-      <File Path="$PPRDIR/../DDR3_Optimization/dso_top_XC7A35T-2CSG325C/dso_top_XC7A35T-2CSG325C.srcs/utils_1/imports/synth_1/dso_top.dcp">
+      <File Path="$PPRDIR/../../../../FPGA_Dev/Artix7_PCIe/DDR3_Optimization/dso_top_XC7A35T-2CSG325C/dso_top_XC7A35T-2CSG325C.srcs/utils_1/imports/synth_1/dso_top.dcp">
         <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../DDR3_Optimization/dso_top_7a35/dso_top_7a35.runs/synth_1/dso_top.dcp"/>
+          <Attr Name="ImportPath" Val="$PPRDIR/../../../../FPGA_Dev/Artix7_PCIe/DDR3_Optimization/dso_top_7a35/dso_top_7a35.runs/synth_1/dso_top.dcp"/>
           <Attr Name="ImportTime" Val="1621457881"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
@@ -323,7 +323,7 @@
     <FileSet Name="clk_wiz_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/clk_wiz_0">
       <File Path="$PSRCDIR/sources_1/ip/clk_wiz_0.xcix">
         <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../../dso_top_temp/PCIe_Test/PCIe_Test.srcs/sources_1/ip/clk_wiz_0.xcix"/>
+          <Attr Name="ImportPath" Val="$PPRDIR/../../../../FPGA_Dev/dso_top_temp/PCIe_Test/PCIe_Test.srcs/sources_1/ip/clk_wiz_0.xcix"/>
           <Attr Name="ImportTime" Val="1615001027"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
@@ -332,7 +332,7 @@
       </File>
       <File Path="$PSRCDIR/sources_1/ip/clk_wiz_0/clk_wiz_0.xci">
         <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../../dso_top_temp/PCIe_Test/PCIe_Test.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xci"/>
+          <Attr Name="ImportPath" Val="$PPRDIR/../../../../FPGA_Dev/dso_top_temp/PCIe_Test/PCIe_Test.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xci"/>
           <Attr Name="ImportTime" Val="1614997392"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
@@ -347,7 +347,7 @@
     <FileSet Name="fifo_generator_0" Type="BlockSrcs" RelSrcDir="$PSRCDIR/fifo_generator_0">
       <File Path="$PSRCDIR/sources_1/ip/fifo_generator_0/fifo_generator_0.xci">
         <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../../dso_top_temp/PCIe_Test/PCIe_Test.srcs/sources_1/ip/fifo_generator_0/fifo_generator_0.xci"/>
+          <Attr Name="ImportPath" Val="$PPRDIR/../../../../FPGA_Dev/dso_top_temp/PCIe_Test/PCIe_Test.srcs/sources_1/ip/fifo_generator_0/fifo_generator_0.xci"/>
           <Attr Name="ImportTime" Val="1615002098"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>

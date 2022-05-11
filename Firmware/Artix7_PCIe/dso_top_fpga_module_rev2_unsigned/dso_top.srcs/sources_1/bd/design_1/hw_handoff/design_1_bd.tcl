@@ -1308,6 +1308,9 @@ proc create_hier_cell_AXI_LITE_IO { parentCell nameHier } {
   # Create instance: axi_fifo_mm_s_0, and set properties
   set axi_fifo_mm_s_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_fifo_mm_s:4.2 axi_fifo_mm_s_0 ]
   set_property -dict [ list \
+   CONFIG.C_TX_FIFO_DEPTH {4096} \
+   CONFIG.C_TX_FIFO_PE_THRESHOLD {5} \
+   CONFIG.C_TX_FIFO_PF_THRESHOLD {4091} \
    CONFIG.C_USE_RX_DATA {0} \
    CONFIG.C_USE_TX_CTRL {0} \
  ] $axi_fifo_mm_s_0
