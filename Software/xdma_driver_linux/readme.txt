@@ -83,6 +83,7 @@ Directory and file description:
 Usage:
   - Change directory to the driver directory.
         cd xdma
+  - Generate a signing key: https://github.com/Xilinx/dma_ip_drivers/issues/39
   - Compile and install the kernel module driver.
         make install
   - Change directory to the tools directory.
