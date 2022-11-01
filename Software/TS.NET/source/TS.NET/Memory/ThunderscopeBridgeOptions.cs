@@ -21,8 +21,8 @@ namespace TS.NET
 
             MemoryName = memoryName;
             Path = path;
-            DataCapacityBytes = dataCapacityBytes;
-            BridgeCapacityBytes = (ulong)sizeof(ThunderscopeBridgeHeader) + dataCapacityBytes;
+            DataCapacityBytes = dataCapacityBytes * 2;      // *2 as there are 2 regions used in tick-tock fashion
+            BridgeCapacityBytes = (ulong)sizeof(ThunderscopeBridgeHeader) + DataCapacityBytes;
         }
     }
 }

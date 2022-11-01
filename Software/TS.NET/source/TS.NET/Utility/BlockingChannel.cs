@@ -69,6 +69,11 @@ namespace TS.NET
         {
             return collection.TryTake(out item, timeout);
         }
+
+        public int PeekAvailable()
+        {
+            return collection.Count;
+        }
     }
 
     public class BlockingChannelWriter<T>
