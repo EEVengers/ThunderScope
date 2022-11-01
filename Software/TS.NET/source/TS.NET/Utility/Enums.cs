@@ -1,6 +1,6 @@
 ﻿namespace TS.NET;
 
-public enum Channels : byte
+public enum AdcChannels : byte
 {
     None = 0,
     One = 1,

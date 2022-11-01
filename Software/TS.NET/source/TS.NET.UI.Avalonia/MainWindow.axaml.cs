@@ -89,7 +89,6 @@ namespace TS.NET.UI.Avalonia
             {
                 uint bufferLength = 4 * 100 * 1000 * 1000;      //Maximum record length = 100M samples per channel
                 ThunderscopeBridgeReader bridge = new(new ThunderscopeBridgeOptions("ThunderScope.1", bufferLength), loggerFactory);
-                var bridgeReadSemaphore = bridge.GetReaderSemaphore();
 
                 Stopwatch stopwatch = Stopwatch.StartNew();
 
@@ -97,9 +96,9 @@ namespace TS.NET.UI.Avalonia
                 while (true)
                 {
                     cancelToken.ThrowIfCancellationRequested();
-                    if (bridgeReadSemaphore.Wait(500))
+                    if (bridge.RequestAndWaitForData(500))
                     {
-                        ulong channelLength = (ulong)bridge.Configuration.ChannelLength;
+                        ulong channelLength = (ulong)bridge.Processing.ChannelLength;
                         //uint viewportLength = (uint)bridge.Configuration.ChannelLength;//1000;
                         uint viewportLength = 1000000;// (uint)upDownIndex.Value;
                         if (viewportLength < 100)
@@ -130,13 +129,12 @@ namespace TS.NET.UI.Avalonia
 
                         var cfg = bridge.Configuration;
                         var status = $"[Horizontal] Displaying {AddPrefix(viewportLength)} samples of {AddPrefix(channelLength)} [Acquisitions] displayed: {bridge.Monitoring.TotalAcquisitions - bridge.Monitoring.MissedAcquisitions}, missed: {bridge.Monitoring.MissedAcquisitions}, total: {bridge.Monitoring.TotalAcquisitions}";
-                        var data = bridge.Span;
+                        var data = bridge.AcquiredRegion;
                         int offset = (int)((channelLength / 2) - (viewportLength / 2));
                         data.Slice(offset, (int)viewportLength).ToDoubleArray(channel1); offset += (int)channelLength;
                         data.Slice(offset, (int)viewportLength).ToDoubleArray(channel2); offset += (int)channelLength;
                         data.Slice(offset, (int)viewportLength).ToDoubleArray(channel3); offset += (int)channelLength;
                         data.Slice(offset, (int)viewportLength).ToDoubleArray(channel4);
-                        bridge.DataRead();
 
                         //var reading = bridge.Span[(int)upDownIndex.Value];
                         count++;
