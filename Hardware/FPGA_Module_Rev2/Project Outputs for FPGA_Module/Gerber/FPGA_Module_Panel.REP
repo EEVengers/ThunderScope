@@ -2,8 +2,116 @@
 FileName = FPGA_Module_Panel.GBR
 AutoAperture = True
 *************************************************************
-Generating : Bottom Layer
-      File : FPGA_Module_Panel.GBL
+Generating : Top Overlay
+      File : FPGA_Module_Panel_Legend_Top.gbr
+
+    Adding Layer      : Top Overlay
+
+
+Used DCodes :
+    D11
+    D13
+    D42
+    D57
+    D58
+    D59
+*************************************************************
+
+*************************************************************
+Generating : Top Paste
+      File : FPGA_Module_Panel_Paste_Top.gbr
+
+    Adding Layer      : Top Paste
+
+    Adding Layer      : Top Layer
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D15
+    D16
+    D17
+    D18
+    D19
+    D20
+    D21
+    D22
+    D23
+    D24
+    D25
+    D26
+    D27
+    D28
+    D29
+    D30
+    D31
+    D32
+    D33
+    D34
+    D35
+    D36
+    D37
+    D38
+    D39
+    D40
+    D60
+    D61
+    D62
+    D63
+*************************************************************
+
+*************************************************************
+Generating : Top Solder
+      File : FPGA_Module_Panel_Soldermask_Top.gbr
+
+    Adding Layer      : Top Solder
+
+    Adding Layer      : Top Layer
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D10
+    D15
+    D16
+    D17
+    D18
+    D19
+    D20
+    D21
+    D22
+    D23
+    D24
+    D25
+    D26
+    D27
+    D28
+    D29
+    D30
+    D31
+    D32
+    D33
+    D34
+    D35
+    D36
+    D37
+    D40
+    D41
+    D46
+    D47
+    D48
+    D64
+    D65
+    D66
+*************************************************************
+
+*************************************************************
+Generating : Bottom Solder
+      File : FPGA_Module_Panel_Soldermask_Bot.gbr
+
+    Adding Layer      : Bottom Solder
 
     Adding Layer      : Bottom Layer
 
@@ -11,97 +119,121 @@ Generating : Bottom Layer
 
 
 Used DCodes :
-    D10
-    D11
-    D13
-    D22
-    D23
-    D24
+    D17
     D25
     D26
+    D27
     D28
-    D29
     D30
     D31
+    D32
     D33
-    D41
-    D44
-    D45
+    D35
+    D37
     D46
     D47
     D48
-    D51
     D52
     D53
     D54
     D55
     D56
+    D64
+*************************************************************
+
+*************************************************************
+Generating : Bottom Paste
+      File : FPGA_Module_Panel_Paste_Bot.gbr
+
+    Adding Layer      : Bottom Paste
+
+    Adding Layer      : Bottom Layer
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D17
+    D25
+    D26
+    D27
+    D28
+    D30
+    D31
+    D32
+    D33
+    D35
+    D37
+    D52
+    D53
+    D54
+    D55
+    D56
+*************************************************************
+
+*************************************************************
+Generating : Bottom Overlay
+      File : FPGA_Module_Panel_Legend_Bot.gbr
+
+    Adding Layer      : Bottom Overlay
+
+
+Used DCodes :
+    D11
+    D13
+    D42
     D57
+    D58
 *************************************************************
 
 *************************************************************
-Generating : Int4 (GND)
-      File : FPGA_Module_Panel.G4
+Generating : Mechanical 1
+      File : FPGA_Module_Panel_Board Outline.gbr
 
-    Adding Layer      : Int4 (GND)
-
-    Adding Layer      : Multi-Layer
-
-
-Used DCodes :
-    D46
-    D47
-    D48
-*************************************************************
-
-*************************************************************
-Generating : Int3 (Sign)
-      File : FPGA_Module_Panel.G3
-
-    Adding Layer      : Int3 (Sign)
-
-    Adding Layer      : Multi-Layer
+    Adding Layer      : Mechanical 1
 
 
 Used DCodes :
     D11
-    D13
-    D41
-    D48
-    D49
-    D50
 *************************************************************
 
 *************************************************************
-Generating : Int2 (Sign)
-      File : FPGA_Module_Panel.G2
+Generating : Mechanical 7
+      File : FPGA_Module_Panel_Fab_Notes.gbr
 
-    Adding Layer      : Int2 (Sign)
-
-    Adding Layer      : Multi-Layer
+    Adding Layer      : Mechanical 7
 
 
 Used DCodes :
-    D11
-    D13
-    D46
-    D47
-    D48
+    D67
 *************************************************************
 
 *************************************************************
-Generating : Int1 (GND)
-      File : FPGA_Module_Panel.G1
+Generating : Drill Drawing
+      File : FPGA_Module_Panel_Drill_Drawing.gbr
 
-    Adding Layer      : Int1 (GND)
+    Adding Drill Pair : Top Layer-Bottom Layer
 
-    Adding Layer      : Multi-Layer
+    Adding Layer      : Drill Drawing
 
 
 Used DCodes :
-    D46
-    D47
-    D48
+    D42
+    D68
+    D69
+*************************************************************
+
+*************************************************************
+Generating : Drill Guide
+      File : FPGA_Module_Panel_Drillguide.gbr
+
+    Adding Drill Pair : Top Layer-Bottom Layer
+
+    Adding Layer      : Drill Guide
+
+
+Used DCodes :
+    D68
 *************************************************************
 
 *************************************************************
@@ -153,235 +285,110 @@ Used DCodes :
     D46
     D47
     D48
+    D49
 *************************************************************
 
 *************************************************************
-Generating : Top Overlay
-      File : FPGA_Module_Panel_Legend_Top.gbr
+Generating : Int1 (GND)
+      File : FPGA_Module_Panel.G1
 
-    Adding Layer      : Top Overlay
-
-
-Used DCodes :
-    D11
-    D13
-    D41
-    D56
-    D58
-    D59
-*************************************************************
-
-*************************************************************
-Generating : Top Paste
-      File : FPGA_Module_Panel_Paste_Top.gbr
-
-    Adding Layer      : Top Paste
-
-    Adding Layer      : Top Layer
+    Adding Layer      : Int1 (GND)
 
     Adding Layer      : Multi-Layer
 
 
 Used DCodes :
-    D15
-    D16
-    D17
-    D18
-    D19
-    D20
-    D21
-    D22
-    D23
-    D24
-    D25
-    D26
-    D27
-    D28
-    D29
-    D30
-    D31
-    D32
-    D33
-    D34
-    D35
-    D36
-    D37
-    D38
-    D39
-    D60
-    D61
-    D62
-    D63
+    D47
+    D48
+    D49
 *************************************************************
 
 *************************************************************
-Generating : Top Solder
-      File : FPGA_Module_Panel_Soldermask_Top.gbr
+Generating : Int2 (Sign)
+      File : FPGA_Module_Panel.G2
 
-    Adding Layer      : Top Solder
+    Adding Layer      : Int2 (Sign)
 
-    Adding Layer      : Top Layer
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D11
+    D13
+    D42
+    D47
+    D48
+    D49
+*************************************************************
+
+*************************************************************
+Generating : Int3 (Sign)
+      File : FPGA_Module_Panel.G3
+
+    Adding Layer      : Int3 (Sign)
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D11
+    D13
+    D42
+    D49
+    D50
+    D51
+*************************************************************
+
+*************************************************************
+Generating : Int4 (GND)
+      File : FPGA_Module_Panel.G4
+
+    Adding Layer      : Int4 (GND)
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D47
+    D48
+    D49
+*************************************************************
+
+*************************************************************
+Generating : Bottom Layer
+      File : FPGA_Module_Panel.GBL
+
+    Adding Layer      : Bottom Layer
 
     Adding Layer      : Multi-Layer
 
 
 Used DCodes :
     D10
-    D15
-    D16
+    D11
+    D13
     D17
-    D18
-    D19
-    D20
-    D21
-    D22
-    D23
-    D24
     D25
     D26
     D27
     D28
-    D29
     D30
     D31
     D32
     D33
-    D34
     D35
-    D36
-    D39
-    D40
+    D37
+    D42
     D45
     D46
     D47
-    D64
-    D65
-    D66
-*************************************************************
-
-*************************************************************
-Generating : Bottom Solder
-      File : FPGA_Module_Panel_Soldermask_Bot.gbr
-
-    Adding Layer      : Bottom Solder
-
-    Adding Layer      : Bottom Layer
-
-    Adding Layer      : Multi-Layer
-
-
-Used DCodes :
-    D22
-    D23
-    D24
-    D25
-    D26
-    D28
-    D29
-    D30
-    D31
-    D33
-    D45
-    D46
-    D47
-    D51
+    D48
+    D49
     D52
     D53
     D54
     D55
-    D64
-*************************************************************
-
-*************************************************************
-Generating : Bottom Paste
-      File : FPGA_Module_Panel_Paste_Bot.gbr
-
-    Adding Layer      : Bottom Paste
-
-    Adding Layer      : Bottom Layer
-
-    Adding Layer      : Multi-Layer
-
-
-Used DCodes :
-    D22
-    D23
-    D24
-    D25
-    D26
-    D28
-    D29
-    D30
-    D31
-    D33
-    D51
-    D52
-    D53
-    D54
-    D55
-*************************************************************
-
-*************************************************************
-Generating : Bottom Overlay
-      File : FPGA_Module_Panel_Legend_Bot.gbr
-
-    Adding Layer      : Bottom Overlay
-
-
-Used DCodes :
-    D11
-    D13
     D56
-    D58
-*************************************************************
-
-*************************************************************
-Generating : Mechanical 1
-      File : FPGA_Module_Panel_Board Outline.gbr
-
-    Adding Layer      : Mechanical 1
-
-
-Used DCodes :
-    D11
-*************************************************************
-
-*************************************************************
-Generating : Mechanical 7
-      File : FPGA_Module_Panel_Fab_Notes.gbr
-
-    Adding Layer      : Mechanical 7
-
-
-Used DCodes :
-    D67
-*************************************************************
-
-*************************************************************
-Generating : Drill Drawing
-      File : FPGA_Module_Panel_Drill_Drawing.gbr
-
-    Adding Drill Pair : Top Layer-Bottom Layer
-
-    Adding Layer      : Drill Drawing
-
-
-Used DCodes :
-    D41
-    D68
-    D69
-*************************************************************
-
-*************************************************************
-Generating : Drill Guide
-      File : FPGA_Module_Panel_Drillguide.gbr
-
-    Adding Drill Pair : Top Layer-Bottom Layer
-
-    Adding Layer      : Drill Guide
-
-
-Used DCodes :
-    D68
+    D57
 *************************************************************
 
