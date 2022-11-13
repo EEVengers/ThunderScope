@@ -251,12 +251,14 @@ namespace TS.NET
             SetAdcRegister(AdcRegister.THUNDERSCOPEHW_ADC_REG_RESET, 0x0001);
             // Power Down ADC
             AdcPower(false);
+            // Set 8-bit mode (for HMCAD1520, won't do anything for HMCAD1511)
+            SetAdcRegister(AdcRegister.THUNDERSCOPEHW_ADC_REG_LVDS_CNTRL, 0x0000);
             // Invert channels
             SetAdcRegister(AdcRegister.THUNDERSCOPEHW_ADC_REG_INVERT, 0x007F);
             // Adjust full scale value
             SetAdcRegister(AdcRegister.THUNDERSCOPEHW_ADC_REG_FS_CNTRL, 0x0010);
             // Course Gain On
-            SetAdcRegister(AdcRegister.THUNDERSCOPEHW_ADC_REG_GAIN_CFG, 0x000);
+            SetAdcRegister(AdcRegister.THUNDERSCOPEHW_ADC_REG_GAIN_CFG, 0x0000);
             // Course Gain 4-CH set
             SetAdcRegister(AdcRegister.THUNDERSCOPEHW_ADC_REG_QUAD_GAIN, 0x9999);
             // Course Gain 1-CH & 2-CH set
