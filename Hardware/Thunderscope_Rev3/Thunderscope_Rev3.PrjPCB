@@ -322,6 +322,10 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=INLBUEPK
 
+[GeneratedDocument1]
+DocumentPath=Project Outputs for Thunderscope_Rev3\Design Rule Check - Thunderscope_Rev3.html
+DItemRevisionGUID=
+
 [Parameter1]
 Name=Template Notes
 Value=- Nominal values used, dimensions in mm  - The mounting holes and keep-out areas around them are only required when the I/O bracket is mounted on the card directly  - Component height rule and clearance rule derived from PCI_Express_CEM_r2.0.pdf, Page 84.  - Stackup is not specified in PCI_Express_CEM_r2.0.pdf, nor implemented in this template.
@@ -516,7 +520,7 @@ OutputDefault20=0
 [OutputGroup2]
 Name=Simulator Outputs
 Description=
-TargetPrinter=Microsoft Print to PDF
+TargetPrinter=HP LaserJet MFP M139-M142
 PrinterOptions=Record=PrinterOptions|Copies=1|Duplex=1|TrueTypeOptions=3|Collate=1|PrintJobKind=1|PrintWhat=1
 
 [OutputGroup3]
@@ -1010,7 +1014,7 @@ Type32=1
 Type33=1
 Type34=1
 Type35=1
-Type36=1
+Type36=0
 Type37=1
 Type38=1
 Type39=1
@@ -2324,9 +2328,10 @@ ComponentIsDeviceSheet66=0
 Net1=NetName=+3V3|NetColor=$000099FF
 Net2=NetName=+4V8|NetColor=$006E6EFF
 Net3=NetName=+5V|NetColor=$006E6EFF
-Net4=NetName=-4V8|NetColor=$00FF6E6E
-Net5=NetName=-5V|NetColor=$00FF6E6E
-Net6=NetName=GND|NetColor=$0000BE00
+Net4=NetName=+5V2|NetColor=clMaroon
+Net5=NetName=-4V8|NetColor=$00FF6E6E
+Net6=NetName=-5V|NetColor=$00FF6E6E
+Net7=NetName=GND|NetColor=$0000BE00
 
 [Comparison Options]
 ComparisonOptions0=Kind=Net|MinPercent=75|MinMatch=3|ShowMatch=-1|UseName=-1|InclAllRules=0
