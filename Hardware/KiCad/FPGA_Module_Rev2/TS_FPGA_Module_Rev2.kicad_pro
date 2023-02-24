@@ -35,8 +35,8 @@
         "other_text_upright": false,
         "pads": {
           "drill": 3.2,
-          "height": 3.2,
-          "width": 3.2
+          "height": 5.2,
+          "width": 5.2
         },
         "silk_line_width": 0.15,
         "silk_text_italic": false,
@@ -56,7 +56,7 @@
         }
       ],
       "drc_exclusions": [
-        "solder_mask_bridge|138538281|112491419|f10d398f-94b9-40e6-910b-55f634d09b4d|2b63c60d-776a-4350-a46d-3638dd2e9007",
+        "solder_mask_bridge|138732030|112297670|f10d398f-94b9-40e6-910b-55f634d09b4d|d1a4033f-8378-45fd-b92e-8955092590c3",
         "via_dangling|140751100|115403600|919ea3d4-cfb3-4632-ac5b-5300ef71bff7|00000000-0000-0000-0000-000000000000"
       ],
       "meta": {
@@ -90,9 +90,9 @@
         "missing_courtyard": "ignore",
         "missing_footprint": "error",
         "net_conflict": "error",
-        "npth_inside_courtyard": "ignore",
+        "npth_inside_courtyard": "warning",
         "padstack": "warning",
-        "pth_inside_courtyard": "ignore",
+        "pth_inside_courtyard": "warning",
         "shorting_items": "error",
         "silk_edge_clearance": "error",
         "silk_over_copper": "warning",
@@ -109,7 +109,7 @@
         "tracks_crossing": "error",
         "unconnected_items": "error",
         "unresolved_variable": "error",
-        "via_dangling": "error",
+        "via_dangling": "warning",
         "zones_intersect": "error"
       },
       "rules": {
@@ -491,7 +491,7 @@
       "no_connect_connected": "warning",
       "no_connect_dangling": "warning",
       "pin_not_connected": "error",
-      "pin_not_driven": "error",
+      "pin_not_driven": "ignore",
       "pin_to_pin": "error",
       "power_pin_not_driven": "ignore",
       "similar_labels": "warning",
@@ -533,7 +533,17 @@
     "meta": {
       "version": 3
     },
-    "net_colors": null,
+    "net_colors": {
+      "+1V0": "rgb(0, 0, 255)",
+      "+1V0_MGT": "rgb(0, 0, 255)",
+      "+1V2_MGT": "rgb(255, 153, 0)",
+      "+1V35": "rgb(0, 255, 255)",
+      "+1V8": "rgb(255, 0, 255)",
+      "+3.3V": "rgb(0, 255, 0)",
+      "+3V3_IN": "rgb(0, 255, 0)",
+      "GND": "rgb(255, 255, 0)",
+      "GNDA": "rgb(255, 255, 0)"
+    },
     "netclass_assignments": null,
     "netclass_patterns": []
   },
@@ -594,24 +604,24 @@
   },
   "sheets": [
     [
-      "6b735303-d28c-464a-808f-5226a2b5e25c",
-      "Connectors"
+      "fafe3e93-a008-4527-acc3-c5f1c7f50c1a",
+      ""
     ],
     [
-      "d5369f19-1d04-48bb-b113-8fac117fa2c0",
-      "FPGA_Bank_IO"
+      "b51d681c-ce34-43c4-a51d-550b36f8a8af",
+      "FPGA_CFG"
     ],
     [
       "68aa6128-56c4-4799-97cf-58f73419a96d",
-      "FPGA_Banks_DDR3"
+      "FPGA_Banks_14_15_DDR3"
     ],
     [
       "e6294fa0-c86d-4f48-a97b-01b636f82c55",
       "FPGA_MGT"
     ],
     [
-      "b51d681c-ce34-43c4-a51d-550b36f8a8af",
-      "FPGA_CFG"
+      "d5369f19-1d04-48bb-b113-8fac117fa2c0",
+      "FPGA_Bank_34_IO"
     ],
     [
       "64736990-fdbb-45b6-a6fe-226ec4e31c68",
@@ -619,11 +629,7 @@
     ],
     [
       "9ef6784b-c4f0-4982-9777-5b7155fec79d",
-      "PWR"
-    ],
-    [
-      "fafe3e93-a008-4527-acc3-c5f1c7f50c1a",
-      ""
+      "Board_PWR"
     ]
   ],
   "text_variables": {
