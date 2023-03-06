@@ -121,6 +121,13 @@ namespace TS.NET
         private void Initialise()
         {
             Write32(BarRegister.DATAMOVER_REG_OUT, 0);
+
+            //Comment out below for Rev.1
+            hardwareState.PllEnabled = true;    //RSTn high --> PLL active
+            ConfigureDatamover(hardwareState);
+            Thread.Sleep(1);
+            //Comment out above for Rev.1
+
             hardwareState.BoardEnabled = true;
             ConfigureDatamover(hardwareState);
             ConfigurePLL();
@@ -208,6 +215,11 @@ namespace TS.NET
             }
             Write32(BarRegister.DATAMOVER_REG_OUT, datamoverRegister);
         }
+        
+        /*
+        ------------------------------------------------------------------
+        UNCOMMENT THIS FOR REV 1 BASEBOARD
+        ------------------------------------------------------------------
 
         private void ConfigurePLL()
         {
@@ -244,6 +256,68 @@ namespace TS.NET
             fifo[3] = value;
             WriteFifo(fifo);
         }
+        */
+
+        /*
+        ------------------------------------------------------------------
+        COMMENT BELOW OUT FOR REV 1 BASEBOARD
+        ------------------------------------------------------------------
+        */
+
+        private void ConfigurePLL()
+        {
+            //Strobe RST line on power on
+            Thread.Sleep(1);
+            hardwareState.PllEnabled = false;    //RSTn low --> PLL reset
+            ConfigureDatamover(hardwareState);
+            Thread.Sleep(1);
+            hardwareState.PllEnabled = true;    //RSTn high --> PLL active
+            ConfigureDatamover(hardwareState);
+            Thread.Sleep(1);
+
+            // These were provided by the chip configuration tool.
+            uint[] config_clk_gen = {
+                0X000902, 0X062108, 0X063140, 0X010006,
+                0X010120, 0X010202, 0X010380, 0X010A20,
+                0X010B03, 0X01140D, 0X012006, 0X0125C0,
+                0X012660, 0X01277F, 0X012904, 0X012AB3,
+                0X012BC0, 0X012C80, 0X001C10, 0X001D80,
+                0X034003, 0X020141, 0X022135, 0X022240,
+                0X000C02, 0X000B01};
+
+            // write to the clock generator
+            for (int i = 0; i < config_clk_gen.Length; i++)
+            {
+                SetPllRegister((byte)(config_clk_gen[i] >> 16),(byte)(config_clk_gen[i] >> 8), (byte)(config_clk_gen[i] & 0xff));
+            }
+
+            Thread.Sleep(10);
+
+            SetPllRegister((byte)(0x00),(byte)(0x0D), (byte)(0x05));
+
+            Thread.Sleep(10);
+        }
+
+        const byte I2C_BYTE_PLL = 0xFF;
+        const byte CLOCK_GEN_I2C_ADDRESS_WRITE = 0b11011000;
+        const byte CLOCK_GEN_WRITE_COMMAND = 0x02;
+        private void SetPllRegister(byte reg_high, byte reg_low, byte value)
+        {
+            Span<byte> fifo = new byte[6];
+            fifo[0] = I2C_BYTE_PLL;
+            fifo[1] = CLOCK_GEN_I2C_ADDRESS_WRITE;
+            fifo[2] = CLOCK_GEN_WRITE_COMMAND;
+            fifo[3] = reg_high;
+            fifo[4] = reg_low;
+            fifo[5] = value;
+            WriteFifo(fifo);
+        }
+
+        /*
+        ------------------------------------------------------------------
+        COMMENT ABOVE OUT FOR REV 1 BASEBOARD
+        ------------------------------------------------------------------
+        */
 
         private void ConfigureADC()
         {
