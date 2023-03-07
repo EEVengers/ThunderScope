@@ -325,7 +325,7 @@ namespace TS.NET
             SetAdcRegister(AdcRegister.THUNDERSCOPEHW_ADC_REG_RESET, 0x0001);
             // Power Down ADC
             AdcPower(false);
-            // Set 8-bit mode (for HMCAD1520, won't do anything for HMCAD1511)
+            // LVDS Phase to 0deg to work with edge aligned receiver
             SetAdcRegister(AdcRegister.THUNDERSCOPEHW_ADC_REG_LVDS_CNTRL, 0x0000);
             // Invert channels
             SetAdcRegister(AdcRegister.THUNDERSCOPEHW_ADC_REG_INVERT, 0x007F);
@@ -342,7 +342,7 @@ namespace TS.NET
             //currentBoardState.ch_is_on[0] = true;
             //_FIFO_WRITE(user_handle,currentBoardState.adc_chnum_clkdiv,sizeof(currentBoardState.adc_chnum_clkdiv));
 
-            //Select 8-bit mode for HMCAD1520s
+            // Set 8-bit mode (for HMCAD1520, won't do anything for HMCAD1511)
             SetAdcRegister(AdcRegister.THUNDERSCOPEHW_ADC_REG_RES_SEL, 0x0000);
 
             AdcPower(true);
