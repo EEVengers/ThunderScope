@@ -1,0 +1,41 @@
+{
+   "ActiveEmotionalView":"Default View",
+   "Default View_ScaleFactor":"0.950943",
+   "Default View_TopLeft":"-189,-11",
+   "ExpandedHierarchyInLayout":"",
+   "guistr":"# # String gsaved with Nlview 7.0r6  2020-01-29 bk=1.5227 VDI=41 GEI=36 GUI=JA:9.0 non-TLS
+#  -string -flagsOSRD
+preplace port S00_AXI -pg 1 -lvl 0 -x -10 -y 160 -defaultsOSRD
+preplace port M00_AXI -pg 1 -lvl 4 -x 790 -y 90 -defaultsOSRD
+preplace port M01_AXI -pg 1 -lvl 4 -x 790 -y 260 -defaultsOSRD
+preplace port M02_AXI -pg 1 -lvl 4 -x 790 -y 430 -defaultsOSRD
+preplace port ACLK -pg 1 -lvl 0 -x -10 -y 180 -defaultsOSRD
+preplace port ARESETN -pg 1 -lvl 0 -x -10 -y 200 -defaultsOSRD
+preplace port S00_ACLK -pg 1 -lvl 0 -x -10 -y 140 -defaultsOSRD
+preplace port S00_ARESETN -pg 1 -lvl 0 -x -10 -y 220 -defaultsOSRD
+preplace port M00_ACLK -pg 1 -lvl 0 -x -10 -y 20 -defaultsOSRD
+preplace port M00_ARESETN -pg 1 -lvl 0 -x -10 -y 40 -defaultsOSRD
+preplace port M01_ACLK -pg 1 -lvl 0 -x -10 -y 60 -defaultsOSRD
+preplace port M01_ARESETN -pg 1 -lvl 0 -x -10 -y 80 -defaultsOSRD
+preplace port M02_ACLK -pg 1 -lvl 0 -x -10 -y 100 -defaultsOSRD
+preplace port M02_ARESETN -pg 1 -lvl 0 -x -10 -y 120 -defaultsOSRD
+preplace inst xbar -pg 1 -lvl 2 -x 390 -y 220 -defaultsOSRD
+preplace inst s00_couplers -pg 1 -lvl 1 -x 130 -y 200 -defaultsOSRD
+preplace inst m00_couplers -pg 1 -lvl 3 -x 660 -y 90 -defaultsOSRD
+preplace inst m01_couplers -pg 1 -lvl 3 -x 660 -y 260 -defaultsOSRD
+preplace inst m02_couplers -pg 1 -lvl 3 -x 660 -y 430 -defaultsOSRD
+preplace netloc axi_interconnect_1_ACLK_net 1 0 3 10 90 250 90 540
+preplace netloc axi_interconnect_1_ARESETN_net 1 0 3 20 100 240 100 550
+preplace netloc axi_interconnect_1_to_s00_couplers 1 0 1 N 160
+preplace netloc s00_couplers_to_xbar 1 1 1 N 200
+preplace netloc m00_couplers_to_axi_interconnect_1 1 3 1 N 90
+preplace netloc xbar_to_m00_couplers 1 2 1 530 50n
+preplace netloc m01_couplers_to_axi_interconnect_1 1 3 1 N 260
+preplace netloc xbar_to_m01_couplers 1 2 1 N 220
+preplace netloc m02_couplers_to_axi_interconnect_1 1 3 1 N 430
+preplace netloc xbar_to_m02_couplers 1 2 1 530 240n
+levelinfo -pg 1 -10 130 390 660 790
+pagesize -pg 1 -db -bbox -sgen -170 -10 900 520
+"
+}
+
