@@ -79,6 +79,7 @@ module dso_top
   reg[63:0] adc_data;	
   wire serdes_ready;
   
+  assign term = gpio_io_o_0[15:12];
   assign atten = gpio_io_o_0[19:16];
   assign dc_cpl = gpio_io_o_0[23:20];
    
