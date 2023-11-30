@@ -1,0 +1,125 @@
+Protel Design System Design Rule Check
+PCB File : C:\Users\EEVengers-Demo\Documents\Altium\Thunderscope_Rev4.1\Thunderscope_Rev4.1.PCBDOC
+Date     : 2023-11-29
+Time     : 11:04:49 PM
+
+WARNING: Unplated multi-layer pad(s) detected
+   Pad MH4-1(56.717mm,63.521mm) on MultiLayer on Net GND
+   Pad MH3-1(90.717mm,63.521mm) on MultiLayer on Net GND
+   Pad MH2-1(90.717mm,19.521mm) on MultiLayer on Net GND
+   Pad MH1-1(56.717mm,19.521mm) on MultiLayer on Net GND
+
+Processing Rule : Clearance Constraint (Gap=0.127mm) ((InDifferentialPairClass('PCIe'))),(InNet('GND'))
+Rule Violations :0
+
+Processing Rule : Clearance Constraint (Gap=0.127mm) ((InDifferentialPairClass('100Z_Diff'))),(InNet('GND'))
+Rule Violations :0
+
+Processing Rule : Clearance Constraint (Gap=0.127mm) ((InDifferentialPairClass('100Z_Diff'))),((InDifferentialPairClass('100Z_Diff')))
+Rule Violations :0
+
+Processing Rule : Clearance Constraint (Gap=0.127mm) (InComponent('U13')),(InComponent('U13'))
+Rule Violations :0
+
+Processing Rule : Clearance Constraint (Gap=0.127mm) (Disabled)(isVia),(isVia or isPad)
+Rule Violations :0
+
+Processing Rule : Clearance Constraint (Gap=0.127mm) ((InDifferentialPairClass('PCIe'))),((InDifferentialPairClass('PCIe')))
+Rule Violations :0
+
+Processing Rule : Clearance Constraint (Gap=0.127mm) ((InDifferentialPairClass('100Z_Diff_PGA'))),(InNet('GND'))
+Rule Violations :0
+
+Processing Rule : Clearance Constraint (Gap=0.127mm) (All),(All)
+Rule Violations :0
+
+Processing Rule : Clearance Constraint (Gap=0.127mm) (InNetClass('50Z')),(All)
+Rule Violations :0
+
+Processing Rule : Clearance Constraint (Gap=0.254mm) ((InDifferentialPairClass('100Z_Diff_PGA'))),((InDifferentialPairClass('100Z_Diff_PGA')))
+Rule Violations :0
+
+Processing Rule : Short-Circuit Constraint (Allowed=No) (All),(All)
+Rule Violations :0
+
+Processing Rule : Un-Routed Net Constraint ( (All) )
+Rule Violations :0
+
+Processing Rule : Modified Polygon (Allow modified: No), (Allow shelved: No)
+Rule Violations :0
+
+Processing Rule : Width Constraint (Min=0.254mm) (Max=0.762mm) (Preferred=0.508mm) (InNetClass('3V3'))
+Rule Violations :0
+
+Processing Rule : Width Constraint (Min=0.127mm) (Max=10.16mm) (Preferred=0.254mm) (All)
+Rule Violations :0
+
+Processing Rule : Width Constraint (Min=0.508mm) (Max=1.016mm) (Preferred=0.762mm) (InNetClass('Power'))
+Rule Violations :0
+
+Processing Rule : Width Constraint (Min=0.127mm) (Max=0.254mm) (Preferred=0.156mm) (InNetClass('50Z'))
+Rule Violations :0
+
+Processing Rule : Width Constraint (Min=0.127mm) (Max=0.762mm) (Preferred=0.508mm) (InNet('GND'))
+Rule Violations :0
+
+Processing Rule : Routing Via (Templates Used To Check Via: v41h20m0mx0) (All)
+Rule Violations :0
+
+Processing Rule : Differential Pairs Uncoupled Length using the Gap Constraints (Min=0.127mm) (Max=0.23mm) (Prefered=0.23mm)  and Width Constraints (Min=0.127mm) (Max=0.381mm) (Prefered=0.127mm) (InDifferentialPairClass('100Z_Diff'))
+Rule Violations :0
+
+Processing Rule : Differential Pairs Uncoupled Length using the Gap Constraints (Min=0.127mm) (Max=0.23mm) (Prefered=0.23mm)  and Width Constraints (Min=0.127mm) (Max=0.381mm) (Prefered=0.127mm) (InDifferentialPairClass('100Z_Diff_PGA'))
+Rule Violations :0
+
+Processing Rule : Differential Pairs Uncoupled Length using the Gap Constraints (Min=0.127mm) (Max=0.127mm) (Prefered=0.127mm)  and Width Constraints (Min=0.148mm) (Max=0.381mm) (Prefered=0.381mm) (InDifferentialPairClass('PCIe'))
+Rule Violations :0
+
+Processing Rule : Power Plane Connect Rule(Relief Connect )(Expansion=0.102mm) (Conductor Width=0.152mm) (Air Gap=0.152mm) (Entries=4) (All)
+Rule Violations :0
+
+Processing Rule : Minimum Annular Ring (Minimum=0.102mm) (All)
+Rule Violations :0
+
+Processing Rule : Hole To Hole Clearance (Gap=0.254mm) (All),(All)
+Rule Violations :0
+
+Processing Rule : Matched Lengths(Delay Tolerance=2ps) (InDifferentialPairClass('PCIe'))
+Rule Violations :0
+
+Processing Rule : Matched Lengths(Delay Tolerance=2ps) (InDifferentialPairClass('100Z_Diff_PGA'))
+Rule Violations :0
+
+Processing Rule : Matched Lengths(Delay Tolerance=5ps) (InDifferentialPairClass('100Z_Diff_PGA'))
+Rule Violations :0
+
+Processing Rule : Matched Lengths(Delay Tolerance=2ps) (InDifferentialPairClass('100Z_Diff'))
+Rule Violations :0
+
+Processing Rule : Matched Lengths(Delay Tolerance=5ps) (InDifferentialPairClass('100Z_Diff'))
+Rule Violations :0
+
+Processing Rule : Component Clearance Constraint ( Horizontal Gap = 0.254mm, Vertical Gap = 0.254mm ) (All),(All) 
+Rule Violations :0
+
+Processing Rule : Component Clearance Constraint ( Horizontal Gap = 0mm, Vertical Gap = 0mm ) (HasFootprint('MOL_0731000105')),(All) 
+Rule Violations :0
+
+Processing Rule : Component Clearance Constraint ( Horizontal Gap = 0mm, Vertical Gap = 0mm ) (HasFootprint('GEN_2.54mm_1x2_Pin_TH_RA')),(All) 
+Rule Violations :0
+
+Processing Rule : Component Clearance Constraint ( Horizontal Gap = 0mm, Vertical Gap = 0mm ) (HasFootprint('SAM_LSHM-130-XX.X-XX-DV-A-S')),(All) 
+Rule Violations :0
+
+Processing Rule : Component Clearance Constraint ( Horizontal Gap = 0mm, Vertical Gap = 0mm ) (HasFootprint('SAM_LSHM-150-XX.X-XX-DV-A-S')),(All) 
+Rule Violations :0
+
+Waived Violations Of Rule : Hole To Hole Clearance (Gap=0.254mm) (All),(All)
+   Waived Violation between Hole To Hole Clearance Constraint: (Collision < 0.254mm) Between Pad Free-1(15.5mm,10.375mm) on MultiLayer And Pad Free-1(18.7mm,14.25mm) on MultiLayer Pad/Via Touching HolesWaived by Matthew Pang at 2023-08-09 10:30:41 PM
+   Waived Violation between Hole To Hole Clearance Constraint: (Collision < 0.254mm) Between Pad Free-1(29.65mm,14.25mm) on MultiLayer And Pad Free-1(32.85mm,10.375mm) on MultiLayer Pad/Via Touching HolesWaived by Matthew Pang at 2023-08-09 10:30:32 PM
+Waived Violations :2
+
+
+Violations Detected : 0
+Waived Violations : 2
+Time Elapsed        : 00:00:05
