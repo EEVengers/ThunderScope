@@ -2,19 +2,102 @@
 FileName = Thunderscope_Rev4.1.GBR
 AutoAperture = True
 *************************************************************
-Generating : PCI-SIG Outline
-      File : Thunderscope_Rev4.GM1
+Generating : Bottom Component Center
+      File : Thunderscope_Rev4.1_Bottom_Component_Centers.GM12
 
-    Adding Layer      : PCI-SIG Outline
+    Adding Layer      : Bottom Component Center
 
 
 Used DCodes :
-    D15
+    D11
+*************************************************************
+
+*************************************************************
+Generating : Bottom Assembly
+      File : Thunderscope_Rev4.1_Bottom_Assembly.GM10
+
+    Adding Layer      : Bottom Assembly
+
+
+Used DCodes :
+    D10
+    D11
+    D19
+    D215
+    D216
+    D217
+    D221
+    D222
+    D223
+*************************************************************
+
+*************************************************************
+Generating : Top Assembly
+      File : Thunderscope_Rev4.1_Top_Assembly.GM9
+
+    Adding Layer      : Top Assembly
+
+
+Used DCodes :
+    D11
+    D18
+    D19
+    D216
+    D217
+    D218
+    D219
+    D220
+*************************************************************
+
+*************************************************************
+Generating : Top Component Center
+      File : Thunderscope_Rev4.1_Top_Component_Centers.GM4
+
+    Adding Layer      : Top Component Center
+
+
+Used DCodes :
+    D11
+*************************************************************
+
+*************************************************************
+Generating : Bottom Courtyard
+      File : Thunderscope_Rev4.1_Bottom_Courtyard.GM3
+
+    Adding Layer      : Bottom Courtyard
+
+
+Used DCodes :
+    D216
+*************************************************************
+
+*************************************************************
+Generating : Top Courtyard
+      File : Thunderscope_Rev4.1_Top_Courtyard.GM2
+
+    Adding Layer      : Top Courtyard
+
+
+Used DCodes :
+    D11
+    D18
+    D216
+*************************************************************
+
+*************************************************************
+Generating : Board Outline
+      File : Thunderscope_Rev4.1_Board_Outline.GM1
+
+    Adding Layer      : Board Outline
+
+
+Used DCodes :
+    D11
 *************************************************************
 
 *************************************************************
 Generating : BottomPaste
-      File : Thunderscope_Rev4.GBP
+      File : Thunderscope_Rev4.1_Bottom_Paste.GBP
 
     Adding Layer      : BottomPaste
 
@@ -24,13 +107,14 @@ Generating : BottomPaste
 
 
 Used DCodes :
-    D27
-    D34
-    D37
     D40
-    D42
-    D65
+    D46
+    D48
+    D49
+    D51
+    D68
     D70
+    D186
     D187
     D188
     D189
@@ -39,7 +123,6 @@ Used DCodes :
     D192
     D193
     D194
-    D195
     D196
     D197
     D198
@@ -49,7 +132,7 @@ Used DCodes :
 
 *************************************************************
 Generating : TopPaste
-      File : Thunderscope_Rev4.GTP
+      File : Thunderscope_Rev4.1_Top_Paste.GTP
 
     Adding Layer      : TopPaste
 
@@ -114,7 +197,7 @@ Used DCodes :
 
 *************************************************************
 Generating : Bottom Solder
-      File : Thunderscope_Rev4.GBS
+      File : Thunderscope_Rev4.1_Bottom_Solder.GBS
 
     Adding Layer      : Bottom Solder
 
@@ -125,14 +208,14 @@ Generating : Bottom Solder
 
 Used DCodes :
     D71
-    D73
-    D80
-    D83
-    D87
-    D89
-    D116
-    D117
-    D118
+    D88
+    D94
+    D96
+    D97
+    D99
+    D119
+    D120
+    D121
     D123
     D124
     D125
@@ -153,7 +236,7 @@ Used DCodes :
     D140
     D141
     D142
-    D199
+    D186
     D201
     D202
     D203
@@ -172,7 +255,7 @@ Used DCodes :
 
 *************************************************************
 Generating : Top Solder
-      File : Thunderscope_Rev4.GTS
+      File : Thunderscope_Rev4.1_Top_Solder.GTS
 
     Adding Layer      : Top Solder
 
@@ -182,7 +265,7 @@ Generating : Top Solder
 
 
 Used DCodes :
-    D62
+    D65
     D71
     D72
     D73
@@ -259,25 +342,25 @@ Used DCodes :
 
 *************************************************************
 Generating : Bottom Overlay
-      File : Thunderscope_Rev4.GBO
+      File : Thunderscope_Rev4.1_Bottom_Overlay.GBO
 
     Adding Layer      : Bottom Overlay
 
 
 Used DCodes :
     D10
+    D11
     D12
-    D15
-    D16
-    D17
+    D13
     D18
+    D19
     D157
     D215
 *************************************************************
 
 *************************************************************
 Generating : Top Overlay
-      File : Thunderscope_Rev4.GTO
+      File : Thunderscope_Rev4.1_Top_Overlay.GTO
 
     Adding Layer      : Top Overlay
 
@@ -297,7 +380,7 @@ Used DCodes :
 
 *************************************************************
 Generating : Bottom Layer
-      File : Thunderscope_Rev4.GBL
+      File : Thunderscope_Rev4.1_Bottom_Layer.GBL
 
     Adding Layer      : Bottom Layer
 
@@ -307,17 +390,17 @@ Generating : Bottom Layer
 Used DCodes :
     D10
     D12
-    D16
-    D17
+    D13
     D18
-    D27
-    D34
-    D37
+    D19
     D40
-    D42
-    D65
+    D46
+    D48
+    D49
+    D51
+    D68
     D70
-    D128
+    D135
     D151
     D152
     D156
@@ -364,7 +447,7 @@ Used DCodes :
 
 *************************************************************
 Generating : Int4 (GND)
-      File : Thunderscope_Rev4.G4
+      File : Thunderscope_Rev4.1_Int4.G4
 
     Adding Layer      : Int4 (GND)
 
@@ -372,19 +455,19 @@ Generating : Int4 (GND)
 
 
 Used DCodes :
-    D166
-    D167
-    D169
+    D168
+    D170
+    D172
+    D173
     D175
     D176
-    D179
     D180
     D184
 *************************************************************
 
 *************************************************************
 Generating : Int3 (Sign)
-      File : Thunderscope_Rev4.G3
+      File : Thunderscope_Rev4.1_Int3.G3
 
     Adding Layer      : Int3 (Sign)
 
@@ -399,7 +482,7 @@ Used DCodes :
 
 *************************************************************
 Generating : Int2 (Sign)
-      File : Thunderscope_Rev4.G2
+      File : Thunderscope_Rev4.1_Int2.G2
 
     Adding Layer      : Int2 (Sign)
 
@@ -408,12 +491,12 @@ Generating : Int2 (Sign)
 
 Used DCodes :
     D12
-    D17
     D18
-    D169
-    D175
-    D176
-    D179
+    D19
+    D168
+    D170
+    D172
+    D173
     D180
     D184
     D185
@@ -421,7 +504,7 @@ Used DCodes :
 
 *************************************************************
 Generating : Int1 (GND)
-      File : Thunderscope_Rev4.G1
+      File : Thunderscope_Rev4.1_Int1.G1
 
     Adding Layer      : Int1 (GND)
 
@@ -430,19 +513,19 @@ Generating : Int1 (GND)
 
 Used DCodes :
     D18
-    D166
-    D167
-    D169
+    D168
+    D170
+    D172
+    D173
     D175
     D176
-    D179
     D180
     D184
 *************************************************************
 
 *************************************************************
 Generating : Top Layer
-      File : Thunderscope_Rev4.GTL
+      File : Thunderscope_Rev4.1_Top_Layer.GTL
 
     Adding Layer      : Top Layer
 
@@ -452,9 +535,9 @@ Generating : Top Layer
 Used DCodes :
     D10
     D12
-    D16
-    D17
+    D13
     D18
+    D19
     D26
     D27
     D28
@@ -476,6 +559,7 @@ Used DCodes :
     D44
     D45
     D46
+    D47
     D48
     D49
     D50
@@ -483,7 +567,6 @@ Used DCodes :
     D52
     D53
     D54
-    D55
     D56
     D57
     D58
@@ -499,7 +582,7 @@ Used DCodes :
     D68
     D69
     D70
-    D128
+    D135
     D143
     D144
     D145
