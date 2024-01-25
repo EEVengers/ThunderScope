@@ -50,11 +50,9 @@ For LiteX developers, the Linux driver is stable. [Windows](https://github.com/N
 ___
 ## Software
 
-Our primary software is TS.net, which takes in data from the hardware, triggers on it, and sends the triggered data over to [ngscopeclient](https://www.ngscopeclient.org/)
+Our primary software is [TS.NET](https://github.com/macaba/TS.NET), which takes in data from the hardware, triggers on it, and sends the triggered data over to [ngscopeclient](https://www.ngscopeclient.org/)
 
-Dependences for build scripts on Linux:
-apt-get install -y dotnet6
-apt-get install -y libgdiplus
+Dependences for build scripts on Linux: `apt-get install -y dotnet6; apt-get install -y libgdiplus`
 
 On Windows, should just need Visual Studio with the C# plugins
 
