@@ -1,12 +1,21 @@
 # ThunderScope
 Low-Cost Four Channel 1GSPS Oscilliscope using Thunderbolt/USB4 to stream data to PC for processing and display. 
 
-Join our dev discord: https://discord.com/invite/pds7k3WrpK
+Join our [development discord server](https://discord.com/invite/pds7k3WrpK)
+
 We are now at #thunderscope:matrix.org on matrix or #thunderscope:libera.chat on IRC as well!
 
-Our best long-form documentation is currently at the Hackaday.io project page: https://hackaday.io/project/180090-thunderscope
+Some older long-form documentation is on the [Hackaday.io project page](https://hackaday.io/project/180090-thunderscope)
 
-Get the hardware through our crowdsupply when we launch: https://www.crowdsupply.com/eevengers/thunderscope
+Get the hardware through our [crowdsupply page](https://www.crowdsupply.com/eevengers/thunderscope) when we launch: 
+
+Catch up with these videos on the project: 
+
+[TEARDOWN 2023 - Open Sourcing the Secrets of Oscilloscope Design](https://www.youtube.com/watch?v=58P7UrNaYS4)
+
+[Hackaday Supercon 2023 - A Circuit to Measure Circuits: How do Oscilloscopes do it?](https://www.youtube.com/watch?v=6kINL2e2XGs)
+
+[Teardown Session 39: ThunderScope](https://www.youtube.com/watch?v=HIrENqQAbHI)
 
 ___
 ## Baseboard Hardware 
