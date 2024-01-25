@@ -39,9 +39,13 @@ ___
 ___
 ## Firmware
 
-Developers with Rev.1 mainboard and TE0712 module should use dso_top_TE0712 or dso_top_TE0712_unsigned
+We have two types of firmware, LiteX and XDMA. We are in the process of updating the LiteX firmware to work on the latest hardware, and we will use it moving forward. Until then, use the XDMA firmware if you are not working on LiteX.
 
-Rev.2 mainboard can only be used with our custom FPGA module and dso_top_fpga_module_rev2_unsigned firmware 
+TODO: Table of Beta Unit serial numbers with module types and firmware locations
+
+Follow the instructions in the Software/xdma_driver_linux or Software/xdma_driver_win_src_2018_2 folders to install the XDMA linux or windows driver before proceeding with installing the rest of the software.
+
+For LiteX developers, the Linux driver is stable. [Windows](https://github.com/NateMeyer/litepcie_driver_win) and [Mac](https://github.com/tech2077/litepcie-macos-driver) drivers are in development.
 
 ___
 ## Software
