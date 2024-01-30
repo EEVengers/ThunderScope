@@ -195,11 +195,11 @@ if {$Target=="35t"} {
 launch_runs synth_1 -jobs $j
 wait_on_run synth_1
 
-# set_property IS_LOCKED false [get_files design_1_xdma_0_0.xci] 
+
+set_property IS_LOCKED true [get_files design_1_xdma_0_0.xci] 
 update_compile_order -fileset sources_1
 file copy -force ${origin_dir}/xci/${Target}/design_1_xdma_0_0.sv $origin_dir/xdma_prj_35t/xdma_prj_35t.srcs/sources_1/bd/design_1/ip/design_1_xdma_0_0/synth/design_1_xdma_0_0.sv
 update_compile_order -fileset sources_1
-set_property IS_LOCKED true [get_files design_1_xdma_0_0.xci] 
 reset_run design_1_xdma_0_0_synth_1
 config_ip_cache -clear_output_repo
 }
