@@ -39,11 +39,16 @@ module dso_top
     output fe_en,
     output probe_comp,
     input adc_lclk_p,
-	input adc_lclk_n,
-	input adc_fclk_p,
-	input adc_fclk_n,
-	input[7:0] adc_data_p,
-	input[7:0] adc_data_n
+    input adc_lclk_n,
+    input adc_fclk_p,
+    input adc_fclk_n,
+    input[7:0] adc_data_p,
+    input[7:0] adc_data_n,
+    inout qspi_d0,
+    inout qspi_d1,
+    inout qspi_d2,
+    inout qspi_d3,
+    output qspi_cs
     );
 
   wire [31:0]AXI_STR_TXD_0_tdata;
@@ -78,6 +83,23 @@ module dso_top
   wire[63:0] data_deser;
   reg[63:0] adc_data;	
   wire serdes_ready;
+  
+  wire spi_rtl_0_io0_i;
+  wire spi_rtl_0_io0_io;
+  wire spi_rtl_0_io0_o;
+  wire spi_rtl_0_io0_t;
+  wire spi_rtl_0_io1_i;
+  wire spi_rtl_0_io1_io;
+  wire spi_rtl_0_io1_o;
+  wire spi_rtl_0_io1_t;
+  wire spi_rtl_0_io2_i;
+  wire spi_rtl_0_io2_io;
+  wire spi_rtl_0_io2_o;
+  wire spi_rtl_0_io2_t;
+  wire spi_rtl_0_io3_i;
+  wire spi_rtl_0_io3_io;
+  wire spi_rtl_0_io3_o;
+  wire spi_rtl_0_io3_t;
   
   assign term = gpio_io_o_0[15:12];
   assign atten = gpio_io_o_0[19:16];
@@ -266,7 +288,42 @@ module dso_top
     .pcie_perstn(pcie_perstn),
     .s2mm_err(s2mm_err),
     .s2mm_halt(s2mm_halt),
-    .s2mm_wr_xfer_cmplt(s2mm_wr_xfer_cmplt)
+    .s2mm_wr_xfer_cmplt(s2mm_wr_xfer_cmplt),
+    .SPI_0_0_io0_i(spi_rtl_0_io0_i),
+    .SPI_0_0_io0_o(spi_rtl_0_io0_o),
+    .SPI_0_0_io0_t(spi_rtl_0_io0_t),
+    .SPI_0_0_io1_i(spi_rtl_0_io1_i),
+    .SPI_0_0_io1_o(spi_rtl_0_io1_o),
+    .SPI_0_0_io1_t(spi_rtl_0_io1_t),
+    .SPI_0_0_io2_i(spi_rtl_0_io2_i),
+    .SPI_0_0_io2_o(spi_rtl_0_io2_o),
+    .SPI_0_0_io2_t(spi_rtl_0_io2_t),
+    .SPI_0_0_io3_i(spi_rtl_0_io3_i),
+    .SPI_0_0_io3_o(spi_rtl_0_io3_o),
+    .SPI_0_0_io3_t(spi_rtl_0_io3_t),
+    .SPI_0_0_ss_t(1'b0),
+    .ss_o_0(qspi_cs)
     );
         
+IOBUF spi_rtl_0_io0_iobuf
+    (.I(spi_rtl_0_io0_o),
+    .IO(qspi_d0),
+    .O(spi_rtl_0_io0_i),
+    .T(spi_rtl_0_io0_t));
+IOBUF spi_rtl_0_io1_iobuf
+    (.I(spi_rtl_0_io1_o),
+    .IO(qspi_d1),
+    .O(spi_rtl_0_io1_i),
+    .T(spi_rtl_0_io1_t));
+IOBUF spi_rtl_0_io2_iobuf
+    (.I(spi_rtl_0_io2_o),
+    .IO(qspi_d2),
+    .O(spi_rtl_0_io2_i),
+    .T(spi_rtl_0_io2_t));
+IOBUF spi_rtl_0_io3_iobuf
+    (.I(spi_rtl_0_io3_o),
+    .IO(qspi_d3),
+    .O(spi_rtl_0_io3_i),
+    .T(spi_rtl_0_io3_t));
+
 endmodule

@@ -233,6 +233,7 @@ open_run impl_1
 write_bitstream -force -bin_file $origin_dir/output/${_xil_proj_name_}.bit
 set_property BITSTREAM.CONFIG.NEXT_CONFIG_ADDR 0x0097FC00 [current_design]
 write_bitstream -force -bin_file $origin_dir/output/${_xil_proj_name_}_gold.bit
-write_cfgmem -force -format mcs -size 32 -interface SPIx4 -loadbit "up 0x00000000 $origin_dir/output/${_xil_proj_name_}_gold.bit up 0x00980000 $origin_dir/output/${_xil_proj_name_}.bit" -loaddata "up 0x0097FC00 ./cfg/timer1.bin up 0x01300000 ./cfg/timer2.bin" $origin_dir/output/${_xil_proj_name_}_backup.mcs
+write_cfgmem -force -format mcs -size 32 -interface SPIx4 -loadbit "up 0x00000000 $origin_dir/output/${_xil_proj_name_}_gold.bit up 0x00980000 $origin_dir/output/${_xil_proj_name_}.bit" -loaddata "up 0x0097FC00 ./cfg/timer1.bin up 0x01300000 ./cfg/timer2.bin" $origin_dir/output/${_xil_proj_name_}_full.mcs
+write_cfgmem -force -format mcs -size 32 -interface SPIx4 -loadbit "up 0x00980000 $origin_dir/output/${_xil_proj_name_}.bit" $origin_dir/output/${_xil_proj_name_}_update.mcs
 
 close_project

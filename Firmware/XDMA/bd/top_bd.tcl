@@ -138,6 +138,7 @@ xilinx.com:ip:axi_clock_converter:2.1\
 xilinx.com:ip:axi_datamover:5.1\
 xilinx.com:ip:axi_gpio:2.0\
 xilinx.com:ip:axi_fifo_mm_s:4.3\
+xilinx.com:ip:axi_quad_spi:3.2\
 xilinx.com:ip:util_ds_buf:2.2\
 xilinx.com:ip:axi_dwidth_converter:2.1\
 xilinx.com:ip:xdma:4.1\
@@ -184,7 +185,7 @@ proc write_mig_file_design_1_mig_7series_0_0 { str_mig_prj_filepath } {
    puts $mig_prj_file {  <dci_inputs>1</dci_inputs>}
    puts $mig_prj_file {  <Debug_En>OFF</Debug_En>}
    puts $mig_prj_file {  <DataDepth_En>1024</DataDepth_En>}
-   puts $mig_prj_file {  <LowPower_En>ON</LowPower_En>}
+   puts $mig_prj_file {  <LowPower_En>OFF</LowPower_En>}
    puts $mig_prj_file {  <XADC_En>Enabled</XADC_En>}
    puts $mig_prj_file {  <TargetFPGA>xc7a100t-fgg484/-2</TargetFPGA>}
    puts $mig_prj_file {  <Version>4.2</Version>}
@@ -195,12 +196,6 @@ proc write_mig_file_design_1_mig_7series_0_0 { str_mig_prj_filepath } {
    puts $mig_prj_file {  <InternalVref>0</InternalVref>}
    puts $mig_prj_file {  <dci_hr_inouts_inputs>50 Ohms</dci_hr_inouts_inputs>}
    puts $mig_prj_file {  <dci_cascade>0</dci_cascade>}
-   puts $mig_prj_file {  <FPGADevice>}
-   puts $mig_prj_file {    <selected>7a/xc7a35t-fgg484</selected>}
-   puts $mig_prj_file {    <selected>7a/xc7a50t-fgg484</selected>}
-   puts $mig_prj_file {    <selected>7a/xc7a75t-fgg484</selected>}
-   puts $mig_prj_file {    <selected>7a/xc7a15t-fgg484</selected>}
-   puts $mig_prj_file {  </FPGADevice>}
    puts $mig_prj_file {  <Controller number="0">}
    puts $mig_prj_file {    <MemoryDevice>DDR3_SDRAM/Components/MT41K256M16XX-125</MemoryDevice>}
    puts $mig_prj_file {    <TimePeriod>2500</TimePeriod>}
@@ -218,8 +213,8 @@ proc write_mig_file_design_1_mig_7series_0_0 { str_mig_prj_filepath } {
    puts $mig_prj_file {    <DeepMemory>1</DeepMemory>}
    puts $mig_prj_file {    <DataMask>1</DataMask>}
    puts $mig_prj_file {    <ECC>Disabled</ECC>}
-   puts $mig_prj_file {    <Ordering>Strict</Ordering>}
-   puts $mig_prj_file {    <BankMachineCnt>3</BankMachineCnt>}
+   puts $mig_prj_file {    <Ordering>Normal</Ordering>}
+   puts $mig_prj_file {    <BankMachineCnt>8</BankMachineCnt>}
    puts $mig_prj_file {    <CustomPart>FALSE</CustomPart>}
    puts $mig_prj_file {    <NewPartName/>}
    puts $mig_prj_file {    <RowAddress>15</RowAddress>}
@@ -507,12 +502,15 @@ proc create_hier_cell_AXI_LITE_IO { parentCell nameHier } {
 
   create_bd_intf_pin -mode Master -vlnv xilinx.com:interface:axis_rtl:1.0 AXI_STR_TXD_0
 
+  create_bd_intf_pin -mode Master -vlnv xilinx.com:interface:spi_rtl:1.0 SPI_0_0
+
 
   # Create pins
   create_bd_pin -dir I -from 31 -to 0 gpio2_io_i
   create_bd_pin -dir I -type clk axi_aclk
   create_bd_pin -dir I -type rst axi_resetn
   create_bd_pin -dir O -from 31 -to 0 gpio_io_o_0
+  create_bd_pin -dir O -from 0 -to 0 ss_o_0
 
   # Create instance: axi_gpio_0, and set properties
   set axi_gpio_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_gpio:2.0 axi_gpio_0 ]
@@ -565,8 +563,6 @@ proc create_hier_cell_AXI_LITE_IO { parentCell nameHier } {
     CONFIG.M01_A13_BASE_ADDR {0xffffffffffffffff} \
     CONFIG.M01_A14_BASE_ADDR {0xffffffffffffffff} \
     CONFIG.M01_A15_BASE_ADDR {0xffffffffffffffff} \
-    CONFIG.M02_A00_ADDR_WIDTH {0} \
-    CONFIG.M02_A00_BASE_ADDR {0xffffffffffffffff} \
     CONFIG.M02_A01_BASE_ADDR {0xffffffffffffffff} \
     CONFIG.M02_A02_BASE_ADDR {0xffffffffffffffff} \
     CONFIG.M02_A03_BASE_ADDR {0xffffffffffffffff} \
@@ -582,8 +578,6 @@ proc create_hier_cell_AXI_LITE_IO { parentCell nameHier } {
     CONFIG.M02_A13_BASE_ADDR {0xffffffffffffffff} \
     CONFIG.M02_A14_BASE_ADDR {0xffffffffffffffff} \
     CONFIG.M02_A15_BASE_ADDR {0xffffffffffffffff} \
-    CONFIG.M02_READ_ISSUING {1} \
-    CONFIG.M02_WRITE_ISSUING {1} \
     CONFIG.M03_A00_ADDR_WIDTH {0} \
     CONFIG.M03_A00_BASE_ADDR {0xffffffffffffffff} \
     CONFIG.M03_A01_BASE_ADDR {0xffffffffffffffff} \
@@ -831,7 +825,7 @@ proc create_hier_cell_AXI_LITE_IO { parentCell nameHier } {
     CONFIG.M15_A15_BASE_ADDR {0xffffffffffffffff} \
     CONFIG.M15_READ_ISSUING {1} \
     CONFIG.M15_WRITE_ISSUING {1} \
-    CONFIG.NUM_MI {2} \
+    CONFIG.NUM_MI {3} \
     CONFIG.S01_READ_ACCEPTANCE {1} \
     CONFIG.S01_WRITE_ACCEPTANCE {1} \
     CONFIG.S02_READ_ACCEPTANCE {1} \
@@ -866,16 +860,28 @@ proc create_hier_cell_AXI_LITE_IO { parentCell nameHier } {
   ] $axi_crossbar_0
 
 
+  # Create instance: axi_quad_spi_0, and set properties
+  set axi_quad_spi_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_quad_spi:3.2 axi_quad_spi_0 ]
+  set_property -dict [list \
+    CONFIG.C_FIFO_DEPTH {256} \
+    CONFIG.C_SPI_MEMORY {2} \
+    CONFIG.C_SPI_MODE {2} \
+  ] $axi_quad_spi_0
+
+
   # Create interface connections
   connect_bd_intf_net -intf_net Conn1 [get_bd_intf_pins AXI_STR_TXD_0] [get_bd_intf_pins axi_fifo_mm_s_0/AXI_STR_TXD]
+  connect_bd_intf_net -intf_net Conn2 [get_bd_intf_pins axi_quad_spi_0/SPI_0] [get_bd_intf_pins SPI_0_0]
   connect_bd_intf_net -intf_net S00_AXI_1 [get_bd_intf_pins S00_AXI] [get_bd_intf_pins axi_crossbar_0/S00_AXI]
   connect_bd_intf_net -intf_net axi_crossbar_0_M00_AXI [get_bd_intf_pins axi_crossbar_0/M00_AXI] [get_bd_intf_pins axi_fifo_mm_s_0/S_AXI]
   connect_bd_intf_net -intf_net axi_crossbar_0_M01_AXI [get_bd_intf_pins axi_crossbar_0/M01_AXI] [get_bd_intf_pins axi_gpio_0/S_AXI]
+  connect_bd_intf_net -intf_net axi_crossbar_0_M02_AXI [get_bd_intf_pins axi_quad_spi_0/AXI_LITE] [get_bd_intf_pins axi_crossbar_0/M02_AXI]
 
   # Create port connections
-  connect_bd_net -net axi_aclk_1 [get_bd_pins axi_aclk] [get_bd_pins axi_crossbar_0/aclk] [get_bd_pins axi_fifo_mm_s_0/s_axi_aclk] [get_bd_pins axi_gpio_0/s_axi_aclk]
+  connect_bd_net -net axi_aclk_1 [get_bd_pins axi_aclk] [get_bd_pins axi_crossbar_0/aclk] [get_bd_pins axi_fifo_mm_s_0/s_axi_aclk] [get_bd_pins axi_gpio_0/s_axi_aclk] [get_bd_pins axi_quad_spi_0/ext_spi_clk] [get_bd_pins axi_quad_spi_0/s_axi_aclk]
   connect_bd_net -net axi_gpio_0_gpio_io_o [get_bd_pins axi_gpio_0/gpio_io_o] [get_bd_pins gpio_io_o_0]
-  connect_bd_net -net axi_resetn_1 [get_bd_pins axi_resetn] [get_bd_pins axi_crossbar_0/aresetn] [get_bd_pins axi_fifo_mm_s_0/s_axi_aresetn] [get_bd_pins axi_gpio_0/s_axi_aresetn]
+  connect_bd_net -net axi_quad_spi_0_ss_o [get_bd_pins axi_quad_spi_0/ss_o] [get_bd_pins ss_o_0]
+  connect_bd_net -net axi_resetn_1 [get_bd_pins axi_resetn] [get_bd_pins axi_crossbar_0/aresetn] [get_bd_pins axi_fifo_mm_s_0/s_axi_aresetn] [get_bd_pins axi_gpio_0/s_axi_aresetn] [get_bd_pins axi_quad_spi_0/s_axi_aresetn]
   connect_bd_net -net gpio2_io_i_1 [get_bd_pins gpio2_io_i] [get_bd_pins axi_gpio_0/gpio2_io_i]
 
   # Restore current instance
@@ -1449,6 +1455,8 @@ proc create_root_design { parentCell } {
    CONFIG.TUSER_WIDTH {0} \
    ] $S_AXIS_S2MM
 
+  set SPI_0_0 [ create_bd_intf_port -mode Master -vlnv xilinx.com:interface:spi_rtl:1.0 SPI_0_0 ]
+
 
   # Create ports
   set pcie_perstn [ create_bd_port -dir I -type rst pcie_perstn ]
@@ -1460,6 +1468,7 @@ proc create_root_design { parentCell } {
   set s2mm_halt [ create_bd_port -dir I s2mm_halt ]
   set axi_aclk [ create_bd_port -dir O -type clk axi_aclk ]
   set gpio_io_o_0 [ create_bd_port -dir O -from 31 -to 0 gpio_io_o_0 ]
+  set ss_o_0 [ create_bd_port -dir O -from 0 -to 0 ss_o_0 ]
 
   # Create instance: Memory
   create_hier_cell_Memory [current_bd_instance .] Memory
@@ -1475,6 +1484,7 @@ proc create_root_design { parentCell } {
 
   # Create interface connections
   connect_bd_intf_net -intf_net AXI_LITE_IO_AXI_STR_TXD_0 [get_bd_intf_ports AXI_STR_TXD_0] [get_bd_intf_pins AXI_LITE_IO/AXI_STR_TXD_0]
+  connect_bd_intf_net -intf_net AXI_LITE_IO_SPI_0_0 [get_bd_intf_ports SPI_0_0] [get_bd_intf_pins AXI_LITE_IO/SPI_0_0]
   connect_bd_intf_net -intf_net CLK_IN_D_0_1 [get_bd_intf_ports pcie] [get_bd_intf_pins PCIe/pcie]
   connect_bd_intf_net -intf_net Datamover_M_AXI_S2MM [get_bd_intf_pins Datamover/M_AXI_S2MM] [get_bd_intf_pins Memory/S01_AXI]
   connect_bd_intf_net -intf_net PCIe_M_AXI_LITE [get_bd_intf_pins PCIe/M_AXI_LITE] [get_bd_intf_pins AXI_LITE_IO/S00_AXI]
@@ -1486,6 +1496,7 @@ proc create_root_design { parentCell } {
 
   # Create port connections
   connect_bd_net -net AXI_LITE_IO_gpio_io_o_0 [get_bd_pins AXI_LITE_IO/gpio_io_o_0] [get_bd_ports gpio_io_o_0]
+  connect_bd_net -net AXI_LITE_IO_ss_o_0 [get_bd_pins AXI_LITE_IO/ss_o_0] [get_bd_ports ss_o_0]
   connect_bd_net -net Datamover_s2mm_err_0 [get_bd_pins Datamover/s2mm_err] [get_bd_ports s2mm_err]
   connect_bd_net -net Datamover_s2mm_wr_xfer_cmplt_0 [get_bd_pins Datamover/s2mm_wr_xfer_cmplt] [get_bd_ports s2mm_wr_xfer_cmplt]
   connect_bd_net -net PCIe_axi_aresetn [get_bd_pins PCIe/axi_aresetn] [get_bd_pins Memory/S00_ARESETN] [get_bd_ports axi_aresetn] [get_bd_pins AXI_LITE_IO/axi_resetn]
@@ -1500,6 +1511,7 @@ proc create_root_design { parentCell } {
   assign_bd_address -offset 0x00000000 -range 0x20000000 -target_address_space [get_bd_addr_spaces PCIe/xdma_0/M_AXI] [get_bd_addr_segs Memory/mig_7series_0/memmap/memaddr] -force
   assign_bd_address -offset 0x40020000 -range 0x00010000 -target_address_space [get_bd_addr_spaces PCIe/xdma_0/M_AXI_LITE] [get_bd_addr_segs AXI_LITE_IO/axi_fifo_mm_s_0/S_AXI/Mem0] -force
   assign_bd_address -offset 0x40000000 -range 0x00010000 -target_address_space [get_bd_addr_spaces PCIe/xdma_0/M_AXI_LITE] [get_bd_addr_segs AXI_LITE_IO/axi_gpio_0/S_AXI/Reg] -force
+  assign_bd_address -offset 0x40040000 -range 0x00010000 -target_address_space [get_bd_addr_spaces PCIe/xdma_0/M_AXI_LITE] [get_bd_addr_segs AXI_LITE_IO/axi_quad_spi_0/AXI_LITE/Reg] -force
 
 
   # Restore current instance

@@ -37,6 +37,22 @@ set_property -dict {PACKAGE_PIN H14 IOSTANDARD LVCMOS33} [get_ports i2c_scl]
 
 set_property -dict {PACKAGE_PIN K13 IOSTANDARD LVCMOS33} [get_ports adc_cs]
 
+###############################################################################
+# SPI
+###############################################################################
+set_property PACKAGE_PIN P22 [get_ports qspi_d0]
+set_property PACKAGE_PIN R22 [get_ports qspi_d1]
+set_property PACKAGE_PIN P21 [get_ports qspi_d2]
+set_property PACKAGE_PIN R21 [get_ports qspi_d3]
+
+set_property IOSTANDARD LVCMOS33 [get_ports qspi_d0]
+set_property IOSTANDARD LVCMOS33 [get_ports qspi_d1]
+set_property IOSTANDARD LVCMOS33 [get_ports qspi_d2]
+set_property IOSTANDARD LVCMOS33 [get_ports qspi_d3]
+
+set_property PACKAGE_PIN T19 [get_ports qspi_cs]
+set_property IOSTANDARD LVCMOS33 [get_ports qspi_cs]
+
 #############################################################################################################
 ##ADC Differential I/O
 #############################################################################################################

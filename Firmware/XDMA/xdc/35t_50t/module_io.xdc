@@ -37,6 +37,24 @@ set_property -dict {PACKAGE_PIN K5 IOSTANDARD LVCMOS33} [get_ports i2c_scl]
 
 set_property -dict {PACKAGE_PIN J5 IOSTANDARD LVCMOS33} [get_ports adc_cs]
 
+###############################################################################
+# SPI
+###############################################################################
+set_property PACKAGE_PIN K16 [get_ports qspi_d0]
+set_property PACKAGE_PIN L17 [get_ports qspi_d1]
+set_property PACKAGE_PIN J15 [get_ports qspi_d2]
+set_property PACKAGE_PIN J16 [get_ports qspi_d3]
+
+set_property IOSTANDARD SSTL135 [get_ports qspi_d0]
+set_property IOSTANDARD SSTL135 [get_ports qspi_d1]
+set_property IOSTANDARD SSTL135 [get_ports qspi_d2]
+set_property IOSTANDARD SSTL135 [get_ports qspi_d3]
+
+set_property PACKAGE_PIN L15 [get_ports qspi_cs]
+set_property IOSTANDARD SSTL135 [get_ports qspi_cs]
+
+set_property INTERNAL_VREF 0.675 [get_iobanks 14]
+
 #############################################################################################################
 ##ADC Differential I/O
 #############################################################################################################

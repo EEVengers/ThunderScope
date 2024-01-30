@@ -13,3 +13,10 @@ Then run `src ./xdma_gen.tcl <target> <threads>`
   * `1`
   * `...`
   * `16`
+
+
+## TODO:
+
+* Check SPI clk for Flash write.
+* Update MCS file decode.
+* look at quad writes and reads for frimware updates.
