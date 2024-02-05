@@ -1,5 +1,5 @@
-set_property -dict {PACKAGE_PIN T21 IOSTANDARD LVCMOS33} [get_ports {led}] 
-set_property -dict {PACKAGE_PIN Y22 IOSTANDARD LVCMOS33} [get_ports {sync}]
+set_property -dict {PACKAGE_PIN T21 IOSTANDARD LVCMOS33} [get_ports led]
+set_property -dict {PACKAGE_PIN Y22 IOSTANDARD LVCMOS33} [get_ports sync]
 
 set_property -dict {PACKAGE_PIN K22 IOSTANDARD LVCMOS33} [get_ports spi_sdio]
 set_property -dict {PACKAGE_PIN K21 IOSTANDARD LVCMOS33} [get_ports spi_sclk]
@@ -133,5 +133,6 @@ set_property PACKAGE_PIN E10 [get_ports {pcie_clk_n[0]}]
 
 # PCIe PERSTn
 set_property -dict {PACKAGE_PIN V14 IOSTANDARD LVCMOS33} [get_ports pcie_perstn]
+
 
 

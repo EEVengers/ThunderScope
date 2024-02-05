@@ -15,9 +15,9 @@
 
   <DataDepth_En>1024</DataDepth_En>
 
-  <LowPower_En>OFF</LowPower_En>
+  <LowPower_En>ON</LowPower_En>
 
-  <XADC_En>Enabled</XADC_En>
+  <XADC_En>Disabled</XADC_En>
 
   <TargetFPGA>xc7a100t-fgg484/-2</TargetFPGA>
 
@@ -54,8 +54,8 @@
     <DeepMemory>1</DeepMemory>
     <DataMask>1</DataMask>
     <ECC>Disabled</ECC>
-    <Ordering>Normal</Ordering>
-    <BankMachineCnt>8</BankMachineCnt>
+    <Ordering>Strict</Ordering>
+    <BankMachineCnt>3</BankMachineCnt>
     <CustomPart>FALSE</CustomPart>
     <NewPartName/>
     <RowAddress>15</RowAddress>

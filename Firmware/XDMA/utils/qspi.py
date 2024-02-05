@@ -36,84 +36,120 @@ class QSPI:
     CMD_WRITE_ENABLE    = 0x06
     
     
-    def __init__ (self,device_offset,base_offset):
+    def __init__ (self,device_offset,base_offset,sim=False):
         self.device_offset = device_offset
         self.base_offset = base_offset
+        self.sim = sim
         self.reset()
         #Dummy read
         self.read_id()
         
         self.flash_id = self.read_id()
-        self.falsh_info = self.device_info_read()
-        print(hex(self.flash_id))
-        n2ps = self.falsh_info[0x20]
-        if (n2ps == 0x8):
-            self.page_size = 0x100
-        else:
-            self.page_size = 0x200
-        n2ss = self.falsh_info[0x21]
-        if (n2ss == 0x8):
-            self.sector_size = 64*1024
-        else:
-            self.sector_size = 256*1024
-        print(hex(self.sector_size))
-        print(hex(self.random_read(0x0)[0x23]))
-        print(self.is_busy())
+        # self.falsh_info = self.device_info_read() #TODO: Not Supported on Micron Flash?
+        # print(hex(self.flash_id))
+        self.page_size = 0x100
+        self.sector_size = 64*1024
+
+        # print(hex(self.sector_size))
+        # print(hex(self.random_read(0x0)[0x23]))
+        print("FLASH ID : 0x%02X, Sector Size : 0x%08X" % (self.flash_id,self.sector_size))
+        # print(self.is_busy())
         self.status_clear()
         #if (self.load_mcs("page.mcs",verify_only=True)):
         #    self.load_mcs("page.mcs")
-        print(hex(self.random_read(0x0)[0x23]))
+        # print(hex(self.random_read(0x0)[0x23])) #TODO: Add check for version?
         #read_arry = self.random_read(0x0)
         #for i in range(len(read_arry)):
         #    print(hex(i),hex(read_arry[i]))
+        if(self.sim):
+            self.pcie_stats()
         
+    def pcie_stats(self):
+        mem = pcie_mem(self.device_offset+self.base_offset,sim=self.sim)
+        print("PCIe Writes : %6d, Reads : %6d" % mem.get_stats())
+        mem.clear_stats()
+
     def reset(self):
-        mem = pcie_mem(self.device_offset+self.base_offset)
+        mem = pcie_mem(self.device_offset+self.base_offset,sim=self.sim)
         mem.wwrite(self.REG_RST,self.REG_RST_MASK)
         mem.wwrite(self.REG_SSR,self.REG_SSR_CEF)
         mem.wwrite(self.REG_CR,self.REG_CR_OFF)
         
     def issue_cmd(self,cmd,readback = 0):
         #get pcie memory
-        mem = pcie_mem(self.device_offset+self.base_offset)
+        mem = pcie_mem(self.device_offset+self.base_offset,sim=self.sim)
         #write cmd section
         #enable CE
         mem.wwrite(self.REG_SSR,self.REG_SSR_CEN)
         #write cmd sequence until full or end of sequence, issue and start again
         cmd_idx = 0
-        while(cmd_idx<len(cmd)):
-            while(cmd_idx<len(cmd) and (mem.wread(self.REG_SR)&self.REG_SR_TXF)!=self.REG_SR_TXF):
+        if (not self.sim):
+            while(cmd_idx<len(cmd)):
+                while(cmd_idx<len(cmd) and (mem.wread(self.REG_SR)&self.REG_SR_TXF)!=self.REG_SR_TXF):
+                    mem.wwrite(self.REG_DTR,cmd[cmd_idx])
+                    #print(hex(cmd[cmd_idx]))
+                    cmd_idx += 1
+                #start
+                mem.wwrite(self.REG_CR,self.REG_CR_ON)
+                #go until empty
+                while((mem.wread(self.REG_SR)&self.REG_SR_TXE)!=self.REG_SR_TXE):
+                    pass
+                #stop
+                mem.wwrite(self.REG_CR,self.REG_CR_OFF)
+                #empty RX (all garabge data during cmd issue
+                while((mem.wread(self.REG_SR)&self.REG_SR_RXE)!=self.REG_SR_RXE):
+                    mem.wread(self.REG_DRR)
+            #read 
+            read_idx = 0
+            return_val = []
+            while(read_idx<readback):
+                while(read_idx<readback and (mem.wread(self.REG_SR)&self.REG_SR_TXF)!=self.REG_SR_TXF):
+                    mem.wwrite(self.REG_DTR,0x0)
+                    read_idx += 1
+                #start
+                mem.wwrite(self.REG_CR,self.REG_CR_ON)
+                #go until empty
+                while((mem.wread(self.REG_SR)&self.REG_SR_TXE)!=self.REG_SR_TXE):
+                    pass
+                #stop
+                mem.wwrite(self.REG_CR,self.REG_CR_OFF)
+                #read RX
+                while((mem.wread(self.REG_SR)&self.REG_SR_RXE)!=self.REG_SR_RXE):
+                    return_val.append(mem.wread(self.REG_DRR))
+                    #print(hex(return_val[-1]))
+        else:
+            while(cmd_idx<len(cmd)):
+                mem.wread(self.REG_SR)
                 mem.wwrite(self.REG_DTR,cmd[cmd_idx])
                 #print(hex(cmd[cmd_idx]))
                 cmd_idx += 1
-            #start
-            mem.wwrite(self.REG_CR,self.REG_CR_ON)
-            #go until empty
-            while((mem.wread(self.REG_SR)&self.REG_SR_TXE)!=self.REG_SR_TXE):
-                pass
-            #stop
-            mem.wwrite(self.REG_CR,self.REG_CR_OFF)
-            #empty RX (all garabge data during cmd issue
-            while((mem.wread(self.REG_SR)&self.REG_SR_RXE)!=self.REG_SR_RXE):
+                #start
+                mem.wwrite(self.REG_CR,self.REG_CR_ON)
+                #go until empty
+                mem.wread(self.REG_SR)
+                #stop
+                mem.wwrite(self.REG_CR,self.REG_CR_OFF)
+                #empty RX (all garabge data during cmd issue
+                mem.wread(self.REG_SR)
                 mem.wread(self.REG_DRR)
-        #read 
-        read_idx = 0
-        return_val = []
-        while(read_idx<readback):
-            while(read_idx<readback and (mem.wread(self.REG_SR)&self.REG_SR_TXF)!=self.REG_SR_TXF):
+                #read 
+            read_idx = 0
+            return_val = []
+            while(read_idx<readback):
+                mem.wread(self.REG_SR)
                 mem.wwrite(self.REG_DTR,0x0)
                 read_idx += 1
-            #start
-            mem.wwrite(self.REG_CR,self.REG_CR_ON)
-            #go until empty
-            while((mem.wread(self.REG_SR)&self.REG_SR_TXE)!=self.REG_SR_TXE):
-                pass
-            #stop
-            mem.wwrite(self.REG_CR,self.REG_CR_OFF)
-            #read RX
-            while((mem.wread(self.REG_SR)&self.REG_SR_RXE)!=self.REG_SR_RXE):
+                #start
+                mem.wwrite(self.REG_CR,self.REG_CR_ON)
+                #go until empty
+                mem.wread(self.REG_SR)
+                #stop
+                mem.wwrite(self.REG_CR,self.REG_CR_OFF)
+                #read RX
+                mem.wread(self.REG_SR)
                 return_val.append(mem.wread(self.REG_DRR))
                 #print(hex(return_val[-1]))
+        
         #turn off CE
         mem.wwrite(self.REG_SSR,self.REG_SSR_CEF)
         
@@ -138,7 +174,7 @@ class QSPI:
         return_val = self.issue_cmd(cmd,length)
         return return_val
         
-    def is_busy(self):
+    def is_busy(self): 
         cmd = [self.CMD_STATUSREG_READ]
         if ((self.issue_cmd(cmd,1)[0]&self.SR_IS_READY_MASK)==self.SR_IS_READY_MASK):
             return True
@@ -154,6 +190,7 @@ class QSPI:
         self.issue_cmd(cmd)
         
     def erase_sector(self,addr):
+        # print("Erase Sector at 0x%08X" % (addr))
         self.status_clear()
         self.write_en()
         #make sure nothing is happening
@@ -186,7 +223,7 @@ class QSPI:
             pass        
         self.status_clear()
     
-    def write_sector(self,addr,data):
+    def write_sector(self,addr,data):        
         self.erase_sector(addr)
         stride = self.page_size
         #print(data[0:0x80])
@@ -196,6 +233,8 @@ class QSPI:
     
     def verify_sector (self,addr,data):
         read_data = self.random_read(addr,self.sector_size)
+        if (self.sim):
+            return 0
         for rbyte,dbyte in zip(read_data,data):
             if(rbyte != dbyte):
                 print (addr,rbyte,dbyte)
@@ -205,9 +244,8 @@ class QSPI:
         return 0
     
     def write_flash(self,addr,data,verify_only=False):
+        print("Addr : 0x%08X, Len : 0x%08X" % (addr,len(data)))
         for i in range(0,len(data),self.sector_size):
-            print((i*100.0)/len(data))
-            print(hex(addr+i))
             if(i<len(data)):
                 if(not verify_only):
                     self.write_sector(addr+i,data[0+i:self.sector_size+i])
@@ -223,7 +261,8 @@ class QSPI:
     # NEEDS MORE Features to support full MCS files
     def load_mcs(self,path,verify_only=False):
         key = ":([0-9A-F]{2})([0-9A-F]{4})([0-9A-F]{2})([0-9A-F]+)?([0-9A-F]{2})"
-
+        base_addr = 0
+        pass_var = 0
         file_b = bytearray()
         count = 0
         with open(path, 'r') as file_t:
@@ -236,9 +275,15 @@ class QSPI:
                     mcs_type  = int(m.group(3),16)
                     if mcs_type == 1:
                         break            
-                    if mcs_type == 4:
+                    if mcs_type == 4: #Update Base Address? assume sector change?
+                        if (len(file_b)!=0):
+                            pass_var += self.write_flash(base_addr,file_b,verify_only)
+                            file_b = bytearray()
+                        base_addr = int(m.group(4),16) << 16
                         continue    
                     data_b    = int.to_bytes(int(m.group(4),16),num_bytes,'big')
                     file_b.extend(data_b)
-        print(file_b[0:100])
-        return self.write_flash(0,file_b,verify_only)
+        pass_var += self.write_flash(base_addr,file_b,verify_only)
+        if(self.sim):
+            self.pcie_stats()
+        return pass_var

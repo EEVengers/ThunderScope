@@ -1,5 +1,5 @@
-set_property -dict {PACKAGE_PIN P6 IOSTANDARD LVCMOS33} [get_ports {led}]
-set_property -dict {PACKAGE_PIN N6 IOSTANDARD LVCMOS33} [get_ports {sync}]
+set_property -dict {PACKAGE_PIN P6 IOSTANDARD LVCMOS33} [get_ports led]
+set_property -dict {PACKAGE_PIN N6 IOSTANDARD LVCMOS33} [get_ports sync]
 
 set_property -dict {PACKAGE_PIN L3 IOSTANDARD LVCMOS33} [get_ports spi_sdio]
 set_property -dict {PACKAGE_PIN K2 IOSTANDARD LVCMOS33} [get_ports spi_sclk]
