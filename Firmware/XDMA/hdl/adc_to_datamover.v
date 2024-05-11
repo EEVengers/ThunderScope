@@ -18,7 +18,8 @@ module adc_to_datamover(
     input s2mm_wr_xfer_cmplt,
     input[31:0] gpio_io_o_0,
     output[31:0] gpio2_io_i,
-    input serdes_ready
+    input serdes_ready,
+    input ddr_ready
     );
 
   wire fifo_full;
@@ -115,7 +116,7 @@ module adc_to_datamover(
    	.wr_clk(adc_divclk),
    	.rd_clk(axi_aclk),
    	.din(adc_data),
-   	.wr_en(serdes_ready),	//add a state machine to deal with fifo full
+   	.wr_en(serdes_ready & ddr_ready),	//add a state machine to deal with fifo full
    	.rd_en(fifo_rd_en),
    	.dout(fifo_data),
    	.full(fifo_full),

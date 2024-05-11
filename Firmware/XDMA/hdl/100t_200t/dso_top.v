@@ -50,7 +50,10 @@ module dso_top
     inout qspi_d1,
     inout qspi_d2,
     inout qspi_d3,
-    output qspi_cs
+    output qspi_cs,
+    output eth_rst_n,
+    input ext_clk_p,
+    input ext_clk_n
     );
 
   wire [31:0]AXI_STR_TXD_0_tdata;
@@ -102,12 +105,17 @@ module dso_top
   wire spi_rtl_0_io3_io;
   wire spi_rtl_0_io3_o;
   wire spi_rtl_0_io3_t;
+  wire ss_o_0;
+  
+  wire init_calib_complete_0;
+  
+  assign eth_rst_n = 0;
   
   assign term = gpio_io_o_0[15:12];
   assign atten = gpio_io_o_0[19:16];
-  assign dc_cpl = gpio_io_o_0[23:20];
+  assign dc_cpl = ~gpio_io_o_0[23:20];
    
-  assign led = ~serdes_ready;
+  assign led = ~(serdes_ready & init_calib_complete_0);
   //assign sync = S01_ARESETN;
   
   assign acq_en = gpio_io_o_0[24];
@@ -116,6 +124,8 @@ module dso_top
   
   assign i2c_sda = (i2c_sda_buf) ? (1'bz) : (1'b0);
   assign i2c_scl = (i2c_scl_buf) ? (1'bz) : (1'b0);
+
+  assign qspi_cs = (ss_o_0) ? (1'bz) : (1'b0);
 
   reg[15:0] sync_counter;
   reg sync_clk = 1'b0;
@@ -197,6 +207,13 @@ module dso_top
   always @(posedge divclk)
     serdes_rst_cdc <= { serdes_rst_cdc[1:0], !S01_ARESETN };
   assign serdes_rst = serdes_rst_cdc[2];
+  
+  wire ddr_ready;
+  reg [2:0] ddr_ready_cdc = 3'b000;
+  always @(posedge divclk)
+    ddr_ready_cdc <= { ddr_ready_cdc[1:0], init_calib_complete_0};
+  assign ddr_ready = ddr_ready_cdc[2];
+  
 
   serdes serdes (
 	.rst            (serdes_rst),
@@ -230,7 +247,8 @@ module dso_top
     .s2mm_wr_xfer_cmplt(s2mm_wr_xfer_cmplt),
     .gpio_io_o_0(gpio_io_o_0),
     .gpio2_io_i(gpio2_io_i),
-    .serdes_ready (serdes_ready)
+    .serdes_ready (serdes_ready),
+    .ddr_ready(ddr_ready)
   );
   
   serial_controller  serial_controller(
@@ -305,8 +323,11 @@ module dso_top
     .SPI_0_0_io3_i(spi_rtl_0_io3_i),
     .SPI_0_0_io3_o(spi_rtl_0_io3_o),
     .SPI_0_0_io3_t(spi_rtl_0_io3_t),
-    .SPI_0_0_ss_t(1'b0),
-    .ss_o_0(qspi_cs)
+    .SPI_0_0_ss_t(),
+    .ss_o_0(ss_o_0),
+    .init_calib_complete_0(init_calib_complete_0),
+    .ext_clk_p(ext_clk_p),
+    .ext_clk_n(ext_clk_n)
     );
         
 IOBUF spi_rtl_0_io0_iobuf

@@ -1,5 +1,5 @@
 #*****************************************************************************************
-# Vivado (TM) v2023.2 (64-bit)
+# Vivado (TM) v2020.1 (64-bit)
 #
 #
 #*****************************************************************************************
@@ -143,31 +143,40 @@ add_files -norecurse $origin_dir/hdl/100t_200t
 
 set files [list \
  [file normalize "${origin_dir}/xci/${Target}/clk_wiz_0.xcix" ]\
- [file normalize "${origin_dir}/xci/${Target}/fifo_generator_0.xci" ]\
+ [file normalize "${origin_dir}/xci/${Target}/fifo_generator_0/fifo_generator_0.xci" ]\
 ]
 import_files -fileset sources_1 $files
 
 if {$Target=="50t"} {
 add_files -fileset constrs_1 $origin_dir/xdc/35t_50t/module_io.xdc
 add_files -fileset constrs_1 $origin_dir/xdc/35t_50t/module_bitgen.xdc
+add_files -fileset constrs_1 $origin_dir/xdc/35t_50t/timing.xdc
 } elseif {$Target=="35t"} {
 add_files -fileset constrs_1 $origin_dir/xdc/35t_50t/module_io.xdc
 add_files -fileset constrs_1 $origin_dir/xdc/35t_50t/module_bitgen.xdc
+add_files -fileset constrs_1 $origin_dir/xdc/35t_50t/timing.xdc
 } elseif {$Target=="100t"} {
 add_files -fileset constrs_1 $origin_dir/xdc/module_bitgen.xdc
 add_files -fileset constrs_1 $origin_dir/xdc/module_io.xdc
+add_files -fileset constrs_1 $origin_dir/xdc/timing.xdc
 } elseif {$Target=="200t"} {
 add_files -fileset constrs_1 $origin_dir/xdc/module_bitgen.xdc
 add_files -fileset constrs_1 $origin_dir/xdc/module_io.xdc
+add_files -fileset constrs_1 $origin_dir/xdc/timing.xdc
 }
 
 
-add_files -fileset constrs_1 $origin_dir/xdc/timing.xdc
+
 
 update_compile_order -fileset sources_1
 
-source $origin_dir/bd/top_bd.tcl
-
+if {$Target=="50t"} {
+source $origin_dir/bd/top_bd_50t.tcl
+} elseif {$Target=="100t"} {
+source $origin_dir/bd/top_bd_100t.tcl
+} elseif {$Target=="200t"} {
+source $origin_dir/bd/top_bd_200t.tcl
+}
 
 if {$Target=="50t"} {
 set_property CONFIG.XML_INPUT_FILE {../../../../../../../xci/50t/mig_a.prj} [get_bd_cells /Memory/mig_7series_0]
@@ -231,9 +240,28 @@ wait_on_run impl_1
 open_run impl_1
 
 write_bitstream -force -bin_file $origin_dir/output/${_xil_proj_name_}.bit
-set_property BITSTREAM.CONFIG.NEXT_CONFIG_ADDR 0x0097FC00 [current_design]
+
+if {$Target=="50t"} {
+set_property BITSTREAM.CONFIG.NEXT_CONFIG_ADDR 0x023FC00 [current_design]
+} elseif {$Target=="100t"} {
+set_property BITSTREAM.CONFIG.NEXT_CONFIG_ADDR 0x097FC00 [current_design]
+} elseif {$Target=="200t"} {
+set_property BITSTREAM.CONFIG.NEXT_CONFIG_ADDR 0x097FC00 [current_design]
+}
+
 write_bitstream -force -bin_file $origin_dir/output/${_xil_proj_name_}_gold.bit
-write_cfgmem -force -format mcs -size 32 -interface SPIx4 -loadbit "up 0x00000000 $origin_dir/output/${_xil_proj_name_}_gold.bit up 0x00980000 $origin_dir/output/${_xil_proj_name_}.bit" -loaddata "up 0x0097FC00 ./cfg/timer1.bin up 0x01300000 ./cfg/timer2.bin" $origin_dir/output/${_xil_proj_name_}_full.mcs
-write_cfgmem -force -format mcs -size 32 -interface SPIx4 -loadbit "up 0x00980000 $origin_dir/output/${_xil_proj_name_}.bit" $origin_dir/output/${_xil_proj_name_}_update.mcs
+
+if {$Target=="50t"} {
+write_cfgmem -force -format mcs -size 8 -interface SPIx4 -loadbit "up 0x0000000 $origin_dir/output/${_xil_proj_name_}_gold.bit up 0x0240000 $origin_dir/output/${_xil_proj_name_}.bit" -loaddata "up 0x023FC00 ./cfg/timer1_50t.bin up 0x0480000 ./cfg/timer2_50t.bin" $origin_dir/output/${_xil_proj_name_}_full.mcs
+write_cfgmem -force -format mcs -size 8 -interface SPIx4 -loadbit "up 0x0240000 $origin_dir/output/${_xil_proj_name_}.bit" $origin_dir/output/${_xil_proj_name_}_update.mcs
+} elseif {$Target=="100t"} {
+write_cfgmem -force -format mcs -size 32 -interface SPIx4 -loadbit "up 0x0000000 $origin_dir/output/${_xil_proj_name_}_gold.bit up 0x0980000 $origin_dir/output/${_xil_proj_name_}.bit" -loaddata "up 0x097FC00 ./cfg/timer1.bin up 0x01300000 ./cfg/timer2.bin" $origin_dir/output/${_xil_proj_name_}_full.mcs
+write_cfgmem -force -format mcs -size 32 -interface SPIx4 -loadbit "up 0x0980000 $origin_dir/output/${_xil_proj_name_}.bit" $origin_dir/output/${_xil_proj_name_}_update.mcs
+} elseif {$Target=="200t"} {
+write_cfgmem -force -format mcs -size 32 -interface SPIx4 -loadbit "up 0x0000000 $origin_dir/output/${_xil_proj_name_}_gold.bit up 0x0980000 $origin_dir/output/${_xil_proj_name_}.bit" -loaddata "up 0x097FC00 ./cfg/timer1.bin up 0x01300000 ./cfg/timer2.bin" $origin_dir/output/${_xil_proj_name_}_full.mcs
+write_cfgmem -force -format mcs -size 32 -interface SPIx4 -loadbit "up 0x0980000 $origin_dir/output/${_xil_proj_name_}.bit" $origin_dir/output/${_xil_proj_name_}_update.mcs
+}
+
 
 close_project
+ 
