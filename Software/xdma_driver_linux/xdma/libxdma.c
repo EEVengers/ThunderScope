@@ -2908,22 +2908,14 @@ static void transfer_destroy(struct xdma_dev *xdev, struct xdma_transfer *xfer)
 		struct sg_table *sgt = xfer->sgt;
 
 		if (sgt->nents) {
-<<<<<<< HEAD:Software/xdma_driver_linux/xdma/libxdma.c
 
 #if LINUX_VERSION_CODE < KERNEL_VERSION(5, 16, 0)
-=======
-#if KERNEL_VERSION(5, 17, 0) > LINUX_VERSION_CODE
->>>>>>> 4f3dfa0e (handled the obsoletion of linux/pci-dma-compat.h):XDMA/linux-kernel/xdma/libxdma.c
 			pci_unmap_sg(xdev->pdev, sgt->sgl, sgt->nents,
 				     xfer->dir);
 #else
 			dma_unmap_sg(&xdev->pdev->dev, sgt->sgl, sgt->nents,
 				     xfer->dir);
 #endif
-<<<<<<< HEAD:Software/xdma_driver_linux/xdma/libxdma.c
-
-=======
->>>>>>> 4f3dfa0e (handled the obsoletion of linux/pci-dma-compat.h):XDMA/linux-kernel/xdma/libxdma.c
 			sgt->nents = 0;
 		}
 	}
@@ -3206,25 +3198,13 @@ ssize_t xdma_xfer_aperture(struct xdma_engine *engine, bool write, u64 ep_addr,
 	}
 
 	if (!dma_mapped) {
-<<<<<<< HEAD:Software/xdma_driver_linux/xdma/libxdma.c
-
-
-#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 16, 0)
-=======
 #if KERNEL_VERSION(5, 17, 0) > LINUX_VERSION_CODE
->>>>>>> 4f3dfa0e (handled the obsoletion of linux/pci-dma-compat.h):XDMA/linux-kernel/xdma/libxdma.c
 		sgt->nents = pci_map_sg(xdev->pdev, sgt->sgl, sgt->orig_nents,
 					dir);
 #else
 		sgt->nents = dma_map_sg(&xdev->pdev->dev, sgt->sgl,
-<<<<<<< HEAD:Software/xdma_driver_linux/xdma/libxdma.c
-					sgt->orig_nents, dir);
-#endif
-
-=======
                                         sgt->orig_nents, dir);
 #endif
->>>>>>> 4f3dfa0e (handled the obsoletion of linux/pci-dma-compat.h):XDMA/linux-kernel/xdma/libxdma.c
 		if (!sgt->nents) {
 			pr_info("map sgl failed, sgt 0x%p.\n", sgt);
 			return -EIO;
@@ -4251,16 +4231,7 @@ static int set_dma_mask(struct pci_dev *pdev)
 
 	dbg_init("sizeof(dma_addr_t) == %ld\n", sizeof(dma_addr_t));
 	/* 64-bit addressing capability for XDMA? */
-<<<<<<< HEAD:Software/xdma_driver_linux/xdma/libxdma.c
-#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 16, 0)
-	if (!pci_set_dma_mask(pdev, DMA_BIT_MASK(64))) 
-#else
-	if (!dma_set_mask_and_coherent(&pdev->dev, DMA_BIT_MASK(64))) 
-#endif
-	{
-=======
 	if (!dma_set_mask(&pdev->dev, DMA_BIT_MASK(64))) {
->>>>>>> 4f3dfa0e (handled the obsoletion of linux/pci-dma-compat.h):XDMA/linux-kernel/xdma/libxdma.c
 		/* query for DMA transfer */
 		/* @see Documentation/DMA-mapping.txt */
 		dbg_init("set_dma_mask(64)\n");
@@ -4269,24 +4240,10 @@ static int set_dma_mask(struct pci_dev *pdev)
 #endif
 		/* use 64-bit DMA */
 		dbg_init("Using a 64-bit DMA mask.\n");
-<<<<<<< HEAD:Software/xdma_driver_linux/xdma/libxdma.c
-	} else 
-#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 16, 0)
-	if (!pci_set_dma_mask(pdev, DMA_BIT_MASK(32))) 
-#else
-	if (!dma_set_mask_and_coherent(&pdev->dev, DMA_BIT_MASK(32))) 
-#endif
-	{
-		dbg_init("Could not set 64-bit DMA mask.\n");
-#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 16, 0)
-		pci_set_consistent_dma_mask(pdev, DMA_BIT_MASK(32));
-#endif
-=======
 		dma_set_coherent_mask(&pdev->dev, DMA_BIT_MASK(64));
 	} else if (!dma_set_mask(&pdev->dev, DMA_BIT_MASK(32))) {
 		dbg_init("Could not set 64-bit DMA mask.\n");
 		dma_set_coherent_mask(&pdev->dev, DMA_BIT_MASK(32));
->>>>>>> 4f3dfa0e (handled the obsoletion of linux/pci-dma-compat.h):XDMA/linux-kernel/xdma/libxdma.c
 		/* use 32-bit DMA */
 		dbg_init("Using a 32-bit DMA mask.\n");
 	} else {
