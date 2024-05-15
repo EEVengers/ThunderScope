@@ -2908,10 +2908,6 @@ static void transfer_destroy(struct xdma_dev *xdev, struct xdma_transfer *xfer)
 		struct sg_table *sgt = xfer->sgt;
 
 		if (sgt->nents) {
-<<<<<<< HEAD:Software/xdma_driver_linux/xdma/libxdma.c
-
-=======
->>>>>>> 9cdc9e33 (xdma: add kernel 6.x support):XDMA/linux-kernel/xdma/libxdma.c
 #if LINUX_VERSION_CODE < KERNEL_VERSION(5, 16, 0)
 			pci_unmap_sg(xdev->pdev, sgt->sgl, sgt->nents,
 				     xfer->dir);
