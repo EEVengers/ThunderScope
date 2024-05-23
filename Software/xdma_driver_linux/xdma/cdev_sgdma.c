@@ -36,13 +36,13 @@
 #include "xdma_thread.h"
 
 /* Module Parameters */
-unsigned int h2c_timeout = 10;
-module_param(h2c_timeout, uint, 0644);
-MODULE_PARM_DESC(h2c_timeout, "H2C sgdma timeout in seconds, default is 10 sec.");
+unsigned int h2c_timeout_ms = 10000;
+module_param(h2c_timeout_ms, uint, 0644);
+MODULE_PARM_DESC(h2c_timeout_ms, "H2C sgdma timeout in milliseconds, default is 10 seconds.");
 
-unsigned int c2h_timeout = 10;
-module_param(c2h_timeout, uint, 0644);
-MODULE_PARM_DESC(c2h_timeout, "C2H sgdma timeout in seconds, default is 10 sec.");
+unsigned int c2h_timeout_ms = 10000;
+module_param(c2h_timeout_ms, uint, 0644);
+MODULE_PARM_DESC(c2h_timeout_ms, "C2H sgdma timeout in milliseconds, default is 10 seconds.");
 
 extern struct kmem_cache *cdev_cache;
 static void char_sgdma_unmap_user_buf(struct xdma_io_cb *cb, bool write);
@@ -89,8 +89,7 @@ static void async_io_handler(unsigned long  cb_hndl, int err)
 		numbytes = xdma_xfer_completion((void *)cb, xdev,
 				engine->channel, cb->write, cb->ep_addr,
 				&cb->sgt, 0, 
-				cb->write ? h2c_timeout * 1000 :
-					    c2h_timeout * 1000);
+				cb->write ? h2c_timeout_ms : c2h_timeout_ms);
 
 	char_sgdma_unmap_user_buf(cb, cb->write);
 
@@ -104,7 +103,9 @@ static void async_io_handler(unsigned long  cb_hndl, int err)
 	if (caio->cmpl_cnt == caio->req_cnt) {
 		res = caio->res;
 		res2 = caio->res2;
-#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 1, 0)
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(5, 16, 0)
+		caio->iocb->ki_complete(caio->iocb, caio->err_cnt ? res2 : res);
+#elif LINUX_VERSION_CODE >= KERNEL_VERSION(4, 1, 0)
 		caio->iocb->ki_complete(caio->iocb, res, res2);
 #else
 		aio_complete(caio->iocb, res, res2);
@@ -119,7 +120,9 @@ skip_tran:
 	return;
 
 skip_dev_lock:
-#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 1, 0)
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(5, 16, 0)
+	caio->iocb->ki_complete(caio->iocb, -EBUSY);
+#elif LINUX_VERSION_CODE >= KERNEL_VERSION(4, 1, 0)
 	caio->iocb->ki_complete(caio->iocb, numbytes, -EBUSY);
 #else
 	aio_complete(caio->iocb, numbytes, -EBUSY);
@@ -392,8 +395,7 @@ static ssize_t char_sgdma_read_write(struct file *file, const char __user *buf,
 		return rv;
 
 	res = xdma_xfer_submit(xdev, engine->channel, write, *pos, &cb.sgt,
-				0, write ? h2c_timeout * 1000 :
-					   c2h_timeout * 1000);
+				0, write ? h2c_timeout_ms : c2h_timeout_ms);
 
 	char_sgdma_unmap_user_buf(&cb, write);
 
@@ -476,7 +478,7 @@ static ssize_t cdev_aio_write(struct kiocb *iocb, const struct iovec *io,
 		rv = xdma_xfer_submit_nowait((void *)&caio->cb[i], xdev,
 					engine->channel, caio->cb[i].write,
 					caio->cb[i].ep_addr, &caio->cb[i].sgt,
-					0, h2c_timeout * 1000);
+					0, h2c_timeout_ms);
 	}
 
 	if (engine->cmplthp)
@@ -550,7 +552,7 @@ static ssize_t cdev_aio_read(struct kiocb *iocb, const struct iovec *io,
 		rv = xdma_xfer_submit_nowait((void *)&caio->cb[i], xdev,
 					engine->channel, caio->cb[i].write,
 					caio->cb[i].ep_addr, &caio->cb[i].sgt,
-					0, c2h_timeout * 1000);
+					0, c2h_timeout_ms);
 	}
 
 	if (engine->cmplthp)
@@ -560,6 +562,8 @@ static ssize_t cdev_aio_read(struct kiocb *iocb, const struct iovec *io,
 }
 
 #if LINUX_VERSION_CODE >= KERNEL_VERSION(3, 16, 0)
+
+#if LINUX_VERSION_CODE < KERNEL_VERSION(6, 4, 0)
 static ssize_t cdev_write_iter(struct kiocb *iocb, struct iov_iter *io)
 {
 	return cdev_aio_write(iocb, io->iov, io->nr_segs, io->iov_offset);
@@ -569,6 +573,18 @@ static ssize_t cdev_read_iter(struct kiocb *iocb, struct iov_iter *io)
 {
 	return cdev_aio_read(iocb, io->iov, io->nr_segs, io->iov_offset);
 }
+#else
+static ssize_t cdev_write_iter(struct kiocb *iocb, struct iov_iter *io)
+{
+	return cdev_aio_write(iocb, iter_iov(io), io->nr_segs, io->iov_offset);
+}
+
+static ssize_t cdev_read_iter(struct kiocb *iocb, struct iov_iter *io)
+{
+	return cdev_aio_read(iocb, iter_iov(io), io->nr_segs, io->iov_offset);
+}
+#endif
+
 #endif
 
 static int ioctl_do_perf_start(struct xdma_engine *engine, unsigned long arg)
@@ -776,8 +792,7 @@ static int ioctl_do_aperture_dma(struct xdma_engine *engine, unsigned long arg,
 
 	io.error = 0;
 	res = xdma_xfer_aperture(engine, write, io.ep_addr, io.aperture,
-				&cb.sgt, 0, write ? h2c_timeout * 1000 :
-						c2h_timeout * 1000);
+				&cb.sgt, 0, write ? h2c_timeout_ms : c2h_timeout_ms);
 
 	char_sgdma_unmap_user_buf(&cb, write);
 	if (res < 0)

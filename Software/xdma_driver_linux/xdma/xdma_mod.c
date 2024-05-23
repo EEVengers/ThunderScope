@@ -30,7 +30,7 @@
 #include "xdma_cdev.h"
 #include "version.h"
 
-#define DRV_MODULE_NAME		"xdma"
+#define DRV_MODULE_NAME		"xdma-chr"
 #define DRV_MODULE_DESC		"Xilinx XDMA Reference Driver"
 
 static char version[] =
@@ -173,13 +173,13 @@ static int probe_one(struct pci_dev *pdev, const struct pci_device_id *id)
 	}
 
 	if (xpdev->h2c_channel_max > XDMA_CHANNEL_NUM_MAX) {
-		pr_err("Maximun H2C channel limit reached\n");
+		pr_err("Maximum H2C channel limit reached\n");
 		rv = -EINVAL;
 		goto err_out;
 	}
 
 	if (xpdev->c2h_channel_max > XDMA_CHANNEL_NUM_MAX) {
-		pr_err("Maximun C2H channel limit reached\n");
+		pr_err("Maximum C2H channel limit reached\n");
 		rv = -EINVAL;
 		goto err_out;
 	}
@@ -293,11 +293,12 @@ static void xdma_error_resume(struct pci_dev *pdev)
 	struct xdma_pci_dev *xpdev = dev_get_drvdata(&pdev->dev);
 
 	pr_info("dev 0x%p,0x%p.\n", pdev, xpdev);
-#if KERNEL_VERSION(5, 7, 0) <= LINUX_VERSION_CODE
+#if PCI_AER_NAMECHANGE
 	pci_aer_clear_nonfatal_status(pdev);
 #else
 	pci_cleanup_aer_uncorrect_error_status(pdev);
 #endif
+
 }
 
 #if KERNEL_VERSION(4, 13, 0) <= LINUX_VERSION_CODE
@@ -359,8 +360,8 @@ static int xdma_mod_init(void)
 
 	if (desc_blen_max > XDMA_DESC_BLEN_MAX)
 		desc_blen_max = XDMA_DESC_BLEN_MAX;
-	pr_info("desc_blen_max: 0x%x/%u, timeout: h2c %u c2h %u sec.\n",
-		desc_blen_max, desc_blen_max, h2c_timeout, c2h_timeout);
+	pr_info("desc_blen_max: 0x%x/%u, timeout: h2c %u c2h %u (ms)\n",
+		desc_blen_max, desc_blen_max, h2c_timeout_ms, c2h_timeout_ms);
 
 	rv = xdma_cdev_init();
 	if (rv < 0)
