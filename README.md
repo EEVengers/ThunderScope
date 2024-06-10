@@ -18,15 +18,29 @@ Catch up with these videos on the project:
 [Teardown Session 39: ThunderScope](https://www.youtube.com/watch?v=HIrENqQAbHI)
 
 ___
+## Quick Start Guide 
+
+These are instructions for the XDMA gateware, which is currently the most stable gateware and driver.
+
+1. Install the XDMA driver for [Linux](https://github.com/EEVengers/ThunderScope/tree/master/Software/xdma_driver_linux) or [Windows](https://github.com/EEVengers/ThunderScope/tree/master/Software/xdma_driver_win_src_2018_2)
+2. Build TS.NET.Engine using the [build scripts](https://github.com/macaba/TS.NET/tree/main/build-scripts)
+   - Dependences for build scripts on Linux: `apt-get install -y dotnet6; apt-get install -y libgdiplus`
+   - On Windows, should just need Visual Studio with the C# plugins
+3. Install ngscopeclient, following the instructions in their [user manual](https://www.ngscopeclient.org/downloads/ngscopeclient-manual.pdf)
+4. Run TS.NET.Engine and ngscopeclient
+5. Add ThunderScope in ngscopeclient under Add -> Oscilloscope with "Twinlan" interface and "Localhost:5025:5026" for the ports
+
+
+___
 ## Baseboard Hardware 
 
 | Revision | Label | Status | Location |
 | ------ | ---- | ---------- | ------------------------------ |
 | Rev.1  | N/A  | DEPRECATED | Hardware/Altium/Thunderscope_E |
 | Rev.2  | N/A  | DEPRECATED | Hardware/Altium/Thunderscope_Rev2 |
-| Rev.3  | Alpha  | TO BE DEPRECATED | Hardware/Altium/Thunderscope_Rev3 |
+| Rev.3  | Alpha  | DEPRECATED | Hardware/Altium/Thunderscope_Rev3 |
 | Rev.4  | Beta 1  | ACTIVE | Hardware/Altium/Thunderscope_Rev4 |
-| Rev.4.1  | Beta 2  | IN PRODUCTION | Hardware/Altium/Thunderscope_Rev4.1 |
+| Rev.4.1  | Beta 2  | ACTIVE | Hardware/Altium/Thunderscope_Rev4.1 |
 
 ## FPGA Module Hardware 
 
@@ -34,7 +48,7 @@ ___
 | ------ | ---------- | ------------------------------ |
 | TE0712  |  ACTIVE | [Trenz Electronics TE0712 Module, 100T or 200T Varients](https://wiki.trenz-electronic.de/display/PD/TE0712+TRM) |
 | Rev.1  | DEPRECATED | Hardware/Altium/FPGA_Module |
-| Rev.2  | IN PRODUCTION | Hardware/Altium/FPGA_Module_Rev2 or Hardware/KiCad/FPGA_Module_Rev2|
+| Rev.2  | ACTIVE | Hardware/Altium/FPGA_Module_Rev2 or Hardware/KiCad/FPGA_Module_Rev2|
 
 ___
 ## Firmware
@@ -42,6 +56,12 @@ ___
 We have two types of firmware, LiteX and XDMA. We are in the process of updating the LiteX firmware to work on the latest hardware, and we will use it moving forward. Until then, use the XDMA firmware if you are not working on LiteX.
 
 TODO: Table of Beta Unit serial numbers with module types and firmware locations
+
+| Serial Numbers | Module Type | XDMA Firmware Location |
+| ------ | ---------- | ------------------------------ |
+| TS0004, TS0006, TS0015  | TE0712 100T | Firmware/XDMA/output/xdma_prj_100t_full.mcs |
+| TS0007, TS0008, TS0011-TS0014  | TE0712 200T | Firmware/XDMA/output/xdma_prj_200t_full.mcs |
+| TS0009, TS0010, TS0016-TS0018  | Custom Rev.2 | Firmware/XDMA/output/xdma_prj_50t_full.mcs |
 
 Follow the instructions in the Software/xdma_driver_linux or Software/xdma_driver_win_src_2018_2 folders to install the XDMA linux or windows driver before proceeding with installing the rest of the software.
 
