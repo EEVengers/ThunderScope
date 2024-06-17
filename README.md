@@ -23,7 +23,8 @@ ___
 These are instructions for the XDMA gateware, which is currently the most stable gateware and driver.
 
 1. Install the XDMA driver for [Linux](https://github.com/EEVengers/ThunderScope/tree/master/Software/xdma_driver_linux) or [Windows](https://github.com/EEVengers/ThunderScope/tree/master/Software/xdma_driver_win_src_2018_2)
-   - On Windows, can simply use the [MSI installer](https://github.com/EEVengers/ThunderScope/blob/master/Software/xdma_driver_win_src_2018_2/Installers/Win10_x64_Release/XDMADriverInstaller.msi)
+   - On Windows, first run `Bcdedit.exe -set TESTSIGNING ON` in administrator powershell and restart your computer
+      - Then use the [MSI installer](https://github.com/EEVengers/ThunderScope/blob/master/Software/xdma_driver_win_src_2018_2/Installers/Win10_x64_Release/XDMADriverInstaller.msi)
    - On Linux, run `sudo make install` in the [xdma](https://github.com/EEVengers/ThunderScope/tree/master/Software/xdma_driver_linux/xdma) directory
       - Run `make` in the [tools](https://github.com/EEVengers/ThunderScope/tree/master/Software/xdma_driver_linux/tools) directory
       - With a TS connected, run `sudo ./load_driver.sh` in the [tests](https://github.com/EEVengers/ThunderScope/tree/master/Software/xdma_driver_linux/tests) directory
