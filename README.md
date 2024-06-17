@@ -34,7 +34,7 @@ These are instructions for the XDMA gateware, which is currently the most stable
    - On Windows, should just need Visual Studio with the C# plugins
 3. Install ngscopeclient, following the instructions in their [user manual](https://www.ngscopeclient.org/manual/GettingStarted.html)
 4. Run TS.NET.Engine and ngscopeclient
-5. Add ThunderScope in ngscopeclient under Add -> Oscilloscope with "Twinlan" interface and "Localhost:5025:5026" for the ports
+5. Add ThunderScope in ngscopeclient under Add -> Oscilloscope with "thunderscope" Driver, "Twinlan" Transport and "Localhost:5025:5026" for the Path
 
 
 ___
