@@ -23,6 +23,11 @@ ___
 These are instructions for the XDMA gateware, which is currently the most stable gateware and driver.
 
 1. Install the XDMA driver for [Linux](https://github.com/EEVengers/ThunderScope/tree/master/Software/xdma_driver_linux) or [Windows](https://github.com/EEVengers/ThunderScope/tree/master/Software/xdma_driver_win_src_2018_2)
+   - On Windows, can simply use the [MSI installer](https://github.com/EEVengers/ThunderScope/blob/master/Software/xdma_driver_win_src_2018_2/Installers/Win10_x64_Release/XDMADriverInstaller.msi)
+   - On Linux, run `sudo make install` in the [xdma](https://github.com/EEVengers/ThunderScope/tree/master/Software/xdma_driver_linux/xdma) directory
+      - Run `make` in the [tools](https://github.com/EEVengers/ThunderScope/tree/master/Software/xdma_driver_linux/tools) directory
+      - With a TS connected, run `sudo ./load_driver.sh` in the [tests](https://github.com/EEVengers/ThunderScope/tree/master/Software/xdma_driver_linux/tests) directory
+        - Output should be `The Kernel module installed correctly and the xmda devices were recognized.`  
 2. Build TS.NET.Engine using the [build scripts](https://github.com/macaba/TS.NET/tree/main/build-scripts)
    - Dependences for build scripts on Linux: `apt-get install -y dotnet6; apt-get install -y libgdiplus`
    - On Windows, should just need Visual Studio with the C# plugins
