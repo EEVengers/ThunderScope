@@ -53,6 +53,12 @@
 #	define HAS_SWAKE_UP (LINUX_VERSION_CODE >= KERNEL_VERSION(4, 6, 0))
 #endif
 
+#if defined(RHEL_RELEASE_CODE)
+#	define PCI_AER_NAMECHANGE (RHEL_RELEASE_CODE >= RHEL_RELEASE_VERSION(8, 3))
+#else
+#	define PCI_AER_NAMECHANGE (LINUX_VERSION_CODE >= KERNEL_VERSION(5, 7, 0))
+#endif
+
 #if	HAS_SWAKE_UP
 #include <linux/swait.h>
 #endif
