@@ -95,7 +95,10 @@ Usage:
 	a. modprobe xdma
 	b. using the provided script.
 		cd tests
-        	./load_driver.sh
+        	sudo ./load_driver.sh
+			Will output "The Kernel module installed correctly 
+			and the xmda devices were recognized."
+			when run with a xdma device connected
   - Run the provided test script to generate basic DMA traffic.
         ./run_test.sh
   - Check driver Version number
