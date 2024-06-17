@@ -30,7 +30,7 @@ These are instructions for the XDMA gateware, which is currently the most stable
       - With a TS connected, run `sudo ./load_driver.sh` in the [tests](https://github.com/EEVengers/ThunderScope/tree/master/Software/xdma_driver_linux/tests) directory
         - Output should be `The Kernel module installed correctly and the xmda devices were recognized.`  
 2. Build TS.NET.Engine using the [build scripts](https://github.com/macaba/TS.NET/tree/main/build-scripts)
-   - Dependences for build scripts on Linux: `apt-get install -y dotnet6; apt-get install -y libgdiplus`
+   - Dependences for build scripts on Linux: `apt-get install -y dotnet8; apt-get install -y libgdiplus`
    - On Windows, should just need Visual Studio with the C# plugins
 3. Install ngscopeclient, following the instructions in their [user manual](https://www.ngscopeclient.org/downloads/ngscopeclient-manual.pdf)
 4. Run TS.NET.Engine and ngscopeclient
