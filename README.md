@@ -32,7 +32,7 @@ These are instructions for the XDMA gateware, which is currently the most stable
 2. Build TS.NET.Engine using the [build scripts](https://github.com/macaba/TS.NET/tree/main/build-scripts)
    - Dependences for build scripts on Linux: `apt-get install -y dotnet8; apt-get install -y libgdiplus`
    - On Windows, should just need Visual Studio with the C# plugins
-3. Install ngscopeclient, following the instructions in their [user manual](https://www.ngscopeclient.org/downloads/ngscopeclient-manual.pdf)
+3. Install ngscopeclient, following the instructions in their [user manual](https://www.ngscopeclient.org/manual/GettingStarted.html)
 4. Run TS.NET.Engine and ngscopeclient
 5. Add ThunderScope in ngscopeclient under Add -> Oscilloscope with "Twinlan" interface and "Localhost:5025:5026" for the ports
 
