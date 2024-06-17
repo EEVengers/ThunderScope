@@ -83,9 +83,10 @@ Directory and file description:
 Usage:
   - Change directory to the driver directory.
         cd xdma
-  - Generate a signing key: https://github.com/Xilinx/dma_ip_drivers/issues/39
   - Compile and install the kernel module driver.
-        make install
+        sudo make install
+  - If you get SSL errors
+	generate a signing key: https://github.com/Xilinx/dma_ip_drivers/issues/39
   - Change directory to the tools directory.
         cd tools
   - Compile the provided example test tools.
