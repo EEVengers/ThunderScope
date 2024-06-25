@@ -17,7 +17,8 @@ Catch up with these videos on the project:
 
 [Teardown Session 39: ThunderScope](https://www.youtube.com/watch?v=HIrENqQAbHI)
 
-___
+
+
 ## Quick Start Guide 
 
 These are instructions for the XDMA gateware, which is currently the most stable gateware and driver.
@@ -37,8 +38,10 @@ These are instructions for the XDMA gateware, which is currently the most stable
 4. Run TS.NET.Engine and ngscopeclient
 5. Add ThunderScope in ngscopeclient under Add -> Oscilloscope with "thunderscope" Driver, "Twinlan" Transport and "Localhost:5025:5026" for the Path
 
+## Troubleshooting 
 
-___
+If you are getting under ~1000MB/s throughput on Linux, try turning off VT-d (Intel) or IOMMU/AMD-Vi (AMD) in BIOS or using "intel_iommu=off" in GRUB (Intel)
+
 ## Baseboard Hardware 
 
 | Revision | Label | Status | Location |
@@ -57,7 +60,6 @@ ___
 | Rev.1  | DEPRECATED | Hardware/Altium/FPGA_Module |
 | Rev.2  | ACTIVE | Hardware/Altium/FPGA_Module_Rev2 or Hardware/KiCad/FPGA_Module_Rev2|
 
-___
 ## Firmware
 
 We have two types of firmware, LiteX and XDMA. We are in the process of updating the LiteX firmware to work on the latest hardware, and we will use it moving forward. Until then, use the XDMA firmware if you are not working on LiteX.
@@ -74,7 +76,6 @@ Follow the instructions in the Software/xdma_driver_linux or Software/xdma_drive
 
 For LiteX developers, the Linux driver is stable. [Windows](https://github.com/NateMeyer/litepcie_driver_win) and [Mac](https://github.com/tech2077/litepcie-macos-driver) drivers are in development.
 
-___
 ## Software
 
 Our primary software is [TS.NET](https://github.com/macaba/TS.NET), which takes in data from the hardware, triggers on it, and sends the triggered data over to [ngscopeclient](https://www.ngscopeclient.org/)
