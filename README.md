@@ -30,8 +30,9 @@ These are instructions for the XDMA gateware, which is currently the most stable
       - With a TS connected, run `sudo ./load_driver.sh` in the [tests](https://github.com/EEVengers/ThunderScope/tree/master/Software/xdma_driver_linux/tests) directory
         - Output should be `The Kernel module installed correctly and the xmda devices were recognized.`  
 2. Build TS.NET.Engine using the [build scripts](https://github.com/macaba/TS.NET/tree/main/build-scripts)
-   - Dependences for build scripts on Linux: `apt-get install -y dotnet8; apt-get install -y libgdiplus`
+   - Dependences for build scripts on Debian/Ubuntu Linux: `sudo apt-get install -y dotnet-sdk-8.0 libgdiplus`
    - On Windows, should just need Visual Studio with the C# plugins
+   - Copy [appsettings.json](https://github.com/macaba/TS.NET/blob/main/source/TS.NET.Engine/appsettings.json) and [thunderscope.yaml](https://github.com/macaba/TS.NET/blob/main/source/TS.NET.Engine/thunderscope.yaml) into the same directory as the TS.NET.Engine application
 3. Install ngscopeclient, following the instructions in their [user manual](https://www.ngscopeclient.org/manual/GettingStarted.html)
 4. Run TS.NET.Engine and ngscopeclient
 5. Add ThunderScope in ngscopeclient under Add -> Oscilloscope with "thunderscope" Driver, "Twinlan" Transport and "Localhost:5025:5026" for the Path
