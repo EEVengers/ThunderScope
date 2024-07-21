@@ -44,6 +44,18 @@ These are instructions for the XDMA gateware, which is currently the most stable
 
 If you are getting under ~1000MB/s throughput on Linux, try turning off VT-d (Intel) or IOMMU/AMD-Vi (AMD) in BIOS or using "intel_iommu=off" in GRUB (Intel)
 
+## Beta 2 Front End Rework
+
+Remove the covers on the front end shielding cans, repeat the steps below for each channel.
+
+![Screenshot of 3D View of Beta 2 Front End, C30 Labeled With "1", C26 Labeled With "2"](https://github.com/EEVengers/ThunderScope/blob/master/Docs/Beta%202%20Front%20End%20Rework.PNG)
+
+1. Replace "1" with a 220pF 50V COG 0402 Capacitor (GCM1555C1H221FA16D), this will flatten the crossover response and eliminate peaking for square waves under ~100kHz.
+   - [Check out this video for an explaination](https://youtu.be/EY9enxyHi5o)
+2. Replace "2" with a 1.2nF 100V C0G 0603 Capacitor (GCM1885C2A122FA16D), this will increase the frequency for which the maximum 100Vpp input voltage rating applies.
+   - [Check out this video for an explaination](https://youtu.be/33C-LlOQOUs)
+
+
 ## Baseboard Hardware 
 
 | Revision | Label | Status | Location |
