@@ -54,6 +54,8 @@ Remove the covers on the front end shielding cans, repeat the steps below for ea
    - [Check out this video for an explaination](https://youtu.be/EY9enxyHi5o)
 2. Replace "2" with a 1.2nF 100V C0G 0603 Capacitor (GCM1885C2A122FA16D), this will increase the frequency for which the maximum 100Vpp input voltage rating applies.
    - [Check out this video for an explaination](https://youtu.be/33C-LlOQOUs)
+3. Replace "3" with a 50Ω 0402 Resistor, this will eliminate peaking past 300 MHz in the frequency response
+   - [Check out this video for an explaination](https://youtu.be/Orcwj9rat1I) 
 
 
 ## Baseboard Hardware 
