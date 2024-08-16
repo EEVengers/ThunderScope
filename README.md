@@ -21,6 +21,8 @@ Catch up with these videos on the project:
 
 ## Quick Start Guide 
 
+### XDMA
+
 These are instructions for the XDMA gateware, which is currently the most stable gateware and driver.
 
 1. Install the XDMA driver for [Linux](https://github.com/EEVengers/ThunderScope/tree/master/Software/xdma_driver_linux) or [Windows](https://github.com/EEVengers/ThunderScope/tree/master/Software/xdma_driver_win_src_2018_2)
@@ -39,6 +41,12 @@ These are instructions for the XDMA gateware, which is currently the most stable
 3. Install ngscopeclient, following the instructions in their [user manual](https://www.ngscopeclient.org/manual/GettingStarted.html)
 4. Run TS.NET.Engine and ngscopeclient
 5. Add ThunderScope in ngscopeclient under Add -> Oscilloscope with "thunderscope" Driver, "Twinlan" Transport and "Localhost:5025:5026" for the Path
+
+### LiteX
+
+Follow the instructions in the LiteX guide to build the gateware and software for running LiteX firmware on the Thunderscope.
+
+[LiteX Build and Setup Guide](Docs/LiteX.md)
 
 ## Troubleshooting 
 
