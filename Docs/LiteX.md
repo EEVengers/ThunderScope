@@ -68,7 +68,7 @@ The Driver file is found in the `litepciedrv/x64/Release/litepciedrv` folder.
 
 ## TsLitex Library
 
-The libtslitex library provides control over the Thunderscope input channels and Sample DMA.  Clone the [libtslitex Repo](https://github.com/NateMeyer/libtslitex) [Current latest is the `ts_calibration` branch]
+The libtslitex library provides control over the Thunderscope input channels and Sample DMA.  Clone the [libtslitex Repo](https://github.com/EEvengers/libtslitex).
 
 Libtslitex uses the CMake build environment.
 
