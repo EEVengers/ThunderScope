@@ -1,5 +1,5 @@
 # ThunderScope
-Low-Cost Four Channel 1GSPS Oscilliscope using Thunderbolt/USB4 to stream data to PC for processing and display. 
+Low-Cost Four Channel 1GSPS Oscilloscope using Thunderbolt/USB4 to stream data to PC for processing and display. 
 
 Join our [development discord server](https://discord.com/invite/pds7k3WrpK)
 
