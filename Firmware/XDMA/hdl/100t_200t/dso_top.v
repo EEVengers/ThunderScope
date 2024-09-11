@@ -75,6 +75,7 @@ module dso_top
   wire axi_aresetn;
  
   wire [31:0]gpio2_io_i;
+  wire [31:0]gpio2_io_o_0;
   wire [31:0]gpio_io_o_0;
 
   wire s2mm_err;
@@ -247,6 +248,7 @@ module dso_top
     .s2mm_wr_xfer_cmplt(s2mm_wr_xfer_cmplt),
     .gpio_io_o_0(gpio_io_o_0),
     .gpio2_io_i(gpio2_io_i),
+    .gpio2_io_o_0(gpio2_io_o_0),
     .serdes_ready (serdes_ready),
     .ddr_ready(ddr_ready)
   );
@@ -298,6 +300,7 @@ module dso_top
     .axi_aclk(axi_aclk),
     .axi_aresetn(axi_aresetn),
     .gpio2_io_i(gpio2_io_i),
+    .gpio2_io_o_0(gpio2_io_o_0),
     .gpio_io_o_0(gpio_io_o_0),
     .pcie_clk_n(pcie_clk_n),
     .pcie_clk_p(pcie_clk_p),
