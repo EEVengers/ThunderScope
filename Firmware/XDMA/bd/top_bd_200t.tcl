@@ -946,6 +946,7 @@ proc create_hier_cell_Datamover { parentCell nameHier } {
   create_bd_pin -dir O s2mm_err
   create_bd_pin -dir I s2mm_halt
   create_bd_pin -dir O s2mm_wr_xfer_cmplt
+  create_bd_pin -dir O s2mm_halt_cmplt
 
   # Create instance: axi_datamover_0, and set properties
   set axi_datamover_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_datamover:5.1 axi_datamover_0 ]
@@ -972,6 +973,7 @@ proc create_hier_cell_Datamover { parentCell nameHier } {
   connect_bd_net -net axi_aclk_1 [get_bd_pins axi_aclk] [get_bd_pins axi_datamover_0/m_axi_s2mm_aclk] [get_bd_pins axi_datamover_0/m_axis_s2mm_cmdsts_awclk]
   connect_bd_net -net axi_aresetn_1 [get_bd_pins axi_aresetn] [get_bd_pins axi_datamover_0/m_axi_s2mm_aresetn] [get_bd_pins axi_datamover_0/m_axis_s2mm_cmdsts_aresetn]
   connect_bd_net -net axi_datamover_0_s2mm_err [get_bd_pins axi_datamover_0/s2mm_err] [get_bd_pins s2mm_err]
+  connect_bd_net -net axi_datamover_0_s2mm_halt_cmplt [get_bd_pins axi_datamover_0/s2mm_halt_cmplt] [get_bd_pins s2mm_halt_cmplt]
   connect_bd_net -net axi_datamover_0_s2mm_wr_xfer_cmplt [get_bd_pins axi_datamover_0/s2mm_wr_xfer_cmplt] [get_bd_pins s2mm_wr_xfer_cmplt]
   connect_bd_net -net s2mm_halt_0_1 [get_bd_pins s2mm_halt] [get_bd_pins axi_datamover_0/s2mm_halt]
   connect_bd_net -net xlconstant_0_dout [get_bd_pins xlconstant_0/dout] [get_bd_pins axi_datamover_0/s2mm_allow_addr_req]
@@ -1510,6 +1512,7 @@ proc create_root_design { parentCell } {
   set s2mm_wr_xfer_cmplt [ create_bd_port -dir O s2mm_wr_xfer_cmplt ]
   set ss_o_0 [ create_bd_port -dir O -from 0 -to 0 ss_o_0 ]
   set gpio2_io_o_0 [ create_bd_port -dir O -from 31 -to 0 gpio2_io_o_0 ]
+  set s2mm_halt_cmplt [ create_bd_port -dir O s2mm_halt_cmplt ]
 
   # Create instance: AXI_LITE_IO
   create_hier_cell_AXI_LITE_IO [current_bd_instance .] AXI_LITE_IO
@@ -1542,6 +1545,7 @@ proc create_root_design { parentCell } {
   connect_bd_net -net AXI_LITE_IO_ss_o_0 [get_bd_pins AXI_LITE_IO/ss_o_0] [get_bd_ports ss_o_0]
   connect_bd_net -net AXI_LITE_IO_temp_out_0 [get_bd_pins AXI_LITE_IO/temp_out_0] [get_bd_pins Memory/device_temp_i]
   connect_bd_net -net Datamover_s2mm_err_0 [get_bd_pins Datamover/s2mm_err] [get_bd_ports s2mm_err]
+  connect_bd_net -net Datamover_s2mm_halt_cmplt_0 [get_bd_pins Datamover/s2mm_halt_cmplt] [get_bd_ports s2mm_halt_cmplt]
   connect_bd_net -net Datamover_s2mm_wr_xfer_cmplt_0 [get_bd_pins Datamover/s2mm_wr_xfer_cmplt] [get_bd_ports s2mm_wr_xfer_cmplt]
   connect_bd_net -net Memory_init_calib_complete_0 [get_bd_pins Memory/init_calib_complete_0] [get_bd_ports init_calib_complete_0]
   connect_bd_net -net PCIe_axi_aresetn [get_bd_pins PCIe/axi_aresetn] [get_bd_ports axi_aresetn] [get_bd_pins AXI_LITE_IO/axi_resetn] [get_bd_pins Memory/S00_ARESETN]
