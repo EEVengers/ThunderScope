@@ -216,7 +216,6 @@ module dso_top
     ddr_ready_cdc <= { ddr_ready_cdc[1:0], init_calib_complete_0};
   assign ddr_ready = ddr_ready_cdc[2];
   
-
   serdes serdes (
 	.rst            (serdes_rst),
 	.adc_lclk_p		(adc_lclk_p),
