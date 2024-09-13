@@ -207,7 +207,7 @@ module dso_top
   wire serdes_rst;
   reg [2:0] serdes_rst_cdc = 3'b111;
   always @(posedge divclk)
-    serdes_rst_cdc <= { serdes_rst_cdc[1:0], !S01_ARESETN };
+    serdes_rst_cdc <= { serdes_rst_cdc[1:0], ~gpio_io_o_0[2] }; //gpio_io_o_0[2] is SERDES RSTn
   assign serdes_rst = serdes_rst_cdc[2];
   
   wire ddr_ready;
