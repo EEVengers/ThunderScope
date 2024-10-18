@@ -15,9 +15,11 @@ module adc_to_datamover(
     input adc_divclk,
     input s2mm_err,
     output s2mm_halt,
+    input s2mm_halt_cmplt,
     input s2mm_wr_xfer_cmplt,
     input[31:0] gpio_io_o_0,
     output[31:0] gpio2_io_i,
+    input[31:0] gpio2_io_o_0,
     input serdes_ready,
     input ddr_ready
     );
@@ -95,7 +97,7 @@ module adc_to_datamover(
     fifo_full_cdc <= { fifo_full_cdc[1:0], fifo_full};
   assign fifo_full_aclk = fifo_full_cdc[2];
   
-  reg [13:0] fifo_full_counter;
+  reg [10:0] fifo_full_counter;
   always @(posedge axi_aclk) begin
     if (!S01_ARESETN) begin
         fifo_full_counter <= 0;
@@ -105,9 +107,29 @@ module adc_to_datamover(
     end
   end
   
+  reg wraparound = 0;
+  reg wraparound_overflow = 0;
+  always @(posedge axi_aclk) begin
+    if (!S01_ARESETN) begin
+        wraparound <= 0;
+        wraparound_overflow <= 0;
+    end
+    else if (gpio2_io_o_0[16]) begin
+        wraparound <= 0;
+    end
+    else if (gpio2_io_o_0[17]) begin
+        wraparound_overflow <= 0;
+    end
+    else if (address == 28'hFFFF000) begin
+        wraparound <= 1;
+        if (wraparound) begin
+            wraparound_overflow <= 1;
+        end
+    end
+  end
 
   //Status GPIOs
-  assign gpio2_io_i = {s2mm_err,fifo_full_aclk,fifo_full_counter,transfer_counter};
+  assign gpio2_io_i = {s2mm_err,fifo_full_aclk,s2mm_halt_cmplt,fifo_full_counter,wraparound_overflow,wraparound,transfer_counter};
   assign S01_ARESETN = (axi_aresetn & gpio_io_o_0[1]);
   assign s2mm_halt = ~gpio_io_o_0[0];
 

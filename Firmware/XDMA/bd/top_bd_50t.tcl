@@ -20,12 +20,18 @@ set script_folder [_tcl::get_script_folder]
 ################################################################
 # Check if script is running in correct Vivado version.
 ################################################################
-set scripts_vivado_version 2020.1
+set scripts_vivado_version 2024.1
 set current_vivado_version [version -short]
 
 if { [string first $scripts_vivado_version $current_vivado_version] == -1 } {
    puts ""
-   catch {common::send_gid_msg -ssname BD::TCL -id 2041 -severity "ERROR" "This script was generated using Vivado <$scripts_vivado_version> and is being run in <$current_vivado_version> of Vivado. Please run the script in Vivado <$scripts_vivado_version> then open the design in Vivado <$current_vivado_version>. Upgrade the design by running \"Tools => Report => Report IP Status...\", then run write_bd_tcl to create an updated script."}
+   if { [string compare $scripts_vivado_version $current_vivado_version] > 0 } {
+      catch {common::send_gid_msg -ssname BD::TCL -id 2042 -severity "ERROR" " This script was generated using Vivado <$scripts_vivado_version> and is being run in <$current_vivado_version> of Vivado. Sourcing the script failed since it was created with a future version of Vivado."}
+
+   } else {
+     catch {common::send_gid_msg -ssname BD::TCL -id 2041 -severity "ERROR" "This script was generated using Vivado <$scripts_vivado_version> and is being run in <$current_vivado_version> of Vivado. Please run the script in Vivado <$scripts_vivado_version> then open the design in Vivado <$current_vivado_version>. Upgrade the design by running \"Tools => Report => Report IP Status...\", then run write_bd_tcl to create an updated script."}
+
+   }
 
    return 1
 }
@@ -114,6 +120,51 @@ common::send_gid_msg -ssname BD::TCL -id 2005 -severity "INFO" "Currently the va
 if { $nRet != 0 } {
    catch {common::send_gid_msg -ssname BD::TCL -id 2006 -severity "ERROR" $errMsg}
    return $nRet
+}
+
+set bCheckIPsPassed 1
+##################################################################
+# CHECK IPs
+##################################################################
+set bCheckIPs 1
+if { $bCheckIPs == 1 } {
+   set list_check_ips "\ 
+xilinx.com:ip:axi_crossbar:2.1\
+xilinx.com:ip:axi_fifo_mm_s:4.3\
+xilinx.com:ip:axi_gpio:2.0\
+xilinx.com:ip:axi_quad_spi:3.2\
+xilinx.com:ip:xadc_wiz:3.3\
+xilinx.com:ip:axi_datamover:5.1\
+xilinx.com:ip:xlconstant:1.1\
+xilinx.com:ip:axi_clock_converter:2.1\
+xilinx.com:ip:clk_wiz:6.0\
+xilinx.com:ip:mig_7series:4.2\
+xilinx.com:ip:util_vector_logic:2.0\
+xilinx.com:ip:axi_dwidth_converter:2.1\
+xilinx.com:ip:util_ds_buf:2.2\
+xilinx.com:ip:xdma:4.1\
+"
+
+   set list_ips_missing ""
+   common::send_gid_msg -ssname BD::TCL -id 2011 -severity "INFO" "Checking if the following IPs exist in the project's IP catalog: $list_check_ips ."
+
+   foreach ip_vlnv $list_check_ips {
+      set ip_obj [get_ipdefs -all $ip_vlnv]
+      if { $ip_obj eq "" } {
+         lappend list_ips_missing $ip_vlnv
+      }
+   }
+
+   if { $list_ips_missing ne "" } {
+      catch {common::send_gid_msg -ssname BD::TCL -id 2012 -severity "ERROR" "The following IPs are not found in the IP Catalog:\n  $list_ips_missing\n\nResolution: Please add the repository containing the IP(s) to the project." }
+      set bCheckIPsPassed 0
+   }
+
+}
+
+if { $bCheckIPsPassed != 1 } {
+  common::send_gid_msg -ssname BD::TCL -id 2023 -severity "WARNING" "Will not continue with creation of design due to the error(s) above."
+  return 3
 }
 
 
@@ -346,53 +397,54 @@ proc create_hier_cell_PCIe { parentCell nameHier } {
 
   # Create instance: axi_dwidth_converter_0, and set properties
   set axi_dwidth_converter_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_dwidth_converter:2.1 axi_dwidth_converter_0 ]
-  set_property -dict [ list \
-   CONFIG.ADDR_WIDTH {32} \
-   CONFIG.FIFO_MODE {0} \
-   CONFIG.PROTOCOL {AXI4} \
-   CONFIG.READ_WRITE_MODE {READ_ONLY} \
- ] $axi_dwidth_converter_0
+  set_property -dict [list \
+    CONFIG.ADDR_WIDTH {32} \
+    CONFIG.FIFO_MODE {0} \
+    CONFIG.PROTOCOL {AXI4} \
+    CONFIG.READ_WRITE_MODE {READ_ONLY} \
+  ] $axi_dwidth_converter_0
+
 
   # Create instance: util_ds_buf_0, and set properties
-  set util_ds_buf_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:util_ds_buf:2.1 util_ds_buf_0 ]
-  set_property -dict [ list \
-   CONFIG.C_BUF_TYPE {IBUFDSGTE} \
- ] $util_ds_buf_0
+  set util_ds_buf_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:util_ds_buf:2.2 util_ds_buf_0 ]
+  set_property CONFIG.C_BUF_TYPE {IBUFDSGTE} $util_ds_buf_0
+
 
   # Create instance: xdma_0, and set properties
   set xdma_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xdma:4.1 xdma_0 ]
-  set_property -dict [ list \
-   CONFIG.PF0_DEVICE_ID_mqdma {9024} \
-   CONFIG.PF0_SRIOV_VF_DEVICE_ID {0000} \
-   CONFIG.PF2_DEVICE_ID_mqdma {9024} \
-   CONFIG.PF3_DEVICE_ID_mqdma {9024} \
-   CONFIG.Shared_Logic_Both_7xG2 {false} \
-   CONFIG.axi_data_width {128_bit} \
-   CONFIG.axi_id_width {2} \
-   CONFIG.axil_master_64bit_en {false} \
-   CONFIG.axilite_master_en {true} \
-   CONFIG.axilite_master_scale {Megabytes} \
-   CONFIG.axilite_master_size {1} \
-   CONFIG.axisten_freq {125} \
-   CONFIG.cfg_mgmt_if {false} \
-   CONFIG.copy_pf0 {true} \
-   CONFIG.dsc_bypass_rd {0001} \
-   CONFIG.dsc_bypass_wr {0000} \
-   CONFIG.mode_selection {Advanced} \
-   CONFIG.pcie_extended_tag {false} \
-   CONFIG.pciebar2axibar_axil_master {0x40000000} \
-   CONFIG.performance {true} \
-   CONFIG.pf0_device_id {7024} \
-   CONFIG.pf0_msi_enabled {true} \
-   CONFIG.pl_link_cap_max_link_speed {5.0_GT/s} \
-   CONFIG.pl_link_cap_max_link_width {X4} \
-   CONFIG.plltype {QPLL1} \
-   CONFIG.runbit_fix {false} \
-   CONFIG.xdma_pcie_64bit_en {true} \
-   CONFIG.xdma_pcie_prefetchable {true} \
-   CONFIG.xdma_rnum_rids {2} \
-   CONFIG.xdma_wnum_rids {8} \
- ] $xdma_0
+  set_property -dict [list \
+    CONFIG.PF0_DEVICE_ID_mqdma {9024} \
+    CONFIG.PF0_SRIOV_VF_DEVICE_ID {0000} \
+    CONFIG.PF2_DEVICE_ID_mqdma {9024} \
+    CONFIG.PF3_DEVICE_ID_mqdma {9024} \
+    CONFIG.Shared_Logic_Both_7xG2 {false} \
+    CONFIG.axi_data_width {128_bit} \
+    CONFIG.axi_id_width {2} \
+    CONFIG.axil_master_64bit_en {false} \
+    CONFIG.axilite_master_en {true} \
+    CONFIG.axilite_master_scale {Megabytes} \
+    CONFIG.axilite_master_size {1} \
+    CONFIG.axisten_freq {125} \
+    CONFIG.cfg_mgmt_if {false} \
+    CONFIG.copy_pf0 {true} \
+    CONFIG.dsc_bypass_rd {0001} \
+    CONFIG.dsc_bypass_wr {0000} \
+    CONFIG.mode_selection {Advanced} \
+    CONFIG.pcie_extended_tag {false} \
+    CONFIG.pciebar2axibar_axil_master {0x40000000} \
+    CONFIG.performance {true} \
+    CONFIG.pf0_device_id {7024} \
+    CONFIG.pf0_msi_enabled {true} \
+    CONFIG.pl_link_cap_max_link_speed {5.0_GT/s} \
+    CONFIG.pl_link_cap_max_link_width {X4} \
+    CONFIG.plltype {QPLL1} \
+    CONFIG.runbit_fix {false} \
+    CONFIG.xdma_pcie_64bit_en {true} \
+    CONFIG.xdma_pcie_prefetchable {true} \
+    CONFIG.xdma_rnum_rids {2} \
+    CONFIG.xdma_wnum_rids {8} \
+  ] $xdma_0
+
 
   # Create interface connections
   connect_bd_intf_net -intf_net CLK_IN_D_0_1 [get_bd_intf_pins pcie] [get_bd_intf_pins util_ds_buf_0/CLK_IN_D]
@@ -402,11 +454,11 @@ proc create_hier_cell_PCIe { parentCell nameHier } {
   connect_bd_intf_net -intf_net xdma_0_pcie_mgt [get_bd_intf_pins pcie_mgt] [get_bd_intf_pins xdma_0/pcie_mgt]
 
   # Create port connections
-  connect_bd_net -net PCIe_axi_aresetn [get_bd_pins axi_aresetn] [get_bd_pins axi_dwidth_converter_0/s_axi_aresetn] [get_bd_pins xdma_0/axi_aresetn]
+  connect_bd_net -net PCIe_axi_aresetn [get_bd_pins xdma_0/axi_aresetn] [get_bd_pins axi_aresetn] [get_bd_pins axi_dwidth_converter_0/s_axi_aresetn]
   connect_bd_net -net sys_rst_n_0_1 [get_bd_pins pcie_perstn] [get_bd_pins xdma_0/sys_rst_n]
   connect_bd_net -net util_ds_buf_0_IBUF_OUT [get_bd_pins util_ds_buf_0/IBUF_OUT] [get_bd_pins xdma_0/sys_clk]
-  connect_bd_net -net xdma_0_axi_aclk [get_bd_pins axi_aclk] [get_bd_pins axi_dwidth_converter_0/s_axi_aclk] [get_bd_pins xdma_0/axi_aclk]
-  connect_bd_net -net xdma_0_user_lnk_up [get_bd_pins user_lnk_up] [get_bd_pins xdma_0/user_lnk_up]
+  connect_bd_net -net xdma_0_axi_aclk [get_bd_pins xdma_0/axi_aclk] [get_bd_pins axi_aclk] [get_bd_pins axi_dwidth_converter_0/s_axi_aclk]
+  connect_bd_net -net xdma_0_user_lnk_up [get_bd_pins xdma_0/user_lnk_up] [get_bd_pins user_lnk_up]
 
   # Restore current instance
   current_bd_instance $oldCurInst
@@ -467,319 +519,321 @@ proc create_hier_cell_Memory { parentCell nameHier } {
 
   # Create instance: axi_crossbar_0, and set properties
   set axi_crossbar_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_crossbar:2.1 axi_crossbar_0 ]
-  set_property -dict [ list \
-   CONFIG.ADDR_WIDTH {32} \
-   CONFIG.M00_A01_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M00_A02_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M00_A03_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M00_A04_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M00_A05_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M00_A06_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M00_A07_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M00_A08_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M00_A09_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M00_A10_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M00_A11_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M00_A12_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M00_A13_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M00_A14_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M00_A15_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M01_A00_ADDR_WIDTH {0} \
-   CONFIG.M01_A00_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M01_A01_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M01_A02_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M01_A03_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M01_A04_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M01_A05_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M01_A06_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M01_A07_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M01_A08_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M01_A09_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M01_A10_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M01_A11_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M01_A12_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M01_A13_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M01_A14_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M01_A15_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M02_A00_ADDR_WIDTH {0} \
-   CONFIG.M02_A00_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M02_A01_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M02_A02_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M02_A03_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M02_A04_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M02_A05_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M02_A06_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M02_A07_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M02_A08_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M02_A09_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M02_A10_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M02_A11_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M02_A12_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M02_A13_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M02_A14_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M02_A15_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M03_A00_ADDR_WIDTH {0} \
-   CONFIG.M03_A00_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M03_A01_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M03_A02_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M03_A03_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M03_A04_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M03_A05_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M03_A06_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M03_A07_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M03_A08_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M03_A09_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M03_A10_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M03_A11_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M03_A12_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M03_A13_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M03_A14_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M03_A15_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M04_A00_ADDR_WIDTH {0} \
-   CONFIG.M04_A00_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M04_A01_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M04_A02_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M04_A03_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M04_A04_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M04_A05_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M04_A06_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M04_A07_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M04_A08_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M04_A09_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M04_A10_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M04_A11_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M04_A12_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M04_A13_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M04_A14_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M04_A15_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M05_A00_ADDR_WIDTH {0} \
-   CONFIG.M05_A00_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M05_A01_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M05_A02_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M05_A03_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M05_A04_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M05_A05_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M05_A06_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M05_A07_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M05_A08_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M05_A09_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M05_A10_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M05_A11_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M05_A12_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M05_A13_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M05_A14_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M05_A15_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M06_A00_ADDR_WIDTH {0} \
-   CONFIG.M06_A00_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M06_A01_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M06_A02_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M06_A03_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M06_A04_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M06_A05_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M06_A06_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M06_A07_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M06_A08_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M06_A09_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M06_A10_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M06_A11_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M06_A12_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M06_A13_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M06_A14_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M06_A15_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M07_A00_ADDR_WIDTH {0} \
-   CONFIG.M07_A00_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M07_A01_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M07_A02_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M07_A03_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M07_A04_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M07_A05_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M07_A06_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M07_A07_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M07_A08_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M07_A09_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M07_A10_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M07_A11_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M07_A12_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M07_A13_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M07_A14_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M07_A15_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M08_A00_ADDR_WIDTH {0} \
-   CONFIG.M08_A00_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M08_A01_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M08_A02_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M08_A03_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M08_A04_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M08_A05_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M08_A06_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M08_A07_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M08_A08_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M08_A09_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M08_A10_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M08_A11_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M08_A12_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M08_A13_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M08_A14_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M08_A15_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M09_A00_ADDR_WIDTH {0} \
-   CONFIG.M09_A00_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M09_A01_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M09_A02_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M09_A03_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M09_A04_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M09_A05_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M09_A06_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M09_A07_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M09_A08_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M09_A09_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M09_A10_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M09_A11_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M09_A12_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M09_A13_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M09_A14_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M09_A15_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M10_A00_ADDR_WIDTH {0} \
-   CONFIG.M10_A00_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M10_A01_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M10_A02_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M10_A03_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M10_A04_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M10_A05_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M10_A06_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M10_A07_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M10_A08_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M10_A09_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M10_A10_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M10_A11_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M10_A12_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M10_A13_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M10_A14_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M10_A15_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M11_A00_ADDR_WIDTH {0} \
-   CONFIG.M11_A00_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M11_A01_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M11_A02_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M11_A03_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M11_A04_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M11_A05_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M11_A06_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M11_A07_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M11_A08_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M11_A09_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M11_A10_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M11_A11_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M11_A12_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M11_A13_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M11_A14_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M11_A15_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M12_A00_ADDR_WIDTH {0} \
-   CONFIG.M12_A00_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M12_A01_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M12_A02_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M12_A03_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M12_A04_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M12_A05_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M12_A06_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M12_A07_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M12_A08_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M12_A09_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M12_A10_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M12_A11_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M12_A12_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M12_A13_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M12_A14_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M12_A15_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M13_A00_ADDR_WIDTH {0} \
-   CONFIG.M13_A00_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M13_A01_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M13_A02_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M13_A03_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M13_A04_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M13_A05_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M13_A06_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M13_A07_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M13_A08_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M13_A09_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M13_A10_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M13_A11_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M13_A12_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M13_A13_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M13_A14_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M13_A15_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M14_A00_ADDR_WIDTH {0} \
-   CONFIG.M14_A00_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M14_A01_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M14_A02_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M14_A03_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M14_A04_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M14_A05_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M14_A06_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M14_A07_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M14_A08_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M14_A09_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M14_A10_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M14_A11_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M14_A12_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M14_A13_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M14_A14_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M14_A15_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M15_A00_ADDR_WIDTH {0} \
-   CONFIG.M15_A00_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M15_A01_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M15_A02_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M15_A03_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M15_A04_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M15_A05_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M15_A06_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M15_A07_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M15_A08_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M15_A09_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M15_A10_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M15_A11_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M15_A12_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M15_A13_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M15_A14_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M15_A15_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.NUM_MI {1} \
-   CONFIG.NUM_SI {2} \
- ] $axi_crossbar_0
+  set_property -dict [list \
+    CONFIG.ADDR_WIDTH {32} \
+    CONFIG.M00_A01_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M00_A02_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M00_A03_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M00_A04_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M00_A05_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M00_A06_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M00_A07_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M00_A08_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M00_A09_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M00_A10_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M00_A11_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M00_A12_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M00_A13_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M00_A14_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M00_A15_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M01_A00_ADDR_WIDTH {0} \
+    CONFIG.M01_A00_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M01_A01_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M01_A02_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M01_A03_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M01_A04_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M01_A05_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M01_A06_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M01_A07_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M01_A08_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M01_A09_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M01_A10_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M01_A11_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M01_A12_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M01_A13_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M01_A14_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M01_A15_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M02_A00_ADDR_WIDTH {0} \
+    CONFIG.M02_A00_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M02_A01_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M02_A02_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M02_A03_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M02_A04_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M02_A05_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M02_A06_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M02_A07_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M02_A08_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M02_A09_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M02_A10_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M02_A11_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M02_A12_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M02_A13_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M02_A14_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M02_A15_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M03_A00_ADDR_WIDTH {0} \
+    CONFIG.M03_A00_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M03_A01_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M03_A02_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M03_A03_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M03_A04_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M03_A05_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M03_A06_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M03_A07_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M03_A08_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M03_A09_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M03_A10_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M03_A11_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M03_A12_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M03_A13_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M03_A14_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M03_A15_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M04_A00_ADDR_WIDTH {0} \
+    CONFIG.M04_A00_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M04_A01_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M04_A02_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M04_A03_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M04_A04_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M04_A05_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M04_A06_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M04_A07_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M04_A08_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M04_A09_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M04_A10_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M04_A11_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M04_A12_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M04_A13_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M04_A14_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M04_A15_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M05_A00_ADDR_WIDTH {0} \
+    CONFIG.M05_A00_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M05_A01_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M05_A02_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M05_A03_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M05_A04_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M05_A05_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M05_A06_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M05_A07_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M05_A08_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M05_A09_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M05_A10_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M05_A11_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M05_A12_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M05_A13_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M05_A14_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M05_A15_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M06_A00_ADDR_WIDTH {0} \
+    CONFIG.M06_A00_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M06_A01_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M06_A02_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M06_A03_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M06_A04_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M06_A05_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M06_A06_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M06_A07_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M06_A08_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M06_A09_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M06_A10_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M06_A11_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M06_A12_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M06_A13_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M06_A14_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M06_A15_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M07_A00_ADDR_WIDTH {0} \
+    CONFIG.M07_A00_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M07_A01_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M07_A02_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M07_A03_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M07_A04_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M07_A05_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M07_A06_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M07_A07_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M07_A08_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M07_A09_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M07_A10_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M07_A11_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M07_A12_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M07_A13_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M07_A14_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M07_A15_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M08_A00_ADDR_WIDTH {0} \
+    CONFIG.M08_A00_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M08_A01_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M08_A02_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M08_A03_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M08_A04_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M08_A05_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M08_A06_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M08_A07_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M08_A08_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M08_A09_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M08_A10_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M08_A11_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M08_A12_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M08_A13_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M08_A14_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M08_A15_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M09_A00_ADDR_WIDTH {0} \
+    CONFIG.M09_A00_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M09_A01_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M09_A02_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M09_A03_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M09_A04_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M09_A05_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M09_A06_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M09_A07_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M09_A08_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M09_A09_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M09_A10_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M09_A11_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M09_A12_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M09_A13_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M09_A14_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M09_A15_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M10_A00_ADDR_WIDTH {0} \
+    CONFIG.M10_A00_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M10_A01_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M10_A02_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M10_A03_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M10_A04_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M10_A05_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M10_A06_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M10_A07_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M10_A08_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M10_A09_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M10_A10_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M10_A11_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M10_A12_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M10_A13_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M10_A14_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M10_A15_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M11_A00_ADDR_WIDTH {0} \
+    CONFIG.M11_A00_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M11_A01_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M11_A02_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M11_A03_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M11_A04_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M11_A05_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M11_A06_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M11_A07_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M11_A08_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M11_A09_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M11_A10_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M11_A11_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M11_A12_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M11_A13_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M11_A14_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M11_A15_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M12_A00_ADDR_WIDTH {0} \
+    CONFIG.M12_A00_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M12_A01_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M12_A02_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M12_A03_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M12_A04_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M12_A05_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M12_A06_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M12_A07_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M12_A08_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M12_A09_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M12_A10_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M12_A11_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M12_A12_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M12_A13_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M12_A14_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M12_A15_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M13_A00_ADDR_WIDTH {0} \
+    CONFIG.M13_A00_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M13_A01_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M13_A02_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M13_A03_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M13_A04_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M13_A05_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M13_A06_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M13_A07_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M13_A08_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M13_A09_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M13_A10_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M13_A11_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M13_A12_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M13_A13_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M13_A14_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M13_A15_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M14_A00_ADDR_WIDTH {0} \
+    CONFIG.M14_A00_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M14_A01_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M14_A02_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M14_A03_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M14_A04_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M14_A05_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M14_A06_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M14_A07_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M14_A08_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M14_A09_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M14_A10_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M14_A11_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M14_A12_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M14_A13_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M14_A14_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M14_A15_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M15_A00_ADDR_WIDTH {0} \
+    CONFIG.M15_A00_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M15_A01_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M15_A02_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M15_A03_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M15_A04_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M15_A05_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M15_A06_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M15_A07_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M15_A08_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M15_A09_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M15_A10_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M15_A11_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M15_A12_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M15_A13_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M15_A14_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M15_A15_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.NUM_MI {1} \
+    CONFIG.NUM_SI {2} \
+  ] $axi_crossbar_0
+
 
   # Create instance: clk_wiz_0, and set properties
   set clk_wiz_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:clk_wiz:6.0 clk_wiz_0 ]
-  set_property -dict [ list \
-   CONFIG.CLKIN1_JITTER_PS {400.0} \
-   CONFIG.CLKIN2_JITTER_PS {100.0} \
-   CONFIG.CLKOUT1_DRIVES {BUFG} \
-   CONFIG.CLKOUT1_JITTER {161.318} \
-   CONFIG.CLKOUT1_PHASE_ERROR {222.305} \
-   CONFIG.CLKOUT1_REQUESTED_OUT_FREQ {400} \
-   CONFIG.CLKOUT2_DRIVES {BUFG} \
-   CONFIG.CLKOUT2_JITTER {175.029} \
-   CONFIG.CLKOUT2_PHASE_ERROR {222.305} \
-   CONFIG.CLKOUT2_REQUESTED_OUT_FREQ {200.000} \
-   CONFIG.CLKOUT2_USED {true} \
-   CONFIG.CLKOUT3_DRIVES {BUFG} \
-   CONFIG.CLKOUT4_DRIVES {BUFG} \
-   CONFIG.CLKOUT5_DRIVES {BUFG} \
-   CONFIG.CLKOUT6_DRIVES {BUFG} \
-   CONFIG.CLKOUT7_DRIVES {BUFG} \
-   CONFIG.MMCM_BANDWIDTH {OPTIMIZED} \
-   CONFIG.MMCM_CLKFBOUT_MULT_F {48} \
-   CONFIG.MMCM_CLKIN1_PERIOD {40.000} \
-   CONFIG.MMCM_CLKIN2_PERIOD {10.0} \
-   CONFIG.MMCM_CLKOUT0_DIVIDE_F {3} \
-   CONFIG.MMCM_CLKOUT1_DIVIDE {6} \
-   CONFIG.MMCM_COMPENSATION {ZHOLD} \
-   CONFIG.MMCM_DIVCLK_DIVIDE {1} \
-   CONFIG.NUM_OUT_CLKS {2} \
-   CONFIG.PLL_CLKIN_PERIOD {40.000} \
-   CONFIG.PRIMITIVE {PLL} \
-   CONFIG.PRIM_IN_FREQ {25} \
-   CONFIG.PRIM_SOURCE {Single_ended_clock_capable_pin} \
-   CONFIG.RESET_PORT {resetn} \
-   CONFIG.RESET_TYPE {ACTIVE_LOW} \
-   CONFIG.SECONDARY_SOURCE {Single_ended_clock_capable_pin} \
-   CONFIG.USE_INCLK_SWITCHOVER {false} \
- ] $clk_wiz_0
+  set_property -dict [list \
+    CONFIG.CLKIN1_JITTER_PS {400.0} \
+    CONFIG.CLKIN2_JITTER_PS {100.0} \
+    CONFIG.CLKOUT1_DRIVES {BUFG} \
+    CONFIG.CLKOUT1_JITTER {161.318} \
+    CONFIG.CLKOUT1_PHASE_ERROR {222.305} \
+    CONFIG.CLKOUT1_REQUESTED_OUT_FREQ {400} \
+    CONFIG.CLKOUT2_DRIVES {BUFG} \
+    CONFIG.CLKOUT2_JITTER {175.029} \
+    CONFIG.CLKOUT2_PHASE_ERROR {222.305} \
+    CONFIG.CLKOUT2_REQUESTED_OUT_FREQ {200.000} \
+    CONFIG.CLKOUT2_USED {true} \
+    CONFIG.CLKOUT3_DRIVES {BUFG} \
+    CONFIG.CLKOUT4_DRIVES {BUFG} \
+    CONFIG.CLKOUT5_DRIVES {BUFG} \
+    CONFIG.CLKOUT6_DRIVES {BUFG} \
+    CONFIG.CLKOUT7_DRIVES {BUFG} \
+    CONFIG.MMCM_BANDWIDTH {OPTIMIZED} \
+    CONFIG.MMCM_CLKFBOUT_MULT_F {48} \
+    CONFIG.MMCM_CLKIN1_PERIOD {40.000} \
+    CONFIG.MMCM_CLKIN2_PERIOD {10.0} \
+    CONFIG.MMCM_CLKOUT0_DIVIDE_F {3} \
+    CONFIG.MMCM_CLKOUT1_DIVIDE {6} \
+    CONFIG.MMCM_COMPENSATION {ZHOLD} \
+    CONFIG.MMCM_DIVCLK_DIVIDE {1} \
+    CONFIG.NUM_OUT_CLKS {2} \
+    CONFIG.PLL_CLKIN_PERIOD {40.000} \
+    CONFIG.PRIMITIVE {PLL} \
+    CONFIG.PRIM_IN_FREQ {25} \
+    CONFIG.PRIM_SOURCE {Single_ended_clock_capable_pin} \
+    CONFIG.RESET_PORT {resetn} \
+    CONFIG.RESET_TYPE {ACTIVE_LOW} \
+    CONFIG.SECONDARY_SOURCE {Single_ended_clock_capable_pin} \
+    CONFIG.USE_INCLK_SWITCHOVER {false} \
+  ] $clk_wiz_0
+
 
   # Create instance: mig_7series_0, and set properties
   set mig_7series_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:mig_7series:4.2 mig_7series_0 ]
@@ -788,22 +842,23 @@ proc create_hier_cell_Memory { parentCell nameHier } {
   set str_mig_folder [get_property IP_DIR [ get_ips [ get_property CONFIG.Component_Name $mig_7series_0 ] ] ]
   set str_mig_file_name mig_a.prj
   set str_mig_file_path ${str_mig_folder}/${str_mig_file_name}
-
   write_mig_file_design_1_mig_7series_0_0 $str_mig_file_path
 
-  set_property -dict [ list \
-   CONFIG.BOARD_MIG_PARAM {Custom} \
-   CONFIG.MIG_DONT_TOUCH_PARAM {Custom} \
-   CONFIG.RESET_BOARD_INTERFACE {Custom} \
-   CONFIG.XML_INPUT_FILE {mig_a.prj} \
- ] $mig_7series_0
+  set_property -dict [list \
+    CONFIG.BOARD_MIG_PARAM {Custom} \
+    CONFIG.MIG_DONT_TOUCH_PARAM {Custom} \
+    CONFIG.RESET_BOARD_INTERFACE {Custom} \
+    CONFIG.XML_INPUT_FILE {mig_a.prj} \
+  ] $mig_7series_0
+
 
   # Create instance: util_vector_logic_0, and set properties
   set util_vector_logic_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:util_vector_logic:2.0 util_vector_logic_0 ]
-  set_property -dict [ list \
-   CONFIG.C_OPERATION {not} \
-   CONFIG.C_SIZE {1} \
- ] $util_vector_logic_0
+  set_property -dict [list \
+    CONFIG.C_OPERATION {not} \
+    CONFIG.C_SIZE {1} \
+  ] $util_vector_logic_0
+
 
   # Create interface connections
   connect_bd_intf_net -intf_net S00_AXI_1 [get_bd_intf_pins S00_AXI] [get_bd_intf_pins axi_crossbar_0/S00_AXI]
@@ -820,11 +875,11 @@ proc create_hier_cell_Memory { parentCell nameHier } {
   connect_bd_net -net clk_wiz_0_locked [get_bd_pins clk_wiz_0/locked] [get_bd_pins mig_7series_0/aresetn] [get_bd_pins mig_7series_0/sys_rst]
   connect_bd_net -net device_temp_i_1 [get_bd_pins device_temp_i] [get_bd_pins mig_7series_0/device_temp_i]
   connect_bd_net -net ext_clk_1 [get_bd_pins ext_clk] [get_bd_pins clk_wiz_0/clk_in1]
-  connect_bd_net -net mig_7series_0_init_calib_complete [get_bd_pins init_calib_complete_0] [get_bd_pins mig_7series_0/init_calib_complete]
-  connect_bd_net -net mig_7series_0_ui_clk [get_bd_pins axi_clock_converter_0/m_axi_aclk] [get_bd_pins mig_7series_0/ui_clk]
+  connect_bd_net -net mig_7series_0_init_calib_complete [get_bd_pins mig_7series_0/init_calib_complete] [get_bd_pins init_calib_complete_0]
+  connect_bd_net -net mig_7series_0_ui_clk [get_bd_pins mig_7series_0/ui_clk] [get_bd_pins axi_clock_converter_0/m_axi_aclk]
   connect_bd_net -net mig_7series_0_ui_clk_sync_rst [get_bd_pins mig_7series_0/ui_clk_sync_rst] [get_bd_pins util_vector_logic_0/Op1]
   connect_bd_net -net resetn_1 [get_bd_pins resetn] [get_bd_pins clk_wiz_0/resetn]
-  connect_bd_net -net util_vector_logic_0_Res [get_bd_pins axi_clock_converter_0/m_axi_aresetn] [get_bd_pins util_vector_logic_0/Res]
+  connect_bd_net -net util_vector_logic_0_Res [get_bd_pins util_vector_logic_0/Res] [get_bd_pins axi_clock_converter_0/m_axi_aresetn]
 
   # Restore current instance
   current_bd_instance $oldCurInst
@@ -878,18 +933,20 @@ proc create_hier_cell_Datamover { parentCell nameHier } {
   create_bd_pin -dir O s2mm_err
   create_bd_pin -dir I s2mm_halt
   create_bd_pin -dir O s2mm_wr_xfer_cmplt
+  create_bd_pin -dir O s2mm_halt_cmplt
 
   # Create instance: axi_datamover_0, and set properties
   set axi_datamover_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_datamover:5.1 axi_datamover_0 ]
-  set_property -dict [ list \
-   CONFIG.c_dummy {1} \
-   CONFIG.c_enable_mm2s {0} \
-   CONFIG.c_enable_s2mm_adv_sig {1} \
-   CONFIG.c_m_axi_s2mm_data_width {256} \
-   CONFIG.c_m_axi_s2mm_id_width {0} \
-   CONFIG.c_s2mm_burst_size {128} \
-   CONFIG.c_s_axis_s2mm_tdata_width {128} \
- ] $axi_datamover_0
+  set_property -dict [list \
+    CONFIG.c_dummy {1} \
+    CONFIG.c_enable_mm2s {0} \
+    CONFIG.c_enable_s2mm_adv_sig {1} \
+    CONFIG.c_m_axi_s2mm_data_width {256} \
+    CONFIG.c_m_axi_s2mm_id_width {0} \
+    CONFIG.c_s2mm_burst_size {128} \
+    CONFIG.c_s_axis_s2mm_tdata_width {128} \
+  ] $axi_datamover_0
+
 
   # Create instance: xlconstant_0, and set properties
   set xlconstant_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconstant:1.1 xlconstant_0 ]
@@ -902,10 +959,11 @@ proc create_hier_cell_Datamover { parentCell nameHier } {
   # Create port connections
   connect_bd_net -net axi_aclk_1 [get_bd_pins axi_aclk] [get_bd_pins axi_datamover_0/m_axi_s2mm_aclk] [get_bd_pins axi_datamover_0/m_axis_s2mm_cmdsts_awclk]
   connect_bd_net -net axi_aresetn_1 [get_bd_pins axi_aresetn] [get_bd_pins axi_datamover_0/m_axi_s2mm_aresetn] [get_bd_pins axi_datamover_0/m_axis_s2mm_cmdsts_aresetn]
-  connect_bd_net -net axi_datamover_0_s2mm_err [get_bd_pins s2mm_err] [get_bd_pins axi_datamover_0/s2mm_err]
-  connect_bd_net -net axi_datamover_0_s2mm_wr_xfer_cmplt [get_bd_pins s2mm_wr_xfer_cmplt] [get_bd_pins axi_datamover_0/s2mm_wr_xfer_cmplt]
+  connect_bd_net -net axi_datamover_0_s2mm_err [get_bd_pins axi_datamover_0/s2mm_err] [get_bd_pins s2mm_err]
+  connect_bd_net -net axi_datamover_0_s2mm_halt_cmplt [get_bd_pins axi_datamover_0/s2mm_halt_cmplt] [get_bd_pins s2mm_halt_cmplt]
+  connect_bd_net -net axi_datamover_0_s2mm_wr_xfer_cmplt [get_bd_pins axi_datamover_0/s2mm_wr_xfer_cmplt] [get_bd_pins s2mm_wr_xfer_cmplt]
   connect_bd_net -net s2mm_halt_0_1 [get_bd_pins s2mm_halt] [get_bd_pins axi_datamover_0/s2mm_halt]
-  connect_bd_net -net xlconstant_0_dout [get_bd_pins axi_datamover_0/s2mm_allow_addr_req] [get_bd_pins xlconstant_0/dout]
+  connect_bd_net -net xlconstant_0_dout [get_bd_pins xlconstant_0/dout] [get_bd_pins axi_datamover_0/s2mm_allow_addr_req]
 
   # Restore current instance
   current_bd_instance $oldCurInst
@@ -962,362 +1020,368 @@ proc create_hier_cell_AXI_LITE_IO { parentCell nameHier } {
   create_bd_pin -dir O -from 31 -to 0 gpio_io_o_0
   create_bd_pin -dir O -from 0 -to 0 ss_o_0
   create_bd_pin -dir O -from 11 -to 0 temp_out_0
+  create_bd_pin -dir O -from 31 -to 0 gpio2_io_o_0
 
   # Create instance: axi_crossbar_0, and set properties
   set axi_crossbar_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_crossbar:2.1 axi_crossbar_0 ]
-  set_property -dict [ list \
-   CONFIG.M00_A01_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M00_A02_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M00_A03_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M00_A04_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M00_A05_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M00_A06_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M00_A07_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M00_A08_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M00_A09_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M00_A10_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M00_A11_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M00_A12_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M00_A13_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M00_A14_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M00_A15_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M01_A01_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M01_A02_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M01_A03_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M01_A04_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M01_A05_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M01_A06_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M01_A07_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M01_A08_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M01_A09_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M01_A10_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M01_A11_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M01_A12_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M01_A13_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M01_A14_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M01_A15_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M02_A01_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M02_A02_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M02_A03_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M02_A04_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M02_A05_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M02_A06_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M02_A07_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M02_A08_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M02_A09_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M02_A10_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M02_A11_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M02_A12_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M02_A13_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M02_A14_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M02_A15_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M03_A01_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M03_A02_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M03_A03_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M03_A04_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M03_A05_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M03_A06_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M03_A07_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M03_A08_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M03_A09_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M03_A10_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M03_A11_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M03_A12_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M03_A13_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M03_A14_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M03_A15_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M04_A00_ADDR_WIDTH {0} \
-   CONFIG.M04_A00_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M04_A01_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M04_A02_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M04_A03_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M04_A04_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M04_A05_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M04_A06_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M04_A07_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M04_A08_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M04_A09_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M04_A10_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M04_A11_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M04_A12_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M04_A13_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M04_A14_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M04_A15_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M04_READ_ISSUING {1} \
-   CONFIG.M04_WRITE_ISSUING {1} \
-   CONFIG.M05_A00_ADDR_WIDTH {0} \
-   CONFIG.M05_A00_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M05_A01_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M05_A02_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M05_A03_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M05_A04_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M05_A05_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M05_A06_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M05_A07_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M05_A08_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M05_A09_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M05_A10_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M05_A11_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M05_A12_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M05_A13_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M05_A14_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M05_A15_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M05_READ_ISSUING {1} \
-   CONFIG.M05_WRITE_ISSUING {1} \
-   CONFIG.M06_A00_ADDR_WIDTH {0} \
-   CONFIG.M06_A00_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M06_A01_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M06_A02_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M06_A03_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M06_A04_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M06_A05_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M06_A06_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M06_A07_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M06_A08_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M06_A09_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M06_A10_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M06_A11_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M06_A12_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M06_A13_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M06_A14_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M06_A15_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M06_READ_ISSUING {1} \
-   CONFIG.M06_WRITE_ISSUING {1} \
-   CONFIG.M07_A00_ADDR_WIDTH {0} \
-   CONFIG.M07_A00_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M07_A01_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M07_A02_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M07_A03_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M07_A04_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M07_A05_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M07_A06_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M07_A07_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M07_A08_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M07_A09_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M07_A10_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M07_A11_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M07_A12_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M07_A13_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M07_A14_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M07_A15_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M07_READ_ISSUING {1} \
-   CONFIG.M07_WRITE_ISSUING {1} \
-   CONFIG.M08_A00_ADDR_WIDTH {0} \
-   CONFIG.M08_A00_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M08_A01_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M08_A02_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M08_A03_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M08_A04_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M08_A05_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M08_A06_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M08_A07_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M08_A08_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M08_A09_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M08_A10_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M08_A11_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M08_A12_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M08_A13_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M08_A14_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M08_A15_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M08_READ_ISSUING {1} \
-   CONFIG.M08_WRITE_ISSUING {1} \
-   CONFIG.M09_A00_ADDR_WIDTH {0} \
-   CONFIG.M09_A00_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M09_A01_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M09_A02_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M09_A03_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M09_A04_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M09_A05_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M09_A06_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M09_A07_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M09_A08_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M09_A09_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M09_A10_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M09_A11_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M09_A12_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M09_A13_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M09_A14_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M09_A15_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M09_READ_ISSUING {1} \
-   CONFIG.M09_WRITE_ISSUING {1} \
-   CONFIG.M10_A00_ADDR_WIDTH {0} \
-   CONFIG.M10_A00_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M10_A01_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M10_A02_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M10_A03_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M10_A04_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M10_A05_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M10_A06_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M10_A07_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M10_A08_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M10_A09_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M10_A10_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M10_A11_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M10_A12_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M10_A13_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M10_A14_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M10_A15_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M10_READ_ISSUING {1} \
-   CONFIG.M10_WRITE_ISSUING {1} \
-   CONFIG.M11_A00_ADDR_WIDTH {0} \
-   CONFIG.M11_A00_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M11_A01_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M11_A02_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M11_A03_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M11_A04_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M11_A05_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M11_A06_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M11_A07_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M11_A08_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M11_A09_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M11_A10_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M11_A11_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M11_A12_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M11_A13_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M11_A14_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M11_A15_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M11_READ_ISSUING {1} \
-   CONFIG.M11_WRITE_ISSUING {1} \
-   CONFIG.M12_A00_ADDR_WIDTH {0} \
-   CONFIG.M12_A00_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M12_A01_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M12_A02_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M12_A03_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M12_A04_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M12_A05_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M12_A06_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M12_A07_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M12_A08_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M12_A09_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M12_A10_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M12_A11_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M12_A12_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M12_A13_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M12_A14_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M12_A15_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M12_READ_ISSUING {1} \
-   CONFIG.M12_WRITE_ISSUING {1} \
-   CONFIG.M13_A00_ADDR_WIDTH {0} \
-   CONFIG.M13_A00_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M13_A01_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M13_A02_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M13_A03_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M13_A04_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M13_A05_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M13_A06_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M13_A07_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M13_A08_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M13_A09_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M13_A10_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M13_A11_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M13_A12_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M13_A13_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M13_A14_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M13_A15_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M13_READ_ISSUING {1} \
-   CONFIG.M13_WRITE_ISSUING {1} \
-   CONFIG.M14_A00_ADDR_WIDTH {0} \
-   CONFIG.M14_A00_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M14_A01_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M14_A02_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M14_A03_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M14_A04_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M14_A05_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M14_A06_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M14_A07_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M14_A08_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M14_A09_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M14_A10_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M14_A11_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M14_A12_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M14_A13_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M14_A14_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M14_A15_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M14_READ_ISSUING {1} \
-   CONFIG.M14_WRITE_ISSUING {1} \
-   CONFIG.M15_A00_ADDR_WIDTH {0} \
-   CONFIG.M15_A00_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M15_A01_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M15_A02_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M15_A03_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M15_A04_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M15_A05_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M15_A06_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M15_A07_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M15_A08_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M15_A09_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M15_A10_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M15_A11_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M15_A12_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M15_A13_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M15_A14_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M15_A15_BASE_ADDR {0xffffffffffffffff} \
-   CONFIG.M15_READ_ISSUING {1} \
-   CONFIG.M15_WRITE_ISSUING {1} \
-   CONFIG.NUM_MI {4} \
-   CONFIG.S01_READ_ACCEPTANCE {1} \
-   CONFIG.S01_WRITE_ACCEPTANCE {1} \
-   CONFIG.S02_READ_ACCEPTANCE {1} \
-   CONFIG.S02_WRITE_ACCEPTANCE {1} \
-   CONFIG.S03_READ_ACCEPTANCE {1} \
-   CONFIG.S03_WRITE_ACCEPTANCE {1} \
-   CONFIG.S04_READ_ACCEPTANCE {1} \
-   CONFIG.S04_WRITE_ACCEPTANCE {1} \
-   CONFIG.S05_READ_ACCEPTANCE {1} \
-   CONFIG.S05_WRITE_ACCEPTANCE {1} \
-   CONFIG.S06_READ_ACCEPTANCE {1} \
-   CONFIG.S06_WRITE_ACCEPTANCE {1} \
-   CONFIG.S07_READ_ACCEPTANCE {1} \
-   CONFIG.S07_WRITE_ACCEPTANCE {1} \
-   CONFIG.S08_READ_ACCEPTANCE {1} \
-   CONFIG.S08_WRITE_ACCEPTANCE {1} \
-   CONFIG.S09_READ_ACCEPTANCE {1} \
-   CONFIG.S09_WRITE_ACCEPTANCE {1} \
-   CONFIG.S10_READ_ACCEPTANCE {1} \
-   CONFIG.S10_WRITE_ACCEPTANCE {1} \
-   CONFIG.S11_READ_ACCEPTANCE {1} \
-   CONFIG.S11_WRITE_ACCEPTANCE {1} \
-   CONFIG.S12_READ_ACCEPTANCE {1} \
-   CONFIG.S12_WRITE_ACCEPTANCE {1} \
-   CONFIG.S13_READ_ACCEPTANCE {1} \
-   CONFIG.S13_WRITE_ACCEPTANCE {1} \
-   CONFIG.S14_READ_ACCEPTANCE {1} \
-   CONFIG.S14_WRITE_ACCEPTANCE {1} \
-   CONFIG.S15_READ_ACCEPTANCE {1} \
-   CONFIG.S15_WRITE_ACCEPTANCE {1} \
-   CONFIG.STRATEGY {1} \
- ] $axi_crossbar_0
+  set_property -dict [list \
+    CONFIG.M00_A01_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M00_A02_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M00_A03_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M00_A04_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M00_A05_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M00_A06_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M00_A07_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M00_A08_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M00_A09_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M00_A10_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M00_A11_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M00_A12_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M00_A13_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M00_A14_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M00_A15_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M01_A01_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M01_A02_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M01_A03_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M01_A04_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M01_A05_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M01_A06_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M01_A07_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M01_A08_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M01_A09_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M01_A10_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M01_A11_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M01_A12_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M01_A13_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M01_A14_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M01_A15_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M02_A01_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M02_A02_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M02_A03_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M02_A04_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M02_A05_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M02_A06_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M02_A07_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M02_A08_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M02_A09_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M02_A10_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M02_A11_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M02_A12_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M02_A13_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M02_A14_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M02_A15_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M03_A01_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M03_A02_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M03_A03_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M03_A04_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M03_A05_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M03_A06_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M03_A07_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M03_A08_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M03_A09_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M03_A10_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M03_A11_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M03_A12_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M03_A13_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M03_A14_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M03_A15_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M04_A00_ADDR_WIDTH {0} \
+    CONFIG.M04_A00_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M04_A01_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M04_A02_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M04_A03_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M04_A04_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M04_A05_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M04_A06_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M04_A07_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M04_A08_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M04_A09_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M04_A10_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M04_A11_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M04_A12_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M04_A13_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M04_A14_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M04_A15_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M04_READ_ISSUING {1} \
+    CONFIG.M04_WRITE_ISSUING {1} \
+    CONFIG.M05_A00_ADDR_WIDTH {0} \
+    CONFIG.M05_A00_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M05_A01_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M05_A02_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M05_A03_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M05_A04_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M05_A05_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M05_A06_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M05_A07_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M05_A08_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M05_A09_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M05_A10_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M05_A11_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M05_A12_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M05_A13_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M05_A14_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M05_A15_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M05_READ_ISSUING {1} \
+    CONFIG.M05_WRITE_ISSUING {1} \
+    CONFIG.M06_A00_ADDR_WIDTH {0} \
+    CONFIG.M06_A00_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M06_A01_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M06_A02_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M06_A03_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M06_A04_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M06_A05_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M06_A06_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M06_A07_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M06_A08_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M06_A09_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M06_A10_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M06_A11_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M06_A12_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M06_A13_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M06_A14_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M06_A15_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M06_READ_ISSUING {1} \
+    CONFIG.M06_WRITE_ISSUING {1} \
+    CONFIG.M07_A00_ADDR_WIDTH {0} \
+    CONFIG.M07_A00_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M07_A01_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M07_A02_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M07_A03_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M07_A04_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M07_A05_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M07_A06_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M07_A07_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M07_A08_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M07_A09_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M07_A10_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M07_A11_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M07_A12_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M07_A13_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M07_A14_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M07_A15_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M07_READ_ISSUING {1} \
+    CONFIG.M07_WRITE_ISSUING {1} \
+    CONFIG.M08_A00_ADDR_WIDTH {0} \
+    CONFIG.M08_A00_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M08_A01_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M08_A02_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M08_A03_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M08_A04_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M08_A05_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M08_A06_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M08_A07_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M08_A08_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M08_A09_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M08_A10_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M08_A11_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M08_A12_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M08_A13_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M08_A14_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M08_A15_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M08_READ_ISSUING {1} \
+    CONFIG.M08_WRITE_ISSUING {1} \
+    CONFIG.M09_A00_ADDR_WIDTH {0} \
+    CONFIG.M09_A00_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M09_A01_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M09_A02_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M09_A03_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M09_A04_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M09_A05_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M09_A06_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M09_A07_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M09_A08_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M09_A09_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M09_A10_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M09_A11_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M09_A12_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M09_A13_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M09_A14_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M09_A15_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M09_READ_ISSUING {1} \
+    CONFIG.M09_WRITE_ISSUING {1} \
+    CONFIG.M10_A00_ADDR_WIDTH {0} \
+    CONFIG.M10_A00_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M10_A01_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M10_A02_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M10_A03_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M10_A04_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M10_A05_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M10_A06_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M10_A07_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M10_A08_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M10_A09_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M10_A10_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M10_A11_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M10_A12_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M10_A13_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M10_A14_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M10_A15_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M10_READ_ISSUING {1} \
+    CONFIG.M10_WRITE_ISSUING {1} \
+    CONFIG.M11_A00_ADDR_WIDTH {0} \
+    CONFIG.M11_A00_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M11_A01_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M11_A02_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M11_A03_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M11_A04_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M11_A05_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M11_A06_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M11_A07_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M11_A08_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M11_A09_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M11_A10_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M11_A11_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M11_A12_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M11_A13_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M11_A14_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M11_A15_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M11_READ_ISSUING {1} \
+    CONFIG.M11_WRITE_ISSUING {1} \
+    CONFIG.M12_A00_ADDR_WIDTH {0} \
+    CONFIG.M12_A00_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M12_A01_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M12_A02_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M12_A03_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M12_A04_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M12_A05_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M12_A06_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M12_A07_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M12_A08_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M12_A09_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M12_A10_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M12_A11_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M12_A12_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M12_A13_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M12_A14_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M12_A15_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M12_READ_ISSUING {1} \
+    CONFIG.M12_WRITE_ISSUING {1} \
+    CONFIG.M13_A00_ADDR_WIDTH {0} \
+    CONFIG.M13_A00_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M13_A01_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M13_A02_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M13_A03_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M13_A04_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M13_A05_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M13_A06_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M13_A07_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M13_A08_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M13_A09_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M13_A10_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M13_A11_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M13_A12_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M13_A13_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M13_A14_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M13_A15_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M13_READ_ISSUING {1} \
+    CONFIG.M13_WRITE_ISSUING {1} \
+    CONFIG.M14_A00_ADDR_WIDTH {0} \
+    CONFIG.M14_A00_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M14_A01_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M14_A02_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M14_A03_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M14_A04_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M14_A05_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M14_A06_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M14_A07_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M14_A08_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M14_A09_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M14_A10_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M14_A11_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M14_A12_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M14_A13_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M14_A14_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M14_A15_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M14_READ_ISSUING {1} \
+    CONFIG.M14_WRITE_ISSUING {1} \
+    CONFIG.M15_A00_ADDR_WIDTH {0} \
+    CONFIG.M15_A00_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M15_A01_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M15_A02_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M15_A03_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M15_A04_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M15_A05_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M15_A06_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M15_A07_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M15_A08_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M15_A09_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M15_A10_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M15_A11_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M15_A12_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M15_A13_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M15_A14_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M15_A15_BASE_ADDR {0xffffffffffffffff} \
+    CONFIG.M15_READ_ISSUING {1} \
+    CONFIG.M15_WRITE_ISSUING {1} \
+    CONFIG.NUM_MI {4} \
+    CONFIG.S01_READ_ACCEPTANCE {1} \
+    CONFIG.S01_WRITE_ACCEPTANCE {1} \
+    CONFIG.S02_READ_ACCEPTANCE {1} \
+    CONFIG.S02_WRITE_ACCEPTANCE {1} \
+    CONFIG.S03_READ_ACCEPTANCE {1} \
+    CONFIG.S03_WRITE_ACCEPTANCE {1} \
+    CONFIG.S04_READ_ACCEPTANCE {1} \
+    CONFIG.S04_WRITE_ACCEPTANCE {1} \
+    CONFIG.S05_READ_ACCEPTANCE {1} \
+    CONFIG.S05_WRITE_ACCEPTANCE {1} \
+    CONFIG.S06_READ_ACCEPTANCE {1} \
+    CONFIG.S06_WRITE_ACCEPTANCE {1} \
+    CONFIG.S07_READ_ACCEPTANCE {1} \
+    CONFIG.S07_WRITE_ACCEPTANCE {1} \
+    CONFIG.S08_READ_ACCEPTANCE {1} \
+    CONFIG.S08_WRITE_ACCEPTANCE {1} \
+    CONFIG.S09_READ_ACCEPTANCE {1} \
+    CONFIG.S09_WRITE_ACCEPTANCE {1} \
+    CONFIG.S10_READ_ACCEPTANCE {1} \
+    CONFIG.S10_WRITE_ACCEPTANCE {1} \
+    CONFIG.S11_READ_ACCEPTANCE {1} \
+    CONFIG.S11_WRITE_ACCEPTANCE {1} \
+    CONFIG.S12_READ_ACCEPTANCE {1} \
+    CONFIG.S12_WRITE_ACCEPTANCE {1} \
+    CONFIG.S13_READ_ACCEPTANCE {1} \
+    CONFIG.S13_WRITE_ACCEPTANCE {1} \
+    CONFIG.S14_READ_ACCEPTANCE {1} \
+    CONFIG.S14_WRITE_ACCEPTANCE {1} \
+    CONFIG.S15_READ_ACCEPTANCE {1} \
+    CONFIG.S15_WRITE_ACCEPTANCE {1} \
+    CONFIG.STRATEGY {1} \
+  ] $axi_crossbar_0
+
 
   # Create instance: axi_fifo_mm_s_0, and set properties
-  set axi_fifo_mm_s_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_fifo_mm_s:4.2 axi_fifo_mm_s_0 ]
-  set_property -dict [ list \
-   CONFIG.C_USE_RX_DATA {0} \
-   CONFIG.C_USE_TX_CTRL {0} \
- ] $axi_fifo_mm_s_0
+  set axi_fifo_mm_s_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_fifo_mm_s:4.3 axi_fifo_mm_s_0 ]
+  set_property -dict [list \
+    CONFIG.C_USE_RX_DATA {0} \
+    CONFIG.C_USE_TX_CTRL {0} \
+  ] $axi_fifo_mm_s_0
+
 
   # Create instance: axi_gpio_0, and set properties
   set axi_gpio_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_gpio:2.0 axi_gpio_0 ]
-  set_property -dict [ list \
-   CONFIG.C_ALL_INPUTS_2 {1} \
-   CONFIG.C_ALL_OUTPUTS {1} \
-   CONFIG.C_GPIO_WIDTH {32} \
-   CONFIG.C_IS_DUAL {1} \
- ] $axi_gpio_0
+  set_property -dict [list \
+    CONFIG.C_ALL_INPUTS_2 {0} \
+    CONFIG.C_ALL_OUTPUTS {1} \
+    CONFIG.C_GPIO_WIDTH {32} \
+    CONFIG.C_IS_DUAL {1} \
+  ] $axi_gpio_0
+
 
   # Create instance: axi_quad_spi_0, and set properties
   set axi_quad_spi_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_quad_spi:3.2 axi_quad_spi_0 ]
-  set_property -dict [ list \
-   CONFIG.C_FIFO_DEPTH {256} \
-   CONFIG.C_SPI_MEMORY {2} \
-   CONFIG.C_SPI_MODE {2} \
- ] $axi_quad_spi_0
+  set_property -dict [list \
+    CONFIG.C_FIFO_DEPTH {256} \
+    CONFIG.C_SPI_MEMORY {2} \
+    CONFIG.C_SPI_MODE {2} \
+  ] $axi_quad_spi_0
+
 
   # Create instance: xadc_wiz_0, and set properties
   set xadc_wiz_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xadc_wiz:3.3 xadc_wiz_0 ]
-  set_property -dict [ list \
-   CONFIG.ENABLE_TEMP_BUS {true} \
-   CONFIG.TEMPERATURE_ALARM_OT_TRIGGER {85} \
- ] $xadc_wiz_0
+  set_property -dict [list \
+    CONFIG.ENABLE_TEMP_BUS {true} \
+    CONFIG.TEMPERATURE_ALARM_OT_TRIGGER {85} \
+  ] $xadc_wiz_0
+
 
   # Create interface connections
   connect_bd_intf_net -intf_net Conn1 [get_bd_intf_pins AXI_STR_TXD_0] [get_bd_intf_pins axi_fifo_mm_s_0/AXI_STR_TXD]
@@ -1331,11 +1395,12 @@ proc create_hier_cell_AXI_LITE_IO { parentCell nameHier } {
 
   # Create port connections
   connect_bd_net -net axi_aclk_1 [get_bd_pins axi_aclk] [get_bd_pins axi_crossbar_0/aclk] [get_bd_pins axi_fifo_mm_s_0/s_axi_aclk] [get_bd_pins axi_gpio_0/s_axi_aclk] [get_bd_pins axi_quad_spi_0/ext_spi_clk] [get_bd_pins axi_quad_spi_0/s_axi_aclk] [get_bd_pins xadc_wiz_0/s_axi_aclk]
-  connect_bd_net -net axi_gpio_0_gpio_io_o [get_bd_pins gpio_io_o_0] [get_bd_pins axi_gpio_0/gpio_io_o]
-  connect_bd_net -net axi_quad_spi_0_ss_o [get_bd_pins ss_o_0] [get_bd_pins axi_quad_spi_0/ss_o]
+  connect_bd_net -net axi_gpio_0_gpio2_io_o [get_bd_pins axi_gpio_0/gpio2_io_o] [get_bd_pins gpio2_io_o_0]
+  connect_bd_net -net axi_gpio_0_gpio_io_o [get_bd_pins axi_gpio_0/gpio_io_o] [get_bd_pins gpio_io_o_0]
+  connect_bd_net -net axi_quad_spi_0_ss_o [get_bd_pins axi_quad_spi_0/ss_o] [get_bd_pins ss_o_0]
   connect_bd_net -net axi_resetn_1 [get_bd_pins axi_resetn] [get_bd_pins axi_crossbar_0/aresetn] [get_bd_pins axi_fifo_mm_s_0/s_axi_aresetn] [get_bd_pins axi_gpio_0/s_axi_aresetn] [get_bd_pins axi_quad_spi_0/s_axi_aresetn] [get_bd_pins xadc_wiz_0/s_axi_aresetn]
   connect_bd_net -net gpio2_io_i_1 [get_bd_pins gpio2_io_i] [get_bd_pins axi_gpio_0/gpio2_io_i]
-  connect_bd_net -net xadc_wiz_0_temp_out [get_bd_pins temp_out_0] [get_bd_pins xadc_wiz_0/temp_out]
+  connect_bd_net -net xadc_wiz_0_temp_out [get_bd_pins xadc_wiz_0/temp_out] [get_bd_pins temp_out_0]
 
   # Restore current instance
   current_bd_instance $oldCurInst
@@ -1432,6 +1497,8 @@ proc create_root_design { parentCell } {
   set s2mm_halt [ create_bd_port -dir I s2mm_halt ]
   set s2mm_wr_xfer_cmplt [ create_bd_port -dir O s2mm_wr_xfer_cmplt ]
   set ss_o_0 [ create_bd_port -dir O -from 0 -to 0 ss_o_0 ]
+  set s2mm_halt_cmplt [ create_bd_port -dir O s2mm_halt_cmplt ]
+  set gpio2_io_o_0 [ create_bd_port -dir O -from 31 -to 0 gpio2_io_o_0 ]
 
   # Create instance: AXI_LITE_IO
   create_hier_cell_AXI_LITE_IO [current_bd_instance .] AXI_LITE_IO
@@ -1459,27 +1526,29 @@ proc create_root_design { parentCell } {
   connect_bd_intf_net -intf_net xdma_0_pcie_mgt [get_bd_intf_ports pcie_mgt] [get_bd_intf_pins PCIe/pcie_mgt]
 
   # Create port connections
-  connect_bd_net -net AXI_LITE_IO_gpio_io_o_0 [get_bd_ports gpio_io_o_0] [get_bd_pins AXI_LITE_IO/gpio_io_o_0]
-  connect_bd_net -net AXI_LITE_IO_ss_o_0 [get_bd_ports ss_o_0] [get_bd_pins AXI_LITE_IO/ss_o_0]
+  connect_bd_net -net AXI_LITE_IO_gpio2_io_o_0 [get_bd_pins AXI_LITE_IO/gpio2_io_o_0] [get_bd_ports gpio2_io_o_0]
+  connect_bd_net -net AXI_LITE_IO_gpio_io_o_0 [get_bd_pins AXI_LITE_IO/gpio_io_o_0] [get_bd_ports gpio_io_o_0]
+  connect_bd_net -net AXI_LITE_IO_ss_o_0 [get_bd_pins AXI_LITE_IO/ss_o_0] [get_bd_ports ss_o_0]
   connect_bd_net -net AXI_LITE_IO_temp_out_0 [get_bd_pins AXI_LITE_IO/temp_out_0] [get_bd_pins Memory/device_temp_i]
   connect_bd_net -net BUFG_I_0_1 [get_bd_ports ext_clk] [get_bd_pins Memory/ext_clk]
-  connect_bd_net -net Datamover_s2mm_err_0 [get_bd_ports s2mm_err] [get_bd_pins Datamover/s2mm_err]
-  connect_bd_net -net Datamover_s2mm_wr_xfer_cmplt_0 [get_bd_ports s2mm_wr_xfer_cmplt] [get_bd_pins Datamover/s2mm_wr_xfer_cmplt]
-  connect_bd_net -net Memory_init_calib_complete_0 [get_bd_ports init_calib_complete_0] [get_bd_pins Memory/init_calib_complete_0]
-  connect_bd_net -net PCIe_axi_aresetn [get_bd_ports axi_aresetn] [get_bd_pins AXI_LITE_IO/axi_resetn] [get_bd_pins Memory/S00_ARESETN] [get_bd_pins PCIe/axi_aresetn]
-  connect_bd_net -net PCIe_user_lnk_up [get_bd_pins Memory/resetn] [get_bd_pins PCIe/user_lnk_up]
+  connect_bd_net -net Datamover_s2mm_err_0 [get_bd_pins Datamover/s2mm_err] [get_bd_ports s2mm_err]
+  connect_bd_net -net Datamover_s2mm_halt_cmplt_0 [get_bd_pins Datamover/s2mm_halt_cmplt] [get_bd_ports s2mm_halt_cmplt]
+  connect_bd_net -net Datamover_s2mm_wr_xfer_cmplt_0 [get_bd_pins Datamover/s2mm_wr_xfer_cmplt] [get_bd_ports s2mm_wr_xfer_cmplt]
+  connect_bd_net -net Memory_init_calib_complete_0 [get_bd_pins Memory/init_calib_complete_0] [get_bd_ports init_calib_complete_0]
+  connect_bd_net -net PCIe_axi_aresetn [get_bd_pins PCIe/axi_aresetn] [get_bd_ports axi_aresetn] [get_bd_pins AXI_LITE_IO/axi_resetn] [get_bd_pins Memory/S00_ARESETN]
+  connect_bd_net -net PCIe_user_lnk_up [get_bd_pins PCIe/user_lnk_up] [get_bd_pins Memory/resetn]
   connect_bd_net -net S01_ARESETN_0_1 [get_bd_ports S01_ARESETN] [get_bd_pins Datamover/axi_aresetn]
   connect_bd_net -net gpio2_io_i_0_1 [get_bd_ports gpio2_io_i] [get_bd_pins AXI_LITE_IO/gpio2_io_i]
   connect_bd_net -net s2mm_halt_0_1 [get_bd_ports s2mm_halt] [get_bd_pins Datamover/s2mm_halt]
   connect_bd_net -net sys_rst_n_0_1 [get_bd_ports pcie_perstn] [get_bd_pins PCIe/pcie_perstn]
-  connect_bd_net -net xdma_0_axi_aclk [get_bd_ports axi_aclk] [get_bd_pins AXI_LITE_IO/axi_aclk] [get_bd_pins Datamover/axi_aclk] [get_bd_pins Memory/ACLK] [get_bd_pins PCIe/axi_aclk]
+  connect_bd_net -net xdma_0_axi_aclk [get_bd_pins PCIe/axi_aclk] [get_bd_ports axi_aclk] [get_bd_pins AXI_LITE_IO/axi_aclk] [get_bd_pins Datamover/axi_aclk] [get_bd_pins Memory/ACLK]
 
   # Create address segments
   assign_bd_address -offset 0x00000000 -range 0x20000000 -target_address_space [get_bd_addr_spaces Datamover/axi_datamover_0/Data_S2MM] [get_bd_addr_segs Memory/mig_7series_0/memmap/memaddr] -force
+  assign_bd_address -offset 0x00000000 -range 0x20000000 -target_address_space [get_bd_addr_spaces PCIe/xdma_0/M_AXI] [get_bd_addr_segs Memory/mig_7series_0/memmap/memaddr] -force
   assign_bd_address -offset 0x40020000 -range 0x00010000 -target_address_space [get_bd_addr_spaces PCIe/xdma_0/M_AXI_LITE] [get_bd_addr_segs AXI_LITE_IO/axi_fifo_mm_s_0/S_AXI/Mem0] -force
   assign_bd_address -offset 0x40000000 -range 0x00010000 -target_address_space [get_bd_addr_spaces PCIe/xdma_0/M_AXI_LITE] [get_bd_addr_segs AXI_LITE_IO/axi_gpio_0/S_AXI/Reg] -force
   assign_bd_address -offset 0x40040000 -range 0x00010000 -target_address_space [get_bd_addr_spaces PCIe/xdma_0/M_AXI_LITE] [get_bd_addr_segs AXI_LITE_IO/axi_quad_spi_0/AXI_LITE/Reg] -force
-  assign_bd_address -offset 0x00000000 -range 0x20000000 -target_address_space [get_bd_addr_spaces PCIe/xdma_0/M_AXI] [get_bd_addr_segs Memory/mig_7series_0/memmap/memaddr] -force
   assign_bd_address -offset 0x40010000 -range 0x00010000 -target_address_space [get_bd_addr_spaces PCIe/xdma_0/M_AXI_LITE] [get_bd_addr_segs AXI_LITE_IO/xadc_wiz_0/s_axi_lite/Reg] -force
 
 

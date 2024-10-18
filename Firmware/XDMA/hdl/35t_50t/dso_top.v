@@ -77,6 +77,7 @@ module dso_top
 
   wire s2mm_err;
   wire s2mm_halt;
+  wire s2mm_halt_cmplt;
   wire s2mm_wr_xfer_cmplt;
   
   wire fe_sda_buf;
@@ -201,7 +202,7 @@ module dso_top
   wire serdes_rst;
   reg [2:0] serdes_rst_cdc = 3'b111;
   always @(posedge divclk)
-    serdes_rst_cdc <= { serdes_rst_cdc[1:0], !S01_ARESETN };
+    serdes_rst_cdc <= { serdes_rst_cdc[1:0], ~gpio_io_o_0[2] }; //gpio_io_o_0[2] is SERDES RSTn
   assign serdes_rst = serdes_rst_cdc[2];
 
   wire ddr_ready;
@@ -239,9 +240,11 @@ module dso_top
     .adc_divclk(divclk),
     .s2mm_err(s2mm_err),
     .s2mm_halt(s2mm_halt),
+    .s2mm_halt_cmplt(s2mm_halt_cmplt),
     .s2mm_wr_xfer_cmplt(s2mm_wr_xfer_cmplt),
     .gpio_io_o_0(gpio_io_o_0),
     .gpio2_io_i(gpio2_io_i),
+    .gpio2_io_o_0(gpio2_io_o_0),
     .serdes_ready (serdes_ready),
     .ddr_ready(ddr_ready)
   );
@@ -293,6 +296,7 @@ module dso_top
     .axi_aclk(axi_aclk),
     .axi_aresetn(axi_aresetn),
     .gpio2_io_i(gpio2_io_i),
+    .gpio2_io_o_0(gpio2_io_o_0),
     .gpio_io_o_0(gpio_io_o_0),
     .pcie_clk_n(pcie_clk_n),
     .pcie_clk_p(pcie_clk_p),
@@ -303,6 +307,7 @@ module dso_top
     .pcie_perstn(pcie_perstn),
     .s2mm_err(s2mm_err),
     .s2mm_halt(s2mm_halt),
+    .s2mm_halt_cmplt(s2mm_halt_cmplt),
     .s2mm_wr_xfer_cmplt(s2mm_wr_xfer_cmplt),
     .Vp_Vn_0_v_n(Vp_Vn_0_v_n),
     .Vp_Vn_0_v_p(Vp_Vn_0_v_p),
