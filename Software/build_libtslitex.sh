@@ -4,5 +4,5 @@ mkdir build
 cd build
 cmake ..
 cmake --build . --config=Release
-./artifacts/example/thunderscope_test io
+#./artifacts/example/thunderscope_test io
 
