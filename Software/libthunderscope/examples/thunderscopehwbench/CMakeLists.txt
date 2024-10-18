@@ -1,4 +1,0 @@
-add_executable(thunderscopehwbench
-	thunderscopehwbench.c)
-target_link_libraries(thunderscopehwbench
-	thunderscopehwlib)

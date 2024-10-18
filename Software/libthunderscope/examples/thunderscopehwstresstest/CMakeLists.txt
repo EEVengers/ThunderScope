@@ -1,4 +1,0 @@
-add_executable(thunderscopehwstresstest
-	thunderscopehwstresstest.c)
-target_link_libraries(thunderscopehwstresstest
-	thunderscopehwlib)

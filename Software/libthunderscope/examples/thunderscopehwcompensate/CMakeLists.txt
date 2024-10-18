@@ -1,4 +1,0 @@
-add_executable(thunderscopehwcompensate
-	thunderscopehwcompensate.c)
-target_link_libraries(thunderscopehwcompensate
-	thunderscopehwlib)
