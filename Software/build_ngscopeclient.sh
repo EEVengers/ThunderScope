@@ -3,16 +3,29 @@ sudo apt install build-essential git cmake pkgconf libgtkmm-3.0-dev libcairomm-1
 sudo apt-get install libvulkan-dev glslang-dev glslang-tools spirv-tools glslc
 #On Ubuntu 22.10 and earlier, you will need to use the Vulkan SDK.
 #TODO: check to see if above line worked, else install SDK
-git clone https://github.com/anthonix/ffts.git 
-cd ffts 
+
+if cd ffts; then 
+	git pull
+else 
+    git clone https://github.com/anthonix/ffts.git 
+	cd ffts 
+fi
+
 mkdir build 
 cd build 
 cmake .. -DENABLE_SHARED=ON 
 make -j4 
 sudo make install 
 cd ../..
-git clone --recursive https://github.com/ngscopeclient/scopehal-apps.git 
-cd scopehal-apps 
+
+if cd scopehal-apps; then 
+	git pull
+    git submodule update --recursive
+else 
+    git clone --recursive https://github.com/ngscopeclient/scopehal-apps.git 
+	cd scopehal-apps 
+fi
+
 mkdir build 
 cd build 
 cmake .. -DCMAKE_BUILD_TYPE=Release 
