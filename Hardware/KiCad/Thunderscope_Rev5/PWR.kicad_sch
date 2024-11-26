@@ -10,6 +10,111 @@
 		(company "EEVengers")
 	)
 	(lib_symbols
+		(symbol "+5V_BAR_1"
+			(power)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "#PWR"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Value" "+5V"
+				(at 0 -3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Power symbol creates a global label with name '+5V'"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "power-flag"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "+5V_BAR_1_0_0"
+				(polyline
+					(pts
+						(xy -1.27 -2.54) (xy 1.27 -2.54)
+					)
+					(stroke
+						(width 0.254)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 0) (xy 0 -2.54)
+					)
+					(stroke
+						(width 0.254)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin power_in line
+					(at 0 0 0)
+					(length 0)
+					(hide yes)
+					(name "+5V"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "Thunderscope_Rev5:+1V8_ACQ_BAR"
 			(power)
 			(exclude_from_sim no)
@@ -2825,9 +2930,9 @@
 					)
 				)
 				(arc
-					(start 2.54 0)
-					(mid 2.912 0.898)
-					(end 3.81 1.27)
+					(start 3.81 1.27)
+					(mid 4.708 0.898)
+					(end 5.08 0)
 					(stroke
 						(width 0)
 						(type solid)
@@ -2837,9 +2942,9 @@
 					)
 				)
 				(arc
-					(start 3.81 1.27)
-					(mid 4.708 0.898)
-					(end 5.08 0)
+					(start 2.54 0)
+					(mid 2.912 0.898)
+					(end 3.81 1.27)
 					(stroke
 						(width 0)
 						(type solid)
@@ -15094,6 +15199,7 @@
 		)
 	)
 	(symbol
+		(lib_name "+5V_BAR_1")
 		(lib_id "Thunderscope_Rev5:+5V_BAR")
 		(at 276.86 88.9 180)
 		(unit 1)
