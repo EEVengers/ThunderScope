@@ -10,7 +10,7 @@
 		(company "EEVengers")
 	)
 	(lib_symbols
-		(symbol "Thunderscope_Rev5:1V2_MGT_BAR"
+		(symbol "Thunderscope_Rev5:+1V2_MGT_BAR"
 			(power)
 			(exclude_from_sim no)
 			(in_bom yes)
@@ -24,7 +24,7 @@
 					(hide yes)
 				)
 			)
-			(property "Value" "1V2_MGT"
+			(property "Value" "+1V2_MGT"
 				(at 0 -3.81 0)
 				(effects
 					(font
@@ -50,7 +50,7 @@
 					(hide yes)
 				)
 			)
-			(property "Description" "Power symbol creates a global label with name '1V2_MGT'"
+			(property "Description" "Power symbol creates a global label with name '+1V2_MGT'"
 				(at 0 0 0)
 				(effects
 					(font
@@ -68,7 +68,7 @@
 					(hide yes)
 				)
 			)
-			(symbol "1V2_MGT_BAR_0_0"
+			(symbol "+1V2_MGT_BAR_0_0"
 				(polyline
 					(pts
 						(xy -1.27 -2.54) (xy 1.27 -2.54)
@@ -97,7 +97,7 @@
 					(at 0 0 0)
 					(length 0)
 					(hide yes)
-					(name "1V2_MGT"
+					(name "+1V2_MGT"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -119,7 +119,7 @@
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
-			(property "Reference" ""
+			(property "Reference" "U"
 				(at 0 0 0)
 				(effects
 					(font
@@ -127,7 +127,7 @@
 					)
 				)
 			)
-			(property "Value" ""
+			(property "Value" "IC FPGA XC7A50T-2CSG325C"
 				(at 0 0 0)
 				(effects
 					(font
@@ -135,7 +135,7 @@
 					)
 				)
 			)
-			(property "Footprint" ""
+			(property "Footprint" "XILINX_XC7A50T-2CSG325C"
 				(at 0 0 0)
 				(effects
 					(font
@@ -162,7 +162,43 @@
 					(hide yes)
 				)
 			)
-			(property "ki_fp_filters" "*XILINX_XC7A50T-2CSG325C*"
+			(property "MANUFACTURER" "Xilinx"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "HOUSE PART NUMBER" "XC7A50T-2CSG325C"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MANUFACTURER PART NUMBER" "XC7A50T-2CSG325C"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "SUPPLIER 1" "Digi-Key"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "SUPPLIER PART NUMBER 1" "122-2193-ND"
 				(at 0 0 0)
 				(effects
 					(font
@@ -3103,7 +3139,7 @@
 						)
 					)
 				)
-				(pin bidirectional line
+				(pin open_collector line
 					(at 7.62 -27.94 180)
 					(length 7.62)
 					(name "DONE_0"
@@ -6174,7 +6210,7 @@
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
-			(property "Reference" ""
+			(property "Reference" "R"
 				(at 0 0 0)
 				(effects
 					(font
@@ -6182,7 +6218,7 @@
 					)
 				)
 			)
-			(property "Value" ""
+			(property "Value" "${ALTIUM_VALUE}"
 				(at 0 0 0)
 				(effects
 					(font
@@ -6190,7 +6226,7 @@
 					)
 				)
 			)
-			(property "Footprint" ""
+			(property "Footprint" "GEN_R_0402"
 				(at 0 0 0)
 				(effects
 					(font
@@ -6217,7 +6253,70 @@
 					(hide yes)
 				)
 			)
-			(property "ki_fp_filters" "*GEN_R_0402*"
+			(property "TOLERANCE" "1%"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "PACKAGE" "0402"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ALTIUM_VALUE" "100"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "SUPPLIER 1" "Mouser"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "SUPPLIER PART NUMBER 1" "603-RC0402FR-07100RL"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "HOUSE PART NUMBER" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MANUFACTURER" "Yageo"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MANUFACTURER PART NUMBER" "RC0402FR-07100RL"
 				(at 0 0 0)
 				(effects
 					(font
@@ -6298,7 +6397,7 @@
 	)
 	(wire
 		(pts
-			(xy 97.039 88.9) (xy 116.84 88.9)
+			(xy 96.52 88.9) (xy 116.84 88.9)
 		)
 		(stroke
 			(width 0)
@@ -6328,7 +6427,7 @@
 	)
 	(wire
 		(pts
-			(xy 97.039 106.68) (xy 116.84 106.68)
+			(xy 96.52 106.68) (xy 116.84 106.68)
 		)
 		(stroke
 			(width 0)
@@ -6338,7 +6437,7 @@
 	)
 	(wire
 		(pts
-			(xy 97.039 101.6) (xy 116.84 101.6)
+			(xy 96.52 101.6) (xy 116.84 101.6)
 		)
 		(stroke
 			(width 0)
@@ -6388,7 +6487,7 @@
 	)
 	(wire
 		(pts
-			(xy 97.039 104.14) (xy 116.84 104.14)
+			(xy 96.52 104.14) (xy 116.84 104.14)
 		)
 		(stroke
 			(width 0)
@@ -6408,7 +6507,7 @@
 	)
 	(wire
 		(pts
-			(xy 97.039 91.44) (xy 116.84 91.44)
+			(xy 96.52 91.44) (xy 116.84 91.44)
 		)
 		(stroke
 			(width 0)
@@ -6438,7 +6537,7 @@
 	)
 	(wire
 		(pts
-			(xy 97.039 96.52) (xy 116.84 96.52)
+			(xy 96.52 96.52) (xy 116.84 96.52)
 		)
 		(stroke
 			(width 0)
@@ -6458,7 +6557,7 @@
 	)
 	(wire
 		(pts
-			(xy 97.039 93.98) (xy 116.84 93.98)
+			(xy 96.52 93.98) (xy 116.84 93.98)
 		)
 		(stroke
 			(width 0)
@@ -6468,7 +6567,7 @@
 	)
 	(wire
 		(pts
-			(xy 97.039 99.06) (xy 116.84 99.06)
+			(xy 96.52 99.06) (xy 116.84 99.06)
 		)
 		(stroke
 			(width 0)
@@ -6708,7 +6807,7 @@
 	)
 	(hierarchical_label "MGT_TX3_P"
 		(shape output)
-		(at 97.039 91.44 180)
+		(at 96.52 91.44 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -6720,7 +6819,7 @@
 	)
 	(hierarchical_label "MGT_TX2_P"
 		(shape output)
-		(at 97.039 96.52 180)
+		(at 96.52 96.52 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -6732,7 +6831,7 @@
 	)
 	(hierarchical_label "MGT_TX2_N"
 		(shape output)
-		(at 97.039 93.98 180)
+		(at 96.52 93.98 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -6756,7 +6855,7 @@
 	)
 	(hierarchical_label "MGT_TX3_N"
 		(shape output)
-		(at 97.039 88.9 180)
+		(at 96.52 88.9 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -6780,7 +6879,7 @@
 	)
 	(hierarchical_label "MGT_TX0_N"
 		(shape output)
-		(at 97.039 104.14 180)
+		(at 96.52 104.14 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -6804,7 +6903,7 @@
 	)
 	(hierarchical_label "MGT_TX0_P"
 		(shape output)
-		(at 97.039 106.68 180)
+		(at 96.52 106.68 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -6816,7 +6915,7 @@
 	)
 	(hierarchical_label "MGT_TX1_N"
 		(shape output)
-		(at 97.039 99.06 180)
+		(at 96.52 99.06 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -6888,7 +6987,7 @@
 	)
 	(hierarchical_label "MGT_TX1_P"
 		(shape output)
-		(at 97.039 101.6 180)
+		(at 96.52 101.6 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -6911,7 +7010,7 @@
 		(uuid "f4b7fdf8-fa3f-482f-aae4-a26b2c435128")
 	)
 	(symbol
-		(lib_id "Thunderscope_Rev5:1V2_MGT_BAR")
+		(lib_id "Thunderscope_Rev5:+1V2_MGT_BAR")
 		(at 88.9 116.84 180)
 		(unit 1)
 		(exclude_from_sim no)
@@ -6928,7 +7027,7 @@
 				(hide yes)
 			)
 		)
-		(property "Value" "1V2_MGT"
+		(property "Value" "+1V2_MGT"
 			(at 88.9 113.03 0)
 			(effects
 				(font
@@ -6942,6 +7041,7 @@
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(property "Datasheet" ""
@@ -6950,14 +7050,16 @@
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name '+1V2_MGT'"
 			(at 88.9 116.84 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(pin ""

@@ -1892,216 +1892,6 @@
 		)
 		(embedded_fonts no)
 	)
-	(symbol "1V2_MGT_BAR"
-		(power)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(property "Reference" "#PWR"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "1V2_MGT"
-			(at 0 -3.81 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name '1V2_MGT'"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "ki_keywords" "power-flag"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(symbol "1V2_MGT_BAR_0_0"
-			(polyline
-				(pts
-					(xy -1.27 -2.54) (xy 1.27 -2.54)
-				)
-				(stroke
-					(width 0.254)
-					(type solid)
-				)
-				(fill
-					(type none)
-				)
-			)
-			(polyline
-				(pts
-					(xy 0 0) (xy 0 -2.54)
-				)
-				(stroke
-					(width 0.254)
-					(type solid)
-				)
-				(fill
-					(type none)
-				)
-			)
-			(pin power_in line
-				(at 0 0 0)
-				(length 0)
-				(hide yes)
-				(name "1V2_MGT"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number ""
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-		)
-		(embedded_fonts no)
-	)
-	(symbol "AGND_SIGNAL_GROUND"
-		(power)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(property "Reference" "#PWR"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "AGND"
-			(at 0 -6.35 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name 'AGND'"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "ki_keywords" "power-flag"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(symbol "AGND_SIGNAL_GROUND_0_0"
-			(polyline
-				(pts
-					(xy -2.54 -2.54) (xy 2.54 -2.54) (xy 0 -5.08) (xy -2.54 -2.54)
-				)
-				(stroke
-					(width 0.254)
-					(type solid)
-				)
-				(fill
-					(type none)
-				)
-			)
-			(polyline
-				(pts
-					(xy 0 0) (xy 0 -2.54)
-				)
-				(stroke
-					(width 0.254)
-					(type solid)
-				)
-				(fill
-					(type none)
-				)
-			)
-			(pin power_in line
-				(at 0 0 0)
-				(length 0)
-				(hide yes)
-				(name "AGND"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number ""
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-		)
-		(embedded_fonts no)
-	)
 	(symbol "BNC JACK R/A"
 		(pin_numbers
 			(hide yes)
@@ -2112,7 +1902,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(property "Reference" ""
+		(property "Reference" "J"
 			(at 0 0 0)
 			(effects
 				(font
@@ -2120,7 +1910,7 @@
 				)
 			)
 		)
-		(property "Value" ""
+		(property "Value" "BNC"
 			(at 0 0 0)
 			(effects
 				(font
@@ -2128,7 +1918,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "MOL_0731000105"
 			(at 0 0 0)
 			(effects
 				(font
@@ -2155,7 +1945,43 @@
 				(hide yes)
 			)
 		)
-		(property "ki_fp_filters" "*MOL_0731000105*"
+		(property "SUPPLIER 1" "Mouser"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER PART NUMBER 1" "538-73100-0105"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "HOUSE PART NUMBER" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "Molex"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" "73100-0105"
 			(at 0 0 0)
 			(effects
 				(font
@@ -2167,17 +1993,6 @@
 		(symbol "BNC JACK R/A_1_0"
 			(circle
 				(center 0 0)
-				(radius 2.54)
-				(stroke
-					(width 0)
-					(type solid)
-				)
-				(fill
-					(type none)
-				)
-			)
-			(circle
-				(center 0 0)
 				(radius 0.635)
 				(stroke
 					(width -0.0001)
@@ -2185,6 +2000,17 @@
 				)
 				(fill
 					(type outline)
+				)
+			)
+			(circle
+				(center 0 0)
+				(radius 2.54)
+				(stroke
+					(width 0)
+					(type solid)
+				)
+				(fill
+					(type none)
 				)
 			)
 			(pin passive line
@@ -2236,7 +2062,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(property "Reference" ""
+		(property "Reference" "C"
 			(at 0 0 0)
 			(effects
 				(font
@@ -2244,7 +2070,7 @@
 				)
 			)
 		)
-		(property "Value" ""
+		(property "Value" "${ALTIUM_VALUE}"
 			(at 0 0 0)
 			(effects
 				(font
@@ -2252,7 +2078,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "GEN_C_0603"
 			(at 0 0 0)
 			(effects
 				(font
@@ -2279,7 +2105,79 @@
 				(hide yes)
 			)
 		)
-		(property "ki_fp_filters" "*GEN_C_0603*"
+		(property "PACKAGE" "0603"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "VOLTAGE RATING" "100V"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" "1.2nF"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER 1" "Mouser"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER PART NUMBER 1" "81-GCM1885C2A122FA6D"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "HOUSE PART NUMBER" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "Murata"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" "GCM1885C2A122FA16D"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "TEMPERATURE COEFFICIENT" "C0G"
 			(at 0 0 0)
 			(effects
 				(font
@@ -2386,7 +2284,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(property "Reference" ""
+		(property "Reference" "C"
 			(at 0 0 0)
 			(effects
 				(font
@@ -2394,7 +2292,7 @@
 				)
 			)
 		)
-		(property "Value" ""
+		(property "Value" "${ALTIUM_VALUE}"
 			(at 0 0 0)
 			(effects
 				(font
@@ -2402,7 +2300,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "GEN_C_0402"
 			(at 0 0 0)
 			(effects
 				(font
@@ -2429,7 +2327,70 @@
 				(hide yes)
 			)
 		)
-		(property "ki_fp_filters" "*GEN_C_0402*"
+		(property "PACKAGE" "0402"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "VOLTAGE RATING" "16V"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER 1" "Mouser"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER PART NUMBER 1" "81-GCM155R71C104KA5D"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" "100nF"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "HOUSE PART NUMBER" "C-100nF-0402-002"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "Murata"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" "GCM155R71C104KA55D"
 			(at 0 0 0)
 			(effects
 				(font
@@ -2536,7 +2497,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(property "Reference" ""
+		(property "Reference" "C"
 			(at 0 0 0)
 			(effects
 				(font
@@ -2544,7 +2505,7 @@
 				)
 			)
 		)
-		(property "Value" ""
+		(property "Value" "${ALTIUM_VALUE}"
 			(at 0 0 0)
 			(effects
 				(font
@@ -2552,7 +2513,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "GEN_C_0201"
 			(at 0 0 0)
 			(effects
 				(font
@@ -2579,7 +2540,70 @@
 				(hide yes)
 			)
 		)
-		(property "ki_fp_filters" "*GEN_C_0201*"
+		(property "PACKAGE" "0201"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "VOLTAGE RATING" "6.3V"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER 1" "Mouser"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER PART NUMBER 1" "81-GRM033R60J104KE19"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" "100nF"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "HOUSE PART NUMBER" "C-100nF-0201-002"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "Murata"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" "GRM033R60J104KE19D"
 			(at 0 0 0)
 			(effects
 				(font
@@ -2686,7 +2710,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(property "Reference" ""
+		(property "Reference" "C"
 			(at 0 0 0)
 			(effects
 				(font
@@ -2694,7 +2718,7 @@
 				)
 			)
 		)
-		(property "Value" ""
+		(property "Value" "${ALTIUM_VALUE}"
 			(at 0 0 0)
 			(effects
 				(font
@@ -2702,7 +2726,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "GEN_C_0402"
 			(at 0 0 0)
 			(effects
 				(font
@@ -2729,7 +2753,79 @@
 				(hide yes)
 			)
 		)
-		(property "ki_fp_filters" "*GEN_C_0402*"
+		(property "PACKAGE" "0402"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" "100pF"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "TEMPERATURE COEFFICIENT" "C0G"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER 1" "Mouser"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER PART NUMBER 1" "81-GCM1555C1H101FA6D"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "VOLTAGE RATING" "50V"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "HOUSE PART NUMBER" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "Murata"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" "GCM1555C1H101FA16D"
 			(at 0 0 0)
 			(effects
 				(font
@@ -2836,7 +2932,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(property "Reference" ""
+		(property "Reference" "C"
 			(at 0 0 0)
 			(effects
 				(font
@@ -2844,7 +2940,7 @@
 				)
 			)
 		)
-		(property "Value" ""
+		(property "Value" "${ALTIUM_VALUE}"
 			(at 0 0 0)
 			(effects
 				(font
@@ -2852,7 +2948,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "GEN_C_1210"
 			(at 0 0 0)
 			(effects
 				(font
@@ -2879,7 +2975,70 @@
 				(hide yes)
 			)
 		)
-		(property "ki_fp_filters" "*GEN_C_1210*"
+		(property "PACKAGE" "1210"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "VOLTAGE RATING" "6.3V"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" "100uF"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER 1" "Mouser"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER PART NUMBER 1" "187-CL32A107MQVNNNE"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "HOUSE PART NUMBER" "C-100uF-1210-002"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "Samsung"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" "CL32A107MQVNNNE"
 			(at 0 0 0)
 			(effects
 				(font
@@ -2986,7 +3145,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(property "Reference" ""
+		(property "Reference" "C"
 			(at 0 0 0)
 			(effects
 				(font
@@ -2994,7 +3153,7 @@
 				)
 			)
 		)
-		(property "Value" ""
+		(property "Value" "${ALTIUM_VALUE}"
 			(at 0 0 0)
 			(effects
 				(font
@@ -3002,7 +3161,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "GEN_C_0402"
 			(at 0 0 0)
 			(effects
 				(font
@@ -3029,7 +3188,70 @@
 				(hide yes)
 			)
 		)
-		(property "ki_fp_filters" "*GEN_C_0402*"
+		(property "PACKAGE" "0402"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "VOLTAGE RATING" "50V"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER 1" "Mouser"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER PART NUMBER 1" "81-GRM155R71H103KA8J"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" "10nF"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "HOUSE PART NUMBER" "C-10nF-0402-002"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "Murata"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" "GRM155R71H103KA88J"
 			(at 0 0 0)
 			(effects
 				(font
@@ -3136,7 +3358,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(property "Reference" ""
+		(property "Reference" "C"
 			(at 0 0 0)
 			(effects
 				(font
@@ -3144,7 +3366,7 @@
 				)
 			)
 		)
-		(property "Value" ""
+		(property "Value" "${ALTIUM_VALUE}"
 			(at 0 0 0)
 			(effects
 				(font
@@ -3152,7 +3374,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "GEN_C_0603"
 			(at 0 0 0)
 			(effects
 				(font
@@ -3179,7 +3401,70 @@
 				(hide yes)
 			)
 		)
-		(property "ki_fp_filters" "*GEN_C_0603*"
+		(property "PACKAGE" "0402"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "VOLTAGE RATING" "10V"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER 1" "Mouser"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER PART NUMBER 1" "81-GRM188R61A106ME9D"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" "10uF"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "HOUSE PART NUMBER" "C-10uF-0603-002"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "Murata"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" "GRM188R61A106ME69D"
 			(at 0 0 0)
 			(effects
 				(font
@@ -3286,7 +3571,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(property "Reference" ""
+		(property "Reference" "C"
 			(at 0 0 0)
 			(effects
 				(font
@@ -3294,7 +3579,7 @@
 				)
 			)
 		)
-		(property "Value" ""
+		(property "Value" "${ALTIUM_VALUE}"
 			(at 0 0 0)
 			(effects
 				(font
@@ -3302,7 +3587,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "GEN_C_0402"
 			(at 0 0 0)
 			(effects
 				(font
@@ -3329,7 +3614,79 @@
 				(hide yes)
 			)
 		)
-		(property "ki_fp_filters" "*GEN_C_0402*"
+		(property "PACKAGE" "0402"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER 1" "Mouser"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER PART NUMBER 1" "80-CBR04C120F5G"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "VOLTAGE RATING" "50V"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" "12pF"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "TEMPERATURE COEFFICIENT" "C0G"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "KEMET"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "HOUSE PART NUMBER" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" "CBR04C120F5GAC"
 			(at 0 0 0)
 			(effects
 				(font
@@ -3436,7 +3793,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(property "Reference" ""
+		(property "Reference" "C"
 			(at 0 0 0)
 			(effects
 				(font
@@ -3444,7 +3801,7 @@
 				)
 			)
 		)
-		(property "Value" ""
+		(property "Value" "${ALTIUM_VALUE}"
 			(at 0 0 0)
 			(effects
 				(font
@@ -3452,7 +3809,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "GEN_C_0402"
 			(at 0 0 0)
 			(effects
 				(font
@@ -3479,7 +3836,70 @@
 				(hide yes)
 			)
 		)
-		(property "ki_fp_filters" "*GEN_C_0402*"
+		(property "PACKAGE" "0402"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "VOLTAGE RATING" "50V"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER 1" "Mouser"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER PART NUMBER 1" "81-GRM1555C1H102FA1D"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" "1nF"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "HOUSE PART NUMBER" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "Murata"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" "GRM1555C1H102FA01D"
 			(at 0 0 0)
 			(effects
 				(font
@@ -3586,7 +4006,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(property "Reference" ""
+		(property "Reference" "C"
 			(at 0 0 0)
 			(effects
 				(font
@@ -3594,7 +4014,7 @@
 				)
 			)
 		)
-		(property "Value" ""
+		(property "Value" "${ALTIUM_VALUE}"
 			(at 0 0 0)
 			(effects
 				(font
@@ -3602,7 +4022,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "GEN_C_0402"
 			(at 0 0 0)
 			(effects
 				(font
@@ -3629,7 +4049,70 @@
 				(hide yes)
 			)
 		)
-		(property "ki_fp_filters" "*GEN_C_0402*"
+		(property "PACKAGE" "0402"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "VOLTAGE RATING" "25V"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER 1" "Mouser"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER PART NUMBER 1" "81-GRM155R61E105KA2D"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" "1uF"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "HOUSE PART NUMBER" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "Murata"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" "GRM155R61E105KA12D"
 			(at 0 0 0)
 			(effects
 				(font
@@ -3736,7 +4219,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(property "Reference" ""
+		(property "Reference" "C"
 			(at 0 0 0)
 			(effects
 				(font
@@ -3744,7 +4227,7 @@
 				)
 			)
 		)
-		(property "Value" ""
+		(property "Value" "${ALTIUM_VALUE}"
 			(at 0 0 0)
 			(effects
 				(font
@@ -3752,7 +4235,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "GEN_C_0603"
 			(at 0 0 0)
 			(effects
 				(font
@@ -3779,7 +4262,70 @@
 				(hide yes)
 			)
 		)
-		(property "ki_fp_filters" "*GEN_C_0603*"
+		(property "PACKAGE" "0603"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER 1" "Mouser"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER PART NUMBER 1" "80-CBR06C249BAGAC"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "VOLTAGE RATING" "250V"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" "2.4pF"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "KEMET"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "HOUSE PART NUMBER" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" "CBR06C249BAGAC"
 			(at 0 0 0)
 			(effects
 				(font
@@ -3886,7 +4432,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(property "Reference" ""
+		(property "Reference" "C"
 			(at 0 0 0)
 			(effects
 				(font
@@ -3894,7 +4440,7 @@
 				)
 			)
 		)
-		(property "Value" ""
+		(property "Value" "${ALTIUM_VALUE}"
 			(at 0 0 0)
 			(effects
 				(font
@@ -3902,7 +4448,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "GEN_C_0402"
 			(at 0 0 0)
 			(effects
 				(font
@@ -3929,7 +4475,79 @@
 				(hide yes)
 			)
 		)
-		(property "ki_fp_filters" "*GEN_C_0402*"
+		(property "PACKAGE" "0402"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" "220pF"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "TEMPERATURE COEFFICIENT" "C0G"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER 1" "Mouser"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER PART NUMBER 1" "81-GCM1555C1H221FA6J"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "VOLTAGE RATING" "50V"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "HOUSE PART NUMBER" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "Murata"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" "GCM1555C1H221FA16J"
 			(at 0 0 0)
 			(effects
 				(font
@@ -4036,7 +4654,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(property "Reference" ""
+		(property "Reference" "C"
 			(at 0 0 0)
 			(effects
 				(font
@@ -4044,7 +4662,7 @@
 				)
 			)
 		)
-		(property "Value" ""
+		(property "Value" "${ALTIUM_VALUE}"
 			(at 0 0 0)
 			(effects
 				(font
@@ -4052,7 +4670,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "GEN_C_0603"
 			(at 0 0 0)
 			(effects
 				(font
@@ -4079,7 +4697,70 @@
 				(hide yes)
 			)
 		)
-		(property "ki_fp_filters" "*GEN_C_0603*"
+		(property "PACKAGE" "0603"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "VOLTAGE RATING" "100V"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" "22nF"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER 1" "Mouser"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER PART NUMBER 1" "81-GCM188R72A223KA7D"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "HOUSE PART NUMBER" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "Murata"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" "GCM188R72A223KA37D"
 			(at 0 0 0)
 			(effects
 				(font
@@ -4186,7 +4867,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(property "Reference" ""
+		(property "Reference" "C"
 			(at 0 0 0)
 			(effects
 				(font
@@ -4194,7 +4875,7 @@
 				)
 			)
 		)
-		(property "Value" ""
+		(property "Value" "${ALTIUM_VALUE}"
 			(at 0 0 0)
 			(effects
 				(font
@@ -4202,7 +4883,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "GEN_C_0805"
 			(at 0 0 0)
 			(effects
 				(font
@@ -4229,7 +4910,70 @@
 				(hide yes)
 			)
 		)
-		(property "ki_fp_filters" "*GEN_C_0805*"
+		(property "PACKAGE" "0805"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "VOLTAGE RATING" "25V"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" "22uF"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER 1" "Mouser"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER PART NUMBER 1" "81-GRM21BR61E226ME4L"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "HOUSE PART NUMBER" "C-22uF-0805-002"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "Murata"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" "GRM21BR61E226ME44L"
 			(at 0 0 0)
 			(effects
 				(font
@@ -4336,7 +5080,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(property "Reference" ""
+		(property "Reference" "C"
 			(at 0 0 0)
 			(effects
 				(font
@@ -4344,7 +5088,7 @@
 				)
 			)
 		)
-		(property "Value" ""
+		(property "Value" "${ALTIUM_VALUE}"
 			(at 0 0 0)
 			(effects
 				(font
@@ -4352,7 +5096,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "GEN_C_0402"
 			(at 0 0 0)
 			(effects
 				(font
@@ -4379,7 +5123,79 @@
 				(hide yes)
 			)
 		)
-		(property "ki_fp_filters" "*GEN_C_0402*"
+		(property "PACKAGE" "0402"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "TEMPERATURE COEFFICIENT" "C0G"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" "39pF"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "VOLTAGE RATING" "50V"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER 1" "Mouser"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER PART NUMBER 1" "80-C0402C390J5G"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "HOUSE PART NUMBER" "C-39pF-0402-002"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "KEMET"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" "C0402C390J5GACTU"
 			(at 0 0 0)
 			(effects
 				(font
@@ -4486,7 +5302,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(property "Reference" ""
+		(property "Reference" "C"
 			(at 0 0 0)
 			(effects
 				(font
@@ -4494,7 +5310,7 @@
 				)
 			)
 		)
-		(property "Value" ""
+		(property "Value" "${ALTIUM_VALUE}"
 			(at 0 0 0)
 			(effects
 				(font
@@ -4502,7 +5318,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "GEN_C_0402"
 			(at 0 0 0)
 			(effects
 				(font
@@ -4529,7 +5345,70 @@
 				(hide yes)
 			)
 		)
-		(property "ki_fp_filters" "*GEN_C_0402*"
+		(property "PACKAGE" "0402"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "VOLTAGE RATING" "6.3V"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" "4.7uF"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER 1" "Mouser"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER PART NUMBER 1" "81-GRM155R60J475ME7D"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "HOUSE PART NUMBER" "C-4.7uF-0402-002"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "Murata"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" "GRM155R60J475ME47D"
 			(at 0 0 0)
 			(effects
 				(font
@@ -4636,7 +5515,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(property "Reference" ""
+		(property "Reference" "C"
 			(at 0 0 0)
 			(effects
 				(font
@@ -4644,7 +5523,7 @@
 				)
 			)
 		)
-		(property "Value" ""
+		(property "Value" "${ALTIUM_VALUE}"
 			(at 0 0 0)
 			(effects
 				(font
@@ -4652,7 +5531,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "GEN_C_0201"
 			(at 0 0 0)
 			(effects
 				(font
@@ -4679,7 +5558,70 @@
 				(hide yes)
 			)
 		)
-		(property "ki_fp_filters" "*GEN_C_0201*"
+		(property "PACKAGE" "0201"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "VOLTAGE RATING" "6.3V"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" "470nF"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER 1" "Mouser"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER PART NUMBER 1" "81-GRM33R60J474KE90D"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "HOUSE PART NUMBER" "C-470nF-0201-002"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "Murata"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" "GRM033R60J474KE90D"
 			(at 0 0 0)
 			(effects
 				(font
@@ -4786,7 +5728,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(property "Reference" ""
+		(property "Reference" "C"
 			(at 0 0 0)
 			(effects
 				(font
@@ -4794,7 +5736,7 @@
 				)
 			)
 		)
-		(property "Value" ""
+		(property "Value" "${ALTIUM_VALUE}"
 			(at 0 0 0)
 			(effects
 				(font
@@ -4802,7 +5744,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "GEN_C_0805"
 			(at 0 0 0)
 			(effects
 				(font
@@ -4829,7 +5771,70 @@
 				(hide yes)
 			)
 		)
-		(property "ki_fp_filters" "*GEN_C_0805*"
+		(property "PACKAGE" "0805"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "VOLTAGE RATING" "6.3V"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" "47uF"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER 1" "Mouser"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER PART NUMBER 1" "187-CL32A226KPJNNNE"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "HOUSE PART NUMBER" "C-47uF-0805-002"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "Samsung"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" "CL21A476MQYNNNE"
 			(at 0 0 0)
 			(effects
 				(font
@@ -4936,7 +5941,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(property "Reference" ""
+		(property "Reference" "C"
 			(at 0 0 0)
 			(effects
 				(font
@@ -4944,7 +5949,7 @@
 				)
 			)
 		)
-		(property "Value" ""
+		(property "Value" "${ALTIUM_VALUE}"
 			(at 0 0 0)
 			(effects
 				(font
@@ -4952,7 +5957,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "GEN_C_0603"
 			(at 0 0 0)
 			(effects
 				(font
@@ -4979,7 +5984,70 @@
 				(hide yes)
 			)
 		)
-		(property "ki_fp_filters" "*GEN_C_0603*"
+		(property "ALTIUM_VALUE" "8pF"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER 1" "Mouser"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER PART NUMBER 1" "80-CBR06C809BAGAC"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "KEMET"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "HOUSE PART NUMBER" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" "CBR06C809BAGAC"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "PACKAGE" "0603"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "VOLTAGE RATING" "250V"
 			(at 0 0 0)
 			(effects
 				(font
@@ -5080,7 +6148,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(property "Reference" ""
+		(property "Reference" "J"
 			(at 0 0 0)
 			(effects
 				(font
@@ -5088,7 +6156,7 @@
 				)
 			)
 		)
-		(property "Value" ""
+		(property "Value" "1.27mm 6 Pin TH"
 			(at 0 0 0)
 			(effects
 				(font
@@ -5096,7 +6164,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "GEN_1.27mm_2x5_Pin_TH_RA"
 			(at 0 0 0)
 			(effects
 				(font
@@ -5123,7 +6191,43 @@
 				(hide yes)
 			)
 		)
-		(property "ki_fp_filters" "*GEN_1.27mm_2x5_Pin_TH_RA*"
+		(property "SUPPLIER 1" "Digi-Key"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER PART NUMBER 1" "1175-1628-ND"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "HOUSE PART NUMBER" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "CNC Tech"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" "3220-10-0200-00"
 			(at 0 0 0)
 			(effects
 				(font
@@ -5332,7 +6436,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(property "Reference" ""
+		(property "Reference" "J"
 			(at 0 0 0)
 			(effects
 				(font
@@ -5340,7 +6444,7 @@
 				)
 			)
 		)
-		(property "Value" ""
+		(property "Value" "2.54mm 6 Pin TH"
 			(at 0 0 0)
 			(effects
 				(font
@@ -5348,7 +6452,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "GEN_2.54mm_6_Pin_TH_RA"
 			(at 0 0 0)
 			(effects
 				(font
@@ -5375,7 +6479,43 @@
 				(hide yes)
 			)
 		)
-		(property "ki_fp_filters" "*GEN_2.54mm_6_Pin_TH_RA*"
+		(property "SUPPLIER 1" "Mouser"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER PART NUMBER 1" "710-61300611021"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "HOUSE PART NUMBER" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "Wurth Electronics"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" "61300611021"
 			(at 0 0 0)
 			(effects
 				(font
@@ -5512,7 +6652,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(property "Reference" ""
+		(property "Reference" "J"
 			(at 0 0 0)
 			(effects
 				(font
@@ -5520,7 +6660,7 @@
 				)
 			)
 		)
-		(property "Value" ""
+		(property "Value" "TSW-101-16-G-Q-RA"
 			(at 0 0 0)
 			(effects
 				(font
@@ -5528,7 +6668,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "GEN_5.08mm_1x2_Pin_TH_RA"
 			(at 0 0 0)
 			(effects
 				(font
@@ -5555,7 +6695,43 @@
 				(hide yes)
 			)
 		)
-		(property "ki_fp_filters" "*GEN_5.08mm_1x2_Pin_TH_RA*"
+		(property "SUPPLIER 1" "Mouser"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER PART NUMBER 1" "200-TSW10116GQRA"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "HOUSE PART NUMBER" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "Samtec"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" "TSW-101-16-G-Q-RA"
 			(at 0 0 0)
 			(effects
 				(font
@@ -5620,7 +6796,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(property "Reference" ""
+		(property "Reference" "J"
 			(at 0 0 0)
 			(effects
 				(font
@@ -5628,7 +6804,7 @@
 				)
 			)
 		)
-		(property "Value" ""
+		(property "Value" "B2B-PH-K-S(LF)(SN)"
 			(at 0 0 0)
 			(effects
 				(font
@@ -5636,7 +6812,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "JST_B2B-PH-K-S(LF)(SN)"
 			(at 0 0 0)
 			(effects
 				(font
@@ -5663,7 +6839,43 @@
 				(hide yes)
 			)
 		)
-		(property "ki_fp_filters" "*JST_B2B-PH-K-S(LF)(SN)*"
+		(property "SUPPLIER 1" "Digi-Key"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER PART NUMBER 1" "455-1704-ND"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "HOUSE PART NUMBER" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "JST"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" "B2B-PH-K-S-LF-SN"
 			(at 0 0 0)
 			(effects
 				(font
@@ -5731,7 +6943,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(property "Reference" ""
+		(property "Reference" "J"
 			(at 0 0 0)
 			(effects
 				(font
@@ -5739,7 +6951,7 @@
 				)
 			)
 		)
-		(property "Value" ""
+		(property "Value" "M.2 Key M"
 			(at 0 0 0)
 			(effects
 				(font
@@ -5747,7 +6959,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "TE_M2_KEYM_2199230"
 			(at 0 0 0)
 			(effects
 				(font
@@ -5774,7 +6986,43 @@
 				(hide yes)
 			)
 		)
-		(property "ki_fp_filters" "*TE_M2_KEYM_2199230*"
+		(property "SUPPLIER 1" "Mouser"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER PART NUMBER 1" "571-1-2199230-5"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "HOUSE PART NUMBER" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "TE Connectivity"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" "1-2199230-5"
 			(at 0 0 0)
 			(effects
 				(font
@@ -7063,7 +8311,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(property "Reference" ""
+		(property "Reference" "J"
 			(at 0 0 0)
 			(effects
 				(font
@@ -7071,7 +8319,7 @@
 				)
 			)
 		)
-		(property "Value" ""
+		(property "Value" "7792"
 			(at 0 0 0)
 			(effects
 				(font
@@ -7079,7 +8327,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "KEY_7792"
 			(at 0 0 0)
 			(effects
 				(font
@@ -7106,7 +8354,43 @@
 				(hide yes)
 			)
 		)
-		(property "ki_fp_filters" "*KEY_7792*"
+		(property "MANUFACTURER" "Keystone Electronics"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "HOUSE PART NUMBER" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" "7792"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER 1" "Mouser"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER PART NUMBER 1" "534-7792"
 			(at 0 0 0)
 			(effects
 				(font
@@ -7165,7 +8449,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(property "Reference" ""
+		(property "Reference" "J"
 			(at 0 0 0)
 			(effects
 				(font
@@ -7173,7 +8457,7 @@
 				)
 			)
 		)
-		(property "Value" ""
+		(property "Value" "009155002852006"
 			(at 0 0 0)
 			(effects
 				(font
@@ -7181,7 +8465,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "KYO_009155002852006"
 			(at 0 0 0)
 			(effects
 				(font
@@ -7208,7 +8492,43 @@
 				(hide yes)
 			)
 		)
-		(property "ki_fp_filters" "*KYO_009155002852006*"
+		(property "SUPPLIER 1" "Mouser"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER PART NUMBER 1" "581-009155002852006"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "HOUSE PART NUMBER" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "KYOCERA AVX"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" "009155002852006"
 			(at 0 0 0)
 			(effects
 				(font
@@ -7279,7 +8599,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(property "Reference" ""
+		(property "Reference" "D"
 			(at 0 0 0)
 			(effects
 				(font
@@ -7287,7 +8607,7 @@
 				)
 			)
 		)
-		(property "Value" ""
+		(property "Value" "1N4148"
 			(at 0 0 0)
 			(effects
 				(font
@@ -7295,7 +8615,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "GEN_SOD_323"
 			(at 0 0 0)
 			(effects
 				(font
@@ -7322,7 +8642,43 @@
 				(hide yes)
 			)
 		)
-		(property "ki_fp_filters" "*GEN_SOD_323*"
+		(property "SUPPLIER 1" "Mouser"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER PART NUMBER 1" "621-1N4148WS-F"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "HOUSE PART NUMBER" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "Diodes"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" "1N4148WS-7-F"
 			(at 0 0 0)
 			(effects
 				(font
@@ -7405,7 +8761,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(property "Reference" ""
+		(property "Reference" "F"
 			(at 0 0 0)
 			(effects
 				(font
@@ -7413,7 +8769,7 @@
 				)
 			)
 		)
-		(property "Value" ""
+		(property "Value" "120@100MHZ"
 			(at 0 0 0)
 			(effects
 				(font
@@ -7421,7 +8777,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "GEN_R_0402"
 			(at 0 0 0)
 			(effects
 				(font
@@ -7448,7 +8804,43 @@
 				(hide yes)
 			)
 		)
-		(property "ki_fp_filters" "*GEN_R_0402*"
+		(property "SUPPLIER 1" "Mouser"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER PART NUMBER 1" "81-BLM15PX121SN1D"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "HOUSE PART NUMBER" "BLM15PX121SN1D"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "Murata"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" "BLM15PX121SN1D"
 			(at 0 0 0)
 			(effects
 				(font
@@ -7519,7 +8911,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(property "Reference" ""
+		(property "Reference" "F"
 			(at 0 0 0)
 			(effects
 				(font
@@ -7527,7 +8919,7 @@
 				)
 			)
 		)
-		(property "Value" ""
+		(property "Value" "PCB"
 			(at 0 0 0)
 			(effects
 				(font
@@ -7535,7 +8927,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "GEN_FID"
 			(at 0 0 0)
 			(effects
 				(font
@@ -7562,7 +8954,25 @@
 				(hide yes)
 			)
 		)
-		(property "ki_fp_filters" "*GEN_FID*"
+		(property "HOUSE PART NUMBER" "Fiducial-1"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" ""
 			(at 0 0 0)
 			(effects
 				(font
@@ -7801,152 +9211,11 @@
 		)
 		(embedded_fonts no)
 	)
-	(symbol "GND_POWER_GROUND"
-		(power)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(property "Reference" "#PWR"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 0 -6.35 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name 'GND'"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "ki_keywords" "power-flag"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(symbol "GND_POWER_GROUND_0_0"
-			(polyline
-				(pts
-					(xy -2.54 -2.54) (xy 2.54 -2.54)
-				)
-				(stroke
-					(width 0.254)
-					(type solid)
-				)
-				(fill
-					(type none)
-				)
-			)
-			(polyline
-				(pts
-					(xy -1.778 -3.302) (xy 1.778 -3.302)
-				)
-				(stroke
-					(width 0.254)
-					(type solid)
-				)
-				(fill
-					(type none)
-				)
-			)
-			(polyline
-				(pts
-					(xy -1.016 -4.064) (xy 1.016 -4.064)
-				)
-				(stroke
-					(width 0.254)
-					(type solid)
-				)
-				(fill
-					(type none)
-				)
-			)
-			(polyline
-				(pts
-					(xy -0.254 -4.826) (xy 0.254 -4.826)
-				)
-				(stroke
-					(width 0.254)
-					(type solid)
-				)
-				(fill
-					(type none)
-				)
-			)
-			(polyline
-				(pts
-					(xy 0 0) (xy 0 -2.54)
-				)
-				(stroke
-					(width 0.254)
-					(type solid)
-				)
-				(fill
-					(type none)
-				)
-			)
-			(pin power_in line
-				(at 0 0 0)
-				(length 0)
-				(hide yes)
-				(name "GND"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number ""
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-		)
-		(embedded_fonts no)
-	)
 	(symbol "IC ADC HMCAD1520"
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(property "Reference" ""
+		(property "Reference" "U"
 			(at 0 0 0)
 			(effects
 				(font
@@ -7954,7 +9223,7 @@
 				)
 			)
 		)
-		(property "Value" ""
+		(property "Value" "HMCAD1520"
 			(at 0 0 0)
 			(effects
 				(font
@@ -7962,7 +9231,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "AD_QFN48_LP7"
 			(at 0 0 0)
 			(effects
 				(font
@@ -7989,7 +9258,43 @@
 				(hide yes)
 			)
 		)
-		(property "ki_fp_filters" "*AD_QFN48_LP7*"
+		(property "SUPPLIER 1" "Mouser"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER PART NUMBER 1" "584-HMCAD1520"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "HOUSE PART NUMBER" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "Analog Devices"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" "HMCAD1520"
 			(at 0 0 0)
 			(effects
 				(font
@@ -8011,7 +9316,7 @@
 					(type background)
 				)
 			)
-			(pin passive line
+			(pin input line
 				(at -30.48 43.18 0)
 				(length 7.62)
 				(name "PD"
@@ -8029,7 +9334,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin input line
 				(at -30.48 40.64 0)
 				(length 7.62)
 				(name "RSTn"
@@ -8047,7 +9352,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin input line
 				(at -30.48 38.1 0)
 				(length 7.62)
 				(name "CSn"
@@ -8065,7 +9370,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin input line
 				(at -30.48 35.56 0)
 				(length 7.62)
 				(name "SCLK"
@@ -8083,7 +9388,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin bidirectional line
 				(at -30.48 33.02 0)
 				(length 7.62)
 				(name "SDATA"
@@ -8101,7 +9406,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin output line
 				(at -30.48 27.94 0)
 				(length 7.62)
 				(name "VCM"
@@ -8119,7 +9424,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin input line
 				(at -30.48 22.86 0)
 				(length 7.62)
 				(name "IN1+"
@@ -8137,7 +9442,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin input line
 				(at -30.48 12.7 0)
 				(length 7.62)
 				(name "IN1-"
@@ -8155,7 +9460,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin input line
 				(at -30.48 7.62 0)
 				(length 7.62)
 				(name "IN2+"
@@ -8173,7 +9478,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin input line
 				(at -30.48 -2.54 0)
 				(length 7.62)
 				(name "IN2-"
@@ -8191,7 +9496,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin input line
 				(at -30.48 -7.62 0)
 				(length 7.62)
 				(name "IN3+"
@@ -8209,7 +9514,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin input line
 				(at -30.48 -17.78 0)
 				(length 7.62)
 				(name "IN3-"
@@ -8227,7 +9532,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin input line
 				(at -30.48 -22.86 0)
 				(length 7.62)
 				(name "IN4+"
@@ -8245,7 +9550,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin input line
 				(at -30.48 -33.02 0)
 				(length 7.62)
 				(name "IN4-"
@@ -8263,7 +9568,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin input line
 				(at -30.48 -38.1 0)
 				(length 7.62)
 				(name "CLK+"
@@ -8281,7 +9586,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin input line
 				(at -30.48 -40.64 0)
 				(length 7.62)
 				(name "CLK-"
@@ -8299,7 +9604,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at -7.62 53.34 270)
 				(length 7.62)
 				(name "AVDD"
@@ -8317,7 +9622,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at -7.62 -50.8 90)
 				(length 7.62)
 				(name "AVSS2"
@@ -8335,7 +9640,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at -5.08 53.34 270)
 				(length 7.62)
 				(name "AVDD"
@@ -8353,7 +9658,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at -5.08 -50.8 90)
 				(length 7.62)
 				(name "AVSS"
@@ -8371,7 +9676,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at -2.54 53.34 270)
 				(length 7.62)
 				(name "AVDD2"
@@ -8389,7 +9694,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at -2.54 -50.8 90)
 				(length 7.62)
 				(name "AVSS"
@@ -8407,7 +9712,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at 0 -50.8 90)
 				(length 7.62)
 				(name "AVSS"
@@ -8425,7 +9730,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at 2.54 53.34 270)
 				(length 7.62)
 				(name "DVDD"
@@ -8443,7 +9748,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at 2.54 -50.8 90)
 				(length 7.62)
 				(name "EPAD"
@@ -8461,7 +9766,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at 5.08 53.34 270)
 				(length 7.62)
 				(name "DVDD"
@@ -8479,7 +9784,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at 7.62 -50.8 90)
 				(length 7.62)
 				(name "DVSS"
@@ -8497,7 +9802,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at 10.16 53.34 270)
 				(length 7.62)
 				(name "OVDD"
@@ -8515,7 +9820,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at 10.16 -50.8 90)
 				(length 7.62)
 				(name "DVSS"
@@ -8533,7 +9838,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin output line
 				(at 33.02 35.56 180)
 				(length 7.62)
 				(name "D4B-"
@@ -8551,7 +9856,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin output line
 				(at 33.02 33.02 180)
 				(length 7.62)
 				(name "D4B+"
@@ -8569,7 +9874,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin output line
 				(at 33.02 27.94 180)
 				(length 7.62)
 				(name "D4A-"
@@ -8587,7 +9892,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin output line
 				(at 33.02 25.4 180)
 				(length 7.62)
 				(name "D4A+"
@@ -8605,7 +9910,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin output line
 				(at 33.02 20.32 180)
 				(length 7.62)
 				(name "D3B-"
@@ -8623,7 +9928,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin output line
 				(at 33.02 17.78 180)
 				(length 7.62)
 				(name "D3B+"
@@ -8641,7 +9946,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin output line
 				(at 33.02 12.7 180)
 				(length 7.62)
 				(name "D3A-"
@@ -8659,7 +9964,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin output line
 				(at 33.02 10.16 180)
 				(length 7.62)
 				(name "D3A+"
@@ -8677,7 +9982,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin output line
 				(at 33.02 5.08 180)
 				(length 7.62)
 				(name "FCLK-"
@@ -8695,7 +10000,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin output line
 				(at 33.02 2.54 180)
 				(length 7.62)
 				(name "FCLK+"
@@ -8713,7 +10018,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin output line
 				(at 33.02 -2.54 180)
 				(length 7.62)
 				(name "LCLK-"
@@ -8731,7 +10036,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin output line
 				(at 33.02 -5.08 180)
 				(length 7.62)
 				(name "LCLK+"
@@ -8749,7 +10054,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin output line
 				(at 33.02 -10.16 180)
 				(length 7.62)
 				(name "D2B-"
@@ -8767,7 +10072,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin output line
 				(at 33.02 -12.7 180)
 				(length 7.62)
 				(name "D2B+"
@@ -8785,7 +10090,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin output line
 				(at 33.02 -17.78 180)
 				(length 7.62)
 				(name "D2A-"
@@ -8803,7 +10108,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin output line
 				(at 33.02 -20.32 180)
 				(length 7.62)
 				(name "D2A+"
@@ -8821,7 +10126,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin output line
 				(at 33.02 -25.4 180)
 				(length 7.62)
 				(name "D1B-"
@@ -8839,7 +10144,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin output line
 				(at 33.02 -27.94 180)
 				(length 7.62)
 				(name "D1B+"
@@ -8857,7 +10162,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin output line
 				(at 33.02 -33.02 180)
 				(length 7.62)
 				(name "D1A-"
@@ -8875,7 +10180,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin output line
 				(at 33.02 -35.56 180)
 				(length 7.62)
 				(name "D1A+"
@@ -8900,7 +10205,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(property "Reference" ""
+		(property "Reference" "U"
 			(at 0 0 0)
 			(effects
 				(font
@@ -8908,7 +10213,7 @@
 				)
 			)
 		)
-		(property "Value" ""
+		(property "Value" "TPS61023"
 			(at 0 0 0)
 			(effects
 				(font
@@ -8916,7 +10221,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "TI_SOT563_DRL0006A"
 			(at 0 0 0)
 			(effects
 				(font
@@ -8943,7 +10248,43 @@
 				(hide yes)
 			)
 		)
-		(property "ki_fp_filters" "*TI_SOT563_DRL0006A*"
+		(property "SUPPLIER 1" "Texas Instruments"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER PART NUMBER 1" "TPS61023DRLT"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "HOUSE PART NUMBER" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "Texas Instruments"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" "TPS61023DRLT"
 			(at 0 0 0)
 			(effects
 				(font
@@ -8965,7 +10306,7 @@
 					(type background)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at -7.62 -2.54 0)
 				(length 7.62)
 				(name "SW"
@@ -9001,7 +10342,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin input line
 				(at -7.62 -12.7 0)
 				(length 7.62)
 				(name "EN"
@@ -9019,7 +10360,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_out line
 				(at 22.86 -2.54 180)
 				(length 7.62)
 				(name "VOUT"
@@ -9080,7 +10421,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(property "Reference" ""
+		(property "Reference" "U"
 			(at 0 0 0)
 			(effects
 				(font
@@ -9088,7 +10429,7 @@
 				)
 			)
 		)
-		(property "Value" ""
+		(property "Value" "TPS62A02"
 			(at 0 0 0)
 			(effects
 				(font
@@ -9096,7 +10437,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "TI_SOT563_DRL0006A"
 			(at 0 0 0)
 			(effects
 				(font
@@ -9123,7 +10464,43 @@
 				(hide yes)
 			)
 		)
-		(property "ki_fp_filters" "*TI_SOT563_DRL0006A*"
+		(property "SUPPLIER 1" "Texas Instruments"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER PART NUMBER 1" "TPS62A02DRLR"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "HOUSE PART NUMBER" "TPS62A02DRLR"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "Texas Instruments"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" "TPS62A02DRLR"
 			(at 0 0 0)
 			(effects
 				(font
@@ -9163,7 +10540,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin input line
 				(at -7.62 -7.62 0)
 				(length 7.62)
 				(name "EN"
@@ -9199,7 +10576,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_out line
 				(at 22.86 -2.54 180)
 				(length 7.62)
 				(name "SW"
@@ -9235,7 +10612,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin open_collector line
 				(at 22.86 -12.7 180)
 				(length 7.62)
 				(name "PG"
@@ -9260,7 +10637,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(property "Reference" ""
+		(property "Reference" "U"
 			(at 0 0 0)
 			(effects
 				(font
@@ -9268,7 +10645,7 @@
 				)
 			)
 		)
-		(property "Value" ""
+		(property "Value" "BUF802"
 			(at 0 0 0)
 			(effects
 				(font
@@ -9276,7 +10653,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "TI_VQFN_RGT0016C"
 			(at 0 0 0)
 			(effects
 				(font
@@ -9303,7 +10680,43 @@
 				(hide yes)
 			)
 		)
-		(property "ki_fp_filters" "*TI_VQFN_RGT0016C*"
+		(property "SUPPLIER 1" "Texas Instruments"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER PART NUMBER 1" "BUF802IRGTR"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "HOUSE PART NUMBER" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "Texas Instruments"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" "BUF802IRGTR"
 			(at 0 0 0)
 			(effects
 				(font
@@ -9325,7 +10738,7 @@
 					(type background)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at -20.32 15.24 0)
 				(length 7.62)
 				(name "CLH"
@@ -9343,7 +10756,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at -20.32 12.7 0)
 				(length 7.62)
 				(name "Vso+"
@@ -9361,7 +10774,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at -20.32 10.16 0)
 				(length 7.62)
 				(name "Vs+"
@@ -9379,7 +10792,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin input line
 				(at -20.32 5.08 0)
 				(length 7.62)
 				(name "IN"
@@ -9397,7 +10810,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin input line
 				(at -20.32 0 0)
 				(length 7.62)
 				(name "IN_Bias"
@@ -9415,7 +10828,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin input line
 				(at -20.32 -5.08 0)
 				(length 7.62)
 				(name "IN_Aux"
@@ -9433,7 +10846,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin no_connect line
 				(at -20.32 -10.16 0)
 				(length 7.62)
 				(name "NC"
@@ -9451,7 +10864,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin no_connect line
 				(at -20.32 -12.7 0)
 				(length 7.62)
 				(name "NC"
@@ -9469,7 +10882,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin no_connect line
 				(at -20.32 -15.24 0)
 				(length 7.62)
 				(name "NC"
@@ -9487,7 +10900,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at -20.32 -17.78 0)
 				(length 7.62)
 				(name "PAD"
@@ -9505,7 +10918,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin output line
 				(at 20.32 5.08 180)
 				(length 7.62)
 				(name "OUT"
@@ -9523,7 +10936,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin input line
 				(at 20.32 0 180)
 				(length 7.62)
 				(name "R_Bias"
@@ -9541,7 +10954,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin input line
 				(at 20.32 -5.08 180)
 				(length 7.62)
 				(name "Aux_Bias"
@@ -9559,7 +10972,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at 20.32 -10.16 180)
 				(length 7.62)
 				(name "Vs-"
@@ -9577,7 +10990,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at 20.32 -12.7 180)
 				(length 7.62)
 				(name "Vs-"
@@ -9595,7 +11008,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at 20.32 -15.24 180)
 				(length 7.62)
 				(name "Vso-"
@@ -9613,7 +11026,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at 20.32 -17.78 180)
 				(length 7.62)
 				(name "CLL"
@@ -9638,7 +11051,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(property "Reference" ""
+		(property "Reference" "U"
 			(at 0 0 0)
 			(effects
 				(font
@@ -9646,7 +11059,7 @@
 				)
 			)
 		)
-		(property "Value" ""
+		(property "Value" "SN74LVC1G17"
 			(at 0 0 0)
 			(effects
 				(font
@@ -9654,7 +11067,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "GEN_SC-70-5"
 			(at 0 0 0)
 			(effects
 				(font
@@ -9681,7 +11094,43 @@
 				(hide yes)
 			)
 		)
-		(property "ki_fp_filters" "*GEN_SC-70-5*"
+		(property "SUPPLIER 1" "Texas Instruments"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER PART NUMBER 1" "SN74LVC1G17DBVR"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "HOUSE PART NUMBER" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "Texas Instruments"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" "SN74LVC1G17DBVR"
 			(at 0 0 0)
 			(effects
 				(font
@@ -9703,7 +11152,7 @@
 					(type background)
 				)
 			)
-			(pin passive line
+			(pin output line
 				(at -15.24 0 0)
 				(length 7.62)
 				(name "OUT"
@@ -9721,7 +11170,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin no_connect line
 				(at -15.24 -5.08 0)
 				(length 7.62)
 				(name "NC"
@@ -9739,7 +11188,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at 15.24 5.08 180)
 				(length 7.62)
 				(name "VCC"
@@ -9757,7 +11206,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin input line
 				(at 15.24 0 180)
 				(length 7.62)
 				(name "IN"
@@ -9775,7 +11224,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at 15.24 -5.08 180)
 				(length 7.62)
 				(name "GND"
@@ -9800,7 +11249,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(property "Reference" ""
+		(property "Reference" "U"
 			(at 0 0 0)
 			(effects
 				(font
@@ -9808,7 +11257,7 @@
 				)
 			)
 		)
-		(property "Value" ""
+		(property "Value" "ZL30260LDG1"
 			(at 0 0 0)
 			(effects
 				(font
@@ -9816,7 +11265,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "MC_QFN56_ZL30260"
 			(at 0 0 0)
 			(effects
 				(font
@@ -9843,7 +11292,43 @@
 				(hide yes)
 			)
 		)
-		(property "ki_fp_filters" "*MC_QFN56_ZL30260*"
+		(property "MANUFACTURER" "Microchip"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "HOUSE PART NUMBER" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" "ZL30260LDG1"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER 1" "Mouser"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER PART NUMBER 1" "494-ZL30260LDG1"
 			(at 0 0 0)
 			(effects
 				(font
@@ -9865,7 +11350,7 @@
 					(type background)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at -7.62 -2.54 0)
 				(length 7.62)
 				(name "VDDH"
@@ -9883,7 +11368,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at -7.62 -5.08 0)
 				(length 7.62)
 				(name "VDDH"
@@ -9901,7 +11386,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at -7.62 -7.62 0)
 				(length 7.62)
 				(name "VDDH"
@@ -9919,7 +11404,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at -7.62 -10.16 0)
 				(length 7.62)
 				(name "VDDH"
@@ -9937,7 +11422,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at -7.62 -15.24 0)
 				(length 7.62)
 				(name "VDDIO"
@@ -9955,7 +11440,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at -7.62 -20.32 0)
 				(length 7.62)
 				(name "VDDOA"
@@ -9973,7 +11458,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at -7.62 -22.86 0)
 				(length 7.62)
 				(name "VDDOB"
@@ -9991,7 +11476,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at -7.62 -25.4 0)
 				(length 7.62)
 				(name "VDDOC"
@@ -10009,7 +11494,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at -7.62 -27.94 0)
 				(length 7.62)
 				(name "VDDOD"
@@ -10027,7 +11512,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at -7.62 -30.48 0)
 				(length 7.62)
 				(name "VDDOE"
@@ -10045,7 +11530,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at -7.62 -33.02 0)
 				(length 7.62)
 				(name "VDDOF"
@@ -10063,7 +11548,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin input line
 				(at -7.62 -40.64 0)
 				(length 7.62)
 				(name "IC1P"
@@ -10081,7 +11566,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin input line
 				(at -7.62 -43.18 0)
 				(length 7.62)
 				(name "IC1N"
@@ -10099,7 +11584,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin input line
 				(at -7.62 -48.26 0)
 				(length 7.62)
 				(name "IC2P"
@@ -10117,7 +11602,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin input line
 				(at -7.62 -50.8 0)
 				(length 7.62)
 				(name "IC2N"
@@ -10135,7 +11620,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin input line
 				(at -7.62 -55.88 0)
 				(length 7.62)
 				(name "IC3P"
@@ -10153,7 +11638,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin input line
 				(at -7.62 -60.96 0)
 				(length 7.62)
 				(name "XA"
@@ -10171,7 +11656,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin input line
 				(at -7.62 -63.5 0)
 				(length 7.62)
 				(name "XB"
@@ -10189,7 +11674,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin input line
 				(at -7.62 -68.58 0)
 				(length 7.62)
 				(name "RSTN"
@@ -10207,7 +11692,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin unspecified line
 				(at -7.62 -73.66 0)
 				(length 7.62)
 				(name "SCL/SCLK"
@@ -10225,7 +11710,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin unspecified line
 				(at -7.62 -76.2 0)
 				(length 7.62)
 				(name "SDA/MOSI"
@@ -10243,7 +11728,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin unspecified line
 				(at -7.62 -78.74 0)
 				(length 7.62)
 				(name "IF1/MISO"
@@ -10261,7 +11746,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin unspecified line
 				(at -7.62 -81.28 0)
 				(length 7.62)
 				(name "IF0/CSN"
@@ -10279,7 +11764,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin unspecified line
 				(at -7.62 -86.36 0)
 				(length 7.62)
 				(name "AC0/GPIO0"
@@ -10297,7 +11782,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin unspecified line
 				(at -7.62 -88.9 0)
 				(length 7.62)
 				(name "AC1/GPIO1"
@@ -10315,7 +11800,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin unspecified line
 				(at -7.62 -91.44 0)
 				(length 7.62)
 				(name "AC2/GPIO2"
@@ -10333,7 +11818,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin unspecified line
 				(at -7.62 -93.98 0)
 				(length 7.62)
 				(name "TEST/GPIO3"
@@ -10351,7 +11836,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at -7.62 -101.6 0)
 				(length 7.62)
 				(name "VSS-EPAD"
@@ -10369,7 +11854,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at 40.64 -2.54 180)
 				(length 7.62)
 				(name "VDDL"
@@ -10387,7 +11872,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at 40.64 -5.08 180)
 				(length 7.62)
 				(name "VDDL"
@@ -10405,7 +11890,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at 40.64 -7.62 180)
 				(length 7.62)
 				(name "VDDL"
@@ -10423,7 +11908,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at 40.64 -10.16 180)
 				(length 7.62)
 				(name "VDDL"
@@ -10441,7 +11926,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at 40.64 -12.7 180)
 				(length 7.62)
 				(name "VDDL"
@@ -10459,7 +11944,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at 40.64 -15.24 180)
 				(length 7.62)
 				(name "VDDL"
@@ -10477,7 +11962,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at 40.64 -17.78 180)
 				(length 7.62)
 				(name "VDDL"
@@ -10495,7 +11980,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at 40.64 -20.32 180)
 				(length 7.62)
 				(name "VDDL"
@@ -10513,7 +11998,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at 40.64 -22.86 180)
 				(length 7.62)
 				(name "VDDL"
@@ -10531,7 +12016,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_out line
 				(at 40.64 -30.48 180)
 				(length 7.62)
 				(name "OC1P"
@@ -10549,7 +12034,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_out line
 				(at 40.64 -33.02 180)
 				(length 7.62)
 				(name "OC1N"
@@ -10567,7 +12052,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_out line
 				(at 40.64 -38.1 180)
 				(length 7.62)
 				(name "OC2P/NC"
@@ -10585,7 +12070,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_out line
 				(at 40.64 -40.64 180)
 				(length 7.62)
 				(name "OC2N/NC"
@@ -10603,7 +12088,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_out line
 				(at 40.64 -45.72 180)
 				(length 7.62)
 				(name "OC3P"
@@ -10621,7 +12106,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_out line
 				(at 40.64 -48.26 180)
 				(length 7.62)
 				(name "OC3N"
@@ -10639,7 +12124,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_out line
 				(at 40.64 -53.34 180)
 				(length 7.62)
 				(name "OC4P"
@@ -10657,7 +12142,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_out line
 				(at 40.64 -55.88 180)
 				(length 7.62)
 				(name "OC4N"
@@ -10675,7 +12160,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_out line
 				(at 40.64 -60.96 180)
 				(length 7.62)
 				(name "OC5P/NC"
@@ -10693,7 +12178,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_out line
 				(at 40.64 -63.5 180)
 				(length 7.62)
 				(name "OC5N/NC"
@@ -10711,7 +12196,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_out line
 				(at 40.64 -68.58 180)
 				(length 7.62)
 				(name "OC6P"
@@ -10729,7 +12214,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_out line
 				(at 40.64 -71.12 180)
 				(length 7.62)
 				(name "OC6N"
@@ -10747,7 +12232,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_out line
 				(at 40.64 -76.2 180)
 				(length 7.62)
 				(name "OC7P/NC"
@@ -10765,7 +12250,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_out line
 				(at 40.64 -78.74 180)
 				(length 7.62)
 				(name "OC7N/NC"
@@ -10783,7 +12268,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_out line
 				(at 40.64 -83.82 180)
 				(length 7.62)
 				(name "OC8P"
@@ -10801,7 +12286,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_out line
 				(at 40.64 -86.36 180)
 				(length 7.62)
 				(name "OC8N"
@@ -10819,7 +12304,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_out line
 				(at 40.64 -91.44 180)
 				(length 7.62)
 				(name "OC9P"
@@ -10837,7 +12322,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_out line
 				(at 40.64 -93.98 180)
 				(length 7.62)
 				(name "OC9N"
@@ -10855,7 +12340,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_out line
 				(at 40.64 -99.06 180)
 				(length 7.62)
 				(name "OC10P/NC"
@@ -10873,7 +12358,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_out line
 				(at 40.64 -101.6 180)
 				(length 7.62)
 				(name "OC10N/NC"
@@ -10898,22 +12383,20 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(property "Reference" "U13"
-			(at -10.16 17.78 0)
+		(property "Reference" "U"
+			(at 0 0 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left bottom)
 			)
 		)
 		(property "Value" "LM27761"
-			(at -10.16 -20.32 0)
+			(at 0 0 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left bottom)
 			)
 		)
 		(property "Footprint" "TI_WSON8_DSG0008A"
@@ -10944,56 +12427,42 @@
 			)
 		)
 		(property "SUPPLIER 1" "Texas Instruments"
-			(at -18.288 17.78 0)
+			(at 0 0 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left bottom)
 				(hide yes)
 			)
 		)
 		(property "SUPPLIER PART NUMBER 1" "LM27761DSGR"
-			(at -18.288 17.78 0)
+			(at 0 0 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left bottom)
 				(hide yes)
 			)
 		)
 		(property "HOUSE PART NUMBER" ""
-			(at -18.288 20.32 0)
+			(at 0 0 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left bottom)
 				(hide yes)
 			)
 		)
 		(property "MANUFACTURER" "Texas Instruments"
-			(at -18.288 20.32 0)
+			(at 0 0 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left bottom)
 				(hide yes)
 			)
 		)
 		(property "MANUFACTURER PART NUMBER" "LM27761DSGR"
-			(at -18.288 20.32 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-				(hide yes)
-			)
-		)
-		(property "ki_fp_filters" "*TI_WSON8_DSG0008A*"
 			(at 0 0 0)
 			(effects
 				(font
@@ -11033,7 +12502,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin input line
 				(at -17.78 12.7 0)
 				(length 7.62)
 				(name "EN"
@@ -11159,7 +12628,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_out line
 				(at 17.78 -7.62 180)
 				(length 7.62)
 				(name "CPOUT"
@@ -11184,7 +12653,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(property "Reference" ""
+		(property "Reference" "U"
 			(at 0 0 0)
 			(effects
 				(font
@@ -11192,7 +12661,7 @@
 				)
 			)
 		)
-		(property "Value" ""
+		(property "Value" "MCP4728"
 			(at 0 0 0)
 			(effects
 				(font
@@ -11200,7 +12669,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "MC_MSOP10_UN"
 			(at 0 0 0)
 			(effects
 				(font
@@ -11227,7 +12696,43 @@
 				(hide yes)
 			)
 		)
-		(property "ki_fp_filters" "*MC_MSOP10_UN*"
+		(property "SUPPLIER 1" "Mouser"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER PART NUMBER 1" "579-MCP4728A1T-E/UN"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "HOUSE PART NUMBER" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "Microchip"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" "MCP4728"
 			(at 0 0 0)
 			(effects
 				(font
@@ -11267,7 +12772,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin open_collector line
 				(at -20.32 5.08 0)
 				(length 7.62)
 				(name "SCL"
@@ -11285,7 +12790,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin open_collector line
 				(at -20.32 2.54 0)
 				(length 7.62)
 				(name "SDA"
@@ -11303,7 +12808,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin input line
 				(at -20.32 -2.54 0)
 				(length 7.62)
 				(name "LDACn"
@@ -11321,7 +12826,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin open_collector line
 				(at -20.32 -5.08 0)
 				(length 7.62)
 				(name "RDY"
@@ -11357,7 +12862,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin output line
 				(at 20.32 7.62 180)
 				(length 7.62)
 				(name "VOUTA"
@@ -11375,7 +12880,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin output line
 				(at 20.32 2.54 180)
 				(length 7.62)
 				(name "VOUTB"
@@ -11393,7 +12898,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin output line
 				(at 20.32 -2.54 180)
 				(length 7.62)
 				(name "VOUTC"
@@ -11411,7 +12916,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin output line
 				(at 20.32 -7.62 180)
 				(length 7.62)
 				(name "VOUTD"
@@ -11436,7 +12941,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(property "Reference" ""
+		(property "Reference" "U"
 			(at 0 0 0)
 			(effects
 				(font
@@ -11444,7 +12949,7 @@
 				)
 			)
 		)
-		(property "Value" ""
+		(property "Value" "MCP4452-104E"
 			(at 0 0 0)
 			(effects
 				(font
@@ -11452,7 +12957,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "MC_TSSOP14"
 			(at 0 0 0)
 			(effects
 				(font
@@ -11479,7 +12984,43 @@
 				(hide yes)
 			)
 		)
-		(property "ki_fp_filters" "*MC_TSSOP14*"
+		(property "SUPPLIER 1" "Mouser"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER PART NUMBER 1" "579-MCP4452-104E/ST"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "HOUSE PART NUMBER" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "Microchip"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" "MCP4452-104E"
 			(at 0 0 0)
 			(effects
 				(font
@@ -11515,7 +13056,7 @@
 			)
 			(polyline
 				(pts
-					(xy 11.43 -12.7) (xy 8.89 -12.7)
+					(xy 11.43 -12.7) (xy 12.7 -13.97) (xy 13.97 -11.43) (xy 15.24 -13.97) (xy 16.51 -11.43) (xy 17.78 -13.97)
 				)
 				(stroke
 					(width 0)
@@ -11527,7 +13068,7 @@
 			)
 			(polyline
 				(pts
-					(xy 11.43 -12.7) (xy 12.7 -13.97) (xy 13.97 -11.43) (xy 15.24 -13.97) (xy 16.51 -11.43) (xy 17.78 -13.97)
+					(xy 11.43 -12.7) (xy 8.89 -12.7)
 				)
 				(stroke
 					(width 0)
@@ -11735,7 +13276,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin open_collector line
 				(at -7.62 -27.94 0)
 				(length 7.62)
 				(name "SCL"
@@ -11753,7 +13294,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin open_collector line
 				(at -7.62 -30.48 0)
 				(length 7.62)
 				(name "SDA"
@@ -11843,7 +13384,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin input line
 				(at 38.1 -27.94 180)
 				(length 7.62)
 				(name "HVC/A0"
@@ -11861,7 +13402,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin input line
 				(at 38.1 -30.48 180)
 				(length 7.62)
 				(name "A1"
@@ -11904,7 +13445,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(property "Reference" ""
+		(property "Reference" "U"
 			(at 0 0 0)
 			(effects
 				(font
@@ -11912,7 +13453,7 @@
 				)
 			)
 		)
-		(property "Value" ""
+		(property "Value" "MX25U6432FZNI02"
 			(at 0 0 0)
 			(effects
 				(font
@@ -11920,7 +13461,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "MX_WSON8"
 			(at 0 0 0)
 			(effects
 				(font
@@ -11947,7 +13488,43 @@
 				(hide yes)
 			)
 		)
-		(property "ki_fp_filters" "*MX_WSON8*"
+		(property "SUPPLIER 1" "Digi-Key"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER PART NUMBER 1" "1092-MX25U6432FZNI02-ND"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "HOUSE PART NUMBER" "MX25U6432FZNI02"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "Macronix"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" "MX25U6432FZNI02"
 			(at 0 0 0)
 			(effects
 				(font
@@ -11969,7 +13546,7 @@
 					(type background)
 				)
 			)
-			(pin passive line
+			(pin open_collector line
 				(at -20.32 7.62 0)
 				(length 7.62)
 				(name "CS#"
@@ -11987,7 +13564,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin input line
 				(at -20.32 2.54 0)
 				(length 7.62)
 				(name "SCLK"
@@ -12005,7 +13582,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin bidirectional line
 				(at -20.32 -2.54 0)
 				(length 7.62)
 				(name "SI/SIO0"
@@ -12023,7 +13600,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin bidirectional line
 				(at -20.32 -5.08 0)
 				(length 7.62)
 				(name "SO/SIO1"
@@ -12041,7 +13618,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin bidirectional line
 				(at -20.32 -7.62 0)
 				(length 7.62)
 				(name "WP#/SIO2"
@@ -12059,7 +13636,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin bidirectional line
 				(at -20.32 -10.16 0)
 				(length 7.62)
 				(name "RST#/SIO3"
@@ -12077,7 +13654,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at 20.32 7.62 180)
 				(length 7.62)
 				(name "VCC"
@@ -12095,7 +13672,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at 20.32 -7.62 180)
 				(length 7.62)
 				(name "PAD"
@@ -12113,7 +13690,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at 20.32 -10.16 180)
 				(length 7.62)
 				(name "GND"
@@ -12138,7 +13715,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(property "Reference" ""
+		(property "Reference" "U"
 			(at 0 0 0)
 			(effects
 				(font
@@ -12146,7 +13723,7 @@
 				)
 			)
 		)
-		(property "Value" ""
+		(property "Value" "IC FPGA XC7A50T-2CSG325C"
 			(at 0 0 0)
 			(effects
 				(font
@@ -12154,7 +13731,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "XILINX_XC7A50T-2CSG325C"
 			(at 0 0 0)
 			(effects
 				(font
@@ -12181,7 +13758,43 @@
 				(hide yes)
 			)
 		)
-		(property "ki_fp_filters" "*XILINX_XC7A50T-2CSG325C*"
+		(property "MANUFACTURER" "Xilinx"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "HOUSE PART NUMBER" "XC7A50T-2CSG325C"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" "XC7A50T-2CSG325C"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER 1" "Digi-Key"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER PART NUMBER 1" "122-2193-ND"
 			(at 0 0 0)
 			(effects
 				(font
@@ -15122,7 +16735,7 @@
 					)
 				)
 			)
-			(pin bidirectional line
+			(pin open_collector line
 				(at 7.62 -27.94 180)
 				(length 7.62)
 				(name "DONE_0"
@@ -18187,7 +19800,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(property "Reference" ""
+		(property "Reference" "U"
 			(at 0 0 0)
 			(effects
 				(font
@@ -18195,7 +19808,7 @@
 				)
 			)
 		)
-		(property "Value" ""
+		(property "Value" "TPS7A2033"
 			(at 0 0 0)
 			(effects
 				(font
@@ -18203,7 +19816,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "GEN_SOT23_5_950_2900X1600X1450"
 			(at 0 0 0)
 			(effects
 				(font
@@ -18230,7 +19843,43 @@
 				(hide yes)
 			)
 		)
-		(property "ki_fp_filters" "*GEN_SOT23_5_950_2900X1600X1450*"
+		(property "MANUFACTURER" "Texas Instruments"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "HOUSE PART NUMBER" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" "TPS7A2033PDBVR"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER 1" "Texas Instruments"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER PART NUMBER 1" "TPS7A2033PDBVR"
 			(at 0 0 0)
 			(effects
 				(font
@@ -18270,7 +19919,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin input line
 				(at -15.24 2.54 0)
 				(length 7.62)
 				(name "EN"
@@ -18306,7 +19955,7 @@
 					)
 				)
 			)
-			(pin power_in line
+			(pin power_out line
 				(at 15.24 5.08 180)
 				(length 7.62)
 				(name "OUT"
@@ -18324,7 +19973,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin no_connect line
 				(at 15.24 -2.54 180)
 				(length 7.62)
 				(name "NC"
@@ -18349,7 +19998,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(property "Reference" ""
+		(property "Reference" "U"
 			(at 0 0 0)
 			(effects
 				(font
@@ -18357,7 +20006,7 @@
 				)
 			)
 		)
-		(property "Value" ""
+		(property "Value" "TPS7A9101"
 			(at 0 0 0)
 			(effects
 				(font
@@ -18365,7 +20014,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "TI_WSON10_DSK0010A"
 			(at 0 0 0)
 			(effects
 				(font
@@ -18392,7 +20041,43 @@
 				(hide yes)
 			)
 		)
-		(property "ki_fp_filters" "*TI_WSON10_DSK0010A*"
+		(property "SUPPLIER 1" "Digi-Key"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER PART NUMBER 1" "296-45298-1-ND"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "HOUSE PART NUMBER" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" ""
 			(at 0 0 0)
 			(effects
 				(font
@@ -18450,7 +20135,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin input line
 				(at -17.78 0 0)
 				(length 7.62)
 				(name "SS_CTRL"
@@ -18468,7 +20153,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin input line
 				(at -17.78 -2.54 0)
 				(length 7.62)
 				(name "EN"
@@ -18486,7 +20171,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at -17.78 -7.62 0)
 				(length 7.62)
 				(name "PAD"
@@ -18522,7 +20207,7 @@
 					)
 				)
 			)
-			(pin power_in line
+			(pin power_out line
 				(at 17.78 7.62 180)
 				(length 7.62)
 				(name "OUT"
@@ -18540,7 +20225,7 @@
 					)
 				)
 			)
-			(pin power_in line
+			(pin power_out line
 				(at 17.78 5.08 180)
 				(length 7.62)
 				(name "OUT"
@@ -18576,7 +20261,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin open_collector line
 				(at 17.78 -5.08 180)
 				(length 7.62)
 				(name "PG"
@@ -18619,7 +20304,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(property "Reference" ""
+		(property "Reference" "U"
 			(at 0 0 0)
 			(effects
 				(font
@@ -18627,7 +20312,7 @@
 				)
 			)
 		)
-		(property "Value" ""
+		(property "Value" "OPA140AIDR"
 			(at 0 0 0)
 			(effects
 				(font
@@ -18635,7 +20320,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "TI_SOIC8_D0008A"
 			(at 0 0 0)
 			(effects
 				(font
@@ -18662,7 +20347,43 @@
 				(hide yes)
 			)
 		)
-		(property "ki_fp_filters" "*TI_SOIC8_D0008A*"
+		(property "SUPPLIER 1" "Texas Instruments"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER PART NUMBER 1" "OPA140AIDR"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "Texas Instruments"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "HOUSE PART NUMBER" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" "OPA140AIDR"
 			(at 0 0 0)
 			(effects
 				(font
@@ -18686,7 +20407,7 @@
 					(color 255 255 176 1)
 				)
 			)
-			(pin passive line
+			(pin input line
 				(at -17.78 5.08 0)
 				(length 7.62)
 				(name "+"
@@ -18704,7 +20425,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin input line
 				(at -17.78 -5.08 0)
 				(length 7.62)
 				(name "-"
@@ -18722,7 +20443,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at -5.08 15.24 270)
 				(length 7.62)
 				(name "V+"
@@ -18740,7 +20461,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at -5.08 -15.24 90)
 				(length 7.62)
 				(name "V-"
@@ -18794,7 +20515,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin output line
 				(at 17.78 0 180)
 				(length 7.62)
 				(name "OUT"
@@ -18819,7 +20540,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(property "Reference" ""
+		(property "Reference" "U"
 			(at 0 0 0)
 			(effects
 				(font
@@ -18827,7 +20548,7 @@
 				)
 			)
 		)
-		(property "Value" ""
+		(property "Value" "LMH6518"
 			(at 0 0 0)
 			(effects
 				(font
@@ -18835,7 +20556,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "TI_WQFN_RGH0016A"
 			(at 0 0 0)
 			(effects
 				(font
@@ -18862,7 +20583,43 @@
 				(hide yes)
 			)
 		)
-		(property "ki_fp_filters" "*TI_WQFN_RGH0016A*"
+		(property "SUPPLIER 1" "Texas Instruments"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER PART NUMBER 1" "LMH6518SQX/NOPB"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "HOUSE PART NUMBER" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "Texas Instruments"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" "LMH6518SQE/NOPB"
 			(at 0 0 0)
 			(effects
 				(font
@@ -18884,7 +20641,7 @@
 					(type background)
 				)
 			)
-			(pin passive line
+			(pin open_collector line
 				(at -22.86 17.78 0)
 				(length 7.62)
 				(name "CSn"
@@ -18902,7 +20659,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin bidirectional line
 				(at -22.86 15.24 0)
 				(length 7.62)
 				(name "SDIO"
@@ -18920,7 +20677,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin input line
 				(at -22.86 12.7 0)
 				(length 7.62)
 				(name "SCLK"
@@ -18938,7 +20695,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin input line
 				(at -22.86 5.08 0)
 				(length 7.62)
 				(name "IN_P"
@@ -18956,7 +20713,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin input line
 				(at -22.86 2.54 0)
 				(length 7.62)
 				(name "IN_N"
@@ -19082,7 +20839,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin output line
 				(at 22.86 5.08 180)
 				(length 7.62)
 				(name "OUT_P"
@@ -19100,7 +20857,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin output line
 				(at 22.86 2.54 180)
 				(length 7.62)
 				(name "OUT_N"
@@ -19136,7 +20893,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin output line
 				(at 22.86 -7.62 180)
 				(length 7.62)
 				(name "AUX_P"
@@ -19154,7 +20911,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin output line
 				(at 22.86 -10.16 180)
 				(length 7.62)
 				(name "AUX_N"
@@ -19197,7 +20954,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(property "Reference" ""
+		(property "Reference" "U"
 			(at 0 0 0)
 			(effects
 				(font
@@ -19205,7 +20962,7 @@
 				)
 			)
 		)
-		(property "Value" ""
+		(property "Value" "TPS22975"
 			(at 0 0 0)
 			(effects
 				(font
@@ -19213,7 +20970,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "TI_WSON8_DSG0008A"
 			(at 0 0 0)
 			(effects
 				(font
@@ -19240,7 +20997,43 @@
 				(hide yes)
 			)
 		)
-		(property "ki_fp_filters" "*TI_WSON8_DSG0008A*"
+		(property "SUPPLIER 1" "Texas Instruments"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER PART NUMBER 1" "TPS22975DSGR"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "HOUSE PART NUMBER" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "Texas Instruments"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" "TPS22975DSGR"
 			(at 0 0 0)
 			(effects
 				(font
@@ -19262,7 +21055,7 @@
 					(type background)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at -17.78 5.08 0)
 				(length 7.62)
 				(name "VIN"
@@ -19280,7 +21073,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at -17.78 2.54 0)
 				(length 7.62)
 				(name "VIN"
@@ -19298,7 +21091,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at -17.78 -2.54 0)
 				(length 7.62)
 				(name "VBIAS"
@@ -19316,7 +21109,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin input line
 				(at -17.78 -7.62 0)
 				(length 7.62)
 				(name "ON"
@@ -19334,7 +21127,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_out line
 				(at 17.78 5.08 180)
 				(length 7.62)
 				(name "VOUT"
@@ -19352,7 +21145,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_out line
 				(at 17.78 2.54 180)
 				(length 7.62)
 				(name "VOUT"
@@ -19388,7 +21181,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at 17.78 -5.08 180)
 				(length 7.62)
 				(name "EPAD"
@@ -19406,7 +21199,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at 17.78 -7.62 180)
 				(length 7.62)
 				(name "GND"
@@ -19431,7 +21224,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(property "Reference" ""
+		(property "Reference" "U"
 			(at 0 0 0)
 			(effects
 				(font
@@ -19439,7 +21232,7 @@
 				)
 			)
 		)
-		(property "Value" ""
+		(property "Value" "TS12A4516"
 			(at 0 0 0)
 			(effects
 				(font
@@ -19447,7 +21240,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "GEN_SOT23_5_950_2900X1600X1450"
 			(at 0 0 0)
 			(effects
 				(font
@@ -19474,7 +21267,43 @@
 				(hide yes)
 			)
 		)
-		(property "ki_fp_filters" "*GEN_SOT23_5_950_2900X1600X1450*"
+		(property "SUPPLIER 1" "Texas Instruments"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER PART NUMBER 1" "TS12A4516DBVR"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "Texas Instruments"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "HOUSE PART NUMBER" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" "TS12A4516DBVR"
 			(at 0 0 0)
 			(effects
 				(font
@@ -19496,7 +21325,7 @@
 					(type background)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at -15.24 5.08 0)
 				(length 7.62)
 				(name "V-"
@@ -19514,7 +21343,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin input line
 				(at -15.24 0 0)
 				(length 7.62)
 				(name "IN"
@@ -19532,7 +21361,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at -15.24 -5.08 0)
 				(length 7.62)
 				(name "V+"
@@ -19593,7 +21422,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(property "Reference" ""
+		(property "Reference" "U"
 			(at 0 0 0)
 			(effects
 				(font
@@ -19601,7 +21430,7 @@
 				)
 			)
 		)
-		(property "Value" ""
+		(property "Value" "REF2025"
 			(at 0 0 0)
 			(effects
 				(font
@@ -19609,7 +21438,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "GEN_SOT23_5_950_2900X1600X1450"
 			(at 0 0 0)
 			(effects
 				(font
@@ -19636,7 +21465,16 @@
 				(hide yes)
 			)
 		)
-		(property "ki_fp_filters" "*GEN_SOT23_5_950_2900X1600X1450*"
+		(property "SUPPLIER 1" "Texas Instruments"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER PART NUMBER 1" "REF2025AIDDCR"
 			(at 0 0 0)
 			(effects
 				(font
@@ -19658,7 +21496,7 @@
 					(type background)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at 0 -2.54 0)
 				(length 7.62)
 				(name "VIN"
@@ -19676,7 +21514,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin input line
 				(at 0 -7.62 0)
 				(length 7.62)
 				(name "EN"
@@ -19694,7 +21532,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at 0 -12.7 0)
 				(length 7.62)
 				(name "GND"
@@ -19712,7 +21550,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_out line
 				(at 33.02 -2.54 180)
 				(length 7.62)
 				(name "VREF"
@@ -19730,7 +21568,7 @@
 					)
 				)
 			)
-			(pin power_in line
+			(pin power_out line
 				(at 33.02 -7.62 180)
 				(length 7.62)
 				(name "VBIAS"
@@ -19761,7 +21599,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(property "Reference" ""
+		(property "Reference" "L"
 			(at 0 0 0)
 			(effects
 				(font
@@ -19769,7 +21607,7 @@
 				)
 			)
 		)
-		(property "Value" ""
+		(property "Value" "${ALTIUM_VALUE}"
 			(at 0 0 0)
 			(effects
 				(font
@@ -19777,7 +21615,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "GEN_L_1210"
 			(at 0 0 0)
 			(effects
 				(font
@@ -19804,7 +21642,52 @@
 				(hide yes)
 			)
 		)
-		(property "ki_fp_filters" "*GEN_L_1210*"
+		(property "ALTIUM_VALUE" "1uH"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER 1" "Mouser"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER PART NUMBER 1" "652-SRP3212-1R0M"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "HOUSE PART NUMBER" "SRP3212-1R0M"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "Bourns"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" "SRP3212-1R0M"
 			(at 0 0 0)
 			(effects
 				(font
@@ -19887,9 +21770,9 @@
 				)
 			)
 			(arc
-				(start 1.27 1.27)
-				(mid 2.168 0.898)
-				(end 2.54 0)
+				(start 0 0)
+				(mid 0.372 0.898)
+				(end 1.27 1.27)
 				(stroke
 					(width 0)
 					(type solid)
@@ -19899,9 +21782,9 @@
 				)
 			)
 			(arc
-				(start 0 0)
-				(mid 0.372 0.898)
-				(end 1.27 1.27)
+				(start 1.27 1.27)
+				(mid 2.168 0.898)
+				(end 2.54 0)
 				(stroke
 					(width 0)
 					(type solid)
@@ -19983,7 +21866,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(property "Reference" ""
+		(property "Reference" "D"
 			(at 0 0 0)
 			(effects
 				(font
@@ -19991,7 +21874,7 @@
 				)
 			)
 		)
-		(property "Value" ""
+		(property "Value" "GREEN"
 			(at 0 0 0)
 			(effects
 				(font
@@ -19999,7 +21882,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "LED_0603_LTST-S270K"
 			(at 0 0 0)
 			(effects
 				(font
@@ -20026,7 +21909,43 @@
 				(hide yes)
 			)
 		)
-		(property "ki_fp_filters" "*LED_0603_LTST-S270K*"
+		(property "SUPPLIER 1" "Mouser"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER PART NUMBER 1" "859-LTST-S270KGKT"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "HOUSE PART NUMBER" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "Vishay Lite-On"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" "LTST-S270KGKT"
 			(at 0 0 0)
 			(effects
 				(font
@@ -20157,7 +22076,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(property "Reference" ""
+		(property "Reference" "Q"
 			(at 0 0 0)
 			(effects
 				(font
@@ -20165,7 +22084,7 @@
 				)
 			)
 		)
-		(property "Value" ""
+		(property "Value" "DMN62D0UW"
 			(at 0 0 0)
 			(effects
 				(font
@@ -20173,7 +22092,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "GEN_SOT_323"
 			(at 0 0 0)
 			(effects
 				(font
@@ -20200,7 +22119,52 @@
 				(hide yes)
 			)
 		)
-		(property "ki_fp_filters" "*GEN_SOT_323*"
+		(property "VDSS" "60V"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER 1" "Mouser"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER PART NUMBER 1" "621-DMN62D0UW-7"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "HOUSE PART NUMBER" "DMN62D0UW-7"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "Diodes"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" "DMN62D0UW-7"
 			(at 0 0 0)
 			(effects
 				(font
@@ -20403,7 +22367,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(property "Reference" ""
+		(property "Reference" "Y"
 			(at 0 0 0)
 			(effects
 				(font
@@ -20411,7 +22375,7 @@
 				)
 			)
 		)
-		(property "Value" ""
+		(property "Value" "10MHz"
 			(at 0 0 0)
 			(effects
 				(font
@@ -20419,7 +22383,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "ECS_TXO-3225"
 			(at 0 0 0)
 			(effects
 				(font
@@ -20446,7 +22410,43 @@
 				(hide yes)
 			)
 		)
-		(property "ki_fp_filters" "*ECS_TXO-3225*"
+		(property "SUPPLIER 1" "Mouser"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER PART NUMBER 1" "520-TXO-3225MV-100-T"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "HOUSE PART NUMBER" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "ECS International"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" "ECS-TXO-3225MV-100-TR"
 			(at 0 0 0)
 			(effects
 				(font
@@ -20547,7 +22547,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(property "Reference" ""
+		(property "Reference" "Y"
 			(at 0 0 0)
 			(effects
 				(font
@@ -20555,7 +22555,7 @@
 				)
 			)
 		)
-		(property "Value" ""
+		(property "Value" "25MHz"
 			(at 0 0 0)
 			(effects
 				(font
@@ -20563,7 +22563,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "ECS_TXO-2016"
 			(at 0 0 0)
 			(effects
 				(font
@@ -20590,7 +22590,43 @@
 				(hide yes)
 			)
 		)
-		(property "ki_fp_filters" "*ECS_TXO-2016*"
+		(property "SUPPLIER 1" "Mouser"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER PART NUMBER 1" "520-TXO-2016-33-250T"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "HOUSE PART NUMBER" "ECS-TXO-2016-33-250-TR"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "ECS International"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" "ECS-TXO-2016-33-250-TR"
 			(at 0 0 0)
 			(effects
 				(font
@@ -20697,7 +22733,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(property "Reference" ""
+		(property "Reference" "S"
 			(at 0 0 0)
 			(effects
 				(font
@@ -20705,7 +22741,7 @@
 				)
 			)
 		)
-		(property "Value" ""
+		(property "Value" "9204"
 			(at 0 0 0)
 			(effects
 				(font
@@ -20732,6 +22768,51 @@
 			)
 		)
 		(property "Description" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER 1" "Mouser"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER PART NUMBER 1" "534-9204"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "HOUSE PART NUMBER" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "Keystone Electronics"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" "9204"
 			(at 0 0 0)
 			(effects
 				(font
@@ -20807,7 +22888,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(property "Reference" ""
+		(property "Reference" "P"
 			(at 0 0 0)
 			(effects
 				(font
@@ -20815,7 +22896,7 @@
 				)
 			)
 		)
-		(property "Value" ""
+		(property "Value" "PCIeX4-GF-2D-1000-1K-O64"
 			(at 0 0 0)
 			(effects
 				(font
@@ -20823,7 +22904,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "PCIeX4-GF-2D-1000-1K-O64"
 			(at 0 0 0)
 			(effects
 				(font
@@ -20850,7 +22931,52 @@
 				(hide yes)
 			)
 		)
-		(property "ki_fp_filters" "*PCIeX4-GF-2D-1000-1K-O64*"
+		(property "DATASHEET VERSION" "rev2.0, Apr-2007"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MATING CONNECTOR" "Molex-87715-9106"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "PACKAGE REFERENCE" "PCIeX4-GF-2D-1000-1K-O64"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "CLASSNAME" "Edge Connector"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "PUBLISHER" "Altium"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "COMPONENT KIND" "Standard (No BOM)"
 			(at 0 0 0)
 			(effects
 				(font
@@ -23505,7 +25631,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(property "Reference" ""
+		(property "Reference" "K"
 			(at 0 0 0)
 			(effects
 				(font
@@ -23513,7 +25639,7 @@
 				)
 			)
 		)
-		(property "Value" ""
+		(property "Value" "FTR-B3SA003Z"
 			(at 0 0 0)
 			(effects
 				(font
@@ -23521,7 +25647,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "FUJ_FTR-B3SA"
 			(at 0 0 0)
 			(effects
 				(font
@@ -23548,7 +25674,25 @@
 				(hide yes)
 			)
 		)
-		(property "ki_fp_filters" "*FUJ_FTR-B3SA*"
+		(property "HOUSE PART NUMBER" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "Fujitsu"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" "FTR-B3SA003Z"
 			(at 0 0 0)
 			(effects
 				(font
@@ -23851,7 +25995,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(property "Reference" ""
+		(property "Reference" "R"
 			(at 0 0 0)
 			(effects
 				(font
@@ -23859,7 +26003,7 @@
 				)
 			)
 		)
-		(property "Value" ""
+		(property "Value" "${ALTIUM_VALUE}"
 			(at 0 0 0)
 			(effects
 				(font
@@ -23867,7 +26011,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "GEN_R_0201"
 			(at 0 0 0)
 			(effects
 				(font
@@ -23894,7 +26038,70 @@
 				(hide yes)
 			)
 		)
-		(property "ki_fp_filters" "*GEN_R_0201*"
+		(property "PACKAGE" "0201"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER 1" "Mouser"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER PART NUMBER 1" "708-RMCF0201ZT0R00"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" "0"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "TOLERANCE" "1%"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "HOUSE PART NUMBER" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "Stackpole Electronics"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" "RMCF0201ZT0R00"
 			(at 0 0 0)
 			(effects
 				(font
@@ -23964,7 +26171,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(property "Reference" ""
+		(property "Reference" "R"
 			(at 0 0 0)
 			(effects
 				(font
@@ -23972,7 +26179,7 @@
 				)
 			)
 		)
-		(property "Value" ""
+		(property "Value" "${ALTIUM_VALUE}"
 			(at 0 0 0)
 			(effects
 				(font
@@ -23980,7 +26187,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "GEN_R_0402"
 			(at 0 0 0)
 			(effects
 				(font
@@ -24007,7 +26214,61 @@
 				(hide yes)
 			)
 		)
-		(property "ki_fp_filters" "*GEN_R_0402*"
+		(property "PACKAGE" "0402"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER 1" "Mouser"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER PART NUMBER 1" "603-RC0402JR-070RL"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" "0"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "HOUSE PART NUMBER" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "Yageo"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" "RC0402JR-070RL"
 			(at 0 0 0)
 			(effects
 				(font
@@ -24077,7 +26338,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(property "Reference" ""
+		(property "Reference" "R"
 			(at 0 0 0)
 			(effects
 				(font
@@ -24085,7 +26346,7 @@
 				)
 			)
 		)
-		(property "Value" ""
+		(property "Value" "${ALTIUM_VALUE}"
 			(at 0 0 0)
 			(effects
 				(font
@@ -24093,7 +26354,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "GEN_R_0603"
 			(at 0 0 0)
 			(effects
 				(font
@@ -24120,7 +26381,70 @@
 				(hide yes)
 			)
 		)
-		(property "ki_fp_filters" "*GEN_R_0603*"
+		(property "TOLERANCE" "1%"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER 1" "Mouser"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER PART NUMBER 1" "754-RL0816T-R010-F"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" "0.01"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "PACKAGE" "0603"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "HOUSE PART NUMBER" "R-0.01-0603-1%-001"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "Susumu"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" "RL0816T-R010-F"
 			(at 0 0 0)
 			(effects
 				(font
@@ -24190,7 +26514,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(property "Reference" ""
+		(property "Reference" "R"
 			(at 0 0 0)
 			(effects
 				(font
@@ -24198,7 +26522,7 @@
 				)
 			)
 		)
-		(property "Value" ""
+		(property "Value" "${ALTIUM_VALUE}"
 			(at 0 0 0)
 			(effects
 				(font
@@ -24206,7 +26530,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "GEN_R_0402"
 			(at 0 0 0)
 			(effects
 				(font
@@ -24233,7 +26557,70 @@
 				(hide yes)
 			)
 		)
-		(property "ki_fp_filters" "*GEN_R_0402*"
+		(property "TOLERANCE" "1%"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "PACKAGE" "0402"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER 1" "Mouser"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER PART NUMBER 1" "667-ERJ-2BSFR10X"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" "0.1"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "HOUSE PART NUMBER" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "Panasonic"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" "ERJ-2BSFR10X"
 			(at 0 0 0)
 			(effects
 				(font
@@ -24303,7 +26690,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(property "Reference" ""
+		(property "Reference" "R"
 			(at 0 0 0)
 			(effects
 				(font
@@ -24311,7 +26698,7 @@
 				)
 			)
 		)
-		(property "Value" ""
+		(property "Value" "${ALTIUM_VALUE}"
 			(at 0 0 0)
 			(effects
 				(font
@@ -24319,7 +26706,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "GEN_R_0603"
 			(at 0 0 0)
 			(effects
 				(font
@@ -24346,7 +26733,70 @@
 				(hide yes)
 			)
 		)
-		(property "ki_fp_filters" "*GEN_R_0603*"
+		(property "PACKAGE" "0603"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" "10"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER 1" "Mouser"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER PART NUMBER 1" "660-SG73P1JTTD10R0F"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "TOLERANCE" "1%"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "KOA Speer"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "HOUSE PART NUMBER" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" "SG73P1JTTD10R0F"
 			(at 0 0 0)
 			(effects
 				(font
@@ -24416,7 +26866,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(property "Reference" ""
+		(property "Reference" "R"
 			(at 0 0 0)
 			(effects
 				(font
@@ -24424,7 +26874,7 @@
 				)
 			)
 		)
-		(property "Value" ""
+		(property "Value" "${ALTIUM_VALUE}"
 			(at 0 0 0)
 			(effects
 				(font
@@ -24432,7 +26882,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "GEN_R_0402"
 			(at 0 0 0)
 			(effects
 				(font
@@ -24459,7 +26909,70 @@
 				(hide yes)
 			)
 		)
-		(property "ki_fp_filters" "*GEN_R_0402*"
+		(property "TOLERANCE" "1%"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "PACKAGE" "0402"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" "100"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER 1" "Mouser"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER PART NUMBER 1" "603-RC0402FR-07100RL"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "HOUSE PART NUMBER" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "Yageo"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" "RC0402FR-07100RL"
 			(at 0 0 0)
 			(effects
 				(font
@@ -24529,7 +27042,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(property "Reference" ""
+		(property "Reference" "R"
 			(at 0 0 0)
 			(effects
 				(font
@@ -24537,7 +27050,7 @@
 				)
 			)
 		)
-		(property "Value" ""
+		(property "Value" "${ALTIUM_VALUE}"
 			(at 0 0 0)
 			(effects
 				(font
@@ -24545,7 +27058,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "GEN_R_0402"
 			(at 0 0 0)
 			(effects
 				(font
@@ -24572,7 +27085,70 @@
 				(hide yes)
 			)
 		)
-		(property "ki_fp_filters" "*GEN_R_0402*"
+		(property "TOLERANCE" "1%"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "PACKAGE" "0402"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" "100k"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER 1" "Mouser"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER PART NUMBER 1" "603-RC0402FR-07100KL"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "HOUSE PART NUMBER" "R-100K-0402-1%-001"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "Yageo"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" "RC0402FR-07100KL"
 			(at 0 0 0)
 			(effects
 				(font
@@ -24642,7 +27218,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(property "Reference" ""
+		(property "Reference" "R"
 			(at 0 0 0)
 			(effects
 				(font
@@ -24650,7 +27226,7 @@
 				)
 			)
 		)
-		(property "Value" ""
+		(property "Value" "${ALTIUM_VALUE}"
 			(at 0 0 0)
 			(effects
 				(font
@@ -24658,7 +27234,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "GEN_R_0402"
 			(at 0 0 0)
 			(effects
 				(font
@@ -24685,7 +27261,70 @@
 				(hide yes)
 			)
 		)
-		(property "ki_fp_filters" "*GEN_R_0402*"
+		(property "TOLERANCE" "1%"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "PACKAGE" "0402"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER 1" "Mouser"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER PART NUMBER 1" "667-ERJ-2RKF1002X"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" "10K"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "HOUSE PART NUMBER" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "Panasonic"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" "ERJ-2RKF1002X"
 			(at 0 0 0)
 			(effects
 				(font
@@ -24755,7 +27394,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(property "Reference" ""
+		(property "Reference" "R"
 			(at 0 0 0)
 			(effects
 				(font
@@ -24763,7 +27402,7 @@
 				)
 			)
 		)
-		(property "Value" ""
+		(property "Value" "${ALTIUM_VALUE}"
 			(at 0 0 0)
 			(effects
 				(font
@@ -24771,7 +27410,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "GEN_R_0402"
 			(at 0 0 0)
 			(effects
 				(font
@@ -24798,7 +27437,70 @@
 				(hide yes)
 			)
 		)
-		(property "ki_fp_filters" "*GEN_R_0402*"
+		(property "TOLERANCE" "1%"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "PACKAGE" "0402"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER 1" "Mouser"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER PART NUMBER 1" "603-RC0402FR-071KL"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" "1K"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "HOUSE PART NUMBER" "R-1K-0402-1%-001"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "Yageo"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" "RC0402FR-071KL"
 			(at 0 0 0)
 			(effects
 				(font
@@ -24868,7 +27570,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(property "Reference" ""
+		(property "Reference" "R"
 			(at 0 0 0)
 			(effects
 				(font
@@ -24876,7 +27578,7 @@
 				)
 			)
 		)
-		(property "Value" ""
+		(property "Value" "${ALTIUM_VALUE}"
 			(at 0 0 0)
 			(effects
 				(font
@@ -24884,7 +27586,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "GEN_R_0402"
 			(at 0 0 0)
 			(effects
 				(font
@@ -24911,7 +27613,70 @@
 				(hide yes)
 			)
 		)
-		(property "ki_fp_filters" "*GEN_R_0402*"
+		(property "TOLERANCE" "1%"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "PACKAGE" "0402"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" "200K"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER 1" "Mouser"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER PART NUMBER 1" "603-RC0402FR-07200KL"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "HOUSE PART NUMBER" "R-200K-0402-1%-001"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "Yageo"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" "RC0402FR-07200KL"
 			(at 0 0 0)
 			(effects
 				(font
@@ -24981,7 +27746,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(property "Reference" ""
+		(property "Reference" "R"
 			(at 0 0 0)
 			(effects
 				(font
@@ -24989,7 +27754,7 @@
 				)
 			)
 		)
-		(property "Value" ""
+		(property "Value" "${ALTIUM_VALUE}"
 			(at 0 0 0)
 			(effects
 				(font
@@ -24997,7 +27762,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "GEN_R_0402"
 			(at 0 0 0)
 			(effects
 				(font
@@ -25024,7 +27789,70 @@
 				(hide yes)
 			)
 		)
-		(property "ki_fp_filters" "*GEN_R_0402*"
+		(property "TOLERANCE" "1%"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "PACKAGE" "0402"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER 1" "Mouser"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER PART NUMBER 1" "603-RC0402FR-0720KL"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" "20k"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "Yageo"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "HOUSE PART NUMBER" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" "RC0402FR-0720KL"
 			(at 0 0 0)
 			(effects
 				(font
@@ -25094,7 +27922,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(property "Reference" ""
+		(property "Reference" "R"
 			(at 0 0 0)
 			(effects
 				(font
@@ -25102,7 +27930,7 @@
 				)
 			)
 		)
-		(property "Value" ""
+		(property "Value" "${ALTIUM_VALUE}"
 			(at 0 0 0)
 			(effects
 				(font
@@ -25110,7 +27938,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "GEN_R_0402"
 			(at 0 0 0)
 			(effects
 				(font
@@ -25137,7 +27965,70 @@
 				(hide yes)
 			)
 		)
-		(property "ki_fp_filters" "*GEN_R_0402*"
+		(property "TOLERANCE" "1%"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "PACKAGE" "0402"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" "294K"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER 1" "Mouser"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER PART NUMBER 1" "603-RC0402FR-07294KL"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "HOUSE PART NUMBER" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "Yageo"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" "RC0402FR-07294KL"
 			(at 0 0 0)
 			(effects
 				(font
@@ -25207,7 +28098,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(property "Reference" ""
+		(property "Reference" "R"
 			(at 0 0 0)
 			(effects
 				(font
@@ -25215,7 +28106,7 @@
 				)
 			)
 		)
-		(property "Value" ""
+		(property "Value" "${ALTIUM_VALUE}"
 			(at 0 0 0)
 			(effects
 				(font
@@ -25223,7 +28114,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "GEN_R_0402"
 			(at 0 0 0)
 			(effects
 				(font
@@ -25250,7 +28141,70 @@
 				(hide yes)
 			)
 		)
-		(property "ki_fp_filters" "*GEN_R_0402*"
+		(property "TOLERANCE" "1%"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "PACKAGE" "0402"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER 1" "Mouser"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER PART NUMBER 1" "603-RC0402FR-072KL"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" "2K"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "HOUSE PART NUMBER" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "Yageo"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" "RC0402FR-072KL"
 			(at 0 0 0)
 			(effects
 				(font
@@ -25320,7 +28274,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(property "Reference" ""
+		(property "Reference" "R"
 			(at 0 0 0)
 			(effects
 				(font
@@ -25328,7 +28282,7 @@
 				)
 			)
 		)
-		(property "Value" ""
+		(property "Value" "${ALTIUM_VALUE}"
 			(at 0 0 0)
 			(effects
 				(font
@@ -25336,7 +28290,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "GEN_R_0603"
 			(at 0 0 0)
 			(effects
 				(font
@@ -25363,7 +28317,70 @@
 				(hide yes)
 			)
 		)
-		(property "ki_fp_filters" "*GEN_R_0603*"
+		(property "TOLERANCE" "1%"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "PACKAGE" "0603"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" "30"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER 1" "Mouser"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER PART NUMBER 1" "660-SG73P1JTTD30R0F"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "HOUSE PART NUMBER" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "KOA Speer"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" "SG73P1JTTD30R0F"
 			(at 0 0 0)
 			(effects
 				(font
@@ -25433,7 +28450,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(property "Reference" ""
+		(property "Reference" "R"
 			(at 0 0 0)
 			(effects
 				(font
@@ -25441,7 +28458,7 @@
 				)
 			)
 		)
-		(property "Value" ""
+		(property "Value" "${ALTIUM_VALUE}"
 			(at 0 0 0)
 			(effects
 				(font
@@ -25449,7 +28466,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "GEN_R_0402"
 			(at 0 0 0)
 			(effects
 				(font
@@ -25476,7 +28493,70 @@
 				(hide yes)
 			)
 		)
-		(property "ki_fp_filters" "*GEN_R_0402*"
+		(property "TOLERANCE" "1%"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "PACKAGE" "0402"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER 1" "Mouser"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER PART NUMBER 1" "667-ERJ-2RKF3003X"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" "300K"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "Panasonic"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "HOUSE PART NUMBER" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" "ERJ-2RKF3003X"
 			(at 0 0 0)
 			(effects
 				(font
@@ -25546,7 +28626,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(property "Reference" ""
+		(property "Reference" "R"
 			(at 0 0 0)
 			(effects
 				(font
@@ -25554,7 +28634,7 @@
 				)
 			)
 		)
-		(property "Value" ""
+		(property "Value" "${ALTIUM_VALUE}"
 			(at 0 0 0)
 			(effects
 				(font
@@ -25562,7 +28642,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "GEN_R_0402"
 			(at 0 0 0)
 			(effects
 				(font
@@ -25589,7 +28669,70 @@
 				(hide yes)
 			)
 		)
-		(property "ki_fp_filters" "*GEN_R_0402*"
+		(property "TOLERANCE" "1%"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "PACKAGE" "0402"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" "35.7k"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER 1" "Mouser"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER PART NUMBER 1" "603-RC0402FR-0735K7L"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "HOUSE PART NUMBER" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "Yageo"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" "RC0402FR-0735K7L"
 			(at 0 0 0)
 			(effects
 				(font
@@ -25659,7 +28802,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(property "Reference" ""
+		(property "Reference" "R"
 			(at 0 0 0)
 			(effects
 				(font
@@ -25667,7 +28810,7 @@
 				)
 			)
 		)
-		(property "Value" ""
+		(property "Value" "${ALTIUM_VALUE}"
 			(at 0 0 0)
 			(effects
 				(font
@@ -25675,7 +28818,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "GEN_R_0402"
 			(at 0 0 0)
 			(effects
 				(font
@@ -25702,7 +28845,70 @@
 				(hide yes)
 			)
 		)
-		(property "ki_fp_filters" "*GEN_R_0402*"
+		(property "TOLERANCE" "1%"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "PACKAGE" "0402"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER 1" "Mouser"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER PART NUMBER 1" "667-ERJ-2RKF4701X"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" "4.7K"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "HOUSE PART NUMBER" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "Panasonic"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" "ERJ-2RKF4701X"
 			(at 0 0 0)
 			(effects
 				(font
@@ -25772,7 +28978,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(property "Reference" ""
+		(property "Reference" "R"
 			(at 0 0 0)
 			(effects
 				(font
@@ -25780,7 +28986,7 @@
 				)
 			)
 		)
-		(property "Value" ""
+		(property "Value" "${ALTIUM_VALUE}"
 			(at 0 0 0)
 			(effects
 				(font
@@ -25788,7 +28994,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "GEN_R_0402"
 			(at 0 0 0)
 			(effects
 				(font
@@ -25815,7 +29021,70 @@
 				(hide yes)
 			)
 		)
-		(property "ki_fp_filters" "*GEN_R_0402*"
+		(property "PACKAGE" "0402"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" "49.9"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER 1" "Mouser"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER PART NUMBER 1" "603-RC0402FR-0749R9L"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "Yageo"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "HOUSE PART NUMBER" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" "RC0402FR-0749R9L"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "TOLERANCE" "1%"
 			(at 0 0 0)
 			(effects
 				(font
@@ -25885,7 +29154,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(property "Reference" ""
+		(property "Reference" "R"
 			(at 0 0 0)
 			(effects
 				(font
@@ -25893,7 +29162,7 @@
 				)
 			)
 		)
-		(property "Value" ""
+		(property "Value" "${ALTIUM_VALUE}"
 			(at 0 0 0)
 			(effects
 				(font
@@ -25901,7 +29170,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "GEN_R_0508"
 			(at 0 0 0)
 			(effects
 				(font
@@ -25928,7 +29197,79 @@
 				(hide yes)
 			)
 		)
-		(property "ki_fp_filters" "*GEN_R_0508*"
+		(property "TOLERANCE" "1%"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "PACKAGE" "0508"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" "49.9"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER 1" "Mouser"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER PART NUMBER 1" "660-WK73R2ATTD49R9F"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "HOUSE PART NUMBER" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "KOA Speer"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" "WK73R2ATTD49R9F"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "POWER RATING" "1W"
 			(at 0 0 0)
 			(effects
 				(font
@@ -25998,7 +29339,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(property "Reference" ""
+		(property "Reference" "R"
 			(at 0 0 0)
 			(effects
 				(font
@@ -26006,7 +29347,7 @@
 				)
 			)
 		)
-		(property "Value" ""
+		(property "Value" "${ALTIUM_VALUE}"
 			(at 0 0 0)
 			(effects
 				(font
@@ -26014,7 +29355,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "GEN_R_0402"
 			(at 0 0 0)
 			(effects
 				(font
@@ -26041,7 +29382,70 @@
 				(hide yes)
 			)
 		)
-		(property "ki_fp_filters" "*GEN_R_0402*"
+		(property "TOLERANCE" "1%"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "PACKAGE" "0402"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" "66.5k"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER 1" "Mouser"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER PART NUMBER 1" "603-RC0402FR-0766K5L"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "HOUSE PART NUMBER" "R-66.5K-0402-1%-001"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "Yageo"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" "RC0402FR-0766K5L"
 			(at 0 0 0)
 			(effects
 				(font
@@ -26111,7 +29515,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(property "Reference" ""
+		(property "Reference" "R"
 			(at 0 0 0)
 			(effects
 				(font
@@ -26119,7 +29523,7 @@
 				)
 			)
 		)
-		(property "Value" ""
+		(property "Value" "${ALTIUM_VALUE}"
 			(at 0 0 0)
 			(effects
 				(font
@@ -26127,7 +29531,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "GEN_R_0402"
 			(at 0 0 0)
 			(effects
 				(font
@@ -26154,7 +29558,70 @@
 				(hide yes)
 			)
 		)
-		(property "ki_fp_filters" "*GEN_R_0402*"
+		(property "TOLERANCE" "1%"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "PACKAGE" "0402"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER 1" "Mouser"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER PART NUMBER 1" "603-RC0402FR-07680KL"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" "680K"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "Yageo"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "HOUSE PART NUMBER" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" "RC0402FR-07681KL"
 			(at 0 0 0)
 			(effects
 				(font
@@ -26224,7 +29691,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(property "Reference" ""
+		(property "Reference" "R"
 			(at 0 0 0)
 			(effects
 				(font
@@ -26232,7 +29699,7 @@
 				)
 			)
 		)
-		(property "Value" ""
+		(property "Value" "${ALTIUM_VALUE}"
 			(at 0 0 0)
 			(effects
 				(font
@@ -26240,7 +29707,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "GEN_R_0402"
 			(at 0 0 0)
 			(effects
 				(font
@@ -26267,7 +29734,70 @@
 				(hide yes)
 			)
 		)
-		(property "ki_fp_filters" "*GEN_R_0402*"
+		(property "TOLERANCE" "1%"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "PACKAGE" "0402"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER 1" "Mouser"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER PART NUMBER 1" "603-RC0402FR-0790K9L"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" "90.9k"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "HOUSE PART NUMBER" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "Yageo"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" "RC0402FR-0790K9L"
 			(at 0 0 0)
 			(effects
 				(font
@@ -26337,7 +29867,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(property "Reference" ""
+		(property "Reference" "R"
 			(at 0 0 0)
 			(effects
 				(font
@@ -26345,7 +29875,7 @@
 				)
 			)
 		)
-		(property "Value" ""
+		(property "Value" "${ALTIUM_VALUE}"
 			(at 0 0 0)
 			(effects
 				(font
@@ -26353,7 +29883,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "GEN_R_0402"
 			(at 0 0 0)
 			(effects
 				(font
@@ -26380,7 +29910,70 @@
 				(hide yes)
 			)
 		)
-		(property "ki_fp_filters" "*GEN_R_0402*"
+		(property "TOLERANCE" "1%"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "PACKAGE" "0402"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER 1" "Mouser"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER PART NUMBER 1" "603-RC0402FR-07909KL"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" "909k"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "HOUSE PART NUMBER" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "Yageo"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" "RC0402FR-07909KL"
 			(at 0 0 0)
 			(effects
 				(font
@@ -26450,7 +30043,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(property "Reference" ""
+		(property "Reference" "R"
 			(at 0 0 0)
 			(effects
 				(font
@@ -26458,7 +30051,7 @@
 				)
 			)
 		)
-		(property "Value" ""
+		(property "Value" "${ALTIUM_VALUE}"
 			(at 0 0 0)
 			(effects
 				(font
@@ -26466,7 +30059,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "GEN_R_0603"
 			(at 0 0 0)
 			(effects
 				(font
@@ -26493,7 +30086,70 @@
 				(hide yes)
 			)
 		)
-		(property "ki_fp_filters" "*GEN_R_0603*"
+		(property "PACKAGE" "0603"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" "976k"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "KOA Speer"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "HOUSE PART NUMBER" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" "RK73H1JTTD9763F"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "TOLERANCE" "1%"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER 1" "Mouser"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER PART NUMBER 1" "660-RK73H1JTTD9763F"
 			(at 0 0 0)
 			(effects
 				(font
@@ -26563,7 +30219,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(property "Reference" ""
+		(property "Reference" "R"
 			(at 0 0 0)
 			(effects
 				(font
@@ -26571,7 +30227,7 @@
 				)
 			)
 		)
-		(property "Value" ""
+		(property "Value" "${ALTIUM_VALUE}"
 			(at 0 0 0)
 			(effects
 				(font
@@ -26579,7 +30235,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "GEN_R_2ARRAY_0606"
 			(at 0 0 0)
 			(effects
 				(font
@@ -26606,7 +30262,70 @@
 				(hide yes)
 			)
 		)
-		(property "ki_fp_filters" "*GEN_R_2ARRAY_0606*"
+		(property "TOLERANCE" "1%"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "PACKAGE" "0606"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" "10K"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "Vishay Beyschlag"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "HOUSE PART NUMBER" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" "ACASN1002S1002P1ATF1002X"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER 1" "Mouser"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER PART NUMBER 1" "594-ACASN1002S1002AT"
 			(at 0 0 0)
 			(effects
 				(font
@@ -26751,7 +30470,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(property "Reference" ""
+		(property "Reference" "R"
 			(at 0 0 0)
 			(effects
 				(font
@@ -26759,7 +30478,7 @@
 				)
 			)
 		)
-		(property "Value" ""
+		(property "Value" "${ALTIUM_VALUE}"
 			(at 0 0 0)
 			(effects
 				(font
@@ -26767,7 +30486,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "GEN_R_0402"
 			(at 0 0 0)
 			(effects
 				(font
@@ -26794,7 +30513,52 @@
 				(hide yes)
 			)
 		)
-		(property "ki_fp_filters" "*GEN_R_0402*"
+		(property "PACKAGE" "0402"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" "DNP"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "TOLERANCE" "1%"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "HOUSE PART NUMBER" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" ""
 			(at 0 0 0)
 			(effects
 				(font
@@ -26864,7 +30628,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(property "Reference" ""
+		(property "Reference" "S"
 			(at 0 0 0)
 			(effects
 				(font
@@ -26872,7 +30636,7 @@
 				)
 			)
 		)
-		(property "Value" ""
+		(property "Value" "2118727-2"
 			(at 0 0 0)
 			(effects
 				(font
@@ -26899,6 +30663,51 @@
 			)
 		)
 		(property "Description" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER 1" "Mouser"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER PART NUMBER 1" "571-2118727-2"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "HOUSE PART NUMBER" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "TE Connectivity AMP"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" "2118727-2"
 			(at 0 0 0)
 			(effects
 				(font
@@ -26933,7 +30742,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(property "Reference" ""
+		(property "Reference" "S"
 			(at 0 0 0)
 			(effects
 				(font
@@ -26941,7 +30750,7 @@
 				)
 			)
 		)
-		(property "Value" ""
+		(property "Value" "2118728-2"
 			(at 0 0 0)
 			(effects
 				(font
@@ -26949,7 +30758,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "TE_2118728-2"
 			(at 0 0 0)
 			(effects
 				(font
@@ -26976,7 +30785,43 @@
 				(hide yes)
 			)
 		)
-		(property "ki_fp_filters" "*TE_2118728-2*"
+		(property "SUPPLIER 1" "Mouser"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER PART NUMBER 1" "571-2118728-2"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "HOUSE PART NUMBER" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "TE Connectivity"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" "2118728-2"
 			(at 0 0 0)
 			(effects
 				(font
@@ -27173,7 +31018,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(property "Reference" ""
+		(property "Reference" "T"
 			(at 0 0 0)
 			(effects
 				(font
@@ -27181,7 +31026,7 @@
 				)
 			)
 		)
-		(property "Value" ""
+		(property "Value" "5015"
 			(at 0 0 0)
 			(effects
 				(font
@@ -27189,7 +31034,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "KEY_5015"
 			(at 0 0 0)
 			(effects
 				(font
@@ -27216,7 +31061,43 @@
 				(hide yes)
 			)
 		)
-		(property "ki_fp_filters" "*KEY_5015*"
+		(property "SUPPLIER 1" "Mouser"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER PART NUMBER 1" "534-5015"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "HOUSE PART NUMBER" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "Keystone Electronics"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" "5015"
 			(at 0 0 0)
 			(effects
 				(font
@@ -27269,7 +31150,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(property "Reference" ""
+		(property "Reference" "T"
 			(at 0 0 0)
 			(effects
 				(font
@@ -27277,7 +31158,7 @@
 				)
 			)
 		)
-		(property "Value" ""
+		(property "Value" "5019"
 			(at 0 0 0)
 			(effects
 				(font
@@ -27285,7 +31166,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "KEY_5019"
 			(at 0 0 0)
 			(effects
 				(font
@@ -27312,7 +31193,43 @@
 				(hide yes)
 			)
 		)
-		(property "ki_fp_filters" "*KEY_5019*"
+		(property "SUPPLIER 1" "Mouser"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER PART NUMBER 1" "534-5019"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "HOUSE PART NUMBER" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "Keystone Electronics"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" "5019"
 			(at 0 0 0)
 			(effects
 				(font
@@ -27365,7 +31282,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(property "Reference" ""
+		(property "Reference" "T"
 			(at 0 0 0)
 			(effects
 				(font
@@ -27373,7 +31290,7 @@
 				)
 			)
 		)
-		(property "Value" ""
+		(property "Value" "PCB"
 			(at 0 0 0)
 			(effects
 				(font
@@ -27381,7 +31298,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "GEN_TP_PCB"
 			(at 0 0 0)
 			(effects
 				(font
@@ -27408,7 +31325,25 @@
 				(hide yes)
 			)
 		)
-		(property "ki_fp_filters" "*GEN_TP_PCB*"
+		(property "HOUSE PART NUMBER" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" ""
 			(at 0 0 0)
 			(effects
 				(font
@@ -27461,7 +31396,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(property "Reference" ""
+		(property "Reference" "R"
 			(at 0 0 0)
 			(effects
 				(font
@@ -27469,7 +31404,7 @@
 				)
 			)
 		)
-		(property "Value" ""
+		(property "Value" "5K TRIMPOT"
 			(at 0 0 0)
 			(effects
 				(font
@@ -27477,7 +31412,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "BOU_3mm_POT"
 			(at 0 0 0)
 			(effects
 				(font
@@ -27504,7 +31439,61 @@
 				(hide yes)
 			)
 		)
-		(property "ki_fp_filters" "*BOU_3mm_POT*"
+		(property "TOLERANCE" "1%"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER 1" "Mouser"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER PART NUMBER 1" "652-TC33X-2-502E"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" "5K"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "HOUSE PART NUMBER" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "Bourns"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" "TC33X-2-502E"
 			(at 0 0 0)
 			(effects
 				(font
@@ -27605,7 +31594,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(property "Reference" ""
+		(property "Reference" "D"
 			(at 0 0 0)
 			(effects
 				(font
@@ -27613,7 +31602,7 @@
 				)
 			)
 		)
-		(property "Value" ""
+		(property "Value" "TPD1E1B04"
 			(at 0 0 0)
 			(effects
 				(font
@@ -27621,7 +31610,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "TI_X1SON_DPY0002A"
 			(at 0 0 0)
 			(effects
 				(font
@@ -27648,7 +31637,43 @@
 				(hide yes)
 			)
 		)
-		(property "ki_fp_filters" "*TI_X1SON_DPY0002A*"
+		(property "SUPPLIER 1" "Texas Instruments"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER PART NUMBER 1" "TPD1E1B04DPYR"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "HOUSE PART NUMBER" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "Texas Instruments"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" "TPD1E1B04DPYR"
 			(at 0 0 0)
 			(effects
 				(font
@@ -27672,7 +31697,7 @@
 			)
 			(polyline
 				(pts
-					(xy -1.27 0) (xy -2.54 -1.27)
+					(xy -1.27 0) (xy 1.27 0)
 				)
 				(stroke
 					(width 0)
@@ -27684,7 +31709,7 @@
 			)
 			(polyline
 				(pts
-					(xy -1.27 0) (xy 1.27 0)
+					(xy -1.27 0) (xy -2.54 -1.27)
 				)
 				(stroke
 					(width 0)
@@ -27767,7 +31792,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(property "Reference" ""
+		(property "Reference" "J"
 			(at 0 0 0)
 			(effects
 				(font
@@ -27775,7 +31800,7 @@
 				)
 			)
 		)
-		(property "Value" ""
+		(property "Value" "UFL"
 			(at 0 0 0)
 			(effects
 				(font
@@ -27783,7 +31808,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "TE_2334884-1"
 			(at 0 0 0)
 			(effects
 				(font
@@ -27810,7 +31835,43 @@
 				(hide yes)
 			)
 		)
-		(property "ki_fp_filters" "*TE_2334884-1*"
+		(property "SUPPLIER 1" "Mouser"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER PART NUMBER 1" "571-2334884-1"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "HOUSE PART NUMBER" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "TE Connectivity"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" "2334884-1"
 			(at 0 0 0)
 			(effects
 				(font

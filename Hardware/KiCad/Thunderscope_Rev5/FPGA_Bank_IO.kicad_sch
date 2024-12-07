@@ -230,7 +230,7 @@
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
-			(property "Reference" ""
+			(property "Reference" "C"
 				(at 0 0 0)
 				(effects
 					(font
@@ -238,7 +238,7 @@
 					)
 				)
 			)
-			(property "Value" ""
+			(property "Value" "${ALTIUM_VALUE}"
 				(at 0 0 0)
 				(effects
 					(font
@@ -246,7 +246,7 @@
 					)
 				)
 			)
-			(property "Footprint" ""
+			(property "Footprint" "GEN_C_0402"
 				(at 0 0 0)
 				(effects
 					(font
@@ -273,7 +273,70 @@
 					(hide yes)
 				)
 			)
-			(property "ki_fp_filters" "*GEN_C_0402*"
+			(property "PACKAGE" "0402"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "VOLTAGE RATING" "16V"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "SUPPLIER 1" "Mouser"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "SUPPLIER PART NUMBER 1" "81-GCM155R71C104KA5D"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ALTIUM_VALUE" "100nF"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "HOUSE PART NUMBER" "C-100nF-0402-002"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MANUFACTURER" "Murata"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MANUFACTURER PART NUMBER" "GCM155R71C104KA55D"
 				(at 0 0 0)
 				(effects
 					(font
@@ -475,7 +538,7 @@
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
-			(property "Reference" ""
+			(property "Reference" "U"
 				(at 0 0 0)
 				(effects
 					(font
@@ -483,7 +546,7 @@
 					)
 				)
 			)
-			(property "Value" ""
+			(property "Value" "MX25U6432FZNI02"
 				(at 0 0 0)
 				(effects
 					(font
@@ -491,7 +554,7 @@
 					)
 				)
 			)
-			(property "Footprint" ""
+			(property "Footprint" "MX_WSON8"
 				(at 0 0 0)
 				(effects
 					(font
@@ -518,7 +581,43 @@
 					(hide yes)
 				)
 			)
-			(property "ki_fp_filters" "*MX_WSON8*"
+			(property "SUPPLIER 1" "Digi-Key"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "SUPPLIER PART NUMBER 1" "1092-MX25U6432FZNI02-ND"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "HOUSE PART NUMBER" "MX25U6432FZNI02"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MANUFACTURER" "Macronix"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MANUFACTURER PART NUMBER" "MX25U6432FZNI02"
 				(at 0 0 0)
 				(effects
 					(font
@@ -540,7 +639,7 @@
 						(type background)
 					)
 				)
-				(pin passive line
+				(pin open_collector line
 					(at -20.32 7.62 0)
 					(length 7.62)
 					(name "CS#"
@@ -558,7 +657,7 @@
 						)
 					)
 				)
-				(pin passive line
+				(pin input line
 					(at -20.32 2.54 0)
 					(length 7.62)
 					(name "SCLK"
@@ -576,7 +675,7 @@
 						)
 					)
 				)
-				(pin passive line
+				(pin bidirectional line
 					(at -20.32 -2.54 0)
 					(length 7.62)
 					(name "SI/SIO0"
@@ -594,7 +693,7 @@
 						)
 					)
 				)
-				(pin passive line
+				(pin bidirectional line
 					(at -20.32 -5.08 0)
 					(length 7.62)
 					(name "SO/SIO1"
@@ -612,7 +711,7 @@
 						)
 					)
 				)
-				(pin passive line
+				(pin bidirectional line
 					(at -20.32 -7.62 0)
 					(length 7.62)
 					(name "WP#/SIO2"
@@ -630,7 +729,7 @@
 						)
 					)
 				)
-				(pin passive line
+				(pin bidirectional line
 					(at -20.32 -10.16 0)
 					(length 7.62)
 					(name "RST#/SIO3"
@@ -648,7 +747,7 @@
 						)
 					)
 				)
-				(pin passive line
+				(pin power_in line
 					(at 20.32 7.62 180)
 					(length 7.62)
 					(name "VCC"
@@ -666,7 +765,7 @@
 						)
 					)
 				)
-				(pin passive line
+				(pin power_in line
 					(at 20.32 -7.62 180)
 					(length 7.62)
 					(name "PAD"
@@ -684,7 +783,7 @@
 						)
 					)
 				)
-				(pin passive line
+				(pin power_in line
 					(at 20.32 -10.16 180)
 					(length 7.62)
 					(name "GND"
@@ -709,7 +808,7 @@
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
-			(property "Reference" ""
+			(property "Reference" "U"
 				(at 0 0 0)
 				(effects
 					(font
@@ -717,7 +816,7 @@
 					)
 				)
 			)
-			(property "Value" ""
+			(property "Value" "IC FPGA XC7A50T-2CSG325C"
 				(at 0 0 0)
 				(effects
 					(font
@@ -725,7 +824,7 @@
 					)
 				)
 			)
-			(property "Footprint" ""
+			(property "Footprint" "XILINX_XC7A50T-2CSG325C"
 				(at 0 0 0)
 				(effects
 					(font
@@ -752,7 +851,43 @@
 					(hide yes)
 				)
 			)
-			(property "ki_fp_filters" "*XILINX_XC7A50T-2CSG325C*"
+			(property "MANUFACTURER" "Xilinx"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "HOUSE PART NUMBER" "XC7A50T-2CSG325C"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MANUFACTURER PART NUMBER" "XC7A50T-2CSG325C"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "SUPPLIER 1" "Digi-Key"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "SUPPLIER PART NUMBER 1" "122-2193-ND"
 				(at 0 0 0)
 				(effects
 					(font
@@ -3693,7 +3828,7 @@
 						)
 					)
 				)
-				(pin bidirectional line
+				(pin open_collector line
 					(at 7.62 -27.94 180)
 					(length 7.62)
 					(name "DONE_0"
@@ -6758,7 +6893,7 @@
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
-			(property "Reference" ""
+			(property "Reference" "Y"
 				(at 0 0 0)
 				(effects
 					(font
@@ -6766,7 +6901,7 @@
 					)
 				)
 			)
-			(property "Value" ""
+			(property "Value" "25MHz"
 				(at 0 0 0)
 				(effects
 					(font
@@ -6774,7 +6909,7 @@
 					)
 				)
 			)
-			(property "Footprint" ""
+			(property "Footprint" "ECS_TXO-2016"
 				(at 0 0 0)
 				(effects
 					(font
@@ -6801,7 +6936,43 @@
 					(hide yes)
 				)
 			)
-			(property "ki_fp_filters" "*ECS_TXO-2016*"
+			(property "SUPPLIER 1" "Mouser"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "SUPPLIER PART NUMBER 1" "520-TXO-2016-33-250T"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "HOUSE PART NUMBER" "ECS-TXO-2016-33-250-TR"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MANUFACTURER" "ECS International"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MANUFACTURER PART NUMBER" "ECS-TXO-2016-33-250-TR"
 				(at 0 0 0)
 				(effects
 					(font
@@ -6908,7 +7079,7 @@
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
-			(property "Reference" ""
+			(property "Reference" "R"
 				(at 0 0 0)
 				(effects
 					(font
@@ -6916,7 +7087,7 @@
 					)
 				)
 			)
-			(property "Value" ""
+			(property "Value" "${ALTIUM_VALUE}"
 				(at 0 0 0)
 				(effects
 					(font
@@ -6924,7 +7095,7 @@
 					)
 				)
 			)
-			(property "Footprint" ""
+			(property "Footprint" "GEN_R_0402"
 				(at 0 0 0)
 				(effects
 					(font
@@ -6951,7 +7122,70 @@
 					(hide yes)
 				)
 			)
-			(property "ki_fp_filters" "*GEN_R_0402*"
+			(property "TOLERANCE" "1%"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "PACKAGE" "0402"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ALTIUM_VALUE" "100"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "SUPPLIER 1" "Mouser"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "SUPPLIER PART NUMBER 1" "603-RC0402FR-07100RL"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "HOUSE PART NUMBER" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MANUFACTURER" "Yageo"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MANUFACTURER PART NUMBER" "RC0402FR-07100RL"
 				(at 0 0 0)
 				(effects
 					(font

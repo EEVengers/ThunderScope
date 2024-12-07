@@ -1892,111 +1892,6 @@
 		)
 		(embedded_fonts no)
 	)
-	(symbol "1V2_MGT_BAR"
-		(power)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(property "Reference" "#PWR"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "1V2_MGT"
-			(at 0 -3.81 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name '1V2_MGT'"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "ki_keywords" "power-flag"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(symbol "1V2_MGT_BAR_0_0"
-			(polyline
-				(pts
-					(xy -1.27 -2.54) (xy 1.27 -2.54)
-				)
-				(stroke
-					(width 0.254)
-					(type solid)
-				)
-				(fill
-					(type none)
-				)
-			)
-			(polyline
-				(pts
-					(xy 0 0) (xy 0 -2.54)
-				)
-				(stroke
-					(width 0.254)
-					(type solid)
-				)
-				(fill
-					(type none)
-				)
-			)
-			(pin power_in line
-				(at 0 0 0)
-				(length 0)
-				(hide yes)
-				(name "1V2_MGT"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number ""
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-		)
-		(embedded_fonts no)
-	)
 	(symbol "BNC JACK R/A"
 		(pin_numbers
 			(hide yes)
@@ -2098,17 +1993,6 @@
 		(symbol "BNC JACK R/A_1_0"
 			(circle
 				(center 0 0)
-				(radius 2.54)
-				(stroke
-					(width 0)
-					(type solid)
-				)
-				(fill
-					(type none)
-				)
-			)
-			(circle
-				(center 0 0)
 				(radius 0.635)
 				(stroke
 					(width -0.0001)
@@ -2116,6 +2000,17 @@
 				)
 				(fill
 					(type outline)
+				)
+			)
+			(circle
+				(center 0 0)
+				(radius 2.54)
+				(stroke
+					(width 0)
+					(type solid)
+				)
+				(fill
+					(type none)
 				)
 			)
 			(pin passive line
@@ -9421,7 +9316,7 @@
 					(type background)
 				)
 			)
-			(pin passive line
+			(pin input line
 				(at -30.48 43.18 0)
 				(length 7.62)
 				(name "PD"
@@ -9439,7 +9334,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin input line
 				(at -30.48 40.64 0)
 				(length 7.62)
 				(name "RSTn"
@@ -9457,7 +9352,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin input line
 				(at -30.48 38.1 0)
 				(length 7.62)
 				(name "CSn"
@@ -9475,7 +9370,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin input line
 				(at -30.48 35.56 0)
 				(length 7.62)
 				(name "SCLK"
@@ -9493,7 +9388,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin bidirectional line
 				(at -30.48 33.02 0)
 				(length 7.62)
 				(name "SDATA"
@@ -9511,7 +9406,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin output line
 				(at -30.48 27.94 0)
 				(length 7.62)
 				(name "VCM"
@@ -9529,7 +9424,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin input line
 				(at -30.48 22.86 0)
 				(length 7.62)
 				(name "IN1+"
@@ -9547,7 +9442,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin input line
 				(at -30.48 12.7 0)
 				(length 7.62)
 				(name "IN1-"
@@ -9565,7 +9460,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin input line
 				(at -30.48 7.62 0)
 				(length 7.62)
 				(name "IN2+"
@@ -9583,7 +9478,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin input line
 				(at -30.48 -2.54 0)
 				(length 7.62)
 				(name "IN2-"
@@ -9601,7 +9496,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin input line
 				(at -30.48 -7.62 0)
 				(length 7.62)
 				(name "IN3+"
@@ -9619,7 +9514,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin input line
 				(at -30.48 -17.78 0)
 				(length 7.62)
 				(name "IN3-"
@@ -9637,7 +9532,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin input line
 				(at -30.48 -22.86 0)
 				(length 7.62)
 				(name "IN4+"
@@ -9655,7 +9550,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin input line
 				(at -30.48 -33.02 0)
 				(length 7.62)
 				(name "IN4-"
@@ -9673,7 +9568,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin input line
 				(at -30.48 -38.1 0)
 				(length 7.62)
 				(name "CLK+"
@@ -9691,7 +9586,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin input line
 				(at -30.48 -40.64 0)
 				(length 7.62)
 				(name "CLK-"
@@ -9709,7 +9604,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at -7.62 53.34 270)
 				(length 7.62)
 				(name "AVDD"
@@ -9727,7 +9622,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at -7.62 -50.8 90)
 				(length 7.62)
 				(name "AVSS2"
@@ -9745,7 +9640,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at -5.08 53.34 270)
 				(length 7.62)
 				(name "AVDD"
@@ -9763,7 +9658,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at -5.08 -50.8 90)
 				(length 7.62)
 				(name "AVSS"
@@ -9781,7 +9676,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at -2.54 53.34 270)
 				(length 7.62)
 				(name "AVDD2"
@@ -9799,7 +9694,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at -2.54 -50.8 90)
 				(length 7.62)
 				(name "AVSS"
@@ -9817,7 +9712,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at 0 -50.8 90)
 				(length 7.62)
 				(name "AVSS"
@@ -9835,7 +9730,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at 2.54 53.34 270)
 				(length 7.62)
 				(name "DVDD"
@@ -9853,7 +9748,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at 2.54 -50.8 90)
 				(length 7.62)
 				(name "EPAD"
@@ -9871,7 +9766,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at 5.08 53.34 270)
 				(length 7.62)
 				(name "DVDD"
@@ -9889,7 +9784,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at 7.62 -50.8 90)
 				(length 7.62)
 				(name "DVSS"
@@ -9907,7 +9802,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at 10.16 53.34 270)
 				(length 7.62)
 				(name "OVDD"
@@ -9925,7 +9820,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at 10.16 -50.8 90)
 				(length 7.62)
 				(name "DVSS"
@@ -9943,7 +9838,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin output line
 				(at 33.02 35.56 180)
 				(length 7.62)
 				(name "D4B-"
@@ -9961,7 +9856,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin output line
 				(at 33.02 33.02 180)
 				(length 7.62)
 				(name "D4B+"
@@ -9979,7 +9874,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin output line
 				(at 33.02 27.94 180)
 				(length 7.62)
 				(name "D4A-"
@@ -9997,7 +9892,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin output line
 				(at 33.02 25.4 180)
 				(length 7.62)
 				(name "D4A+"
@@ -10015,7 +9910,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin output line
 				(at 33.02 20.32 180)
 				(length 7.62)
 				(name "D3B-"
@@ -10033,7 +9928,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin output line
 				(at 33.02 17.78 180)
 				(length 7.62)
 				(name "D3B+"
@@ -10051,7 +9946,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin output line
 				(at 33.02 12.7 180)
 				(length 7.62)
 				(name "D3A-"
@@ -10069,7 +9964,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin output line
 				(at 33.02 10.16 180)
 				(length 7.62)
 				(name "D3A+"
@@ -10087,7 +9982,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin output line
 				(at 33.02 5.08 180)
 				(length 7.62)
 				(name "FCLK-"
@@ -10105,7 +10000,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin output line
 				(at 33.02 2.54 180)
 				(length 7.62)
 				(name "FCLK+"
@@ -10123,7 +10018,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin output line
 				(at 33.02 -2.54 180)
 				(length 7.62)
 				(name "LCLK-"
@@ -10141,7 +10036,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin output line
 				(at 33.02 -5.08 180)
 				(length 7.62)
 				(name "LCLK+"
@@ -10159,7 +10054,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin output line
 				(at 33.02 -10.16 180)
 				(length 7.62)
 				(name "D2B-"
@@ -10177,7 +10072,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin output line
 				(at 33.02 -12.7 180)
 				(length 7.62)
 				(name "D2B+"
@@ -10195,7 +10090,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin output line
 				(at 33.02 -17.78 180)
 				(length 7.62)
 				(name "D2A-"
@@ -10213,7 +10108,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin output line
 				(at 33.02 -20.32 180)
 				(length 7.62)
 				(name "D2A+"
@@ -10231,7 +10126,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin output line
 				(at 33.02 -25.4 180)
 				(length 7.62)
 				(name "D1B-"
@@ -10249,7 +10144,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin output line
 				(at 33.02 -27.94 180)
 				(length 7.62)
 				(name "D1B+"
@@ -10267,7 +10162,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin output line
 				(at 33.02 -33.02 180)
 				(length 7.62)
 				(name "D1A-"
@@ -10285,7 +10180,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin output line
 				(at 33.02 -35.56 180)
 				(length 7.62)
 				(name "D1A+"
@@ -10411,7 +10306,7 @@
 					(type background)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at -7.62 -2.54 0)
 				(length 7.62)
 				(name "SW"
@@ -10447,7 +10342,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin input line
 				(at -7.62 -12.7 0)
 				(length 7.62)
 				(name "EN"
@@ -10465,7 +10360,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_out line
 				(at 22.86 -2.54 180)
 				(length 7.62)
 				(name "VOUT"
@@ -10645,7 +10540,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin input line
 				(at -7.62 -7.62 0)
 				(length 7.62)
 				(name "EN"
@@ -10681,7 +10576,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_out line
 				(at 22.86 -2.54 180)
 				(length 7.62)
 				(name "SW"
@@ -10717,7 +10612,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin open_collector line
 				(at 22.86 -12.7 180)
 				(length 7.62)
 				(name "PG"
@@ -10843,7 +10738,7 @@
 					(type background)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at -20.32 15.24 0)
 				(length 7.62)
 				(name "CLH"
@@ -10861,7 +10756,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at -20.32 12.7 0)
 				(length 7.62)
 				(name "Vso+"
@@ -10879,7 +10774,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at -20.32 10.16 0)
 				(length 7.62)
 				(name "Vs+"
@@ -10897,7 +10792,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin input line
 				(at -20.32 5.08 0)
 				(length 7.62)
 				(name "IN"
@@ -10915,7 +10810,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin input line
 				(at -20.32 0 0)
 				(length 7.62)
 				(name "IN_Bias"
@@ -10933,7 +10828,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin input line
 				(at -20.32 -5.08 0)
 				(length 7.62)
 				(name "IN_Aux"
@@ -10951,7 +10846,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin no_connect line
 				(at -20.32 -10.16 0)
 				(length 7.62)
 				(name "NC"
@@ -10969,7 +10864,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin no_connect line
 				(at -20.32 -12.7 0)
 				(length 7.62)
 				(name "NC"
@@ -10987,7 +10882,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin no_connect line
 				(at -20.32 -15.24 0)
 				(length 7.62)
 				(name "NC"
@@ -11005,7 +10900,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at -20.32 -17.78 0)
 				(length 7.62)
 				(name "PAD"
@@ -11023,7 +10918,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin output line
 				(at 20.32 5.08 180)
 				(length 7.62)
 				(name "OUT"
@@ -11041,7 +10936,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin input line
 				(at 20.32 0 180)
 				(length 7.62)
 				(name "R_Bias"
@@ -11059,7 +10954,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin input line
 				(at 20.32 -5.08 180)
 				(length 7.62)
 				(name "Aux_Bias"
@@ -11077,7 +10972,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at 20.32 -10.16 180)
 				(length 7.62)
 				(name "Vs-"
@@ -11095,7 +10990,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at 20.32 -12.7 180)
 				(length 7.62)
 				(name "Vs-"
@@ -11113,7 +11008,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at 20.32 -15.24 180)
 				(length 7.62)
 				(name "Vso-"
@@ -11131,7 +11026,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at 20.32 -17.78 180)
 				(length 7.62)
 				(name "CLL"
@@ -11257,7 +11152,7 @@
 					(type background)
 				)
 			)
-			(pin passive line
+			(pin output line
 				(at -15.24 0 0)
 				(length 7.62)
 				(name "OUT"
@@ -11275,7 +11170,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin no_connect line
 				(at -15.24 -5.08 0)
 				(length 7.62)
 				(name "NC"
@@ -11293,7 +11188,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at 15.24 5.08 180)
 				(length 7.62)
 				(name "VCC"
@@ -11311,7 +11206,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin input line
 				(at 15.24 0 180)
 				(length 7.62)
 				(name "IN"
@@ -11329,7 +11224,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at 15.24 -5.08 180)
 				(length 7.62)
 				(name "GND"
@@ -11455,7 +11350,7 @@
 					(type background)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at -7.62 -2.54 0)
 				(length 7.62)
 				(name "VDDH"
@@ -11473,7 +11368,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at -7.62 -5.08 0)
 				(length 7.62)
 				(name "VDDH"
@@ -11491,7 +11386,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at -7.62 -7.62 0)
 				(length 7.62)
 				(name "VDDH"
@@ -11509,7 +11404,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at -7.62 -10.16 0)
 				(length 7.62)
 				(name "VDDH"
@@ -11527,7 +11422,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at -7.62 -15.24 0)
 				(length 7.62)
 				(name "VDDIO"
@@ -11545,7 +11440,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at -7.62 -20.32 0)
 				(length 7.62)
 				(name "VDDOA"
@@ -11563,7 +11458,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at -7.62 -22.86 0)
 				(length 7.62)
 				(name "VDDOB"
@@ -11581,7 +11476,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at -7.62 -25.4 0)
 				(length 7.62)
 				(name "VDDOC"
@@ -11599,7 +11494,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at -7.62 -27.94 0)
 				(length 7.62)
 				(name "VDDOD"
@@ -11617,7 +11512,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at -7.62 -30.48 0)
 				(length 7.62)
 				(name "VDDOE"
@@ -11635,7 +11530,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at -7.62 -33.02 0)
 				(length 7.62)
 				(name "VDDOF"
@@ -11653,7 +11548,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin input line
 				(at -7.62 -40.64 0)
 				(length 7.62)
 				(name "IC1P"
@@ -11671,7 +11566,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin input line
 				(at -7.62 -43.18 0)
 				(length 7.62)
 				(name "IC1N"
@@ -11689,7 +11584,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin input line
 				(at -7.62 -48.26 0)
 				(length 7.62)
 				(name "IC2P"
@@ -11707,7 +11602,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin input line
 				(at -7.62 -50.8 0)
 				(length 7.62)
 				(name "IC2N"
@@ -11725,7 +11620,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin input line
 				(at -7.62 -55.88 0)
 				(length 7.62)
 				(name "IC3P"
@@ -11743,7 +11638,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin input line
 				(at -7.62 -60.96 0)
 				(length 7.62)
 				(name "XA"
@@ -11761,7 +11656,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin input line
 				(at -7.62 -63.5 0)
 				(length 7.62)
 				(name "XB"
@@ -11779,7 +11674,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin input line
 				(at -7.62 -68.58 0)
 				(length 7.62)
 				(name "RSTN"
@@ -11797,7 +11692,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin bidirectional line
 				(at -7.62 -73.66 0)
 				(length 7.62)
 				(name "SCL/SCLK"
@@ -11815,7 +11710,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin bidirectional line
 				(at -7.62 -76.2 0)
 				(length 7.62)
 				(name "SDA/MOSI"
@@ -11833,7 +11728,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin bidirectional line
 				(at -7.62 -78.74 0)
 				(length 7.62)
 				(name "IF1/MISO"
@@ -11851,7 +11746,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin bidirectional line
 				(at -7.62 -81.28 0)
 				(length 7.62)
 				(name "IF0/CSN"
@@ -11869,7 +11764,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin bidirectional line
 				(at -7.62 -86.36 0)
 				(length 7.62)
 				(name "AC0/GPIO0"
@@ -11887,7 +11782,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin bidirectional line
 				(at -7.62 -88.9 0)
 				(length 7.62)
 				(name "AC1/GPIO1"
@@ -11905,7 +11800,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin bidirectional line
 				(at -7.62 -91.44 0)
 				(length 7.62)
 				(name "AC2/GPIO2"
@@ -11923,7 +11818,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin bidirectional line
 				(at -7.62 -93.98 0)
 				(length 7.62)
 				(name "TEST/GPIO3"
@@ -11941,7 +11836,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at -7.62 -101.6 0)
 				(length 7.62)
 				(name "VSS-EPAD"
@@ -11959,7 +11854,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at 40.64 -2.54 180)
 				(length 7.62)
 				(name "VDDL"
@@ -11977,7 +11872,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at 40.64 -5.08 180)
 				(length 7.62)
 				(name "VDDL"
@@ -11995,7 +11890,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at 40.64 -7.62 180)
 				(length 7.62)
 				(name "VDDL"
@@ -12013,7 +11908,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at 40.64 -10.16 180)
 				(length 7.62)
 				(name "VDDL"
@@ -12031,7 +11926,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at 40.64 -12.7 180)
 				(length 7.62)
 				(name "VDDL"
@@ -12049,7 +11944,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at 40.64 -15.24 180)
 				(length 7.62)
 				(name "VDDL"
@@ -12067,7 +11962,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at 40.64 -17.78 180)
 				(length 7.62)
 				(name "VDDL"
@@ -12085,7 +11980,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at 40.64 -20.32 180)
 				(length 7.62)
 				(name "VDDL"
@@ -12103,7 +11998,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at 40.64 -22.86 180)
 				(length 7.62)
 				(name "VDDL"
@@ -12121,7 +12016,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_out line
 				(at 40.64 -30.48 180)
 				(length 7.62)
 				(name "OC1P"
@@ -12139,7 +12034,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_out line
 				(at 40.64 -33.02 180)
 				(length 7.62)
 				(name "OC1N"
@@ -12157,7 +12052,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_out line
 				(at 40.64 -38.1 180)
 				(length 7.62)
 				(name "OC2P/NC"
@@ -12175,7 +12070,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_out line
 				(at 40.64 -40.64 180)
 				(length 7.62)
 				(name "OC2N/NC"
@@ -12193,7 +12088,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_out line
 				(at 40.64 -45.72 180)
 				(length 7.62)
 				(name "OC3P"
@@ -12211,7 +12106,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_out line
 				(at 40.64 -48.26 180)
 				(length 7.62)
 				(name "OC3N"
@@ -12229,7 +12124,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_out line
 				(at 40.64 -53.34 180)
 				(length 7.62)
 				(name "OC4P"
@@ -12247,7 +12142,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_out line
 				(at 40.64 -55.88 180)
 				(length 7.62)
 				(name "OC4N"
@@ -12265,7 +12160,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_out line
 				(at 40.64 -60.96 180)
 				(length 7.62)
 				(name "OC5P/NC"
@@ -12283,7 +12178,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_out line
 				(at 40.64 -63.5 180)
 				(length 7.62)
 				(name "OC5N/NC"
@@ -12301,7 +12196,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_out line
 				(at 40.64 -68.58 180)
 				(length 7.62)
 				(name "OC6P"
@@ -12319,7 +12214,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_out line
 				(at 40.64 -71.12 180)
 				(length 7.62)
 				(name "OC6N"
@@ -12337,7 +12232,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_out line
 				(at 40.64 -76.2 180)
 				(length 7.62)
 				(name "OC7P/NC"
@@ -12355,7 +12250,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_out line
 				(at 40.64 -78.74 180)
 				(length 7.62)
 				(name "OC7N/NC"
@@ -12373,7 +12268,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_out line
 				(at 40.64 -83.82 180)
 				(length 7.62)
 				(name "OC8P"
@@ -12391,7 +12286,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_out line
 				(at 40.64 -86.36 180)
 				(length 7.62)
 				(name "OC8N"
@@ -12409,7 +12304,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_out line
 				(at 40.64 -91.44 180)
 				(length 7.62)
 				(name "OC9P"
@@ -12427,7 +12322,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_out line
 				(at 40.64 -93.98 180)
 				(length 7.62)
 				(name "OC9N"
@@ -12445,7 +12340,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_out line
 				(at 40.64 -99.06 180)
 				(length 7.62)
 				(name "OC10P/NC"
@@ -12463,7 +12358,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_out line
 				(at 40.64 -101.6 180)
 				(length 7.62)
 				(name "OC10N/NC"
@@ -12607,7 +12502,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin input line
 				(at -17.78 12.7 0)
 				(length 7.62)
 				(name "EN"
@@ -12733,7 +12628,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_out line
 				(at 17.78 -7.62 180)
 				(length 7.62)
 				(name "CPOUT"
@@ -12877,7 +12772,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin open_collector line
 				(at -20.32 5.08 0)
 				(length 7.62)
 				(name "SCL"
@@ -12895,7 +12790,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin open_collector line
 				(at -20.32 2.54 0)
 				(length 7.62)
 				(name "SDA"
@@ -12913,7 +12808,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin input line
 				(at -20.32 -2.54 0)
 				(length 7.62)
 				(name "LDACn"
@@ -12931,7 +12826,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin open_collector line
 				(at -20.32 -5.08 0)
 				(length 7.62)
 				(name "RDY"
@@ -12967,7 +12862,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin output line
 				(at 20.32 7.62 180)
 				(length 7.62)
 				(name "VOUTA"
@@ -12985,7 +12880,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin output line
 				(at 20.32 2.54 180)
 				(length 7.62)
 				(name "VOUTB"
@@ -13003,7 +12898,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin output line
 				(at 20.32 -2.54 180)
 				(length 7.62)
 				(name "VOUTC"
@@ -13021,7 +12916,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin output line
 				(at 20.32 -7.62 180)
 				(length 7.62)
 				(name "VOUTD"
@@ -13161,7 +13056,7 @@
 			)
 			(polyline
 				(pts
-					(xy 11.43 -12.7) (xy 8.89 -12.7)
+					(xy 11.43 -12.7) (xy 12.7 -13.97) (xy 13.97 -11.43) (xy 15.24 -13.97) (xy 16.51 -11.43) (xy 17.78 -13.97)
 				)
 				(stroke
 					(width 0)
@@ -13173,7 +13068,7 @@
 			)
 			(polyline
 				(pts
-					(xy 11.43 -12.7) (xy 12.7 -13.97) (xy 13.97 -11.43) (xy 15.24 -13.97) (xy 16.51 -11.43) (xy 17.78 -13.97)
+					(xy 11.43 -12.7) (xy 8.89 -12.7)
 				)
 				(stroke
 					(width 0)
@@ -13381,7 +13276,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin open_collector line
 				(at -7.62 -27.94 0)
 				(length 7.62)
 				(name "SCL"
@@ -13399,7 +13294,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin open_collector line
 				(at -7.62 -30.48 0)
 				(length 7.62)
 				(name "SDA"
@@ -13489,7 +13384,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin input line
 				(at 38.1 -27.94 180)
 				(length 7.62)
 				(name "HVC/A0"
@@ -13507,7 +13402,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin input line
 				(at 38.1 -30.48 180)
 				(length 7.62)
 				(name "A1"
@@ -13651,7 +13546,7 @@
 					(type background)
 				)
 			)
-			(pin passive line
+			(pin open_collector line
 				(at -20.32 7.62 0)
 				(length 7.62)
 				(name "CS#"
@@ -13669,7 +13564,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin input line
 				(at -20.32 2.54 0)
 				(length 7.62)
 				(name "SCLK"
@@ -13687,7 +13582,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin bidirectional line
 				(at -20.32 -2.54 0)
 				(length 7.62)
 				(name "SI/SIO0"
@@ -13705,7 +13600,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin bidirectional line
 				(at -20.32 -5.08 0)
 				(length 7.62)
 				(name "SO/SIO1"
@@ -13723,7 +13618,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin bidirectional line
 				(at -20.32 -7.62 0)
 				(length 7.62)
 				(name "WP#/SIO2"
@@ -13741,7 +13636,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin bidirectional line
 				(at -20.32 -10.16 0)
 				(length 7.62)
 				(name "RST#/SIO3"
@@ -13759,7 +13654,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at 20.32 7.62 180)
 				(length 7.62)
 				(name "VCC"
@@ -13777,7 +13672,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at 20.32 -7.62 180)
 				(length 7.62)
 				(name "PAD"
@@ -13795,7 +13690,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at 20.32 -10.16 180)
 				(length 7.62)
 				(name "GND"
@@ -16840,7 +16735,7 @@
 					)
 				)
 			)
-			(pin bidirectional line
+			(pin open_collector line
 				(at 7.62 -27.94 180)
 				(length 7.62)
 				(name "DONE_0"
@@ -20024,7 +19919,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin input line
 				(at -15.24 2.54 0)
 				(length 7.62)
 				(name "EN"
@@ -20060,7 +19955,7 @@
 					)
 				)
 			)
-			(pin power_in line
+			(pin power_out line
 				(at 15.24 5.08 180)
 				(length 7.62)
 				(name "OUT"
@@ -20078,7 +19973,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin no_connect line
 				(at 15.24 -2.54 180)
 				(length 7.62)
 				(name "NC"
@@ -20240,7 +20135,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin input line
 				(at -17.78 0 0)
 				(length 7.62)
 				(name "SS_CTRL"
@@ -20258,7 +20153,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin input line
 				(at -17.78 -2.54 0)
 				(length 7.62)
 				(name "EN"
@@ -20276,7 +20171,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at -17.78 -7.62 0)
 				(length 7.62)
 				(name "PAD"
@@ -20312,7 +20207,7 @@
 					)
 				)
 			)
-			(pin power_in line
+			(pin power_out line
 				(at 17.78 7.62 180)
 				(length 7.62)
 				(name "OUT"
@@ -20330,7 +20225,7 @@
 					)
 				)
 			)
-			(pin power_in line
+			(pin power_out line
 				(at 17.78 5.08 180)
 				(length 7.62)
 				(name "OUT"
@@ -20366,7 +20261,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin open_collector line
 				(at 17.78 -5.08 180)
 				(length 7.62)
 				(name "PG"
@@ -20512,7 +20407,7 @@
 					(color 255 255 176 1)
 				)
 			)
-			(pin passive line
+			(pin input line
 				(at -17.78 5.08 0)
 				(length 7.62)
 				(name "+"
@@ -20530,7 +20425,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin input line
 				(at -17.78 -5.08 0)
 				(length 7.62)
 				(name "-"
@@ -20548,7 +20443,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at -5.08 15.24 270)
 				(length 7.62)
 				(name "V+"
@@ -20566,7 +20461,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at -5.08 -15.24 90)
 				(length 7.62)
 				(name "V-"
@@ -20620,7 +20515,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin output line
 				(at 17.78 0 180)
 				(length 7.62)
 				(name "OUT"
@@ -20746,7 +20641,7 @@
 					(type background)
 				)
 			)
-			(pin passive line
+			(pin open_collector line
 				(at -22.86 17.78 0)
 				(length 7.62)
 				(name "CSn"
@@ -20764,7 +20659,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin bidirectional line
 				(at -22.86 15.24 0)
 				(length 7.62)
 				(name "SDIO"
@@ -20782,7 +20677,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin input line
 				(at -22.86 12.7 0)
 				(length 7.62)
 				(name "SCLK"
@@ -20800,7 +20695,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin input line
 				(at -22.86 5.08 0)
 				(length 7.62)
 				(name "IN_P"
@@ -20818,7 +20713,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin input line
 				(at -22.86 2.54 0)
 				(length 7.62)
 				(name "IN_N"
@@ -20944,7 +20839,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin output line
 				(at 22.86 5.08 180)
 				(length 7.62)
 				(name "OUT_P"
@@ -20962,7 +20857,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin output line
 				(at 22.86 2.54 180)
 				(length 7.62)
 				(name "OUT_N"
@@ -20998,7 +20893,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin output line
 				(at 22.86 -7.62 180)
 				(length 7.62)
 				(name "AUX_P"
@@ -21016,7 +20911,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin output line
 				(at 22.86 -10.16 180)
 				(length 7.62)
 				(name "AUX_N"
@@ -21160,7 +21055,7 @@
 					(type background)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at -17.78 5.08 0)
 				(length 7.62)
 				(name "VIN"
@@ -21178,7 +21073,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at -17.78 2.54 0)
 				(length 7.62)
 				(name "VIN"
@@ -21196,7 +21091,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at -17.78 -2.54 0)
 				(length 7.62)
 				(name "VBIAS"
@@ -21214,7 +21109,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin input line
 				(at -17.78 -7.62 0)
 				(length 7.62)
 				(name "ON"
@@ -21232,7 +21127,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_out line
 				(at 17.78 5.08 180)
 				(length 7.62)
 				(name "VOUT"
@@ -21250,7 +21145,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_out line
 				(at 17.78 2.54 180)
 				(length 7.62)
 				(name "VOUT"
@@ -21286,7 +21181,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at 17.78 -5.08 180)
 				(length 7.62)
 				(name "EPAD"
@@ -21304,7 +21199,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at 17.78 -7.62 180)
 				(length 7.62)
 				(name "GND"
@@ -21430,7 +21325,7 @@
 					(type background)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at -15.24 5.08 0)
 				(length 7.62)
 				(name "V-"
@@ -21448,7 +21343,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin input line
 				(at -15.24 0 0)
 				(length 7.62)
 				(name "IN"
@@ -21466,7 +21361,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at -15.24 -5.08 0)
 				(length 7.62)
 				(name "V+"
@@ -21601,7 +21496,7 @@
 					(type background)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at 0 -2.54 0)
 				(length 7.62)
 				(name "VIN"
@@ -21619,7 +21514,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin input line
 				(at 0 -7.62 0)
 				(length 7.62)
 				(name "EN"
@@ -21637,7 +21532,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_in line
 				(at 0 -12.7 0)
 				(length 7.62)
 				(name "GND"
@@ -21655,7 +21550,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_out line
 				(at 33.02 -2.54 180)
 				(length 7.62)
 				(name "VREF"
@@ -21673,7 +21568,7 @@
 					)
 				)
 			)
-			(pin power_in line
+			(pin power_out line
 				(at 33.02 -7.62 180)
 				(length 7.62)
 				(name "VBIAS"
@@ -21875,9 +21770,9 @@
 				)
 			)
 			(arc
-				(start 1.27 1.27)
-				(mid 2.168 0.898)
-				(end 2.54 0)
+				(start 0 0)
+				(mid 0.372 0.898)
+				(end 1.27 1.27)
 				(stroke
 					(width 0)
 					(type solid)
@@ -21887,9 +21782,9 @@
 				)
 			)
 			(arc
-				(start 0 0)
-				(mid 0.372 0.898)
-				(end 1.27 1.27)
+				(start 1.27 1.27)
+				(mid 2.168 0.898)
+				(end 2.54 0)
 				(stroke
 					(width 0)
 					(type solid)
@@ -31802,7 +31697,7 @@
 			)
 			(polyline
 				(pts
-					(xy -1.27 0) (xy -2.54 -1.27)
+					(xy -1.27 0) (xy 1.27 0)
 				)
 				(stroke
 					(width 0)
@@ -31814,7 +31709,7 @@
 			)
 			(polyline
 				(pts
-					(xy -1.27 0) (xy 1.27 0)
+					(xy -1.27 0) (xy -2.54 -1.27)
 				)
 				(stroke
 					(width 0)

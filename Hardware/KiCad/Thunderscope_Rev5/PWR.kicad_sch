@@ -10,111 +10,6 @@
 		(company "EEVengers")
 	)
 	(lib_symbols
-		(symbol "+5V_BAR_1"
-			(power)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "#PWR"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Value" "+5V"
-				(at 0 -3.81 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" "Power symbol creates a global label with name '+5V'"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_keywords" "power-flag"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "+5V_BAR_1_0_0"
-				(polyline
-					(pts
-						(xy -1.27 -2.54) (xy 1.27 -2.54)
-					)
-					(stroke
-						(width 0.254)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0 0) (xy 0 -2.54)
-					)
-					(stroke
-						(width 0.254)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(pin power_in line
-					(at 0 0 0)
-					(length 0)
-					(hide yes)
-					(name "+5V"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number ""
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
 		(symbol "Thunderscope_Rev5:+1V8_ACQ_BAR"
 			(power)
 			(exclude_from_sim no)
@@ -965,7 +860,7 @@
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
-			(property "Reference" ""
+			(property "Reference" "C"
 				(at 0 0 0)
 				(effects
 					(font
@@ -973,7 +868,7 @@
 					)
 				)
 			)
-			(property "Value" ""
+			(property "Value" "${ALTIUM_VALUE}"
 				(at 0 0 0)
 				(effects
 					(font
@@ -981,7 +876,7 @@
 					)
 				)
 			)
-			(property "Footprint" ""
+			(property "Footprint" "GEN_C_0402"
 				(at 0 0 0)
 				(effects
 					(font
@@ -1008,7 +903,70 @@
 					(hide yes)
 				)
 			)
-			(property "ki_fp_filters" "*GEN_C_0402*"
+			(property "PACKAGE" "0402"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "VOLTAGE RATING" "16V"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "SUPPLIER 1" "Mouser"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "SUPPLIER PART NUMBER 1" "81-GCM155R71C104KA5D"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ALTIUM_VALUE" "100nF"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "HOUSE PART NUMBER" "C-100nF-0402-002"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MANUFACTURER" "Murata"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MANUFACTURER PART NUMBER" "GCM155R71C104KA55D"
 				(at 0 0 0)
 				(effects
 					(font
@@ -1115,7 +1073,7 @@
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
-			(property "Reference" ""
+			(property "Reference" "C"
 				(at 0 0 0)
 				(effects
 					(font
@@ -1123,7 +1081,7 @@
 					)
 				)
 			)
-			(property "Value" ""
+			(property "Value" "${ALTIUM_VALUE}"
 				(at 0 0 0)
 				(effects
 					(font
@@ -1131,7 +1089,7 @@
 					)
 				)
 			)
-			(property "Footprint" ""
+			(property "Footprint" "GEN_C_0603"
 				(at 0 0 0)
 				(effects
 					(font
@@ -1158,7 +1116,70 @@
 					(hide yes)
 				)
 			)
-			(property "ki_fp_filters" "*GEN_C_0603*"
+			(property "PACKAGE" "0402"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "VOLTAGE RATING" "10V"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "SUPPLIER 1" "Mouser"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "SUPPLIER PART NUMBER 1" "81-GRM188R61A106ME9D"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ALTIUM_VALUE" "10uF"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "HOUSE PART NUMBER" "C-10uF-0603-002"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MANUFACTURER" "Murata"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MANUFACTURER PART NUMBER" "GRM188R61A106ME69D"
 				(at 0 0 0)
 				(effects
 					(font
@@ -1265,7 +1286,7 @@
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
-			(property "Reference" ""
+			(property "Reference" "C"
 				(at 0 0 0)
 				(effects
 					(font
@@ -1273,7 +1294,7 @@
 					)
 				)
 			)
-			(property "Value" ""
+			(property "Value" "${ALTIUM_VALUE}"
 				(at 0 0 0)
 				(effects
 					(font
@@ -1281,7 +1302,7 @@
 					)
 				)
 			)
-			(property "Footprint" ""
+			(property "Footprint" "GEN_C_0402"
 				(at 0 0 0)
 				(effects
 					(font
@@ -1308,7 +1329,70 @@
 					(hide yes)
 				)
 			)
-			(property "ki_fp_filters" "*GEN_C_0402*"
+			(property "PACKAGE" "0402"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "VOLTAGE RATING" "25V"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "SUPPLIER 1" "Mouser"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "SUPPLIER PART NUMBER 1" "81-GRM155R61E105KA2D"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ALTIUM_VALUE" "1uF"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "HOUSE PART NUMBER" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MANUFACTURER" "Murata"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MANUFACTURER PART NUMBER" "GRM155R61E105KA12D"
 				(at 0 0 0)
 				(effects
 					(font
@@ -1415,7 +1499,7 @@
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
-			(property "Reference" ""
+			(property "Reference" "C"
 				(at 0 0 0)
 				(effects
 					(font
@@ -1423,7 +1507,7 @@
 					)
 				)
 			)
-			(property "Value" ""
+			(property "Value" "${ALTIUM_VALUE}"
 				(at 0 0 0)
 				(effects
 					(font
@@ -1431,7 +1515,7 @@
 					)
 				)
 			)
-			(property "Footprint" ""
+			(property "Footprint" "GEN_C_0805"
 				(at 0 0 0)
 				(effects
 					(font
@@ -1458,7 +1542,70 @@
 					(hide yes)
 				)
 			)
-			(property "ki_fp_filters" "*GEN_C_0805*"
+			(property "PACKAGE" "0805"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "VOLTAGE RATING" "25V"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ALTIUM_VALUE" "22uF"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "SUPPLIER 1" "Mouser"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "SUPPLIER PART NUMBER 1" "81-GRM21BR61E226ME4L"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "HOUSE PART NUMBER" "C-22uF-0805-002"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MANUFACTURER" "Murata"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MANUFACTURER PART NUMBER" "GRM21BR61E226ME44L"
 				(at 0 0 0)
 				(effects
 					(font
@@ -1559,7 +1706,7 @@
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
-			(property "Reference" ""
+			(property "Reference" "J"
 				(at 0 0 0)
 				(effects
 					(font
@@ -1567,7 +1714,7 @@
 					)
 				)
 			)
-			(property "Value" ""
+			(property "Value" "B2B-PH-K-S(LF)(SN)"
 				(at 0 0 0)
 				(effects
 					(font
@@ -1575,7 +1722,7 @@
 					)
 				)
 			)
-			(property "Footprint" ""
+			(property "Footprint" "JST_B2B-PH-K-S(LF)(SN)"
 				(at 0 0 0)
 				(effects
 					(font
@@ -1602,7 +1749,43 @@
 					(hide yes)
 				)
 			)
-			(property "ki_fp_filters" "*JST_B2B-PH-K-S(LF)(SN)*"
+			(property "SUPPLIER 1" "Digi-Key"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "SUPPLIER PART NUMBER 1" "455-1704-ND"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "HOUSE PART NUMBER" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MANUFACTURER" "JST"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MANUFACTURER PART NUMBER" "B2B-PH-K-S-LF-SN"
 				(at 0 0 0)
 				(effects
 					(font
@@ -1667,7 +1850,7 @@
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
-			(property "Reference" ""
+			(property "Reference" "J"
 				(at 0 0 0)
 				(effects
 					(font
@@ -1675,7 +1858,7 @@
 					)
 				)
 			)
-			(property "Value" ""
+			(property "Value" "009155002852006"
 				(at 0 0 0)
 				(effects
 					(font
@@ -1683,7 +1866,7 @@
 					)
 				)
 			)
-			(property "Footprint" ""
+			(property "Footprint" "KYO_009155002852006"
 				(at 0 0 0)
 				(effects
 					(font
@@ -1710,7 +1893,43 @@
 					(hide yes)
 				)
 			)
-			(property "ki_fp_filters" "*KYO_009155002852006*"
+			(property "SUPPLIER 1" "Mouser"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "SUPPLIER PART NUMBER 1" "581-009155002852006"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "HOUSE PART NUMBER" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MANUFACTURER" "KYOCERA AVX"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MANUFACTURER PART NUMBER" "009155002852006"
 				(at 0 0 0)
 				(effects
 					(font
@@ -1876,7 +2095,7 @@
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
-			(property "Reference" ""
+			(property "Reference" "U"
 				(at 0 0 0)
 				(effects
 					(font
@@ -1884,7 +2103,7 @@
 					)
 				)
 			)
-			(property "Value" ""
+			(property "Value" "TPS61023"
 				(at 0 0 0)
 				(effects
 					(font
@@ -1892,7 +2111,7 @@
 					)
 				)
 			)
-			(property "Footprint" ""
+			(property "Footprint" "TI_SOT563_DRL0006A"
 				(at 0 0 0)
 				(effects
 					(font
@@ -1919,7 +2138,43 @@
 					(hide yes)
 				)
 			)
-			(property "ki_fp_filters" "*TI_SOT563_DRL0006A*"
+			(property "SUPPLIER 1" "Texas Instruments"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "SUPPLIER PART NUMBER 1" "TPS61023DRLT"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "HOUSE PART NUMBER" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MANUFACTURER" "Texas Instruments"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MANUFACTURER PART NUMBER" "TPS61023DRLT"
 				(at 0 0 0)
 				(effects
 					(font
@@ -1941,7 +2196,7 @@
 						(type background)
 					)
 				)
-				(pin passive line
+				(pin power_in line
 					(at -7.62 -2.54 0)
 					(length 7.62)
 					(name "SW"
@@ -1977,7 +2232,7 @@
 						)
 					)
 				)
-				(pin passive line
+				(pin input line
 					(at -7.62 -12.7 0)
 					(length 7.62)
 					(name "EN"
@@ -1995,7 +2250,7 @@
 						)
 					)
 				)
-				(pin passive line
+				(pin power_out line
 					(at 22.86 -2.54 180)
 					(length 7.62)
 					(name "VOUT"
@@ -2056,22 +2311,20 @@
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
-			(property "Reference" "U13"
-				(at -10.16 17.78 0)
+			(property "Reference" "U"
+				(at 0 0 0)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(justify left bottom)
 				)
 			)
 			(property "Value" "LM27761"
-				(at -10.16 -20.32 0)
+				(at 0 0 0)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(justify left bottom)
 				)
 			)
 			(property "Footprint" "TI_WSON8_DSG0008A"
@@ -2102,56 +2355,42 @@
 				)
 			)
 			(property "SUPPLIER 1" "Texas Instruments"
-				(at -18.288 17.78 0)
+				(at 0 0 0)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(justify left bottom)
 					(hide yes)
 				)
 			)
 			(property "SUPPLIER PART NUMBER 1" "LM27761DSGR"
-				(at -18.288 17.78 0)
+				(at 0 0 0)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(justify left bottom)
 					(hide yes)
 				)
 			)
 			(property "HOUSE PART NUMBER" ""
-				(at -18.288 20.32 0)
+				(at 0 0 0)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(justify left bottom)
 					(hide yes)
 				)
 			)
 			(property "MANUFACTURER" "Texas Instruments"
-				(at -18.288 20.32 0)
+				(at 0 0 0)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(justify left bottom)
 					(hide yes)
 				)
 			)
 			(property "MANUFACTURER PART NUMBER" "LM27761DSGR"
-				(at -18.288 20.32 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left bottom)
-					(hide yes)
-				)
-			)
-			(property "ki_fp_filters" "*TI_WSON8_DSG0008A*"
 				(at 0 0 0)
 				(effects
 					(font
@@ -2191,7 +2430,7 @@
 						)
 					)
 				)
-				(pin passive line
+				(pin input line
 					(at -17.78 12.7 0)
 					(length 7.62)
 					(name "EN"
@@ -2317,7 +2556,7 @@
 						)
 					)
 				)
-				(pin passive line
+				(pin power_out line
 					(at 17.78 -7.62 180)
 					(length 7.62)
 					(name "CPOUT"
@@ -2342,7 +2581,7 @@
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
-			(property "Reference" ""
+			(property "Reference" "U"
 				(at 0 0 0)
 				(effects
 					(font
@@ -2350,7 +2589,7 @@
 					)
 				)
 			)
-			(property "Value" ""
+			(property "Value" "TPS7A2033"
 				(at 0 0 0)
 				(effects
 					(font
@@ -2358,7 +2597,7 @@
 					)
 				)
 			)
-			(property "Footprint" ""
+			(property "Footprint" "GEN_SOT23_5_950_2900X1600X1450"
 				(at 0 0 0)
 				(effects
 					(font
@@ -2385,7 +2624,43 @@
 					(hide yes)
 				)
 			)
-			(property "ki_fp_filters" "*GEN_SOT23_5_950_2900X1600X1450*"
+			(property "MANUFACTURER" "Texas Instruments"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "HOUSE PART NUMBER" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MANUFACTURER PART NUMBER" "TPS7A2033PDBVR"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "SUPPLIER 1" "Texas Instruments"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "SUPPLIER PART NUMBER 1" "TPS7A2033PDBVR"
 				(at 0 0 0)
 				(effects
 					(font
@@ -2425,7 +2700,7 @@
 						)
 					)
 				)
-				(pin passive line
+				(pin input line
 					(at -15.24 2.54 0)
 					(length 7.62)
 					(name "EN"
@@ -2461,7 +2736,7 @@
 						)
 					)
 				)
-				(pin power_in line
+				(pin power_out line
 					(at 15.24 5.08 180)
 					(length 7.62)
 					(name "OUT"
@@ -2479,7 +2754,7 @@
 						)
 					)
 				)
-				(pin passive line
+				(pin no_connect line
 					(at 15.24 -2.54 180)
 					(length 7.62)
 					(name "NC"
@@ -2504,7 +2779,7 @@
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
-			(property "Reference" ""
+			(property "Reference" "U"
 				(at 0 0 0)
 				(effects
 					(font
@@ -2512,7 +2787,7 @@
 					)
 				)
 			)
-			(property "Value" ""
+			(property "Value" "TPS7A9101"
 				(at 0 0 0)
 				(effects
 					(font
@@ -2520,7 +2795,7 @@
 					)
 				)
 			)
-			(property "Footprint" ""
+			(property "Footprint" "TI_WSON10_DSK0010A"
 				(at 0 0 0)
 				(effects
 					(font
@@ -2547,7 +2822,43 @@
 					(hide yes)
 				)
 			)
-			(property "ki_fp_filters" "*TI_WSON10_DSK0010A*"
+			(property "SUPPLIER 1" "Digi-Key"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "SUPPLIER PART NUMBER 1" "296-45298-1-ND"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MANUFACTURER" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "HOUSE PART NUMBER" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MANUFACTURER PART NUMBER" ""
 				(at 0 0 0)
 				(effects
 					(font
@@ -2605,7 +2916,7 @@
 						)
 					)
 				)
-				(pin passive line
+				(pin input line
 					(at -17.78 0 0)
 					(length 7.62)
 					(name "SS_CTRL"
@@ -2623,7 +2934,7 @@
 						)
 					)
 				)
-				(pin passive line
+				(pin input line
 					(at -17.78 -2.54 0)
 					(length 7.62)
 					(name "EN"
@@ -2641,7 +2952,7 @@
 						)
 					)
 				)
-				(pin passive line
+				(pin power_in line
 					(at -17.78 -7.62 0)
 					(length 7.62)
 					(name "PAD"
@@ -2677,7 +2988,7 @@
 						)
 					)
 				)
-				(pin power_in line
+				(pin power_out line
 					(at 17.78 7.62 180)
 					(length 7.62)
 					(name "OUT"
@@ -2695,7 +3006,7 @@
 						)
 					)
 				)
-				(pin power_in line
+				(pin power_out line
 					(at 17.78 5.08 180)
 					(length 7.62)
 					(name "OUT"
@@ -2731,7 +3042,7 @@
 						)
 					)
 				)
-				(pin passive line
+				(pin open_collector line
 					(at 17.78 -5.08 180)
 					(length 7.62)
 					(name "PG"
@@ -2780,7 +3091,7 @@
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
-			(property "Reference" ""
+			(property "Reference" "L"
 				(at 0 0 0)
 				(effects
 					(font
@@ -2788,7 +3099,7 @@
 					)
 				)
 			)
-			(property "Value" ""
+			(property "Value" "${ALTIUM_VALUE}"
 				(at 0 0 0)
 				(effects
 					(font
@@ -2796,7 +3107,7 @@
 					)
 				)
 			)
-			(property "Footprint" ""
+			(property "Footprint" "GEN_L_1210"
 				(at 0 0 0)
 				(effects
 					(font
@@ -2823,7 +3134,52 @@
 					(hide yes)
 				)
 			)
-			(property "ki_fp_filters" "*GEN_L_1210*"
+			(property "ALTIUM_VALUE" "1uH"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "SUPPLIER 1" "Mouser"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "SUPPLIER PART NUMBER 1" "652-SRP3212-1R0M"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "HOUSE PART NUMBER" "SRP3212-1R0M"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MANUFACTURER" "Bourns"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MANUFACTURER PART NUMBER" "SRP3212-1R0M"
 				(at 0 0 0)
 				(effects
 					(font
@@ -2906,9 +3262,9 @@
 					)
 				)
 				(arc
-					(start 1.27 1.27)
-					(mid 2.168 0.898)
-					(end 2.54 0)
+					(start 0 0)
+					(mid 0.372 0.898)
+					(end 1.27 1.27)
 					(stroke
 						(width 0)
 						(type solid)
@@ -2918,9 +3274,9 @@
 					)
 				)
 				(arc
-					(start 0 0)
-					(mid 0.372 0.898)
-					(end 1.27 1.27)
+					(start 1.27 1.27)
+					(mid 2.168 0.898)
+					(end 2.54 0)
 					(stroke
 						(width 0)
 						(type solid)
@@ -3002,7 +3358,7 @@
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
-			(property "Reference" ""
+			(property "Reference" "R"
 				(at 0 0 0)
 				(effects
 					(font
@@ -3010,7 +3366,7 @@
 					)
 				)
 			)
-			(property "Value" ""
+			(property "Value" "${ALTIUM_VALUE}"
 				(at 0 0 0)
 				(effects
 					(font
@@ -3018,7 +3374,7 @@
 					)
 				)
 			)
-			(property "Footprint" ""
+			(property "Footprint" "GEN_R_0603"
 				(at 0 0 0)
 				(effects
 					(font
@@ -3045,7 +3401,70 @@
 					(hide yes)
 				)
 			)
-			(property "ki_fp_filters" "*GEN_R_0603*"
+			(property "TOLERANCE" "1%"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "SUPPLIER 1" "Mouser"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "SUPPLIER PART NUMBER 1" "754-RL0816T-R010-F"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ALTIUM_VALUE" "0.01"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "PACKAGE" "0603"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "HOUSE PART NUMBER" "R-0.01-0603-1%-001"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MANUFACTURER" "Susumu"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MANUFACTURER PART NUMBER" "RL0816T-R010-F"
 				(at 0 0 0)
 				(effects
 					(font
@@ -3115,7 +3534,7 @@
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
-			(property "Reference" ""
+			(property "Reference" "R"
 				(at 0 0 0)
 				(effects
 					(font
@@ -3123,7 +3542,7 @@
 					)
 				)
 			)
-			(property "Value" ""
+			(property "Value" "${ALTIUM_VALUE}"
 				(at 0 0 0)
 				(effects
 					(font
@@ -3131,7 +3550,7 @@
 					)
 				)
 			)
-			(property "Footprint" ""
+			(property "Footprint" "GEN_R_0402"
 				(at 0 0 0)
 				(effects
 					(font
@@ -3158,7 +3577,70 @@
 					(hide yes)
 				)
 			)
-			(property "ki_fp_filters" "*GEN_R_0402*"
+			(property "TOLERANCE" "1%"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "PACKAGE" "0402"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "SUPPLIER 1" "Mouser"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "SUPPLIER PART NUMBER 1" "667-ERJ-2BSFR10X"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ALTIUM_VALUE" "0.1"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "HOUSE PART NUMBER" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MANUFACTURER" "Panasonic"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MANUFACTURER PART NUMBER" "ERJ-2BSFR10X"
 				(at 0 0 0)
 				(effects
 					(font
@@ -3228,7 +3710,7 @@
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
-			(property "Reference" ""
+			(property "Reference" "R"
 				(at 0 0 0)
 				(effects
 					(font
@@ -3236,7 +3718,7 @@
 					)
 				)
 			)
-			(property "Value" ""
+			(property "Value" "${ALTIUM_VALUE}"
 				(at 0 0 0)
 				(effects
 					(font
@@ -3244,7 +3726,7 @@
 					)
 				)
 			)
-			(property "Footprint" ""
+			(property "Footprint" "GEN_R_0402"
 				(at 0 0 0)
 				(effects
 					(font
@@ -3271,7 +3753,70 @@
 					(hide yes)
 				)
 			)
-			(property "ki_fp_filters" "*GEN_R_0402*"
+			(property "TOLERANCE" "1%"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "PACKAGE" "0402"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ALTIUM_VALUE" "100k"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "SUPPLIER 1" "Mouser"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "SUPPLIER PART NUMBER 1" "603-RC0402FR-07100KL"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "HOUSE PART NUMBER" "R-100K-0402-1%-001"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MANUFACTURER" "Yageo"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MANUFACTURER PART NUMBER" "RC0402FR-07100KL"
 				(at 0 0 0)
 				(effects
 					(font
@@ -3341,7 +3886,7 @@
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
-			(property "Reference" ""
+			(property "Reference" "R"
 				(at 0 0 0)
 				(effects
 					(font
@@ -3349,7 +3894,7 @@
 					)
 				)
 			)
-			(property "Value" ""
+			(property "Value" "${ALTIUM_VALUE}"
 				(at 0 0 0)
 				(effects
 					(font
@@ -3357,7 +3902,7 @@
 					)
 				)
 			)
-			(property "Footprint" ""
+			(property "Footprint" "GEN_R_0402"
 				(at 0 0 0)
 				(effects
 					(font
@@ -3384,7 +3929,70 @@
 					(hide yes)
 				)
 			)
-			(property "ki_fp_filters" "*GEN_R_0402*"
+			(property "TOLERANCE" "1%"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "PACKAGE" "0402"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "SUPPLIER 1" "Mouser"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "SUPPLIER PART NUMBER 1" "667-ERJ-2RKF1002X"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ALTIUM_VALUE" "10K"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "HOUSE PART NUMBER" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MANUFACTURER" "Panasonic"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MANUFACTURER PART NUMBER" "ERJ-2RKF1002X"
 				(at 0 0 0)
 				(effects
 					(font
@@ -3454,7 +4062,7 @@
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
-			(property "Reference" ""
+			(property "Reference" "R"
 				(at 0 0 0)
 				(effects
 					(font
@@ -3462,7 +4070,7 @@
 					)
 				)
 			)
-			(property "Value" ""
+			(property "Value" "${ALTIUM_VALUE}"
 				(at 0 0 0)
 				(effects
 					(font
@@ -3470,7 +4078,7 @@
 					)
 				)
 			)
-			(property "Footprint" ""
+			(property "Footprint" "GEN_R_0402"
 				(at 0 0 0)
 				(effects
 					(font
@@ -3497,7 +4105,70 @@
 					(hide yes)
 				)
 			)
-			(property "ki_fp_filters" "*GEN_R_0402*"
+			(property "TOLERANCE" "1%"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "PACKAGE" "0402"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "SUPPLIER 1" "Mouser"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "SUPPLIER PART NUMBER 1" "603-RC0402FR-0720KL"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ALTIUM_VALUE" "20k"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MANUFACTURER" "Yageo"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "HOUSE PART NUMBER" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MANUFACTURER PART NUMBER" "RC0402FR-0720KL"
 				(at 0 0 0)
 				(effects
 					(font
@@ -3567,7 +4238,7 @@
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
-			(property "Reference" ""
+			(property "Reference" "R"
 				(at 0 0 0)
 				(effects
 					(font
@@ -3575,7 +4246,7 @@
 					)
 				)
 			)
-			(property "Value" ""
+			(property "Value" "${ALTIUM_VALUE}"
 				(at 0 0 0)
 				(effects
 					(font
@@ -3583,7 +4254,7 @@
 					)
 				)
 			)
-			(property "Footprint" ""
+			(property "Footprint" "GEN_R_0402"
 				(at 0 0 0)
 				(effects
 					(font
@@ -3610,7 +4281,70 @@
 					(hide yes)
 				)
 			)
-			(property "ki_fp_filters" "*GEN_R_0402*"
+			(property "TOLERANCE" "1%"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "PACKAGE" "0402"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "SUPPLIER 1" "Mouser"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "SUPPLIER PART NUMBER 1" "667-ERJ-2RKF3003X"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ALTIUM_VALUE" "300K"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MANUFACTURER" "Panasonic"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "HOUSE PART NUMBER" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MANUFACTURER PART NUMBER" "ERJ-2RKF3003X"
 				(at 0 0 0)
 				(effects
 					(font
@@ -3680,7 +4414,7 @@
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
-			(property "Reference" ""
+			(property "Reference" "R"
 				(at 0 0 0)
 				(effects
 					(font
@@ -3688,7 +4422,7 @@
 					)
 				)
 			)
-			(property "Value" ""
+			(property "Value" "${ALTIUM_VALUE}"
 				(at 0 0 0)
 				(effects
 					(font
@@ -3696,7 +4430,7 @@
 					)
 				)
 			)
-			(property "Footprint" ""
+			(property "Footprint" "GEN_R_0402"
 				(at 0 0 0)
 				(effects
 					(font
@@ -3723,7 +4457,70 @@
 					(hide yes)
 				)
 			)
-			(property "ki_fp_filters" "*GEN_R_0402*"
+			(property "TOLERANCE" "1%"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "PACKAGE" "0402"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "SUPPLIER 1" "Mouser"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "SUPPLIER PART NUMBER 1" "667-ERJ-2RKF4701X"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ALTIUM_VALUE" "4.7K"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "HOUSE PART NUMBER" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MANUFACTURER" "Panasonic"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MANUFACTURER PART NUMBER" "ERJ-2RKF4701X"
 				(at 0 0 0)
 				(effects
 					(font
@@ -3793,7 +4590,7 @@
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
-			(property "Reference" ""
+			(property "Reference" "R"
 				(at 0 0 0)
 				(effects
 					(font
@@ -3801,7 +4598,7 @@
 					)
 				)
 			)
-			(property "Value" ""
+			(property "Value" "${ALTIUM_VALUE}"
 				(at 0 0 0)
 				(effects
 					(font
@@ -3809,7 +4606,7 @@
 					)
 				)
 			)
-			(property "Footprint" ""
+			(property "Footprint" "GEN_R_0402"
 				(at 0 0 0)
 				(effects
 					(font
@@ -3836,7 +4633,70 @@
 					(hide yes)
 				)
 			)
-			(property "ki_fp_filters" "*GEN_R_0402*"
+			(property "TOLERANCE" "1%"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "PACKAGE" "0402"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "SUPPLIER 1" "Mouser"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "SUPPLIER PART NUMBER 1" "603-RC0402FR-07680KL"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ALTIUM_VALUE" "680K"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MANUFACTURER" "Yageo"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "HOUSE PART NUMBER" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MANUFACTURER PART NUMBER" "RC0402FR-07681KL"
 				(at 0 0 0)
 				(effects
 					(font
@@ -3906,7 +4766,7 @@
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
-			(property "Reference" ""
+			(property "Reference" "R"
 				(at 0 0 0)
 				(effects
 					(font
@@ -3914,7 +4774,7 @@
 					)
 				)
 			)
-			(property "Value" ""
+			(property "Value" "${ALTIUM_VALUE}"
 				(at 0 0 0)
 				(effects
 					(font
@@ -3922,7 +4782,7 @@
 					)
 				)
 			)
-			(property "Footprint" ""
+			(property "Footprint" "GEN_R_0402"
 				(at 0 0 0)
 				(effects
 					(font
@@ -3949,7 +4809,70 @@
 					(hide yes)
 				)
 			)
-			(property "ki_fp_filters" "*GEN_R_0402*"
+			(property "TOLERANCE" "1%"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "PACKAGE" "0402"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "SUPPLIER 1" "Mouser"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "SUPPLIER PART NUMBER 1" "603-RC0402FR-0790K9L"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ALTIUM_VALUE" "90.9k"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "HOUSE PART NUMBER" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MANUFACTURER" "Yageo"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MANUFACTURER PART NUMBER" "RC0402FR-0790K9L"
 				(at 0 0 0)
 				(effects
 					(font
@@ -4019,7 +4942,7 @@
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
-			(property "Reference" ""
+			(property "Reference" "T"
 				(at 0 0 0)
 				(effects
 					(font
@@ -4027,7 +4950,7 @@
 					)
 				)
 			)
-			(property "Value" ""
+			(property "Value" "5015"
 				(at 0 0 0)
 				(effects
 					(font
@@ -4035,7 +4958,7 @@
 					)
 				)
 			)
-			(property "Footprint" ""
+			(property "Footprint" "KEY_5015"
 				(at 0 0 0)
 				(effects
 					(font
@@ -4062,7 +4985,43 @@
 					(hide yes)
 				)
 			)
-			(property "ki_fp_filters" "*KEY_5015*"
+			(property "SUPPLIER 1" "Mouser"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "SUPPLIER PART NUMBER 1" "534-5015"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "HOUSE PART NUMBER" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MANUFACTURER" "Keystone Electronics"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MANUFACTURER PART NUMBER" "5015"
 				(at 0 0 0)
 				(effects
 					(font
@@ -4115,7 +5074,7 @@
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
-			(property "Reference" ""
+			(property "Reference" "T"
 				(at 0 0 0)
 				(effects
 					(font
@@ -4123,7 +5082,7 @@
 					)
 				)
 			)
-			(property "Value" ""
+			(property "Value" "PCB"
 				(at 0 0 0)
 				(effects
 					(font
@@ -4131,7 +5090,7 @@
 					)
 				)
 			)
-			(property "Footprint" ""
+			(property "Footprint" "GEN_TP_PCB"
 				(at 0 0 0)
 				(effects
 					(font
@@ -4158,7 +5117,25 @@
 					(hide yes)
 				)
 			)
-			(property "ki_fp_filters" "*GEN_TP_PCB*"
+			(property "HOUSE PART NUMBER" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MANUFACTURER" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MANUFACTURER PART NUMBER" ""
 				(at 0 0 0)
 				(effects
 					(font
@@ -4196,6 +5173,107 @@
 								(size 1.27 1.27)
 							)
 						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "power:PWR_FLAG"
+			(power)
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "#FLG"
+				(at 0 1.905 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Value" "PWR_FLAG"
+				(at 0 3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Special symbol for telling ERC where power comes from"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "flag power"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "PWR_FLAG_0_0"
+				(pin power_out line
+					(at 0 0 90)
+					(length 0)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(symbol "PWR_FLAG_0_1"
+				(polyline
+					(pts
+						(xy 0 0) (xy 0 1.27) (xy -1.016 1.905) (xy 0 2.54) (xy 1.016 1.905) (xy 0 1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
 					)
 				)
 			)
@@ -4556,16 +5634,16 @@
 		(uuid "16fb4680-e5d2-4aa3-8b97-044fb93eb1a4")
 	)
 	(junction
+		(at 40.64 30.48)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "19e5b407-c301-463f-bd59-37229255f938")
+	)
+	(junction
 		(at 63.5 48.26)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "1ac0ce2a-9456-4e4e-ab69-b01ac775ee25")
-	)
-	(junction
-		(at 60.96 91.44)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "1ea28198-6b79-4d98-996d-964f70cf1e2b")
 	)
 	(junction
 		(at 38.1 91.44)
@@ -4602,6 +5680,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "3175abb1-17e5-4eff-95c1-55ab6409a8f2")
+	)
+	(junction
+		(at 60.96 154.94)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "32c252d4-816d-40cf-a240-4872fe7af6e3")
 	)
 	(junction
 		(at 33.02 30.48)
@@ -4694,6 +5778,12 @@
 		(uuid "5b3c5738-d184-4bca-979a-91fccafb2346")
 	)
 	(junction
+		(at 68.58 91.44)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "5b6f6831-304d-4a0f-9908-92c539294775")
+	)
+	(junction
 		(at 198.12 93.98)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -4730,6 +5820,12 @@
 		(uuid "6836e1d7-e0e4-4997-b645-275d5909e897")
 	)
 	(junction
+		(at 200.66 154.94)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "6a7d5dc9-4393-46b2-8a77-32e9f033fb7f")
+	)
+	(junction
 		(at 40.64 91.44)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -4740,6 +5836,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "6c799d18-63d7-455f-9406-e203fa80f368")
+	)
+	(junction
+		(at 58.42 91.44)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "71defce0-8f52-47d8-82cb-f8a444a65fc5")
 	)
 	(junction
 		(at 200.66 33.02)
@@ -4776,6 +5878,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "89860d02-34ca-4fb3-a78f-27d67e5074bb")
+	)
+	(junction
+		(at 177.8 30.48)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "9158cfa5-7572-44af-bb18-0b80065e91e9")
 	)
 	(junction
 		(at 154.94 30.48)
@@ -4880,6 +5988,12 @@
 		(uuid "d5e439e8-e9bf-4670-a230-aebc1d313b9b")
 	)
 	(junction
+		(at 182.88 91.44)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "d603ae8f-f254-489b-b8b2-d04290a9e427")
+	)
+	(junction
 		(at 63.5 154.94)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -4934,6 +6048,12 @@
 		(uuid "f4939d51-a7ee-4242-8e5e-3ed100016a27")
 	)
 	(junction
+		(at 142.24 154.94)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "f6e0c798-2851-46ba-8cef-511210cdeff1")
+	)
+	(junction
 		(at 193.04 154.94)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -4950,10 +6070,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "fb0fcae5-0600-41c0-a360-e8fed34dfdc9")
-	)
-	(no_connect
-		(at 236.22 162.56)
-		(uuid "dc74189c-7f2b-4971-9663-044efbfc904c")
 	)
 	(wire
 		(pts
@@ -5007,7 +6123,7 @@
 	)
 	(wire
 		(pts
-			(xy 172.72 30.48) (xy 182.88 30.48)
+			(xy 172.72 30.48) (xy 177.8 30.48)
 		)
 		(stroke
 			(width 0)
@@ -5057,7 +6173,7 @@
 	)
 	(wire
 		(pts
-			(xy 195.58 154.94) (xy 203.2 154.94)
+			(xy 195.58 154.94) (xy 200.66 154.94)
 		)
 		(stroke
 			(width 0)
@@ -5267,7 +6383,7 @@
 	)
 	(wire
 		(pts
-			(xy 55.88 91.44) (xy 60.96 91.44)
+			(xy 55.88 91.44) (xy 58.42 91.44)
 		)
 		(stroke
 			(width 0)
@@ -5287,13 +6403,23 @@
 	)
 	(wire
 		(pts
-			(xy 66.04 91.44) (xy 71.12 91.44)
+			(xy 66.04 91.44) (xy 68.58 91.44)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
 		(uuid "2325504e-1c90-458c-9d94-f0b52015c4ec")
+	)
+	(wire
+		(pts
+			(xy 68.58 91.44) (xy 71.12 91.44)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "24b19fe7-cf20-4318-a049-94682a60e519")
 	)
 	(wire
 		(pts
@@ -5497,6 +6623,16 @@
 	)
 	(wire
 		(pts
+			(xy 40.64 30.48) (xy 45.72 30.48)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "39544db8-5088-43da-ac25-865f07907540")
+	)
+	(wire
+		(pts
 			(xy 241.3 93.98) (xy 241.3 91.44)
 		)
 		(stroke
@@ -5697,6 +6833,16 @@
 	)
 	(wire
 		(pts
+			(xy 142.24 154.94) (xy 144.78 154.94)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4fd8356c-ff1b-4145-9848-8ad0882ae524")
+	)
+	(wire
+		(pts
 			(xy 121.92 154.94) (xy 124.46 154.94)
 		)
 		(stroke
@@ -5707,7 +6853,7 @@
 	)
 	(wire
 		(pts
-			(xy 177.8 91.44) (xy 187.96 91.44)
+			(xy 177.8 91.44) (xy 182.88 91.44)
 		)
 		(stroke
 			(width 0)
@@ -5787,6 +6933,16 @@
 	)
 	(wire
 		(pts
+			(xy 55.88 154.94) (xy 60.96 154.94)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5998063b-7dff-44e7-ac30-d95afd01fde3")
+	)
+	(wire
+		(pts
 			(xy 40.64 91.44) (xy 43.18 91.44)
 		)
 		(stroke
@@ -5827,7 +6983,7 @@
 	)
 	(wire
 		(pts
-			(xy 35.56 30.48) (xy 45.72 30.48)
+			(xy 35.56 30.48) (xy 40.64 30.48)
 		)
 		(stroke
 			(width 0)
@@ -5874,6 +7030,16 @@
 			(type default)
 		)
 		(uuid "63e5176b-c8e0-48de-ba4e-78dab4e474fa")
+	)
+	(wire
+		(pts
+			(xy 200.66 154.94) (xy 203.2 154.94)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6437009d-7757-4f4e-b925-55169be9e296")
 	)
 	(wire
 		(pts
@@ -5924,16 +7090,6 @@
 			(type default)
 		)
 		(uuid "68fad419-4f7c-4401-900f-8680f895b622")
-	)
-	(wire
-		(pts
-			(xy 60.96 91.44) (xy 66.04 91.44)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "6987bc78-3707-469a-af49-a7f123c38cac")
 	)
 	(wire
 		(pts
@@ -6017,7 +7173,7 @@
 	)
 	(wire
 		(pts
-			(xy 63.5 154.94) (xy 55.88 154.94)
+			(xy 63.5 154.94) (xy 60.96 154.94)
 		)
 		(stroke
 			(width 0)
@@ -6334,6 +7490,16 @@
 			(type default)
 		)
 		(uuid "99d89b37-5393-4505-8228-27e8318762c6")
+	)
+	(wire
+		(pts
+			(xy 182.88 91.44) (xy 187.96 91.44)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9bae3603-3907-485b-a064-d7008ef5e7c6")
 	)
 	(wire
 		(pts
@@ -6677,6 +7843,16 @@
 	)
 	(wire
 		(pts
+			(xy 58.42 91.44) (xy 66.04 91.44)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "bf8c1815-7f46-4b8a-9a9f-7109ea56d059")
+	)
+	(wire
+		(pts
 			(xy 127 30.48) (xy 137.16 30.48)
 		)
 		(stroke
@@ -6834,6 +8010,16 @@
 			(type default)
 		)
 		(uuid "cef32111-60e1-45d3-a012-0f0492e63c05")
+	)
+	(wire
+		(pts
+			(xy 177.8 30.48) (xy 182.88 30.48)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "cff5a35c-312f-4e22-81da-68a9ee62a8fd")
 	)
 	(wire
 		(pts
@@ -10371,6 +11557,71 @@
 		)
 	)
 	(symbol
+		(lib_id "power:PWR_FLAG")
+		(at 182.88 91.44 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "343f9f96-f955-4575-a2b2-daa9b7238a42")
+		(property "Reference" "#FLG024"
+			(at 182.88 89.535 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "PWR_FLAG"
+			(at 182.88 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 182.88 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 182.88 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Special symbol for telling ERC where power comes from"
+			(at 182.88 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "7dfa5112-019b-435b-b60b-a2bd7bcdf86d")
+		)
+		(instances
+			(project "Thunderscope_Rev5"
+				(path "/031d3e2c-42e0-4016-8c32-579d45c83e09/ed55ca86-b434-4533-9cc2-1facf1ee6c7b"
+					(reference "#FLG024")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Thunderscope_Rev5:RES 4.7K OHM 1% 1/10W 0402")
 		(at 251.46 53.34 90)
 		(unit 1)
@@ -10654,6 +11905,71 @@
 			(project ""
 				(path "/031d3e2c-42e0-4016-8c32-579d45c83e09/ed55ca86-b434-4533-9cc2-1facf1ee6c7b"
 					(reference "R93")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:PWR_FLAG")
+		(at 68.58 91.44 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "3d3619de-a61a-4a72-aa77-cd28629db8f9")
+		(property "Reference" "#FLG022"
+			(at 68.58 89.535 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "PWR_FLAG"
+			(at 68.58 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 68.58 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 68.58 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Special symbol for telling ERC where power comes from"
+			(at 68.58 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "28ae8d84-63c7-4a23-9b3d-271e9523ccfd")
+		)
+		(instances
+			(project ""
+				(path "/031d3e2c-42e0-4016-8c32-579d45c83e09/ed55ca86-b434-4533-9cc2-1facf1ee6c7b"
+					(reference "#FLG022")
 					(unit 1)
 				)
 			)
@@ -13835,6 +15151,71 @@
 		)
 	)
 	(symbol
+		(lib_id "power:PWR_FLAG")
+		(at 200.66 154.94 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "79f65d96-11b7-4ebe-92f5-d53bcee5bea1")
+		(property "Reference" "#FLG025"
+			(at 200.66 153.035 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "PWR_FLAG"
+			(at 200.66 151.13 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 200.66 154.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 200.66 154.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Special symbol for telling ERC where power comes from"
+			(at 200.66 154.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "25ca479b-1588-4b53-98df-59d1ae30d17c")
+		)
+		(instances
+			(project "Thunderscope_Rev5"
+				(path "/031d3e2c-42e0-4016-8c32-579d45c83e09/ed55ca86-b434-4533-9cc2-1facf1ee6c7b"
+					(reference "#FLG025")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Thunderscope_Rev5:IC LDO TPS7A9101")
 		(at 220.98 38.1 0)
 		(unit 1)
@@ -14475,6 +15856,71 @@
 			(project ""
 				(path "/031d3e2c-42e0-4016-8c32-579d45c83e09/ed55ca86-b434-4533-9cc2-1facf1ee6c7b"
 					(reference "#PWR0511")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:PWR_FLAG")
+		(at 40.64 30.48 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "96497ea2-7c29-450e-a7a1-74f6bf6f6eca")
+		(property "Reference" "#FLG021"
+			(at 40.64 28.575 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "PWR_FLAG"
+			(at 40.64 26.67 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 40.64 30.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 40.64 30.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Special symbol for telling ERC where power comes from"
+			(at 40.64 30.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "f70a3be3-1664-463b-95f9-366cf6851c9d")
+		)
+		(instances
+			(project "Thunderscope_Rev5"
+				(path "/031d3e2c-42e0-4016-8c32-579d45c83e09/ed55ca86-b434-4533-9cc2-1facf1ee6c7b"
+					(reference "#FLG021")
 					(unit 1)
 				)
 			)
@@ -15199,7 +16645,6 @@
 		)
 	)
 	(symbol
-		(lib_name "+5V_BAR_1")
 		(lib_id "Thunderscope_Rev5:+5V_BAR")
 		(at 276.86 88.9 180)
 		(unit 1)
@@ -15256,6 +16701,73 @@
 			(project ""
 				(path "/031d3e2c-42e0-4016-8c32-579d45c83e09/ed55ca86-b434-4533-9cc2-1facf1ee6c7b"
 					(reference "#PWR0550")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:PWR_FLAG")
+		(at 144.78 154.94 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "a5931046-2d9d-4e85-8d2b-b388a9834060")
+		(property "Reference" "#FLG06"
+			(at 146.685 154.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "PWR_FLAG"
+			(at 148.59 154.9399 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 144.78 154.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 144.78 154.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Special symbol for telling ERC where power comes from"
+			(at 144.78 154.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "2febaf65-30c0-4256-a6e1-2179a70dc03c")
+		)
+		(instances
+			(project ""
+				(path "/031d3e2c-42e0-4016-8c32-579d45c83e09/ed55ca86-b434-4533-9cc2-1facf1ee6c7b"
+					(reference "#FLG06")
 					(unit 1)
 				)
 			)
@@ -15867,7 +17379,7 @@
 	)
 	(symbol
 		(lib_id "Thunderscope_Rev5:TP KEYSTONE 5015")
-		(at 60.96 91.44 0)
+		(at 58.42 91.44 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -15875,16 +17387,15 @@
 		(dnp no)
 		(uuid "ab587549-43c9-40a7-9eb2-44783f604867")
 		(property "Reference" "TP22"
-			(at 58.42 86.36 0)
+			(at 58.42 85.09 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left bottom)
 			)
 		)
 		(property "Value" "5015"
-			(at 58.166 86.106 0)
+			(at 55.626 86.106 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15894,7 +17405,7 @@
 			)
 		)
 		(property "Footprint" "KEY_5015"
-			(at 60.96 91.44 0)
+			(at 58.42 91.44 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15903,7 +17414,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 60.96 91.44 0)
+			(at 58.42 91.44 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15912,7 +17423,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 60.96 91.44 0)
+			(at 58.42 91.44 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15921,7 +17432,7 @@
 			)
 		)
 		(property "SUPPLIER 1" "Mouser"
-			(at 58.166 86.106 0)
+			(at 55.626 86.106 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15931,7 +17442,7 @@
 			)
 		)
 		(property "SUPPLIER PART NUMBER 1" "534-5015"
-			(at 58.166 86.106 0)
+			(at 55.626 86.106 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15941,7 +17452,7 @@
 			)
 		)
 		(property "HOUSE PART NUMBER" ""
-			(at 58.166 86.106 0)
+			(at 55.626 86.106 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15951,7 +17462,7 @@
 			)
 		)
 		(property "MANUFACTURER" "Keystone Electronics"
-			(at 58.166 86.106 0)
+			(at 55.626 86.106 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15961,7 +17472,7 @@
 			)
 		)
 		(property "MANUFACTURER PART NUMBER" "5015"
-			(at 58.166 86.106 0)
+			(at 55.626 86.106 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16945,6 +18456,71 @@
 			(project ""
 				(path "/031d3e2c-42e0-4016-8c32-579d45c83e09/ed55ca86-b434-4533-9cc2-1facf1ee6c7b"
 					(reference "R14")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:PWR_FLAG")
+		(at 60.96 154.94 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "b6c8b216-79f1-40b9-9dcf-37565786f91f")
+		(property "Reference" "#FLG023"
+			(at 60.96 153.035 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "PWR_FLAG"
+			(at 60.96 151.13 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 60.96 154.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 60.96 154.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Special symbol for telling ERC where power comes from"
+			(at 60.96 154.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "7d9d8f25-7688-4d09-aa70-6ce09390ec76")
+		)
+		(instances
+			(project "Thunderscope_Rev5"
+				(path "/031d3e2c-42e0-4016-8c32-579d45c83e09/ed55ca86-b434-4533-9cc2-1facf1ee6c7b"
+					(reference "#FLG023")
 					(unit 1)
 				)
 			)
@@ -18309,12 +19885,11 @@
 		(dnp no)
 		(uuid "d429e183-f474-484f-9a4e-3769ffa68336")
 		(property "Reference" "TP21"
-			(at 38.1 86.36 0)
+			(at 40.64 85.09 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left bottom)
 			)
 		)
 		(property "Value" "5015"
@@ -19569,6 +21144,71 @@
 			(project ""
 				(path "/031d3e2c-42e0-4016-8c32-579d45c83e09/ed55ca86-b434-4533-9cc2-1facf1ee6c7b"
 					(reference "C112")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:PWR_FLAG")
+		(at 177.8 30.48 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "ed79b1c0-a28d-4a91-acc7-043f0ac6f70c")
+		(property "Reference" "#FLG020"
+			(at 177.8 28.575 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "PWR_FLAG"
+			(at 177.8 26.67 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 177.8 30.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 177.8 30.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Special symbol for telling ERC where power comes from"
+			(at 177.8 30.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "e40ababc-6c25-434a-b2bd-926e61ce64ba")
+		)
+		(instances
+			(project ""
+				(path "/031d3e2c-42e0-4016-8c32-579d45c83e09/ed55ca86-b434-4533-9cc2-1facf1ee6c7b"
+					(reference "#FLG020")
 					(unit 1)
 				)
 			)
