@@ -842,6 +842,111 @@
 		)
 		(embedded_fonts no)
 	)
+	(symbol "+3V3_ACQ_BAR"
+		(power)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(property "Reference" "#PWR"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3V3_ACQ"
+			(at 0 -3.81 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name '+3V3_ACQ'"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ki_keywords" "power-flag"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(symbol "+3V3_ACQ_BAR_0_0"
+			(polyline
+				(pts
+					(xy -1.27 -2.54) (xy 1.27 -2.54)
+				)
+				(stroke
+					(width 0.254)
+					(type solid)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 0 0) (xy 0 -2.54)
+				)
+				(stroke
+					(width 0.254)
+					(type solid)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(pin power_in line
+				(at 0 0 0)
+				(length 0)
+				(hide yes)
+				(name "+2V5_ACQ"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number ""
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
 	(symbol "+3V3_BAR"
 		(power)
 		(exclude_from_sim no)
@@ -1682,6 +1787,111 @@
 		)
 		(embedded_fonts no)
 	)
+	(symbol "+VUSB"
+		(power)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(property "Reference" "#PWR"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+VUSB"
+			(at 0 -3.81 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name '+VUSB'"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ki_keywords" "power-flag"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(symbol "+VUSB_0_0"
+			(polyline
+				(pts
+					(xy -1.27 -2.54) (xy 1.27 -2.54)
+				)
+				(stroke
+					(width 0.254)
+					(type solid)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 0 0) (xy 0 -2.54)
+				)
+				(stroke
+					(width 0.254)
+					(type solid)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(pin power_in line
+				(at 0 0 0)
+				(length 0)
+				(hide yes)
+				(name "+5V2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number ""
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
 	(symbol "-5V_BAR"
 		(power)
 		(exclude_from_sim no)
@@ -1993,17 +2203,6 @@
 		(symbol "BNC JACK R/A_1_0"
 			(circle
 				(center 0 0)
-				(radius 0.635)
-				(stroke
-					(width -0.0001)
-					(type solid)
-				)
-				(fill
-					(type outline)
-				)
-			)
-			(circle
-				(center 0 0)
 				(radius 2.54)
 				(stroke
 					(width 0)
@@ -2011,6 +2210,17 @@
 				)
 				(fill
 					(type none)
+				)
+			)
+			(circle
+				(center 0 0)
+				(radius 0.635)
+				(stroke
+					(width -0.0001)
+					(type solid)
+				)
+				(fill
+					(type outline)
 				)
 			)
 			(pin passive line
@@ -8984,9 +9194,9 @@
 		(symbol "FID 1mm_1_0"
 			(circle
 				(center 0 0)
-				(radius 0.635)
+				(radius 2.54)
 				(stroke
-					(width 0.762)
+					(width 0)
 					(type solid)
 					(color 0 0 0 1)
 				)
@@ -8996,9 +9206,9 @@
 			)
 			(circle
 				(center 0 0)
-				(radius 2.54)
+				(radius 0.635)
 				(stroke
-					(width 0)
+					(width 0.762)
 					(type solid)
 					(color 0 0 0 1)
 				)
@@ -13032,18 +13242,6 @@
 		(symbol "IC DIGIPOT QUAD MCP4452-104E_1_0"
 			(polyline
 				(pts
-					(xy 11.43 -7.62) (xy 12.7 -8.89) (xy 13.97 -6.35) (xy 15.24 -8.89) (xy 16.51 -6.35) (xy 17.78 -8.89)
-				)
-				(stroke
-					(width 0)
-					(type solid)
-				)
-				(fill
-					(type none)
-				)
-			)
-			(polyline
-				(pts
 					(xy 11.43 -7.62) (xy 8.89 -7.62)
 				)
 				(stroke
@@ -13056,7 +13254,7 @@
 			)
 			(polyline
 				(pts
-					(xy 11.43 -12.7) (xy 12.7 -13.97) (xy 13.97 -11.43) (xy 15.24 -13.97) (xy 16.51 -11.43) (xy 17.78 -13.97)
+					(xy 11.43 -7.62) (xy 12.7 -8.89) (xy 13.97 -6.35) (xy 15.24 -8.89) (xy 16.51 -6.35) (xy 17.78 -8.89)
 				)
 				(stroke
 					(width 0)
@@ -13069,6 +13267,18 @@
 			(polyline
 				(pts
 					(xy 11.43 -12.7) (xy 8.89 -12.7)
+				)
+				(stroke
+					(width 0)
+					(type solid)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 11.43 -12.7) (xy 12.7 -13.97) (xy 13.97 -11.43) (xy 15.24 -13.97) (xy 16.51 -11.43) (xy 17.78 -13.97)
 				)
 				(stroke
 					(width 0)
@@ -13104,7 +13314,7 @@
 			)
 			(polyline
 				(pts
-					(xy 11.43 -22.86) (xy 12.7 -24.13) (xy 13.97 -21.59) (xy 15.24 -24.13) (xy 16.51 -21.59) (xy 17.78 -24.13)
+					(xy 11.43 -22.86) (xy 8.89 -22.86)
 				)
 				(stroke
 					(width 0)
@@ -13116,7 +13326,7 @@
 			)
 			(polyline
 				(pts
-					(xy 11.43 -22.86) (xy 8.89 -22.86)
+					(xy 11.43 -22.86) (xy 12.7 -24.13) (xy 13.97 -21.59) (xy 15.24 -24.13) (xy 16.51 -21.59) (xy 17.78 -24.13)
 				)
 				(stroke
 					(width 0)
@@ -31697,7 +31907,7 @@
 			)
 			(polyline
 				(pts
-					(xy -1.27 0) (xy 1.27 0)
+					(xy -1.27 0) (xy -2.54 -1.27)
 				)
 				(stroke
 					(width 0)
@@ -31709,7 +31919,7 @@
 			)
 			(polyline
 				(pts
-					(xy -1.27 0) (xy -2.54 -1.27)
+					(xy -1.27 0) (xy 1.27 0)
 				)
 				(stroke
 					(width 0)
@@ -31883,17 +32093,6 @@
 		(symbol "UFL Jack SMD_1_0"
 			(circle
 				(center 0 0)
-				(radius 0.635)
-				(stroke
-					(width -0.0001)
-					(type solid)
-				)
-				(fill
-					(type outline)
-				)
-			)
-			(circle
-				(center 0 0)
 				(radius 2.54)
 				(stroke
 					(width 0)
@@ -31901,6 +32100,17 @@
 				)
 				(fill
 					(type none)
+				)
+			)
+			(circle
+				(center 0 0)
+				(radius 0.635)
+				(stroke
+					(width -0.0001)
+					(type solid)
+				)
+				(fill
+					(type outline)
 				)
 			)
 			(pin passive line

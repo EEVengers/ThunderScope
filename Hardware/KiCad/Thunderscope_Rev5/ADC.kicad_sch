@@ -115,7 +115,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "Thunderscope_Rev5:+2V5_ACQ_BAR"
+		(symbol "Thunderscope_Rev5:+3V3_ACQ_BAR"
 			(power)
 			(exclude_from_sim no)
 			(in_bom yes)
@@ -129,7 +129,7 @@
 					(hide yes)
 				)
 			)
-			(property "Value" "+2V5_ACQ"
+			(property "Value" "+3V3_ACQ"
 				(at 0 -3.81 0)
 				(effects
 					(font
@@ -155,7 +155,7 @@
 					(hide yes)
 				)
 			)
-			(property "Description" "Power symbol creates a global label with name '+2V5_ACQ'"
+			(property "Description" "Power symbol creates a global label with name '+3V3_ACQ'"
 				(at 0 0 0)
 				(effects
 					(font
@@ -173,7 +173,7 @@
 					(hide yes)
 				)
 			)
-			(symbol "+2V5_ACQ_BAR_0_0"
+			(symbol "+3V3_ACQ_BAR_0_0"
 				(polyline
 					(pts
 						(xy -1.27 -2.54) (xy 1.27 -2.54)
@@ -3804,6 +3804,16 @@
 	)
 	(wire
 		(pts
+			(xy 198.12 48.26) (xy 198.12 50.8)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "58741294-f3f8-41fd-a4cd-ac249813d994")
+	)
+	(wire
+		(pts
 			(xy 195.58 99.06) (xy 182.88 99.06)
 		)
 		(stroke
@@ -6854,74 +6864,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Thunderscope_Rev5:+2V5_ACQ_BAR")
-		(at 88.9 58.42 180)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "32e981f6-45d8-4b17-a260-8ccd0f2e660f")
-		(property "Reference" "#PWR0247"
-			(at 88.9 58.42 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "+2V5_ACQ"
-			(at 88.9 54.61 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 88.9 58.42 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 88.9 58.42 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 88.9 58.42 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin ""
-			(uuid "952ee2e6-3cd0-4e62-9418-9b01b34ddee3")
-		)
-		(instances
-			(project "Thunderscope_Rev5"
-				(path "/031d3e2c-42e0-4016-8c32-579d45c83e09/9a43e052-ab3a-4eb2-8617-8e5430b531e4"
-					(reference "#PWR0247")
-					(unit 1)
-				)
-			)
-			(project ""
-				(path "/0b10f000-2eec-40e9-aede-51d71661a624"
-					(reference "#PWR?")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Thunderscope_Rev5:CAP 10nF 50V X7R 0402")
 		(at 167.64 35.56 0)
 		(unit 1)
@@ -8038,6 +7980,71 @@
 		)
 	)
 	(symbol
+		(lib_id "Thunderscope_Rev5:+3V3_ACQ_BAR")
+		(at 88.9 58.42 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "7a3f8e74-c0f0-4615-a63c-f065bde372ad")
+		(property "Reference" "#PWR0247"
+			(at 88.9 58.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3V3_ACQ"
+			(at 88.9 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 88.9 58.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 88.9 58.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name '+3V3_ACQ'"
+			(at 88.9 58.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin ""
+			(uuid "e00c0556-1743-406d-9fc9-6908dc1489db")
+		)
+		(instances
+			(project "Thunderscope_Rev5"
+				(path "/031d3e2c-42e0-4016-8c32-579d45c83e09/9a43e052-ab3a-4eb2-8617-8e5430b531e4"
+					(reference "#PWR0247")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Thunderscope_Rev5:GND")
 		(at 129.54 40.64 0)
 		(unit 1)
@@ -8689,75 +8696,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Thunderscope_Rev5:+2V5_ACQ_BAR")
-		(at 198.12 50.8 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "886de778-0c82-4bd1-a362-eb12ffcd0b8a")
-		(property "Reference" "#PWR0240"
-			(at 198.12 50.8 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "+2V5_ACQ"
-			(at 201.93 50.8 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" ""
-			(at 198.12 50.8 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 198.12 50.8 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 198.12 50.8 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin ""
-			(uuid "a9ffeaf6-1edf-4c52-aee9-3de2dabd8f5a")
-		)
-		(instances
-			(project "Thunderscope_Rev5"
-				(path "/031d3e2c-42e0-4016-8c32-579d45c83e09/9a43e052-ab3a-4eb2-8617-8e5430b531e4"
-					(reference "#PWR0240")
-					(unit 1)
-				)
-			)
-			(project ""
-				(path "/0b10f000-2eec-40e9-aede-51d71661a624"
-					(reference "#PWR?")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Thunderscope_Rev5:CAP 1nF 50V C0G 0402")
 		(at 129.54 35.56 0)
 		(unit 1)
@@ -9042,7 +8980,7 @@
 		(at 55.88 88.9 270)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(uuid "9b526375-e6f4-41c0-9c87-f953c135978c")
@@ -9553,7 +9491,7 @@
 		(at 63.5 88.9 270)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(uuid "a670881e-d468-4000-bfbf-171fbf47cb52")
@@ -11040,6 +10978,71 @@
 		)
 	)
 	(symbol
+		(lib_id "Thunderscope_Rev5:+3V3_ACQ_BAR")
+		(at 198.12 48.26 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "f21f9835-5ef8-40e9-84c5-a7d940b20bb5")
+		(property "Reference" "#PWR0240"
+			(at 198.12 48.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3V3_ACQ"
+			(at 198.12 44.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 198.12 48.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 198.12 48.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name '+3V3_ACQ'"
+			(at 198.12 48.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin ""
+			(uuid "b71f6487-f11e-49bc-bd24-63be7f2f5736")
+		)
+		(instances
+			(project "Thunderscope_Rev5"
+				(path "/031d3e2c-42e0-4016-8c32-579d45c83e09/9a43e052-ab3a-4eb2-8617-8e5430b531e4"
+					(reference "#PWR0240")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Thunderscope_Rev5:RES 10K OHM 1% 1/10W 0402")
 		(at 88.9 68.58 90)
 		(unit 1)
@@ -11263,7 +11266,7 @@
 		(at 55.88 78.74 90)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(uuid "fa4baa7f-754d-45eb-9b70-4575bb27f3ee")

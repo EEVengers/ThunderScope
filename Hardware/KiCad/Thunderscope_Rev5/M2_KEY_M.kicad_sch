@@ -10,7 +10,7 @@
 		(company "EEVengers")
 	)
 	(lib_symbols
-		(symbol "Thunderscope_Rev5:+3V3_IN_BAR"
+		(symbol "Thunderscope_Rev5:+VUSB"
 			(power)
 			(exclude_from_sim no)
 			(in_bom yes)
@@ -24,7 +24,7 @@
 					(hide yes)
 				)
 			)
-			(property "Value" "+3V3_IN"
+			(property "Value" "+VUSB"
 				(at 0 -3.81 0)
 				(effects
 					(font
@@ -50,7 +50,7 @@
 					(hide yes)
 				)
 			)
-			(property "Description" "Power symbol creates a global label with name '+3V3_IN'"
+			(property "Description" "Power symbol creates a global label with name '+VUSB'"
 				(at 0 0 0)
 				(effects
 					(font
@@ -68,7 +68,7 @@
 					(hide yes)
 				)
 			)
-			(symbol "+3V3_IN_BAR_0_0"
+			(symbol "+VUSB_0_0"
 				(polyline
 					(pts
 						(xy -1.27 -2.54) (xy 1.27 -2.54)
@@ -97,7 +97,7 @@
 					(at 0 0 0)
 					(length 0)
 					(hide yes)
-					(name "+3V3_IN"
+					(name "+5V2"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1913,6 +1913,16 @@
 			)
 		)
 		(uuid "65fd6b1b-e2ac-40ca-85ae-925957eb9d09")
+	)
+	(text "Note that the TB/USB4 adaptor must be modified to give us VUSB instead of 3V3"
+		(exclude_from_sim no)
+		(at 137.16 162.56 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "cac0abc3-55d0-439e-affe-cd756c790b3e")
 	)
 	(text "M.2 Key M Connector"
 		(exclude_from_sim no)
@@ -3763,7 +3773,7 @@
 		)
 		(uuid "b4db9faf-db54-4a4b-86a1-bb76738e63f7")
 	)
-	(label "+3V3_M2"
+	(label "+VUSB_M2"
 		(at 106.68 177.8 0)
 		(fields_autoplaced yes)
 		(effects
@@ -3862,7 +3872,7 @@
 		)
 		(uuid "f554f625-4a27-4a73-9006-7d68abc7b8fa")
 	)
-	(label "+3V3_M2"
+	(label "+VUSB_M2"
 		(at 139.7 43.18 180)
 		(fields_autoplaced yes)
 		(effects
@@ -4792,68 +4802,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Thunderscope_Rev5:+3V3_IN_BAR")
-		(at 165.1 175.26 180)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "b830870e-74f4-4b09-bf07-6030502fe514")
-		(property "Reference" "#PWR0562"
-			(at 165.1 175.26 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "+3V3_IN"
-			(at 165.1 171.45 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 165.1 175.26 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 165.1 175.26 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 165.1 175.26 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin ""
-			(uuid "b66d5c96-230b-47da-aa50-a9a704dd11c5")
-		)
-		(instances
-			(project ""
-				(path "/031d3e2c-42e0-4016-8c32-579d45c83e09/1740d22d-1854-48db-a246-157789f9c7e2"
-					(reference "#PWR0562")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Thunderscope_Rev5:GND")
 		(at 129.54 152.4 0)
 		(unit 1)
@@ -4913,6 +4861,71 @@
 			(project ""
 				(path "/031d3e2c-42e0-4016-8c32-579d45c83e09/1740d22d-1854-48db-a246-157789f9c7e2"
 					(reference "#PWR0561")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Thunderscope_Rev5:+VUSB")
+		(at 165.1 175.26 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "dcca6970-cfb1-4c59-9909-ec008ccc0444")
+		(property "Reference" "#PWR0302"
+			(at 165.1 175.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+VUSB"
+			(at 165.1 171.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 165.1 175.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 165.1 175.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name '+VUSB'"
+			(at 165.1 175.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin ""
+			(uuid "e06d358f-9dfc-44e5-8724-785c54e3d5f2")
+		)
+		(instances
+			(project "Thunderscope_Rev5"
+				(path "/031d3e2c-42e0-4016-8c32-579d45c83e09/1740d22d-1854-48db-a246-157789f9c7e2"
+					(reference "#PWR0302")
 					(unit 1)
 				)
 			)

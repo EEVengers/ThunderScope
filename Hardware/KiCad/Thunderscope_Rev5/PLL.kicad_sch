@@ -220,7 +220,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "Thunderscope_Rev5:+2V5_ACQ_BAR"
+		(symbol "Thunderscope_Rev5:+3V3_ACQ_BAR"
 			(power)
 			(exclude_from_sim no)
 			(in_bom yes)
@@ -234,7 +234,7 @@
 					(hide yes)
 				)
 			)
-			(property "Value" "+2V5_ACQ"
+			(property "Value" "+3V3_ACQ"
 				(at 0 -3.81 0)
 				(effects
 					(font
@@ -260,7 +260,7 @@
 					(hide yes)
 				)
 			)
-			(property "Description" "Power symbol creates a global label with name '+2V5_ACQ'"
+			(property "Description" "Power symbol creates a global label with name '+3V3_ACQ'"
 				(at 0 0 0)
 				(effects
 					(font
@@ -278,7 +278,7 @@
 					(hide yes)
 				)
 			)
-			(symbol "+2V5_ACQ_BAR_0_0"
+			(symbol "+3V3_ACQ_BAR_0_0"
 				(polyline
 					(pts
 						(xy -1.27 -2.54) (xy 1.27 -2.54)
@@ -3287,19 +3287,6 @@
 		)
 		(uuid "647aad20-62b4-4097-8e28-765e9b09e6e5")
 	)
-	(text "Should be same for 2V5 - just external LDO instead of internal"
-		(exclude_from_sim no)
-		(at 20.32 74.93 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-				(thickness 0.254)
-				(bold yes)
-			)
-			(justify left bottom)
-		)
-		(uuid "65c3725f-e2f2-499c-9ab3-a1a0a6b1dcc9")
-	)
 	(text "0.62W Measured"
 		(exclude_from_sim no)
 		(at 152.4 167.64 0)
@@ -3508,12 +3495,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "8cd50806-e3dd-4bae-b7f5-0d47d6a67421")
-	)
-	(junction
-		(at 109.22 48.26)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "8de9c932-7da1-4fc1-8957-8b3f9c8bc692")
 	)
 	(junction
 		(at 96.52 132.08)
@@ -3763,6 +3744,16 @@
 	)
 	(wire
 		(pts
+			(xy 40.64 111.76) (xy 40.64 114.3)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "08f07480-8fa4-4dda-ae6d-583d2275e4a0")
+	)
+	(wire
+		(pts
 			(xy 96.52 134.62) (xy 96.52 132.08)
 		)
 		(stroke
@@ -3843,6 +3834,16 @@
 	)
 	(wire
 		(pts
+			(xy 43.18 48.26) (xy 53.34 48.26)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1dc63839-7c92-4193-a313-7d52c1cf2397")
+	)
+	(wire
+		(pts
 			(xy 246.38 48.26) (xy 236.22 48.26)
 		)
 		(stroke
@@ -3850,6 +3851,16 @@
 			(type default)
 		)
 		(uuid "21884482-384b-4a92-8a67-9619bd2b21ec")
+	)
+	(wire
+		(pts
+			(xy 43.18 48.26) (xy 43.18 45.72)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "21ca4871-025b-4498-aabc-1054415a56ff")
 	)
 	(wire
 		(pts
@@ -3890,16 +3901,6 @@
 			(type default)
 		)
 		(uuid "28ec448b-0e4d-4f24-8314-c83a387af0d0")
-	)
-	(wire
-		(pts
-			(xy 43.18 114.3) (xy 45.72 114.3)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "291361eb-97f6-42c8-839e-20581721e2fb")
 	)
 	(wire
 		(pts
@@ -4063,16 +4064,6 @@
 	)
 	(wire
 		(pts
-			(xy 43.18 48.26) (xy 53.34 48.26)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "4d7144c7-e3f4-4fb4-8ad1-b85b9fcc4cd5")
-	)
-	(wire
-		(pts
 			(xy 63.5 129.54) (xy 63.5 114.3)
 		)
 		(stroke
@@ -4093,7 +4084,7 @@
 	)
 	(wire
 		(pts
-			(xy 104.14 48.26) (xy 109.22 48.26)
+			(xy 104.14 48.26) (xy 114.3 48.26)
 		)
 		(stroke
 			(width 0)
@@ -4160,16 +4151,6 @@
 			(type default)
 		)
 		(uuid "5e14d34a-3483-465d-a9ef-088f6c0c42d3")
-	)
-	(wire
-		(pts
-			(xy 109.22 48.26) (xy 114.3 48.26)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "5f3869bf-e2d9-4c62-a385-021347cf16a2")
 	)
 	(wire
 		(pts
@@ -4370,6 +4351,16 @@
 			(type default)
 		)
 		(uuid "784683f9-e1c3-452d-a82e-4ca96890fe6d")
+	)
+	(wire
+		(pts
+			(xy 276.86 45.72) (xy 276.86 48.26)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "78c3fda1-d71f-45bc-9459-07f47af1d96a")
 	)
 	(wire
 		(pts
@@ -4720,6 +4711,16 @@
 			(type default)
 		)
 		(uuid "a1dcfc09-d78c-430a-8e58-48aa02e63723")
+	)
+	(wire
+		(pts
+			(xy 40.64 114.3) (xy 45.72 114.3)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a30829cb-d8d8-4870-a791-023072c9c803")
 	)
 	(wire
 		(pts
@@ -5240,16 +5241,6 @@
 			(type default)
 		)
 		(uuid "fd13de5b-3ef9-4733-83bb-07bbf56b05d0")
-	)
-	(wire
-		(pts
-			(xy 30.48 48.26) (xy 33.02 48.26)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "fed7efa1-5f01-4f1d-a2de-a04700521315")
 	)
 	(wire
 		(pts
@@ -26633,17 +26624,6 @@
 		)
 		(uuid "1e2561d5-1497-4d63-8f65-eccf7ffc49db")
 	)
-	(label "VDDH"
-		(at 121.92 48.26 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "544d4f37-e27a-4151-b84e-2303cda724c7")
-	)
 	(label "ADC_CLK_R_P"
 		(at 185.42 114.3 0)
 		(fields_autoplaced yes)
@@ -30018,6 +29998,68 @@
 		)
 	)
 	(symbol
+		(lib_id "Thunderscope_Rev5:+1V8APLL_BAR")
+		(at 276.86 45.72 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "6fa66410-d32c-4b83-894c-18dfa781815c")
+		(property "Reference" "#PWR0284"
+			(at 276.86 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+1V8APLL"
+			(at 276.86 41.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 276.86 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 276.86 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 276.86 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin ""
+			(uuid "f8c94c62-994a-4dc9-a8ec-d2733c57b26a")
+		)
+		(instances
+			(project "Thunderscope_Rev5"
+				(path "/031d3e2c-42e0-4016-8c32-579d45c83e09/5b9d4801-a91b-4563-ba0d-f8916f550354"
+					(reference "#PWR0284")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Thunderscope_Rev5:RES 1K OHM 1% 1/10W 0402")
 		(at 111.76 139.7 90)
 		(unit 1)
@@ -30234,71 +30276,6 @@
 			(project ""
 				(path "/e4073cfe-1414-42d7-a88c-240ccf630093"
 					(reference "#PWR?")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:PWR_FLAG")
-		(at 109.22 48.26 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "73ff6463-0a4d-4229-821a-3b8d959c6046")
-		(property "Reference" "#FLG09"
-			(at 109.22 46.355 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "PWR_FLAG"
-			(at 109.22 44.45 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 109.22 48.26 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 109.22 48.26 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Special symbol for telling ERC where power comes from"
-			(at 109.22 48.26 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "2ae679fd-3958-4448-a974-be43502b57fc")
-		)
-		(instances
-			(project ""
-				(path "/031d3e2c-42e0-4016-8c32-579d45c83e09/5b9d4801-a91b-4563-ba0d-f8916f550354"
-					(reference "#FLG09")
 					(unit 1)
 				)
 			)
@@ -30672,7 +30649,7 @@
 		(at 40.64 139.7 270)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(uuid "793b3733-81d6-4e46-879e-e45e1aa56323")
@@ -30765,74 +30742,6 @@
 			(project ""
 				(path "/e4073cfe-1414-42d7-a88c-240ccf630093"
 					(reference "TP18")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Thunderscope_Rev5:+2V5_ACQ_BAR")
-		(at 96.52 127 180)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "79db258a-c701-4301-a1e3-8b713c871504")
-		(property "Reference" "#PWR0380"
-			(at 96.52 127 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "+2V5_ACQ"
-			(at 96.52 123.19 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 96.52 127 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 96.52 127 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 96.52 127 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin ""
-			(uuid "4b04b419-6556-48d3-acbd-73adbe5f37b4")
-		)
-		(instances
-			(project "Thunderscope_Rev5"
-				(path "/031d3e2c-42e0-4016-8c32-579d45c83e09/5b9d4801-a91b-4563-ba0d-f8916f550354"
-					(reference "#PWR0380")
-					(unit 1)
-				)
-			)
-			(project ""
-				(path "/e4073cfe-1414-42d7-a88c-240ccf630093"
-					(reference "#PWR?")
 					(unit 1)
 				)
 			)
@@ -31208,75 +31117,6 @@
 			(project ""
 				(path "/e4073cfe-1414-42d7-a88c-240ccf630093"
 					(reference "C49")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Thunderscope_Rev5:+2V5_ACQ_BAR")
-		(at 43.18 114.3 270)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "81568095-2398-4e3d-85de-49ed1e00cded")
-		(property "Reference" "#PWR0393"
-			(at 43.18 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "+2V5_ACQ"
-			(at 39.37 114.3 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" ""
-			(at 43.18 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 43.18 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 43.18 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin ""
-			(uuid "feab89e4-0062-4155-91c1-4b1497150a3b")
-		)
-		(instances
-			(project "Thunderscope_Rev5"
-				(path "/031d3e2c-42e0-4016-8c32-579d45c83e09/5b9d4801-a91b-4563-ba0d-f8916f550354"
-					(reference "#PWR0393")
-					(unit 1)
-				)
-			)
-			(project ""
-				(path "/e4073cfe-1414-42d7-a88c-240ccf630093"
-					(reference "#PWR?")
 					(unit 1)
 				)
 			)
@@ -32325,74 +32165,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Thunderscope_Rev5:+1V8APLL_BAR")
-		(at 276.86 48.26 180)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "b01d9e8d-728f-49f5-8253-72126fd140d5")
-		(property "Reference" "#PWR0399"
-			(at 276.86 48.26 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "+1V8APLL"
-			(at 276.86 44.45 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 276.86 48.26 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 276.86 48.26 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 276.86 48.26 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin ""
-			(uuid "a857e2e7-54c1-4551-bde2-d1841f688634")
-		)
-		(instances
-			(project "Thunderscope_Rev5"
-				(path "/031d3e2c-42e0-4016-8c32-579d45c83e09/5b9d4801-a91b-4563-ba0d-f8916f550354"
-					(reference "#PWR0399")
-					(unit 1)
-				)
-			)
-			(project ""
-				(path "/e4073cfe-1414-42d7-a88c-240ccf630093"
-					(reference "#PWR?")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Thunderscope_Rev5:RES 10K OHM 1% 1/10W 0402")
 		(at 45.72 121.92 90)
 		(unit 1)
@@ -32907,7 +32679,7 @@
 		(at 45.72 137.16 270)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(uuid "bb6e78af-8a2c-4d22-b28a-d4ed03d2323a")
@@ -33290,7 +33062,7 @@
 		(at 50.8 134.62 270)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(uuid "c830adcc-8c1c-4961-809d-081e5eeacffe")
@@ -33918,131 +33690,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Thunderscope_Rev5:FERRITE BEAD 120 OHM 0402")
-		(at 38.1 48.26 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "d5632986-58fd-455c-a8b8-719db8fde60f")
-		(property "Reference" "FB4"
-			(at 36.576 46.736 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-			)
-		)
-		(property "Value" "120@100MHZ"
-			(at 36.576 52.324 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-			)
-		)
-		(property "Footprint" "GEN_R_0402"
-			(at 38.1 48.26 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 38.1 48.26 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 38.1 48.26 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "SUPPLIER 1" "Mouser"
-			(at 36.83 46.99 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-				(hide yes)
-			)
-		)
-		(property "SUPPLIER PART NUMBER 1" "81-BLM15PX121SN1D"
-			(at 36.83 46.99 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-				(hide yes)
-			)
-		)
-		(property "HOUSE PART NUMBER" "BLM15PX121SN1D"
-			(at 32.512 44.196 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-				(hide yes)
-			)
-		)
-		(property "MANUFACTURER" "Murata"
-			(at 32.512 44.196 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-				(hide yes)
-			)
-		)
-		(property "MANUFACTURER PART NUMBER" "BLM15PX121SN1D"
-			(at 32.512 44.196 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "1686fe01-f498-472a-8ace-7b78a79ff76a")
-		)
-		(pin "2"
-			(uuid "24acb89f-fe12-4897-9f5e-7d9417223855")
-		)
-		(instances
-			(project "Thunderscope_Rev5"
-				(path "/031d3e2c-42e0-4016-8c32-579d45c83e09/5b9d4801-a91b-4563-ba0d-f8916f550354"
-					(reference "FB4")
-					(unit 1)
-				)
-			)
-			(project ""
-				(path "/e4073cfe-1414-42d7-a88c-240ccf630093"
-					(reference "FB4")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Thunderscope_Rev5:UFL Jack SMD")
 		(at 213.36 96.52 0)
 		(unit 1)
@@ -34298,6 +33945,71 @@
 		)
 	)
 	(symbol
+		(lib_id "Thunderscope_Rev5:+3V3_ACQ_BAR")
+		(at 40.64 111.76 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "e01010a1-9f82-4ce8-8fd0-191bcb666084")
+		(property "Reference" "#PWR0282"
+			(at 40.64 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3V3_ACQ"
+			(at 40.64 107.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 40.64 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 40.64 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name '+3V3_ACQ'"
+			(at 40.64 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin ""
+			(uuid "9da69bc1-cb50-4e5b-990d-b05bb6b92fb3")
+		)
+		(instances
+			(project "Thunderscope_Rev5"
+				(path "/031d3e2c-42e0-4016-8c32-579d45c83e09/5b9d4801-a91b-4563-ba0d-f8916f550354"
+					(reference "#PWR0282")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Thunderscope_Rev5:GND")
 		(at 73.66 60.96 0)
 		(unit 1)
@@ -34357,6 +34069,71 @@
 			(project "Thunderscope_Rev5"
 				(path "/031d3e2c-42e0-4016-8c32-579d45c83e09/5b9d4801-a91b-4563-ba0d-f8916f550354"
 					(reference "#PWR0207")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Thunderscope_Rev5:+3V3_ACQ_BAR")
+		(at 43.18 45.72 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "ecfb21b4-be4d-4e5d-9874-b01cfccabe3c")
+		(property "Reference" "#PWR0280"
+			(at 43.18 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3V3_ACQ"
+			(at 43.18 41.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 43.18 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 43.18 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name '+3V3_ACQ'"
+			(at 43.18 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin ""
+			(uuid "8e7914a3-3186-4ccb-aeeb-e2fb72d69b1a")
+		)
+		(instances
+			(project "Thunderscope_Rev5"
+				(path "/031d3e2c-42e0-4016-8c32-579d45c83e09/5b9d4801-a91b-4563-ba0d-f8916f550354"
+					(reference "#PWR0280")
 					(unit 1)
 				)
 			)
@@ -34957,16 +34734,16 @@
 		)
 	)
 	(symbol
-		(lib_id "Thunderscope_Rev5:+2V5_ACQ_BAR")
-		(at 30.48 48.26 270)
+		(lib_id "Thunderscope_Rev5:+3V3_ACQ_BAR")
+		(at 96.52 127 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "f9859441-58d0-459a-879f-8e2f9a943077")
-		(property "Reference" "#PWR0386"
-			(at 30.48 48.26 0)
+		(uuid "f85f580a-790d-40c8-8d84-b88996ed8506")
+		(property "Reference" "#PWR0283"
+			(at 96.52 127 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -34974,52 +34751,48 @@
 				(hide yes)
 			)
 		)
-		(property "Value" "+2V5_ACQ"
-			(at 26.67 48.26 90)
+		(property "Value" "+3V3_ACQ"
+			(at 96.52 123.19 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify right)
 			)
 		)
 		(property "Footprint" ""
-			(at 30.48 48.26 0)
+			(at 96.52 127 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(property "Datasheet" ""
-			(at 30.48 48.26 0)
+			(at 96.52 127 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
-		(property "Description" ""
-			(at 30.48 48.26 0)
+		(property "Description" "Power symbol creates a global label with name '+3V3_ACQ'"
+			(at 96.52 127 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(pin ""
-			(uuid "2952c316-4b08-48ce-8bec-0d3007bb84cc")
+			(uuid "9ccaa943-7fd7-4093-a5c9-09c303a60316")
 		)
 		(instances
 			(project "Thunderscope_Rev5"
 				(path "/031d3e2c-42e0-4016-8c32-579d45c83e09/5b9d4801-a91b-4563-ba0d-f8916f550354"
-					(reference "#PWR0386")
-					(unit 1)
-				)
-			)
-			(project ""
-				(path "/e4073cfe-1414-42d7-a88c-240ccf630093"
-					(reference "#PWR?")
+					(reference "#PWR0283")
 					(unit 1)
 				)
 			)

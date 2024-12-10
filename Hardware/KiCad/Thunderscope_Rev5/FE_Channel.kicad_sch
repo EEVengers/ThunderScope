@@ -10,111 +10,6 @@
 		(company "EEVengers")
 	)
 	(lib_symbols
-		(symbol "Thunderscope_Rev5:+3V3_BAR"
-			(power)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "#PWR"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Value" "+3V3"
-				(at 0 -3.81 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" "Power symbol creates a global label with name '+3V3'"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_keywords" "power-flag"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "+3V3_BAR_0_0"
-				(polyline
-					(pts
-						(xy -1.27 -2.54) (xy 1.27 -2.54)
-					)
-					(stroke
-						(width 0.254)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0 0) (xy 0 -2.54)
-					)
-					(stroke
-						(width 0.254)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(pin power_in line
-					(at 0 0 0)
-					(length 0)
-					(hide yes)
-					(name "+3V3"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number ""
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
 		(symbol "Thunderscope_Rev5:+3V3_PGA_BAR"
 			(power)
 			(exclude_from_sim no)
@@ -413,6 +308,111 @@
 					(length 0)
 					(hide yes)
 					(name "+VBIAS"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "Thunderscope_Rev5:+VUSB"
+			(power)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "#PWR"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Value" "+VUSB"
+				(at 0 -3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Power symbol creates a global label with name '+VUSB'"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "power-flag"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "+VUSB_0_0"
+				(polyline
+					(pts
+						(xy -1.27 -2.54) (xy 1.27 -2.54)
+					)
+					(stroke
+						(width 0.254)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 0) (xy 0 -2.54)
+					)
+					(stroke
+						(width 0.254)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin power_in line
+					(at 0 0 0)
+					(length 0)
+					(hide yes)
+					(name "+5V2"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -5273,7 +5273,7 @@
 				)
 				(polyline
 					(pts
-						(xy 2.54 0) (xy 0.246 0)
+						(xy 2.54 0) (xy 2.54 -2.54)
 					)
 					(stroke
 						(width 0)
@@ -5285,7 +5285,7 @@
 				)
 				(polyline
 					(pts
-						(xy 2.54 0) (xy 2.54 -2.54)
+						(xy 2.54 0) (xy 0.246 0)
 					)
 					(stroke
 						(width 0)
@@ -9460,6 +9460,17 @@
 		)
 		(uuid "eae1fcfb-fe97-4d2f-bb2b-824887d0825e")
 	)
+	(text "TODO: Change Relays to 4.5V Parts as we are now powering them w/ +VUSB"
+		(exclude_from_sim no)
+		(at 142.24 25.4 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+				(color 255 0 0 1)
+			)
+		)
+		(uuid "f8e1af96-7b59-4aaa-a94a-4b010185ce5b")
+	)
 	(text_box "Use 3V relay instead of 4.5V (unit 9 ch3 atten relay could not switch) but add a resistor in line with the coil to reduce current draw."
 		(exclude_from_sim no)
 		(at 367.03 88.9 0)
@@ -10481,7 +10492,7 @@
 	)
 	(wire
 		(pts
-			(xy 181.61 53.34) (xy 187.96 53.34)
+			(xy 182.88 53.34) (xy 187.96 53.34)
 		)
 		(stroke
 			(width 0)
@@ -10932,7 +10943,7 @@
 	)
 	(wire
 		(pts
-			(xy 64.77 53.34) (xy 71.12 53.34)
+			(xy 66.04 53.34) (xy 71.12 53.34)
 		)
 		(stroke
 			(width 0)
@@ -10972,7 +10983,7 @@
 	)
 	(wire
 		(pts
-			(xy 64.77 50.8) (xy 64.77 53.34)
+			(xy 66.04 50.8) (xy 66.04 53.34)
 		)
 		(stroke
 			(width 0)
@@ -11603,7 +11614,7 @@
 	)
 	(wire
 		(pts
-			(xy 181.61 50.8) (xy 181.61 53.34)
+			(xy 182.88 50.8) (xy 182.88 53.34)
 		)
 		(stroke
 			(width 0)
@@ -16650,7 +16661,7 @@
 		(at 208.28 81.28 90)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(uuid "3978aa44-5cd5-4e50-bb26-4dae22102b06")
@@ -17069,7 +17080,7 @@
 		(at 297.18 170.18 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(uuid "3d46483b-9bc0-46ba-ab03-80bde481d33e")
@@ -19502,80 +19513,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Thunderscope_Rev5:+3V3_BAR")
-		(at 64.77 50.8 180)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "5f91a1eb-5939-4c0d-a466-a6a53a8a00ba")
-		(property "Reference" "#PWR0180"
-			(at 64.77 50.8 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "+3V3"
-			(at 64.77 46.99 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 64.77 50.8 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 64.77 50.8 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 64.77 50.8 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin ""
-			(uuid "486cba58-6917-4694-a8af-b1031218d682")
-		)
-		(instances
-			(project ""
-				(path "/031d3e2c-42e0-4016-8c32-579d45c83e09/02e7ff63-3631-4d05-9bcb-1390e77ff703"
-					(reference "#PWR0180")
-					(unit 1)
-				)
-				(path "/031d3e2c-42e0-4016-8c32-579d45c83e09/d4ceb53c-d7d3-49f3-84e4-450b713426dc"
-					(reference "#PWR0126")
-					(unit 1)
-				)
-				(path "/031d3e2c-42e0-4016-8c32-579d45c83e09/da233e23-d1b0-4723-86d8-4ec9b143e851"
-					(reference "#PWR0234")
-					(unit 1)
-				)
-				(path "/031d3e2c-42e0-4016-8c32-579d45c83e09/f35774a1-d397-4f7e-9c64-3142469f9c73"
-					(reference "#PWR0288")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Thunderscope_Rev5:DIODE 1N4148")
 		(at 222.25 63.5 0)
 		(unit 1)
@@ -21078,6 +21015,83 @@
 				)
 				(path "/031d3e2c-42e0-4016-8c32-579d45c83e09/f35774a1-d397-4f7e-9c64-3142469f9c73"
 					(reference "R1022D1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Thunderscope_Rev5:+VUSB")
+		(at 66.04 50.8 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "77a8636e-14fa-48e9-9441-d305e7279f21")
+		(property "Reference" "#PWR0126"
+			(at 66.04 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+VUSB"
+			(at 66.04 46.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 66.04 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 66.04 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name '+VUSB'"
+			(at 66.04 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin ""
+			(uuid "9eafe011-98c2-40f7-9b66-8d15b538f637")
+		)
+		(instances
+			(project "Thunderscope_Rev5"
+				(path "/031d3e2c-42e0-4016-8c32-579d45c83e09/02e7ff63-3631-4d05-9bcb-1390e77ff703"
+					(reference "#PWR0180")
+					(unit 1)
+				)
+				(path "/031d3e2c-42e0-4016-8c32-579d45c83e09/d4ceb53c-d7d3-49f3-84e4-450b713426dc"
+					(reference "#PWR0126")
+					(unit 1)
+				)
+				(path "/031d3e2c-42e0-4016-8c32-579d45c83e09/da233e23-d1b0-4723-86d8-4ec9b143e851"
+					(reference "#PWR0234")
+					(unit 1)
+				)
+				(path "/031d3e2c-42e0-4016-8c32-579d45c83e09/f35774a1-d397-4f7e-9c64-3142469f9c73"
+					(reference "#PWR0288")
 					(unit 1)
 				)
 			)
@@ -23042,6 +23056,83 @@
 		)
 	)
 	(symbol
+		(lib_id "Thunderscope_Rev5:+VUSB")
+		(at 182.88 50.8 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "96fc690c-52b8-4ebd-b8d0-331017da7061")
+		(property "Reference" "#PWR0130"
+			(at 182.88 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+VUSB"
+			(at 182.88 46.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 182.88 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 182.88 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name '+VUSB'"
+			(at 182.88 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin ""
+			(uuid "b8085bd5-4e17-453f-b636-849d29396883")
+		)
+		(instances
+			(project "Thunderscope_Rev5"
+				(path "/031d3e2c-42e0-4016-8c32-579d45c83e09/02e7ff63-3631-4d05-9bcb-1390e77ff703"
+					(reference "#PWR0184")
+					(unit 1)
+				)
+				(path "/031d3e2c-42e0-4016-8c32-579d45c83e09/d4ceb53c-d7d3-49f3-84e4-450b713426dc"
+					(reference "#PWR0130")
+					(unit 1)
+				)
+				(path "/031d3e2c-42e0-4016-8c32-579d45c83e09/da233e23-d1b0-4723-86d8-4ec9b143e851"
+					(reference "#PWR0238")
+					(unit 1)
+				)
+				(path "/031d3e2c-42e0-4016-8c32-579d45c83e09/f35774a1-d397-4f7e-9c64-3142469f9c73"
+					(reference "#PWR0292")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Thunderscope_Rev5:IC PGA LMH6518")
 		(at 330.2 167.64 0)
 		(unit 1)
@@ -23870,7 +23961,7 @@
 		(at 91.44 81.28 90)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(uuid "a339dfe4-4252-4a73-bdcc-dc03132eb00f")
@@ -25809,7 +25900,7 @@
 		(at 40.64 259.08 90)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(uuid "bcff985d-bb2d-42c2-b990-85a76054d0ef")
@@ -28089,80 +28180,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Thunderscope_Rev5:+3V3_BAR")
-		(at 181.61 50.8 180)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "d76dcd2b-420f-483e-8b03-7eeee36f4cb4")
-		(property "Reference" "#PWR0184"
-			(at 181.61 50.8 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "+3V3"
-			(at 181.61 46.99 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 181.61 50.8 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 181.61 50.8 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 181.61 50.8 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin ""
-			(uuid "e368b726-d3b4-4e34-bca1-7ff936fd849a")
-		)
-		(instances
-			(project ""
-				(path "/031d3e2c-42e0-4016-8c32-579d45c83e09/02e7ff63-3631-4d05-9bcb-1390e77ff703"
-					(reference "#PWR0184")
-					(unit 1)
-				)
-				(path "/031d3e2c-42e0-4016-8c32-579d45c83e09/d4ceb53c-d7d3-49f3-84e4-450b713426dc"
-					(reference "#PWR0130")
-					(unit 1)
-				)
-				(path "/031d3e2c-42e0-4016-8c32-579d45c83e09/da233e23-d1b0-4723-86d8-4ec9b143e851"
-					(reference "#PWR0238")
-					(unit 1)
-				)
-				(path "/031d3e2c-42e0-4016-8c32-579d45c83e09/f35774a1-d397-4f7e-9c64-3142469f9c73"
-					(reference "#PWR0292")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Thunderscope_Rev5:GND")
 		(at 360.68 218.44 0)
 		(unit 1)
@@ -29439,7 +29456,7 @@
 		(at 299.72 149.86 90)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(uuid "e7b9de83-0a77-4df5-b5c5-f815101272a5")
