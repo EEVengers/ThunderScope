@@ -1,5 +1,5 @@
 (kicad_sch
-	(version 20241004)
+	(version 20241209)
 	(generator "eeschema")
 	(generator_version "8.99")
 	(uuid "62bcdc6d-36df-46b4-9bac-76fa3a5f906d")
@@ -141,7 +141,7 @@
 					)
 				)
 			)
-			(property "Footprint" "GEN_R_0402"
+			(property "Footprint" "Thunderscope_Rev5:GEN_R_0402"
 				(at 0 0 0)
 				(effects
 					(font
@@ -487,7 +487,7 @@
 					)
 				)
 			)
-			(property "Footprint" "XILINX_XC7A50T-2CSG325C"
+			(property "Footprint" "Thunderscope_Rev5:XILINX_XC7A50T-2CSG325C"
 				(at 0 0 0)
 				(effects
 					(font
@@ -6570,7 +6570,7 @@
 					)
 				)
 			)
-			(property "Value" "${ALTIUM_VALUE}"
+			(property "Value" "4.7K"
 				(at 0 0 0)
 				(effects
 					(font
@@ -6578,7 +6578,7 @@
 					)
 				)
 			)
-			(property "Footprint" "GEN_R_0402"
+			(property "Footprint" "Thunderscope_Rev5:GEN_R_0402"
 				(at 0 0 0)
 				(effects
 					(font
@@ -6633,15 +6633,6 @@
 				)
 			)
 			(property "SUPPLIER PART NUMBER 1" "667-ERJ-2RKF4701X"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ALTIUM_VALUE" "4.7K"
 				(at 0 0 0)
 				(effects
 					(font
@@ -6752,9 +6743,10 @@
 					(font
 						(size 1.27 1.27)
 					)
+					(hide yes)
 				)
 			)
-			(property "Footprint" "GEN_TP_PCB"
+			(property "Footprint" "Thunderscope_Rev5:GEN_TP_PCB"
 				(at 0 0 0)
 				(effects
 					(font
@@ -6842,6 +6834,19 @@
 			)
 			(embedded_fonts no)
 		)
+	)
+	(text "FPGA Configuration"
+		(exclude_from_sim no)
+		(at 15.24 15.24 0)
+		(effects
+			(font
+				(size 1.905 1.905)
+				(thickness 0.381)
+				(bold yes)
+			)
+			(justify left top)
+		)
+		(uuid "46d1bd9f-6df2-4e92-bbf0-f30cb37dbc53")
 	)
 	(text "M[2:0] = 001"
 		(exclude_from_sim no)
@@ -21176,7 +21181,6 @@
 	)
 	(label "TMS"
 		(at 154.94 76.2 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -21187,7 +21191,6 @@
 	)
 	(label "TCK"
 		(at 154.94 73.66 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -21198,7 +21201,6 @@
 	)
 	(label "TDO"
 		(at 154.94 71.12 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -21209,7 +21211,6 @@
 	)
 	(label "QSPI_CLK"
 		(at 154.94 81.28 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -21220,7 +21221,6 @@
 	)
 	(label "TDI"
 		(at 154.94 68.58 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -21232,7 +21232,6 @@
 	(hierarchical_label "TMS"
 		(shape input)
 		(at 165.1 76.2 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -21244,7 +21243,6 @@
 	(hierarchical_label "QSPI_CLK"
 		(shape output)
 		(at 193.04 81.28 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -21256,7 +21254,6 @@
 	(hierarchical_label "TCK"
 		(shape input)
 		(at 165.1 73.66 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -21268,7 +21265,6 @@
 	(hierarchical_label "TDO"
 		(shape output)
 		(at 165.1 71.12 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -21280,7 +21276,6 @@
 	(hierarchical_label "TDI"
 		(shape input)
 		(at 165.1 68.58 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -21307,7 +21302,7 @@
 				(justify right bottom)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "4.7K"
 			(at 162.56 96.52 0)
 			(effects
 				(font
@@ -21315,7 +21310,7 @@
 				)
 			)
 		)
-		(property "Footprint" "GEN_R_0402"
+		(property "Footprint" "Thunderscope_Rev5:GEN_R_0402"
 			(at 162.56 96.52 0)
 			(effects
 				(font
@@ -21382,16 +21377,6 @@
 				(hide yes)
 			)
 		)
-		(property "ALTIUM_VALUE" "4.7K"
-			(at 156.972 95.464 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-				(hide yes)
-			)
-		)
 		(property "HOUSE PART NUMBER" ""
 			(at 153.736 93.98 0)
 			(effects
@@ -21420,6 +21405,14 @@
 				)
 				(justify left bottom)
 				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" ""
+			(at 162.56 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
 			)
 		)
 		(pin "2"
@@ -21465,7 +21458,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" "GEN_TP_PCB"
+		(property "Footprint" "Thunderscope_Rev5:GEN_TP_PCB"
 			(at 177.8 93.98 0)
 			(effects
 				(font
@@ -21522,6 +21515,14 @@
 				(hide yes)
 			)
 		)
+		(property "ALTIUM_VALUE" ""
+			(at 177.8 93.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "2a772526-e987-4d98-8d93-e299124da0e6")
 		)
@@ -21561,7 +21562,7 @@
 				(justify bottom)
 			)
 		)
-		(property "Footprint" "GEN_R_0402"
+		(property "Footprint" "Thunderscope_Rev5:GEN_R_0402"
 			(at 162.56 134.62 0)
 			(effects
 				(font
@@ -21638,6 +21639,14 @@
 				(hide yes)
 			)
 		)
+		(property "ALTIUM_VALUE" ""
+			(at 162.56 134.62 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "3ee6ec9d-ef97-4678-993d-972f70b10637")
 		)
@@ -21681,7 +21690,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" "GEN_TP_PCB"
+		(property "Footprint" "Thunderscope_Rev5:GEN_TP_PCB"
 			(at 180.34 81.28 0)
 			(effects
 				(font
@@ -21736,6 +21745,14 @@
 				)
 				(justify left bottom)
 				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" ""
+			(at 180.34 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
 			)
 		)
 		(pin "1"
@@ -21782,6 +21799,7 @@
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(property "Datasheet" ""
@@ -21790,14 +21808,16 @@
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name '+3V3'"
 			(at 180.34 88.9 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(pin ""
@@ -21840,7 +21860,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" "GEN_TP_PCB"
+		(property "Footprint" "Thunderscope_Rev5:GEN_TP_PCB"
 			(at 180.34 109.22 0)
 			(effects
 				(font
@@ -21897,6 +21917,14 @@
 				(hide yes)
 			)
 		)
+		(property "ALTIUM_VALUE" ""
+			(at 180.34 109.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "480606da-9458-4341-a69c-e7915067622a")
 		)
@@ -21936,7 +21964,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Footprint" "XILINX_XC7A50T-2CSG325C"
+		(property "Footprint" "Thunderscope_Rev5:XILINX_XC7A50T-2CSG325C"
 			(at 144.78 66.04 0)
 			(effects
 				(font
@@ -22011,6 +22039,14 @@
 				)
 				(justify left bottom)
 				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" ""
+			(at 144.78 66.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
 			)
 		)
 		(pin "K1"
@@ -23207,7 +23243,7 @@
 				(justify right bottom)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "4.7K"
 			(at 162.56 101.6 0)
 			(effects
 				(font
@@ -23215,7 +23251,7 @@
 				)
 			)
 		)
-		(property "Footprint" "GEN_R_0402"
+		(property "Footprint" "Thunderscope_Rev5:GEN_R_0402"
 			(at 162.56 101.6 0)
 			(effects
 				(font
@@ -23282,16 +23318,6 @@
 				(hide yes)
 			)
 		)
-		(property "ALTIUM_VALUE" "4.7K"
-			(at 156.972 100.544 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-				(hide yes)
-			)
-		)
 		(property "HOUSE PART NUMBER" ""
 			(at 153.808 99.06 0)
 			(effects
@@ -23320,6 +23346,14 @@
 				)
 				(justify left bottom)
 				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" ""
+			(at 162.56 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
 			)
 		)
 		(pin "1"

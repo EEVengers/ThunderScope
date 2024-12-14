@@ -1,5 +1,5 @@
 (kicad_symbol_lib
-	(version 20240819)
+	(version 20241209)
 	(generator "kicad_symbol_editor")
 	(generator_version "8.99")
 	(symbol "+1V0_BAR"
@@ -825,6 +825,111 @@
 				(length 0)
 				(hide yes)
 				(name "+2V5"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number ""
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+	(symbol "+3V3_ACQ_BAR"
+		(power)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(property "Reference" "#PWR"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3V3_ACQ"
+			(at 0 -3.81 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name '+3V3_ACQ'"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ki_keywords" "power-flag"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(symbol "+3V3_ACQ_BAR_0_0"
+			(polyline
+				(pts
+					(xy -1.27 -2.54) (xy 1.27 -2.54)
+				)
+				(stroke
+					(width 0.254)
+					(type solid)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 0 0) (xy 0 -2.54)
+				)
+				(stroke
+					(width 0.254)
+					(type solid)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(pin power_in line
+				(at 0 0 0)
+				(length 0)
+				(hide yes)
+				(name "+2V5_ACQ"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -1682,6 +1787,111 @@
 		)
 		(embedded_fonts no)
 	)
+	(symbol "+VUSB"
+		(power)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(property "Reference" "#PWR"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+VUSB"
+			(at 0 -3.81 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name '+VUSB'"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ki_keywords" "power-flag"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(symbol "+VUSB_0_0"
+			(polyline
+				(pts
+					(xy -1.27 -2.54) (xy 1.27 -2.54)
+				)
+				(stroke
+					(width 0.254)
+					(type solid)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 0 0) (xy 0 -2.54)
+				)
+				(stroke
+					(width 0.254)
+					(type solid)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(pin power_in line
+				(at 0 0 0)
+				(length 0)
+				(hide yes)
+				(name "+5V2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number ""
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
 	(symbol "-5V_BAR"
 		(power)
 		(exclude_from_sim no)
@@ -1918,7 +2128,7 @@
 				)
 			)
 		)
-		(property "Footprint" "MOL_0731000105"
+		(property "Footprint" "Thunderscope_Rev5:MOL_0731000105"
 			(at 0 0 0)
 			(effects
 				(font
@@ -1993,17 +2203,6 @@
 		(symbol "BNC JACK R/A_1_0"
 			(circle
 				(center 0 0)
-				(radius 0.635)
-				(stroke
-					(width -0.0001)
-					(type solid)
-				)
-				(fill
-					(type outline)
-				)
-			)
-			(circle
-				(center 0 0)
 				(radius 2.54)
 				(stroke
 					(width 0)
@@ -2011,6 +2210,17 @@
 				)
 				(fill
 					(type none)
+				)
+			)
+			(circle
+				(center 0 0)
+				(radius 0.635)
+				(stroke
+					(width -0.0001)
+					(type solid)
+				)
+				(fill
+					(type outline)
 				)
 			)
 			(pin passive line
@@ -2070,7 +2280,7 @@
 				)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "1.2nF"
 			(at 0 0 0)
 			(effects
 				(font
@@ -2078,7 +2288,7 @@
 				)
 			)
 		)
-		(property "Footprint" "GEN_C_0603"
+		(property "Footprint" "Thunderscope_Rev5:GEN_C_0603"
 			(at 0 0 0)
 			(effects
 				(font
@@ -2115,15 +2325,6 @@
 			)
 		)
 		(property "VOLTAGE RATING" "100V"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "ALTIUM_VALUE" "1.2nF"
 			(at 0 0 0)
 			(effects
 				(font
@@ -2292,7 +2493,7 @@
 				)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "100nF"
 			(at 0 0 0)
 			(effects
 				(font
@@ -2300,7 +2501,7 @@
 				)
 			)
 		)
-		(property "Footprint" "GEN_C_0402"
+		(property "Footprint" "Thunderscope_Rev5:GEN_C_0402"
 			(at 0 0 0)
 			(effects
 				(font
@@ -2355,15 +2556,6 @@
 			)
 		)
 		(property "SUPPLIER PART NUMBER 1" "81-GCM155R71C104KA5D"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "ALTIUM_VALUE" "100nF"
 			(at 0 0 0)
 			(effects
 				(font
@@ -2505,7 +2697,7 @@
 				)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "100nF"
 			(at 0 0 0)
 			(effects
 				(font
@@ -2513,7 +2705,7 @@
 				)
 			)
 		)
-		(property "Footprint" "GEN_C_0201"
+		(property "Footprint" "Thunderscope_Rev5:GEN_C_0201"
 			(at 0 0 0)
 			(effects
 				(font
@@ -2568,15 +2760,6 @@
 			)
 		)
 		(property "SUPPLIER PART NUMBER 1" "81-GRM033R60J104KE19"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "ALTIUM_VALUE" "100nF"
 			(at 0 0 0)
 			(effects
 				(font
@@ -2718,7 +2901,7 @@
 				)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "100pF"
 			(at 0 0 0)
 			(effects
 				(font
@@ -2726,7 +2909,7 @@
 				)
 			)
 		)
-		(property "Footprint" "GEN_C_0402"
+		(property "Footprint" "Thunderscope_Rev5:GEN_C_0402"
 			(at 0 0 0)
 			(effects
 				(font
@@ -2754,15 +2937,6 @@
 			)
 		)
 		(property "PACKAGE" "0402"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "ALTIUM_VALUE" "100pF"
 			(at 0 0 0)
 			(effects
 				(font
@@ -2940,7 +3114,7 @@
 				)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "100uF"
 			(at 0 0 0)
 			(effects
 				(font
@@ -2948,7 +3122,7 @@
 				)
 			)
 		)
-		(property "Footprint" "GEN_C_1210"
+		(property "Footprint" "Thunderscope_Rev5:GEN_C_1210"
 			(at 0 0 0)
 			(effects
 				(font
@@ -2985,15 +3159,6 @@
 			)
 		)
 		(property "VOLTAGE RATING" "6.3V"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "ALTIUM_VALUE" "100uF"
 			(at 0 0 0)
 			(effects
 				(font
@@ -3153,7 +3318,7 @@
 				)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "10nF"
 			(at 0 0 0)
 			(effects
 				(font
@@ -3161,7 +3326,7 @@
 				)
 			)
 		)
-		(property "Footprint" "GEN_C_0402"
+		(property "Footprint" "Thunderscope_Rev5:GEN_C_0402"
 			(at 0 0 0)
 			(effects
 				(font
@@ -3216,15 +3381,6 @@
 			)
 		)
 		(property "SUPPLIER PART NUMBER 1" "81-GRM155R71H103KA8J"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "ALTIUM_VALUE" "10nF"
 			(at 0 0 0)
 			(effects
 				(font
@@ -3366,7 +3522,7 @@
 				)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "10uF"
 			(at 0 0 0)
 			(effects
 				(font
@@ -3374,7 +3530,7 @@
 				)
 			)
 		)
-		(property "Footprint" "GEN_C_0603"
+		(property "Footprint" "Thunderscope_Rev5:GEN_C_0603"
 			(at 0 0 0)
 			(effects
 				(font
@@ -3429,15 +3585,6 @@
 			)
 		)
 		(property "SUPPLIER PART NUMBER 1" "81-GRM188R61A106ME9D"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "ALTIUM_VALUE" "10uF"
 			(at 0 0 0)
 			(effects
 				(font
@@ -3579,7 +3726,7 @@
 				)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "12pF"
 			(at 0 0 0)
 			(effects
 				(font
@@ -3587,7 +3734,7 @@
 				)
 			)
 		)
-		(property "Footprint" "GEN_C_0402"
+		(property "Footprint" "Thunderscope_Rev5:GEN_C_0402"
 			(at 0 0 0)
 			(effects
 				(font
@@ -3642,15 +3789,6 @@
 			)
 		)
 		(property "VOLTAGE RATING" "50V"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "ALTIUM_VALUE" "12pF"
 			(at 0 0 0)
 			(effects
 				(font
@@ -3801,7 +3939,7 @@
 				)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "1nF"
 			(at 0 0 0)
 			(effects
 				(font
@@ -3809,7 +3947,7 @@
 				)
 			)
 		)
-		(property "Footprint" "GEN_C_0402"
+		(property "Footprint" "Thunderscope_Rev5:GEN_C_0402"
 			(at 0 0 0)
 			(effects
 				(font
@@ -3864,15 +4002,6 @@
 			)
 		)
 		(property "SUPPLIER PART NUMBER 1" "81-GRM1555C1H102FA1D"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "ALTIUM_VALUE" "1nF"
 			(at 0 0 0)
 			(effects
 				(font
@@ -4014,7 +4143,7 @@
 				)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "1uF"
 			(at 0 0 0)
 			(effects
 				(font
@@ -4022,7 +4151,7 @@
 				)
 			)
 		)
-		(property "Footprint" "GEN_C_0402"
+		(property "Footprint" "Thunderscope_Rev5:GEN_C_0402"
 			(at 0 0 0)
 			(effects
 				(font
@@ -4077,15 +4206,6 @@
 			)
 		)
 		(property "SUPPLIER PART NUMBER 1" "81-GRM155R61E105KA2D"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "ALTIUM_VALUE" "1uF"
 			(at 0 0 0)
 			(effects
 				(font
@@ -4227,7 +4347,7 @@
 				)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "2.4pF"
 			(at 0 0 0)
 			(effects
 				(font
@@ -4235,7 +4355,7 @@
 				)
 			)
 		)
-		(property "Footprint" "GEN_C_0603"
+		(property "Footprint" "Thunderscope_Rev5:GEN_C_0603"
 			(at 0 0 0)
 			(effects
 				(font
@@ -4290,15 +4410,6 @@
 			)
 		)
 		(property "VOLTAGE RATING" "250V"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "ALTIUM_VALUE" "2.4pF"
 			(at 0 0 0)
 			(effects
 				(font
@@ -4440,7 +4551,7 @@
 				)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "220pF"
 			(at 0 0 0)
 			(effects
 				(font
@@ -4448,7 +4559,7 @@
 				)
 			)
 		)
-		(property "Footprint" "GEN_C_0402"
+		(property "Footprint" "Thunderscope_Rev5:GEN_C_0402"
 			(at 0 0 0)
 			(effects
 				(font
@@ -4476,15 +4587,6 @@
 			)
 		)
 		(property "PACKAGE" "0402"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "ALTIUM_VALUE" "220pF"
 			(at 0 0 0)
 			(effects
 				(font
@@ -4662,7 +4764,7 @@
 				)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "22nF"
 			(at 0 0 0)
 			(effects
 				(font
@@ -4670,7 +4772,7 @@
 				)
 			)
 		)
-		(property "Footprint" "GEN_C_0603"
+		(property "Footprint" "Thunderscope_Rev5:GEN_C_0603"
 			(at 0 0 0)
 			(effects
 				(font
@@ -4707,15 +4809,6 @@
 			)
 		)
 		(property "VOLTAGE RATING" "100V"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "ALTIUM_VALUE" "22nF"
 			(at 0 0 0)
 			(effects
 				(font
@@ -4875,7 +4968,7 @@
 				)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "22uF"
 			(at 0 0 0)
 			(effects
 				(font
@@ -4883,7 +4976,7 @@
 				)
 			)
 		)
-		(property "Footprint" "GEN_C_0805"
+		(property "Footprint" "Thunderscope_Rev5:GEN_C_0805"
 			(at 0 0 0)
 			(effects
 				(font
@@ -4920,15 +5013,6 @@
 			)
 		)
 		(property "VOLTAGE RATING" "25V"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "ALTIUM_VALUE" "22uF"
 			(at 0 0 0)
 			(effects
 				(font
@@ -5088,7 +5172,7 @@
 				)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "39pF"
 			(at 0 0 0)
 			(effects
 				(font
@@ -5096,7 +5180,7 @@
 				)
 			)
 		)
-		(property "Footprint" "GEN_C_0402"
+		(property "Footprint" "Thunderscope_Rev5:GEN_C_0402"
 			(at 0 0 0)
 			(effects
 				(font
@@ -5133,15 +5217,6 @@
 			)
 		)
 		(property "TEMPERATURE COEFFICIENT" "C0G"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "ALTIUM_VALUE" "39pF"
 			(at 0 0 0)
 			(effects
 				(font
@@ -5310,7 +5385,7 @@
 				)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "4.7uF"
 			(at 0 0 0)
 			(effects
 				(font
@@ -5318,7 +5393,7 @@
 				)
 			)
 		)
-		(property "Footprint" "GEN_C_0402"
+		(property "Footprint" "Thunderscope_Rev5:GEN_C_0402"
 			(at 0 0 0)
 			(effects
 				(font
@@ -5355,15 +5430,6 @@
 			)
 		)
 		(property "VOLTAGE RATING" "6.3V"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "ALTIUM_VALUE" "4.7uF"
 			(at 0 0 0)
 			(effects
 				(font
@@ -5523,7 +5589,7 @@
 				)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "470nF"
 			(at 0 0 0)
 			(effects
 				(font
@@ -5531,7 +5597,7 @@
 				)
 			)
 		)
-		(property "Footprint" "GEN_C_0201"
+		(property "Footprint" "Thunderscope_Rev5:GEN_C_0201"
 			(at 0 0 0)
 			(effects
 				(font
@@ -5568,15 +5634,6 @@
 			)
 		)
 		(property "VOLTAGE RATING" "6.3V"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "ALTIUM_VALUE" "470nF"
 			(at 0 0 0)
 			(effects
 				(font
@@ -5736,7 +5793,7 @@
 				)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "47uF"
 			(at 0 0 0)
 			(effects
 				(font
@@ -5744,7 +5801,7 @@
 				)
 			)
 		)
-		(property "Footprint" "GEN_C_0805"
+		(property "Footprint" "Thunderscope_Rev5:GEN_C_0805"
 			(at 0 0 0)
 			(effects
 				(font
@@ -5781,15 +5838,6 @@
 			)
 		)
 		(property "VOLTAGE RATING" "6.3V"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "ALTIUM_VALUE" "47uF"
 			(at 0 0 0)
 			(effects
 				(font
@@ -5949,7 +5997,7 @@
 				)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "8pF"
 			(at 0 0 0)
 			(effects
 				(font
@@ -5957,7 +6005,7 @@
 				)
 			)
 		)
-		(property "Footprint" "GEN_C_0603"
+		(property "Footprint" "Thunderscope_Rev5:GEN_C_0603"
 			(at 0 0 0)
 			(effects
 				(font
@@ -5976,15 +6024,6 @@
 			)
 		)
 		(property "Description" ""
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "ALTIUM_VALUE" "8pF"
 			(at 0 0 0)
 			(effects
 				(font
@@ -6164,7 +6203,7 @@
 				)
 			)
 		)
-		(property "Footprint" "GEN_1.27mm_2x5_Pin_TH_RA"
+		(property "Footprint" "Thunderscope_Rev5:GEN_1.27mm_2x5_Pin_TH_RA"
 			(at 0 0 0)
 			(effects
 				(font
@@ -6452,7 +6491,7 @@
 				)
 			)
 		)
-		(property "Footprint" "GEN_2.54mm_6_Pin_TH_RA"
+		(property "Footprint" "Thunderscope_Rev5:GEN_2.54mm_6_Pin_TH_RA"
 			(at 0 0 0)
 			(effects
 				(font
@@ -6668,7 +6707,7 @@
 				)
 			)
 		)
-		(property "Footprint" "GEN_5.08mm_1x2_Pin_TH_RA"
+		(property "Footprint" "Thunderscope_Rev5:GEN_5.08mm_1x2_Pin_TH_RA"
 			(at 0 0 0)
 			(effects
 				(font
@@ -6792,6 +6831,797 @@
 		)
 		(embedded_fonts no)
 	)
+	(symbol "CONN FFC BOTTOM 36POS 0.5MM RA"
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(property "Reference" "J"
+			(at 2.54 1.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "F300-1B7H1-11036-E100"
+			(at 2.54 -100.584 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Thunderscope_Rev5:AMPHENOL_F300-1B7H1-11036-E100"
+			(at 2.54 -100.584 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER 1" "Mouser"
+			(at 2.54 -100.584 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER PART NUMBER 1" "649-F3001B7H111036E1 "
+			(at 2.54 -100.584 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "HOUSE PART NUMBER" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "Amphenol ICC"
+			(at 2.54 -100.584 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" "F300-1B7H1-11036-E100"
+			(at 2.54 -100.584 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(symbol "CONN FFC BOTTOM 36POS 0.5MM RA_1_1"
+			(rectangle
+				(start 0 0)
+				(end 5.08 -99.06)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type background)
+				)
+			)
+			(pin passive line
+				(at 10.16 -2.54 180)
+				(length 5.08)
+				(name "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 10.16 -5.08 180)
+				(length 5.08)
+				(name "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 10.16 -7.62 180)
+				(length 5.08)
+				(name "3"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "3"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 10.16 -10.16 180)
+				(length 5.08)
+				(name "4"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "4"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 10.16 -12.7 180)
+				(length 5.08)
+				(name "5"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "5"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 10.16 -15.24 180)
+				(length 5.08)
+				(name "6"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "6"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 10.16 -17.78 180)
+				(length 5.08)
+				(name "7"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "7"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 10.16 -20.32 180)
+				(length 5.08)
+				(name "8"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "8"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 10.16 -22.86 180)
+				(length 5.08)
+				(name "9"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "9"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 10.16 -25.4 180)
+				(length 5.08)
+				(name "10"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "10"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 10.16 -27.94 180)
+				(length 5.08)
+				(name "11"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "11"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 10.16 -30.48 180)
+				(length 5.08)
+				(name "12"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "12"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 10.16 -33.02 180)
+				(length 5.08)
+				(name "13"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "13"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 10.16 -35.56 180)
+				(length 5.08)
+				(name "14"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "14"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 10.16 -38.1 180)
+				(length 5.08)
+				(name "15"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "15"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 10.16 -40.64 180)
+				(length 5.08)
+				(name "16"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "16"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 10.16 -43.18 180)
+				(length 5.08)
+				(name "17"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "17"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 10.16 -45.72 180)
+				(length 5.08)
+				(name "18"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "18"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 10.16 -48.26 180)
+				(length 5.08)
+				(name "19"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "19"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 10.16 -50.8 180)
+				(length 5.08)
+				(name "20"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "20"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 10.16 -53.34 180)
+				(length 5.08)
+				(name "21"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "21"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 10.16 -55.88 180)
+				(length 5.08)
+				(name "22"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "22"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 10.16 -58.42 180)
+				(length 5.08)
+				(name "23"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "23"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 10.16 -60.96 180)
+				(length 5.08)
+				(name "24"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "24"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 10.16 -63.5 180)
+				(length 5.08)
+				(name "25"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "25"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 10.16 -66.04 180)
+				(length 5.08)
+				(name "26"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "26"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 10.16 -68.58 180)
+				(length 5.08)
+				(name "27"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "27"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 10.16 -71.12 180)
+				(length 5.08)
+				(name "28"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "28"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 10.16 -73.66 180)
+				(length 5.08)
+				(name "29"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "29"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 10.16 -76.2 180)
+				(length 5.08)
+				(name "30"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "30"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 10.16 -78.74 180)
+				(length 5.08)
+				(name "31"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "31"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 10.16 -81.28 180)
+				(length 5.08)
+				(name "32"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "32"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 10.16 -83.82 180)
+				(length 5.08)
+				(name "33"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "33"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 10.16 -86.36 180)
+				(length 5.08)
+				(name "34"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "34"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 10.16 -88.9 180)
+				(length 5.08)
+				(name "35"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "35"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 10.16 -91.44 180)
+				(length 5.08)
+				(name "36"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "36"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 10.16 -93.98 180)
+				(length 5.08)
+				(name "SH1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "SH1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 10.16 -96.52 180)
+				(length 5.08)
+				(name "SH2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "SH2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
 	(symbol "CONN JST PH 2 Pin TH"
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -6812,7 +7642,7 @@
 				)
 			)
 		)
-		(property "Footprint" "JST_B2B-PH-K-S(LF)(SN)"
+		(property "Footprint" "Thunderscope_Rev5:JST_B2B-PH-K-S(LF)(SN)"
 			(at 0 0 0)
 			(effects
 				(font
@@ -6959,7 +7789,7 @@
 				)
 			)
 		)
-		(property "Footprint" "TE_M2_KEYM_2199230"
+		(property "Footprint" "Thunderscope_Rev5:TE_M2_KEYM_2199230"
 			(at 0 0 0)
 			(effects
 				(font
@@ -8327,7 +9157,7 @@
 				)
 			)
 		)
-		(property "Footprint" "KEY_7792"
+		(property "Footprint" "Thunderscope_Rev5:KEY_7792"
 			(at 0 0 0)
 			(effects
 				(font
@@ -8465,7 +9295,7 @@
 				)
 			)
 		)
-		(property "Footprint" "KYO_009155002852006"
+		(property "Footprint" "Thunderscope_Rev5:KYO_009155002852006"
 			(at 0 0 0)
 			(effects
 				(font
@@ -8615,7 +9445,7 @@
 				)
 			)
 		)
-		(property "Footprint" "GEN_SOD_323"
+		(property "Footprint" "Thunderscope_Rev5:GEN_SOD_323"
 			(at 0 0 0)
 			(effects
 				(font
@@ -8777,7 +9607,7 @@
 				)
 			)
 		)
-		(property "Footprint" "GEN_R_0402"
+		(property "Footprint" "Thunderscope_Rev5:GEN_R_0402"
 			(at 0 0 0)
 			(effects
 				(font
@@ -8927,7 +9757,7 @@
 				)
 			)
 		)
-		(property "Footprint" "GEN_FID"
+		(property "Footprint" "Thunderscope_Rev5:GEN_FID"
 			(at 0 0 0)
 			(effects
 				(font
@@ -9231,7 +10061,7 @@
 				)
 			)
 		)
-		(property "Footprint" "AD_QFN48_LP7"
+		(property "Footprint" "Thunderscope_Rev5:AD_QFN48_LP7"
 			(at 0 0 0)
 			(effects
 				(font
@@ -10221,7 +11051,7 @@
 				)
 			)
 		)
-		(property "Footprint" "TI_SOT563_DRL0006A"
+		(property "Footprint" "Thunderscope_Rev5:TI_SOT563_DRL0006A"
 			(at 0 0 0)
 			(effects
 				(font
@@ -10437,7 +11267,7 @@
 				)
 			)
 		)
-		(property "Footprint" "TI_SOT563_DRL0006A"
+		(property "Footprint" "Thunderscope_Rev5:TI_SOT563_DRL0006A"
 			(at 0 0 0)
 			(effects
 				(font
@@ -10653,7 +11483,7 @@
 				)
 			)
 		)
-		(property "Footprint" "TI_VQFN_RGT0016C"
+		(property "Footprint" "Thunderscope_Rev5:TI_VQFN_RGT0016C"
 			(at 0 0 0)
 			(effects
 				(font
@@ -11067,7 +11897,7 @@
 				)
 			)
 		)
-		(property "Footprint" "GEN_SC-70-5"
+		(property "Footprint" "Thunderscope_Rev5:GEN_SC-70-5"
 			(at 0 0 0)
 			(effects
 				(font
@@ -11265,7 +12095,7 @@
 				)
 			)
 		)
-		(property "Footprint" "MC_QFN56_ZL30260"
+		(property "Footprint" "Thunderscope_Rev5:MC_QFN56_ZL30260"
 			(at 0 0 0)
 			(effects
 				(font
@@ -12399,7 +13229,7 @@
 				)
 			)
 		)
-		(property "Footprint" "TI_WSON8_DSG0008A"
+		(property "Footprint" "Thunderscope_Rev5:TI_WSON8_DSG0008A"
 			(at 0 0 0)
 			(effects
 				(font
@@ -12669,7 +13499,7 @@
 				)
 			)
 		)
-		(property "Footprint" "MC_MSOP10_UN"
+		(property "Footprint" "Thunderscope_Rev5:MC_MSOP10_UN"
 			(at 0 0 0)
 			(effects
 				(font
@@ -12957,7 +13787,7 @@
 				)
 			)
 		)
-		(property "Footprint" "MC_TSSOP14"
+		(property "Footprint" "Thunderscope_Rev5:MC_TSSOP14"
 			(at 0 0 0)
 			(effects
 				(font
@@ -13080,7 +13910,7 @@
 			)
 			(polyline
 				(pts
-					(xy 11.43 -17.78) (xy 12.7 -19.05) (xy 13.97 -16.51) (xy 15.24 -19.05) (xy 16.51 -16.51) (xy 17.78 -19.05)
+					(xy 11.43 -17.78) (xy 8.89 -17.78)
 				)
 				(stroke
 					(width 0)
@@ -13092,7 +13922,7 @@
 			)
 			(polyline
 				(pts
-					(xy 11.43 -17.78) (xy 8.89 -17.78)
+					(xy 11.43 -17.78) (xy 12.7 -19.05) (xy 13.97 -16.51) (xy 15.24 -19.05) (xy 16.51 -16.51) (xy 17.78 -19.05)
 				)
 				(stroke
 					(width 0)
@@ -13461,7 +14291,7 @@
 				)
 			)
 		)
-		(property "Footprint" "MX_WSON8"
+		(property "Footprint" "Thunderscope_Rev5:MX_WSON8"
 			(at 0 0 0)
 			(effects
 				(font
@@ -13731,7 +14561,7 @@
 				)
 			)
 		)
-		(property "Footprint" "XILINX_XC7A50T-2CSG325C"
+		(property "Footprint" "Thunderscope_Rev5:XILINX_XC7A50T-2CSG325C"
 			(at 0 0 0)
 			(effects
 				(font
@@ -19816,7 +20646,7 @@
 				)
 			)
 		)
-		(property "Footprint" "GEN_SOT23_5_950_2900X1600X1450"
+		(property "Footprint" "Thunderscope_Rev5:GEN_SOT23_5_950_2900X1600X1450"
 			(at 0 0 0)
 			(effects
 				(font
@@ -20014,7 +20844,7 @@
 				)
 			)
 		)
-		(property "Footprint" "TI_WSON10_DSK0010A"
+		(property "Footprint" "Thunderscope_Rev5:TI_WSON10_DSK0010A"
 			(at 0 0 0)
 			(effects
 				(font
@@ -20059,7 +20889,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUFACTURER" ""
+		(property "MANUFACTURER" "Texas Instruments"
 			(at 0 0 0)
 			(effects
 				(font
@@ -20077,7 +20907,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUFACTURER PART NUMBER" ""
+		(property "MANUFACTURER PART NUMBER" "TPS7A9101DSKT"
 			(at 0 0 0)
 			(effects
 				(font
@@ -20300,6 +21130,558 @@
 		)
 		(embedded_fonts no)
 	)
+	(symbol "IC LVDS XCVR FIN1019MTCX"
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(property "Reference" "U"
+			(at 0 3.556 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "FIN1019MTCX"
+			(at 20.32 -34.544 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "Thunderscope_Rev5:GEN_TSSOP-14_4.4x5mm_P0.65mm"
+			(at 20.32 -34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER 1" "Mouser"
+			(at 20.32 -34.544 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER PART NUMBER 1" "512-FIN1019MTCX"
+			(at 20.32 -34.544 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+		(property "HOUSE PART NUMBER" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "onsemi"
+			(at 20.32 -34.544 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" "FIN1019MTCX"
+			(at 20.32 -34.544 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+		(symbol "IC LVDS XCVR FIN1019MTCX_0_0"
+			(rectangle
+				(start 0 2.54)
+				(end 20.32 -33.02)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type background)
+				)
+			)
+			(polyline
+				(pts
+					(xy 12.065 -17.145) (xy 12.065 -15.24)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(circle
+				(center 12.065 -19.05)
+				(radius 0.508)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 12.065 -19.558) (xy 12.065 -20.32)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(circle
+				(center 13.335 -10.16)
+				(radius 0.508)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(text "D"
+				(at 8.255 -17.78 0)
+				(effects
+					(font
+						(size 1.524 1.524)
+					)
+				)
+			)
+			(text "R"
+				(at 10.16 -7.62 0)
+				(effects
+					(font
+						(size 1.524 1.524)
+					)
+				)
+			)
+		)
+		(symbol "IC LVDS XCVR FIN1019MTCX_0_1"
+			(polyline
+				(pts
+					(xy 3.81 -7.62) (xy 5.08 -7.62)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 3.81 -12.7) (xy 8.89 -12.7) (xy 8.89 -9.652)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 3.81 -17.78) (xy 5.715 -17.78)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 3.81 -22.86) (xy 8.89 -22.86) (xy 8.89 -20.066)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 5.715 -21.59) (xy 5.715 -13.97) (xy 13.335 -17.78) (xy 5.715 -21.59)
+				)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 12.065 -20.32) (xy 15.24 -20.32)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 12.7 -3.81) (xy 12.7 -11.43) (xy 5.08 -7.62) (xy 12.7 -3.81)
+				)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 12.7 -5.08) (xy 15.24 -5.08)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 15.24 -10.16) (xy 13.97 -10.16)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 15.24 -15.24) (xy 12.065 -15.24)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+		)
+		(symbol "IC LVDS XCVR FIN1019MTCX_1_1"
+			(pin power_in line
+				(at -2.54 0 0)
+				(length 2.54)
+				(name "VCC"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "14"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin tri_state line
+				(at -2.54 -7.62 0)
+				(length 2.54)
+				(name "RO"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "4"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin input line
+				(at -2.54 -12.7 0)
+				(length 2.54)
+				(name "~{RE}"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "8"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin input line
+				(at -2.54 -17.78 0)
+				(length 2.54)
+				(name "DI"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin input line
+				(at -2.54 -22.86 0)
+				(length 2.54)
+				(name "DE"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin no_connect line
+				(at -2.54 -27.94 0)
+				(length 2.54)
+				(name "NC"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "3"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin power_in line
+				(at -2.54 -30.48 0)
+				(length 2.54)
+				(name "GND"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "7"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin no_connect line
+				(at 22.86 0 180)
+				(length 2.54)
+				(name "NC"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "13"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin input line
+				(at 22.86 -5.08 180)
+				(length 2.54)
+				(name "RI+"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "10"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin input line
+				(at 22.86 -10.16 180)
+				(length 2.54)
+				(name "RI-"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "9"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin tri_state line
+				(at 22.86 -15.24 180)
+				(length 2.54)
+				(name "DO+"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "12"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin tri_state line
+				(at 22.86 -20.32 180)
+				(length 2.54)
+				(name "DO-"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "11"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin no_connect line
+				(at 22.86 -27.94 180)
+				(length 2.54)
+				(name "NC"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "5"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin no_connect line
+				(at 22.86 -30.48 180)
+				(length 2.54)
+				(name "NC"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "6"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
 	(symbol "IC OPAMP OPA140"
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -20320,7 +21702,7 @@
 				)
 			)
 		)
-		(property "Footprint" "TI_SOIC8_D0008A"
+		(property "Footprint" "Thunderscope_Rev5:TI_SOIC8_D0008A"
 			(at 0 0 0)
 			(effects
 				(font
@@ -20556,7 +21938,7 @@
 				)
 			)
 		)
-		(property "Footprint" "TI_WQFN_RGH0016A"
+		(property "Footprint" "Thunderscope_Rev5:TI_WQFN_RGH0016A"
 			(at 0 0 0)
 			(effects
 				(font
@@ -20970,7 +22352,7 @@
 				)
 			)
 		)
-		(property "Footprint" "TI_WSON8_DSG0008A"
+		(property "Footprint" "Thunderscope_Rev5:TI_WSON8_DSG0008A"
 			(at 0 0 0)
 			(effects
 				(font
@@ -21240,7 +22622,7 @@
 				)
 			)
 		)
-		(property "Footprint" "GEN_SOT23_5_950_2900X1600X1450"
+		(property "Footprint" "Thunderscope_Rev5:GEN_SOT23_5_950_2900X1600X1450"
 			(at 0 0 0)
 			(effects
 				(font
@@ -21438,7 +22820,7 @@
 				)
 			)
 		)
-		(property "Footprint" "GEN_SOT23_5_950_2900X1600X1450"
+		(property "Footprint" "Thunderscope_Rev5:GEN_SOT23_5_950_2900X1600X1450"
 			(at 0 0 0)
 			(effects
 				(font
@@ -21475,6 +22857,24 @@
 			)
 		)
 		(property "SUPPLIER PART NUMBER 1" "REF2025AIDDCR"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "Texas Instruments"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" "REF2025AIDDCR"
 			(at 0 0 0)
 			(effects
 				(font
@@ -21607,7 +23007,7 @@
 				)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "1uH"
 			(at 0 0 0)
 			(effects
 				(font
@@ -21615,7 +23015,7 @@
 				)
 			)
 		)
-		(property "Footprint" "GEN_L_1210"
+		(property "Footprint" "Thunderscope_Rev5:GEN_L_1210"
 			(at 0 0 0)
 			(effects
 				(font
@@ -21634,15 +23034,6 @@
 			)
 		)
 		(property "Description" ""
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "ALTIUM_VALUE" "1uH"
 			(at 0 0 0)
 			(effects
 				(font
@@ -21882,7 +23273,7 @@
 				)
 			)
 		)
-		(property "Footprint" "LED_0603_LTST-S270K"
+		(property "Footprint" "Thunderscope_Rev5:LED_0603_LTST-S270K"
 			(at 0 0 0)
 			(effects
 				(font
@@ -22066,6 +23457,433 @@
 		)
 		(embedded_fonts no)
 	)
+	(symbol "LED RGB 1204 APFA3010LSEEZGKQBKC"
+		(pin_numbers
+			(hide yes)
+		)
+		(pin_names
+			(hide yes)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(property "Reference" "D"
+			(at -2.032 10.16 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "RGB"
+			(at 0 -12.7 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Thunderscope_Rev5:LED_Kingbright_APFA3010_3x1.5mm_Horizontal"
+			(at 0 -12.7 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER 1" "Mouser"
+			(at 0 -12.7 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER PART NUMBER 1" "604-APFA3010LSEEZGKQ"
+			(at 0 -12.7 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "HOUSE PART NUMBER" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "Kingbright"
+			(at 0 -12.7 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" "APFA3010LSEEZGKQBKC"
+			(at 0 -12.7 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(symbol "LED RGB 1204 APFA3010LSEEZGKQBKC_0_0"
+			(text "R"
+				(at -1.905 3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(text "G"
+				(at -1.905 -1.27 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(text "B"
+				(at -1.905 -6.35 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+		)
+		(symbol "LED RGB 1204 APFA3010LSEEZGKQBKC_0_1"
+			(rectangle
+				(start -2.54 8.89)
+				(end 2.54 -8.89)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type background)
+				)
+			)
+			(polyline
+				(pts
+					(xy -2.54 -5.08) (xy 1.27 -5.08)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy -1.27 6.35) (xy -1.27 3.81)
+				)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy -1.27 1.27) (xy -1.27 -1.27)
+				)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy -1.27 -3.81) (xy -1.27 -6.35)
+				)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy -1.016 6.35) (xy 0.508 7.874) (xy -0.254 7.874) (xy 0.508 7.874) (xy 0.508 7.112)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy -1.016 1.27) (xy 0.508 2.794) (xy -0.254 2.794) (xy 0.508 2.794) (xy 0.508 2.032)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy -1.016 -3.81) (xy 0.508 -2.286) (xy -0.254 -2.286) (xy 0.508 -2.286) (xy 0.508 -3.048)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 0 6.35) (xy 1.524 7.874) (xy 0.762 7.874) (xy 1.524 7.874) (xy 1.524 7.112)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 0 1.27) (xy 1.524 2.794) (xy 0.762 2.794) (xy 1.524 2.794) (xy 1.524 2.032)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 0 -3.81) (xy 1.524 -2.286) (xy 0.762 -2.286) (xy 1.524 -2.286) (xy 1.524 -3.048)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 1.27 6.35) (xy 1.27 3.81) (xy -1.27 5.08) (xy 1.27 6.35)
+				)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(rectangle
+				(start 1.27 6.35)
+				(end 1.27 6.35)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 1.27 5.08) (xy -2.54 5.08)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 1.27 1.27) (xy 1.27 -1.27) (xy -1.27 0) (xy 1.27 1.27)
+				)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 1.27 -3.81) (xy 1.27 -6.35) (xy -1.27 -5.08) (xy 1.27 -3.81)
+				)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 1.27 -5.08) (xy 2.032 -5.08) (xy 2.032 5.08) (xy 1.27 5.08)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(circle
+				(center 2.032 0)
+				(radius 0.254)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type outline)
+				)
+			)
+			(polyline
+				(pts
+					(xy 2.54 0) (xy -2.54 0)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+		)
+		(symbol "LED RGB 1204 APFA3010LSEEZGKQBKC_1_1"
+			(pin input line
+				(at -5.08 5.08 0)
+				(length 2.54)
+				(name "R"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin input line
+				(at -5.08 0 0)
+				(length 2.54)
+				(name "G"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "3"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin input line
+				(at -5.08 -5.08 0)
+				(length 2.54)
+				(name "B"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "4"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin power_in line
+				(at 5.08 0 180)
+				(length 2.54)
+				(name "A"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
 	(symbol "NMOS DMN62D0UW"
 		(pin_numbers
 			(hide yes)
@@ -22092,7 +23910,7 @@
 				)
 			)
 		)
-		(property "Footprint" "GEN_SOT_323"
+		(property "Footprint" "Thunderscope_Rev5:GEN_SOT_323"
 			(at 0 0 0)
 			(effects
 				(font
@@ -22272,7 +24090,7 @@
 			)
 			(polyline
 				(pts
-					(xy 2.54 0) (xy 2.54 -2.54)
+					(xy 2.54 0) (xy 0.246 0)
 				)
 				(stroke
 					(width 0)
@@ -22284,7 +24102,7 @@
 			)
 			(polyline
 				(pts
-					(xy 2.54 0) (xy 0.246 0)
+					(xy 2.54 0) (xy 2.54 -2.54)
 				)
 				(stroke
 					(width 0)
@@ -22383,7 +24201,7 @@
 				)
 			)
 		)
-		(property "Footprint" "ECS_TXO-3225"
+		(property "Footprint" "Thunderscope_Rev5:ECS_TXO-3225"
 			(at 0 0 0)
 			(effects
 				(font
@@ -22563,7 +24381,7 @@
 				)
 			)
 		)
-		(property "Footprint" "ECS_TXO-2016"
+		(property "Footprint" "Thunderscope_Rev5:ECS_TXO-2016"
 			(at 0 0 0)
 			(effects
 				(font
@@ -22904,7 +24722,7 @@
 				)
 			)
 		)
-		(property "Footprint" "PCIeX4-GF-2D-1000-1K-O64"
+		(property "Footprint" "Thunderscope_Rev5:PCIeX4-GF-2D-1000-1K-O64"
 			(at 0 0 0)
 			(effects
 				(font
@@ -25647,7 +27465,7 @@
 				)
 			)
 		)
-		(property "Footprint" "FUJ_FTR-B3SA"
+		(property "Footprint" "Thunderscope_Rev5:FUJ_FTR-B3SA"
 			(at 0 0 0)
 			(effects
 				(font
@@ -26003,7 +27821,7 @@
 				)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "0"
 			(at 0 0 0)
 			(effects
 				(font
@@ -26011,7 +27829,7 @@
 				)
 			)
 		)
-		(property "Footprint" "GEN_R_0201"
+		(property "Footprint" "Thunderscope_Rev5:GEN_R_0201"
 			(at 0 0 0)
 			(effects
 				(font
@@ -26057,15 +27875,6 @@
 			)
 		)
 		(property "SUPPLIER PART NUMBER 1" "708-RMCF0201ZT0R00"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "ALTIUM_VALUE" "0"
 			(at 0 0 0)
 			(effects
 				(font
@@ -26179,7 +27988,7 @@
 				)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "0"
 			(at 0 0 0)
 			(effects
 				(font
@@ -26187,7 +27996,7 @@
 				)
 			)
 		)
-		(property "Footprint" "GEN_R_0402"
+		(property "Footprint" "Thunderscope_Rev5:GEN_R_0402"
 			(at 0 0 0)
 			(effects
 				(font
@@ -26233,15 +28042,6 @@
 			)
 		)
 		(property "SUPPLIER PART NUMBER 1" "603-RC0402JR-070RL"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "ALTIUM_VALUE" "0"
 			(at 0 0 0)
 			(effects
 				(font
@@ -26346,7 +28146,7 @@
 				)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "0.01"
 			(at 0 0 0)
 			(effects
 				(font
@@ -26354,7 +28154,7 @@
 				)
 			)
 		)
-		(property "Footprint" "GEN_R_0603"
+		(property "Footprint" "Thunderscope_Rev5:GEN_R_0603"
 			(at 0 0 0)
 			(effects
 				(font
@@ -26400,15 +28200,6 @@
 			)
 		)
 		(property "SUPPLIER PART NUMBER 1" "754-RL0816T-R010-F"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "ALTIUM_VALUE" "0.01"
 			(at 0 0 0)
 			(effects
 				(font
@@ -26522,7 +28313,7 @@
 				)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "0.1"
 			(at 0 0 0)
 			(effects
 				(font
@@ -26530,7 +28321,7 @@
 				)
 			)
 		)
-		(property "Footprint" "GEN_R_0402"
+		(property "Footprint" "Thunderscope_Rev5:GEN_R_0402"
 			(at 0 0 0)
 			(effects
 				(font
@@ -26585,15 +28376,6 @@
 			)
 		)
 		(property "SUPPLIER PART NUMBER 1" "667-ERJ-2BSFR10X"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "ALTIUM_VALUE" "0.1"
 			(at 0 0 0)
 			(effects
 				(font
@@ -26698,7 +28480,7 @@
 				)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "10"
 			(at 0 0 0)
 			(effects
 				(font
@@ -26706,7 +28488,7 @@
 				)
 			)
 		)
-		(property "Footprint" "GEN_R_0603"
+		(property "Footprint" "Thunderscope_Rev5:GEN_R_0603"
 			(at 0 0 0)
 			(effects
 				(font
@@ -26734,15 +28516,6 @@
 			)
 		)
 		(property "PACKAGE" "0603"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "ALTIUM_VALUE" "10"
 			(at 0 0 0)
 			(effects
 				(font
@@ -26874,7 +28647,7 @@
 				)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "100"
 			(at 0 0 0)
 			(effects
 				(font
@@ -26882,7 +28655,7 @@
 				)
 			)
 		)
-		(property "Footprint" "GEN_R_0402"
+		(property "Footprint" "Thunderscope_Rev5:GEN_R_0402"
 			(at 0 0 0)
 			(effects
 				(font
@@ -26919,15 +28692,6 @@
 			)
 		)
 		(property "PACKAGE" "0402"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "ALTIUM_VALUE" "100"
 			(at 0 0 0)
 			(effects
 				(font
@@ -27050,7 +28814,7 @@
 				)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "100k"
 			(at 0 0 0)
 			(effects
 				(font
@@ -27058,7 +28822,7 @@
 				)
 			)
 		)
-		(property "Footprint" "GEN_R_0402"
+		(property "Footprint" "Thunderscope_Rev5:GEN_R_0402"
 			(at 0 0 0)
 			(effects
 				(font
@@ -27095,15 +28859,6 @@
 			)
 		)
 		(property "PACKAGE" "0402"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "ALTIUM_VALUE" "100k"
 			(at 0 0 0)
 			(effects
 				(font
@@ -27226,7 +28981,7 @@
 				)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "10K"
 			(at 0 0 0)
 			(effects
 				(font
@@ -27234,7 +28989,7 @@
 				)
 			)
 		)
-		(property "Footprint" "GEN_R_0402"
+		(property "Footprint" "Thunderscope_Rev5:GEN_R_0402"
 			(at 0 0 0)
 			(effects
 				(font
@@ -27289,15 +29044,6 @@
 			)
 		)
 		(property "SUPPLIER PART NUMBER 1" "667-ERJ-2RKF1002X"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "ALTIUM_VALUE" "10K"
 			(at 0 0 0)
 			(effects
 				(font
@@ -27402,7 +29148,7 @@
 				)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "1K"
 			(at 0 0 0)
 			(effects
 				(font
@@ -27410,7 +29156,7 @@
 				)
 			)
 		)
-		(property "Footprint" "GEN_R_0402"
+		(property "Footprint" "Thunderscope_Rev5:GEN_R_0402"
 			(at 0 0 0)
 			(effects
 				(font
@@ -27465,15 +29211,6 @@
 			)
 		)
 		(property "SUPPLIER PART NUMBER 1" "603-RC0402FR-071KL"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "ALTIUM_VALUE" "1K"
 			(at 0 0 0)
 			(effects
 				(font
@@ -27578,7 +29315,7 @@
 				)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "200K"
 			(at 0 0 0)
 			(effects
 				(font
@@ -27586,7 +29323,7 @@
 				)
 			)
 		)
-		(property "Footprint" "GEN_R_0402"
+		(property "Footprint" "Thunderscope_Rev5:GEN_R_0402"
 			(at 0 0 0)
 			(effects
 				(font
@@ -27623,15 +29360,6 @@
 			)
 		)
 		(property "PACKAGE" "0402"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "ALTIUM_VALUE" "200K"
 			(at 0 0 0)
 			(effects
 				(font
@@ -27754,7 +29482,7 @@
 				)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "20k"
 			(at 0 0 0)
 			(effects
 				(font
@@ -27762,7 +29490,7 @@
 				)
 			)
 		)
-		(property "Footprint" "GEN_R_0402"
+		(property "Footprint" "Thunderscope_Rev5:GEN_R_0402"
 			(at 0 0 0)
 			(effects
 				(font
@@ -27817,15 +29545,6 @@
 			)
 		)
 		(property "SUPPLIER PART NUMBER 1" "603-RC0402FR-0720KL"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "ALTIUM_VALUE" "20k"
 			(at 0 0 0)
 			(effects
 				(font
@@ -27930,7 +29649,7 @@
 				)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "294K"
 			(at 0 0 0)
 			(effects
 				(font
@@ -27938,7 +29657,7 @@
 				)
 			)
 		)
-		(property "Footprint" "GEN_R_0402"
+		(property "Footprint" "Thunderscope_Rev5:GEN_R_0402"
 			(at 0 0 0)
 			(effects
 				(font
@@ -27975,15 +29694,6 @@
 			)
 		)
 		(property "PACKAGE" "0402"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "ALTIUM_VALUE" "294K"
 			(at 0 0 0)
 			(effects
 				(font
@@ -28106,7 +29816,7 @@
 				)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "2K"
 			(at 0 0 0)
 			(effects
 				(font
@@ -28114,7 +29824,7 @@
 				)
 			)
 		)
-		(property "Footprint" "GEN_R_0402"
+		(property "Footprint" "Thunderscope_Rev5:GEN_R_0402"
 			(at 0 0 0)
 			(effects
 				(font
@@ -28169,15 +29879,6 @@
 			)
 		)
 		(property "SUPPLIER PART NUMBER 1" "603-RC0402FR-072KL"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "ALTIUM_VALUE" "2K"
 			(at 0 0 0)
 			(effects
 				(font
@@ -28282,7 +29983,7 @@
 				)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "30"
 			(at 0 0 0)
 			(effects
 				(font
@@ -28290,7 +29991,7 @@
 				)
 			)
 		)
-		(property "Footprint" "GEN_R_0603"
+		(property "Footprint" "Thunderscope_Rev5:GEN_R_0603"
 			(at 0 0 0)
 			(effects
 				(font
@@ -28327,15 +30028,6 @@
 			)
 		)
 		(property "PACKAGE" "0603"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "ALTIUM_VALUE" "30"
 			(at 0 0 0)
 			(effects
 				(font
@@ -28458,7 +30150,7 @@
 				)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "300K"
 			(at 0 0 0)
 			(effects
 				(font
@@ -28466,7 +30158,7 @@
 				)
 			)
 		)
-		(property "Footprint" "GEN_R_0402"
+		(property "Footprint" "Thunderscope_Rev5:GEN_R_0402"
 			(at 0 0 0)
 			(effects
 				(font
@@ -28521,15 +30213,6 @@
 			)
 		)
 		(property "SUPPLIER PART NUMBER 1" "667-ERJ-2RKF3003X"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "ALTIUM_VALUE" "300K"
 			(at 0 0 0)
 			(effects
 				(font
@@ -28634,7 +30317,7 @@
 				)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "35.7k"
 			(at 0 0 0)
 			(effects
 				(font
@@ -28642,7 +30325,7 @@
 				)
 			)
 		)
-		(property "Footprint" "GEN_R_0402"
+		(property "Footprint" "Thunderscope_Rev5:GEN_R_0402"
 			(at 0 0 0)
 			(effects
 				(font
@@ -28679,15 +30362,6 @@
 			)
 		)
 		(property "PACKAGE" "0402"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "ALTIUM_VALUE" "35.7k"
 			(at 0 0 0)
 			(effects
 				(font
@@ -28810,7 +30484,7 @@
 				)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "4.7K"
 			(at 0 0 0)
 			(effects
 				(font
@@ -28818,7 +30492,7 @@
 				)
 			)
 		)
-		(property "Footprint" "GEN_R_0402"
+		(property "Footprint" "Thunderscope_Rev5:GEN_R_0402"
 			(at 0 0 0)
 			(effects
 				(font
@@ -28873,15 +30547,6 @@
 			)
 		)
 		(property "SUPPLIER PART NUMBER 1" "667-ERJ-2RKF4701X"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "ALTIUM_VALUE" "4.7K"
 			(at 0 0 0)
 			(effects
 				(font
@@ -28986,7 +30651,7 @@
 				)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "49.9"
 			(at 0 0 0)
 			(effects
 				(font
@@ -28994,7 +30659,7 @@
 				)
 			)
 		)
-		(property "Footprint" "GEN_R_0402"
+		(property "Footprint" "Thunderscope_Rev5:GEN_R_0402"
 			(at 0 0 0)
 			(effects
 				(font
@@ -29022,15 +30687,6 @@
 			)
 		)
 		(property "PACKAGE" "0402"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "ALTIUM_VALUE" "49.9"
 			(at 0 0 0)
 			(effects
 				(font
@@ -29162,7 +30818,7 @@
 				)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "49.9"
 			(at 0 0 0)
 			(effects
 				(font
@@ -29170,7 +30826,7 @@
 				)
 			)
 		)
-		(property "Footprint" "GEN_R_0508"
+		(property "Footprint" "Thunderscope_Rev5:GEN_R_0508"
 			(at 0 0 0)
 			(effects
 				(font
@@ -29207,15 +30863,6 @@
 			)
 		)
 		(property "PACKAGE" "0508"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "ALTIUM_VALUE" "49.9"
 			(at 0 0 0)
 			(effects
 				(font
@@ -29347,7 +30994,7 @@
 				)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "66.5k"
 			(at 0 0 0)
 			(effects
 				(font
@@ -29355,7 +31002,7 @@
 				)
 			)
 		)
-		(property "Footprint" "GEN_R_0402"
+		(property "Footprint" "Thunderscope_Rev5:GEN_R_0402"
 			(at 0 0 0)
 			(effects
 				(font
@@ -29392,15 +31039,6 @@
 			)
 		)
 		(property "PACKAGE" "0402"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "ALTIUM_VALUE" "66.5k"
 			(at 0 0 0)
 			(effects
 				(font
@@ -29523,7 +31161,7 @@
 				)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "680K"
 			(at 0 0 0)
 			(effects
 				(font
@@ -29531,7 +31169,7 @@
 				)
 			)
 		)
-		(property "Footprint" "GEN_R_0402"
+		(property "Footprint" "Thunderscope_Rev5:GEN_R_0402"
 			(at 0 0 0)
 			(effects
 				(font
@@ -29586,15 +31224,6 @@
 			)
 		)
 		(property "SUPPLIER PART NUMBER 1" "603-RC0402FR-07680KL"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "ALTIUM_VALUE" "680K"
 			(at 0 0 0)
 			(effects
 				(font
@@ -29699,7 +31328,7 @@
 				)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "90.9k"
 			(at 0 0 0)
 			(effects
 				(font
@@ -29707,7 +31336,7 @@
 				)
 			)
 		)
-		(property "Footprint" "GEN_R_0402"
+		(property "Footprint" "Thunderscope_Rev5:GEN_R_0402"
 			(at 0 0 0)
 			(effects
 				(font
@@ -29762,15 +31391,6 @@
 			)
 		)
 		(property "SUPPLIER PART NUMBER 1" "603-RC0402FR-0790K9L"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "ALTIUM_VALUE" "90.9k"
 			(at 0 0 0)
 			(effects
 				(font
@@ -29875,7 +31495,7 @@
 				)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "909k"
 			(at 0 0 0)
 			(effects
 				(font
@@ -29883,7 +31503,7 @@
 				)
 			)
 		)
-		(property "Footprint" "GEN_R_0402"
+		(property "Footprint" "Thunderscope_Rev5:GEN_R_0402"
 			(at 0 0 0)
 			(effects
 				(font
@@ -29938,15 +31558,6 @@
 			)
 		)
 		(property "SUPPLIER PART NUMBER 1" "603-RC0402FR-07909KL"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "ALTIUM_VALUE" "909k"
 			(at 0 0 0)
 			(effects
 				(font
@@ -30051,7 +31662,7 @@
 				)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "976k"
 			(at 0 0 0)
 			(effects
 				(font
@@ -30059,7 +31670,7 @@
 				)
 			)
 		)
-		(property "Footprint" "GEN_R_0603"
+		(property "Footprint" "Thunderscope_Rev5:GEN_R_0603"
 			(at 0 0 0)
 			(effects
 				(font
@@ -30087,15 +31698,6 @@
 			)
 		)
 		(property "PACKAGE" "0603"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "ALTIUM_VALUE" "976k"
 			(at 0 0 0)
 			(effects
 				(font
@@ -30227,7 +31829,7 @@
 				)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "10K"
 			(at 0 0 0)
 			(effects
 				(font
@@ -30235,7 +31837,7 @@
 				)
 			)
 		)
-		(property "Footprint" "GEN_R_2ARRAY_0606"
+		(property "Footprint" "Thunderscope_Rev5:GEN_R_2ARRAY_0606"
 			(at 0 0 0)
 			(effects
 				(font
@@ -30272,15 +31874,6 @@
 			)
 		)
 		(property "PACKAGE" "0606"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "ALTIUM_VALUE" "10K"
 			(at 0 0 0)
 			(effects
 				(font
@@ -30478,7 +32071,7 @@
 				)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "DNP"
 			(at 0 0 0)
 			(effects
 				(font
@@ -30486,7 +32079,7 @@
 				)
 			)
 		)
-		(property "Footprint" "GEN_R_0402"
+		(property "Footprint" "Thunderscope_Rev5:GEN_R_0402"
 			(at 0 0 0)
 			(effects
 				(font
@@ -30514,15 +32107,6 @@
 			)
 		)
 		(property "PACKAGE" "0402"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "ALTIUM_VALUE" "DNP"
 			(at 0 0 0)
 			(effects
 				(font
@@ -30758,7 +32342,7 @@
 				)
 			)
 		)
-		(property "Footprint" "TE_2118728-2"
+		(property "Footprint" "Thunderscope_Rev5:TE_2118728-2"
 			(at 0 0 0)
 			(effects
 				(font
@@ -31034,7 +32618,7 @@
 				)
 			)
 		)
-		(property "Footprint" "KEY_5015"
+		(property "Footprint" "Thunderscope_Rev5:KEY_5015"
 			(at 0 0 0)
 			(effects
 				(font
@@ -31166,7 +32750,7 @@
 				)
 			)
 		)
-		(property "Footprint" "KEY_5019"
+		(property "Footprint" "Thunderscope_Rev5:KEY_5019"
 			(at 0 0 0)
 			(effects
 				(font
@@ -31296,9 +32880,10 @@
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
-		(property "Footprint" "GEN_TP_PCB"
+		(property "Footprint" "Thunderscope_Rev5:GEN_TP_PCB"
 			(at 0 0 0)
 			(effects
 				(font
@@ -31412,7 +32997,7 @@
 				)
 			)
 		)
-		(property "Footprint" "BOU_3mm_POT"
+		(property "Footprint" "Thunderscope_Rev5:BOU_3mm_POT"
 			(at 0 0 0)
 			(effects
 				(font
@@ -31458,15 +33043,6 @@
 			)
 		)
 		(property "SUPPLIER PART NUMBER 1" "652-TC33X-2-502E"
-			(at 0 0 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "ALTIUM_VALUE" "5K"
 			(at 0 0 0)
 			(effects
 				(font
@@ -31610,7 +33186,7 @@
 				)
 			)
 		)
-		(property "Footprint" "TI_X1SON_DPY0002A"
+		(property "Footprint" "Thunderscope_Rev5:TI_X1SON_DPY0002A"
 			(at 0 0 0)
 			(effects
 				(font
@@ -31808,7 +33384,7 @@
 				)
 			)
 		)
-		(property "Footprint" "TE_2334884-1"
+		(property "Footprint" "Thunderscope_Rev5:TE_2334884-1"
 			(at 0 0 0)
 			(effects
 				(font
@@ -31883,17 +33459,6 @@
 		(symbol "UFL Jack SMD_1_0"
 			(circle
 				(center 0 0)
-				(radius 0.635)
-				(stroke
-					(width -0.0001)
-					(type solid)
-				)
-				(fill
-					(type outline)
-				)
-			)
-			(circle
-				(center 0 0)
 				(radius 2.54)
 				(stroke
 					(width 0)
@@ -31901,6 +33466,17 @@
 				)
 				(fill
 					(type none)
+				)
+			)
+			(circle
+				(center 0 0)
+				(radius 0.635)
+				(stroke
+					(width -0.0001)
+					(type solid)
+				)
+				(fill
+					(type outline)
 				)
 			)
 			(pin passive line

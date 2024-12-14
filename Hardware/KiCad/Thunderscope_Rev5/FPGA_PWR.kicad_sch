@@ -1,5 +1,5 @@
 (kicad_sch
-	(version 20241004)
+	(version 20241209)
 	(generator "eeschema")
 	(generator_version "8.99")
 	(uuid "96e9e15a-026b-4ce7-b184-c7e4fa38e4f2")
@@ -658,7 +658,7 @@
 					)
 				)
 			)
-			(property "Value" "${ALTIUM_VALUE}"
+			(property "Value" "100nF"
 				(at 0 0 0)
 				(effects
 					(font
@@ -666,7 +666,7 @@
 					)
 				)
 			)
-			(property "Footprint" "GEN_C_0201"
+			(property "Footprint" "Thunderscope_Rev5:GEN_C_0201"
 				(at 0 0 0)
 				(effects
 					(font
@@ -721,15 +721,6 @@
 				)
 			)
 			(property "SUPPLIER PART NUMBER 1" "81-GRM033R60J104KE19"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ALTIUM_VALUE" "100nF"
 				(at 0 0 0)
 				(effects
 					(font
@@ -871,7 +862,7 @@
 					)
 				)
 			)
-			(property "Value" "${ALTIUM_VALUE}"
+			(property "Value" "100uF"
 				(at 0 0 0)
 				(effects
 					(font
@@ -879,7 +870,7 @@
 					)
 				)
 			)
-			(property "Footprint" "GEN_C_1210"
+			(property "Footprint" "Thunderscope_Rev5:GEN_C_1210"
 				(at 0 0 0)
 				(effects
 					(font
@@ -916,15 +907,6 @@
 				)
 			)
 			(property "VOLTAGE RATING" "6.3V"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ALTIUM_VALUE" "100uF"
 				(at 0 0 0)
 				(effects
 					(font
@@ -1084,7 +1066,7 @@
 					)
 				)
 			)
-			(property "Value" "${ALTIUM_VALUE}"
+			(property "Value" "4.7uF"
 				(at 0 0 0)
 				(effects
 					(font
@@ -1092,7 +1074,7 @@
 					)
 				)
 			)
-			(property "Footprint" "GEN_C_0402"
+			(property "Footprint" "Thunderscope_Rev5:GEN_C_0402"
 				(at 0 0 0)
 				(effects
 					(font
@@ -1129,15 +1111,6 @@
 				)
 			)
 			(property "VOLTAGE RATING" "6.3V"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ALTIUM_VALUE" "4.7uF"
 				(at 0 0 0)
 				(effects
 					(font
@@ -1297,7 +1270,7 @@
 					)
 				)
 			)
-			(property "Value" "${ALTIUM_VALUE}"
+			(property "Value" "470nF"
 				(at 0 0 0)
 				(effects
 					(font
@@ -1305,7 +1278,7 @@
 					)
 				)
 			)
-			(property "Footprint" "GEN_C_0201"
+			(property "Footprint" "Thunderscope_Rev5:GEN_C_0201"
 				(at 0 0 0)
 				(effects
 					(font
@@ -1342,15 +1315,6 @@
 				)
 			)
 			(property "VOLTAGE RATING" "6.3V"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ALTIUM_VALUE" "470nF"
 				(at 0 0 0)
 				(effects
 					(font
@@ -1510,7 +1474,7 @@
 					)
 				)
 			)
-			(property "Value" "${ALTIUM_VALUE}"
+			(property "Value" "47uF"
 				(at 0 0 0)
 				(effects
 					(font
@@ -1518,7 +1482,7 @@
 					)
 				)
 			)
-			(property "Footprint" "GEN_C_0805"
+			(property "Footprint" "Thunderscope_Rev5:GEN_C_0805"
 				(at 0 0 0)
 				(effects
 					(font
@@ -1555,15 +1519,6 @@
 				)
 			)
 			(property "VOLTAGE RATING" "6.3V"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ALTIUM_VALUE" "47uF"
 				(at 0 0 0)
 				(effects
 					(font
@@ -1731,7 +1686,7 @@
 					)
 				)
 			)
-			(property "Footprint" "GEN_R_0402"
+			(property "Footprint" "Thunderscope_Rev5:GEN_R_0402"
 				(at 0 0 0)
 				(effects
 					(font
@@ -2077,7 +2032,7 @@
 					)
 				)
 			)
-			(property "Footprint" "XILINX_XC7A50T-2CSG325C"
+			(property "Footprint" "Thunderscope_Rev5:XILINX_XC7A50T-2CSG325C"
 				(at 0 0 0)
 				(effects
 					(font
@@ -8243,6 +8198,19 @@
 			)
 			(embedded_fonts no)
 		)
+	)
+	(text "FPGA Power Inputs"
+		(exclude_from_sim no)
+		(at 15.24 15.24 0)
+		(effects
+			(font
+				(size 1.905 1.905)
+				(thickness 0.381)
+				(bold yes)
+			)
+			(justify left top)
+		)
+		(uuid "22e8f336-f7a0-4787-9f02-9f24603391cb")
 	)
 	(junction
 		(at 104.14 40.64)
@@ -32805,7 +32773,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "470nF"
 			(at 86.074 70.866 0)
 			(effects
 				(font
@@ -32814,7 +32782,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Footprint" "GEN_C_0201"
+		(property "Footprint" "Thunderscope_Rev5:GEN_C_0201"
 			(at 83.82 68.58 0)
 			(effects
 				(font
@@ -32852,16 +32820,6 @@
 			)
 		)
 		(property "VOLTAGE RATING" "6.3V"
-			(at 81.566 62.992 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-				(hide yes)
-			)
-		)
-		(property "ALTIUM_VALUE" "470nF"
 			(at 81.566 62.992 0)
 			(effects
 				(font
@@ -32919,6 +32877,14 @@
 				)
 				(justify left bottom)
 				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" ""
+			(at 83.82 68.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
 			)
 		)
 		(pin "1"
@@ -33019,7 +32985,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "100nF"
 			(at 98.774 164.846 0)
 			(effects
 				(font
@@ -33028,7 +32994,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Footprint" "GEN_C_0201"
+		(property "Footprint" "Thunderscope_Rev5:GEN_C_0201"
 			(at 96.52 162.56 0)
 			(effects
 				(font
@@ -33095,16 +33061,6 @@
 				(hide yes)
 			)
 		)
-		(property "ALTIUM_VALUE" "100nF"
-			(at 94.266 156.972 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-				(hide yes)
-			)
-		)
 		(property "HOUSE PART NUMBER" "C-100nF-0201-002"
 			(at 94.266 156.972 0)
 			(effects
@@ -33133,6 +33089,14 @@
 				)
 				(justify left bottom)
 				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" ""
+			(at 96.52 162.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
 			)
 		)
 		(pin "1"
@@ -33233,7 +33197,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "470nF"
 			(at 60.674 70.866 0)
 			(effects
 				(font
@@ -33242,7 +33206,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Footprint" "GEN_C_0201"
+		(property "Footprint" "Thunderscope_Rev5:GEN_C_0201"
 			(at 58.42 68.58 0)
 			(effects
 				(font
@@ -33280,16 +33244,6 @@
 			)
 		)
 		(property "VOLTAGE RATING" "6.3V"
-			(at 56.166 62.992 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-				(hide yes)
-			)
-		)
-		(property "ALTIUM_VALUE" "470nF"
 			(at 56.166 62.992 0)
 			(effects
 				(font
@@ -33349,6 +33303,14 @@
 				(hide yes)
 			)
 		)
+		(property "ALTIUM_VALUE" ""
+			(at 58.42 68.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "15d4ce26-683f-482c-8342-5194c4c52694")
 		)
@@ -33396,6 +33358,7 @@
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(property "Datasheet" ""
@@ -33404,14 +33367,16 @@
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name '+1V0'"
 			(at 78.74 91.44 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(pin ""
@@ -33444,7 +33409,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "4.7uF"
 			(at 47.974 70.866 0)
 			(effects
 				(font
@@ -33453,7 +33418,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Footprint" "GEN_C_0402"
+		(property "Footprint" "Thunderscope_Rev5:GEN_C_0402"
 			(at 45.72 68.58 0)
 			(effects
 				(font
@@ -33491,16 +33456,6 @@
 			)
 		)
 		(property "VOLTAGE RATING" "6.3V"
-			(at 43.466 62.992 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-				(hide yes)
-			)
-		)
-		(property "ALTIUM_VALUE" "4.7uF"
 			(at 43.466 62.992 0)
 			(effects
 				(font
@@ -33560,6 +33515,14 @@
 				(hide yes)
 			)
 		)
+		(property "ALTIUM_VALUE" ""
+			(at 45.72 68.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "378ed4fd-ecdb-4c15-84be-74877d4d5bc4")
 		)
@@ -33593,7 +33556,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "470nF"
 			(at 164.814 96.266 0)
 			(effects
 				(font
@@ -33602,7 +33565,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Footprint" "GEN_C_0201"
+		(property "Footprint" "Thunderscope_Rev5:GEN_C_0201"
 			(at 162.56 93.98 0)
 			(effects
 				(font
@@ -33640,16 +33603,6 @@
 			)
 		)
 		(property "VOLTAGE RATING" "6.3V"
-			(at 160.306 88.392 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-				(hide yes)
-			)
-		)
-		(property "ALTIUM_VALUE" "470nF"
 			(at 160.306 88.392 0)
 			(effects
 				(font
@@ -33707,6 +33660,14 @@
 				)
 				(justify left bottom)
 				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" ""
+			(at 162.56 93.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
 			)
 		)
 		(pin "1"
@@ -33742,7 +33703,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "470nF"
 			(at 98.774 70.866 0)
 			(effects
 				(font
@@ -33751,7 +33712,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Footprint" "GEN_C_0201"
+		(property "Footprint" "Thunderscope_Rev5:GEN_C_0201"
 			(at 96.52 68.58 0)
 			(effects
 				(font
@@ -33789,16 +33750,6 @@
 			)
 		)
 		(property "VOLTAGE RATING" "6.3V"
-			(at 94.266 62.992 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-				(hide yes)
-			)
-		)
-		(property "ALTIUM_VALUE" "470nF"
 			(at 94.266 62.992 0)
 			(effects
 				(font
@@ -33856,6 +33807,14 @@
 				)
 				(justify left bottom)
 				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" ""
+			(at 96.52 68.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
 			)
 		)
 		(pin "1"
@@ -33970,6 +33929,7 @@
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(property "Datasheet" ""
@@ -33978,14 +33938,16 @@
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name '+1V0'"
 			(at 213.36 157.48 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(pin ""
@@ -34162,6 +34124,7 @@
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(property "Datasheet" ""
@@ -34170,14 +34133,16 @@
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name '+1V8'"
 			(at 15.24 109.22 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(pin ""
@@ -34405,7 +34370,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "100uF"
 			(at 228.314 96.266 0)
 			(effects
 				(font
@@ -34414,7 +34379,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Footprint" "GEN_C_1210"
+		(property "Footprint" "Thunderscope_Rev5:GEN_C_1210"
 			(at 226.06 93.98 0)
 			(effects
 				(font
@@ -34452,16 +34417,6 @@
 			)
 		)
 		(property "VOLTAGE RATING" "6.3V"
-			(at 223.806 88.392 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-				(hide yes)
-			)
-		)
-		(property "ALTIUM_VALUE" "100uF"
 			(at 223.806 88.392 0)
 			(effects
 				(font
@@ -34521,6 +34476,14 @@
 				(hide yes)
 			)
 		)
+		(property "ALTIUM_VALUE" ""
+			(at 226.06 93.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "556b3d66-c088-4d4f-be47-224a8048a491")
 		)
@@ -34554,7 +34517,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "470nF"
 			(at 190.214 96.266 0)
 			(effects
 				(font
@@ -34563,7 +34526,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Footprint" "GEN_C_0201"
+		(property "Footprint" "Thunderscope_Rev5:GEN_C_0201"
 			(at 187.96 93.98 0)
 			(effects
 				(font
@@ -34601,16 +34564,6 @@
 			)
 		)
 		(property "VOLTAGE RATING" "6.3V"
-			(at 185.706 88.392 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-				(hide yes)
-			)
-		)
-		(property "ALTIUM_VALUE" "470nF"
 			(at 185.706 88.392 0)
 			(effects
 				(font
@@ -34670,6 +34623,14 @@
 				(hide yes)
 			)
 		)
+		(property "ALTIUM_VALUE" ""
+			(at 187.96 93.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "0fa0a7d5-99cc-478d-91f5-5203b4eb0a1f")
 		)
@@ -34703,7 +34664,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "47uF"
 			(at 241.014 37.846 0)
 			(effects
 				(font
@@ -34712,7 +34673,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Footprint" "GEN_C_0805"
+		(property "Footprint" "Thunderscope_Rev5:GEN_C_0805"
 			(at 238.76 35.56 0)
 			(effects
 				(font
@@ -34750,16 +34711,6 @@
 			)
 		)
 		(property "VOLTAGE RATING" "6.3V"
-			(at 236.506 29.972 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-				(hide yes)
-			)
-		)
-		(property "ALTIUM_VALUE" "47uF"
 			(at 236.506 29.972 0)
 			(effects
 				(font
@@ -34819,6 +34770,14 @@
 				(hide yes)
 			)
 		)
+		(property "ALTIUM_VALUE" ""
+			(at 238.76 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "01a146d1-6e6e-4f9c-ab8a-9e2a02b25230")
 		)
@@ -34852,7 +34811,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "4.7uF"
 			(at 215.614 96.266 0)
 			(effects
 				(font
@@ -34861,7 +34820,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Footprint" "GEN_C_0402"
+		(property "Footprint" "Thunderscope_Rev5:GEN_C_0402"
 			(at 213.36 93.98 0)
 			(effects
 				(font
@@ -34899,16 +34858,6 @@
 			)
 		)
 		(property "VOLTAGE RATING" "6.3V"
-			(at 211.106 88.392 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-				(hide yes)
-			)
-		)
-		(property "ALTIUM_VALUE" "4.7uF"
 			(at 211.106 88.392 0)
 			(effects
 				(font
@@ -34968,6 +34917,14 @@
 				(hide yes)
 			)
 		)
+		(property "ALTIUM_VALUE" ""
+			(at 213.36 93.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "21426300-6bcd-46b4-bdf9-cb3659600149")
 		)
@@ -35001,7 +34958,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "470nF"
 			(at 73.374 119.126 0)
 			(effects
 				(font
@@ -35010,7 +34967,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Footprint" "GEN_C_0201"
+		(property "Footprint" "Thunderscope_Rev5:GEN_C_0201"
 			(at 71.12 116.84 0)
 			(effects
 				(font
@@ -35048,16 +35005,6 @@
 			)
 		)
 		(property "VOLTAGE RATING" "6.3V"
-			(at 68.866 111.252 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-				(hide yes)
-			)
-		)
-		(property "ALTIUM_VALUE" "470nF"
 			(at 68.866 111.252 0)
 			(effects
 				(font
@@ -35115,6 +35062,14 @@
 				)
 				(justify left bottom)
 				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" ""
+			(at 71.12 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
 			)
 		)
 		(pin "1"
@@ -35281,7 +35236,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "470nF"
 			(at 177.514 37.846 0)
 			(effects
 				(font
@@ -35290,7 +35245,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Footprint" "GEN_C_0201"
+		(property "Footprint" "Thunderscope_Rev5:GEN_C_0201"
 			(at 175.26 35.56 0)
 			(effects
 				(font
@@ -35328,16 +35283,6 @@
 			)
 		)
 		(property "VOLTAGE RATING" "6.3V"
-			(at 173.006 29.972 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-				(hide yes)
-			)
-		)
-		(property "ALTIUM_VALUE" "470nF"
 			(at 173.006 29.972 0)
 			(effects
 				(font
@@ -35397,6 +35342,14 @@
 				(hide yes)
 			)
 		)
+		(property "ALTIUM_VALUE" ""
+			(at 175.26 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "dd063210-3938-461f-a3f4-3cab2884bdcb")
 		)
@@ -35444,6 +35397,7 @@
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(property "Datasheet" ""
@@ -35452,14 +35406,16 @@
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name '+2V5'"
 			(at 15.24 60.96 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(pin ""
@@ -35492,7 +35448,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "4.7uF"
 			(at 35.274 119.126 0)
 			(effects
 				(font
@@ -35501,7 +35457,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Footprint" "GEN_C_0402"
+		(property "Footprint" "Thunderscope_Rev5:GEN_C_0402"
 			(at 33.02 116.84 0)
 			(effects
 				(font
@@ -35539,16 +35495,6 @@
 			)
 		)
 		(property "VOLTAGE RATING" "6.3V"
-			(at 30.766 111.252 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-				(hide yes)
-			)
-		)
-		(property "ALTIUM_VALUE" "4.7uF"
 			(at 30.766 111.252 0)
 			(effects
 				(font
@@ -35606,6 +35552,14 @@
 				)
 				(justify left bottom)
 				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" ""
+			(at 33.02 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
 			)
 		)
 		(pin "2"
@@ -35901,7 +35855,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "470nF"
 			(at 202.914 37.846 0)
 			(effects
 				(font
@@ -35910,7 +35864,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Footprint" "GEN_C_0201"
+		(property "Footprint" "Thunderscope_Rev5:GEN_C_0201"
 			(at 200.66 35.56 0)
 			(effects
 				(font
@@ -35948,16 +35902,6 @@
 			)
 		)
 		(property "VOLTAGE RATING" "6.3V"
-			(at 198.406 29.972 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-				(hide yes)
-			)
-		)
-		(property "ALTIUM_VALUE" "470nF"
 			(at 198.406 29.972 0)
 			(effects
 				(font
@@ -36017,6 +35961,14 @@
 				(hide yes)
 			)
 		)
+		(property "ALTIUM_VALUE" ""
+			(at 200.66 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "c8a99d6c-6f00-4dc0-8dc8-1496b3c020af")
 		)
@@ -36050,7 +36002,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "100nF"
 			(at 86.074 164.846 0)
 			(effects
 				(font
@@ -36059,7 +36011,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Footprint" "GEN_C_0201"
+		(property "Footprint" "Thunderscope_Rev5:GEN_C_0201"
 			(at 83.82 162.56 0)
 			(effects
 				(font
@@ -36126,16 +36078,6 @@
 				(hide yes)
 			)
 		)
-		(property "ALTIUM_VALUE" "100nF"
-			(at 81.566 156.972 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-				(hide yes)
-			)
-		)
 		(property "HOUSE PART NUMBER" "C-100nF-0201-002"
 			(at 81.566 156.972 0)
 			(effects
@@ -36164,6 +36106,14 @@
 				)
 				(justify left bottom)
 				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" ""
+			(at 83.82 162.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
 			)
 		)
 		(pin "1"
@@ -36199,7 +36149,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "4.7uF"
 			(at 47.974 119.126 0)
 			(effects
 				(font
@@ -36208,7 +36158,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Footprint" "GEN_C_0402"
+		(property "Footprint" "Thunderscope_Rev5:GEN_C_0402"
 			(at 45.72 116.84 0)
 			(effects
 				(font
@@ -36246,16 +36196,6 @@
 			)
 		)
 		(property "VOLTAGE RATING" "6.3V"
-			(at 43.466 111.252 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-				(hide yes)
-			)
-		)
-		(property "ALTIUM_VALUE" "4.7uF"
 			(at 43.466 111.252 0)
 			(effects
 				(font
@@ -36313,6 +36253,14 @@
 				)
 				(justify left bottom)
 				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" ""
+			(at 45.72 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
 			)
 		)
 		(pin "1"
@@ -36413,7 +36361,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "470nF"
 			(at 86.074 119.126 0)
 			(effects
 				(font
@@ -36422,7 +36370,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Footprint" "GEN_C_0201"
+		(property "Footprint" "Thunderscope_Rev5:GEN_C_0201"
 			(at 83.82 116.84 0)
 			(effects
 				(font
@@ -36460,16 +36408,6 @@
 			)
 		)
 		(property "VOLTAGE RATING" "6.3V"
-			(at 81.566 111.252 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-				(hide yes)
-			)
-		)
-		(property "ALTIUM_VALUE" "470nF"
 			(at 81.566 111.252 0)
 			(effects
 				(font
@@ -36529,6 +36467,14 @@
 				(hide yes)
 			)
 		)
+		(property "ALTIUM_VALUE" ""
+			(at 83.82 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "059e777a-4315-49bf-9fdf-f1a633eca113")
 		)
@@ -36562,7 +36508,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "47uF"
 			(at 164.814 70.866 0)
 			(effects
 				(font
@@ -36571,7 +36517,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Footprint" "GEN_C_0805"
+		(property "Footprint" "Thunderscope_Rev5:GEN_C_0805"
 			(at 162.56 68.58 0)
 			(effects
 				(font
@@ -36609,16 +36555,6 @@
 			)
 		)
 		(property "VOLTAGE RATING" "6.3V"
-			(at 160.306 62.992 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-				(hide yes)
-			)
-		)
-		(property "ALTIUM_VALUE" "47uF"
 			(at 160.306 62.992 0)
 			(effects
 				(font
@@ -36678,6 +36614,14 @@
 				(hide yes)
 			)
 		)
+		(property "ALTIUM_VALUE" ""
+			(at 162.56 68.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "52285873-179e-41f2-a881-e1390e1ee39d")
 		)
@@ -36711,7 +36655,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "470nF"
 			(at 177.514 96.266 0)
 			(effects
 				(font
@@ -36720,7 +36664,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Footprint" "GEN_C_0201"
+		(property "Footprint" "Thunderscope_Rev5:GEN_C_0201"
 			(at 175.26 93.98 0)
 			(effects
 				(font
@@ -36758,16 +36702,6 @@
 			)
 		)
 		(property "VOLTAGE RATING" "6.3V"
-			(at 173.006 88.392 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-				(hide yes)
-			)
-		)
-		(property "ALTIUM_VALUE" "470nF"
 			(at 173.006 88.392 0)
 			(effects
 				(font
@@ -36825,6 +36759,14 @@
 				)
 				(justify left bottom)
 				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" ""
+			(at 175.26 93.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
 			)
 		)
 		(pin "1"
@@ -36925,7 +36867,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "4.7uF"
 			(at 35.274 70.866 0)
 			(effects
 				(font
@@ -36934,7 +36876,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Footprint" "GEN_C_0402"
+		(property "Footprint" "Thunderscope_Rev5:GEN_C_0402"
 			(at 33.02 68.58 0)
 			(effects
 				(font
@@ -36972,16 +36914,6 @@
 			)
 		)
 		(property "VOLTAGE RATING" "6.3V"
-			(at 30.766 62.992 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-				(hide yes)
-			)
-		)
-		(property "ALTIUM_VALUE" "4.7uF"
 			(at 30.766 62.992 0)
 			(effects
 				(font
@@ -37041,6 +36973,14 @@
 				(hide yes)
 			)
 		)
+		(property "ALTIUM_VALUE" ""
+			(at 33.02 68.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "6e48065c-389b-4bc8-a9fb-deddcc58866c")
 		)
@@ -37084,7 +37024,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Footprint" "XILINX_XC7A50T-2CSG325C"
+		(property "Footprint" "Thunderscope_Rev5:XILINX_XC7A50T-2CSG325C"
 			(at 144.78 170.18 0)
 			(effects
 				(font
@@ -37159,6 +37099,14 @@
 				)
 				(justify left bottom)
 				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" ""
+			(at 144.78 170.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
 			)
 		)
 		(pin "H10"
@@ -38290,7 +38238,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "4.7uF"
 			(at 215.614 37.846 0)
 			(effects
 				(font
@@ -38299,7 +38247,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Footprint" "GEN_C_0402"
+		(property "Footprint" "Thunderscope_Rev5:GEN_C_0402"
 			(at 213.36 35.56 0)
 			(effects
 				(font
@@ -38337,16 +38285,6 @@
 			)
 		)
 		(property "VOLTAGE RATING" "6.3V"
-			(at 211.106 29.972 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-				(hide yes)
-			)
-		)
-		(property "ALTIUM_VALUE" "4.7uF"
 			(at 211.106 29.972 0)
 			(effects
 				(font
@@ -38404,6 +38342,14 @@
 				)
 				(justify left bottom)
 				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" ""
+			(at 213.36 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
 			)
 		)
 		(pin "1"
@@ -38504,7 +38450,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "470nF"
 			(at 103.854 144.526 0)
 			(effects
 				(font
@@ -38513,7 +38459,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Footprint" "GEN_C_0201"
+		(property "Footprint" "Thunderscope_Rev5:GEN_C_0201"
 			(at 101.6 142.24 0)
 			(effects
 				(font
@@ -38551,16 +38497,6 @@
 			)
 		)
 		(property "VOLTAGE RATING" "6.3V"
-			(at 99.346 136.652 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-				(hide yes)
-			)
-		)
-		(property "ALTIUM_VALUE" "470nF"
 			(at 99.346 136.652 0)
 			(effects
 				(font
@@ -38620,6 +38556,14 @@
 				(hide yes)
 			)
 		)
+		(property "ALTIUM_VALUE" ""
+			(at 101.6 142.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "e11e34dc-cbdd-4dd4-a8ea-f910cafff03b")
 		)
@@ -38667,6 +38611,7 @@
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(property "Datasheet" ""
@@ -38675,14 +38620,16 @@
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name '+1V0'"
 			(at 231.14 86.36 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(pin ""
@@ -38845,7 +38792,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "47uF"
 			(at 22.574 119.126 0)
 			(effects
 				(font
@@ -38854,7 +38801,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Footprint" "GEN_C_0805"
+		(property "Footprint" "Thunderscope_Rev5:GEN_C_0805"
 			(at 20.32 116.84 0)
 			(effects
 				(font
@@ -38892,16 +38839,6 @@
 			)
 		)
 		(property "VOLTAGE RATING" "6.3V"
-			(at 18.066 111.252 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-				(hide yes)
-			)
-		)
-		(property "ALTIUM_VALUE" "47uF"
 			(at 18.066 111.252 0)
 			(effects
 				(font
@@ -38959,6 +38896,14 @@
 				)
 				(justify left bottom)
 				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" ""
+			(at 20.32 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
 			)
 		)
 		(pin "2"
@@ -39059,7 +39004,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "47uF"
 			(at 86.074 101.346 0)
 			(effects
 				(font
@@ -39068,7 +39013,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Footprint" "GEN_C_0805"
+		(property "Footprint" "Thunderscope_Rev5:GEN_C_0805"
 			(at 83.82 99.06 0)
 			(effects
 				(font
@@ -39106,16 +39051,6 @@
 			)
 		)
 		(property "VOLTAGE RATING" "6.3V"
-			(at 81.566 93.472 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-				(hide yes)
-			)
-		)
-		(property "ALTIUM_VALUE" "47uF"
 			(at 81.566 93.472 0)
 			(effects
 				(font
@@ -39173,6 +39108,14 @@
 				)
 				(justify left bottom)
 				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" ""
+			(at 83.82 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
 			)
 		)
 		(pin "2"
@@ -39208,7 +39151,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "47uF"
 			(at 22.574 70.866 0)
 			(effects
 				(font
@@ -39217,7 +39160,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Footprint" "GEN_C_0805"
+		(property "Footprint" "Thunderscope_Rev5:GEN_C_0805"
 			(at 20.32 68.58 0)
 			(effects
 				(font
@@ -39255,16 +39198,6 @@
 			)
 		)
 		(property "VOLTAGE RATING" "6.3V"
-			(at 18.066 62.992 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-				(hide yes)
-			)
-		)
-		(property "ALTIUM_VALUE" "47uF"
 			(at 18.066 62.992 0)
 			(effects
 				(font
@@ -39322,6 +39255,14 @@
 				)
 				(justify left bottom)
 				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" ""
+			(at 20.32 68.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
 			)
 		)
 		(pin "2"
@@ -39631,6 +39572,7 @@
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(property "Datasheet" ""
@@ -39639,14 +39581,16 @@
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name '+1V0_MGT'"
 			(at 193.04 157.48 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(pin ""
@@ -39809,7 +39753,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "4.7uF"
 			(at 228.314 37.846 0)
 			(effects
 				(font
@@ -39818,7 +39762,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Footprint" "GEN_C_0402"
+		(property "Footprint" "Thunderscope_Rev5:GEN_C_0402"
 			(at 226.06 35.56 0)
 			(effects
 				(font
@@ -39856,16 +39800,6 @@
 			)
 		)
 		(property "VOLTAGE RATING" "6.3V"
-			(at 223.806 29.972 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-				(hide yes)
-			)
-		)
-		(property "ALTIUM_VALUE" "4.7uF"
 			(at 223.806 29.972 0)
 			(effects
 				(font
@@ -39925,6 +39859,14 @@
 				(hide yes)
 			)
 		)
+		(property "ALTIUM_VALUE" ""
+			(at 226.06 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "18d9a160-33b4-4103-a658-7865c935b447")
 		)
@@ -39958,7 +39900,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "470nF"
 			(at 164.814 37.846 0)
 			(effects
 				(font
@@ -39967,7 +39909,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Footprint" "GEN_C_0201"
+		(property "Footprint" "Thunderscope_Rev5:GEN_C_0201"
 			(at 162.56 35.56 0)
 			(effects
 				(font
@@ -40005,16 +39947,6 @@
 			)
 		)
 		(property "VOLTAGE RATING" "6.3V"
-			(at 160.306 29.972 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-				(hide yes)
-			)
-		)
-		(property "ALTIUM_VALUE" "470nF"
 			(at 160.306 29.972 0)
 			(effects
 				(font
@@ -40072,6 +40004,14 @@
 				)
 				(justify left bottom)
 				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" ""
+			(at 162.56 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
 			)
 		)
 		(pin "2"
@@ -40186,6 +40126,7 @@
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(property "Datasheet" ""
@@ -40194,14 +40135,16 @@
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name '+3V3'"
 			(at 167.64 58.42 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(pin ""
@@ -40234,7 +40177,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "470nF"
 			(at 73.374 70.866 0)
 			(effects
 				(font
@@ -40243,7 +40186,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Footprint" "GEN_C_0201"
+		(property "Footprint" "Thunderscope_Rev5:GEN_C_0201"
 			(at 71.12 68.58 0)
 			(effects
 				(font
@@ -40281,16 +40224,6 @@
 			)
 		)
 		(property "VOLTAGE RATING" "6.3V"
-			(at 68.866 62.992 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-				(hide yes)
-			)
-		)
-		(property "ALTIUM_VALUE" "470nF"
 			(at 68.866 62.992 0)
 			(effects
 				(font
@@ -40348,6 +40281,14 @@
 				)
 				(justify left bottom)
 				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" ""
+			(at 71.12 68.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
 			)
 		)
 		(pin "1"
@@ -40458,7 +40399,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Footprint" "XILINX_XC7A50T-2CSG325C"
+		(property "Footprint" "Thunderscope_Rev5:XILINX_XC7A50T-2CSG325C"
 			(at 142.24 66.04 0)
 			(effects
 				(font
@@ -40533,6 +40474,14 @@
 				)
 				(justify left bottom)
 				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" ""
+			(at 142.24 66.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
 			)
 		)
 		(pin "D8"
@@ -41534,7 +41483,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "100nF"
 			(at 164.814 167.386 0)
 			(effects
 				(font
@@ -41543,7 +41492,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Footprint" "GEN_C_0201"
+		(property "Footprint" "Thunderscope_Rev5:GEN_C_0201"
 			(at 162.56 165.1 0)
 			(effects
 				(font
@@ -41610,16 +41559,6 @@
 				(hide yes)
 			)
 		)
-		(property "ALTIUM_VALUE" "100nF"
-			(at 160.306 159.512 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-				(hide yes)
-			)
-		)
 		(property "HOUSE PART NUMBER" "C-100nF-0201-002"
 			(at 160.306 159.512 0)
 			(effects
@@ -41648,6 +41587,14 @@
 				)
 				(justify left bottom)
 				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" ""
+			(at 162.56 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
 			)
 		)
 		(pin "1"
@@ -41748,7 +41695,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "470nF"
 			(at 98.774 101.346 0)
 			(effects
 				(font
@@ -41757,7 +41704,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Footprint" "GEN_C_0201"
+		(property "Footprint" "Thunderscope_Rev5:GEN_C_0201"
 			(at 96.52 99.06 0)
 			(effects
 				(font
@@ -41795,16 +41742,6 @@
 			)
 		)
 		(property "VOLTAGE RATING" "6.3V"
-			(at 94.266 93.472 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-				(hide yes)
-			)
-		)
-		(property "ALTIUM_VALUE" "470nF"
 			(at 94.266 93.472 0)
 			(effects
 				(font
@@ -41862,6 +41799,14 @@
 				)
 				(justify left bottom)
 				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" ""
+			(at 96.52 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
 			)
 		)
 		(pin "1"
@@ -41962,7 +41907,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "470nF"
 			(at 60.674 119.126 0)
 			(effects
 				(font
@@ -41971,7 +41916,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Footprint" "GEN_C_0201"
+		(property "Footprint" "Thunderscope_Rev5:GEN_C_0201"
 			(at 58.42 116.84 0)
 			(effects
 				(font
@@ -42009,16 +41954,6 @@
 			)
 		)
 		(property "VOLTAGE RATING" "6.3V"
-			(at 56.166 111.252 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-				(hide yes)
-			)
-		)
-		(property "ALTIUM_VALUE" "470nF"
 			(at 56.166 111.252 0)
 			(effects
 				(font
@@ -42076,6 +42011,14 @@
 				)
 				(justify left bottom)
 				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" ""
+			(at 58.42 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
 			)
 		)
 		(pin "2"
@@ -42450,6 +42393,7 @@
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(property "Datasheet" ""
@@ -42458,14 +42402,16 @@
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name '+3V3'"
 			(at 243.84 27.94 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(pin ""
@@ -42637,7 +42583,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Footprint" "GEN_R_0402"
+		(property "Footprint" "Thunderscope_Rev5:GEN_R_0402"
 			(at 203.2 160.02 0)
 			(effects
 				(font
@@ -42712,6 +42658,14 @@
 				)
 				(justify left bottom)
 				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" ""
+			(at 203.2 160.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
 			)
 		)
 		(pin "1"
@@ -42819,7 +42773,7 @@
 				)
 			)
 		)
-		(property "Footprint" "GEN_R_0402"
+		(property "Footprint" "Thunderscope_Rev5:GEN_R_0402"
 			(at 101.6 119.38 0)
 			(effects
 				(font
@@ -42896,6 +42850,14 @@
 				(hide yes)
 			)
 		)
+		(property "ALTIUM_VALUE" ""
+			(at 101.6 119.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "3abc9a8c-0a97-4c40-a4b6-7b17aa3dcfea")
 		)
@@ -42939,7 +42901,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Footprint" "XILINX_XC7A50T-2CSG325C"
+		(property "Footprint" "Thunderscope_Rev5:XILINX_XC7A50T-2CSG325C"
 			(at 144.78 134.62 0)
 			(effects
 				(font
@@ -43014,6 +42976,14 @@
 				)
 				(justify left bottom)
 				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" ""
+			(at 144.78 134.62 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
 			)
 		)
 		(pin "D8"
@@ -44015,7 +43985,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "4.7uF"
 			(at 190.214 167.386 0)
 			(effects
 				(font
@@ -44024,7 +43994,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Footprint" "GEN_C_0402"
+		(property "Footprint" "Thunderscope_Rev5:GEN_C_0402"
 			(at 187.96 165.1 0)
 			(effects
 				(font
@@ -44062,16 +44032,6 @@
 			)
 		)
 		(property "VOLTAGE RATING" "6.3V"
-			(at 185.706 159.512 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-				(hide yes)
-			)
-		)
-		(property "ALTIUM_VALUE" "4.7uF"
 			(at 185.706 159.512 0)
 			(effects
 				(font
@@ -44131,6 +44091,14 @@
 				(hide yes)
 			)
 		)
+		(property "ALTIUM_VALUE" ""
+			(at 187.96 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "e3134003-e48a-4253-aa2a-609dfb875790")
 		)
@@ -44174,7 +44142,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Footprint" "XILINX_XC7A50T-2CSG325C"
+		(property "Footprint" "Thunderscope_Rev5:XILINX_XC7A50T-2CSG325C"
 			(at 274.32 165.1 0)
 			(effects
 				(font
@@ -44249,6 +44217,14 @@
 				)
 				(justify left bottom)
 				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" ""
+			(at 274.32 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
 			)
 		)
 		(pin "C8"
@@ -45315,7 +45291,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "100nF"
 			(at 177.514 167.386 0)
 			(effects
 				(font
@@ -45324,7 +45300,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Footprint" "GEN_C_0201"
+		(property "Footprint" "Thunderscope_Rev5:GEN_C_0201"
 			(at 175.26 165.1 0)
 			(effects
 				(font
@@ -45391,16 +45367,6 @@
 				(hide yes)
 			)
 		)
-		(property "ALTIUM_VALUE" "100nF"
-			(at 173.006 159.512 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-				(hide yes)
-			)
-		)
 		(property "HOUSE PART NUMBER" "C-100nF-0201-002"
 			(at 173.006 159.512 0)
 			(effects
@@ -45429,6 +45395,14 @@
 				)
 				(justify left bottom)
 				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" ""
+			(at 175.26 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
 			)
 		)
 		(pin "2"
@@ -45464,7 +45438,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "4.7uF"
 			(at 202.914 96.266 0)
 			(effects
 				(font
@@ -45473,7 +45447,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Footprint" "GEN_C_0402"
+		(property "Footprint" "Thunderscope_Rev5:GEN_C_0402"
 			(at 200.66 93.98 0)
 			(effects
 				(font
@@ -45511,16 +45485,6 @@
 			)
 		)
 		(property "VOLTAGE RATING" "6.3V"
-			(at 198.406 88.392 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-				(hide yes)
-			)
-		)
-		(property "ALTIUM_VALUE" "4.7uF"
 			(at 198.406 88.392 0)
 			(effects
 				(font
@@ -45580,6 +45544,14 @@
 				(hide yes)
 			)
 		)
+		(property "ALTIUM_VALUE" ""
+			(at 200.66 93.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "8a399c0a-88b7-4544-a2f2-0ea7c4a8c227")
 		)
@@ -45613,7 +45585,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "470nF"
 			(at 190.214 37.846 0)
 			(effects
 				(font
@@ -45622,7 +45594,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Footprint" "GEN_C_0201"
+		(property "Footprint" "Thunderscope_Rev5:GEN_C_0201"
 			(at 187.96 35.56 0)
 			(effects
 				(font
@@ -45660,16 +45632,6 @@
 			)
 		)
 		(property "VOLTAGE RATING" "6.3V"
-			(at 185.706 29.972 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-				(hide yes)
-			)
-		)
-		(property "ALTIUM_VALUE" "470nF"
 			(at 185.706 29.972 0)
 			(effects
 				(font
@@ -45727,6 +45689,14 @@
 				)
 				(justify left bottom)
 				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" ""
+			(at 187.96 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
 			)
 		)
 		(pin "1"
@@ -45827,7 +45797,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "4.7uF"
 			(at 73.374 164.846 0)
 			(effects
 				(font
@@ -45836,7 +45806,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Footprint" "GEN_C_0402"
+		(property "Footprint" "Thunderscope_Rev5:GEN_C_0402"
 			(at 71.12 162.56 0)
 			(effects
 				(font
@@ -45874,16 +45844,6 @@
 			)
 		)
 		(property "VOLTAGE RATING" "6.3V"
-			(at 68.866 156.972 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-				(hide yes)
-			)
-		)
-		(property "ALTIUM_VALUE" "4.7uF"
 			(at 68.866 156.972 0)
 			(effects
 				(font
@@ -45941,6 +45901,14 @@
 				)
 				(justify left bottom)
 				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" ""
+			(at 71.12 162.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
 			)
 		)
 		(pin "2"

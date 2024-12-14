@@ -1,5 +1,5 @@
 (kicad_sch
-	(version 20241004)
+	(version 20241209)
 	(generator "eeschema")
 	(generator_version "8.99")
 	(uuid "bf11b0c5-41e3-45af-b679-6daa93a0a520")
@@ -10,7 +10,7 @@
 		(company "EEVengers")
 	)
 	(lib_symbols
-		(symbol "Thunderscope_Rev5:+2V5_BAR"
+		(symbol "Thunderscope_Rev5:+3V3_BAR"
 			(power)
 			(exclude_from_sim no)
 			(in_bom yes)
@@ -24,7 +24,7 @@
 					(hide yes)
 				)
 			)
-			(property "Value" "+2V5"
+			(property "Value" "+3V3"
 				(at 0 -3.81 0)
 				(effects
 					(font
@@ -50,7 +50,7 @@
 					(hide yes)
 				)
 			)
-			(property "Description" "Power symbol creates a global label with name '+2V5'"
+			(property "Description" "Power symbol creates a global label with name '+3V3'"
 				(at 0 0 0)
 				(effects
 					(font
@@ -68,7 +68,7 @@
 					(hide yes)
 				)
 			)
-			(symbol "+2V5_BAR_0_0"
+			(symbol "+3V3_BAR_0_0"
 				(polyline
 					(pts
 						(xy -1.27 -2.54) (xy 1.27 -2.54)
@@ -97,7 +97,7 @@
 					(at 0 0 0)
 					(length 0)
 					(hide yes)
-					(name "+2V5"
+					(name "+3V3"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -133,7 +133,7 @@
 					)
 				)
 			)
-			(property "Value" "${ALTIUM_VALUE}"
+			(property "Value" "100nF"
 				(at 0 0 0)
 				(effects
 					(font
@@ -141,7 +141,7 @@
 					)
 				)
 			)
-			(property "Footprint" "GEN_C_0201"
+			(property "Footprint" "Thunderscope_Rev5:GEN_C_0201"
 				(at 0 0 0)
 				(effects
 					(font
@@ -196,15 +196,6 @@
 				)
 			)
 			(property "SUPPLIER PART NUMBER 1" "81-GRM033R60J104KE19"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ALTIUM_VALUE" "100nF"
 				(at 0 0 0)
 				(effects
 					(font
@@ -348,7 +339,7 @@
 					)
 				)
 			)
-			(property "Footprint" "GEN_2.54mm_6_Pin_TH_RA"
+			(property "Footprint" "Thunderscope_Rev5:GEN_2.54mm_6_Pin_TH_RA"
 				(at 0 0 0)
 				(effects
 					(font
@@ -663,7 +654,7 @@
 					)
 				)
 			)
-			(property "Value" "${ALTIUM_VALUE}"
+			(property "Value" "0"
 				(at 0 0 0)
 				(effects
 					(font
@@ -671,7 +662,7 @@
 					)
 				)
 			)
-			(property "Footprint" "GEN_R_0201"
+			(property "Footprint" "Thunderscope_Rev5:GEN_R_0201"
 				(at 0 0 0)
 				(effects
 					(font
@@ -717,15 +708,6 @@
 				)
 			)
 			(property "SUPPLIER PART NUMBER 1" "708-RMCF0201ZT0R00"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ALTIUM_VALUE" "0"
 				(at 0 0 0)
 				(effects
 					(font
@@ -839,7 +821,7 @@
 					)
 				)
 			)
-			(property "Value" "${ALTIUM_VALUE}"
+			(property "Value" "49.9"
 				(at 0 0 0)
 				(effects
 					(font
@@ -847,7 +829,7 @@
 					)
 				)
 			)
-			(property "Footprint" "GEN_R_0402"
+			(property "Footprint" "Thunderscope_Rev5:GEN_R_0402"
 				(at 0 0 0)
 				(effects
 					(font
@@ -875,15 +857,6 @@
 				)
 			)
 			(property "PACKAGE" "0402"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ALTIUM_VALUE" "49.9"
 				(at 0 0 0)
 				(effects
 					(font
@@ -1021,9 +994,10 @@
 					(font
 						(size 1.27 1.27)
 					)
+					(hide yes)
 				)
 			)
-			(property "Footprint" "GEN_TP_PCB"
+			(property "Footprint" "Thunderscope_Rev5:GEN_TP_PCB"
 				(at 0 0 0)
 				(effects
 					(font
@@ -1298,15 +1272,6 @@
 		(uuid "0fa9ea4f-ddc6-43ce-8b17-6c6f786ddbef")
 	)
 	(bus_entry
-		(at 68.58 88.9)
-		(size -2.54 -2.54)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "11aead95-e3b7-43a8-b12c-b5eb4ee15da0")
-	)
-	(bus_entry
 		(at 254 45.72)
 		(size 2.54 -2.54)
 		(stroke
@@ -1314,15 +1279,6 @@
 			(type default)
 		)
 		(uuid "12c994b2-c4c3-473f-bbb1-f5187ea19d62")
-	)
-	(bus_entry
-		(at 68.58 43.18)
-		(size -2.54 -2.54)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "146b0509-e0e4-412e-82da-3a9e33429b66")
 	)
 	(bus_entry
 		(at 254 142.24)
@@ -1352,15 +1308,6 @@
 		(uuid "1f864aae-9a2e-409c-b0c5-a80a318c847d")
 	)
 	(bus_entry
-		(at 68.58 55.88)
-		(size -2.54 -2.54)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "2bfaf548-955a-4560-9703-b33d029c807e")
-	)
-	(bus_entry
 		(at 254 43.18)
 		(size 2.54 -2.54)
 		(stroke
@@ -1368,15 +1315,6 @@
 			(type default)
 		)
 		(uuid "318d8a10-f3ed-49e4-ac88-58865eac305b")
-	)
-	(bus_entry
-		(at 68.58 66.04)
-		(size -2.54 -2.54)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "3d99e652-517b-4e71-a324-fe9c32b4870e")
 	)
 	(bus_entry
 		(at 254 147.32)
@@ -1395,24 +1333,6 @@
 			(type default)
 		)
 		(uuid "5dc58bde-dfc9-4c47-8ab5-9d8ecb042058")
-	)
-	(bus_entry
-		(at 68.58 58.42)
-		(size -2.54 -2.54)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "60fed631-9593-46d8-9bdd-f099868bca51")
-	)
-	(bus_entry
-		(at 68.58 35.56)
-		(size -2.54 -2.54)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "667a8e5d-3c90-4fb2-bde3-1ec4cefc8cdd")
 	)
 	(bus_entry
 		(at 254 78.74)
@@ -1451,15 +1371,6 @@
 		(uuid "809a9798-4e04-4ef8-a2ed-5e7e72a434de")
 	)
 	(bus_entry
-		(at 68.58 27.94)
-		(size -2.54 -2.54)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "849d852f-9678-48cb-8add-fc401ed4e784")
-	)
-	(bus_entry
 		(at 254 132.08)
 		(size 2.54 -2.54)
 		(stroke
@@ -1476,15 +1387,6 @@
 			(type default)
 		)
 		(uuid "8a3176e4-d0d8-470b-942b-78fb739d5d10")
-	)
-	(bus_entry
-		(at 68.58 81.28)
-		(size -2.54 -2.54)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "8e822bc0-32a3-457a-825c-20e2d886795a")
 	)
 	(bus_entry
 		(at 254 66.04)
@@ -1523,24 +1425,6 @@
 		(uuid "8fecc93f-4821-4af0-a626-cb268d141fb3")
 	)
 	(bus_entry
-		(at 68.58 33.02)
-		(size -2.54 -2.54)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "9a014909-6e96-46fe-ac94-843602d9eec6")
-	)
-	(bus_entry
-		(at 68.58 63.5)
-		(size -2.54 -2.54)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "9a493d5c-a3b0-49bf-9c00-0c643fae06cd")
-	)
-	(bus_entry
 		(at 254 71.12)
 		(size 2.54 -2.54)
 		(stroke
@@ -1548,15 +1432,6 @@
 			(type default)
 		)
 		(uuid "a28d26e7-9fc5-46bf-8018-f52ac962f9eb")
-	)
-	(bus_entry
-		(at 68.58 78.74)
-		(size -2.54 -2.54)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "b1d2cf0c-80f0-4dbb-bfe5-57737b1ae83e")
 	)
 	(bus_entry
 		(at 254 116.84)
@@ -1586,42 +1461,6 @@
 		(uuid "bb7c3585-d169-43c8-bc25-c95e9a59fc3c")
 	)
 	(bus_entry
-		(at 68.58 73.66)
-		(size -2.54 -2.54)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "befbb4c9-8813-43ff-87aa-cd68650de524")
-	)
-	(bus_entry
-		(at 68.58 40.64)
-		(size -2.54 -2.54)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "c34b7c66-b193-42d2-b0b6-9dac4ec6d81f")
-	)
-	(bus_entry
-		(at 68.58 96.52)
-		(size -2.54 -2.54)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "c8e70e5c-8228-42c0-8d4b-0aa424425ba4")
-	)
-	(bus_entry
-		(at 68.58 93.98)
-		(size -2.54 -2.54)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "ce7f15e9-c6f5-4eb4-9cec-6dc70756ed9d")
-	)
-	(bus_entry
 		(at 254 139.7)
 		(size 2.54 -2.54)
 		(stroke
@@ -1640,15 +1479,6 @@
 		(uuid "d3394426-bdc7-4735-af6e-99c641f9e518")
 	)
 	(bus_entry
-		(at 68.58 48.26)
-		(size -2.54 -2.54)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "d84623e7-0fd5-4be0-b105-57f65952b058")
-	)
-	(bus_entry
 		(at 254 111.76)
 		(size 2.54 -2.54)
 		(stroke
@@ -1665,15 +1495,6 @@
 			(type default)
 		)
 		(uuid "e36c12d3-13d7-40d5-9947-10e82a680845")
-	)
-	(bus_entry
-		(at 68.58 86.36)
-		(size -2.54 -2.54)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "e3779002-ec6c-4006-b6c1-a040919e5f83")
 	)
 	(bus_entry
 		(at 254 83.82)
@@ -1703,24 +1524,6 @@
 		(uuid "f2ec03a3-b664-4701-8723-da77fb0cba2e")
 	)
 	(bus_entry
-		(at 68.58 71.12)
-		(size -2.54 -2.54)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "f8ab0799-536a-4fbb-9711-5e6c2b0af74e")
-	)
-	(bus_entry
-		(at 68.58 25.4)
-		(size -2.54 -2.54)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "f8f45f21-731a-456a-9573-1ca2edb973db")
-	)
-	(bus_entry
 		(at 254 40.64)
 		(size 2.54 -2.54)
 		(stroke
@@ -1737,25 +1540,6 @@
 			(type default)
 		)
 		(uuid "fcf194b2-4399-43dd-b200-5841618850c5")
-	)
-	(bus_entry
-		(at 68.58 50.8)
-		(size -2.54 -2.54)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "fd3caaca-aa85-4c6e-a8b0-d7b69ac245f3")
-	)
-	(bus
-		(pts
-			(xy 66.04 76.2) (xy 66.04 78.74)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "008b8f44-5904-4f48-9969-c970a0233835")
 	)
 	(wire
 		(pts
@@ -1777,26 +1561,6 @@
 		)
 		(uuid "03ff4ee1-c5c1-4438-81fd-03918d6bc246")
 	)
-	(bus
-		(pts
-			(xy 66.04 30.48) (xy 66.04 33.02)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "04a0a09e-f26f-4d59-a5e8-22157486ea1c")
-	)
-	(wire
-		(pts
-			(xy 119.38 88.9) (xy 124.46 88.9)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "04e21c44-39df-44b2-8a0d-604dda73fb3b")
-	)
 	(wire
 		(pts
 			(xy 200.66 20.32) (xy 200.66 22.86)
@@ -1806,16 +1570,6 @@
 			(type default)
 		)
 		(uuid "05ab03f0-911b-459e-b4f8-983be066d0bf")
-	)
-	(wire
-		(pts
-			(xy 68.58 55.88) (xy 83.82 55.88)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "05ec82e0-868f-4b7a-b3cb-7ad8f784f1d3")
 	)
 	(wire
 		(pts
@@ -1846,16 +1600,6 @@
 			(type default)
 		)
 		(uuid "077e2733-4df6-48a5-9a7f-40de31ce807d")
-	)
-	(wire
-		(pts
-			(xy 68.58 78.74) (xy 83.82 78.74)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "07effe11-8c4d-46f8-abc6-f43aeb10ecbb")
 	)
 	(wire
 		(pts
@@ -1926,6 +1670,16 @@
 			(type default)
 		)
 		(uuid "16dcde00-d41b-43d3-8b3e-78c0de967da6")
+	)
+	(wire
+		(pts
+			(xy 119.38 88.9) (xy 124.46 88.9)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "17093b54-2051-4baa-9dbc-bbac63ac798e")
 	)
 	(wire
 		(pts
@@ -2009,16 +1763,6 @@
 	)
 	(wire
 		(pts
-			(xy 68.58 58.42) (xy 83.82 58.42)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "1ddac5fb-8eb5-4284-998e-ab5154b44fab")
-	)
-	(wire
-		(pts
 			(xy 200.66 45.72) (xy 200.66 53.34)
 		)
 		(stroke
@@ -2026,26 +1770,6 @@
 			(type default)
 		)
 		(uuid "1f8a0211-f8a5-4674-a63a-844f1e862252")
-	)
-	(wire
-		(pts
-			(xy 68.58 25.4) (xy 83.82 25.4)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "210382af-ca04-4cdb-8c2b-ff2ca11a6765")
-	)
-	(wire
-		(pts
-			(xy 68.58 63.5) (xy 83.82 63.5)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "22d7c4d7-bd7d-4025-afbe-1ea89c96f996")
 	)
 	(wire
 		(pts
@@ -2089,16 +1813,6 @@
 	)
 	(wire
 		(pts
-			(xy 68.58 27.94) (xy 83.82 27.94)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "269f59d2-d3bd-44d5-8b27-5381ffce3784")
-	)
-	(wire
-		(pts
 			(xy 231.14 99.06) (xy 208.28 99.06)
 		)
 		(stroke
@@ -2116,16 +1830,6 @@
 			(type default)
 		)
 		(uuid "286e86ad-bcdc-46ec-ad50-42de784fa1bf")
-	)
-	(bus
-		(pts
-			(xy 66.04 91.44) (xy 66.04 93.98)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "29b10c1d-8392-4d55-894e-c5c53ec1b916")
 	)
 	(wire
 		(pts
@@ -2249,16 +1953,6 @@
 	)
 	(wire
 		(pts
-			(xy 68.58 88.9) (xy 83.82 88.9)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "3128822a-b522-4b00-886c-f6fb3a8f7504")
-	)
-	(wire
-		(pts
 			(xy 185.42 83.82) (xy 200.66 83.82)
 		)
 		(stroke
@@ -2349,16 +2043,6 @@
 	)
 	(wire
 		(pts
-			(xy 124.46 48.26) (xy 119.38 48.26)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "3a2871e6-e2da-498f-addc-577f031e3813")
-	)
-	(wire
-		(pts
 			(xy 238.76 104.14) (xy 254 104.14)
 		)
 		(stroke
@@ -2379,16 +2063,6 @@
 	)
 	(wire
 		(pts
-			(xy 68.58 86.36) (xy 83.82 86.36)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "3dc1af98-fed6-491c-8f29-bde97ac06613")
-	)
-	(wire
-		(pts
 			(xy 124.46 55.88) (xy 119.38 55.88)
 		)
 		(stroke
@@ -2396,16 +2070,6 @@
 			(type default)
 		)
 		(uuid "3df8b545-3a71-459d-8f44-fb7c49a94841")
-	)
-	(bus
-		(pts
-			(xy 66.04 45.72) (xy 66.04 48.26)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "3efb9168-7fe0-46f2-ac0a-c3c2a0b89c5d")
 	)
 	(wire
 		(pts
@@ -2439,6 +2103,16 @@
 	)
 	(wire
 		(pts
+			(xy 78.74 45.72) (xy 83.82 45.72)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "477d797f-5e7d-4f4d-b4dd-c083908c1746")
+	)
+	(wire
+		(pts
 			(xy 203.2 40.64) (xy 203.2 33.02)
 		)
 		(stroke
@@ -2466,16 +2140,6 @@
 			(type default)
 		)
 		(uuid "488a4854-9e05-4b14-878a-56334cf758ea")
-	)
-	(bus
-		(pts
-			(xy 66.04 53.34) (xy 66.04 55.88)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "48cbe7c6-fd2b-442a-aba1-0cbae64e533b")
 	)
 	(wire
 		(pts
@@ -2567,16 +2231,6 @@
 		)
 		(uuid "530ce1f4-0033-42df-8155-b3f312748375")
 	)
-	(wire
-		(pts
-			(xy 68.58 93.98) (xy 83.82 93.98)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "54463cde-bcaa-4cf1-ac1f-db0e38e053dc")
-	)
 	(bus
 		(pts
 			(xy 256.54 132.08) (xy 256.54 129.54)
@@ -2599,13 +2253,13 @@
 	)
 	(bus
 		(pts
-			(xy 66.04 25.4) (xy 66.04 30.48)
+			(xy 256.54 27.94) (xy 264.16 27.94)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "5c626a3b-330b-4a3a-8fb5-53087c20b228")
+		(uuid "5bc4f416-a8ce-4790-962a-d289c6a05cb7")
 	)
 	(wire
 		(pts
@@ -2686,16 +2340,6 @@
 			(type default)
 		)
 		(uuid "647922cc-c278-400b-ac30-f935de98853f")
-	)
-	(bus
-		(pts
-			(xy 66.04 86.36) (xy 66.04 91.44)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "64f6f4d3-a76f-4020-8733-01af91e468d0")
 	)
 	(wire
 		(pts
@@ -2807,6 +2451,16 @@
 		)
 		(uuid "70937bd1-0ff1-47a7-9fdd-8bf0bc5194d8")
 	)
+	(bus
+		(pts
+			(xy 78.74 93.98) (xy 83.82 93.98)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "713efb94-1ee9-4ca1-8abc-15e8652e805a")
+	)
 	(wire
 		(pts
 			(xy 119.38 154.94) (xy 137.16 154.94)
@@ -2849,26 +2503,6 @@
 	)
 	(wire
 		(pts
-			(xy 124.46 91.44) (xy 119.38 91.44)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "74f58f6c-da21-4655-9669-b47e3b470a2a")
-	)
-	(wire
-		(pts
-			(xy 68.58 40.64) (xy 83.82 40.64)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "76a4b32c-a1d3-4183-9230-3a04a568bf6e")
-	)
-	(wire
-		(pts
 			(xy 193.04 121.92) (xy 193.04 114.3)
 		)
 		(stroke
@@ -2886,6 +2520,16 @@
 			(type default)
 		)
 		(uuid "775c5dab-49f6-4c75-add9-59a47e9b5fae")
+	)
+	(wire
+		(pts
+			(xy 119.38 86.36) (xy 124.46 86.36)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7790939b-4803-4026-af2b-a512d1c1a553")
 	)
 	(wire
 		(pts
@@ -2907,26 +2551,6 @@
 		)
 		(uuid "78c399bc-b6f9-424e-bd07-6ecb423b169a")
 	)
-	(bus
-		(pts
-			(xy 256.54 27.94) (xy 264.16 27.94)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "79ab7aef-d762-4545-8458-d11fdc7d4e78")
-	)
-	(wire
-		(pts
-			(xy 68.58 66.04) (xy 83.82 66.04)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "7a18c72f-0e67-4bd7-8e4b-54062bbf9671")
-	)
 	(wire
 		(pts
 			(xy 238.76 45.72) (xy 254 45.72)
@@ -2936,16 +2560,6 @@
 			(type default)
 		)
 		(uuid "7aed8c8c-3ef3-4a74-b481-02e892e68be5")
-	)
-	(bus
-		(pts
-			(xy 66.04 68.58) (xy 66.04 71.12)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "7b66dce4-cf23-4f91-a128-e2e1debd013d")
 	)
 	(bus
 		(pts
@@ -2979,16 +2593,6 @@
 	)
 	(wire
 		(pts
-			(xy 68.58 96.52) (xy 83.82 96.52)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "7e17ca44-f61b-45fd-90b5-762683faf9db")
-	)
-	(wire
-		(pts
 			(xy 200.66 38.1) (xy 205.74 38.1)
 		)
 		(stroke
@@ -3009,26 +2613,6 @@
 	)
 	(wire
 		(pts
-			(xy 68.58 50.8) (xy 83.82 50.8)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "82137818-8859-471e-a1c2-83cbee33f908")
-	)
-	(bus
-		(pts
-			(xy 66.04 22.86) (xy 66.04 25.4)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "82566291-1194-4d63-994a-0dd5196122d4")
-	)
-	(wire
-		(pts
 			(xy 238.76 142.24) (xy 254 142.24)
 		)
 		(stroke
@@ -3036,16 +2620,6 @@
 			(type default)
 		)
 		(uuid "855d8bae-a869-4d0e-b168-4df2f0728e53")
-	)
-	(wire
-		(pts
-			(xy 68.58 71.12) (xy 83.82 71.12)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "8632c30d-3294-401a-897b-7dba233669e9")
 	)
 	(wire
 		(pts
@@ -3107,16 +2681,6 @@
 		)
 		(uuid "8a41ac46-6d41-4319-96f0-ec2e6d00d0be")
 	)
-	(wire
-		(pts
-			(xy 68.58 73.66) (xy 83.82 73.66)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "8aecab00-7974-46dd-86ff-850badba5997")
-	)
 	(bus
 		(pts
 			(xy 256.54 109.22) (xy 256.54 106.68)
@@ -3159,16 +2723,6 @@
 	)
 	(wire
 		(pts
-			(xy 68.58 43.18) (xy 83.82 43.18)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "8f60c628-3e7c-4988-9f44-35ffae488ee8")
-	)
-	(wire
-		(pts
 			(xy 203.2 71.12) (xy 205.74 71.12)
 		)
 		(stroke
@@ -3186,16 +2740,6 @@
 			(type default)
 		)
 		(uuid "90802bc8-4683-4214-94d6-4f5c9a4c9b80")
-	)
-	(bus
-		(pts
-			(xy 66.04 60.96) (xy 66.04 63.5)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "9103b006-845f-4977-87e6-6b2e30bc0c5a")
 	)
 	(wire
 		(pts
@@ -3236,6 +2780,16 @@
 			(type default)
 		)
 		(uuid "92996fbe-dedc-4d63-bfae-146b0a2cea4e")
+	)
+	(wire
+		(pts
+			(xy 119.38 96.52) (xy 124.46 96.52)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "92b6b08a-9957-4f15-8a12-70d91d4895fa")
 	)
 	(wire
 		(pts
@@ -3326,16 +2880,6 @@
 			(type default)
 		)
 		(uuid "9b288479-4f61-4944-9104-04d255198718")
-	)
-	(bus
-		(pts
-			(xy 66.04 40.64) (xy 66.04 45.72)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "9c1865dc-06bf-473b-b29b-8aef145a4193")
 	)
 	(bus
 		(pts
@@ -3507,16 +3051,6 @@
 		)
 		(uuid "a8220486-6f37-4e82-a461-67ad43c41485")
 	)
-	(bus
-		(pts
-			(xy 66.04 83.82) (xy 66.04 86.36)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "a87c9b69-a593-4b71-9c2c-839e5a87b432")
-	)
 	(wire
 		(pts
 			(xy 190.5 104.14) (xy 195.58 104.14)
@@ -3536,16 +3070,6 @@
 			(type default)
 		)
 		(uuid "aa52ac53-542a-4d56-bc7a-a1ddaeeabce4")
-	)
-	(wire
-		(pts
-			(xy 68.58 81.28) (xy 83.82 81.28)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "aa679b8d-ba25-4e4d-8d4a-2ba69bd300c8")
 	)
 	(bus
 		(pts
@@ -3579,16 +3103,6 @@
 	)
 	(bus
 		(pts
-			(xy 66.04 71.12) (xy 66.04 76.2)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "ae3c9fc7-94fa-46a5-95d5-53e35492547b")
-	)
-	(bus
-		(pts
 			(xy 124.46 71.12) (xy 119.38 71.12)
 		)
 		(stroke
@@ -3596,6 +3110,16 @@
 			(type default)
 		)
 		(uuid "aec2d133-ad87-49c2-8c21-caa4cff7d6ea")
+	)
+	(wire
+		(pts
+			(xy 78.74 81.28) (xy 83.82 81.28)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "aeebc337-59a7-433d-9e28-2cb60a057645")
 	)
 	(bus
 		(pts
@@ -3957,16 +3481,6 @@
 		)
 		(uuid "d4b28476-4a4c-4ec4-bd43-e09355aac021")
 	)
-	(bus
-		(pts
-			(xy 66.04 63.5) (xy 66.04 68.58)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "d4fbadf4-2e2c-4b43-91d4-7f257dcfb1e6")
-	)
 	(wire
 		(pts
 			(xy 119.38 182.88) (xy 137.16 182.88)
@@ -3976,16 +3490,6 @@
 			(type default)
 		)
 		(uuid "d5acfa1e-90f3-4de3-8cff-eda843520838")
-	)
-	(wire
-		(pts
-			(xy 68.58 35.56) (xy 83.82 35.56)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "d632f3ee-ed03-4ee6-ab2a-ec57589d1e39")
 	)
 	(wire
 		(pts
@@ -4036,16 +3540,6 @@
 			(type default)
 		)
 		(uuid "dac5562e-ccef-4c13-85d3-53b34d2ecb2a")
-	)
-	(bus
-		(pts
-			(xy 66.04 55.88) (xy 66.04 60.96)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "db798094-1126-4abf-9fe2-35c732bba3ec")
 	)
 	(wire
 		(pts
@@ -4119,16 +3613,6 @@
 	)
 	(wire
 		(pts
-			(xy 68.58 48.26) (xy 83.82 48.26)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "e13eeca1-1896-4f7b-b3eb-8b672c02bdc6")
-	)
-	(wire
-		(pts
 			(xy 119.38 25.4) (xy 124.46 25.4)
 		)
 		(stroke
@@ -4156,46 +3640,6 @@
 			(type default)
 		)
 		(uuid "e3b74c74-dc3b-46c3-9fec-a52286770d90")
-	)
-	(bus
-		(pts
-			(xy 66.04 48.26) (xy 66.04 53.34)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "e3d9989a-a598-4dbc-bf76-af64df875b06")
-	)
-	(bus
-		(pts
-			(xy 66.04 38.1) (xy 66.04 40.64)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "e428835f-6e3d-46b6-95c0-5b7b9fc4b0a8")
-	)
-	(wire
-		(pts
-			(xy 68.58 33.02) (xy 83.82 33.02)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "e4926f67-9040-4f77-b388-b705d84a9108")
-	)
-	(bus
-		(pts
-			(xy 66.04 20.32) (xy 66.04 22.86)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "e4cf3994-ae4e-4304-bc89-9e4117c723e6")
 	)
 	(wire
 		(pts
@@ -4377,16 +3821,6 @@
 		)
 		(uuid "f2dff037-9534-4ebe-86a8-d35e5eec2b46")
 	)
-	(bus
-		(pts
-			(xy 66.04 33.02) (xy 66.04 38.1)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "f36f6627-3cb4-4899-8a98-cc656729c94c")
-	)
 	(wire
 		(pts
 			(xy 66.04 137.16) (xy 73.66 137.16)
@@ -4419,6 +3853,16 @@
 	)
 	(wire
 		(pts
+			(xy 119.38 93.98) (xy 124.46 93.98)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fb42dab4-75fd-4009-97e0-6572f2c24163")
+	)
+	(wire
+		(pts
 			(xy 195.58 162.56) (xy 190.5 162.56)
 		)
 		(stroke
@@ -4447,16 +3891,6 @@
 		)
 		(uuid "fc044e74-d1d8-4390-aa24-13e4667255be")
 	)
-	(bus
-		(pts
-			(xy 66.04 78.74) (xy 66.04 83.82)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "fd7cff51-6136-4283-9ad2-9b7c7b5b54c6")
-	)
 	(wire
 		(pts
 			(xy 231.14 129.54) (xy 208.28 129.54)
@@ -4469,7 +3903,7 @@
 	)
 	(bus
 		(pts
-			(xy 55.88 20.32) (xy 66.04 20.32)
+			(xy 78.74 25.4) (xy 83.82 25.4)
 		)
 		(stroke
 			(width 0)
@@ -4509,7 +3943,6 @@
 	)
 	(label "PCIe_PER2_P"
 		(at 238.76 111.76 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4520,7 +3953,6 @@
 	)
 	(label "M2_PET0_N"
 		(at 231.14 83.82 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4531,7 +3963,6 @@
 	)
 	(label "MGT_RX3_N"
 		(at 137.16 175.26 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4542,7 +3973,6 @@
 	)
 	(label "PCIe_PET3_P"
 		(at 231.14 33.02 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4553,7 +3983,6 @@
 	)
 	(label "PCIe_PET2_N"
 		(at 238.76 43.18 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4564,7 +3993,6 @@
 	)
 	(label "M2_PER0_P"
 		(at 231.14 152.4 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4575,7 +4003,6 @@
 	)
 	(label "M2_PET0_P"
 		(at 231.14 86.36 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4586,7 +4013,6 @@
 	)
 	(label "PCIe_PET1_N"
 		(at 238.76 38.1 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4597,7 +4023,6 @@
 	)
 	(label "PCIe_PET2_N"
 		(at 231.14 45.72 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4608,7 +4033,6 @@
 	)
 	(label "MGT_TX1_P"
 		(at 172.72 121.92 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4619,7 +4043,6 @@
 	)
 	(label "MGT_TX0_N"
 		(at 172.72 104.14 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4630,7 +4053,6 @@
 	)
 	(label "M2_PERST#"
 		(at 218.44 22.86 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4639,20 +4061,8 @@
 		)
 		(uuid "18637743-197f-45cf-853f-dda2f3fe3333")
 	)
-	(label "LCLK_P"
-		(at 71.12 55.88 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "199ed5c2-dff7-419b-8a67-8c11b2b66a86")
-	)
 	(label "M2_PER1_N"
 		(at 238.76 137.16 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4663,7 +4073,6 @@
 	)
 	(label "MGT_CLK1_N"
 		(at 137.16 182.88 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4674,7 +4083,6 @@
 	)
 	(label "PCIe_PET3_N"
 		(at 231.14 30.48 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4685,7 +4093,6 @@
 	)
 	(label "MGT_TX0_P"
 		(at 66.04 154.94 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4696,7 +4103,6 @@
 	)
 	(label "MGT_CLK1_P"
 		(at 172.72 172.72 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4707,7 +4113,6 @@
 	)
 	(label "MGT_RX3_N"
 		(at 185.42 83.82 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4718,7 +4123,6 @@
 	)
 	(label "MGT_RX1_P"
 		(at 137.16 162.56 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4729,7 +4133,6 @@
 	)
 	(label "M2_PET1_P"
 		(at 238.76 73.66 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4740,7 +4143,6 @@
 	)
 	(label "M2_PET1_N"
 		(at 231.14 68.58 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4751,7 +4153,6 @@
 	)
 	(label "PCIe_PET0_N"
 		(at 231.14 76.2 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4762,7 +4163,6 @@
 	)
 	(label "M2_PER2_P"
 		(at 231.14 121.92 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4773,7 +4173,6 @@
 	)
 	(label "PCIe_REFCLK_N"
 		(at 231.14 162.56 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4784,7 +4183,6 @@
 	)
 	(label "PCIe_PET1_P"
 		(at 231.14 63.5 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4795,7 +4193,6 @@
 	)
 	(label "MGT_TX2_N"
 		(at 172.72 134.62 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4806,7 +4203,6 @@
 	)
 	(label "M2_PER3_N"
 		(at 238.76 147.32 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4817,7 +4213,6 @@
 	)
 	(label "M2_PET2_P"
 		(at 231.14 55.88 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4826,20 +4221,8 @@
 		)
 		(uuid "3468ee17-4c4a-46ed-bc2d-935889e02f7f")
 	)
-	(label "D2B_P"
-		(at 71.12 48.26 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "35eadc1d-4cc6-482d-aa32-32b8fea8e4c5")
-	)
 	(label "M2_PER0_N"
 		(at 231.14 149.86 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4850,7 +4233,6 @@
 	)
 	(label "PCIe_PER1_P"
 		(at 238.76 106.68 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4861,7 +4243,6 @@
 	)
 	(label "M2_PET1_N"
 		(at 238.76 71.12 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4870,20 +4251,8 @@
 		)
 		(uuid "3bcbafaa-ace4-47eb-9179-62af6d4fbc82")
 	)
-	(label "D2A_N"
-		(at 71.12 43.18 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "3c32cce7-ae22-4b48-afac-e244a6cbaf89")
-	)
 	(label "M2_PER3_P"
 		(at 238.76 149.86 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4894,7 +4263,6 @@
 	)
 	(label "TMS"
 		(at 71.12 127 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4905,7 +4273,6 @@
 	)
 	(label "MGT_RX0_P"
 		(at 137.16 154.94 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4916,7 +4283,6 @@
 	)
 	(label "M2_PER1_P"
 		(at 238.76 139.7 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4927,7 +4293,6 @@
 	)
 	(label "PCIe_PET0_P"
 		(at 238.76 35.56 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4938,7 +4303,6 @@
 	)
 	(label "MGT_TX0_N"
 		(at 66.04 152.4 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4949,7 +4313,6 @@
 	)
 	(label "MGT_RX1_N"
 		(at 137.16 160.02 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4960,7 +4323,6 @@
 	)
 	(label "MGT_RX1_N"
 		(at 185.42 53.34 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4971,7 +4333,6 @@
 	)
 	(label "PCIe_PER3_N"
 		(at 231.14 96.52 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4982,7 +4343,6 @@
 	)
 	(label "PCIe_PER1_N"
 		(at 231.14 127 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4993,7 +4353,6 @@
 	)
 	(label "PCIe_PER3_P"
 		(at 231.14 99.06 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5004,7 +4363,6 @@
 	)
 	(label "M2_PET0_N"
 		(at 238.76 66.04 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5015,7 +4373,6 @@
 	)
 	(label "PCIe_PER0_N"
 		(at 231.14 142.24 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5026,7 +4383,6 @@
 	)
 	(label "PCIe_PET2_P"
 		(at 231.14 48.26 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5037,7 +4393,6 @@
 	)
 	(label "MGT_RX2_P"
 		(at 137.16 170.18 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5048,7 +4403,6 @@
 	)
 	(label "PCIe_PET3_P"
 		(at 238.76 50.8 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5059,7 +4413,6 @@
 	)
 	(label "PCIe_PET3_N"
 		(at 238.76 48.26 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5070,7 +4423,6 @@
 	)
 	(label "PCIe_PET2_P"
 		(at 238.76 45.72 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5081,7 +4433,6 @@
 	)
 	(label "M2_PET0_P"
 		(at 238.76 68.58 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5092,7 +4443,6 @@
 	)
 	(label "MGT_TX3_N"
 		(at 66.04 175.26 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5101,20 +4451,8 @@
 		)
 		(uuid "5b403c1b-b0b5-4be7-b8f5-9a95caa6e06e")
 	)
-	(label "D1B_P"
-		(at 71.12 33.02 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "5b59ca81-edd0-4618-81ff-b061ddad38a5")
-	)
 	(label "MGT_TX1_N"
 		(at 66.04 160.02 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5123,20 +4461,8 @@
 		)
 		(uuid "5f491161-c091-4d98-a482-0b9fbfb4fd49")
 	)
-	(label "D3B_P"
-		(at 71.12 78.74 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "60d5582c-7eb5-4ae0-b82f-c115de824f50")
-	)
 	(label "MGT_TX3_P"
 		(at 172.72 152.4 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5147,7 +4473,6 @@
 	)
 	(label "PCIe_PER3_P"
 		(at 238.76 116.84 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5158,7 +4483,6 @@
 	)
 	(label "PCIe_PER2_N"
 		(at 231.14 111.76 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5167,20 +4491,8 @@
 		)
 		(uuid "6526360c-481c-481e-8ed2-325f91545049")
 	)
-	(label "D3A_P"
-		(at 71.12 71.12 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "65aaefc5-d223-415d-a58d-1f6e2be3bd19")
-	)
 	(label "M2_PER3_N"
 		(at 231.14 104.14 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5191,7 +4503,6 @@
 	)
 	(label "PCIe_PER3_N"
 		(at 238.76 114.3 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5202,7 +4513,6 @@
 	)
 	(label "TDO"
 		(at 71.12 132.08 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5211,53 +4521,8 @@
 		)
 		(uuid "6d715a0c-7e7d-48b0-bf5e-f1a81be67e3a")
 	)
-	(label "D4B_N"
-		(at 71.12 96.52 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "6f7c8853-6079-42fb-a798-74de5eafe983")
-	)
-	(label "D4A_N"
-		(at 71.12 88.9 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "71a8d203-18c0-41c6-ad60-6f7cd80c31e2")
-	)
-	(label "D2B_N"
-		(at 71.12 50.8 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "71c69f61-fdfb-4385-a49d-17a064847517")
-	)
-	(label "D1A_P"
-		(at 71.12 25.4 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "72a8ba86-c9d9-4cb0-a989-ca600febea76")
-	)
 	(label "MGT_RX0_P"
 		(at 185.42 40.64 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5268,7 +4533,6 @@
 	)
 	(label "PERST#"
 		(at 185.42 22.86 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5279,7 +4543,6 @@
 	)
 	(label "MGT_RX3_P"
 		(at 137.16 177.8 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5290,7 +4553,6 @@
 	)
 	(label "TDI"
 		(at 71.12 129.54 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5301,7 +4563,6 @@
 	)
 	(label "M2_PET3_P"
 		(at 231.14 40.64 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5312,7 +4573,6 @@
 	)
 	(label "PCIe_PER0_N"
 		(at 238.76 99.06 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5323,7 +4583,6 @@
 	)
 	(label "M2_PET3_N"
 		(at 238.76 81.28 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5334,7 +4593,6 @@
 	)
 	(label "M2_PER1_P"
 		(at 231.14 137.16 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5345,7 +4603,6 @@
 	)
 	(label "MGT_RX3_P"
 		(at 185.42 86.36 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5356,7 +4613,6 @@
 	)
 	(label "M2_PET2_N"
 		(at 231.14 53.34 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5367,7 +4623,6 @@
 	)
 	(label "M2_PER0_P"
 		(at 238.76 134.62 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5376,20 +4631,8 @@
 		)
 		(uuid "89db356c-9fe3-48c9-b7be-b2fa86dae4e2")
 	)
-	(label "D1B_N"
-		(at 71.12 35.56 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "8c8e5642-7ea6-43f0-896a-2985ffc171df")
-	)
 	(label "M2_PER1_N"
 		(at 231.14 134.62 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5400,7 +4643,6 @@
 	)
 	(label "M2_PET3_P"
 		(at 238.76 83.82 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5411,7 +4653,6 @@
 	)
 	(label "PCIe_PET1_N"
 		(at 231.14 60.96 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5422,7 +4663,6 @@
 	)
 	(label "M2_PER0_N"
 		(at 238.76 132.08 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5433,7 +4673,6 @@
 	)
 	(label "MGT_TX1_N"
 		(at 172.72 119.38 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5444,7 +4683,6 @@
 	)
 	(label "M2_PET2_P"
 		(at 238.76 78.74 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5455,7 +4693,6 @@
 	)
 	(label "PCIe_PER0_P"
 		(at 238.76 101.6 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5464,20 +4701,8 @@
 		)
 		(uuid "9a9a08a0-888d-4b28-b923-cf0fe2ae9bb4")
 	)
-	(label "D4B_P"
-		(at 71.12 93.98 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "9b930360-6e0c-4ee0-939b-145abf7b0642")
-	)
 	(label "M2_PET3_N"
 		(at 231.14 38.1 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5488,7 +4713,6 @@
 	)
 	(label "MGT_RX2_P"
 		(at 185.42 71.12 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5499,7 +4723,6 @@
 	)
 	(label "MGT_RX2_N"
 		(at 137.16 167.64 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5510,7 +4733,6 @@
 	)
 	(label "MGT_RX2_N"
 		(at 185.42 68.58 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5521,7 +4743,6 @@
 	)
 	(label "M2_PER2_N"
 		(at 231.14 119.38 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5532,7 +4753,6 @@
 	)
 	(label "TCK"
 		(at 71.12 134.62 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5543,7 +4763,6 @@
 	)
 	(label "MGT_CLK1_N"
 		(at 172.72 170.18 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5554,7 +4773,6 @@
 	)
 	(label "PCIe_PERST#"
 		(at 218.44 20.32 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5563,20 +4781,8 @@
 		)
 		(uuid "ab409acd-0c24-4719-a289-326903116966")
 	)
-	(label "D1A_N"
-		(at 71.12 27.94 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "aba25699-a41f-44d1-977c-f77a0a16f354")
-	)
 	(label "PCIe_PER2_P"
 		(at 231.14 114.3 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5587,7 +4793,6 @@
 	)
 	(label "PCIe_PER1_N"
 		(at 238.76 104.14 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5596,31 +4801,8 @@
 		)
 		(uuid "b6acdf9e-acde-4739-8acd-599154cf8638")
 	)
-	(label "FCLK_N"
-		(at 71.12 66.04 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "b795ce73-446f-42cf-8e62-be225741c2a2")
-	)
-	(label "D4A_P"
-		(at 71.12 86.36 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "b798cf9e-27eb-46ff-b09d-80a71d5626b5")
-	)
 	(label "MGT_TX2_P"
 		(at 66.04 170.18 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5631,7 +4813,6 @@
 	)
 	(label "M2_PER2_P"
 		(at 238.76 144.78 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5640,20 +4821,8 @@
 		)
 		(uuid "bfaef99a-c6a8-4a0f-a03c-0a85955aab90")
 	)
-	(label "FCLK_P"
-		(at 71.12 63.5 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "c41973e8-306a-46ca-b818-dfb4fc7b07cf")
-	)
 	(label "PCIe_PET1_P"
 		(at 238.76 40.64 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5664,7 +4833,6 @@
 	)
 	(label "PCIe_PET0_N"
 		(at 238.76 33.02 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5675,7 +4843,6 @@
 	)
 	(label "M2_PER3_P"
 		(at 231.14 106.68 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5686,7 +4853,6 @@
 	)
 	(label "MGT_CLK1_P"
 		(at 137.16 185.42 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5697,7 +4863,6 @@
 	)
 	(label "MGT_TX2_N"
 		(at 66.04 167.64 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5708,7 +4873,6 @@
 	)
 	(label "MGT_TX3_P"
 		(at 66.04 177.8 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5719,7 +4883,6 @@
 	)
 	(label "MGT_TX3_N"
 		(at 172.72 149.86 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5730,7 +4893,6 @@
 	)
 	(label "MGT_RX0_N"
 		(at 137.16 152.4 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5741,7 +4903,6 @@
 	)
 	(label "PCIe_REFCLK_P"
 		(at 231.14 165.1 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5752,7 +4913,6 @@
 	)
 	(label "PCIe_PER0_P"
 		(at 231.14 144.78 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5763,7 +4923,6 @@
 	)
 	(label "MGT_TX1_P"
 		(at 66.04 162.56 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5774,7 +4933,6 @@
 	)
 	(label "M2_REFCLK_N"
 		(at 231.14 170.18 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5783,20 +4941,8 @@
 		)
 		(uuid "dac6641c-f1a4-453d-8c35-fe212f547f3e")
 	)
-	(label "LCLK_N"
-		(at 71.12 58.42 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "daf23213-aa48-4646-8e5c-e779b4fa008c")
-	)
 	(label "M2_PET2_N"
 		(at 238.76 76.2 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5807,7 +4953,6 @@
 	)
 	(label "PERST#"
 		(at 71.12 109.22 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5818,7 +4963,6 @@
 	)
 	(label "M2_REFCLK_P"
 		(at 231.14 172.72 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5829,7 +4973,6 @@
 	)
 	(label "PCIe_PER1_P"
 		(at 231.14 129.54 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5840,7 +4983,6 @@
 	)
 	(label "PCIe_PET0_P"
 		(at 231.14 78.74 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5851,7 +4993,6 @@
 	)
 	(label "MGT_RX1_P"
 		(at 185.42 55.88 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5862,7 +5003,6 @@
 	)
 	(label "M2_PER2_N"
 		(at 238.76 142.24 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5871,20 +5011,8 @@
 		)
 		(uuid "e8484590-c383-4e03-a295-9ee677e2d81c")
 	)
-	(label "D2A_P"
-		(at 71.12 40.64 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "eb69de12-7660-4e94-ac57-3705b2508e40")
-	)
 	(label "PCIe_PER2_N"
 		(at 238.76 109.22 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5895,7 +5023,6 @@
 	)
 	(label "MGT_RX0_N"
 		(at 185.42 38.1 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5906,7 +5033,6 @@
 	)
 	(label "MGT_TX2_P"
 		(at 172.72 137.16 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5915,31 +5041,8 @@
 		)
 		(uuid "f1f9638b-b3c9-4834-b24f-594a013e5e3a")
 	)
-	(label "D3A_N"
-		(at 71.12 73.66 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "f23fa755-dcf6-42d0-afb3-6fa6d65471df")
-	)
-	(label "D3B_N"
-		(at 71.12 81.28 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "f3a34ecd-7312-4a28-accc-1d569d6a8f70")
-	)
 	(label "M2_PET1_P"
 		(at 231.14 71.12 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5950,7 +5053,6 @@
 	)
 	(label "MGT_TX0_P"
 		(at 172.72 106.68 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5962,7 +5064,6 @@
 	(hierarchical_label "PLL_SDA"
 		(shape bidirectional)
 		(at 124.46 38.1 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5974,7 +5075,6 @@
 	(hierarchical_label "M2_REFCLK_N"
 		(shape input)
 		(at 238.76 170.18 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5986,7 +5086,6 @@
 	(hierarchical_label "M2_REFCLK_P"
 		(shape input)
 		(at 238.76 172.72 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5995,10 +5094,20 @@
 		)
 		(uuid "08f00601-9148-4f9b-ba34-adda2112bfb8")
 	)
+	(hierarchical_label "ACQ_PG"
+		(shape input)
+		(at 78.74 45.72 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "0e30016d-e637-4e92-8ad4-f3c93a6aeaea")
+	)
 	(hierarchical_label "ATTEN_[4..1]"
 		(shape output)
 		(at 124.46 73.66 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6007,10 +5116,20 @@
 		)
 		(uuid "179644a4-95e8-4200-a3b8-fb5d80e2cb69")
 	)
+	(hierarchical_label "FE_PG"
+		(shape input)
+		(at 78.74 81.28 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "1a25590a-c24f-4f0f-af40-f56a6c9b6c51")
+	)
 	(hierarchical_label "{PCIe_TX}"
 		(shape passive)
 		(at 264.16 27.94 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6022,7 +5141,6 @@
 	(hierarchical_label "PCIe_REFCLK_P"
 		(shape input)
 		(at 238.76 165.1 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6034,7 +5152,6 @@
 	(hierarchical_label "DC_CPL_[4..1]"
 		(shape output)
 		(at 124.46 71.12 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6046,7 +5163,6 @@
 	(hierarchical_label "SYNC_OUT_N"
 		(shape output)
 		(at 124.46 104.14 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6057,8 +5173,7 @@
 	)
 	(hierarchical_label "{ADC_LVDS}"
 		(shape input)
-		(at 55.88 20.32 180)
-		(fields_autoplaced yes)
+		(at 78.74 25.4 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6069,8 +5184,7 @@
 	)
 	(hierarchical_label "LED"
 		(shape output)
-		(at 124.46 91.44 0)
-		(fields_autoplaced yes)
+		(at 124.46 88.9 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6082,7 +5196,6 @@
 	(hierarchical_label "ADC_SDIO"
 		(shape output)
 		(at 124.46 25.4 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6094,7 +5207,6 @@
 	(hierarchical_label "TRIM_SCL"
 		(shape output)
 		(at 124.46 63.5 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6106,7 +5218,6 @@
 	(hierarchical_label "TRIM_SDA"
 		(shape bidirectional)
 		(at 124.46 66.04 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6118,7 +5229,6 @@
 	(hierarchical_label "SYNC_OUT_P"
 		(shape output)
 		(at 124.46 101.6 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6127,10 +5237,31 @@
 		)
 		(uuid "846b96e0-08eb-4f84-83a4-780ee9eec298")
 	)
+	(hierarchical_label "SYNC_REn"
+		(shape output)
+		(at 124.46 93.98 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "859d3181-dd65-4bef-87d1-e8a038bae000")
+	)
+	(hierarchical_label "SYNC_DE"
+		(shape output)
+		(at 124.46 96.52 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "87a8c2ef-b1fb-4b18-b8ef-41909ced3c96")
+	)
 	(hierarchical_label "TERM_[4..1]"
 		(shape output)
 		(at 124.46 76.2 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6142,7 +5273,6 @@
 	(hierarchical_label "M2_PERST#"
 		(shape input)
 		(at 238.76 22.86 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6151,10 +5281,20 @@
 		)
 		(uuid "999a1345-88c0-4917-8761-bc5f993c3ee6")
 	)
+	(hierarchical_label "{USRIO}"
+		(shape bidirectional)
+		(at 78.74 93.98 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "9c6f7521-9565-4bdd-81e8-efc7168e0b33")
+	)
 	(hierarchical_label "ADC_SCLK"
 		(shape output)
 		(at 124.46 27.94 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6166,7 +5306,6 @@
 	(hierarchical_label "SYNC_IN_P"
 		(shape input)
 		(at 78.74 101.6 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6178,7 +5317,6 @@
 	(hierarchical_label "PCIe_PERST#"
 		(shape input)
 		(at 238.76 20.32 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6190,7 +5328,6 @@
 	(hierarchical_label "PGA_SCLK"
 		(shape output)
 		(at 124.46 55.88 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6202,7 +5339,6 @@
 	(hierarchical_label "FE_EN"
 		(shape output)
 		(at 124.46 81.28 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6214,7 +5350,6 @@
 	(hierarchical_label "{M2_TX}"
 		(shape passive)
 		(at 264.16 60.96 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6226,7 +5361,6 @@
 	(hierarchical_label "PCIe_REFCLK_N"
 		(shape input)
 		(at 238.76 162.56 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6238,7 +5372,6 @@
 	(hierarchical_label "PLL_SCL"
 		(shape output)
 		(at 124.46 35.56 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6247,22 +5380,9 @@
 		)
 		(uuid "b65c9756-b868-4818-9e43-810f6424c125")
 	)
-	(hierarchical_label "+1V8_ACQ_EN"
-		(shape output)
-		(at 124.46 48.26 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "bca403cf-6599-4cd4-b8a3-2a4204acdb11")
-	)
 	(hierarchical_label "PGA_CSn_[4..1]"
 		(shape output)
 		(at 124.46 58.42 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6273,8 +5393,7 @@
 	)
 	(hierarchical_label "PROBE_COMP"
 		(shape output)
-		(at 124.46 88.9 0)
-		(fields_autoplaced yes)
+		(at 124.46 86.36 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6286,7 +5405,6 @@
 	(hierarchical_label "{M2_RX}"
 		(shape passive)
 		(at 264.16 127 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6298,7 +5416,6 @@
 	(hierarchical_label "ADC_CSn"
 		(shape output)
 		(at 124.46 30.48 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6307,10 +5424,9 @@
 		)
 		(uuid "cca67c39-a268-4d68-8f32-fdf73e8a28a2")
 	)
-	(hierarchical_label "+3V3_ACQ_EN"
+	(hierarchical_label "ACQ_EN"
 		(shape output)
 		(at 124.46 45.72 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6322,7 +5438,6 @@
 	(hierarchical_label "SYNC_IN_N"
 		(shape input)
 		(at 78.74 104.14 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6334,7 +5449,6 @@
 	(hierarchical_label "{PCIe_RX}"
 		(shape passive)
 		(at 264.16 93.98 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6346,7 +5460,6 @@
 	(hierarchical_label "OSC_OE"
 		(shape output)
 		(at 124.46 40.64 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6358,7 +5471,6 @@
 	(hierarchical_label "PGA_SDIO"
 		(shape output)
 		(at 124.46 53.34 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6385,7 +5497,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "100nF"
 			(at 199.39 113.03 90)
 			(effects
 				(font
@@ -6394,7 +5506,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "GEN_C_0201"
+		(property "Footprint" "Thunderscope_Rev5:GEN_C_0201"
 			(at 200.66 111.76 0)
 			(effects
 				(font
@@ -6461,16 +5573,6 @@
 				(hide yes)
 			)
 		)
-		(property "ALTIUM_VALUE" "100nF"
-			(at 198.406 117.348 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-				(hide yes)
-			)
-		)
 		(property "HOUSE PART NUMBER" "C-100nF-0201-002"
 			(at 198.12 119.38 0)
 			(effects
@@ -6499,6 +5601,14 @@
 				)
 				(justify left bottom)
 				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" ""
+			(at 200.66 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
 			)
 		)
 		(pin "2"
@@ -6534,7 +5644,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "100nF"
 			(at 199.39 135.89 90)
 			(effects
 				(font
@@ -6543,7 +5653,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "GEN_C_0201"
+		(property "Footprint" "Thunderscope_Rev5:GEN_C_0201"
 			(at 200.66 134.62 0)
 			(effects
 				(font
@@ -6610,16 +5720,6 @@
 				(hide yes)
 			)
 		)
-		(property "ALTIUM_VALUE" "100nF"
-			(at 198.406 140.208 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-				(hide yes)
-			)
-		)
 		(property "HOUSE PART NUMBER" "C-100nF-0201-002"
 			(at 198.12 142.24 0)
 			(effects
@@ -6648,6 +5748,14 @@
 				)
 				(justify left bottom)
 				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" ""
+			(at 200.66 134.62 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
 			)
 		)
 		(pin "2"
@@ -6683,7 +5791,7 @@
 				(justify bottom)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "0"
 			(at 210.82 40.64 0)
 			(effects
 				(font
@@ -6691,7 +5799,7 @@
 				)
 			)
 		)
-		(property "Footprint" "GEN_R_0201"
+		(property "Footprint" "Thunderscope_Rev5:GEN_R_0201"
 			(at 210.82 40.64 0)
 			(effects
 				(font
@@ -6739,16 +5847,6 @@
 			)
 		)
 		(property "SUPPLIER PART NUMBER 1" "708-RMCF0201ZT0R00"
-			(at 205.232 39.664 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-				(hide yes)
-			)
-		)
-		(property "ALTIUM_VALUE" "0"
 			(at 205.232 39.664 0)
 			(effects
 				(font
@@ -6798,6 +5896,14 @@
 				(hide yes)
 			)
 		)
+		(property "ALTIUM_VALUE" ""
+			(at 210.82 40.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "192c1802-c8af-4ab4-a1d3-83d2c3097902")
 		)
@@ -6831,7 +5937,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "100nF"
 			(at 204.47 173.99 90)
 			(effects
 				(font
@@ -6840,7 +5946,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "GEN_C_0201"
+		(property "Footprint" "Thunderscope_Rev5:GEN_C_0201"
 			(at 203.2 172.72 0)
 			(effects
 				(font
@@ -6907,16 +6013,6 @@
 				(hide yes)
 			)
 		)
-		(property "ALTIUM_VALUE" "100nF"
-			(at 200.946 178.308 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-				(hide yes)
-			)
-		)
 		(property "HOUSE PART NUMBER" "C-100nF-0201-002"
 			(at 200.66 180.34 0)
 			(effects
@@ -6945,6 +6041,14 @@
 				)
 				(justify left bottom)
 				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" ""
+			(at 203.2 172.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
 			)
 		)
 		(pin "2"
@@ -6980,7 +6084,7 @@
 				(justify bottom)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "0"
 			(at 210.82 83.82 0)
 			(effects
 				(font
@@ -6988,7 +6092,7 @@
 				)
 			)
 		)
-		(property "Footprint" "GEN_R_0201"
+		(property "Footprint" "Thunderscope_Rev5:GEN_R_0201"
 			(at 210.82 83.82 0)
 			(effects
 				(font
@@ -7045,16 +6149,6 @@
 				(hide yes)
 			)
 		)
-		(property "ALTIUM_VALUE" "0"
-			(at 205.232 82.844 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-				(hide yes)
-			)
-		)
 		(property "TOLERANCE" "1%"
 			(at 207.772 92.456 0)
 			(effects
@@ -7093,6 +6187,14 @@
 				)
 				(justify left bottom)
 				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" ""
+			(at 210.82 83.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
 			)
 		)
 		(pin "2"
@@ -7138,7 +6240,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" "GEN_2.54mm_6_Pin_TH_RA"
+		(property "Footprint" "Thunderscope_Rev5:GEN_2.54mm_6_Pin_TH_RA"
 			(at 55.88 129.54 0)
 			(effects
 				(font
@@ -7215,6 +6317,14 @@
 				(hide yes)
 			)
 		)
+		(property "ALTIUM_VALUE" ""
+			(at 55.88 129.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "8ec6c56a-ae7d-48a6-b06c-78679bbb0946")
 		)
@@ -7260,7 +6370,7 @@
 				(justify bottom)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "0"
 			(at 210.82 71.12 0)
 			(effects
 				(font
@@ -7268,7 +6378,7 @@
 				)
 			)
 		)
-		(property "Footprint" "GEN_R_0201"
+		(property "Footprint" "Thunderscope_Rev5:GEN_R_0201"
 			(at 210.82 71.12 0)
 			(effects
 				(font
@@ -7316,16 +6426,6 @@
 			)
 		)
 		(property "SUPPLIER PART NUMBER 1" "708-RMCF0201ZT0R00"
-			(at 205.232 70.144 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-				(hide yes)
-			)
-		)
-		(property "ALTIUM_VALUE" "0"
 			(at 205.232 70.144 0)
 			(effects
 				(font
@@ -7375,6 +6475,14 @@
 				(hide yes)
 			)
 		)
+		(property "ALTIUM_VALUE" ""
+			(at 210.82 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "2664307d-851d-4cc3-8964-150277931eb3")
 		)
@@ -7408,7 +6516,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "100nF"
 			(at 204.47 138.43 90)
 			(effects
 				(font
@@ -7417,7 +6525,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "GEN_C_0201"
+		(property "Footprint" "Thunderscope_Rev5:GEN_C_0201"
 			(at 203.2 137.16 0)
 			(effects
 				(font
@@ -7484,16 +6592,6 @@
 				(hide yes)
 			)
 		)
-		(property "ALTIUM_VALUE" "100nF"
-			(at 200.946 142.748 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-				(hide yes)
-			)
-		)
 		(property "HOUSE PART NUMBER" "C-100nF-0201-002"
 			(at 200.66 144.78 0)
 			(effects
@@ -7522,6 +6620,14 @@
 				)
 				(justify left bottom)
 				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" ""
+			(at 203.2 137.16 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
 			)
 		)
 		(pin "2"
@@ -7557,7 +6663,7 @@
 				(justify bottom)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "0"
 			(at 210.82 76.2 0)
 			(effects
 				(font
@@ -7565,7 +6671,7 @@
 				)
 			)
 		)
-		(property "Footprint" "GEN_R_0201"
+		(property "Footprint" "Thunderscope_Rev5:GEN_R_0201"
 			(at 210.82 76.2 0)
 			(effects
 				(font
@@ -7613,16 +6719,6 @@
 			)
 		)
 		(property "SUPPLIER PART NUMBER 1" "708-RMCF0201ZT0R00"
-			(at 205.232 75.224 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-				(hide yes)
-			)
-		)
-		(property "ALTIUM_VALUE" "0"
 			(at 205.232 75.224 0)
 			(effects
 				(font
@@ -7672,6 +6768,14 @@
 				(hide yes)
 			)
 		)
+		(property "ALTIUM_VALUE" ""
+			(at 210.82 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "766d5a14-c438-469d-9c11-0bbd0ebdfb0e")
 		)
@@ -7705,7 +6809,7 @@
 				(justify bottom)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "0"
 			(at 210.82 63.5 0)
 			(effects
 				(font
@@ -7713,7 +6817,7 @@
 				)
 			)
 		)
-		(property "Footprint" "GEN_R_0201"
+		(property "Footprint" "Thunderscope_Rev5:GEN_R_0201"
 			(at 210.82 63.5 0)
 			(effects
 				(font
@@ -7770,16 +6874,6 @@
 				(hide yes)
 			)
 		)
-		(property "ALTIUM_VALUE" "0"
-			(at 205.232 62.524 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-				(hide yes)
-			)
-		)
 		(property "TOLERANCE" "1%"
 			(at 207.772 72.136 0)
 			(effects
@@ -7820,6 +6914,14 @@
 				(hide yes)
 			)
 		)
+		(property "ALTIUM_VALUE" ""
+			(at 210.82 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "d2039a6b-6ebe-4be8-a887-5c7613ae876a")
 		)
@@ -7853,7 +6955,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "100nF"
 			(at 204.47 123.19 90)
 			(effects
 				(font
@@ -7862,7 +6964,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "GEN_C_0201"
+		(property "Footprint" "Thunderscope_Rev5:GEN_C_0201"
 			(at 203.2 121.92 0)
 			(effects
 				(font
@@ -7929,16 +7031,6 @@
 				(hide yes)
 			)
 		)
-		(property "ALTIUM_VALUE" "100nF"
-			(at 200.946 127.508 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-				(hide yes)
-			)
-		)
 		(property "HOUSE PART NUMBER" "C-100nF-0201-002"
 			(at 200.66 129.54 0)
 			(effects
@@ -7967,6 +7059,14 @@
 				)
 				(justify left bottom)
 				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" ""
+			(at 203.2 121.92 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
 			)
 		)
 		(pin "2"
@@ -8002,7 +7102,7 @@
 				(justify bottom)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "0"
 			(at 210.82 48.26 0)
 			(effects
 				(font
@@ -8010,7 +7110,7 @@
 				)
 			)
 		)
-		(property "Footprint" "GEN_R_0201"
+		(property "Footprint" "Thunderscope_Rev5:GEN_R_0201"
 			(at 210.82 48.26 0)
 			(effects
 				(font
@@ -8058,16 +7158,6 @@
 			)
 		)
 		(property "SUPPLIER PART NUMBER 1" "708-RMCF0201ZT0R00"
-			(at 205.232 47.284 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-				(hide yes)
-			)
-		)
-		(property "ALTIUM_VALUE" "0"
 			(at 205.232 47.284 0)
 			(effects
 				(font
@@ -8117,6 +7207,14 @@
 				(hide yes)
 			)
 		)
+		(property "ALTIUM_VALUE" ""
+			(at 210.82 48.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "15b73702-d27a-42ab-9710-6d99166959e2")
 		)
@@ -8150,7 +7248,7 @@
 				(justify bottom)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "0"
 			(at 210.82 38.1 0)
 			(effects
 				(font
@@ -8158,7 +7256,7 @@
 				)
 			)
 		)
-		(property "Footprint" "GEN_R_0201"
+		(property "Footprint" "Thunderscope_Rev5:GEN_R_0201"
 			(at 210.82 38.1 0)
 			(effects
 				(font
@@ -8215,16 +7313,6 @@
 				(hide yes)
 			)
 		)
-		(property "ALTIUM_VALUE" "0"
-			(at 205.232 37.124 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-				(hide yes)
-			)
-		)
 		(property "TOLERANCE" "1%"
 			(at 207.772 46.736 0)
 			(effects
@@ -8265,6 +7353,14 @@
 				(hide yes)
 			)
 		)
+		(property "ALTIUM_VALUE" ""
+			(at 210.82 38.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "b3245004-cbfe-41ca-9bda-26c5eea1f55c")
 		)
@@ -8275,6 +7371,71 @@
 			(project ""
 				(path "/031d3e2c-42e0-4016-8c32-579d45c83e09/0f922f52-a6e9-41f0-8991-df4889546a95"
 					(reference "R27")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Thunderscope_Rev5:+3V3_BAR")
+		(at 68.58 124.46 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "42faa295-c887-43c6-89eb-62dfe70da0e9")
+		(property "Reference" "#PWR0304"
+			(at 68.58 124.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3V3"
+			(at 68.58 120.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 68.58 124.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 68.58 124.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name '+3V3'"
+			(at 68.58 124.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin ""
+			(uuid "ddc6c0a4-777c-43cf-affe-aa7c2776af9e")
+		)
+		(instances
+			(project "Thunderscope_Rev5"
+				(path "/031d3e2c-42e0-4016-8c32-579d45c83e09/0f922f52-a6e9-41f0-8991-df4889546a95"
+					(reference "#PWR0304")
 					(unit 1)
 				)
 			)
@@ -8298,7 +7459,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "49.9"
 			(at 210.82 22.86 0)
 			(effects
 				(font
@@ -8306,7 +7467,7 @@
 				)
 			)
 		)
-		(property "Footprint" "GEN_R_0402"
+		(property "Footprint" "Thunderscope_Rev5:GEN_R_0402"
 			(at 210.82 22.86 0)
 			(effects
 				(font
@@ -8373,16 +7534,6 @@
 				(hide yes)
 			)
 		)
-		(property "ALTIUM_VALUE" "49.9"
-			(at 205.232 21.884 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-				(hide yes)
-			)
-		)
 		(property "HOUSE PART NUMBER" ""
 			(at 205.232 19.344 0)
 			(effects
@@ -8411,6 +7562,14 @@
 				)
 				(justify left bottom)
 				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" ""
+			(at 210.82 22.86 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
 			)
 		)
 		(pin "2"
@@ -8446,7 +7605,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "100nF"
 			(at 204.47 166.37 90)
 			(effects
 				(font
@@ -8455,7 +7614,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "GEN_C_0201"
+		(property "Footprint" "Thunderscope_Rev5:GEN_C_0201"
 			(at 203.2 165.1 0)
 			(effects
 				(font
@@ -8522,16 +7681,6 @@
 				(hide yes)
 			)
 		)
-		(property "ALTIUM_VALUE" "100nF"
-			(at 200.946 170.688 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-				(hide yes)
-			)
-		)
 		(property "HOUSE PART NUMBER" "C-100nF-0201-002"
 			(at 200.66 172.72 0)
 			(effects
@@ -8560,6 +7709,14 @@
 				)
 				(justify left bottom)
 				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" ""
+			(at 203.2 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
 			)
 		)
 		(pin "2"
@@ -8595,7 +7752,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "100nF"
 			(at 204.47 100.33 90)
 			(effects
 				(font
@@ -8604,7 +7761,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "GEN_C_0201"
+		(property "Footprint" "Thunderscope_Rev5:GEN_C_0201"
 			(at 203.2 99.06 0)
 			(effects
 				(font
@@ -8671,16 +7828,6 @@
 				(hide yes)
 			)
 		)
-		(property "ALTIUM_VALUE" "100nF"
-			(at 200.946 104.648 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-				(hide yes)
-			)
-		)
 		(property "HOUSE PART NUMBER" "C-100nF-0201-002"
 			(at 200.66 106.68 0)
 			(effects
@@ -8709,6 +7856,14 @@
 				)
 				(justify left bottom)
 				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" ""
+			(at 203.2 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
 			)
 		)
 		(pin "2"
@@ -8744,7 +7899,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "100nF"
 			(at 199.39 143.51 90)
 			(effects
 				(font
@@ -8753,7 +7908,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "GEN_C_0201"
+		(property "Footprint" "Thunderscope_Rev5:GEN_C_0201"
 			(at 200.66 142.24 0)
 			(effects
 				(font
@@ -8820,16 +7975,6 @@
 				(hide yes)
 			)
 		)
-		(property "ALTIUM_VALUE" "100nF"
-			(at 198.406 147.828 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-				(hide yes)
-			)
-		)
 		(property "HOUSE PART NUMBER" "C-100nF-0201-002"
 			(at 198.12 149.86 0)
 			(effects
@@ -8858,6 +8003,14 @@
 				)
 				(justify left bottom)
 				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" ""
+			(at 200.66 142.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
 			)
 		)
 		(pin "1"
@@ -8893,7 +8046,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "100nF"
 			(at 204.47 130.81 90)
 			(effects
 				(font
@@ -8902,7 +8055,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "GEN_C_0201"
+		(property "Footprint" "Thunderscope_Rev5:GEN_C_0201"
 			(at 203.2 129.54 0)
 			(effects
 				(font
@@ -8969,16 +8122,6 @@
 				(hide yes)
 			)
 		)
-		(property "ALTIUM_VALUE" "100nF"
-			(at 200.946 135.128 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-				(hide yes)
-			)
-		)
 		(property "HOUSE PART NUMBER" "C-100nF-0201-002"
 			(at 200.66 137.16 0)
 			(effects
@@ -9007,6 +8150,14 @@
 				)
 				(justify left bottom)
 				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" ""
+			(at 203.2 129.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
 			)
 		)
 		(pin "1"
@@ -9052,7 +8203,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" "GEN_TP_PCB"
+		(property "Footprint" "Thunderscope_Rev5:GEN_TP_PCB"
 			(at 66.04 109.22 0)
 			(effects
 				(font
@@ -9109,6 +8260,14 @@
 				(hide yes)
 			)
 		)
+		(property "ALTIUM_VALUE" ""
+			(at 66.04 109.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "5d306233-7832-4c2b-8938-f90fe90fad46")
 		)
@@ -9139,7 +8298,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "100nF"
 			(at 199.39 97.79 90)
 			(effects
 				(font
@@ -9148,7 +8307,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "GEN_C_0201"
+		(property "Footprint" "Thunderscope_Rev5:GEN_C_0201"
 			(at 200.66 96.52 0)
 			(effects
 				(font
@@ -9215,16 +8374,6 @@
 				(hide yes)
 			)
 		)
-		(property "ALTIUM_VALUE" "100nF"
-			(at 198.406 102.108 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-				(hide yes)
-			)
-		)
 		(property "HOUSE PART NUMBER" "C-100nF-0201-002"
 			(at 198.12 104.14 0)
 			(effects
@@ -9253,6 +8402,14 @@
 				)
 				(justify left bottom)
 				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" ""
+			(at 200.66 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
 			)
 		)
 		(pin "1"
@@ -9288,7 +8445,7 @@
 				(justify bottom)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "0"
 			(at 210.82 78.74 0)
 			(effects
 				(font
@@ -9296,7 +8453,7 @@
 				)
 			)
 		)
-		(property "Footprint" "GEN_R_0201"
+		(property "Footprint" "Thunderscope_Rev5:GEN_R_0201"
 			(at 210.82 78.74 0)
 			(effects
 				(font
@@ -9353,16 +8510,6 @@
 				(hide yes)
 			)
 		)
-		(property "ALTIUM_VALUE" "0"
-			(at 205.232 77.764 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-				(hide yes)
-			)
-		)
 		(property "TOLERANCE" "1%"
 			(at 207.772 87.376 0)
 			(effects
@@ -9403,6 +8550,14 @@
 				(hide yes)
 			)
 		)
+		(property "ALTIUM_VALUE" ""
+			(at 210.82 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "0813827b-de47-4a32-98f5-141ce8cff228")
 		)
@@ -9436,7 +8591,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "100nF"
 			(at 199.39 120.65 90)
 			(effects
 				(font
@@ -9445,7 +8600,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "GEN_C_0201"
+		(property "Footprint" "Thunderscope_Rev5:GEN_C_0201"
 			(at 200.66 119.38 0)
 			(effects
 				(font
@@ -9512,16 +8667,6 @@
 				(hide yes)
 			)
 		)
-		(property "ALTIUM_VALUE" "100nF"
-			(at 198.406 124.968 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-				(hide yes)
-			)
-		)
 		(property "HOUSE PART NUMBER" "C-100nF-0201-002"
 			(at 198.12 127 0)
 			(effects
@@ -9550,6 +8695,14 @@
 				)
 				(justify left bottom)
 				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" ""
+			(at 200.66 119.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
 			)
 		)
 		(pin "1"
@@ -9585,7 +8738,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "100nF"
 			(at 199.39 105.41 90)
 			(effects
 				(font
@@ -9594,7 +8747,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "GEN_C_0201"
+		(property "Footprint" "Thunderscope_Rev5:GEN_C_0201"
 			(at 200.66 104.14 0)
 			(effects
 				(font
@@ -9661,16 +8814,6 @@
 				(hide yes)
 			)
 		)
-		(property "ALTIUM_VALUE" "100nF"
-			(at 198.406 109.728 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-				(hide yes)
-			)
-		)
 		(property "HOUSE PART NUMBER" "C-100nF-0201-002"
 			(at 198.12 111.76 0)
 			(effects
@@ -9699,6 +8842,14 @@
 				)
 				(justify left bottom)
 				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" ""
+			(at 200.66 104.14 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
 			)
 		)
 		(pin "1"
@@ -9734,7 +8885,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "100nF"
 			(at 204.47 153.67 90)
 			(effects
 				(font
@@ -9743,7 +8894,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "GEN_C_0201"
+		(property "Footprint" "Thunderscope_Rev5:GEN_C_0201"
 			(at 203.2 152.4 0)
 			(effects
 				(font
@@ -9810,16 +8961,6 @@
 				(hide yes)
 			)
 		)
-		(property "ALTIUM_VALUE" "100nF"
-			(at 200.946 157.988 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-				(hide yes)
-			)
-		)
 		(property "HOUSE PART NUMBER" "C-100nF-0201-002"
 			(at 200.66 160.02 0)
 			(effects
@@ -9848,6 +8989,14 @@
 				)
 				(justify left bottom)
 				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" ""
+			(at 203.2 152.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
 			)
 		)
 		(pin "1"
@@ -9883,7 +9032,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "49.9"
 			(at 210.82 20.32 0)
 			(effects
 				(font
@@ -9891,7 +9040,7 @@
 				)
 			)
 		)
-		(property "Footprint" "GEN_R_0402"
+		(property "Footprint" "Thunderscope_Rev5:GEN_R_0402"
 			(at 210.82 20.32 0)
 			(effects
 				(font
@@ -9958,16 +9107,6 @@
 				(hide yes)
 			)
 		)
-		(property "ALTIUM_VALUE" "49.9"
-			(at 205.232 19.344 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-				(hide yes)
-			)
-		)
 		(property "HOUSE PART NUMBER" ""
 			(at 205.232 16.804 0)
 			(effects
@@ -9996,6 +9135,14 @@
 				)
 				(justify left bottom)
 				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" ""
+			(at 210.82 20.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
 			)
 		)
 		(pin "2"
@@ -10031,7 +9178,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "100nF"
 			(at 204.47 115.57 90)
 			(effects
 				(font
@@ -10040,7 +9187,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "GEN_C_0201"
+		(property "Footprint" "Thunderscope_Rev5:GEN_C_0201"
 			(at 203.2 114.3 0)
 			(effects
 				(font
@@ -10107,16 +9254,6 @@
 				(hide yes)
 			)
 		)
-		(property "ALTIUM_VALUE" "100nF"
-			(at 200.946 119.888 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-				(hide yes)
-			)
-		)
 		(property "HOUSE PART NUMBER" "C-100nF-0201-002"
 			(at 200.66 121.92 0)
 			(effects
@@ -10145,6 +9282,14 @@
 				)
 				(justify left bottom)
 				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" ""
+			(at 203.2 114.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
 			)
 		)
 		(pin "1"
@@ -10180,7 +9325,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "100nF"
 			(at 199.39 151.13 90)
 			(effects
 				(font
@@ -10189,7 +9334,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "GEN_C_0201"
+		(property "Footprint" "Thunderscope_Rev5:GEN_C_0201"
 			(at 200.66 149.86 0)
 			(effects
 				(font
@@ -10256,16 +9401,6 @@
 				(hide yes)
 			)
 		)
-		(property "ALTIUM_VALUE" "100nF"
-			(at 198.406 155.448 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-				(hide yes)
-			)
-		)
 		(property "HOUSE PART NUMBER" "C-100nF-0201-002"
 			(at 198.12 157.48 0)
 			(effects
@@ -10294,6 +9429,14 @@
 				)
 				(justify left bottom)
 				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" ""
+			(at 200.66 149.86 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
 			)
 		)
 		(pin "1"
@@ -10394,7 +9537,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "100nF"
 			(at 204.47 146.05 90)
 			(effects
 				(font
@@ -10403,7 +9546,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "GEN_C_0201"
+		(property "Footprint" "Thunderscope_Rev5:GEN_C_0201"
 			(at 203.2 144.78 0)
 			(effects
 				(font
@@ -10470,16 +9613,6 @@
 				(hide yes)
 			)
 		)
-		(property "ALTIUM_VALUE" "100nF"
-			(at 200.946 150.368 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-				(hide yes)
-			)
-		)
 		(property "HOUSE PART NUMBER" "C-100nF-0201-002"
 			(at 200.66 152.4 0)
 			(effects
@@ -10508,6 +9641,14 @@
 				)
 				(justify left bottom)
 				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" ""
+			(at 203.2 144.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
 			)
 		)
 		(pin "1"
@@ -10543,7 +9684,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "100nF"
 			(at 199.39 163.83 90)
 			(effects
 				(font
@@ -10552,7 +9693,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "GEN_C_0201"
+		(property "Footprint" "Thunderscope_Rev5:GEN_C_0201"
 			(at 200.66 162.56 0)
 			(effects
 				(font
@@ -10619,16 +9760,6 @@
 				(hide yes)
 			)
 		)
-		(property "ALTIUM_VALUE" "100nF"
-			(at 198.406 168.148 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-				(hide yes)
-			)
-		)
 		(property "HOUSE PART NUMBER" "C-100nF-0201-002"
 			(at 198.12 170.18 0)
 			(effects
@@ -10657,6 +9788,14 @@
 				)
 				(justify left bottom)
 				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" ""
+			(at 200.66 162.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
 			)
 		)
 		(pin "1"
@@ -10692,7 +9831,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "100nF"
 			(at 204.47 107.95 90)
 			(effects
 				(font
@@ -10701,7 +9840,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "GEN_C_0201"
+		(property "Footprint" "Thunderscope_Rev5:GEN_C_0201"
 			(at 203.2 106.68 0)
 			(effects
 				(font
@@ -10768,16 +9907,6 @@
 				(hide yes)
 			)
 		)
-		(property "ALTIUM_VALUE" "100nF"
-			(at 200.946 112.268 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-				(hide yes)
-			)
-		)
 		(property "HOUSE PART NUMBER" "C-100nF-0201-002"
 			(at 200.66 114.3 0)
 			(effects
@@ -10806,6 +9935,14 @@
 				)
 				(justify left bottom)
 				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" ""
+			(at 203.2 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
 			)
 		)
 		(pin "1"
@@ -10841,7 +9978,7 @@
 				(justify bottom)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "0"
 			(at 210.82 86.36 0)
 			(effects
 				(font
@@ -10849,7 +9986,7 @@
 				)
 			)
 		)
-		(property "Footprint" "GEN_R_0201"
+		(property "Footprint" "Thunderscope_Rev5:GEN_R_0201"
 			(at 210.82 86.36 0)
 			(effects
 				(font
@@ -10897,16 +10034,6 @@
 			)
 		)
 		(property "SUPPLIER PART NUMBER 1" "708-RMCF0201ZT0R00"
-			(at 205.232 85.384 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-				(hide yes)
-			)
-		)
-		(property "ALTIUM_VALUE" "0"
 			(at 205.232 85.384 0)
 			(effects
 				(font
@@ -10956,6 +10083,14 @@
 				(hide yes)
 			)
 		)
+		(property "ALTIUM_VALUE" ""
+			(at 210.82 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "a81beef1-e2f5-4f21-80e3-32bcb920dc9b")
 		)
@@ -10989,7 +10124,7 @@
 				(justify bottom)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "0"
 			(at 210.82 33.02 0)
 			(effects
 				(font
@@ -10997,7 +10132,7 @@
 				)
 			)
 		)
-		(property "Footprint" "GEN_R_0201"
+		(property "Footprint" "Thunderscope_Rev5:GEN_R_0201"
 			(at 210.82 33.02 0)
 			(effects
 				(font
@@ -11045,16 +10180,6 @@
 			)
 		)
 		(property "SUPPLIER PART NUMBER 1" "708-RMCF0201ZT0R00"
-			(at 205.232 32.044 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-				(hide yes)
-			)
-		)
-		(property "ALTIUM_VALUE" "0"
 			(at 205.232 32.044 0)
 			(effects
 				(font
@@ -11104,6 +10229,14 @@
 				(hide yes)
 			)
 		)
+		(property "ALTIUM_VALUE" ""
+			(at 210.82 33.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "2f2849b3-5e48-40a2-aa4e-6cd629c0df56")
 		)
@@ -11137,7 +10270,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "100nF"
 			(at 199.39 171.45 90)
 			(effects
 				(font
@@ -11146,7 +10279,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "GEN_C_0201"
+		(property "Footprint" "Thunderscope_Rev5:GEN_C_0201"
 			(at 200.66 170.18 0)
 			(effects
 				(font
@@ -11213,16 +10346,6 @@
 				(hide yes)
 			)
 		)
-		(property "ALTIUM_VALUE" "100nF"
-			(at 198.406 175.768 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-				(hide yes)
-			)
-		)
 		(property "HOUSE PART NUMBER" "C-100nF-0201-002"
 			(at 198.12 177.8 0)
 			(effects
@@ -11251,6 +10374,14 @@
 				)
 				(justify left bottom)
 				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" ""
+			(at 200.66 170.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
 			)
 		)
 		(pin "1"
@@ -11286,7 +10417,7 @@
 				(justify bottom)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "0"
 			(at 210.82 55.88 0)
 			(effects
 				(font
@@ -11294,7 +10425,7 @@
 				)
 			)
 		)
-		(property "Footprint" "GEN_R_0201"
+		(property "Footprint" "Thunderscope_Rev5:GEN_R_0201"
 			(at 210.82 55.88 0)
 			(effects
 				(font
@@ -11342,16 +10473,6 @@
 			)
 		)
 		(property "SUPPLIER PART NUMBER 1" "708-RMCF0201ZT0R00"
-			(at 205.232 54.904 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-				(hide yes)
-			)
-		)
-		(property "ALTIUM_VALUE" "0"
 			(at 205.232 54.904 0)
 			(effects
 				(font
@@ -11401,6 +10522,14 @@
 				(hide yes)
 			)
 		)
+		(property "ALTIUM_VALUE" ""
+			(at 210.82 55.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "fe98bcc6-1152-4a71-b3a9-cd7e87370fb4")
 		)
@@ -11434,7 +10563,7 @@
 				(justify bottom)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "0"
 			(at 210.82 60.96 0)
 			(effects
 				(font
@@ -11442,7 +10571,7 @@
 				)
 			)
 		)
-		(property "Footprint" "GEN_R_0201"
+		(property "Footprint" "Thunderscope_Rev5:GEN_R_0201"
 			(at 210.82 60.96 0)
 			(effects
 				(font
@@ -11490,16 +10619,6 @@
 			)
 		)
 		(property "SUPPLIER PART NUMBER 1" "708-RMCF0201ZT0R00"
-			(at 205.232 59.984 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-				(hide yes)
-			)
-		)
-		(property "ALTIUM_VALUE" "0"
 			(at 205.232 59.984 0)
 			(effects
 				(font
@@ -11549,6 +10668,14 @@
 				(hide yes)
 			)
 		)
+		(property "ALTIUM_VALUE" ""
+			(at 210.82 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "f45fcc2c-4ce1-406a-9804-c1dcb3d97d05")
 		)
@@ -11559,68 +10686,6 @@
 			(project ""
 				(path "/031d3e2c-42e0-4016-8c32-579d45c83e09/0f922f52-a6e9-41f0-8991-df4889546a95"
 					(reference "R33")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Thunderscope_Rev5:+2V5_BAR")
-		(at 68.58 124.46 180)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "bcec6f29-d1d4-47cd-8f8d-0648bed8757f")
-		(property "Reference" "#PWR0402"
-			(at 68.58 124.46 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "+2V5"
-			(at 68.58 120.65 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 68.58 124.46 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 68.58 124.46 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 68.58 124.46 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin ""
-			(uuid "a14f1553-271f-4369-bc2a-35a4174b0993")
-		)
-		(instances
-			(project ""
-				(path "/031d3e2c-42e0-4016-8c32-579d45c83e09/0f922f52-a6e9-41f0-8991-df4889546a95"
-					(reference "#PWR0402")
 					(unit 1)
 				)
 			)
@@ -11644,7 +10709,7 @@
 				(justify bottom)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "0"
 			(at 210.82 45.72 0)
 			(effects
 				(font
@@ -11652,7 +10717,7 @@
 				)
 			)
 		)
-		(property "Footprint" "GEN_R_0201"
+		(property "Footprint" "Thunderscope_Rev5:GEN_R_0201"
 			(at 210.82 45.72 0)
 			(effects
 				(font
@@ -11700,16 +10765,6 @@
 			)
 		)
 		(property "SUPPLIER PART NUMBER 1" "708-RMCF0201ZT0R00"
-			(at 205.232 44.744 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-				(hide yes)
-			)
-		)
-		(property "ALTIUM_VALUE" "0"
 			(at 205.232 44.744 0)
 			(effects
 				(font
@@ -11759,6 +10814,14 @@
 				(hide yes)
 			)
 		)
+		(property "ALTIUM_VALUE" ""
+			(at 210.82 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "4d78d79c-936f-4a6a-8829-71956f575635")
 		)
@@ -11792,7 +10855,7 @@
 				(justify bottom)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "0"
 			(at 210.82 68.58 0)
 			(effects
 				(font
@@ -11800,7 +10863,7 @@
 				)
 			)
 		)
-		(property "Footprint" "GEN_R_0201"
+		(property "Footprint" "Thunderscope_Rev5:GEN_R_0201"
 			(at 210.82 68.58 0)
 			(effects
 				(font
@@ -11848,16 +10911,6 @@
 			)
 		)
 		(property "SUPPLIER PART NUMBER 1" "708-RMCF0201ZT0R00"
-			(at 205.232 67.604 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-				(hide yes)
-			)
-		)
-		(property "ALTIUM_VALUE" "0"
 			(at 205.232 67.604 0)
 			(effects
 				(font
@@ -11907,6 +10960,14 @@
 				(hide yes)
 			)
 		)
+		(property "ALTIUM_VALUE" ""
+			(at 210.82 68.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "cf7bdf24-768f-4df9-b570-1831dca99a2b")
 		)
@@ -11940,7 +11001,7 @@
 				(justify bottom)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "0"
 			(at 210.82 53.34 0)
 			(effects
 				(font
@@ -11948,7 +11009,7 @@
 				)
 			)
 		)
-		(property "Footprint" "GEN_R_0201"
+		(property "Footprint" "Thunderscope_Rev5:GEN_R_0201"
 			(at 210.82 53.34 0)
 			(effects
 				(font
@@ -12005,16 +11066,6 @@
 				(hide yes)
 			)
 		)
-		(property "ALTIUM_VALUE" "0"
-			(at 205.232 52.364 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-				(hide yes)
-			)
-		)
 		(property "TOLERANCE" "1%"
 			(at 207.772 61.976 0)
 			(effects
@@ -12055,6 +11106,14 @@
 				(hide yes)
 			)
 		)
+		(property "ALTIUM_VALUE" ""
+			(at 210.82 53.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "af24640c-754e-4ad2-a978-bd3b26bf6c56")
 		)
@@ -12088,7 +11147,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "100nF"
 			(at 199.39 128.27 90)
 			(effects
 				(font
@@ -12097,7 +11156,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "GEN_C_0201"
+		(property "Footprint" "Thunderscope_Rev5:GEN_C_0201"
 			(at 200.66 127 0)
 			(effects
 				(font
@@ -12164,16 +11223,6 @@
 				(hide yes)
 			)
 		)
-		(property "ALTIUM_VALUE" "100nF"
-			(at 198.406 132.588 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-				(hide yes)
-			)
-		)
 		(property "HOUSE PART NUMBER" "C-100nF-0201-002"
 			(at 198.12 134.62 0)
 			(effects
@@ -12202,6 +11251,14 @@
 				)
 				(justify left bottom)
 				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" ""
+			(at 200.66 127 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
 			)
 		)
 		(pin "2"
@@ -12237,7 +11294,7 @@
 				(justify bottom)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "0"
 			(at 210.82 30.48 0)
 			(effects
 				(font
@@ -12245,7 +11302,7 @@
 				)
 			)
 		)
-		(property "Footprint" "GEN_R_0201"
+		(property "Footprint" "Thunderscope_Rev5:GEN_R_0201"
 			(at 210.82 30.48 0)
 			(effects
 				(font
@@ -12302,16 +11359,6 @@
 				(hide yes)
 			)
 		)
-		(property "ALTIUM_VALUE" "0"
-			(at 205.232 29.504 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-				(hide yes)
-			)
-		)
 		(property "TOLERANCE" "1%"
 			(at 207.772 39.116 0)
 			(effects
@@ -12352,6 +11399,14 @@
 				(hide yes)
 			)
 		)
+		(property "ALTIUM_VALUE" ""
+			(at 210.82 30.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "b00e1335-d94c-4e96-b67b-dca9084ee488")
 		)
@@ -12384,8 +11439,8 @@
 			(color 0 0 0 0.0000)
 		)
 		(uuid "038472ca-999a-4bdd-b362-e2f5a3e05e32")
-		(property "Sheetname" "FPGA Power"
-			(at 17.78 149.86 0)
+		(property "Sheetname" "FPGA Power Inputs"
+			(at 17.78 149.1484 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12394,12 +11449,12 @@
 			)
 		)
 		(property "Sheetfile" "FPGA_PWR.kicad_sch"
-			(at 17.78 165.1 0)
+			(at 17.78 163.1446 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left bottom)
+				(justify left top)
 			)
 		)
 		(instances
@@ -12446,463 +11501,303 @@
 		)
 		(pin "FE_EN" output
 			(at 119.38 81.28 0)
+			(uuid "202eeeda-cce2-4d66-a3aa-847632225cc8")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "202eeeda-cce2-4d66-a3aa-847632225cc8")
 		)
 		(pin "PROBE_COMP" output
-			(at 119.38 88.9 0)
+			(at 119.38 86.36 0)
+			(uuid "6fb7a961-7168-44f8-a038-32dfbe563999")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "6fb7a961-7168-44f8-a038-32dfbe563999")
-		)
-		(pin "D4B_P" input
-			(at 83.82 93.98 180)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-			(uuid "ba50ab01-9e25-4ba8-8221-6e93a5d717c2")
-		)
-		(pin "D4A_N" input
-			(at 83.82 88.9 180)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-			(uuid "e911af89-908b-43f3-8f06-199f3a2c4fc6")
-		)
-		(pin "D4B_N" input
-			(at 83.82 96.52 180)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-			(uuid "7e52becb-562b-43c3-9eee-8292b924516a")
-		)
-		(pin "D4A_P" input
-			(at 83.82 86.36 180)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-			(uuid "7cb6b29d-4e0c-47fa-adec-134070c400bd")
-		)
-		(pin "D3B_P" input
-			(at 83.82 78.74 180)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-			(uuid "ed7e466a-9ea5-4fd3-91c0-570dd3e262fd")
-		)
-		(pin "D3B_N" input
-			(at 83.82 81.28 180)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-			(uuid "8fbc6464-0808-4bdb-b6b3-fb9ebb4076b7")
-		)
-		(pin "D3A_N" input
-			(at 83.82 73.66 180)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-			(uuid "06ccb40f-5a1b-4798-88bd-7846d47d3a4f")
-		)
-		(pin "D3A_P" input
-			(at 83.82 71.12 180)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-			(uuid "ccdf5b95-9d3c-4e73-93c3-2d98337a37d3")
 		)
 		(pin "OSC_OE" output
 			(at 119.38 40.64 0)
+			(uuid "9e6a8ab5-4358-4c4f-a370-9adc1397f776")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "9e6a8ab5-4358-4c4f-a370-9adc1397f776")
 		)
 		(pin "LED" output
-			(at 119.38 91.44 0)
+			(at 119.38 88.9 0)
+			(uuid "0a7d1d0a-5025-4da9-bd73-abf65117ccdd")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "0a7d1d0a-5025-4da9-bd73-abf65117ccdd")
 		)
 		(pin "ATTEN_[4..1]" output
 			(at 119.38 73.66 0)
+			(uuid "538f859e-490f-4f3a-9d27-e2b244a9e30c")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "538f859e-490f-4f3a-9d27-e2b244a9e30c")
 		)
 		(pin "TERM_[4..1]" output
 			(at 119.38 76.2 0)
+			(uuid "0501b3c9-f7f6-4799-b328-eae2895930fb")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "0501b3c9-f7f6-4799-b328-eae2895930fb")
 		)
 		(pin "DC_CPL_[4..1]" output
 			(at 119.38 71.12 0)
+			(uuid "a25821b7-a2e1-4d86-86d3-c7a182543f19")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "a25821b7-a2e1-4d86-86d3-c7a182543f19")
 		)
 		(pin "PGA_CSn_[4..1]" output
 			(at 119.38 58.42 0)
+			(uuid "39eb6556-af67-4f7e-acdb-30eb0a33dde6")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "39eb6556-af67-4f7e-acdb-30eb0a33dde6")
 		)
 		(pin "QSPI_CLK" input
 			(at 119.38 109.22 0)
+			(uuid "fe90b277-1f63-40dc-af47-7425fbd24892")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "fe90b277-1f63-40dc-af47-7425fbd24892")
-		)
-		(pin "LCLK_P" input
-			(at 83.82 55.88 180)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-			(uuid "f220ccf4-0d6b-4950-8b90-54016f460dc3")
-		)
-		(pin "D2B_N" input
-			(at 83.82 50.8 180)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-			(uuid "66afcbe6-8f82-40a7-a040-948475afe1d9")
-		)
-		(pin "D2A_N" input
-			(at 83.82 43.18 180)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-			(uuid "019aaa12-632f-4bf5-b72a-5c4eb4a59aa3")
-		)
-		(pin "FCLK_P" input
-			(at 83.82 63.5 180)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-			(uuid "2ff5106c-664e-4c94-b10b-960118de63cd")
-		)
-		(pin "FCLK_N" input
-			(at 83.82 66.04 180)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-			(uuid "8bba4d66-36fc-4ef5-bb65-9d97d6412e8d")
-		)
-		(pin "D2B_P" input
-			(at 83.82 48.26 180)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-			(uuid "357e83cb-8b92-43e1-93ef-750cf662e58a")
-		)
-		(pin "D2A_P" input
-			(at 83.82 40.64 180)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-			(uuid "c1e6901d-1f0b-4263-bdec-be86b1b520e5")
-		)
-		(pin "D1A_P" input
-			(at 83.82 25.4 180)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-			(uuid "68a0c505-9a86-44b8-a888-40500a16fd96")
-		)
-		(pin "D1A_N" input
-			(at 83.82 27.94 180)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-			(uuid "ca087e9e-6e1e-4a76-bfe7-c3d5b67ff1ba")
-		)
-		(pin "LCLK_N" input
-			(at 83.82 58.42 180)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-			(uuid "130ec052-33c8-444e-a278-b1f55ef55073")
-		)
-		(pin "D1B_P" input
-			(at 83.82 33.02 180)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-			(uuid "75b6967c-58f6-48ca-9cd7-900021296268")
-		)
-		(pin "D1B_N" input
-			(at 83.82 35.56 180)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-			(uuid "cc8fe8cc-7832-4679-9825-87719eada071")
 		)
 		(pin "ADC_CSn" output
 			(at 119.38 30.48 0)
+			(uuid "bb2a481b-52bf-459d-9e40-9f543c621867")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "bb2a481b-52bf-459d-9e40-9f543c621867")
 		)
 		(pin "PERST#" input
 			(at 83.82 109.22 180)
+			(uuid "fda9c100-13c9-4ddb-8f0e-23d2a7592c9c")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "fda9c100-13c9-4ddb-8f0e-23d2a7592c9c")
 		)
 		(pin "ADC_SDIO" output
 			(at 119.38 25.4 0)
+			(uuid "bd030f22-efc8-442a-8b29-350c55b49e6a")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "bd030f22-efc8-442a-8b29-350c55b49e6a")
 		)
 		(pin "ADC_SCLK" output
 			(at 119.38 27.94 0)
+			(uuid "ac0d314f-2eee-44e4-abf8-8446887c15e4")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "ac0d314f-2eee-44e4-abf8-8446887c15e4")
 		)
 		(pin "PLL_SCL" output
 			(at 119.38 35.56 0)
+			(uuid "87692a51-2d35-4796-94cc-36dbe298266e")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "87692a51-2d35-4796-94cc-36dbe298266e")
 		)
 		(pin "PLL_SDA" bidirectional
 			(at 119.38 38.1 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
 			(uuid "8efdd11f-7168-4fb8-9c7e-7f492d26fcec")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
 		)
-		(pin "+3V3_ACQ_EN" output
+		(pin "ACQ_EN" output
 			(at 119.38 45.72 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
 			(uuid "a122663b-d14e-4579-8608-80dbac6044df")
-		)
-		(pin "+1V8_ACQ_EN" output
-			(at 119.38 48.26 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "b84fd5b1-3ba2-4fcb-8e06-e20359e10409")
 		)
 		(pin "PGA_SCLK" output
 			(at 119.38 53.34 0)
+			(uuid "ecc3cb15-b19d-45eb-b67a-ccecd6ce1263")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "ecc3cb15-b19d-45eb-b67a-ccecd6ce1263")
 		)
 		(pin "PGA_SDIO" output
 			(at 119.38 55.88 0)
+			(uuid "6aee1269-0815-44ff-9823-37e0a7c44764")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "6aee1269-0815-44ff-9823-37e0a7c44764")
 		)
 		(pin "TRIM_SCL" output
 			(at 119.38 63.5 0)
+			(uuid "9033ffa4-0d96-45a3-9b38-8b1f83ea69f9")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "9033ffa4-0d96-45a3-9b38-8b1f83ea69f9")
 		)
 		(pin "TRIM_SDA" bidirectional
 			(at 119.38 66.04 0)
+			(uuid "85b4aec8-151b-4c8f-a578-66e9a01ee65a")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "85b4aec8-151b-4c8f-a578-66e9a01ee65a")
 		)
 		(pin "SYNC_OUT_N" output
 			(at 119.38 104.14 0)
+			(uuid "3d8bbce8-920f-43e9-99ea-4db26474c3ba")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "3d8bbce8-920f-43e9-99ea-4db26474c3ba")
 		)
 		(pin "SYNC_OUT_P" output
 			(at 119.38 101.6 0)
+			(uuid "f8c39450-84b7-42ac-9624-347851c10393")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "f8c39450-84b7-42ac-9624-347851c10393")
 		)
 		(pin "SYNC_IN_P" input
 			(at 83.82 101.6 180)
+			(uuid "6f0facb5-4fcb-4264-9422-862667e52d09")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "6f0facb5-4fcb-4264-9422-862667e52d09")
 		)
 		(pin "SYNC_IN_N" input
 			(at 83.82 104.14 180)
+			(uuid "60d7f1c2-f41b-47d4-b986-2e57a93910f7")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "60d7f1c2-f41b-47d4-b986-2e57a93910f7")
 		)
-		(pin "FE_PG" output
-			(at 119.38 83.82 0)
+		(pin "{ADC_LVDS}" input
+			(at 83.82 25.4 180)
+			(uuid "2c52199b-78a4-4f84-afdc-e634ff1c0679")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "{USRIO}" bidirectional
+			(at 83.82 93.98 180)
+			(uuid "1c99df3f-c1ca-42bd-a7c6-5102fc238384")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "FE_PG" input
+			(at 83.82 81.28 180)
+			(uuid "4ab42b21-027c-4e6c-8c2a-8fac420b9404")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "ACQ_PG" input
+			(at 83.82 45.72 180)
+			(uuid "120844be-c178-4056-a120-f3a428abd478")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "SYNC_DE" output
+			(at 119.38 93.98 0)
+			(uuid "fb1bce86-ca0b-449f-af47-9563c8bea45b")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "d19ee847-1d07-457a-969e-b20af32f4a5f")
+		)
+		(pin "SYNC_REn" output
+			(at 119.38 96.52 0)
+			(uuid "08a38c2f-0ad6-4954-aa7a-d40ddb121b67")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
 		)
 		(instances
 			(project "Thunderscope_Rev5"
@@ -12929,8 +11824,8 @@
 			(color 0 0 0 0.0000)
 		)
 		(uuid "578d4253-e95a-4587-beab-a07f275c1e48")
-		(property "Sheetname" "Voltage Regulation"
-			(at 17.78 175.26 0)
+		(property "Sheetname" "FPGA Voltage Regs"
+			(at 17.78 174.5484 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12938,13 +11833,13 @@
 				(justify left bottom)
 			)
 		)
-		(property "Sheetfile" "FPGA_REG.kicad_sch"
-			(at 17.78 190.5 0)
+		(property "Sheetfile" "FPGA_VREG.kicad_sch"
+			(at 17.78 188.5446 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left bottom)
+				(justify left top)
 			)
 		)
 		(instances
@@ -12992,183 +11887,183 @@
 		)
 		(pin "MGT_TX3_N" output
 			(at 83.82 175.26 180)
+			(uuid "5ae8ca9c-a3bb-4e9a-b78f-d8e8ecf86471")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "5ae8ca9c-a3bb-4e9a-b78f-d8e8ecf86471")
 		)
 		(pin "MGT_TX2_N" output
 			(at 83.82 167.64 180)
+			(uuid "0cb2c732-35ee-478a-89f1-63d68ad031b0")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "0cb2c732-35ee-478a-89f1-63d68ad031b0")
 		)
 		(pin "MGT_TX1_N" output
 			(at 83.82 160.02 180)
+			(uuid "f8fe0a5c-d7ab-44e5-8a66-bcc10de2754b")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "f8fe0a5c-d7ab-44e5-8a66-bcc10de2754b")
 		)
 		(pin "MGT_TX0_N" output
 			(at 83.82 152.4 180)
+			(uuid "9b4ec185-0373-4ba9-928b-acb790e1cb3f")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "9b4ec185-0373-4ba9-928b-acb790e1cb3f")
 		)
 		(pin "MGT_TX3_P" output
 			(at 83.82 177.8 180)
+			(uuid "3e810f4c-960d-4a77-9131-997f5f8ecbc2")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "3e810f4c-960d-4a77-9131-997f5f8ecbc2")
 		)
 		(pin "MGT_TX2_P" output
 			(at 83.82 170.18 180)
+			(uuid "4da50824-9d41-481c-94a0-a8077cf74814")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "4da50824-9d41-481c-94a0-a8077cf74814")
 		)
 		(pin "MGT_TX1_P" output
 			(at 83.82 162.56 180)
+			(uuid "f3da0d35-0a7b-4979-b6b8-4868a6e77254")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "f3da0d35-0a7b-4979-b6b8-4868a6e77254")
 		)
 		(pin "MGT_TX0_P" output
 			(at 83.82 154.94 180)
+			(uuid "e9cf0198-5f59-4630-ba51-90fbf1b72138")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "e9cf0198-5f59-4630-ba51-90fbf1b72138")
 		)
 		(pin "MGT_RX3_N" input
 			(at 119.38 175.26 0)
+			(uuid "58bc048e-fdc5-4b89-8867-17f71ecd72db")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "58bc048e-fdc5-4b89-8867-17f71ecd72db")
 		)
 		(pin "MGT_RX3_P" input
 			(at 119.38 177.8 0)
+			(uuid "51c99cbb-ba8f-4899-b276-afd322b7a813")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "51c99cbb-ba8f-4899-b276-afd322b7a813")
 		)
 		(pin "MGT_RX2_N" input
 			(at 119.38 167.64 0)
+			(uuid "fc1632df-eb1b-4219-b98e-223d493f6265")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "fc1632df-eb1b-4219-b98e-223d493f6265")
 		)
 		(pin "MGT_RX2_P" input
 			(at 119.38 170.18 0)
+			(uuid "9f084592-5620-40c4-9a6e-711577389652")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "9f084592-5620-40c4-9a6e-711577389652")
 		)
 		(pin "MGT_RX1_N" input
 			(at 119.38 160.02 0)
+			(uuid "67f64742-d0ba-40e0-9301-dbfc78d8afa1")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "67f64742-d0ba-40e0-9301-dbfc78d8afa1")
 		)
 		(pin "MGT_RX1_P" input
 			(at 119.38 162.56 0)
+			(uuid "5cbcf241-05dd-4b05-84a1-796ffc24d028")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "5cbcf241-05dd-4b05-84a1-796ffc24d028")
 		)
 		(pin "MGT_RX0_N" input
 			(at 119.38 152.4 0)
+			(uuid "e929321c-09ea-4d65-97b3-197f93e15634")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "e929321c-09ea-4d65-97b3-197f93e15634")
 		)
 		(pin "MGT_RX0_P" input
 			(at 119.38 154.94 0)
+			(uuid "fa690080-2e63-4710-8524-933f6bd1edc1")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "fa690080-2e63-4710-8524-933f6bd1edc1")
 		)
 		(pin "MGT_CLK1_N" input
 			(at 119.38 182.88 0)
+			(uuid "be4c0009-e62a-414d-b876-39ee5d3e0466")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "be4c0009-e62a-414d-b876-39ee5d3e0466")
 		)
 		(pin "MGT_CLK1_P" input
 			(at 119.38 185.42 0)
+			(uuid "61e834b8-1a86-477b-b41c-55f00067ee48")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "61e834b8-1a86-477b-b41c-55f00067ee48")
 		)
 		(instances
 			(project "Thunderscope_Rev5"
@@ -13215,53 +12110,53 @@
 		)
 		(pin "TDI" input
 			(at 83.82 129.54 180)
+			(uuid "3b55f7a4-104a-4d14-80bc-a9c4c12ec035")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "3b55f7a4-104a-4d14-80bc-a9c4c12ec035")
 		)
 		(pin "TDO" output
 			(at 83.82 132.08 180)
+			(uuid "8c6e0201-2b0c-45a0-9c36-ff07b10c4687")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "8c6e0201-2b0c-45a0-9c36-ff07b10c4687")
 		)
 		(pin "TCK" input
 			(at 83.82 134.62 180)
+			(uuid "2ab8a487-edc5-4ebb-aa78-67a7a6701c64")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "2ab8a487-edc5-4ebb-aa78-67a7a6701c64")
 		)
 		(pin "TMS" input
 			(at 83.82 127 180)
+			(uuid "bc03216c-f93c-4080-b7d4-99f7456de75f")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
 			)
-			(uuid "bc03216c-f93c-4080-b7d4-99f7456de75f")
 		)
 		(pin "QSPI_CLK" output
 			(at 119.38 127 0)
+			(uuid "d534e984-8177-4309-a11f-a1e94483c7db")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "d534e984-8177-4309-a11f-a1e94483c7db")
 		)
 		(instances
 			(project "Thunderscope_Rev5"

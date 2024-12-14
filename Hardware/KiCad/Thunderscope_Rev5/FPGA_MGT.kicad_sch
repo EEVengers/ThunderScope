@@ -1,5 +1,5 @@
 (kicad_sch
-	(version 20241004)
+	(version 20241209)
 	(generator "eeschema")
 	(generator_version "8.99")
 	(uuid "8fba9a6f-5399-4401-b146-a10d20dfdf56")
@@ -135,7 +135,7 @@
 					)
 				)
 			)
-			(property "Footprint" "XILINX_XC7A50T-2CSG325C"
+			(property "Footprint" "Thunderscope_Rev5:XILINX_XC7A50T-2CSG325C"
 				(at 0 0 0)
 				(effects
 					(font
@@ -6218,7 +6218,7 @@
 					)
 				)
 			)
-			(property "Value" "${ALTIUM_VALUE}"
+			(property "Value" "100"
 				(at 0 0 0)
 				(effects
 					(font
@@ -6226,7 +6226,7 @@
 					)
 				)
 			)
-			(property "Footprint" "GEN_R_0402"
+			(property "Footprint" "Thunderscope_Rev5:GEN_R_0402"
 				(at 0 0 0)
 				(effects
 					(font
@@ -6263,15 +6263,6 @@
 				)
 			)
 			(property "PACKAGE" "0402"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ALTIUM_VALUE" "100"
 				(at 0 0 0)
 				(effects
 					(font
@@ -6376,6 +6367,19 @@
 			)
 			(embedded_fonts no)
 		)
+	)
+	(text "FPGA Transceivers"
+		(exclude_from_sim no)
+		(at 15.24 15.24 0)
+		(effects
+			(font
+				(size 1.905 1.905)
+				(thickness 0.381)
+				(bold yes)
+			)
+			(justify left top)
+		)
+		(uuid "194ac9ba-8503-4235-9540-8f3c8c1ad790")
 	)
 	(no_connect
 		(at 177.8 119.38)
@@ -6597,7 +6601,6 @@
 	)
 	(label "MGT_TX0_N"
 		(at 99.06 104.14 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6608,7 +6611,6 @@
 	)
 	(label "MGT_RX3_N"
 		(at 195.58 88.9 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6619,7 +6621,6 @@
 	)
 	(label "MGT_RX1_P"
 		(at 195.58 101.6 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6630,7 +6631,6 @@
 	)
 	(label "MGT_CLK1_P"
 		(at 195.58 114.3 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6641,7 +6641,6 @@
 	)
 	(label "MGT_RX1_N"
 		(at 195.58 99.06 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6652,7 +6651,6 @@
 	)
 	(label "MGT_TX2_N"
 		(at 99.06 93.98 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6663,7 +6661,6 @@
 	)
 	(label "MGT_RX3_P"
 		(at 195.58 91.44 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6674,7 +6671,6 @@
 	)
 	(label "MGT_RX2_N"
 		(at 195.58 93.98 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6685,7 +6681,6 @@
 	)
 	(label "MGT_RX2_P"
 		(at 195.58 96.52 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6696,7 +6691,6 @@
 	)
 	(label "MGT_TX3_P"
 		(at 99.06 91.44 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6707,7 +6701,6 @@
 	)
 	(label "MGT_RX0_P"
 		(at 195.58 106.68 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6718,7 +6711,6 @@
 	)
 	(label "MGT_TX0_P"
 		(at 99.06 106.68 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6729,7 +6721,6 @@
 	)
 	(label "MGT_TX1_N"
 		(at 99.06 99.06 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6740,7 +6731,6 @@
 	)
 	(label "MGT_CLK1_N"
 		(at 195.58 111.76 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6751,7 +6741,6 @@
 	)
 	(label "MGT_TX2_P"
 		(at 99.06 96.52 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6762,7 +6751,6 @@
 	)
 	(label "MGT_TX3_N"
 		(at 99.06 88.9 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6773,7 +6761,6 @@
 	)
 	(label "MGT_TX1_P"
 		(at 99.06 101.6 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6784,7 +6771,6 @@
 	)
 	(label "MGT_RX0_N"
 		(at 195.58 104.14 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6796,7 +6782,6 @@
 	(hierarchical_label "MGT_RX3_P"
 		(shape input)
 		(at 198.12 91.44 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6808,7 +6793,6 @@
 	(hierarchical_label "MGT_TX3_P"
 		(shape output)
 		(at 96.52 91.44 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6820,7 +6804,6 @@
 	(hierarchical_label "MGT_TX2_P"
 		(shape output)
 		(at 96.52 96.52 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6832,7 +6815,6 @@
 	(hierarchical_label "MGT_TX2_N"
 		(shape output)
 		(at 96.52 93.98 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6844,7 +6826,6 @@
 	(hierarchical_label "MGT_RX0_P"
 		(shape input)
 		(at 198.12 106.68 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6856,7 +6837,6 @@
 	(hierarchical_label "MGT_TX3_N"
 		(shape output)
 		(at 96.52 88.9 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6868,7 +6848,6 @@
 	(hierarchical_label "MGT_RX3_N"
 		(shape input)
 		(at 198.12 88.9 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6880,7 +6859,6 @@
 	(hierarchical_label "MGT_TX0_N"
 		(shape output)
 		(at 96.52 104.14 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6892,7 +6870,6 @@
 	(hierarchical_label "MGT_RX1_N"
 		(shape input)
 		(at 198.12 99.06 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6904,7 +6881,6 @@
 	(hierarchical_label "MGT_TX0_P"
 		(shape output)
 		(at 96.52 106.68 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6916,7 +6892,6 @@
 	(hierarchical_label "MGT_TX1_N"
 		(shape output)
 		(at 96.52 99.06 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6928,7 +6903,6 @@
 	(hierarchical_label "MGT_CLK1_P"
 		(shape input)
 		(at 198.12 114.3 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6940,7 +6914,6 @@
 	(hierarchical_label "MGT_RX0_N"
 		(shape input)
 		(at 198.12 104.14 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6952,7 +6925,6 @@
 	(hierarchical_label "MGT_RX2_P"
 		(shape input)
 		(at 198.12 96.52 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6964,7 +6936,6 @@
 	(hierarchical_label "MGT_RX1_P"
 		(shape input)
 		(at 198.12 101.6 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6976,7 +6947,6 @@
 	(hierarchical_label "MGT_CLK1_N"
 		(shape input)
 		(at 198.12 111.76 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6988,7 +6958,6 @@
 	(hierarchical_label "MGT_TX1_P"
 		(shape output)
 		(at 96.52 101.6 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -7000,7 +6969,6 @@
 	(hierarchical_label "MGT_RX2_N"
 		(shape input)
 		(at 198.12 93.98 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -7092,7 +7060,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "100"
 			(at 104.14 119.38 0)
 			(effects
 				(font
@@ -7100,7 +7068,7 @@
 				)
 			)
 		)
-		(property "Footprint" "GEN_R_0402"
+		(property "Footprint" "Thunderscope_Rev5:GEN_R_0402"
 			(at 104.14 119.38 0)
 			(effects
 				(font
@@ -7138,16 +7106,6 @@
 			)
 		)
 		(property "PACKAGE" "0402"
-			(at 98.552 118.404 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-				(hide yes)
-			)
-		)
-		(property "ALTIUM_VALUE" "100"
 			(at 98.552 118.404 0)
 			(effects
 				(font
@@ -7207,6 +7165,14 @@
 				(hide yes)
 			)
 		)
+		(property "ALTIUM_VALUE" ""
+			(at 104.14 119.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "9c0bb07d-9990-4941-b8be-1ec25b1ab789")
 		)
@@ -7250,7 +7216,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Footprint" "XILINX_XC7A50T-2CSG325C"
+		(property "Footprint" "Thunderscope_Rev5:XILINX_XC7A50T-2CSG325C"
 			(at 170.18 121.92 0)
 			(effects
 				(font
@@ -7325,6 +7291,14 @@
 				)
 				(justify left bottom)
 				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" ""
+			(at 170.18 121.92 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
 			)
 		)
 		(pin "A17"

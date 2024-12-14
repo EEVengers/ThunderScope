@@ -423,7 +423,7 @@
       "endpoint_off_grid": "warning",
       "extra_units": "error",
       "footprint_filter": "warning",
-      "footprint_link_issues": "ignore",
+      "footprint_link_issues": "warning",
       "four_way_junction": "warning",
       "global_label_dangling": "warning",
       "hier_label_mismatch": "error",
@@ -525,6 +525,12 @@
       "fields_ordered": [
         {
           "group_by": false,
+          "label": "#",
+          "name": "${ITEM_NUMBER}",
+          "show": true
+        },
+        {
+          "group_by": false,
           "label": "Reference",
           "name": "Reference",
           "show": true
@@ -545,7 +551,7 @@
           "group_by": true,
           "label": "ALTIUM_VALUE",
           "name": "ALTIUM_VALUE",
-          "show": true
+          "show": false
         },
         {
           "group_by": true,
@@ -575,7 +581,7 @@
           "group_by": false,
           "label": "Datasheet",
           "name": "Datasheet",
-          "show": true
+          "show": false
         },
         {
           "group_by": false,
@@ -611,7 +617,7 @@
           "group_by": false,
           "label": "MANUFACTURER PART NUMBER",
           "name": "MANUFACTURER PART NUMBER",
-          "show": false
+          "show": true
         },
         {
           "group_by": false,
@@ -684,12 +690,6 @@
           "label": "Description",
           "name": "Description",
           "show": false
-        },
-        {
-          "group_by": false,
-          "label": "#",
-          "name": "${ITEM_NUMBER}",
-          "show": false
         }
       ],
       "filter_string": "",
@@ -697,7 +697,7 @@
       "include_excluded_from_bom": false,
       "name": "",
       "sort_asc": false,
-      "sort_field": "${DNP}"
+      "sort_field": "Reference"
     },
     "connection_grid_size": 50.0,
     "drawing": {
@@ -778,11 +778,11 @@
     ],
     [
       "038472ca-999a-4bdd-b362-e2f5a3e05e32",
-      "FPGA Power"
+      "FPGA Power Inputs"
     ],
     [
       "578d4253-e95a-4587-beab-a07f275c1e48",
-      "Voltage Regulation"
+      "FPGA Voltage Regs"
     ],
     [
       "3dc749f1-bb54-4961-a356-74c6bb9263ea",
@@ -798,7 +798,7 @@
     ],
     [
       "ed55ca86-b434-4533-9cc2-1facf1ee6c7b",
-      "POWER"
+      "ACQ and FE Voltage Regs"
     ],
     [
       "95dd7985-f010-4388-84bb-3ad8f1a365a2",

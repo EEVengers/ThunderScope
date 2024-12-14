@@ -1,5 +1,5 @@
 (kicad_sch
-	(version 20241004)
+	(version 20241209)
 	(generator "eeschema")
 	(generator_version "8.99")
 	(uuid "7f617bb4-8a80-4195-bb71-709eff343d51")
@@ -216,6 +216,164 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "Thunderscope_Rev5:PCIe IO Shield"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "S"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "9204"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "SUPPLIER 1" "Mouser"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "SUPPLIER PART NUMBER 1" "534-9204"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "HOUSE PART NUMBER" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MANUFACTURER" "Keystone Electronics"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MANUFACTURER PART NUMBER" "9204"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "PCIe IO Shield_1_0"
+				(circle
+					(center 0 7.62)
+					(radius 1.266)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center 0 2.54)
+					(radius 1.261)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center 0 -2.54)
+					(radius 1.261)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center 0 -7.62)
+					(radius 1.261)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start 2.54 10.16)
+					(end -2.54 -10.16)
+					(stroke
+						(width 0.0254)
+						(type solid)
+						(color 128 0 0 1)
+					)
+					(fill
+						(type background)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "Thunderscope_Rev5:PCIeX4-GF-2D-1000-1K-O64"
 			(pin_names
 				(hide yes)
@@ -239,7 +397,7 @@
 					)
 				)
 			)
-			(property "Footprint" "PCIeX4-GF-2D-1000-1K-O64"
+			(property "Footprint" "Thunderscope_Rev5:PCIeX4-GF-2D-1000-1K-O64"
 				(at 0 0 0)
 				(effects
 					(font
@@ -2977,7 +3135,7 @@
 					)
 				)
 			)
-			(property "Value" "${ALTIUM_VALUE}"
+			(property "Value" "0"
 				(at 0 0 0)
 				(effects
 					(font
@@ -2985,7 +3143,7 @@
 					)
 				)
 			)
-			(property "Footprint" "GEN_R_0402"
+			(property "Footprint" "Thunderscope_Rev5:GEN_R_0402"
 				(at 0 0 0)
 				(effects
 					(font
@@ -3031,15 +3189,6 @@
 				)
 			)
 			(property "SUPPLIER PART NUMBER 1" "603-RC0402JR-070RL"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ALTIUM_VALUE" "0"
 				(at 0 0 0)
 				(effects
 					(font
@@ -3144,7 +3293,7 @@
 					)
 				)
 			)
-			(property "Value" "${ALTIUM_VALUE}"
+			(property "Value" "0.01"
 				(at 0 0 0)
 				(effects
 					(font
@@ -3152,7 +3301,7 @@
 					)
 				)
 			)
-			(property "Footprint" "GEN_R_0603"
+			(property "Footprint" "Thunderscope_Rev5:GEN_R_0603"
 				(at 0 0 0)
 				(effects
 					(font
@@ -3198,15 +3347,6 @@
 				)
 			)
 			(property "SUPPLIER PART NUMBER 1" "754-RL0816T-R010-F"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ALTIUM_VALUE" "0.01"
 				(at 0 0 0)
 				(effects
 					(font
@@ -3328,7 +3468,7 @@
 					)
 				)
 			)
-			(property "Footprint" "KEY_5015"
+			(property "Footprint" "Thunderscope_Rev5:KEY_5015"
 				(at 0 0 0)
 				(effects
 					(font
@@ -3467,6 +3607,19 @@
 			)
 		)
 		(uuid "2025fa8c-c74a-4811-aa7c-94ad2f97ad10")
+	)
+	(text "PCIe bracket"
+		(exclude_from_sim no)
+		(at 259.08 144.78 0)
+		(effects
+			(font
+				(size 1.905 1.905)
+				(thickness 0.381)
+				(bold yes)
+			)
+			(justify left top)
+		)
+		(uuid "30b0621b-358e-40e2-8f2f-b59e0f72a894")
 	)
 	(text "RSVD"
 		(exclude_from_sim no)
@@ -3977,6 +4130,16 @@
 	)
 	(bus
 		(pts
+			(xy 198.12 78.74) (xy 213.36 78.74)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3f9000bf-8005-4561-af7c-273234446f48")
+	)
+	(bus
+		(pts
 			(xy 198.12 53.34) (xy 198.12 50.8)
 		)
 		(stroke
@@ -4054,16 +4217,6 @@
 			(type default)
 		)
 		(uuid "57dd0e43-deb5-4959-8eca-399afa8a322a")
-	)
-	(bus
-		(pts
-			(xy 198.12 78.74) (xy 213.36 78.74)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "58e27cb9-f33f-4382-bfa2-f9c7bef86fdf")
 	)
 	(wire
 		(pts
@@ -4837,7 +4990,6 @@
 	)
 	(label "GND"
 		(at 76.2 119.38 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4848,7 +5000,6 @@
 	)
 	(label "GND"
 		(at 76.2 121.92 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4859,7 +5010,6 @@
 	)
 	(label "3.3Vaux"
 		(at 76.2 81.28 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4870,7 +5020,6 @@
 	)
 	(label "PCIe_PER0_P"
 		(at 177.8 55.88 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4881,7 +5030,6 @@
 	)
 	(label "PCIe_PET3_P"
 		(at 76.2 124.46 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4892,7 +5040,6 @@
 	)
 	(label "PCIe_PER3_N"
 		(at 127 132.08 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4903,7 +5050,6 @@
 	)
 	(label "+3V3_PCIe"
 		(at 71.12 165.1 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4914,7 +5060,6 @@
 	)
 	(label "PRSNT2#_1"
 		(at 76.2 99.06 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4925,7 +5070,6 @@
 	)
 	(label "GND"
 		(at 127 127 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4936,7 +5080,6 @@
 	)
 	(label "PCIe_PER0_N"
 		(at 177.8 53.34 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4947,7 +5090,6 @@
 	)
 	(label "WAKE#"
 		(at 76.2 83.82 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4958,7 +5100,6 @@
 	)
 	(label "GND"
 		(at 127 93.98 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4969,7 +5110,6 @@
 	)
 	(label "GND"
 		(at 127 124.46 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4980,7 +5120,6 @@
 	)
 	(label "GND"
 		(at 76.2 109.22 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4991,7 +5130,6 @@
 	)
 	(label "GND"
 		(at 76.2 101.6 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5002,7 +5140,6 @@
 	)
 	(label "PCIe_PET0_N"
 		(at 76.2 93.98 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5013,7 +5150,6 @@
 	)
 	(label "PCIe_PER1_N"
 		(at 177.8 58.42 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5024,7 +5160,6 @@
 	)
 	(label "GND"
 		(at 76.2 96.52 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5035,7 +5170,6 @@
 	)
 	(label "+12V_PCIe"
 		(at 127 63.5 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5046,7 +5180,6 @@
 	)
 	(label "PCIe_PET0_P"
 		(at 177.8 86.36 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5057,7 +5190,6 @@
 	)
 	(label "PCIe_PET1_N"
 		(at 177.8 88.9 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5068,7 +5200,6 @@
 	)
 	(label "PCIe_PET3_P"
 		(at 177.8 101.6 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5079,7 +5210,6 @@
 	)
 	(label "PCIe_PER3_N"
 		(at 177.8 68.58 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5090,7 +5220,6 @@
 	)
 	(label "+3V3_PCIe"
 		(at 76.2 76.2 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5101,7 +5230,6 @@
 	)
 	(label "GND"
 		(at 76.2 88.9 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5112,7 +5240,6 @@
 	)
 	(label "PCIe_REFCLK_P"
 		(at 177.8 114.3 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5123,7 +5250,6 @@
 	)
 	(label "GND"
 		(at 76.2 73.66 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5134,7 +5260,6 @@
 	)
 	(label "SMDAT"
 		(at 76.2 71.12 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5145,7 +5270,6 @@
 	)
 	(label "PCIe_PER2_P"
 		(at 127 119.38 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5156,7 +5280,6 @@
 	)
 	(label "GND"
 		(at 71.12 170.18 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5167,7 +5290,6 @@
 	)
 	(label "PCIe_PET2_N"
 		(at 76.2 116.84 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5178,7 +5300,6 @@
 	)
 	(label "GND"
 		(at 127 101.6 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5189,7 +5310,6 @@
 	)
 	(label "PCIe_PERST#"
 		(at 177.8 124.46 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5200,7 +5320,6 @@
 	)
 	(label "GND"
 		(at 76.2 66.04 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5211,7 +5330,6 @@
 	)
 	(label "PCIe_PER2_N"
 		(at 177.8 63.5 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5222,7 +5340,6 @@
 	)
 	(label "PCIe_PET1_P"
 		(at 177.8 91.44 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5233,7 +5350,6 @@
 	)
 	(label "PCIe_PET3_N"
 		(at 177.8 99.06 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5244,7 +5360,6 @@
 	)
 	(label "PCIe_PER1_P"
 		(at 177.8 60.96 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5255,7 +5370,6 @@
 	)
 	(label "PCIe_PER0_P"
 		(at 127 96.52 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5266,7 +5380,6 @@
 	)
 	(label "PCIe_PER1_N"
 		(at 127 111.76 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5277,7 +5390,6 @@
 	)
 	(label "+12V_PCIe"
 		(at 76.2 58.42 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5288,7 +5400,6 @@
 	)
 	(label "PCIe_PER2_N"
 		(at 127 121.92 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5299,7 +5410,6 @@
 	)
 	(label "PCIe_PET0_P"
 		(at 76.2 91.44 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5310,7 +5420,6 @@
 	)
 	(label "GND"
 		(at 127 116.84 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5321,7 +5430,6 @@
 	)
 	(label "PCIe_PER0_N"
 		(at 127 99.06 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5332,7 +5440,6 @@
 	)
 	(label "PCIe_PET1_N"
 		(at 76.2 106.68 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5343,7 +5450,6 @@
 	)
 	(label "GND"
 		(at 127 106.68 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5354,7 +5460,6 @@
 	)
 	(label "PCIe_PET3_N"
 		(at 76.2 127 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5365,7 +5470,6 @@
 	)
 	(label "JTAG3"
 		(at 127 71.12 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5376,7 +5480,6 @@
 	)
 	(label "PCIe_PET0_N"
 		(at 177.8 83.82 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5387,7 +5490,6 @@
 	)
 	(label "JTAG5"
 		(at 127 76.2 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5398,7 +5500,6 @@
 	)
 	(label "+3V3_PCIe"
 		(at 127 78.74 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5409,7 +5510,6 @@
 	)
 	(label "+12V_PCIe"
 		(at 76.2 60.96 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5420,7 +5520,6 @@
 	)
 	(label "PCIe_PET2_P"
 		(at 76.2 114.3 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5431,7 +5530,6 @@
 	)
 	(label "SMCLK"
 		(at 76.2 68.58 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5442,7 +5540,6 @@
 	)
 	(label "GND"
 		(at 127 86.36 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5453,7 +5550,6 @@
 	)
 	(label "PCIe_PER1_P"
 		(at 127 109.22 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5464,7 +5560,6 @@
 	)
 	(label "PCIe_REFCLK_N"
 		(at 127 91.44 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5475,7 +5570,6 @@
 	)
 	(label "+12V_PCIe"
 		(at 127 60.96 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5486,7 +5580,6 @@
 	)
 	(label "GND"
 		(at 76.2 129.54 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5497,7 +5590,6 @@
 	)
 	(label "JTAG4"
 		(at 127 73.66 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5508,7 +5600,6 @@
 	)
 	(label "PCIe_REFCLK_N"
 		(at 177.8 116.84 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5519,7 +5610,6 @@
 	)
 	(label "PCIe_PER2_P"
 		(at 177.8 66.04 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5530,7 +5620,6 @@
 	)
 	(label "GND"
 		(at 127 134.62 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5541,7 +5630,6 @@
 	)
 	(label "PCIe_PET2_P"
 		(at 177.8 96.52 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5552,7 +5640,6 @@
 	)
 	(label "JTAG2"
 		(at 127 68.58 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5563,7 +5650,6 @@
 	)
 	(label "PRSNT1#"
 		(at 116.84 58.42 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5574,7 +5660,6 @@
 	)
 	(label "PCIe_PET2_N"
 		(at 177.8 93.98 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5585,7 +5670,6 @@
 	)
 	(label "PCIe_PERST#"
 		(at 127 83.82 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5596,7 +5680,6 @@
 	)
 	(label "PCIe_PET1_P"
 		(at 76.2 104.14 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5607,7 +5690,6 @@
 	)
 	(label "GND"
 		(at 127 114.3 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5618,7 +5700,6 @@
 	)
 	(label "PCIe_PER3_P"
 		(at 127 129.54 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5629,7 +5710,6 @@
 	)
 	(label "+12V_PCIe"
 		(at 76.2 63.5 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5640,7 +5720,6 @@
 	)
 	(label "JTAG1"
 		(at 76.2 78.74 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5651,7 +5730,6 @@
 	)
 	(label "GND"
 		(at 76.2 137.16 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5662,7 +5740,6 @@
 	)
 	(label "PCIe_REFCLK_P"
 		(at 127 88.9 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5673,7 +5750,6 @@
 	)
 	(label "PCIe_PER3_P"
 		(at 177.8 71.12 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5684,7 +5760,6 @@
 	)
 	(label "GND"
 		(at 127 66.04 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5695,7 +5770,6 @@
 	)
 	(label "GND"
 		(at 76.2 111.76 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5706,7 +5780,6 @@
 	)
 	(label "+3V3_PCIe"
 		(at 127 81.28 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5717,7 +5790,6 @@
 	)
 	(label "PRSNT2#_4"
 		(at 76.2 134.62 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5729,7 +5801,6 @@
 	(hierarchical_label "PCIe_REFCLK_P"
 		(shape output)
 		(at 195.58 114.3 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5741,7 +5812,6 @@
 	(hierarchical_label "PCIe_REFCLK_N"
 		(shape output)
 		(at 195.58 116.84 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5753,7 +5823,6 @@
 	(hierarchical_label "{PCIe_RX}"
 		(shape passive)
 		(at 213.36 48.26 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5765,7 +5834,6 @@
 	(hierarchical_label "{PCIe_TX}"
 		(shape passive)
 		(at 213.36 78.74 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5777,7 +5845,6 @@
 	(hierarchical_label "PCIe_PERST#"
 		(shape output)
 		(at 195.58 124.46 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5818,6 +5885,7 @@
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(property "Datasheet" ""
@@ -5826,14 +5894,16 @@
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name '+3V3_IN'"
 			(at 129.54 162.56 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(pin ""
@@ -5866,7 +5936,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "0.01"
 			(at 101.6 165.1 0)
 			(effects
 				(font
@@ -5874,7 +5944,7 @@
 				)
 			)
 		)
-		(property "Footprint" "GEN_R_0603"
+		(property "Footprint" "Thunderscope_Rev5:GEN_R_0603"
 			(at 101.6 165.1 0)
 			(effects
 				(font
@@ -5928,15 +5998,6 @@
 				(hide yes)
 			)
 		)
-		(property "ALTIUM_VALUE" "0.01"
-			(at 96.012 164.124 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(property "PACKAGE" "0603"
 			(at 99.06 167.64 0)
 			(effects
@@ -5974,6 +6035,14 @@
 				)
 				(justify left bottom)
 				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" ""
+			(at 101.6 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
 			)
 		)
 		(pin "2"
@@ -6073,7 +6142,7 @@
 		(at 106.68 55.88 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(uuid "594a4779-a63c-4b63-adab-2049563024e3")
@@ -6095,7 +6164,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Footprint" "PCIeX4-GF-2D-1000-1K-O64"
+		(property "Footprint" "Thunderscope_Rev5:PCIeX4-GF-2D-1000-1K-O64"
 			(at 106.68 55.88 0)
 			(effects
 				(font
@@ -6180,6 +6249,14 @@
 				)
 				(justify left bottom)
 				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" ""
+			(at 106.68 55.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
 			)
 		)
 		(pin "A2"
@@ -6406,7 +6483,7 @@
 				)
 			)
 		)
-		(property "Value" "${ALTIUM_VALUE}"
+		(property "Value" "0"
 			(at 66.04 134.62 0)
 			(effects
 				(font
@@ -6414,7 +6491,7 @@
 				)
 			)
 		)
-		(property "Footprint" "GEN_R_0402"
+		(property "Footprint" "Thunderscope_Rev5:GEN_R_0402"
 			(at 66.04 134.62 0)
 			(effects
 				(font
@@ -6468,15 +6545,6 @@
 				(hide yes)
 			)
 		)
-		(property "ALTIUM_VALUE" "0"
-			(at 66.04 134.62 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(property "HOUSE PART NUMBER" ""
 			(at 60.452 130.81 0)
 			(effects
@@ -6507,6 +6575,14 @@
 				(hide yes)
 			)
 		)
+		(property "ALTIUM_VALUE" ""
+			(at 66.04 134.62 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "d1d94f71-d4f8-4637-92cc-dbf75a087227")
 		)
@@ -6523,6 +6599,127 @@
 			(project ""
 				(path "/7f617bb4-8a80-4195-bb71-709eff343d51"
 					(reference "R41")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Thunderscope_Rev5:PCIe IO Shield")
+		(at 269.24 162.56 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board no)
+		(dnp no)
+		(uuid "8beb952c-7bcf-4dff-b655-22b1414e5f9c")
+		(property "Reference" "SHLD1"
+			(at 266.7 152.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "9204"
+			(at 266.7 175.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Footprint" ""
+			(at 269.24 162.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 269.24 162.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 269.24 162.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER 1" "Mouser"
+			(at 267.97 161.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER PART NUMBER 1" "534-9204"
+			(at 267.97 161.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "HOUSE PART NUMBER" ""
+			(at 266.7 149.86 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "Keystone Electronics"
+			(at 266.7 149.86 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" "9204"
+			(at 266.7 149.86 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" ""
+			(at 269.24 162.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(instances
+			(project "Thunderscope_Rev5"
+				(path "/031d3e2c-42e0-4016-8c32-579d45c83e09/95dd7985-f010-4388-84bb-3ad8f1a365a2"
+					(reference "SHLD1")
 					(unit 1)
 				)
 			)
@@ -6552,10 +6749,9 @@
 					(size 1.27 1.27)
 				)
 				(justify left bottom)
-				(hide yes)
 			)
 		)
-		(property "Footprint" "KEY_5015"
+		(property "Footprint" "Thunderscope_Rev5:KEY_5015"
 			(at 91.44 165.1 0)
 			(effects
 				(font
@@ -6630,6 +6826,14 @@
 				)
 				(justify left bottom)
 				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" ""
+			(at 91.44 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
 			)
 		)
 		(pin "1"
@@ -6674,10 +6878,9 @@
 					(size 1.27 1.27)
 				)
 				(justify bottom)
-				(hide yes)
 			)
 		)
-		(property "Footprint" "KEY_5015"
+		(property "Footprint" "Thunderscope_Rev5:KEY_5015"
 			(at 111.76 165.1 0)
 			(effects
 				(font
@@ -6752,6 +6955,14 @@
 				)
 				(justify left bottom)
 				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" ""
+			(at 111.76 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
 			)
 		)
 		(pin "1"
