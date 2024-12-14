@@ -10,404 +10,6 @@
 		(company "EEVengers")
 	)
 	(lib_symbols
-		(symbol "LED:APFA3010"
-			(pin_names
-				(offset 0)
-				(hide yes)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "D"
-				(at 0 10.16 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "APFA3010"
-				(at 0 -10.16 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" "LED_SMD:LED_Kingbright_APFA3010_3x1.5mm_Horizontal"
-				(at 0 12.7 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" "http://www.kingbrightusa.com/images/catalog/SPEC/APFA3010LSEEZGKQBKC.pdf"
-				(at 0 -11.43 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" "LED RGB, Common Anode, SMD, 3.0x1.5mm, Horizontal"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_keywords" "LED RGB SMD Kingbright APFA3010 Horizontal"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_fp_filters" "*Kingbright*APFA3010*3x1.5mm*Horizontal*"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "APFA3010_0_0"
-				(text "R"
-					(at -1.905 3.81 0)
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(text "G"
-					(at -1.905 -1.27 0)
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(text "B"
-					(at -1.905 -6.35 0)
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(symbol "APFA3010_0_1"
-				(polyline
-					(pts
-						(xy -2.54 -5.08) (xy 1.27 -5.08)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(rectangle
-					(start -2.54 -8.89)
-					(end 2.54 8.89)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type background)
-					)
-				)
-				(polyline
-					(pts
-						(xy -1.27 6.35) (xy -1.27 3.81)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -1.27 1.27) (xy -1.27 -1.27)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -1.27 -3.81) (xy -1.27 -6.35)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -1.016 6.35) (xy 0.508 7.874) (xy -0.254 7.874) (xy 0.508 7.874) (xy 0.508 7.112)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -1.016 1.27) (xy 0.508 2.794) (xy -0.254 2.794) (xy 0.508 2.794) (xy 0.508 2.032)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -1.016 -3.81) (xy 0.508 -2.286) (xy -0.254 -2.286) (xy 0.508 -2.286) (xy 0.508 -3.048)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0 6.35) (xy 1.524 7.874) (xy 0.762 7.874) (xy 1.524 7.874) (xy 1.524 7.112)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0 1.27) (xy 1.524 2.794) (xy 0.762 2.794) (xy 1.524 2.794) (xy 1.524 2.032)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0 -3.81) (xy 1.524 -2.286) (xy 0.762 -2.286) (xy 1.524 -2.286) (xy 1.524 -3.048)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 1.27 6.35) (xy 1.27 3.81) (xy -1.27 5.08) (xy 1.27 6.35)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(rectangle
-					(start 1.27 6.35)
-					(end 1.27 6.35)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 1.27 5.08) (xy -2.54 5.08)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 1.27 1.27) (xy 1.27 -1.27) (xy -1.27 0) (xy 1.27 1.27)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 1.27 -3.81) (xy 1.27 -6.35) (xy -1.27 -5.08) (xy 1.27 -3.81)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 1.27 -5.08) (xy 2.032 -5.08) (xy 2.032 5.08) (xy 1.27 5.08)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(circle
-					(center 2.032 0)
-					(radius 0.254)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type outline)
-					)
-				)
-				(polyline
-					(pts
-						(xy 2.54 0) (xy -2.54 0)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "APFA3010_1_1"
-				(pin input line
-					(at -5.08 5.08 0)
-					(length 2.54)
-					(name "R"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin input line
-					(at -5.08 0 0)
-					(length 2.54)
-					(name "G"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "3"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin input line
-					(at -5.08 -5.08 0)
-					(length 2.54)
-					(name "B"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "4"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin power_in line
-					(at 5.08 0 180)
-					(length 2.54)
-					(name "A"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
 		(symbol "Thunderscope_Rev5:+3V3_BAR"
 			(power)
 			(exclude_from_sim no)
@@ -3260,7 +2862,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "Thunderscope_Rev5:LED GREEN 0603 LTST-S270K"
+		(symbol "Thunderscope_Rev5:LED RGB 1204 APFA3010LSEKJ3ZGKQBC"
 			(pin_numbers
 				(hide yes)
 			)
@@ -3271,23 +2873,23 @@
 			(in_bom yes)
 			(on_board yes)
 			(property "Reference" "D"
-				(at 0 0 0)
+				(at -2.032 10.16 0)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
 				)
 			)
-			(property "Value" "GREEN"
-				(at 0 0 0)
+			(property "Value" "RGB"
+				(at 0 -10.16 0)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
 				)
 			)
-			(property "Footprint" "Thunderscope_Rev5:LED_0603_LTST-S270K"
-				(at 0 0 0)
+			(property "Footprint" "Thunderscope_Rev5:LED_Kingbright_APFA3010_3x1.5mm_Horizontal"
+				(at 0 -10.16 0)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -3314,7 +2916,7 @@
 				)
 			)
 			(property "SUPPLIER 1" "Mouser"
-				(at 0 0 0)
+				(at 0 -10.16 0)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -3322,8 +2924,8 @@
 					(hide yes)
 				)
 			)
-			(property "SUPPLIER PART NUMBER 1" "859-LTST-S270KGKT"
-				(at 0 0 0)
+			(property "SUPPLIER PART NUMBER 1" "604-APFA3010LSEKJ3ZG"
+				(at 0 -10.16 0)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -3340,8 +2942,8 @@
 					(hide yes)
 				)
 			)
-			(property "MANUFACTURER" "Vishay Lite-On"
-				(at 0 0 0)
+			(property "MANUFACTURER" "Kingbright"
+				(at 0 -10.16 0)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -3349,8 +2951,8 @@
 					(hide yes)
 				)
 			)
-			(property "MANUFACTURER PART NUMBER" "LTST-S270KGKT"
-				(at 0 0 0)
+			(property "MANUFACTURER PART NUMBER" "APFA3010LSEKJ3ZGKQBC"
+				(at 0 -10.16 0)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -3358,38 +2960,51 @@
 					(hide yes)
 				)
 			)
-			(symbol "LED GREEN 0603 LTST-S270K_1_0"
-				(polyline
-					(pts
-						(xy -4.064 4.318) (xy -3.048 3.81) (xy -3.556 3.302) (xy -4.064 4.318)
+			(symbol "LED RGB 1204 APFA3010LSEKJ3ZGKQBC_0_0"
+				(text "R"
+					(at 1.016 2.54 0)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
 					)
+				)
+				(text "G"
+					(at 1.016 -2.54 0)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(text "B"
+					(at 1.016 -7.62 0)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(symbol "LED RGB 1204 APFA3010LSEKJ3ZGKQBC_0_1"
+				(rectangle
+					(start -2.54 8.89)
+					(end 2.54 -8.89)
 					(stroke
-						(width -0.0001)
-						(type solid)
+						(width 0.254)
+						(type default)
 					)
 					(fill
-						(type outline)
+						(type background)
 					)
 				)
 				(polyline
 					(pts
-						(xy -3.048 5.334) (xy -2.032 4.826) (xy -2.54 4.318) (xy -3.048 5.334)
-					)
-					(stroke
-						(width -0.0001)
-						(type solid)
-					)
-					(fill
-						(type outline)
-					)
-				)
-				(polyline
-					(pts
-						(xy -2.286 2.54) (xy -4.064 4.318)
+						(xy -2.54 5.08) (xy -1.778 5.08)
 					)
 					(stroke
 						(width 0)
-						(type solid)
+						(type default)
 					)
 					(fill
 						(type none)
@@ -3397,11 +3012,11 @@
 				)
 				(polyline
 					(pts
-						(xy -1.27 3.556) (xy -3.048 5.334)
+						(xy -2.54 0) (xy -1.778 0)
 					)
 					(stroke
 						(width 0)
-						(type solid)
+						(type default)
 					)
 					(fill
 						(type none)
@@ -3409,11 +3024,11 @@
 				)
 				(polyline
 					(pts
-						(xy -1.27 2.54) (xy -1.27 -2.54)
+						(xy -2.54 -5.08) (xy -1.778 -5.08)
 					)
 					(stroke
 						(width 0)
-						(type solid)
+						(type default)
 					)
 					(fill
 						(type none)
@@ -3421,20 +3036,189 @@
 				)
 				(polyline
 					(pts
-						(xy 1.27 -2.54) (xy -1.27 0) (xy 1.27 2.54) (xy 1.27 -2.54)
+						(xy -1.778 6.35) (xy -1.778 3.81) (xy 0.762 5.08) (xy -1.778 6.35)
 					)
 					(stroke
-						(width -0.0001)
-						(type solid)
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.778 1.27) (xy -1.778 -1.27) (xy 0.762 0) (xy -1.778 1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.778 -3.81) (xy -1.778 -6.35) (xy 0.762 -5.08) (xy -1.778 -3.81)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -0.508 6.35) (xy -2.032 7.874) (xy -1.27 7.874) (xy -2.032 7.874) (xy -2.032 7.112)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -0.508 1.27) (xy -2.032 2.794) (xy -1.27 2.794) (xy -2.032 2.794) (xy -2.032 2.032)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -0.508 -3.81) (xy -2.032 -2.286) (xy -1.27 -2.286) (xy -2.032 -2.286) (xy -2.032 -3.048)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.508 6.35) (xy -1.016 7.874) (xy -0.254 7.874) (xy -1.016 7.874) (xy -1.016 7.112)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.508 1.27) (xy -1.016 2.794) (xy -0.254 2.794) (xy -1.016 2.794) (xy -1.016 2.032)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.508 -3.81) (xy -1.016 -2.286) (xy -0.254 -2.286) (xy -1.016 -2.286) (xy -1.016 -3.048)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.762 6.35) (xy 0.762 3.81)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.762 1.27) (xy 0.762 -1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.762 0) (xy 2.54 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.762 -3.81) (xy 0.762 -6.35)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.762 -5.08) (xy 1.778 -5.08) (xy 1.778 5.08) (xy 0.762 5.08)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center 1.778 0)
+					(radius 0.254)
+					(stroke
+						(width 0)
+						(type default)
 					)
 					(fill
 						(type outline)
 					)
 				)
-				(pin passive line
-					(at -6.35 0 0)
-					(length 5.08)
-					(name "K"
+			)
+			(symbol "LED RGB 1204 APFA3010LSEKJ3ZGKQBC_1_1"
+				(pin input line
+					(at -5.08 5.08 0)
+					(length 2.54)
+					(name "R"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -3449,9 +3233,45 @@
 						)
 					)
 				)
-				(pin passive line
-					(at 6.35 0 180)
-					(length 5.08)
+				(pin input line
+					(at -5.08 0 0)
+					(length 2.54)
+					(name "G"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -5.08 -5.08 0)
+					(length 2.54)
+					(name "B"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at 5.08 0 180)
+					(length 2.54)
 					(name "A"
 						(effects
 							(font
@@ -4409,7 +4229,7 @@
 				)
 				(polyline
 					(pts
-						(xy -1.27 0) (xy 1.27 0)
+						(xy -1.27 0) (xy -2.54 -1.27)
 					)
 					(stroke
 						(width 0)
@@ -4421,7 +4241,7 @@
 				)
 				(polyline
 					(pts
-						(xy -1.27 0) (xy -2.54 -1.27)
+						(xy -1.27 0) (xy 1.27 0)
 					)
 					(stroke
 						(width 0)
@@ -4596,23 +4416,15 @@
 			(embedded_fonts no)
 		)
 	)
+	(bus_alias "LED_RGB"
+		(members "LED_R" "LED_G" "LED_B")
+	)
 	(bus_alias "USRIO"
 		(members "USRIO_1_P" "USRIO_1_N" "USRIO_2_P" "USRIO_2_N" "USRIO_3_P" "USRIO_3_N"
 			"USRIO_4_P" "USRIO_4_N" "USRIO_5_P" "USRIO_5_N" "USRIO_6_P" "USRIO_6_N"
 			"USRIO_7_P" "USRIO_7_N" "USRIO_8_P" "USRIO_8_N" "USRIO_9_P" "USRIO_9_N"
 			"USRIO_10_P" "USRIO_10_N" "USRIO_11_P" "USRIO_11_N" "USRIO_12_P" "USRIO_12_N"
 		)
-	)
-	(text "TODO: RGB LED"
-		(exclude_from_sim no)
-		(at 228.6 152.4 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-				(color 255 0 0 1)
-			)
-		)
-		(uuid "18a264bd-6b35-4362-8d28-f163ce58a7ba")
 	)
 	(text "Reference Clock and Sync"
 		(exclude_from_sim no)
@@ -4627,12 +4439,41 @@
 		)
 		(uuid "19e01711-e7d1-461f-aa77-1e472d9e0249")
 	)
-	(text "DONE: 36 pin FPC connector for LVDS"
+	(text "TEST: LED resistor values on Mech Board"
+		(exclude_from_sim no)
+		(at 231.14 175.26 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.254)
+				(bold yes)
+				(color 194 0 194 1)
+			)
+		)
+		(uuid "29b2d255-4acb-46ce-9780-97dca4195144")
+	)
+	(text "DONE: Change Status LED to RGB"
+		(exclude_from_sim no)
+		(at 231.14 144.78 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.254)
+				(bold yes)
+				(color 0 194 194 1)
+			)
+		)
+		(uuid "4379e284-f482-4a9b-92e1-e06eb3b6f285")
+	)
+	(text "DONE: 36 pin FFC for LVDS"
 		(exclude_from_sim no)
 		(at 203.2 125.73 0)
 		(effects
 			(font
 				(size 1.27 1.27)
+				(thickness 0.254)
+				(bold yes)
+				(color 0 194 194 1)
 			)
 		)
 		(uuid "85c10d4b-25fc-4dba-8c26-0c1ddc132c79")
@@ -4663,7 +4504,7 @@
 		)
 		(uuid "bced86ff-464f-47f7-8281-572891efa25e")
 	)
-	(text "User IO FFC Connector"
+	(text "User IO Flat Flex Connector"
 		(exclude_from_sim no)
 		(at 179.07 15.24 0)
 		(effects
@@ -4682,6 +4523,9 @@
 		(effects
 			(font
 				(size 1.27 1.27)
+				(thickness 0.254)
+				(bold yes)
+				(color 0 194 194 1)
 			)
 		)
 		(uuid "d5ee503e-5819-4e36-85c3-b25232486c15")
@@ -5020,6 +4864,15 @@
 		(uuid "6f3b6573-f0c8-497b-b4fe-bfddf0a50942")
 	)
 	(bus_entry
+		(at 246.38 154.94)
+		(size 2.54 -2.54)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6f718d40-0b0f-47ab-bdbc-aedfbc836a22")
+	)
+	(bus_entry
 		(at 215.9 68.58)
 		(size 2.54 2.54)
 		(stroke
@@ -5045,6 +4898,15 @@
 			(type default)
 		)
 		(uuid "a62d5020-7bbd-475a-a539-22c5826322db")
+	)
+	(bus_entry
+		(at 246.38 165.1)
+		(size 2.54 -2.54)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b3b41aec-f7cd-4bab-b7f7-bb7941fa8248")
 	)
 	(bus_entry
 		(at 215.9 99.06)
@@ -5099,6 +4961,15 @@
 			(type default)
 		)
 		(uuid "de7fa4e8-4c32-4567-bc13-689b603a9d79")
+	)
+	(bus_entry
+		(at 246.38 160.02)
+		(size 2.54 -2.54)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e8b5c68c-a727-4b54-a323-00c020cd0026")
 	)
 	(bus_entry
 		(at 215.9 66.04)
@@ -5390,6 +5261,16 @@
 	)
 	(wire
 		(pts
+			(xy 213.36 160.02) (xy 210.82 160.02)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "346f07de-4116-4078-a187-3a86722a1c39")
+	)
+	(wire
+		(pts
 			(xy 119.38 78.74) (xy 134.62 78.74)
 		)
 		(stroke
@@ -5510,16 +5391,6 @@
 	)
 	(wire
 		(pts
-			(xy 248.92 160.02) (xy 254 160.02)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "4637275c-c4f6-43fb-99bf-4ed87624d0fb")
-	)
-	(wire
-		(pts
 			(xy 218.44 109.22) (xy 233.68 109.22)
 		)
 		(stroke
@@ -5558,6 +5429,16 @@
 		)
 		(uuid "49c44f88-f8dc-446a-bff7-6df82aee8f22")
 	)
+	(wire
+		(pts
+			(xy 226.06 165.1) (xy 223.52 165.1)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4bd36e93-76d4-4ea5-86f1-b03a95aa0f1b")
+	)
 	(bus
 		(pts
 			(xy 215.9 96.52) (xy 215.9 99.06)
@@ -5587,16 +5468,6 @@
 			(type default)
 		)
 		(uuid "4ea0bcde-c69f-43fc-be07-0749539c5172")
-	)
-	(wire
-		(pts
-			(xy 254 160.02) (xy 254 162.56)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "4faf3f8d-9290-4c6c-b1a0-fba01d2ed071")
 	)
 	(wire
 		(pts
@@ -5640,7 +5511,7 @@
 	)
 	(wire
 		(pts
-			(xy 233.68 160.02) (xy 236.22 160.02)
+			(xy 226.06 160.02) (xy 223.52 160.02)
 		)
 		(stroke
 			(width 0)
@@ -5670,7 +5541,7 @@
 	)
 	(wire
 		(pts
-			(xy 223.52 160.02) (xy 213.36 160.02)
+			(xy 236.22 160.02) (xy 246.38 160.02)
 		)
 		(stroke
 			(width 0)
@@ -5940,7 +5811,7 @@
 	)
 	(wire
 		(pts
-			(xy 109.22 109.22) (xy 119.38 109.22)
+			(xy 99.06 109.22) (xy 119.38 109.22)
 		)
 		(stroke
 			(width 0)
@@ -5960,6 +5831,16 @@
 	)
 	(wire
 		(pts
+			(xy 236.22 165.1) (xy 246.38 165.1)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7d4dbd75-93c5-4516-9146-02a937a9f559")
+	)
+	(wire
+		(pts
 			(xy 127 111.76) (xy 129.54 111.76)
 		)
 		(stroke
@@ -5967,6 +5848,16 @@
 			(type default)
 		)
 		(uuid "7dcd6745-9908-4e14-b577-3c22a34efe48")
+	)
+	(wire
+		(pts
+			(xy 226.06 154.94) (xy 223.52 154.94)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7e723358-97fe-416d-b553-d98e59813e7b")
 	)
 	(wire
 		(pts
@@ -6007,6 +5898,16 @@
 			(type default)
 		)
 		(uuid "827d3d9e-078d-450f-81cc-adaaba405322")
+	)
+	(wire
+		(pts
+			(xy 236.22 154.94) (xy 246.38 154.94)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "84c2268f-beb6-45cd-866b-37e6cb6b5036")
 	)
 	(wire
 		(pts
@@ -6288,6 +6189,16 @@
 		)
 		(uuid "a4956848-a757-4700-8cfa-5bd2cf2cfea4")
 	)
+	(bus
+		(pts
+			(xy 248.92 152.4) (xy 248.92 157.48)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a87c55ba-8f79-4cc6-8882-b48671b48dc1")
+	)
 	(wire
 		(pts
 			(xy 101.6 53.34) (xy 83.82 53.34)
@@ -6307,6 +6218,16 @@
 			(type default)
 		)
 		(uuid "aae07691-3a20-4d71-998e-3f275b4dca3d")
+	)
+	(wire
+		(pts
+			(xy 210.82 160.02) (xy 210.82 162.56)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ab0f18f7-75c2-4e56-bbad-783cd6fae6f9")
 	)
 	(wire
 		(pts
@@ -6330,13 +6251,23 @@
 	)
 	(wire
 		(pts
-			(xy 109.22 104.14) (xy 111.76 104.14)
+			(xy 99.06 104.14) (xy 111.76 104.14)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
 		(uuid "adbff4be-bb9e-45aa-a643-fc2726eafe35")
+	)
+	(bus
+		(pts
+			(xy 248.92 149.86) (xy 254 149.86)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ae280024-1e0a-4eaf-8faa-28a704c4e10e")
 	)
 	(polyline
 		(pts
@@ -6440,6 +6371,16 @@
 	)
 	(bus
 		(pts
+			(xy 248.92 157.48) (xy 248.92 162.56)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c21bf8ff-8c03-4ec1-bd1d-a245196bb9d3")
+	)
+	(bus
+		(pts
 			(xy 215.9 60.96) (xy 215.9 66.04)
 		)
 		(stroke
@@ -6460,7 +6401,7 @@
 	)
 	(wire
 		(pts
-			(xy 33.02 104.14) (xy 40.64 104.14)
+			(xy 27.94 104.14) (xy 40.64 104.14)
 		)
 		(stroke
 			(width 0)
@@ -6768,6 +6709,16 @@
 		)
 		(uuid "f63a1a81-7228-4423-8424-66e6a646d212")
 	)
+	(bus
+		(pts
+			(xy 248.92 152.4) (xy 248.92 149.86)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f7aa1a69-9ebb-4acc-95dd-0693fc2accf6")
+	)
 	(wire
 		(pts
 			(xy 231.14 96.52) (xy 231.14 104.14)
@@ -6879,7 +6830,7 @@
 		(uuid "5379dcd3-f141-4a8c-84bc-e737e4ded40c")
 	)
 	(label "REFINOUT1"
-		(at 33.02 104.14 0)
+		(at 27.94 104.14 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6899,7 +6850,7 @@
 		(uuid "593ebf14-e34c-44c8-8057-19f1a9b4e6ac")
 	)
 	(label "REFINOUT2"
-		(at 109.22 104.14 0)
+		(at 99.06 104.14 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6927,6 +6878,16 @@
 			(justify right bottom)
 		)
 		(uuid "7b62e1d8-3266-4cc8-9d4a-98a53765fd76")
+	)
+	(label "LED_B"
+		(at 243.84 165.1 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "84c05b55-7465-4bc9-b07c-c2c128e753dc")
 	)
 	(label "USRIO_2_P"
 		(at 218.44 38.1 0)
@@ -7078,8 +7039,8 @@
 		)
 		(uuid "d62834de-980b-456a-92a5-97963347dee7")
 	)
-	(label "LED"
-		(at 218.44 160.02 180)
+	(label "LED_G"
+		(at 243.84 160.02 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -7089,7 +7050,7 @@
 		(uuid "d739ea7e-6728-4799-ae85-d3122437c331")
 	)
 	(label "SYNC2"
-		(at 109.22 109.22 0)
+		(at 99.06 109.22 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -7118,6 +7079,16 @@
 		)
 		(uuid "eaecca1c-d864-4c09-bf2d-4e02f50d5de8")
 	)
+	(label "LED_R"
+		(at 243.84 154.94 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "fe3952ec-2578-4715-a059-d3fca6ce2444")
+	)
 	(label "REFINOUT2"
 		(at 160.02 83.82 180)
 		(effects
@@ -7127,6 +7098,17 @@
 			(justify right bottom)
 		)
 		(uuid "fffd2bc4-a1e6-4a68-b9fe-38554f35a42d")
+	)
+	(hierarchical_label "{LED_RGB}"
+		(shape input)
+		(at 254 149.86 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "060cd4e4-c937-4f17-85d4-6de12f3104d4")
 	)
 	(hierarchical_label "SYNC_DE"
 		(shape input)
@@ -7138,17 +7120,6 @@
 			(justify left)
 		)
 		(uuid "11f706a9-5098-4c27-8a78-9002ab2eb36b")
-	)
-	(hierarchical_label "LED"
-		(shape input)
-		(at 213.36 160.02 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "3a19d24c-df67-4d12-b23d-1259ca109562")
 	)
 	(hierarchical_label "SYNC_OUT_N"
 		(shape input)
@@ -7361,208 +7332,6 @@
 			(project "Thunderscope_Rev5"
 				(path "/031d3e2c-42e0-4016-8c32-579d45c83e09/4fd15650-a4c4-4d94-afbf-a5fab92becb6"
 					(reference "J4")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "LED:APFA3010")
-		(at 193.04 162.56 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "0653847e-96b1-4509-ac67-d2d49c8a3973")
-		(property "Reference" "D?"
-			(at 193.04 148.59 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "APFA3010"
-			(at 193.04 151.13 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "LED_SMD:LED_Kingbright_APFA3010_3x1.5mm_Horizontal"
-			(at 193.04 149.86 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "http://www.kingbrightusa.com/images/catalog/SPEC/APFA3010LSEEZGKQBKC.pdf"
-			(at 193.04 173.99 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "LED RGB, Common Anode, SMD, 3.0x1.5mm, Horizontal"
-			(at 193.04 162.56 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "027784d8-53f3-4b7b-9416-98a547451e50")
-		)
-		(pin "3"
-			(uuid "db0b79d4-0ff8-4819-8516-b0145fe14b21")
-		)
-		(pin "4"
-			(uuid "86972ddf-aaaf-4c86-a1c8-5b3c41d31550")
-		)
-		(pin "1"
-			(uuid "7f5e38af-1354-4e9a-8305-5b16fe722ac9")
-		)
-		(instances
-			(project ""
-				(path "/031d3e2c-42e0-4016-8c32-579d45c83e09/4fd15650-a4c4-4d94-afbf-a5fab92becb6"
-					(reference "D?")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Thunderscope_Rev5:LED GREEN 0603 LTST-S270K")
-		(at 242.57 160.02 0)
-		(mirror y)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "09cf54e4-480f-4881-8410-d2b4c7895caa")
-		(property "Reference" "D1"
-			(at 236.22 157.48 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Value" "GREEN"
-			(at 246.888 165.354 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-			)
-		)
-		(property "Footprint" "Thunderscope_Rev5:LED_0603_LTST-S270K"
-			(at 242.57 160.02 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 242.57 160.02 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 242.57 160.02 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "SUPPLIER 1" "Mouser"
-			(at 249.428 154.432 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-				(hide yes)
-			)
-		)
-		(property "SUPPLIER PART NUMBER 1" "859-LTST-S270KGKT"
-			(at 249.428 154.432 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-				(hide yes)
-			)
-		)
-		(property "HOUSE PART NUMBER" ""
-			(at 249.428 154.432 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-				(hide yes)
-			)
-		)
-		(property "MANUFACTURER" "Vishay Lite-On"
-			(at 249.428 154.432 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-				(hide yes)
-			)
-		)
-		(property "MANUFACTURER PART NUMBER" "LTST-S270KGKT"
-			(at 249.428 154.432 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-				(hide yes)
-			)
-		)
-		(property "ALTIUM_VALUE" ""
-			(at 242.57 160.02 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "97509ca4-1acc-4c46-89a2-ceb56ef30641")
-		)
-		(pin "2"
-			(uuid "9546ebb1-b1f3-4c24-be81-df2a592e8726")
-		)
-		(instances
-			(project "Thunderscope_Rev5"
-				(path "/031d3e2c-42e0-4016-8c32-579d45c83e09/4fd15650-a4c4-4d94-afbf-a5fab92becb6"
-					(reference "D1")
 					(unit 1)
 				)
 			)
@@ -8912,72 +8681,6 @@
 			(project "Thunderscope_Rev5"
 				(path "/031d3e2c-42e0-4016-8c32-579d45c83e09/4fd15650-a4c4-4d94-afbf-a5fab92becb6"
 					(reference "#PWR0326")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Thunderscope_Rev5:GND")
-		(at 254 162.56 0)
-		(mirror y)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "4cc16ace-06f0-4695-ae6d-0810f1e0e570")
-		(property "Reference" "#PWR02"
-			(at 254 168.91 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 254 166.37 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 254 162.56 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 254 162.56 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 254 162.56 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "0da27f1d-8055-4cad-9f8d-54f1a5cd7d53")
-		)
-		(instances
-			(project "Thunderscope_Rev5"
-				(path "/031d3e2c-42e0-4016-8c32-579d45c83e09/4fd15650-a4c4-4d94-afbf-a5fab92becb6"
-					(reference "#PWR02")
 					(unit 1)
 				)
 			)
@@ -10770,6 +10473,217 @@
 		)
 	)
 	(symbol
+		(lib_id "Thunderscope_Rev5:RES 1K OHM 1% 1/10W 0402")
+		(at 231.14 165.1 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "bae14a9b-e212-4449-8b94-40e052ce4138")
+		(property "Reference" "R65"
+			(at 231.14 167.64 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "1K"
+			(at 231.14 165.1 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Thunderscope_Rev5:GEN_R_0402"
+			(at 231.14 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 231.14 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 231.14 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "TOLERANCE" "1%"
+			(at 230.084 170.688 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "PACKAGE" "0402"
+			(at 230.084 170.688 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER 1" "Mouser"
+			(at 230.084 170.688 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER PART NUMBER 1" "603-RC0402FR-071KL"
+			(at 230.084 170.688 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "HOUSE PART NUMBER" "R-1K-0402-1%-001"
+			(at 230.084 170.688 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "Yageo"
+			(at 230.084 170.688 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" "RC0402FR-071KL"
+			(at 230.084 170.688 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" ""
+			(at 231.14 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "c6b200ab-70b9-4d25-ae71-411880349ea4")
+		)
+		(pin "2"
+			(uuid "49a3e31d-b88f-424f-b11f-5586a28bfb08")
+		)
+		(instances
+			(project "Thunderscope_Rev5"
+				(path "/031d3e2c-42e0-4016-8c32-579d45c83e09/4fd15650-a4c4-4d94-afbf-a5fab92becb6"
+					(reference "R65")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Thunderscope_Rev5:GND")
+		(at 210.82 162.56 0)
+		(mirror y)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "c105ad63-a37a-4087-b185-53c8abdf8dca")
+		(property "Reference" "#PWR02"
+			(at 210.82 168.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 210.82 166.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 210.82 162.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 210.82 162.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 210.82 162.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "389985bb-f2a7-4dea-b28b-675f27d8ce06")
+		)
+		(instances
+			(project "Thunderscope_Rev5"
+				(path "/031d3e2c-42e0-4016-8c32-579d45c83e09/4fd15650-a4c4-4d94-afbf-a5fab92becb6"
+					(reference "#PWR02")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Thunderscope_Rev5:GND")
 		(at 154.94 116.84 0)
 		(unit 1)
@@ -10976,6 +10890,151 @@
 			(project "Thunderscope_Rev5"
 				(path "/031d3e2c-42e0-4016-8c32-579d45c83e09/4fd15650-a4c4-4d94-afbf-a5fab92becb6"
 					(reference "C78")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Thunderscope_Rev5:RES 1K OHM 1% 1/10W 0402")
+		(at 231.14 154.94 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "d56d2eb4-57c0-4430-a8bb-4f21da87f3f9")
+		(property "Reference" "R64"
+			(at 231.14 157.48 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "1K"
+			(at 231.14 154.94 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Thunderscope_Rev5:GEN_R_0402"
+			(at 231.14 154.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 231.14 154.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 231.14 154.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "TOLERANCE" "1%"
+			(at 230.084 160.528 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "PACKAGE" "0402"
+			(at 230.084 160.528 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER 1" "Mouser"
+			(at 230.084 160.528 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER PART NUMBER 1" "603-RC0402FR-071KL"
+			(at 230.084 160.528 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "HOUSE PART NUMBER" "R-1K-0402-1%-001"
+			(at 230.084 160.528 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "Yageo"
+			(at 230.084 160.528 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" "RC0402FR-071KL"
+			(at 230.084 160.528 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" ""
+			(at 231.14 154.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "f97e1ea8-f817-45e3-8bf2-af9079d9f802")
+		)
+		(pin "2"
+			(uuid "a392a200-1053-45ff-a2a5-1cecacbb9308")
+		)
+		(instances
+			(project "Thunderscope_Rev5"
+				(path "/031d3e2c-42e0-4016-8c32-579d45c83e09/4fd15650-a4c4-4d94-afbf-a5fab92becb6"
+					(reference "R64")
 					(unit 1)
 				)
 			)
@@ -12083,33 +12142,34 @@
 		)
 	)
 	(symbol
-		(lib_id "Thunderscope_Rev5:RES 1K OHM 1% 1/10W 0402")
-		(at 228.6 160.02 270)
-		(mirror x)
+		(lib_id "Thunderscope_Rev5:LED RGB 1204 APFA3010LSEKJ3ZGKQBC")
+		(at 218.44 160.02 0)
+		(mirror y)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "f011682b-03e6-4d2d-a06c-f7937213fc3b")
-		(property "Reference" "R6"
-			(at 228.6 162.56 90)
+		(uuid "eee75942-b35a-49ea-b4d1-38dd1ddeb91e")
+		(property "Reference" "D1"
+			(at 215.9 149.86 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "RGB"
+			(at 218.44 170.18 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Value" "1K"
-			(at 228.6 160.02 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Thunderscope_Rev5:GEN_R_0402"
-			(at 228.6 160.02 0)
+		(property "Footprint" "Thunderscope_Rev5:LED_Kingbright_APFA3010_3x1.5mm_Horizontal"
+			(at 218.44 170.18 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12118,7 +12178,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 228.6 160.02 0)
+			(at 218.44 160.02 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12127,7 +12187,125 @@
 			)
 		)
 		(property "Description" ""
-			(at 228.6 160.02 0)
+			(at 218.44 160.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER 1" "Mouser"
+			(at 218.44 170.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER PART NUMBER 1" "604-APFA3010LSEKJ3ZG"
+			(at 218.44 170.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "HOUSE PART NUMBER" ""
+			(at 218.44 160.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "Kingbright"
+			(at 218.44 170.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" "APFA3010LSEKJ3ZGKQBC"
+			(at 218.44 170.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "4"
+			(uuid "01ff8dab-d593-41c5-91b8-1d5cae783c39")
+		)
+		(pin "2"
+			(uuid "8ef3181f-d366-40f2-bb1f-0436d4f38b6b")
+		)
+		(pin "1"
+			(uuid "1a16a325-2156-4dfa-9387-171ec7b24ddf")
+		)
+		(pin "3"
+			(uuid "8e49863f-41a7-4f08-8739-9db3478ed644")
+		)
+		(instances
+			(project ""
+				(path "/031d3e2c-42e0-4016-8c32-579d45c83e09/4fd15650-a4c4-4d94-afbf-a5fab92becb6"
+					(reference "D1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Thunderscope_Rev5:RES 1K OHM 1% 1/10W 0402")
+		(at 231.14 160.02 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "f011682b-03e6-4d2d-a06c-f7937213fc3b")
+		(property "Reference" "R6"
+			(at 231.14 162.56 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "1K"
+			(at 231.14 160.02 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Thunderscope_Rev5:GEN_R_0402"
+			(at 231.14 160.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 231.14 160.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 231.14 160.02 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12136,7 +12314,7 @@
 			)
 		)
 		(property "TOLERANCE" "1%"
-			(at 229.656 165.608 0)
+			(at 230.084 165.608 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12146,7 +12324,7 @@
 			)
 		)
 		(property "PACKAGE" "0402"
-			(at 229.656 165.608 0)
+			(at 230.084 165.608 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12156,7 +12334,7 @@
 			)
 		)
 		(property "SUPPLIER 1" "Mouser"
-			(at 229.656 165.608 0)
+			(at 230.084 165.608 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12166,7 +12344,7 @@
 			)
 		)
 		(property "SUPPLIER PART NUMBER 1" "603-RC0402FR-071KL"
-			(at 229.656 165.608 0)
+			(at 230.084 165.608 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12176,7 +12354,7 @@
 			)
 		)
 		(property "HOUSE PART NUMBER" "R-1K-0402-1%-001"
-			(at 229.656 165.608 0)
+			(at 230.084 165.608 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12186,7 +12364,7 @@
 			)
 		)
 		(property "MANUFACTURER" "Yageo"
-			(at 229.656 165.608 0)
+			(at 230.084 165.608 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12196,7 +12374,7 @@
 			)
 		)
 		(property "MANUFACTURER PART NUMBER" "RC0402FR-071KL"
-			(at 229.656 165.608 0)
+			(at 230.084 165.608 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12206,7 +12384,7 @@
 			)
 		)
 		(property "ALTIUM_VALUE" ""
-			(at 228.6 160.02 0)
+			(at 231.14 160.02 0)
 			(effects
 				(font
 					(size 1.27 1.27)

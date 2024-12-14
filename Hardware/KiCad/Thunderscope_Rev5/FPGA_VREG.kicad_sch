@@ -2260,18 +2260,6 @@
 					)
 				)
 				(arc
-					(start 0 0)
-					(mid 0.372 0.898)
-					(end 1.27 1.27)
-					(stroke
-						(width 0)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(arc
 					(start 1.27 1.27)
 					(mid 2.168 0.898)
 					(end 2.54 0)
@@ -2284,9 +2272,9 @@
 					)
 				)
 				(arc
-					(start 3.81 1.27)
-					(mid 4.708 0.898)
-					(end 5.08 0)
+					(start 0 0)
+					(mid 0.372 0.898)
+					(end 1.27 1.27)
 					(stroke
 						(width 0)
 						(type solid)
@@ -2299,6 +2287,18 @@
 					(start 2.54 0)
 					(mid 2.912 0.898)
 					(end 3.81 1.27)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start 3.81 1.27)
+					(mid 4.708 0.898)
+					(end 5.08 0)
 					(stroke
 						(width 0)
 						(type solid)
@@ -3967,12 +3967,14 @@
 		)
 		(uuid "580c8c40-f5f1-42b3-a6b8-2bd8949f87f6")
 	)
-	(text "TODO: Replace RB Resistor"
+	(text "TODO: Replace FB Resistor"
 		(exclude_from_sim no)
 		(at 215.9 121.92 0)
 		(effects
 			(font
 				(size 1.27 1.27)
+				(thickness 0.254)
+				(bold yes)
 				(color 255 0 0 1)
 			)
 		)
@@ -4072,8 +4074,7 @@
 		(effects
 			(font
 				(size 1.27 1.27)
-				(thickness 0.254)
-				(bold yes)
+				(thickness 0.1588)
 			)
 			(justify left bottom)
 		)
