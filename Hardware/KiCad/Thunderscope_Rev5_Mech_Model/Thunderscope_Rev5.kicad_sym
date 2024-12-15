@@ -2203,17 +2203,6 @@
 		(symbol "BNC JACK R/A_1_0"
 			(circle
 				(center 0 0)
-				(radius 2.54)
-				(stroke
-					(width 0)
-					(type solid)
-				)
-				(fill
-					(type none)
-				)
-			)
-			(circle
-				(center 0 0)
 				(radius 0.635)
 				(stroke
 					(width -0.0001)
@@ -2221,6 +2210,17 @@
 				)
 				(fill
 					(type outline)
+				)
+			)
+			(circle
+				(center 0 0)
+				(radius 2.54)
+				(stroke
+					(width 0)
+					(type solid)
+				)
+				(fill
+					(type none)
 				)
 			)
 			(pin passive line
@@ -13862,18 +13862,6 @@
 		(symbol "IC DIGIPOT QUAD MCP4452-104E_1_0"
 			(polyline
 				(pts
-					(xy 11.43 -7.62) (xy 12.7 -8.89) (xy 13.97 -6.35) (xy 15.24 -8.89) (xy 16.51 -6.35) (xy 17.78 -8.89)
-				)
-				(stroke
-					(width 0)
-					(type solid)
-				)
-				(fill
-					(type none)
-				)
-			)
-			(polyline
-				(pts
 					(xy 11.43 -7.62) (xy 8.89 -7.62)
 				)
 				(stroke
@@ -13886,7 +13874,7 @@
 			)
 			(polyline
 				(pts
-					(xy 11.43 -12.7) (xy 12.7 -13.97) (xy 13.97 -11.43) (xy 15.24 -13.97) (xy 16.51 -11.43) (xy 17.78 -13.97)
+					(xy 11.43 -7.62) (xy 12.7 -8.89) (xy 13.97 -6.35) (xy 15.24 -8.89) (xy 16.51 -6.35) (xy 17.78 -8.89)
 				)
 				(stroke
 					(width 0)
@@ -13910,7 +13898,7 @@
 			)
 			(polyline
 				(pts
-					(xy 11.43 -17.78) (xy 8.89 -17.78)
+					(xy 11.43 -12.7) (xy 12.7 -13.97) (xy 13.97 -11.43) (xy 15.24 -13.97) (xy 16.51 -11.43) (xy 17.78 -13.97)
 				)
 				(stroke
 					(width 0)
@@ -13934,7 +13922,7 @@
 			)
 			(polyline
 				(pts
-					(xy 11.43 -22.86) (xy 12.7 -24.13) (xy 13.97 -21.59) (xy 15.24 -24.13) (xy 16.51 -21.59) (xy 17.78 -24.13)
+					(xy 11.43 -17.78) (xy 8.89 -17.78)
 				)
 				(stroke
 					(width 0)
@@ -13947,6 +13935,18 @@
 			(polyline
 				(pts
 					(xy 11.43 -22.86) (xy 8.89 -22.86)
+				)
+				(stroke
+					(width 0)
+					(type solid)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 11.43 -22.86) (xy 12.7 -24.13) (xy 13.97 -21.59) (xy 15.24 -24.13) (xy 16.51 -21.59) (xy 17.78 -24.13)
 				)
 				(stroke
 					(width 0)
@@ -23185,9 +23185,9 @@
 				)
 			)
 			(arc
-				(start 2.54 0)
-				(mid 2.912 0.898)
-				(end 3.81 1.27)
+				(start 3.81 1.27)
+				(mid 4.708 0.898)
+				(end 5.08 0)
 				(stroke
 					(width 0)
 					(type solid)
@@ -23197,9 +23197,9 @@
 				)
 			)
 			(arc
-				(start 3.81 1.27)
-				(mid 4.708 0.898)
-				(end 5.08 0)
+				(start 2.54 0)
+				(mid 2.912 0.898)
+				(end 3.81 1.27)
 				(stroke
 					(width 0)
 					(type solid)
@@ -23457,7 +23457,7 @@
 		)
 		(embedded_fonts no)
 	)
-	(symbol "LED RGB 1204 APFA3010LSEEZGKQBKC"
+	(symbol "LED RGB 1204 APFA3010LSEKJ3ZGKQBC"
 		(pin_numbers
 			(hide yes)
 		)
@@ -23476,7 +23476,7 @@
 			)
 		)
 		(property "Value" "RGB"
-			(at 0 -12.7 0)
+			(at 0 -10.16 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -23484,7 +23484,7 @@
 			)
 		)
 		(property "Footprint" "Thunderscope_Rev5:LED_Kingbright_APFA3010_3x1.5mm_Horizontal"
-			(at 0 -12.7 0)
+			(at 0 -10.16 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -23511,7 +23511,7 @@
 			)
 		)
 		(property "SUPPLIER 1" "Mouser"
-			(at 0 -12.7 0)
+			(at 0 -10.16 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -23519,8 +23519,8 @@
 				(hide yes)
 			)
 		)
-		(property "SUPPLIER PART NUMBER 1" "604-APFA3010LSEEZGKQ"
-			(at 0 -12.7 0)
+		(property "SUPPLIER PART NUMBER 1" "604-APFA3010LSEKJ3ZG"
+			(at 0 -10.16 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -23538,7 +23538,7 @@
 			)
 		)
 		(property "MANUFACTURER" "Kingbright"
-			(at 0 -12.7 0)
+			(at 0 -10.16 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -23546,8 +23546,8 @@
 				(hide yes)
 			)
 		)
-		(property "MANUFACTURER PART NUMBER" "APFA3010LSEEZGKQBKC"
-			(at 0 -12.7 0)
+		(property "MANUFACTURER PART NUMBER" "APFA3010LSEKJ3ZGKQBC"
+			(at 0 -10.16 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -23555,9 +23555,9 @@
 				(hide yes)
 			)
 		)
-		(symbol "LED RGB 1204 APFA3010LSEEZGKQBKC_0_0"
+		(symbol "LED RGB 1204 APFA3010LSEKJ3ZGKQBC_0_0"
 			(text "R"
-				(at -1.905 3.81 0)
+				(at 1.016 2.54 0)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -23565,7 +23565,7 @@
 				)
 			)
 			(text "G"
-				(at -1.905 -1.27 0)
+				(at 1.016 -2.54 0)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -23573,7 +23573,7 @@
 				)
 			)
 			(text "B"
-				(at -1.905 -6.35 0)
+				(at 1.016 -7.62 0)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -23581,7 +23581,7 @@
 				)
 			)
 		)
-		(symbol "LED RGB 1204 APFA3010LSEEZGKQBKC_0_1"
+		(symbol "LED RGB 1204 APFA3010LSEKJ3ZGKQBC_0_1"
 			(rectangle
 				(start -2.54 8.89)
 				(end 2.54 -8.89)
@@ -23595,7 +23595,7 @@
 			)
 			(polyline
 				(pts
-					(xy -2.54 -5.08) (xy 1.27 -5.08)
+					(xy -2.54 5.08) (xy -1.778 5.08)
 				)
 				(stroke
 					(width 0)
@@ -23607,7 +23607,31 @@
 			)
 			(polyline
 				(pts
-					(xy -1.27 6.35) (xy -1.27 3.81)
+					(xy -2.54 0) (xy -1.778 0)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy -2.54 -5.08) (xy -1.778 -5.08)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy -1.778 6.35) (xy -1.778 3.81) (xy 0.762 5.08) (xy -1.778 6.35)
 				)
 				(stroke
 					(width 0.254)
@@ -23619,7 +23643,7 @@
 			)
 			(polyline
 				(pts
-					(xy -1.27 1.27) (xy -1.27 -1.27)
+					(xy -1.778 1.27) (xy -1.778 -1.27) (xy 0.762 0) (xy -1.778 1.27)
 				)
 				(stroke
 					(width 0.254)
@@ -23631,7 +23655,7 @@
 			)
 			(polyline
 				(pts
-					(xy -1.27 -3.81) (xy -1.27 -6.35)
+					(xy -1.778 -3.81) (xy -1.778 -6.35) (xy 0.762 -5.08) (xy -1.778 -3.81)
 				)
 				(stroke
 					(width 0.254)
@@ -23643,7 +23667,7 @@
 			)
 			(polyline
 				(pts
-					(xy -1.016 6.35) (xy 0.508 7.874) (xy -0.254 7.874) (xy 0.508 7.874) (xy 0.508 7.112)
+					(xy -0.508 6.35) (xy -2.032 7.874) (xy -1.27 7.874) (xy -2.032 7.874) (xy -2.032 7.112)
 				)
 				(stroke
 					(width 0)
@@ -23655,7 +23679,7 @@
 			)
 			(polyline
 				(pts
-					(xy -1.016 1.27) (xy 0.508 2.794) (xy -0.254 2.794) (xy 0.508 2.794) (xy 0.508 2.032)
+					(xy -0.508 1.27) (xy -2.032 2.794) (xy -1.27 2.794) (xy -2.032 2.794) (xy -2.032 2.032)
 				)
 				(stroke
 					(width 0)
@@ -23667,7 +23691,7 @@
 			)
 			(polyline
 				(pts
-					(xy -1.016 -3.81) (xy 0.508 -2.286) (xy -0.254 -2.286) (xy 0.508 -2.286) (xy 0.508 -3.048)
+					(xy -0.508 -3.81) (xy -2.032 -2.286) (xy -1.27 -2.286) (xy -2.032 -2.286) (xy -2.032 -3.048)
 				)
 				(stroke
 					(width 0)
@@ -23679,7 +23703,7 @@
 			)
 			(polyline
 				(pts
-					(xy 0 6.35) (xy 1.524 7.874) (xy 0.762 7.874) (xy 1.524 7.874) (xy 1.524 7.112)
+					(xy 0.508 6.35) (xy -1.016 7.874) (xy -0.254 7.874) (xy -1.016 7.874) (xy -1.016 7.112)
 				)
 				(stroke
 					(width 0)
@@ -23691,7 +23715,7 @@
 			)
 			(polyline
 				(pts
-					(xy 0 1.27) (xy 1.524 2.794) (xy 0.762 2.794) (xy 1.524 2.794) (xy 1.524 2.032)
+					(xy 0.508 1.27) (xy -1.016 2.794) (xy -0.254 2.794) (xy -1.016 2.794) (xy -1.016 2.032)
 				)
 				(stroke
 					(width 0)
@@ -23703,7 +23727,7 @@
 			)
 			(polyline
 				(pts
-					(xy 0 -3.81) (xy 1.524 -2.286) (xy 0.762 -2.286) (xy 1.524 -2.286) (xy 1.524 -3.048)
+					(xy 0.508 -3.81) (xy -1.016 -2.286) (xy -0.254 -2.286) (xy -1.016 -2.286) (xy -1.016 -3.048)
 				)
 				(stroke
 					(width 0)
@@ -23715,42 +23739,7 @@
 			)
 			(polyline
 				(pts
-					(xy 1.27 6.35) (xy 1.27 3.81) (xy -1.27 5.08) (xy 1.27 6.35)
-				)
-				(stroke
-					(width 0.254)
-					(type default)
-				)
-				(fill
-					(type none)
-				)
-			)
-			(rectangle
-				(start 1.27 6.35)
-				(end 1.27 6.35)
-				(stroke
-					(width 0)
-					(type default)
-				)
-				(fill
-					(type none)
-				)
-			)
-			(polyline
-				(pts
-					(xy 1.27 5.08) (xy -2.54 5.08)
-				)
-				(stroke
-					(width 0)
-					(type default)
-				)
-				(fill
-					(type none)
-				)
-			)
-			(polyline
-				(pts
-					(xy 1.27 1.27) (xy 1.27 -1.27) (xy -1.27 0) (xy 1.27 1.27)
+					(xy 0.762 6.35) (xy 0.762 3.81)
 				)
 				(stroke
 					(width 0.254)
@@ -23762,7 +23751,7 @@
 			)
 			(polyline
 				(pts
-					(xy 1.27 -3.81) (xy 1.27 -6.35) (xy -1.27 -5.08) (xy 1.27 -3.81)
+					(xy 0.762 1.27) (xy 0.762 -1.27)
 				)
 				(stroke
 					(width 0.254)
@@ -23774,7 +23763,31 @@
 			)
 			(polyline
 				(pts
-					(xy 1.27 -5.08) (xy 2.032 -5.08) (xy 2.032 5.08) (xy 1.27 5.08)
+					(xy 0.762 0) (xy 2.54 0)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 0.762 -3.81) (xy 0.762 -6.35)
+				)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 0.762 -5.08) (xy 1.778 -5.08) (xy 1.778 5.08) (xy 0.762 5.08)
 				)
 				(stroke
 					(width 0)
@@ -23785,7 +23798,7 @@
 				)
 			)
 			(circle
-				(center 2.032 0)
+				(center 1.778 0)
 				(radius 0.254)
 				(stroke
 					(width 0)
@@ -23795,20 +23808,8 @@
 					(type outline)
 				)
 			)
-			(polyline
-				(pts
-					(xy 2.54 0) (xy -2.54 0)
-				)
-				(stroke
-					(width 0)
-					(type default)
-				)
-				(fill
-					(type none)
-				)
-			)
 		)
-		(symbol "LED RGB 1204 APFA3010LSEEZGKQBKC_1_1"
+		(symbol "LED RGB 1204 APFA3010LSEKJ3ZGKQBC_1_1"
 			(pin input line
 				(at -5.08 5.08 0)
 				(length 2.54)
@@ -24090,7 +24091,7 @@
 			)
 			(polyline
 				(pts
-					(xy 2.54 0) (xy 0.246 0)
+					(xy 2.54 0) (xy 2.54 -2.54)
 				)
 				(stroke
 					(width 0)
@@ -24102,7 +24103,7 @@
 			)
 			(polyline
 				(pts
-					(xy 2.54 0) (xy 2.54 -2.54)
+					(xy 2.54 0) (xy 0.246 0)
 				)
 				(stroke
 					(width 0)
