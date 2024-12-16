@@ -11,7 +11,7 @@ Remove the covers on the front end shielding cans, repeat the steps below for ea
 3. Replace "3" with a 50Ω 0402 Resistor, this will eliminate peaking past 300 MHz in the frequency response
    - [Check out this video for an explaination](https://youtu.be/Orcwj9rat1I) 
 
-## Beta 2 Noise Improvements
+## Beta 2 Noise Improvement 1
 
 In the middle of the board above the fpga module and to the left side of the ADC, locate the buck regulator:
 
@@ -24,3 +24,19 @@ In the middle of the board above the fpga module and to the left side of the ADC
 This should bring the noise to the level shown below:
 
 ![Screenshot of ngscopeclient, showing 77.5 uV of rms noise with 2.89 mV of peak to peak noise on CH1 at most sensitive settings](https://github.com/EEVengers/ThunderScope/blob/master/Docs/Beta%202%20Noise%20Rework%201%20Result.PNG)
+
+## Beta 2 Noise Improvement 2
+
+This one is a bit harder, but it will get rid of the spikes and bring the peak to peak noise closer to expectation. Locate the probe compensation buffer on upper right corner of the secondary side of the board (the side opposite all the big components):
+
+![Screenshot of 3D View of Beta 2 probe compensation buffer, the buffer has a green "X" over it and the power trace coming from a via has a red line through it next to a "1", indicating the trace should be cut. There is a cap labelled "2" that goes to a black scribbled out ground pad, indicating the soldermask must be removed. Finally there is a ferrite bead labelled "3" going across the cut in the trace.](https://github.com/EEVengers/ThunderScope/blob/master/Docs/Beta%202%20Noise%20Rework%202.PNG)
+
+If you are willing to give up the probe compensation output, you can simply remove the buffer (green "X"). Else steady your hand and get your scalpel ready!
+
+1. Cut the trace going from the via to the decoupling cap (red line labelled "1")
+2. Add a 1uF 25V X5R 0402 capacitor (GRM155R61E105KA12D) in postition "2". Make sure to scrape off the soldermask to make a ground pad for this cap (shown in black)
+3. Solder a 120@100MHZ 0402 ferrite bead (BLM15PX121SN1D) between cap "2" and the existing decoupling cap, making sure not to short the connection (which would bypass the ferrite bead)
+
+This should bring the noise to the level shown below:
+
+![Screenshot of ngscopeclient, showing 73.8 uV of rms noise with 0.95 mV of peak to peak noise on CH1 at most sensitive settings](https://github.com/EEVengers/ThunderScope/blob/master/Docs/Beta%202%20Noise%20Rework%202%20Result.PNG)
