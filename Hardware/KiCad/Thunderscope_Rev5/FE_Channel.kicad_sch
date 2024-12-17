@@ -8,6 +8,7 @@
 		(title "ThunderScope")
 		(rev "5")
 		(company "EEVengers")
+		(comment 1 "Aleksa Bjelogrlic")
 	)
 	(lib_symbols
 		(symbol "Thunderscope_Rev5:+3V3_PGA_BAR"
@@ -5165,7 +5166,7 @@
 				)
 				(polyline
 					(pts
-						(xy 2.54 0) (xy 2.54 -2.54)
+						(xy 2.54 0) (xy 0.246 0)
 					)
 					(stroke
 						(width 0)
@@ -5177,7 +5178,7 @@
 				)
 				(polyline
 					(pts
-						(xy 2.54 0) (xy 0.246 0)
+						(xy 2.54 0) (xy 2.54 -2.54)
 					)
 					(stroke
 						(width 0)
@@ -5256,7 +5257,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "Thunderscope_Rev5:RELAY DPDT-NO FTR-B3SA003Z"
+		(symbol "Thunderscope_Rev5:RELAY DPDT-NO FTR-B3SA4.5Z"
 			(pin_names
 				(hide yes)
 			)
@@ -5271,7 +5272,7 @@
 					)
 				)
 			)
-			(property "Value" "FTR-B3SA003Z"
+			(property "Value" "FTR-B3SA4.5Z"
 				(at 0 0 0)
 				(effects
 					(font
@@ -5324,7 +5325,7 @@
 					(hide yes)
 				)
 			)
-			(property "MANUFACTURER PART NUMBER" "FTR-B3SA003Z"
+			(property "MANUFACTURER PART NUMBER" "FTR-B3SA4.5Z-B10"
 				(at 0 0 0)
 				(effects
 					(font
@@ -5333,7 +5334,7 @@
 					(hide yes)
 				)
 			)
-			(symbol "RELAY DPDT-NO FTR-B3SA003Z_1_0"
+			(symbol "RELAY DPDT-NO FTR-B3SA4.5Z_1_0"
 				(polyline
 					(pts
 						(xy -2 0) (xy 1.5 -1.5)
@@ -5425,7 +5426,7 @@
 					)
 				)
 			)
-			(symbol "RELAY DPDT-NO FTR-B3SA003Z_2_0"
+			(symbol "RELAY DPDT-NO FTR-B3SA4.5Z_2_0"
 				(polyline
 					(pts
 						(xy -1.5 -1.5) (xy -1 -2.54) (xy -2 -2.54) (xy -1.5 -1.5)
@@ -5517,7 +5518,7 @@
 					)
 				)
 			)
-			(symbol "RELAY DPDT-NO FTR-B3SA003Z_3_0"
+			(symbol "RELAY DPDT-NO FTR-B3SA4.5Z_3_0"
 				(polyline
 					(pts
 						(xy -2 3) (xy 2 -3)
@@ -8732,17 +8733,6 @@
 			(symbol "UFL Jack SMD_1_0"
 				(circle
 					(center 0 0)
-					(radius 0.635)
-					(stroke
-						(width -0.0001)
-						(type solid)
-					)
-					(fill
-						(type outline)
-					)
-				)
-				(circle
-					(center 0 0)
 					(radius 2.54)
 					(stroke
 						(width 0)
@@ -8750,6 +8740,17 @@
 					)
 					(fill
 						(type none)
+					)
+				)
+				(circle
+					(center 0 0)
+					(radius 0.635)
+					(stroke
+						(width -0.0001)
+						(type solid)
+					)
+					(fill
+						(type outline)
 					)
 				)
 				(pin passive line
@@ -8907,9 +8908,9 @@
 		)
 		(uuid "08950665-2f40-4ecd-9110-daac8fe05079")
 	)
-	(text "DONE: revert back to non-latched relays to avoid indeterminate state when powered off"
+	(text "DONE: Revert back to non-latched relays to avoid indeterminate state when powered off"
 		(exclude_from_sim no)
-		(at 298.45 101.6 0)
+		(at 298.45 90.17 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -8933,6 +8934,18 @@
 			(justify left top)
 		)
 		(uuid "1c660b05-b5c1-4207-91ed-c152194cc67a")
+	)
+	(text "We add 30 ohms, so relay voltage will be 3.936V at minimum VUSB of 4.75V "
+		(exclude_from_sim no)
+		(at 298.45 100.33 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.1588)
+			)
+			(justify left)
+		)
+		(uuid "1e4c8f71-8ed6-42b3-ad79-8d434c79bc85")
 	)
 	(text "Input Buffer and AC/DC Coupling"
 		(exclude_from_sim no)
@@ -9001,15 +9014,15 @@
 		)
 		(uuid "57559a07-2c65-474f-8a5d-beea1b07565b")
 	)
-	(text "FTR-B3SA4.5Z has 145 Ohm Coil Resistance, 3.38V Must Operate Voltage, 0.023A @ 3.3V"
+	(text "FTR-B3SA4.5Z has 145 Ohm Coil Resistance, 3.38V Must Operate Voltage"
 		(exclude_from_sim no)
-		(at 298.45 83.82 0)
+		(at 298.45 97.79 0)
 		(effects
 			(font
 				(size 1.27 1.27)
 				(thickness 0.1588)
 			)
-			(justify left bottom)
+			(justify left)
 		)
 		(uuid "5e2e91ba-0ac3-41f8-866d-5e73ad3b249f")
 	)
@@ -9079,33 +9092,9 @@
 		)
 		(uuid "86434921-938d-456d-94b0-faefdce322b5")
 	)
-	(text "FTR-B3SA003Z has 64.3 Ohm Coil Resistance, 2.25V Must Operate Voltage, 0.051A @ 3.3V"
-		(exclude_from_sim no)
-		(at 298.45 81.28 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-				(thickness 0.1588)
-			)
-			(justify left bottom)
-		)
-		(uuid "8845dc84-c377-4245-8688-080c13ffd857")
-	)
-	(text "All 4.5V relays tested worked down to 3V"
-		(exclude_from_sim no)
-		(at 298.45 86.36 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-				(thickness 0.1588)
-			)
-			(justify left bottom)
-		)
-		(uuid "964e8526-828d-4b26-838d-965044afcc2d")
-	)
 	(text "DONE: change to 976k"
 		(exclude_from_sim no)
-		(at 245.11 45.72 0)
+		(at 259.08 45.72 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9113,7 +9102,7 @@
 				(bold yes)
 				(color 0 194 194 1)
 			)
-			(justify left)
+			(justify top)
 		)
 		(uuid "b1aa4833-2060-43c4-a743-11174e30ed3f")
 	)
@@ -9220,39 +9209,19 @@
 		)
 		(uuid "eae1fcfb-fe97-4d2f-bb2b-824887d0825e")
 	)
-	(text "TODO: Change Relays to 4.5V Parts as we are now powering them w/ +VUSB"
+	(text "DONE: Change Relays to 4.5V Parts as we are now powering them w/ +VUSB"
 		(exclude_from_sim no)
-		(at 142.24 25.4 0)
+		(at 298.45 92.71 0)
 		(effects
 			(font
 				(size 1.27 1.27)
-				(color 255 0 0 1)
+				(thickness 0.254)
+				(bold yes)
+				(color 0 194 194 1)
 			)
+			(justify left)
 		)
 		(uuid "f8e1af96-7b59-4aaa-a94a-4b010185ce5b")
-	)
-	(text_box "Use 3V relay instead of 4.5V (unit 9 ch3 atten relay could not switch) but add a resistor in line with the coil to reduce current draw."
-		(exclude_from_sim no)
-		(at 298.45 88.9 0)
-		(size 68.58 7.62)
-		(margins 0.9525 0.9525 0.9525 0.9525)
-		(stroke
-			(width 0)
-			(type default)
-			(color 56 118 29 1)
-		)
-		(fill
-			(type color)
-			(color 255 255 255 1)
-		)
-		(effects
-			(font
-				(size 1.27 1.27)
-				(thickness 0.1588)
-			)
-			(justify left top)
-		)
-		(uuid "184b8e8d-fbad-47e5-8acb-49ff0d04c503")
 	)
 	(junction
 		(at 297.18 43.18)
@@ -12974,7 +12943,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Thunderscope_Rev5:RELAY DPDT-NO FTR-B3SA003Z")
+		(lib_id "Thunderscope_Rev5:RELAY DPDT-NO FTR-B3SA4.5Z")
 		(at 105.41 40.64 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -12983,21 +12952,21 @@
 		(dnp no)
 		(uuid "02a93bf7-dffd-4247-abb7-244555b784c6")
 		(property "Reference" "K1000B1"
-			(at 97.79 38.1 0)
+			(at 104.14 38.1 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left bottom)
+				(justify right bottom)
 			)
 		)
-		(property "Value" "FTR-B3SA003Z"
-			(at 99.822 37.338 0)
+		(property "Value" "FTR-B3SA4.5Z"
+			(at 105.41 40.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left bottom)
+				(hide yes)
 			)
 		)
 		(property "Footprint" "Thunderscope_Rev5:FUJ_FTR-B3SA"
@@ -13028,32 +12997,29 @@
 			)
 		)
 		(property "HOUSE PART NUMBER" ""
-			(at 97.79 35.56 0)
+			(at 105.41 40.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left bottom)
 				(hide yes)
 			)
 		)
 		(property "MANUFACTURER" "Fujitsu"
-			(at 97.79 35.56 0)
+			(at 105.41 40.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left bottom)
 				(hide yes)
 			)
 		)
-		(property "MANUFACTURER PART NUMBER" "FTR-B3SA003Z"
-			(at 97.79 35.56 0)
+		(property "MANUFACTURER PART NUMBER" "FTR-B3SA4.5Z-B10"
+			(at 105.41 40.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left bottom)
 				(hide yes)
 			)
 		)
@@ -13263,7 +13229,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Thunderscope_Rev5:RELAY DPDT-NO FTR-B3SA003Z")
+		(lib_id "Thunderscope_Rev5:RELAY DPDT-NO FTR-B3SA4.5Z")
 		(at 105.41 53.34 0)
 		(unit 3)
 		(exclude_from_sim no)
@@ -13272,21 +13238,21 @@
 		(dnp no)
 		(uuid "037b6326-f8ed-4a87-8be1-1d8d2c99eabf")
 		(property "Reference" "K1000B1"
-			(at 107.95 55.88 0)
+			(at 104.14 49.53 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left bottom)
+				(justify right bottom)
 			)
 		)
-		(property "Value" "FTR-B3SA003Z"
-			(at 100.33 59.134 0)
+		(property "Value" "FTR-B3SA4.5Z"
+			(at 105.41 57.15 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left bottom)
+				(justify top)
 			)
 		)
 		(property "Footprint" "Thunderscope_Rev5:FUJ_FTR-B3SA"
@@ -13317,32 +13283,29 @@
 			)
 		)
 		(property "HOUSE PART NUMBER" ""
-			(at 99.822 50.086 0)
+			(at 105.41 53.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left bottom)
 				(hide yes)
 			)
 		)
 		(property "MANUFACTURER" "Fujitsu"
-			(at 99.822 50.086 0)
+			(at 105.41 53.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left bottom)
 				(hide yes)
 			)
 		)
-		(property "MANUFACTURER PART NUMBER" "FTR-B3SA003Z"
-			(at 99.822 50.086 0)
+		(property "MANUFACTURER PART NUMBER" "FTR-B3SA4.5Z-B10"
+			(at 105.41 53.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left bottom)
 				(hide yes)
 			)
 		)
@@ -14888,7 +14851,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Thunderscope_Rev5:RES 10 OHM 1% 1/3W 0603")
+		(lib_id "Thunderscope_Rev5:RES 30 OHM 1% 1/3W 0603")
 		(at 77.47 53.34 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -14905,7 +14868,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Value" "10"
+		(property "Value" "30"
 			(at 77.47 53.34 0)
 			(effects
 				(font
@@ -14941,72 +14904,65 @@
 			)
 		)
 		(property "PACKAGE" "0603"
-			(at 71.882 52.284 0)
+			(at 77.47 53.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left bottom)
 				(hide yes)
 			)
 		)
 		(property "SUPPLIER 1" "Mouser"
-			(at 71.882 52.284 0)
+			(at 77.47 53.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left bottom)
 				(hide yes)
 			)
 		)
-		(property "SUPPLIER PART NUMBER 1" "660-SG73P1JTTD10R0F"
-			(at 71.882 52.284 0)
+		(property "SUPPLIER PART NUMBER 1" "660-SG73P1JTTD30R0F"
+			(at 77.47 53.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left bottom)
 				(hide yes)
 			)
 		)
 		(property "TOLERANCE" "1%"
-			(at 71.882 52.284 0)
+			(at 77.47 53.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left bottom)
 				(hide yes)
 			)
 		)
 		(property "MANUFACTURER" "KOA Speer"
-			(at 71.882 52.284 0)
+			(at 77.47 53.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left bottom)
 				(hide yes)
 			)
 		)
 		(property "HOUSE PART NUMBER" ""
-			(at 71.882 52.284 0)
+			(at 77.47 53.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left bottom)
 				(hide yes)
 			)
 		)
-		(property "MANUFACTURER PART NUMBER" "SG73P1JTTD10R0F"
-			(at 71.882 52.284 0)
+		(property "MANUFACTURER PART NUMBER" "SG73P1JTTD30R0F"
+			(at 77.47 53.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left bottom)
 				(hide yes)
 			)
 		)
@@ -15289,7 +15245,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "250f7cba-f3d7-48c3-ab6d-917bd3b71763")
 		(property "Reference" "J3B1"
 			(at 363.22 177.8 0)
@@ -19576,7 +19532,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Thunderscope_Rev5:RELAY DPDT-NO FTR-B3SA003Z")
+		(lib_id "Thunderscope_Rev5:RELAY DPDT-NO FTR-B3SA4.5Z")
 		(at 186.69 40.64 0)
 		(unit 2)
 		(exclude_from_sim no)
@@ -19585,7 +19541,7 @@
 		(dnp no)
 		(uuid "6664ea9b-8697-4c46-b851-767d8bc55315")
 		(property "Reference" "K1000B1"
-			(at 189.23 38.1 0)
+			(at 187.96 38.1 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19593,13 +19549,13 @@
 				(justify left bottom)
 			)
 		)
-		(property "Value" "FTR-B3SA003Z"
-			(at 181.102 37.338 0)
+		(property "Value" "FTR-B3SA4.5Z"
+			(at 186.69 40.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left bottom)
+				(hide yes)
 			)
 		)
 		(property "Footprint" "Thunderscope_Rev5:FUJ_FTR-B3SA"
@@ -19630,32 +19586,29 @@
 			)
 		)
 		(property "HOUSE PART NUMBER" ""
-			(at 181.102 35.56 0)
+			(at 186.69 40.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left bottom)
 				(hide yes)
 			)
 		)
 		(property "MANUFACTURER" "Fujitsu"
-			(at 181.102 35.56 0)
+			(at 186.69 40.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left bottom)
 				(hide yes)
 			)
 		)
-		(property "MANUFACTURER PART NUMBER" "FTR-B3SA003Z"
-			(at 181.102 35.56 0)
+		(property "MANUFACTURER PART NUMBER" "FTR-B3SA4.5Z-B10"
+			(at 186.69 40.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left bottom)
 				(hide yes)
 			)
 		)
@@ -21734,7 +21687,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Thunderscope_Rev5:RELAY DPDT-NO FTR-B3SA003Z")
+		(lib_id "Thunderscope_Rev5:RELAY DPDT-NO FTR-B3SA4.5Z")
 		(at 222.25 53.34 0)
 		(unit 3)
 		(exclude_from_sim no)
@@ -21743,21 +21696,21 @@
 		(dnp no)
 		(uuid "82993e0a-1a96-4b47-8233-39b66e558b5d")
 		(property "Reference" "K1001B1"
-			(at 224.79 55.88 0)
+			(at 220.98 49.53 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left bottom)
+				(justify right bottom)
 			)
 		)
-		(property "Value" "FTR-B3SA003Z"
-			(at 217.17 59.134 0)
+		(property "Value" "FTR-B3SA4.5Z"
+			(at 222.25 57.15 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left bottom)
+				(justify top)
 			)
 		)
 		(property "Footprint" "Thunderscope_Rev5:FUJ_FTR-B3SA"
@@ -21788,32 +21741,29 @@
 			)
 		)
 		(property "HOUSE PART NUMBER" ""
-			(at 216.662 50.086 0)
+			(at 222.25 53.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left bottom)
 				(hide yes)
 			)
 		)
 		(property "MANUFACTURER" "Fujitsu"
-			(at 216.662 50.086 0)
+			(at 222.25 53.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left bottom)
 				(hide yes)
 			)
 		)
-		(property "MANUFACTURER PART NUMBER" "FTR-B3SA003Z"
-			(at 216.662 50.086 0)
+		(property "MANUFACTURER PART NUMBER" "FTR-B3SA4.5Z-B10"
+			(at 222.25 53.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left bottom)
 				(hide yes)
 			)
 		)
@@ -24608,7 +24558,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "aa3ab713-8344-433d-81b9-e9be4ac5706d")
 		(property "Reference" "J4B1"
 			(at 375.92 177.8 0)
@@ -25203,7 +25153,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Thunderscope_Rev5:RES 10 OHM 1% 1/3W 0603")
+		(lib_id "Thunderscope_Rev5:RES 30 OHM 1% 1/3W 0603")
 		(at 194.31 53.34 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -25220,7 +25170,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Value" "10"
+		(property "Value" "30"
 			(at 194.31 53.34 0)
 			(effects
 				(font
@@ -25256,72 +25206,65 @@
 			)
 		)
 		(property "PACKAGE" "0603"
-			(at 188.722 52.364 0)
+			(at 194.31 53.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left bottom)
 				(hide yes)
 			)
 		)
 		(property "SUPPLIER 1" "Mouser"
-			(at 188.722 52.364 0)
+			(at 194.31 53.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left bottom)
 				(hide yes)
 			)
 		)
-		(property "SUPPLIER PART NUMBER 1" "660-SG73P1JTTD10R0F"
-			(at 188.722 52.364 0)
+		(property "SUPPLIER PART NUMBER 1" "660-SG73P1JTTD30R0F"
+			(at 194.31 53.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left bottom)
 				(hide yes)
 			)
 		)
 		(property "TOLERANCE" "1%"
-			(at 188.722 52.364 0)
+			(at 194.31 53.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left bottom)
 				(hide yes)
 			)
 		)
 		(property "MANUFACTURER" "KOA Speer"
-			(at 188.722 52.364 0)
+			(at 194.31 53.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left bottom)
 				(hide yes)
 			)
 		)
 		(property "HOUSE PART NUMBER" ""
-			(at 188.722 52.364 0)
+			(at 194.31 53.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left bottom)
 				(hide yes)
 			)
 		)
-		(property "MANUFACTURER PART NUMBER" "SG73P1JTTD10R0F"
-			(at 188.722 52.364 0)
+		(property "MANUFACTURER PART NUMBER" "SG73P1JTTD30R0F"
+			(at 194.31 53.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left bottom)
 				(hide yes)
 			)
 		)
@@ -28193,7 +28136,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Thunderscope_Rev5:RELAY DPDT-NO FTR-B3SA003Z")
+		(lib_id "Thunderscope_Rev5:RELAY DPDT-NO FTR-B3SA4.5Z")
 		(at 308.61 40.64 0)
 		(unit 2)
 		(exclude_from_sim no)
@@ -28202,7 +28145,7 @@
 		(dnp no)
 		(uuid "db0f4f50-428b-4276-89be-ddc43740bce5")
 		(property "Reference" "K1001B1"
-			(at 311.15 38.1 0)
+			(at 308.61 38.1 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -28210,13 +28153,13 @@
 				(justify left bottom)
 			)
 		)
-		(property "Value" "FTR-B3SA003Z"
-			(at 303.022 37.338 0)
+		(property "Value" "FTR-B3SA4.5Z"
+			(at 308.61 40.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left bottom)
+				(hide yes)
 			)
 		)
 		(property "Footprint" "Thunderscope_Rev5:FUJ_FTR-B3SA"
@@ -28247,32 +28190,29 @@
 			)
 		)
 		(property "HOUSE PART NUMBER" ""
-			(at 303.022 35.56 0)
+			(at 308.61 40.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left bottom)
 				(hide yes)
 			)
 		)
 		(property "MANUFACTURER" "Fujitsu"
-			(at 303.022 35.56 0)
+			(at 308.61 40.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left bottom)
 				(hide yes)
 			)
 		)
-		(property "MANUFACTURER PART NUMBER" "FTR-B3SA003Z"
-			(at 303.022 35.56 0)
+		(property "MANUFACTURER PART NUMBER" "FTR-B3SA4.5Z-B10"
+			(at 308.61 40.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left bottom)
 				(hide yes)
 			)
 		)
@@ -28408,7 +28348,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Thunderscope_Rev5:RELAY DPDT-NO FTR-B3SA003Z")
+		(lib_id "Thunderscope_Rev5:RELAY DPDT-NO FTR-B3SA4.5Z")
 		(at 222.25 40.64 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -28417,21 +28357,21 @@
 		(dnp no)
 		(uuid "df03911c-e7c4-45c5-ba3e-6630cba2273f")
 		(property "Reference" "K1001B1"
-			(at 214.63 38.1 0)
+			(at 220.98 38.1 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left bottom)
+				(justify right bottom)
 			)
 		)
-		(property "Value" "FTR-B3SA003Z"
-			(at 216.662 37.338 0)
+		(property "Value" "FTR-B3SA4.5Z"
+			(at 222.25 40.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left bottom)
+				(hide yes)
 			)
 		)
 		(property "Footprint" "Thunderscope_Rev5:FUJ_FTR-B3SA"
@@ -28462,32 +28402,29 @@
 			)
 		)
 		(property "HOUSE PART NUMBER" ""
-			(at 214.63 35.56 0)
+			(at 222.25 40.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left bottom)
 				(hide yes)
 			)
 		)
 		(property "MANUFACTURER" "Fujitsu"
-			(at 214.63 35.56 0)
+			(at 222.25 40.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left bottom)
 				(hide yes)
 			)
 		)
-		(property "MANUFACTURER PART NUMBER" "FTR-B3SA003Z"
-			(at 214.63 35.56 0)
+		(property "MANUFACTURER PART NUMBER" "FTR-B3SA4.5Z-B10"
+			(at 222.25 40.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left bottom)
 				(hide yes)
 			)
 		)

@@ -8,6 +8,7 @@
 		(title "ThunderScope")
 		(rev "5")
 		(company "EEVengers")
+		(comment 1 "Aleksa Bjelogrlic")
 	)
 	(lib_symbols
 		(symbol "Thunderscope_Rev5:+1V8APLL_BAR"
@@ -3173,17 +3174,6 @@
 			(symbol "UFL Jack SMD_1_0"
 				(circle
 					(center 0 0)
-					(radius 2.54)
-					(stroke
-						(width 0)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(circle
-					(center 0 0)
 					(radius 0.635)
 					(stroke
 						(width -0.0001)
@@ -3191,6 +3181,17 @@
 					)
 					(fill
 						(type outline)
+					)
+				)
+				(circle
+					(center 0 0)
+					(radius 2.54)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
 					)
 				)
 				(pin passive line
@@ -31784,7 +31785,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "a052809b-c596-4b87-8ff2-bee49913b6e1")
 		(property "Reference" "J6"
 			(at 198.12 93.98 0)
@@ -33796,7 +33797,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "d5cf1b3c-32f6-4c65-9a20-a9ef905c0d20")
 		(property "Reference" "J7"
 			(at 210.82 93.98 0)
@@ -35278,20 +35279,21 @@
 		(file
 			(name "Sheet_Template.kicad_wks")
 			(type worksheet)
-			(data |KLUv/WCmCN0TAKZcWyEAtxsWHGS5ac4JWlhdzQISNloxTym+kOeo5yaqqm4BIAJSAEoAVAAfif/j
-				sXnSvtaTvZHzHRcNF7Vmfz60JL9WNFwWbT/Z8kv+BQAgICBF72WWWVjFqWzoHJGsOuP3sl/3GDBK
-				KaLO2hfbMvuoAAgIyhCJE3qgDRUCZEWr/pL/99dEXLXnZSpl8Nr3nPSc/WYMvtizZxUCsfi1i2+/
-				/fMdXhHOXlf918cRg7Vrh9cT12XR2pPS/ux9WVXto3cf9DzifxyJymm2y8gvGFZ1hFqJzialVLju
-				smk4Dq3BRVCEy7p6UppZil5gqQ2jOThbpus4FKEZ/p4j52zK/tfBNnXslyLQVZtqpnr1/L5vUkQB
-				8Bd3aF+1SxwBgaEqapaZrkeOuDHrhqJZJpXGAoLRLJhtg3QYhrASE42ySbiHfYBW9N72wpp0k2A4
-				jPgWU2mloe13/3SDQ2oQclW/N2bc6eykZ7lsFs1ysl0o4q8DcqABPYYYGhMpSJIUOmBEpObKNnzZ
-				3BIc8Pualst/6yAr4xrWJdyycRFEm5jlW2IMdJvNgwATuqtloEgtwhzT2bknJDibV8iJvmXPv/DH
-				yftAVvYAUegJLG0fgvgQHMokdywID9hWDvsYV4AyPe3jBMHAWFQggOTL0kSI71L2YbIwTt3OB/R/
-				iYil5Zwx00fvYQ2D9MTUH0VK0kTksqfcRlF/aa2lODiI0T5Oe1Cu5I0zXJAbZzlW6wZkilm4hY5/
-				9dp441oujeJAkKsmpwBHIWmFMFCQO73kDmkQ2BY9VF8tEA4wItkjJU0UXqS0JCG/FQnsFK/Y29Rq
-				VCduw7o+WCwfcT/Z60A6BqYK|
+			(data |KLUv/WBgCYUVAIbfYyHwth4UjHF5UegANNTOJh2cl6BS6iNMScRN+43IZlae9wJaAFMAXQBd/u9u
+				Uf9rb9Tv6eA9qWfc2Z24ec4NDZbK6Z4HMelmHBqspH5POPSl+wUAICAYRX9DGCavalNh8G7CsfKt
+				v9s3347hopQi6qyeNQ7tOyoAAoIQiLQBuw+DCgHWp+d5kyIKgM+aQ91WD+mxopV/6b73diJs9WlN
+				pf1l/N0d7943b/196NNnBfp06PkNH79fzzuYRXp3XvnnK4r6q14dzNeyVtLqk1L/3X2oqvyKARzf
+				d+wqFq2SVe4JX8BQe47JhFt1y2iW0bVcV+UQa10S4ZiFyWvSCWW7WLTMppExNgiKYKX1Sak1qVS4
+				4kppXNbYaJjLZUMRfHG/a+y9Tft+vp+bOPhDoo+tTjNTDQGBAaNUzuoXApPVUm6iSXxh8jyTum1V
+				y1qJimGm3I2iZsyqmWQVCYWheHBZhdO0x+W6ENKSZBMtsjmw48Nh99gVEtMi3MaFj7lKKwWx/72e
+				C5XW4JAagFvl34lbB3ig4UCHFJqaUZAkKXRQhEgZK9sGdVIikwNXYsJtMpeWbdFFznJfxfmKOubp
+				kd1XBdmJPExooEP4O4jprjYxK9ikDHjHzHOBJ7q7ZUKRKtQEtueTqhe43WvlNdoHoO3kKVwRkhFB
+				BocAGVAdshEmBFEaeMIgvSzeWcsw6/ZEBxfKdK8WfuTucJATKwc0sPMkO3Gtbp11qD/QAUpFbF7O
+				QTV+op7WMEpHnviiQUmYnXx7ylXkax0dNhSHCKI0p2kPFCh4d4wD5P0L3I+1gZZPWcKyM194bbKp
+				npdOUcCIqUtKBUdp6YU9QJA7PeTP+ZCxFj1UvCoeGDJ2GSMljZYeSG5FQn4DEoh5H7AXKdaqTtyF
+				Z33QWF6ixjLSgnQMTBU=|
 			)
-			(checksum "798769445A8382E5AF09C663F66C33E4")
+			(checksum "A8B7D5796043E53ACA11141E935311F5")
 		)
 	)
 )

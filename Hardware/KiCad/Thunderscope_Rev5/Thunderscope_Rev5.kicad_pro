@@ -653,13 +653,13 @@
           "group_by": false,
           "label": "SUPPLIER 1",
           "name": "SUPPLIER 1",
-          "show": false
+          "show": true
         },
         {
           "group_by": false,
           "label": "SUPPLIER PART NUMBER 1",
           "name": "SUPPLIER PART NUMBER 1",
-          "show": false
+          "show": true
         },
         {
           "group_by": false,
@@ -696,8 +696,8 @@
       "group_symbols": true,
       "include_excluded_from_bom": false,
       "name": "",
-      "sort_asc": false,
-      "sort_field": "Reference"
+      "sort_asc": true,
+      "sort_field": "${EXCLUDE_FROM_BOARD}"
     },
     "connection_grid_size": 50.0,
     "drawing": {
@@ -727,7 +727,7 @@
       "version": 1
     },
     "net_format_name": "",
-    "page_layout_descr_file": "kicad-embed://Sheet_Template.kicad_wks",
+    "page_layout_descr_file": "Sheet_Template.kicad_wks",
     "plot_directory": "./",
     "space_save_all_events": true,
     "spice_current_sheet_as_root": false,

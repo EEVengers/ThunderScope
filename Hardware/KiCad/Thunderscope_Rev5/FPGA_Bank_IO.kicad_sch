@@ -8,6 +8,7 @@
 		(title "ThunderScope")
 		(rev "5")
 		(company "EEVengers")
+		(comment 1 "Aleksa Bjelogrlic")
 	)
 	(lib_symbols
 		(symbol "Thunderscope_Rev5:+3V3_IO_BAR"
@@ -420,20 +421,20 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "Thunderscope_Rev5:IC FLASH MX25U6432FZNI02"
+		(symbol "Thunderscope_Rev5:IC FLASH MX25L6433FZNI-08G"
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
 			(property "Reference" "U"
-				(at 0 0 0)
+				(at -12.192 11.43 0)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
 				)
 			)
-			(property "Value" "MX25U6432FZNI02"
-				(at 0 0 0)
+			(property "Value" "MX25L6433FZNI-08G"
+				(at 0 -14.224 0)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -441,7 +442,7 @@
 				)
 			)
 			(property "Footprint" "Thunderscope_Rev5:MX_WSON8"
-				(at 0 0 0)
+				(at 0 -14.224 0)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -467,8 +468,8 @@
 					(hide yes)
 				)
 			)
-			(property "SUPPLIER 1" "Digi-Key"
-				(at 0 0 0)
+			(property "SUPPLIER 1" "Mouser"
+				(at 0 -14.224 0)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -476,8 +477,8 @@
 					(hide yes)
 				)
 			)
-			(property "SUPPLIER PART NUMBER 1" "1092-MX25U6432FZNI02-ND"
-				(at 0 0 0)
+			(property "SUPPLIER PART NUMBER 1" "95-25L6433FZNI08TR"
+				(at 0 -14.224 0)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -485,8 +486,8 @@
 					(hide yes)
 				)
 			)
-			(property "HOUSE PART NUMBER" "MX25U6432FZNI02"
-				(at 0 0 0)
+			(property "HOUSE PART NUMBER" "MX25L6433FZNI-08G-TR"
+				(at 0 -14.224 0)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -495,7 +496,7 @@
 				)
 			)
 			(property "MANUFACTURER" "Macronix"
-				(at 0 0 0)
+				(at 0 -14.224 0)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -503,8 +504,8 @@
 					(hide yes)
 				)
 			)
-			(property "MANUFACTURER PART NUMBER" "MX25U6432FZNI02"
-				(at 0 0 0)
+			(property "MANUFACTURER PART NUMBER" "MX25L6433FZNI-08G-TR"
+				(at 0 -14.224 0)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -512,7 +513,7 @@
 					(hide yes)
 				)
 			)
-			(symbol "IC FLASH MX25U6432FZNI02_1_0"
+			(symbol "IC FLASH MX25L6433FZNI-08G_1_0"
 				(rectangle
 					(start 12.7 10.16)
 					(end -12.7 -12.7)
@@ -618,7 +619,7 @@
 				(pin bidirectional line
 					(at -20.32 -10.16 0)
 					(length 7.62)
-					(name "RST#/SIO3"
+					(name "HOLD#/SIO3"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -7368,7 +7369,7 @@
 		)
 		(uuid "9d5c87fe-e24b-42e8-bb38-8de327aa0e24")
 	)
-	(text "TODO: Replace QSPI with 3V3 capable part"
+	(text "DONE: Replace QSPI with 3V3 capable part"
 		(exclude_from_sim no)
 		(at 38.1 195.58 0)
 		(effects
@@ -7376,7 +7377,7 @@
 				(size 1.27 1.27)
 				(thickness 0.254)
 				(bold yes)
-				(color 255 0 0 1)
+				(color 0 194 194 1)
 			)
 		)
 		(uuid "d76da123-2d3b-418c-84da-31e2b4efcfa2")
@@ -7434,35 +7435,35 @@
 		(uuid "eb1f69f0-8845-4696-acea-3c146b96a420")
 	)
 	(no_connect
-		(at 269.24 53.34)
+		(at 274.32 53.34)
 		(uuid "073644a6-81d4-4ed6-af9b-9bd4406fade3")
 	)
 	(no_connect
-		(at 269.24 99.06)
+		(at 274.32 99.06)
 		(uuid "0aa95f24-d0ba-4a5a-ba4f-d783419e72ef")
 	)
 	(no_connect
-		(at 269.24 93.98)
+		(at 274.32 93.98)
 		(uuid "0c1c9c2e-e395-46bf-ac5e-17c16077c630")
 	)
 	(no_connect
-		(at 269.24 81.28)
+		(at 274.32 81.28)
 		(uuid "0cb0f159-216f-4fa9-8199-b7a191ad8677")
 	)
 	(no_connect
-		(at 269.24 66.04)
+		(at 274.32 66.04)
 		(uuid "0d30eedf-f5f1-404a-9312-7170bddcc757")
 	)
 	(no_connect
-		(at 269.24 121.92)
+		(at 274.32 121.92)
 		(uuid "0dc5e65c-6813-4afc-835b-db87310639e9")
 	)
 	(no_connect
-		(at 269.24 116.84)
+		(at 274.32 116.84)
 		(uuid "0e6bd94c-01eb-4c7f-ade2-2d3d9215b3a0")
 	)
 	(no_connect
-		(at 269.24 58.42)
+		(at 274.32 58.42)
 		(uuid "139eff8a-67e0-4fd3-8e21-5d7041c8c37f")
 	)
 	(no_connect
@@ -7470,11 +7471,11 @@
 		(uuid "1a01baa9-8ee9-4538-8c0a-3c0ec6b3ae16")
 	)
 	(no_connect
-		(at 269.24 78.74)
+		(at 274.32 78.74)
 		(uuid "1be432dd-0033-48f1-bbe7-bf266b290c96")
 	)
 	(no_connect
-		(at 269.24 147.32)
+		(at 274.32 147.32)
 		(uuid "2174f4dd-1205-47f6-9f11-67a9da5dcd3d")
 	)
 	(no_connect
@@ -7482,47 +7483,47 @@
 		(uuid "2656ae60-e2da-4801-96b1-bd8dee22a19f")
 	)
 	(no_connect
-		(at 269.24 106.68)
+		(at 274.32 106.68)
 		(uuid "277d8ae4-a953-4fa6-81d2-c27374c37edf")
 	)
 	(no_connect
-		(at 269.24 129.54)
+		(at 274.32 129.54)
 		(uuid "2b8a5ee2-9cf6-4c78-ad66-4b135603b2a9")
 	)
 	(no_connect
-		(at 269.24 63.5)
+		(at 274.32 63.5)
 		(uuid "2c1e8e43-ec73-4417-a45c-6dcf07ec11f2")
 	)
 	(no_connect
-		(at 269.24 48.26)
+		(at 274.32 48.26)
 		(uuid "3543b53b-7ac4-4292-bbc0-167cdd8296d0")
 	)
 	(no_connect
-		(at 269.24 71.12)
+		(at 274.32 71.12)
 		(uuid "354b0b48-f2c8-425e-b3a9-e0dafc8010bd")
 	)
 	(no_connect
-		(at 269.24 76.2)
+		(at 274.32 76.2)
 		(uuid "364be951-0122-4101-a1b8-f9fdc0c36808")
 	)
 	(no_connect
-		(at 269.24 55.88)
+		(at 274.32 55.88)
 		(uuid "3a86758e-951c-40e9-a956-51248dff47b1")
 	)
 	(no_connect
-		(at 269.24 88.9)
+		(at 274.32 88.9)
 		(uuid "3f906c7f-772c-4455-a901-7728c3deb5e8")
 	)
 	(no_connect
-		(at 269.24 132.08)
+		(at 274.32 132.08)
 		(uuid "489bf729-ba97-4860-8c2b-732b0d87f432")
 	)
 	(no_connect
-		(at 269.24 60.96)
+		(at 274.32 60.96)
 		(uuid "491e4963-9435-477e-bc96-20324e94c418")
 	)
 	(no_connect
-		(at 269.24 91.44)
+		(at 274.32 91.44)
 		(uuid "5885f2a4-48fb-4737-92d4-e2aaa1a1de95")
 	)
 	(no_connect
@@ -7534,35 +7535,35 @@
 		(uuid "58a2cf77-4360-4ab4-83e3-734951353c2b")
 	)
 	(no_connect
-		(at 269.24 35.56)
+		(at 274.32 35.56)
 		(uuid "5910b993-19ed-4d93-9e9c-d5eea2d02eb1")
 	)
 	(no_connect
-		(at 269.24 114.3)
+		(at 274.32 114.3)
 		(uuid "5c1180a8-f47b-4527-9676-50c7757a3b4f")
 	)
 	(no_connect
-		(at 269.24 144.78)
+		(at 274.32 144.78)
 		(uuid "602f5930-eae0-4cd1-8985-9740dfa28cdd")
 	)
 	(no_connect
-		(at 269.24 86.36)
+		(at 274.32 86.36)
 		(uuid "66196b16-e1b3-41c9-b393-ccaa1fe26917")
 	)
 	(no_connect
-		(at 269.24 101.6)
+		(at 274.32 101.6)
 		(uuid "72c14a60-2530-4b07-8385-e30bb6160670")
 	)
 	(no_connect
-		(at 269.24 68.58)
+		(at 274.32 68.58)
 		(uuid "73322c6b-bb12-45a8-a8b7-10d99c9cdd54")
 	)
 	(no_connect
-		(at 269.24 38.1)
+		(at 274.32 38.1)
 		(uuid "767f483f-be43-4751-9a5a-7fe156068194")
 	)
 	(no_connect
-		(at 269.24 109.22)
+		(at 274.32 109.22)
 		(uuid "776f5b46-94e2-4ff0-96e3-e0adfa83274d")
 	)
 	(no_connect
@@ -7574,35 +7575,35 @@
 		(uuid "81d83e2e-121a-408d-8757-c6b26ff63a48")
 	)
 	(no_connect
-		(at 269.24 43.18)
+		(at 274.32 43.18)
 		(uuid "86a9e5c4-a6d1-4a92-be57-19f41874969c")
 	)
 	(no_connect
-		(at 269.24 45.72)
+		(at 274.32 45.72)
 		(uuid "9adabefc-2299-42e4-9396-336ce68d4e76")
 	)
 	(no_connect
-		(at 269.24 139.7)
+		(at 274.32 139.7)
 		(uuid "a15bb1dc-fbfd-49d1-868a-e2907af11524")
 	)
 	(no_connect
-		(at 269.24 124.46)
+		(at 274.32 124.46)
 		(uuid "ac5ab28d-3d22-4bc9-b197-ce976107fcac")
 	)
 	(no_connect
-		(at 269.24 30.48)
+		(at 274.32 30.48)
 		(uuid "b3c75255-5d4e-4d69-ad68-682890f5b90c")
 	)
 	(no_connect
-		(at 269.24 83.82)
+		(at 274.32 83.82)
 		(uuid "b4ec7672-c183-4b97-ac85-fd29bb45c818")
 	)
 	(no_connect
-		(at 269.24 96.52)
+		(at 274.32 96.52)
 		(uuid "b4ef011a-97f8-4098-b3eb-1f53b3bd0f19")
 	)
 	(no_connect
-		(at 269.24 50.8)
+		(at 274.32 50.8)
 		(uuid "bacbefd5-e4f5-4aff-831d-abdfb42e2d88")
 	)
 	(no_connect
@@ -7610,23 +7611,23 @@
 		(uuid "bb7fdcf4-2ebf-4c92-b6b5-3b7e1bd8b9ef")
 	)
 	(no_connect
-		(at 269.24 73.66)
+		(at 274.32 73.66)
 		(uuid "c036f7b6-cc31-4d45-80a4-750f2ecf245b")
 	)
 	(no_connect
-		(at 269.24 40.64)
+		(at 274.32 40.64)
 		(uuid "c75e5597-263f-4a52-95e2-81635393017f")
 	)
 	(no_connect
-		(at 269.24 134.62)
+		(at 274.32 134.62)
 		(uuid "ca310c56-348d-42fb-9184-0839c84ef335")
 	)
 	(no_connect
-		(at 269.24 33.02)
+		(at 274.32 33.02)
 		(uuid "d4828219-7ac6-49ba-9e70-e72b64c2b209")
 	)
 	(no_connect
-		(at 269.24 111.76)
+		(at 274.32 111.76)
 		(uuid "e19b879f-cd38-4d54-b631-09ab06df0d0a")
 	)
 	(no_connect
@@ -7634,35 +7635,35 @@
 		(uuid "e4212135-b2b2-46ff-b340-ebf084b2a509")
 	)
 	(no_connect
-		(at 269.24 127)
+		(at 274.32 127)
 		(uuid "e630453f-7398-4f1d-b455-23e3372d3800")
 	)
 	(no_connect
-		(at 269.24 27.94)
+		(at 274.32 27.94)
 		(uuid "e665bc75-40a2-4d0e-8b9b-302393c917cc")
 	)
 	(no_connect
-		(at 269.24 149.86)
+		(at 274.32 149.86)
 		(uuid "e6d92530-aacf-4da4-89f3-cae2a0545a88")
 	)
 	(no_connect
-		(at 269.24 142.24)
+		(at 274.32 142.24)
 		(uuid "e6ea56f4-c318-4997-afaa-fb37b9b9934a")
 	)
 	(no_connect
-		(at 269.24 104.14)
+		(at 274.32 104.14)
 		(uuid "e93f9e43-d950-4403-b20e-5631211983e4")
 	)
 	(no_connect
-		(at 269.24 152.4)
+		(at 274.32 152.4)
 		(uuid "eb6b0e11-df9b-4029-9db9-b629b9c0efd1")
 	)
 	(no_connect
-		(at 269.24 137.16)
+		(at 274.32 137.16)
 		(uuid "ee73cd0b-1fad-4f6e-b3ca-19db6831dd1d")
 	)
 	(no_connect
-		(at 269.24 119.38)
+		(at 274.32 119.38)
 		(uuid "f4bd4c22-f687-4eec-8f7b-3975301267a0")
 	)
 	(bus_entry
@@ -26948,7 +26949,7 @@
 	)
 	(symbol
 		(lib_id "Thunderscope_Rev5:IC FPGA XC7A50T-2CSG325C")
-		(at 231.14 25.4 0)
+		(at 236.22 25.4 0)
 		(mirror y)
 		(unit 3)
 		(exclude_from_sim no)
@@ -26957,7 +26958,7 @@
 		(dnp no)
 		(uuid "72db0bfd-ab69-4419-a7b5-c6412e071841")
 		(property "Reference" "U18"
-			(at 231.14 25.4 0)
+			(at 236.22 25.4 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -26966,7 +26967,7 @@
 			)
 		)
 		(property "Value" "IC FPGA XC7A50T-2CSG325C"
-			(at 231.14 157.48 0)
+			(at 236.22 157.48 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -26975,7 +26976,7 @@
 			)
 		)
 		(property "Footprint" "Thunderscope_Rev5:XILINX_XC7A50T-2CSG325C"
-			(at 231.14 25.4 0)
+			(at 236.22 25.4 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -26984,7 +26985,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 231.14 25.4 0)
+			(at 236.22 25.4 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -26993,7 +26994,7 @@
 			)
 		)
 		(property "Description" "Artix-7 FPGA, 150 User I/Os, 4 GTP, 324-Ball BGA, Speed Grade 2, Commercial Grade, Pb-Free"
-			(at 231.14 25.4 0)
+			(at 236.22 25.4 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -27002,7 +27003,7 @@
 			)
 		)
 		(property "MANUFACTURER" "Xilinx"
-			(at 231.14 25.4 0)
+			(at 236.22 25.4 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -27012,7 +27013,7 @@
 			)
 		)
 		(property "HOUSE PART NUMBER" "XC7A50T-2CSG325C"
-			(at 231.14 22.86 0)
+			(at 236.22 22.86 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -27022,7 +27023,7 @@
 			)
 		)
 		(property "MANUFACTURER PART NUMBER" "XC7A50T-2CSG325C"
-			(at 231.14 22.86 0)
+			(at 236.22 22.86 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -27032,7 +27033,7 @@
 			)
 		)
 		(property "SUPPLIER 1" "Digi-Key"
-			(at 231.14 22.86 0)
+			(at 236.22 22.86 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -27042,7 +27043,7 @@
 			)
 		)
 		(property "SUPPLIER PART NUMBER 1" "122-2193-ND"
-			(at 231.14 22.86 0)
+			(at 236.22 22.86 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -27052,7 +27053,7 @@
 			)
 		)
 		(property "ALTIUM_VALUE" ""
-			(at 231.14 25.4 0)
+			(at 236.22 25.4 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -28316,7 +28317,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Thunderscope_Rev5:IC FLASH MX25U6432FZNI02")
+		(lib_id "Thunderscope_Rev5:IC FLASH MX25L6433FZNI-08G")
 		(at 60.96 177.8 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -28325,25 +28326,25 @@
 		(dnp no)
 		(uuid "abed12a4-e5d0-4957-a1f1-ca40ba03ddfa")
 		(property "Reference" "U19"
-			(at 48.26 167.64 0)
+			(at 48.26 166.37 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left bottom)
+				(justify left)
 			)
 		)
-		(property "Value" "MX25U6432FZNI02"
-			(at 48.26 193.04 0)
+		(property "Value" "MX25L6433FZNI-08G"
+			(at 48.26 191.77 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left bottom)
+				(justify left)
 			)
 		)
 		(property "Footprint" "Thunderscope_Rev5:MX_WSON8"
-			(at 60.96 177.8 0)
+			(at 60.96 192.024 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -28369,62 +28370,49 @@
 				(hide yes)
 			)
 		)
-		(property "SUPPLIER 1" "Digi-Key"
-			(at 40.132 167.64 0)
+		(property "SUPPLIER 1" "Mouser"
+			(at 60.96 192.024 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left bottom)
 				(hide yes)
 			)
 		)
-		(property "SUPPLIER PART NUMBER 1" "1092-MX25U6432FZNI02-ND"
-			(at 40.132 167.64 0)
+		(property "SUPPLIER PART NUMBER 1" "95-25L6433FZNI08TR"
+			(at 60.96 192.024 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left bottom)
 				(hide yes)
 			)
 		)
-		(property "HOUSE PART NUMBER" "MX25U6432FZNI02"
-			(at 40.132 165.1 0)
+		(property "HOUSE PART NUMBER" "MX25L6433FZNI-08G-TR"
+			(at 60.96 192.024 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left bottom)
 				(hide yes)
 			)
 		)
 		(property "MANUFACTURER" "Macronix"
-			(at 40.132 165.1 0)
+			(at 60.96 192.024 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left bottom)
 				(hide yes)
 			)
 		)
-		(property "MANUFACTURER PART NUMBER" "MX25U6432FZNI02"
-			(at 40.132 165.1 0)
+		(property "MANUFACTURER PART NUMBER" "MX25L6433FZNI-08G-TR"
+			(at 60.96 192.024 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left bottom)
 				(hide yes)
-			)
-		)
-		(property "ALTIUM_VALUE" ""
-			(at 60.96 177.8 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
 			)
 		)
 		(pin "2"
@@ -29250,21 +29238,21 @@
 		(dnp no)
 		(uuid "f1e409e9-da79-44fe-98e9-0011f0a69d64")
 		(property "Reference" "Y2"
-			(at 137.16 172.72 0)
+			(at 137.16 171.45 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left bottom)
+				(justify left)
 			)
 		)
 		(property "Value" "25MHz"
-			(at 137.16 190.5 0)
+			(at 137.16 189.23 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left bottom)
+				(justify left)
 			)
 		)
 		(property "Footprint" "Thunderscope_Rev5:ECS_TXO-2016"
