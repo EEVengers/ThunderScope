@@ -40,3 +40,25 @@ If you are willing to give up the probe compensation output, you can simply remo
 This should bring the noise to the level shown below:
 
 ![Screenshot of ngscopeclient, showing 73.8 uV of rms noise with 0.95 mV of peak to peak noise on CH1 at most sensitive settings](https://github.com/EEVengers/ThunderScope/blob/master/Docs/Beta%202%20Noise%20Rework%202%20Result.PNG)
+
+## Beta 2 Noise Improvement 3
+
+You barely pierced the ~~skin~~ soldermask on these last ones, now we've got to do some serious PCB surgery.
+
+![Photo of this rework done on a Beta 2](https://github.com/EEVengers/ThunderScope/blob/master/Docs/Beta%202%20Noise%20Rework%203%20Photo.jpg)
+
+Let's break this done layer by layer:
+
+![Screenshot of 3D View, as well as Layer 6,5,4 copper in the area of this rework](https://github.com/EEVengers/ThunderScope/blob/master/Docs/Beta%202%20Noise%20Rework%203.PNG)
+
+1. Remove soldermask in the area - this should give you a clear view of the copper (and lack of it) on layer 6
+2. Scrap off the copper and fiberglass prepreg (wear a dust mask for this!) in the red area of the layer 6 image
+3. Scrap off the layer 5 copper, then prepreg, in the red area of the layer 5 image, leaving copper in the purple area
+4. By this point you should be able to see your target - cut the 3V3 plane at the red line on the layer 4 image
+5. Solder a 120@100MHZ 0402 ferrite bead (BLM15PX121SN1D) between the planes you split with the cut, making sure not to short the connection (which would bypass the ferrite bead)
+6. Solder a 22uF 25V X5R 0805 capacitor (GRM21BR61E226ME44L) between each side of the ferrite bead and the ground pads you left from step 3. (was purple in that step, now shown in green)
+7. Check to see if you shorted 3V3 to ground - If you did, clear out the edges of the hole in the plane and try again
+
+Now doff your scrubs and fix yourself a drink to celebrate another successful operation, your noise level should now be under 60 uV RMS!
+
+![Screenshot of ngscopeclient, showing 51.3 uV of rms noise on CH1 at most sensitive settings](https://github.com/EEVengers/ThunderScope/blob/master/Docs/Beta%202%20Noise%20Rework%203%20Result.PNG)
