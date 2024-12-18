@@ -1224,18 +1224,6 @@
 			(symbol "IC DIGIPOT QUAD MCP4452-104E_1_0"
 				(polyline
 					(pts
-						(xy 11.43 -7.62) (xy 12.7 -8.89) (xy 13.97 -6.35) (xy 15.24 -8.89) (xy 16.51 -6.35) (xy 17.78 -8.89)
-					)
-					(stroke
-						(width 0)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
 						(xy 11.43 -7.62) (xy 8.89 -7.62)
 					)
 					(stroke
@@ -1248,7 +1236,7 @@
 				)
 				(polyline
 					(pts
-						(xy 11.43 -12.7) (xy 8.89 -12.7)
+						(xy 11.43 -7.62) (xy 12.7 -8.89) (xy 13.97 -6.35) (xy 15.24 -8.89) (xy 16.51 -6.35) (xy 17.78 -8.89)
 					)
 					(stroke
 						(width 0)
@@ -1272,7 +1260,7 @@
 				)
 				(polyline
 					(pts
-						(xy 11.43 -17.78) (xy 12.7 -19.05) (xy 13.97 -16.51) (xy 15.24 -19.05) (xy 16.51 -16.51) (xy 17.78 -19.05)
+						(xy 11.43 -12.7) (xy 8.89 -12.7)
 					)
 					(stroke
 						(width 0)
@@ -1285,6 +1273,18 @@
 				(polyline
 					(pts
 						(xy 11.43 -17.78) (xy 8.89 -17.78)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 11.43 -17.78) (xy 12.7 -19.05) (xy 13.97 -16.51) (xy 15.24 -19.05) (xy 16.51 -16.51) (xy 17.78 -19.05)
 					)
 					(stroke
 						(width 0)
@@ -3032,7 +3032,7 @@
 	)
 	(text "Default I2C address: 1100000"
 		(exclude_from_sim no)
-		(at 121.92 71.12 0)
+		(at 124.46 71.12 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -3216,7 +3216,7 @@
 		(uuid "c9f7e123-00e5-438f-beec-19158427a60d")
 	)
 	(junction
-		(at 111.76 63.5)
+		(at 114.3 63.5)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "cf2e91cc-8e10-4e10-acc4-56295a2bf2ca")
@@ -3250,7 +3250,7 @@
 		(uuid "137669d1-742f-4f57-85aa-c723ff820f50")
 	)
 	(no_connect
-		(at 114.3 58.42)
+		(at 116.84 58.42)
 		(uuid "4b02cf4d-41e5-4920-a8fb-ebe2af49b927")
 	)
 	(no_connect
@@ -3259,7 +3259,7 @@
 	)
 	(wire
 		(pts
-			(xy 114.3 63.5) (xy 111.76 63.5)
+			(xy 116.84 63.5) (xy 114.3 63.5)
 		)
 		(stroke
 			(width 0)
@@ -3409,7 +3409,7 @@
 	)
 	(wire
 		(pts
-			(xy 88.9 43.18) (xy 114.3 43.18)
+			(xy 88.9 43.18) (xy 116.84 43.18)
 		)
 		(stroke
 			(width 0)
@@ -3419,7 +3419,7 @@
 	)
 	(wire
 		(pts
-			(xy 154.94 55.88) (xy 162.56 55.88)
+			(xy 157.48 55.88) (xy 165.1 55.88)
 		)
 		(stroke
 			(width 0)
@@ -3519,7 +3519,7 @@
 	)
 	(wire
 		(pts
-			(xy 114.3 55.88) (xy 111.76 55.88)
+			(xy 116.84 55.88) (xy 114.3 55.88)
 		)
 		(stroke
 			(width 0)
@@ -3539,7 +3539,7 @@
 	)
 	(wire
 		(pts
-			(xy 99.06 48.26) (xy 114.3 48.26)
+			(xy 99.06 48.26) (xy 116.84 48.26)
 		)
 		(stroke
 			(width 0)
@@ -3559,7 +3559,7 @@
 	)
 	(wire
 		(pts
-			(xy 154.94 50.8) (xy 162.56 50.8)
+			(xy 157.48 50.8) (xy 165.1 50.8)
 		)
 		(stroke
 			(width 0)
@@ -3799,7 +3799,7 @@
 	)
 	(wire
 		(pts
-			(xy 154.94 60.96) (xy 162.56 60.96)
+			(xy 157.48 60.96) (xy 165.1 60.96)
 		)
 		(stroke
 			(width 0)
@@ -3909,7 +3909,7 @@
 	)
 	(wire
 		(pts
-			(xy 111.76 63.5) (xy 111.76 66.04)
+			(xy 114.3 63.5) (xy 114.3 66.04)
 		)
 		(stroke
 			(width 0)
@@ -4099,7 +4099,7 @@
 	)
 	(wire
 		(pts
-			(xy 101.6 50.8) (xy 114.3 50.8)
+			(xy 101.6 50.8) (xy 116.84 50.8)
 		)
 		(stroke
 			(width 0)
@@ -4239,7 +4239,7 @@
 	)
 	(wire
 		(pts
-			(xy 111.76 55.88) (xy 111.76 63.5)
+			(xy 114.3 55.88) (xy 114.3 63.5)
 		)
 		(stroke
 			(width 0)
@@ -4299,7 +4299,7 @@
 	)
 	(wire
 		(pts
-			(xy 154.94 45.72) (xy 162.56 45.72)
+			(xy 157.48 45.72) (xy 165.1 45.72)
 		)
 		(stroke
 			(width 0)
@@ -4388,7 +4388,7 @@
 		(uuid "15b545f8-46b7-4276-b8e4-7b71857d3b29")
 	)
 	(label "VOUT3"
-		(at 162.56 50.8 180)
+		(at 165.1 50.8 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4498,7 +4498,7 @@
 		(uuid "97766e42-1278-4d19-b4c7-6d8281e36f5e")
 	)
 	(label "VOUT4"
-		(at 162.56 45.72 180)
+		(at 165.1 45.72 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4508,7 +4508,7 @@
 		(uuid "9dfe2531-b9ef-46d3-b22d-4a86dfac2410")
 	)
 	(label "VOUT2"
-		(at 162.56 55.88 180)
+		(at 165.1 55.88 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4548,7 +4548,7 @@
 		(uuid "cd966c9d-b5c3-4ffa-b2e9-67c804a12c1c")
 	)
 	(label "VOUT1"
-		(at 162.56 60.96 180)
+		(at 165.1 60.96 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -7194,7 +7194,7 @@
 	)
 	(symbol
 		(lib_id "Thunderscope_Rev5:IC DAC QUAD MCP4728")
-		(at 134.62 53.34 0)
+		(at 137.16 53.34 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -7202,7 +7202,7 @@
 		(dnp no)
 		(uuid "8bc5edef-8ad2-48e4-a7a8-4e5b1354530c")
 		(property "Reference" "U3"
-			(at 121.92 40.64 0)
+			(at 124.46 40.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7211,7 +7211,7 @@
 			)
 		)
 		(property "Value" "MCP4728"
-			(at 121.92 68.58 0)
+			(at 124.46 68.58 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7220,7 +7220,7 @@
 			)
 		)
 		(property "Footprint" "Thunderscope_Rev5:MC_MSOP10_UN"
-			(at 134.62 53.34 0)
+			(at 137.16 53.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7229,7 +7229,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 134.62 53.34 0)
+			(at 137.16 53.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7238,7 +7238,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 134.62 53.34 0)
+			(at 137.16 53.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7247,7 +7247,7 @@
 			)
 		)
 		(property "SUPPLIER 1" "Mouser"
-			(at 133.35 52.07 0)
+			(at 135.89 52.07 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7257,7 +7257,7 @@
 			)
 		)
 		(property "SUPPLIER PART NUMBER 1" "579-MCP4728A1T-E/UN"
-			(at 133.35 52.07 0)
+			(at 135.89 52.07 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7267,7 +7267,7 @@
 			)
 		)
 		(property "HOUSE PART NUMBER" ""
-			(at 113.792 38.1 0)
+			(at 116.332 38.1 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7277,7 +7277,7 @@
 			)
 		)
 		(property "MANUFACTURER" "Microchip"
-			(at 113.792 38.1 0)
+			(at 116.332 38.1 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7287,7 +7287,7 @@
 			)
 		)
 		(property "MANUFACTURER PART NUMBER" "MCP4728"
-			(at 113.792 38.1 0)
+			(at 116.332 38.1 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7297,7 +7297,7 @@
 			)
 		)
 		(property "ALTIUM_VALUE" ""
-			(at 134.62 53.34 0)
+			(at 137.16 53.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8027,7 +8027,7 @@
 	)
 	(symbol
 		(lib_id "Thunderscope_Rev5:GND")
-		(at 111.76 66.04 0)
+		(at 114.3 66.04 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -8035,7 +8035,7 @@
 		(dnp no)
 		(uuid "bb297130-201e-4f32-8d6d-6720b8cee804")
 		(property "Reference" "#PWR0181"
-			(at 111.76 72.39 0)
+			(at 114.3 72.39 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8044,7 +8044,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 111.76 69.85 0)
+			(at 114.3 69.85 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8052,7 +8052,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 111.76 66.04 0)
+			(at 114.3 66.04 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8061,7 +8061,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 111.76 66.04 0)
+			(at 114.3 66.04 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8070,7 +8070,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 111.76 66.04 0)
+			(at 114.3 66.04 0)
 			(effects
 				(font
 					(size 1.27 1.27)

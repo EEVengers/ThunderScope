@@ -5166,7 +5166,7 @@
 				)
 				(polyline
 					(pts
-						(xy 2.54 0) (xy 0.246 0)
+						(xy 2.54 0) (xy 2.54 -2.54)
 					)
 					(stroke
 						(width 0)
@@ -5178,7 +5178,7 @@
 				)
 				(polyline
 					(pts
-						(xy 2.54 0) (xy 2.54 -2.54)
+						(xy 2.54 0) (xy 0.246 0)
 					)
 					(stroke
 						(width 0)
@@ -8733,17 +8733,6 @@
 			(symbol "UFL Jack SMD_1_0"
 				(circle
 					(center 0 0)
-					(radius 2.54)
-					(stroke
-						(width 0)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(circle
-					(center 0 0)
 					(radius 0.635)
 					(stroke
 						(width -0.0001)
@@ -8751,6 +8740,17 @@
 					)
 					(fill
 						(type outline)
+					)
+				)
+				(circle
+					(center 0 0)
+					(radius 2.54)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
 					)
 				)
 				(pin passive line
@@ -8896,7 +8896,7 @@
 	)
 	(text "WK73R2ATTD49R9F"
 		(exclude_from_sim no)
-		(at 151.13 71.12 0)
+		(at 134.62 71.12 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9094,7 +9094,7 @@
 	)
 	(text "DONE: change to 976k"
 		(exclude_from_sim no)
-		(at 259.08 45.72 0)
+		(at 264.16 45.72 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9158,7 +9158,7 @@
 	)
 	(text "DONE: change to 50 ohm 0508"
 		(exclude_from_sim no)
-		(at 148.59 68.58 0)
+		(at 132.08 68.58 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9199,7 +9199,7 @@
 	)
 	(text "50x Attenuator"
 		(exclude_from_sim no)
-		(at 255.27 30.48 0)
+		(at 261.62 30.48 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9224,7 +9224,7 @@
 		(uuid "f8e1af96-7b59-4aaa-a94a-4b010185ce5b")
 	)
 	(junction
-		(at 297.18 43.18)
+		(at 302.26 43.18)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "038f734e-2915-43c2-8d6e-7cb4802156cb")
@@ -9282,12 +9282,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "12b013ae-2fb2-4d4b-adf4-32cb036e05f0")
-	)
-	(junction
-		(at 93.98 53.34)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "13f898ab-7794-4324-878c-1be271be0ed3")
 	)
 	(junction
 		(at 139.7 274.32)
@@ -9368,7 +9362,7 @@
 		(uuid "2daf9157-fef4-43e0-974d-7bf5a3ddbd11")
 	)
 	(junction
-		(at 259.08 50.8)
+		(at 264.16 50.8)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "312af8d8-a278-4bd3-bd6a-8d5bb4b7169b")
@@ -9378,12 +9372,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "3479ed8a-5feb-42eb-ab32-31b43850b132")
-	)
-	(junction
-		(at 210.82 53.34)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "37c859b7-b5b5-4b96-b847-db0f6c2b55ca")
 	)
 	(junction
 		(at 304.8 180.34)
@@ -9428,10 +9416,16 @@
 		(uuid "487ef597-baa3-4549-96a7-557ab666ef70")
 	)
 	(junction
-		(at 160.02 38.1)
+		(at 142.24 38.1)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "49bc4c69-d9bd-42f0-b338-52e7853a9d73")
+	)
+	(junction
+		(at 215.9 53.34)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "4ec812ed-d01e-4234-ba3d-cfc5dab3b3cd")
 	)
 	(junction
 		(at 378.46 205.74)
@@ -9488,7 +9482,7 @@
 		(uuid "5e25abf9-4b18-4dd0-aa3a-2080b4236aad")
 	)
 	(junction
-		(at 71.12 53.34)
+		(at 48.26 53.34)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "612d88b1-82e2-402e-a0a9-366a31e043bb")
@@ -9500,13 +9494,7 @@
 		(uuid "728e70d5-39fc-405a-8c81-dc451333e0f2")
 	)
 	(junction
-		(at 83.82 53.34)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "743fe7c3-5051-4e8a-9fe7-ababac6ea1c1")
-	)
-	(junction
-		(at 134.62 43.18)
+		(at 116.84 43.18)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "7505d076-bc58-4e3c-b988-eeeed31341eb")
@@ -9560,7 +9548,7 @@
 		(uuid "957da8a2-4996-4ced-a7af-bb9eb994e02f")
 	)
 	(junction
-		(at 116.84 63.5)
+		(at 96.52 63.5)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "a17bbd9b-288e-469f-93a8-18eb9bd206aa")
@@ -9570,6 +9558,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "aabd4f53-754f-4e34-8b8e-8655c82fd028")
+	)
+	(junction
+		(at 63.5 53.34)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "acef528d-6abc-4b51-ab09-fae2a24e1559")
 	)
 	(junction
 		(at 129.54 162.56)
@@ -9590,19 +9584,13 @@
 		(uuid "b0e6a865-8cb3-43aa-b8a5-3368a9ede94e")
 	)
 	(junction
-		(at 200.66 53.34)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "b1b0b20d-13ea-423c-b825-5c6123eaa99c")
-	)
-	(junction
 		(at 142.24 154.94)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "b350826b-1b3b-4851-adb5-625045caab84")
 	)
 	(junction
-		(at 279.4 43.18)
+		(at 284.48 43.18)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "b7e9b0ab-c9a6-4a6a-b2b4-cd3586502fb9")
@@ -9632,19 +9620,25 @@
 		(uuid "bc8ae9b7-2c89-4073-b6fa-ca3a3b59d062")
 	)
 	(junction
-		(at 93.98 81.28)
+		(at 76.2 53.34)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "c20ee330-b20c-4e3e-b2fc-82cbfac9925c")
+	)
+	(junction
+		(at 73.66 81.28)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "c310dc69-e313-4ea2-8b66-3e8fb53e970f")
 	)
 	(junction
-		(at 238.76 43.18)
+		(at 243.84 43.18)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "c5fa0cea-1e2b-493a-b375-00a2dbbad9f0")
 	)
 	(junction
-		(at 210.82 81.28)
+		(at 213.36 81.28)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "c6682472-9c42-4f49-9a95-fac37bc230df")
@@ -9698,13 +9692,19 @@
 		(uuid "e77e06e6-fd86-4133-90f1-96ce25ebf8a7")
 	)
 	(junction
-		(at 233.68 63.5)
+		(at 236.22 63.5)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "e7d3af05-c416-41d3-9064-6f22e1104f78")
 	)
 	(junction
-		(at 91.44 81.28)
+		(at 203.2 53.34)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "e86e3fd7-96fc-4c64-8803-9278ec227aed")
+	)
+	(junction
+		(at 71.12 81.28)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "eb221f0a-a845-4f4d-9730-f5578791ce40")
@@ -9716,13 +9716,13 @@
 		(uuid "f0a8859f-c01d-4db1-b50b-b3b005d39880")
 	)
 	(junction
-		(at 208.28 81.28)
+		(at 210.82 81.28)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "f2669ea9-603e-4f06-a496-99af0f6e748f")
 	)
 	(junction
-		(at 287.02 43.18)
+		(at 292.1 43.18)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "f5a2a824-571c-4944-a683-0101bdcfdabb")
@@ -9761,7 +9761,7 @@
 	)
 	(wire
 		(pts
-			(xy 48.26 45.72) (xy 48.26 50.8)
+			(xy 27.94 45.72) (xy 27.94 50.8)
 		)
 		(stroke
 			(width 0)
@@ -9771,7 +9771,7 @@
 	)
 	(polyline
 		(pts
-			(xy 105.41 33.02) (xy 186.69 33.02)
+			(xy 86.36 33.02) (xy 167.64 33.02)
 		)
 		(stroke
 			(width 0.254)
@@ -9812,7 +9812,7 @@
 	)
 	(wire
 		(pts
-			(xy 210.82 96.52) (xy 210.82 93.98)
+			(xy 213.36 96.52) (xy 213.36 93.98)
 		)
 		(stroke
 			(width 0)
@@ -9852,7 +9852,7 @@
 	)
 	(wire
 		(pts
-			(xy 287.02 55.88) (xy 287.02 58.42)
+			(xy 292.1 55.88) (xy 292.1 58.42)
 		)
 		(stroke
 			(width 0)
@@ -9862,7 +9862,7 @@
 	)
 	(wire
 		(pts
-			(xy 279.4 43.18) (xy 264.16 43.18)
+			(xy 284.48 43.18) (xy 269.24 43.18)
 		)
 		(stroke
 			(width 0)
@@ -9892,7 +9892,7 @@
 	)
 	(wire
 		(pts
-			(xy 93.98 53.34) (xy 93.98 63.5)
+			(xy 76.2 53.34) (xy 76.2 63.5)
 		)
 		(stroke
 			(width 0)
@@ -9902,7 +9902,7 @@
 	)
 	(wire
 		(pts
-			(xy 233.68 63.5) (xy 233.68 76.2)
+			(xy 236.22 63.5) (xy 236.22 76.2)
 		)
 		(stroke
 			(width 0)
@@ -9932,7 +9932,7 @@
 	)
 	(wire
 		(pts
-			(xy 83.82 55.88) (xy 83.82 53.34)
+			(xy 63.5 55.88) (xy 63.5 53.34)
 		)
 		(stroke
 			(width 0)
@@ -9942,7 +9942,7 @@
 	)
 	(wire
 		(pts
-			(xy 83.82 53.34) (xy 93.98 53.34)
+			(xy 60.96 53.34) (xy 63.5 53.34)
 		)
 		(stroke
 			(width 0)
@@ -9962,7 +9962,7 @@
 	)
 	(wire
 		(pts
-			(xy 238.76 43.18) (xy 254 43.18)
+			(xy 243.84 43.18) (xy 259.08 43.18)
 		)
 		(stroke
 			(width 0)
@@ -10002,7 +10002,7 @@
 	)
 	(wire
 		(pts
-			(xy 187.96 53.34) (xy 189.23 53.34)
+			(xy 187.96 53.34) (xy 190.5 53.34)
 		)
 		(stroke
 			(width 0)
@@ -10022,7 +10022,7 @@
 	)
 	(wire
 		(pts
-			(xy 160.02 38.1) (xy 166.37 38.1)
+			(xy 142.24 38.1) (xy 147.32 38.1)
 		)
 		(stroke
 			(width 0)
@@ -10072,13 +10072,13 @@
 	)
 	(wire
 		(pts
-			(xy 199.39 53.34) (xy 200.66 53.34)
+			(xy 63.5 53.34) (xy 76.2 53.34)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "1f113fb8-2e0d-4f4e-bdd2-4cdd6db06bf2")
+		(uuid "1f204f7f-4756-44c7-9ce2-b65482aa4c5d")
 	)
 	(wire
 		(pts
@@ -10122,7 +10122,7 @@
 	)
 	(wire
 		(pts
-			(xy 251.46 50.8) (xy 259.08 50.8)
+			(xy 256.54 50.8) (xy 264.16 50.8)
 		)
 		(stroke
 			(width 0)
@@ -10149,16 +10149,6 @@
 			(type default)
 		)
 		(uuid "2808cd00-e6fb-4dda-88f9-80bb1ee50234")
-	)
-	(wire
-		(pts
-			(xy 210.82 53.34) (xy 217.17 53.34)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "282e26e2-cc33-4408-aed9-8296f78f0d16")
 	)
 	(wire
 		(pts
@@ -10222,7 +10212,7 @@
 	)
 	(wire
 		(pts
-			(xy 182.88 53.34) (xy 187.96 53.34)
+			(xy 185.42 53.34) (xy 187.96 53.34)
 		)
 		(stroke
 			(width 0)
@@ -10232,7 +10222,7 @@
 	)
 	(wire
 		(pts
-			(xy 287.02 45.72) (xy 287.02 43.18)
+			(xy 292.1 45.72) (xy 292.1 43.18)
 		)
 		(stroke
 			(width 0)
@@ -10272,7 +10262,7 @@
 	)
 	(wire
 		(pts
-			(xy 217.17 40.64) (xy 191.77 40.64)
+			(xy 220.98 40.64) (xy 172.72 40.64)
 		)
 		(stroke
 			(width 0)
@@ -10322,7 +10312,7 @@
 	)
 	(wire
 		(pts
-			(xy 134.62 45.72) (xy 134.62 43.18)
+			(xy 116.84 45.72) (xy 116.84 43.18)
 		)
 		(stroke
 			(width 0)
@@ -10342,7 +10332,7 @@
 	)
 	(polyline
 		(pts
-			(xy 303.53 33.02) (xy 303.53 40.64)
+			(xy 314.96 33.02) (xy 314.96 40.64)
 		)
 		(stroke
 			(width 0.254)
@@ -10353,7 +10343,7 @@
 	)
 	(wire
 		(pts
-			(xy 110.49 43.18) (xy 119.38 43.18)
+			(xy 91.44 43.18) (xy 101.6 43.18)
 		)
 		(stroke
 			(width 0)
@@ -10383,7 +10373,7 @@
 	)
 	(wire
 		(pts
-			(xy 227.33 43.18) (xy 238.76 43.18)
+			(xy 231.14 43.18) (xy 243.84 43.18)
 		)
 		(stroke
 			(width 0)
@@ -10413,7 +10403,7 @@
 	)
 	(wire
 		(pts
-			(xy 93.98 96.52) (xy 93.98 93.98)
+			(xy 73.66 96.52) (xy 73.66 93.98)
 		)
 		(stroke
 			(width 0)
@@ -10513,7 +10503,7 @@
 	)
 	(wire
 		(pts
-			(xy 297.18 58.42) (xy 297.18 55.88)
+			(xy 302.26 58.42) (xy 302.26 55.88)
 		)
 		(stroke
 			(width 0)
@@ -10560,16 +10550,6 @@
 			(type default)
 		)
 		(uuid "5105b89e-e35d-40f2-8744-c6393f9074e7")
-	)
-	(wire
-		(pts
-			(xy 93.98 53.34) (xy 100.33 53.34)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "51214883-cf6e-44a5-aa0c-5e85544bc973")
 	)
 	(wire
 		(pts
@@ -10643,7 +10623,7 @@
 	)
 	(wire
 		(pts
-			(xy 116.84 53.34) (xy 116.84 63.5)
+			(xy 96.52 53.34) (xy 96.52 63.5)
 		)
 		(stroke
 			(width 0)
@@ -10653,7 +10633,7 @@
 	)
 	(wire
 		(pts
-			(xy 116.84 63.5) (xy 116.84 76.2)
+			(xy 96.52 63.5) (xy 96.52 76.2)
 		)
 		(stroke
 			(width 0)
@@ -10673,7 +10653,7 @@
 	)
 	(wire
 		(pts
-			(xy 66.04 53.34) (xy 71.12 53.34)
+			(xy 45.72 53.34) (xy 48.26 53.34)
 		)
 		(stroke
 			(width 0)
@@ -10683,7 +10663,7 @@
 	)
 	(wire
 		(pts
-			(xy 149.86 43.18) (xy 181.61 43.18)
+			(xy 132.08 43.18) (xy 162.56 43.18)
 		)
 		(stroke
 			(width 0)
@@ -10693,7 +10673,7 @@
 	)
 	(wire
 		(pts
-			(xy 213.36 81.28) (xy 210.82 81.28)
+			(xy 215.9 81.28) (xy 213.36 81.28)
 		)
 		(stroke
 			(width 0)
@@ -10713,7 +10693,7 @@
 	)
 	(wire
 		(pts
-			(xy 66.04 50.8) (xy 66.04 53.34)
+			(xy 45.72 50.8) (xy 45.72 53.34)
 		)
 		(stroke
 			(width 0)
@@ -10743,7 +10723,7 @@
 	)
 	(wire
 		(pts
-			(xy 106.68 81.28) (xy 109.22 81.28)
+			(xy 86.36 81.28) (xy 88.9 81.28)
 		)
 		(stroke
 			(width 0)
@@ -10753,7 +10733,7 @@
 	)
 	(wire
 		(pts
-			(xy 297.18 43.18) (xy 297.18 45.72)
+			(xy 302.26 43.18) (xy 302.26 45.72)
 		)
 		(stroke
 			(width 0)
@@ -10773,7 +10753,7 @@
 	)
 	(wire
 		(pts
-			(xy 223.52 81.28) (xy 226.06 81.28)
+			(xy 226.06 81.28) (xy 228.6 81.28)
 		)
 		(stroke
 			(width 0)
@@ -10803,7 +10783,7 @@
 	)
 	(wire
 		(pts
-			(xy 279.4 43.18) (xy 287.02 43.18)
+			(xy 284.48 43.18) (xy 292.1 43.18)
 		)
 		(stroke
 			(width 0)
@@ -10813,7 +10793,7 @@
 	)
 	(wire
 		(pts
-			(xy 116.84 96.52) (xy 116.84 86.36)
+			(xy 96.52 96.52) (xy 96.52 86.36)
 		)
 		(stroke
 			(width 0)
@@ -10873,7 +10853,7 @@
 	)
 	(wire
 		(pts
-			(xy 176.53 38.1) (xy 181.61 38.1)
+			(xy 157.48 38.1) (xy 162.56 38.1)
 		)
 		(stroke
 			(width 0)
@@ -10953,7 +10933,7 @@
 	)
 	(wire
 		(pts
-			(xy 96.52 81.28) (xy 93.98 81.28)
+			(xy 76.2 81.28) (xy 73.66 81.28)
 		)
 		(stroke
 			(width 0)
@@ -10973,7 +10953,7 @@
 	)
 	(wire
 		(pts
-			(xy 110.49 38.1) (xy 160.02 38.1)
+			(xy 91.44 38.1) (xy 142.24 38.1)
 		)
 		(stroke
 			(width 0)
@@ -11083,7 +11063,7 @@
 	)
 	(wire
 		(pts
-			(xy 110.49 63.5) (xy 116.84 63.5)
+			(xy 91.44 63.5) (xy 96.52 63.5)
 		)
 		(stroke
 			(width 0)
@@ -11093,7 +11073,7 @@
 	)
 	(wire
 		(pts
-			(xy 129.54 43.18) (xy 134.62 43.18)
+			(xy 111.76 43.18) (xy 116.84 43.18)
 		)
 		(stroke
 			(width 0)
@@ -11133,7 +11113,7 @@
 	)
 	(wire
 		(pts
-			(xy 134.62 58.42) (xy 134.62 55.88)
+			(xy 116.84 58.42) (xy 116.84 55.88)
 		)
 		(stroke
 			(width 0)
@@ -11183,7 +11163,7 @@
 	)
 	(polyline
 		(pts
-			(xy 186.69 33.02) (xy 186.69 40.64)
+			(xy 167.64 33.02) (xy 167.64 40.64)
 		)
 		(stroke
 			(width 0.254)
@@ -11194,7 +11174,7 @@
 	)
 	(wire
 		(pts
-			(xy 210.82 81.28) (xy 210.82 83.82)
+			(xy 213.36 81.28) (xy 213.36 83.82)
 		)
 		(stroke
 			(width 0)
@@ -11234,7 +11214,7 @@
 	)
 	(wire
 		(pts
-			(xy 93.98 63.5) (xy 100.33 63.5)
+			(xy 76.2 63.5) (xy 81.28 63.5)
 		)
 		(stroke
 			(width 0)
@@ -11244,7 +11224,7 @@
 	)
 	(wire
 		(pts
-			(xy 233.68 96.52) (xy 233.68 86.36)
+			(xy 236.22 96.52) (xy 236.22 86.36)
 		)
 		(stroke
 			(width 0)
@@ -11264,7 +11244,7 @@
 	)
 	(wire
 		(pts
-			(xy 71.12 53.34) (xy 72.39 53.34)
+			(xy 48.26 53.34) (xy 50.8 53.34)
 		)
 		(stroke
 			(width 0)
@@ -11274,7 +11254,7 @@
 	)
 	(wire
 		(pts
-			(xy 91.44 81.28) (xy 88.9 81.28)
+			(xy 71.12 81.28) (xy 68.58 81.28)
 		)
 		(stroke
 			(width 0)
@@ -11294,7 +11274,7 @@
 	)
 	(wire
 		(pts
-			(xy 110.49 53.34) (xy 116.84 53.34)
+			(xy 91.44 53.34) (xy 96.52 53.34)
 		)
 		(stroke
 			(width 0)
@@ -11334,7 +11314,7 @@
 	)
 	(wire
 		(pts
-			(xy 182.88 50.8) (xy 182.88 53.34)
+			(xy 185.42 50.8) (xy 185.42 53.34)
 		)
 		(stroke
 			(width 0)
@@ -11354,6 +11334,16 @@
 	)
 	(wire
 		(pts
+			(xy 76.2 53.34) (xy 81.28 53.34)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8cee6cdf-80ea-4356-8f08-8c3676fad0c4")
+	)
+	(wire
+		(pts
 			(xy 213.36 203.2) (xy 213.36 205.74)
 		)
 		(stroke
@@ -11364,7 +11354,7 @@
 	)
 	(wire
 		(pts
-			(xy 259.08 50.8) (xy 266.7 50.8)
+			(xy 264.16 50.8) (xy 271.78 50.8)
 		)
 		(stroke
 			(width 0)
@@ -11424,6 +11414,16 @@
 	)
 	(wire
 		(pts
+			(xy 203.2 53.34) (xy 215.9 53.34)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9465773c-34b5-4c52-b29c-d190288c680f")
+	)
+	(wire
+		(pts
 			(xy 144.78 243.84) (xy 154.94 243.84)
 		)
 		(stroke
@@ -11434,7 +11434,7 @@
 	)
 	(wire
 		(pts
-			(xy 71.12 53.34) (xy 71.12 55.88)
+			(xy 48.26 53.34) (xy 48.26 55.88)
 		)
 		(stroke
 			(width 0)
@@ -11514,7 +11514,7 @@
 	)
 	(wire
 		(pts
-			(xy 287.02 43.18) (xy 297.18 43.18)
+			(xy 292.1 43.18) (xy 302.26 43.18)
 		)
 		(stroke
 			(width 0)
@@ -11574,7 +11574,7 @@
 	)
 	(wire
 		(pts
-			(xy 210.82 63.5) (xy 217.17 63.5)
+			(xy 215.9 63.5) (xy 220.98 63.5)
 		)
 		(stroke
 			(width 0)
@@ -11594,7 +11594,7 @@
 	)
 	(wire
 		(pts
-			(xy 238.76 50.8) (xy 238.76 43.18)
+			(xy 243.84 50.8) (xy 243.84 43.18)
 		)
 		(stroke
 			(width 0)
@@ -11624,7 +11624,7 @@
 	)
 	(polyline
 		(pts
-			(xy 105.41 50.8) (xy 105.41 33.02)
+			(xy 86.36 50.8) (xy 86.36 33.02)
 		)
 		(stroke
 			(width 0.254)
@@ -11655,7 +11655,7 @@
 	)
 	(wire
 		(pts
-			(xy 303.53 38.1) (xy 227.33 38.1)
+			(xy 309.88 38.1) (xy 231.14 38.1)
 		)
 		(stroke
 			(width 0)
@@ -11665,7 +11665,7 @@
 	)
 	(wire
 		(pts
-			(xy 208.28 81.28) (xy 205.74 81.28)
+			(xy 210.82 81.28) (xy 208.28 81.28)
 		)
 		(stroke
 			(width 0)
@@ -11705,7 +11705,7 @@
 	)
 	(wire
 		(pts
-			(xy 227.33 53.34) (xy 233.68 53.34)
+			(xy 231.14 53.34) (xy 236.22 53.34)
 		)
 		(stroke
 			(width 0)
@@ -11715,7 +11715,7 @@
 	)
 	(wire
 		(pts
-			(xy 160.02 58.42) (xy 160.02 55.88)
+			(xy 142.24 58.42) (xy 142.24 55.88)
 		)
 		(stroke
 			(width 0)
@@ -11725,7 +11725,7 @@
 	)
 	(wire
 		(pts
-			(xy 313.69 40.64) (xy 331.47 40.64)
+			(xy 320.04 40.64) (xy 337.82 40.64)
 		)
 		(stroke
 			(width 0)
@@ -11735,7 +11735,7 @@
 	)
 	(wire
 		(pts
-			(xy 134.62 43.18) (xy 139.7 43.18)
+			(xy 116.84 43.18) (xy 121.92 43.18)
 		)
 		(stroke
 			(width 0)
@@ -11765,7 +11765,7 @@
 	)
 	(polyline
 		(pts
-			(xy 222.25 33.02) (xy 303.53 33.02)
+			(xy 226.06 33.02) (xy 314.96 33.02)
 		)
 		(stroke
 			(width 0.254)
@@ -11886,13 +11886,23 @@
 	)
 	(wire
 		(pts
-			(xy 297.18 43.18) (xy 303.53 43.18)
+			(xy 302.26 43.18) (xy 309.88 43.18)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
 		(uuid "b71bd4f5-56ec-4cec-bf89-4c4bcca58784")
+	)
+	(wire
+		(pts
+			(xy 215.9 53.34) (xy 220.98 53.34)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b7c9e80f-0141-45c0-a305-783e8d842f94")
 	)
 	(wire
 		(pts
@@ -11906,7 +11916,7 @@
 	)
 	(wire
 		(pts
-			(xy 210.82 81.28) (xy 208.28 81.28)
+			(xy 213.36 81.28) (xy 210.82 81.28)
 		)
 		(stroke
 			(width 0)
@@ -11936,7 +11946,7 @@
 	)
 	(wire
 		(pts
-			(xy 200.66 55.88) (xy 200.66 53.34)
+			(xy 203.2 55.88) (xy 203.2 53.34)
 		)
 		(stroke
 			(width 0)
@@ -11946,7 +11956,7 @@
 	)
 	(wire
 		(pts
-			(xy 233.68 53.34) (xy 233.68 63.5)
+			(xy 236.22 53.34) (xy 236.22 63.5)
 		)
 		(stroke
 			(width 0)
@@ -12026,7 +12036,7 @@
 	)
 	(wire
 		(pts
-			(xy 93.98 81.28) (xy 93.98 83.82)
+			(xy 73.66 81.28) (xy 73.66 83.82)
 		)
 		(stroke
 			(width 0)
@@ -12056,7 +12066,7 @@
 	)
 	(wire
 		(pts
-			(xy 259.08 63.5) (xy 259.08 66.04)
+			(xy 264.16 63.5) (xy 264.16 66.04)
 		)
 		(stroke
 			(width 0)
@@ -12106,16 +12116,6 @@
 	)
 	(wire
 		(pts
-			(xy 82.55 53.34) (xy 83.82 53.34)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "d24cafe3-2c5d-4f69-8d25-436d2b71c979")
-	)
-	(wire
-		(pts
 			(xy 220.98 203.2) (xy 220.98 210.82)
 		)
 		(stroke
@@ -12136,7 +12136,7 @@
 	)
 	(wire
 		(pts
-			(xy 93.98 81.28) (xy 91.44 81.28)
+			(xy 73.66 81.28) (xy 71.12 81.28)
 		)
 		(stroke
 			(width 0)
@@ -12146,7 +12146,7 @@
 	)
 	(wire
 		(pts
-			(xy 200.66 53.34) (xy 210.82 53.34)
+			(xy 200.66 53.34) (xy 203.2 53.34)
 		)
 		(stroke
 			(width 0)
@@ -12216,7 +12216,7 @@
 	)
 	(wire
 		(pts
-			(xy 241.3 50.8) (xy 238.76 50.8)
+			(xy 246.38 50.8) (xy 243.84 50.8)
 		)
 		(stroke
 			(width 0)
@@ -12356,7 +12356,7 @@
 	)
 	(wire
 		(pts
-			(xy 279.4 43.18) (xy 279.4 50.8)
+			(xy 284.48 43.18) (xy 284.48 50.8)
 		)
 		(stroke
 			(width 0)
@@ -12366,7 +12366,7 @@
 	)
 	(wire
 		(pts
-			(xy 259.08 53.34) (xy 259.08 50.8)
+			(xy 264.16 53.34) (xy 264.16 50.8)
 		)
 		(stroke
 			(width 0)
@@ -12376,7 +12376,7 @@
 	)
 	(wire
 		(pts
-			(xy 160.02 38.1) (xy 160.02 45.72)
+			(xy 142.24 38.1) (xy 142.24 45.72)
 		)
 		(stroke
 			(width 0)
@@ -12426,7 +12426,7 @@
 	)
 	(wire
 		(pts
-			(xy 279.4 50.8) (xy 276.86 50.8)
+			(xy 284.48 50.8) (xy 281.94 50.8)
 		)
 		(stroke
 			(width 0)
@@ -12496,7 +12496,7 @@
 	)
 	(wire
 		(pts
-			(xy 227.33 63.5) (xy 233.68 63.5)
+			(xy 231.14 63.5) (xy 236.22 63.5)
 		)
 		(stroke
 			(width 0)
@@ -12516,7 +12516,7 @@
 	)
 	(wire
 		(pts
-			(xy 210.82 53.34) (xy 210.82 63.5)
+			(xy 215.9 53.34) (xy 215.9 63.5)
 		)
 		(stroke
 			(width 0)
@@ -12536,7 +12536,7 @@
 	)
 	(polyline
 		(pts
-			(xy 222.25 50.8) (xy 222.25 33.02)
+			(xy 226.06 50.8) (xy 226.06 33.02)
 		)
 		(stroke
 			(width 0.254)
@@ -12657,7 +12657,7 @@
 	)
 	(wire
 		(pts
-			(xy 53.34 40.64) (xy 100.33 40.64)
+			(xy 33.02 40.64) (xy 81.28 40.64)
 		)
 		(stroke
 			(width 0)
@@ -12736,7 +12736,7 @@
 		(uuid "c18d32d9-2f02-45fa-9af8-c21124d69fdc")
 	)
 	(label "ATTEN_OUT"
-		(at 331.47 40.64 180)
+		(at 337.82 40.64 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -12834,7 +12834,7 @@
 	)
 	(hierarchical_label "TERM"
 		(shape input)
-		(at 88.9 81.28 180)
+		(at 68.58 81.28 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -12856,7 +12856,7 @@
 	)
 	(hierarchical_label "ATTEN"
 		(shape input)
-		(at 205.74 81.28 180)
+		(at 208.28 81.28 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -12867,7 +12867,7 @@
 	)
 	(symbol
 		(lib_id "Thunderscope_Rev5:GND")
-		(at 297.18 58.42 0)
+		(at 302.26 58.42 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -12875,7 +12875,7 @@
 		(dnp no)
 		(uuid "0134f88a-6e6c-49ac-ba96-661f7f773eb6")
 		(property "Reference" "#PWR070"
-			(at 297.18 64.77 0)
+			(at 302.26 64.77 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12884,7 +12884,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 297.18 62.23 0)
+			(at 302.26 62.23 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12892,7 +12892,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 297.18 58.42 0)
+			(at 302.26 58.42 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12901,7 +12901,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 297.18 58.42 0)
+			(at 302.26 58.42 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12910,7 +12910,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 297.18 58.42 0)
+			(at 302.26 58.42 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12944,7 +12944,7 @@
 	)
 	(symbol
 		(lib_id "Thunderscope_Rev5:RELAY DPDT-NO FTR-B3SA4.5Z")
-		(at 105.41 40.64 0)
+		(at 86.36 40.64 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -12952,7 +12952,7 @@
 		(dnp no)
 		(uuid "02a93bf7-dffd-4247-abb7-244555b784c6")
 		(property "Reference" "K1000B1"
-			(at 104.14 38.1 0)
+			(at 85.09 38.1 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12961,7 +12961,7 @@
 			)
 		)
 		(property "Value" "FTR-B3SA4.5Z"
-			(at 105.41 40.64 0)
+			(at 86.36 40.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12970,7 +12970,7 @@
 			)
 		)
 		(property "Footprint" "Thunderscope_Rev5:FUJ_FTR-B3SA"
-			(at 105.41 40.64 0)
+			(at 86.36 40.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12979,7 +12979,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 105.41 40.64 0)
+			(at 86.36 40.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12988,7 +12988,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 105.41 40.64 0)
+			(at 86.36 40.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12997,7 +12997,7 @@
 			)
 		)
 		(property "HOUSE PART NUMBER" ""
-			(at 105.41 40.64 0)
+			(at 86.36 40.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13006,7 +13006,7 @@
 			)
 		)
 		(property "MANUFACTURER" "Fujitsu"
-			(at 105.41 40.64 0)
+			(at 86.36 40.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13015,7 +13015,7 @@
 			)
 		)
 		(property "MANUFACTURER PART NUMBER" "FTR-B3SA4.5Z-B10"
-			(at 105.41 40.64 0)
+			(at 86.36 40.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13024,7 +13024,7 @@
 			)
 		)
 		(property "ALTIUM_VALUE" ""
-			(at 105.41 40.64 0)
+			(at 86.36 40.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13230,7 +13230,7 @@
 	)
 	(symbol
 		(lib_id "Thunderscope_Rev5:RELAY DPDT-NO FTR-B3SA4.5Z")
-		(at 105.41 53.34 0)
+		(at 86.36 53.34 0)
 		(unit 3)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -13238,7 +13238,7 @@
 		(dnp no)
 		(uuid "037b6326-f8ed-4a87-8be1-1d8d2c99eabf")
 		(property "Reference" "K1000B1"
-			(at 104.14 49.53 0)
+			(at 85.09 49.53 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13247,7 +13247,7 @@
 			)
 		)
 		(property "Value" "FTR-B3SA4.5Z"
-			(at 105.41 57.15 0)
+			(at 86.36 57.15 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13256,7 +13256,7 @@
 			)
 		)
 		(property "Footprint" "Thunderscope_Rev5:FUJ_FTR-B3SA"
-			(at 105.41 53.34 0)
+			(at 86.36 53.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13265,7 +13265,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 105.41 53.34 0)
+			(at 86.36 53.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13274,7 +13274,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 105.41 53.34 0)
+			(at 86.36 53.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13283,7 +13283,7 @@
 			)
 		)
 		(property "HOUSE PART NUMBER" ""
-			(at 105.41 53.34 0)
+			(at 86.36 53.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13292,7 +13292,7 @@
 			)
 		)
 		(property "MANUFACTURER" "Fujitsu"
-			(at 105.41 53.34 0)
+			(at 86.36 53.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13301,7 +13301,7 @@
 			)
 		)
 		(property "MANUFACTURER PART NUMBER" "FTR-B3SA4.5Z-B10"
-			(at 105.41 53.34 0)
+			(at 86.36 53.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13310,7 +13310,7 @@
 			)
 		)
 		(property "ALTIUM_VALUE" ""
-			(at 105.41 53.34 0)
+			(at 86.36 53.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13518,7 +13518,7 @@
 	)
 	(symbol
 		(lib_id "Thunderscope_Rev5:GND")
-		(at 160.02 58.42 0)
+		(at 142.24 58.42 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -13526,7 +13526,7 @@
 		(dnp no)
 		(uuid "07199a24-61d7-4c94-b3ef-a7fea02fe350")
 		(property "Reference" "#PWR042"
-			(at 160.02 64.77 0)
+			(at 142.24 64.77 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13535,7 +13535,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 160.02 62.23 0)
+			(at 142.24 62.23 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13543,7 +13543,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 160.02 58.42 0)
+			(at 142.24 58.42 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13552,7 +13552,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 160.02 58.42 0)
+			(at 142.24 58.42 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13561,7 +13561,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 160.02 58.42 0)
+			(at 142.24 58.42 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14852,7 +14852,7 @@
 	)
 	(symbol
 		(lib_id "Thunderscope_Rev5:RES 30 OHM 1% 1/3W 0603")
-		(at 77.47 53.34 0)
+		(at 55.88 53.34 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -14860,7 +14860,7 @@
 		(dnp no)
 		(uuid "1ed87660-f8c0-4bbf-8789-46ddd893b895")
 		(property "Reference" "R1027B1"
-			(at 74.47 52.284 0)
+			(at 52.88 52.284 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14869,7 +14869,7 @@
 			)
 		)
 		(property "Value" "30"
-			(at 77.47 53.34 0)
+			(at 55.88 53.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14877,7 +14877,7 @@
 			)
 		)
 		(property "Footprint" "Thunderscope_Rev5:GEN_R_0603"
-			(at 77.47 53.34 0)
+			(at 55.88 53.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14886,7 +14886,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 77.47 53.34 0)
+			(at 55.88 53.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14895,7 +14895,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 77.47 53.34 0)
+			(at 55.88 53.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14904,7 +14904,7 @@
 			)
 		)
 		(property "PACKAGE" "0603"
-			(at 77.47 53.34 0)
+			(at 55.88 53.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14913,7 +14913,7 @@
 			)
 		)
 		(property "SUPPLIER 1" "Mouser"
-			(at 77.47 53.34 0)
+			(at 55.88 53.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14922,7 +14922,7 @@
 			)
 		)
 		(property "SUPPLIER PART NUMBER 1" "660-SG73P1JTTD30R0F"
-			(at 77.47 53.34 0)
+			(at 55.88 53.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14931,7 +14931,7 @@
 			)
 		)
 		(property "TOLERANCE" "1%"
-			(at 77.47 53.34 0)
+			(at 55.88 53.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14940,7 +14940,7 @@
 			)
 		)
 		(property "MANUFACTURER" "KOA Speer"
-			(at 77.47 53.34 0)
+			(at 55.88 53.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14949,7 +14949,7 @@
 			)
 		)
 		(property "HOUSE PART NUMBER" ""
-			(at 77.47 53.34 0)
+			(at 55.88 53.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14958,7 +14958,7 @@
 			)
 		)
 		(property "MANUFACTURER PART NUMBER" "SG73P1JTTD30R0F"
-			(at 77.47 53.34 0)
+			(at 55.88 53.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14967,7 +14967,7 @@
 			)
 		)
 		(property "ALTIUM_VALUE" ""
-			(at 77.47 53.34 0)
+			(at 55.88 53.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15003,7 +15003,7 @@
 	)
 	(symbol
 		(lib_id "Thunderscope_Rev5:CAP 2.4pF 250V C0G 0603")
-		(at 271.78 50.8 0)
+		(at 276.86 50.8 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -15011,7 +15011,7 @@
 		(dnp no)
 		(uuid "22370587-191e-405b-8af2-be663a1936fd")
 		(property "Reference" "C1024B1"
-			(at 267.97 54.61 0)
+			(at 273.05 54.61 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15020,7 +15020,7 @@
 			)
 		)
 		(property "Value" "2.4pF"
-			(at 269.24 57.15 0)
+			(at 274.32 57.15 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15029,7 +15029,7 @@
 			)
 		)
 		(property "Footprint" "Thunderscope_Rev5:GEN_C_0603"
-			(at 271.78 50.8 0)
+			(at 276.86 50.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15038,7 +15038,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 271.78 50.8 0)
+			(at 276.86 50.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15047,7 +15047,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 271.78 50.8 0)
+			(at 276.86 50.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15056,7 +15056,7 @@
 			)
 		)
 		(property "PACKAGE" "0603"
-			(at 269.24 59.69 0)
+			(at 274.32 59.69 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15066,7 +15066,7 @@
 			)
 		)
 		(property "SUPPLIER 1" "Mouser"
-			(at 266.192 48.546 0)
+			(at 271.272 48.546 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15076,7 +15076,7 @@
 			)
 		)
 		(property "SUPPLIER PART NUMBER 1" "80-CBR06C249BAGAC"
-			(at 266.192 48.546 0)
+			(at 271.272 48.546 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15086,7 +15086,7 @@
 			)
 		)
 		(property "VOLTAGE RATING" "250V"
-			(at 269.24 62.23 0)
+			(at 274.32 62.23 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15096,7 +15096,7 @@
 			)
 		)
 		(property "MANUFACTURER" "KEMET"
-			(at 269.526 45.212 0)
+			(at 274.606 45.212 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15106,7 +15106,7 @@
 			)
 		)
 		(property "HOUSE PART NUMBER" ""
-			(at 269.526 45.212 0)
+			(at 274.606 45.212 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15116,7 +15116,7 @@
 			)
 		)
 		(property "MANUFACTURER PART NUMBER" "CBR06C249BAGAC"
-			(at 269.526 45.212 0)
+			(at 274.606 45.212 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15126,7 +15126,7 @@
 			)
 		)
 		(property "ALTIUM_VALUE" ""
-			(at 271.78 50.8 0)
+			(at 276.86 50.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15456,7 +15456,7 @@
 	)
 	(symbol
 		(lib_id "Thunderscope_Rev5:NMOS DMN62D0UW")
-		(at 231.14 81.28 0)
+		(at 233.68 81.28 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -15464,7 +15464,7 @@
 		(dnp no)
 		(uuid "28219cd7-8e71-4e95-8b78-e2e1e6f19e0d")
 		(property "Reference" "Q1003B1"
-			(at 234.442 81.28 0)
+			(at 236.982 81.28 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15473,7 +15473,7 @@
 			)
 		)
 		(property "Value" "DMN62D0UW"
-			(at 234.442 83.82 0)
+			(at 236.982 83.82 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15482,7 +15482,7 @@
 			)
 		)
 		(property "Footprint" "Thunderscope_Rev5:GEN_SOT_323"
-			(at 231.14 81.28 0)
+			(at 233.68 81.28 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15491,7 +15491,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 231.14 81.28 0)
+			(at 233.68 81.28 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15500,7 +15500,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 231.14 81.28 0)
+			(at 233.68 81.28 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15509,7 +15509,7 @@
 			)
 		)
 		(property "VDSS" "60V"
-			(at 221.712 91.328 0)
+			(at 224.252 91.328 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15519,7 +15519,7 @@
 			)
 		)
 		(property "SUPPLIER 1" "Mouser"
-			(at 221.712 73.772 0)
+			(at 224.252 73.772 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15529,7 +15529,7 @@
 			)
 		)
 		(property "SUPPLIER PART NUMBER 1" "621-DMN62D0UW-7"
-			(at 221.712 73.772 0)
+			(at 224.252 73.772 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15539,7 +15539,7 @@
 			)
 		)
 		(property "HOUSE PART NUMBER" "DMN62D0UW-7"
-			(at 225.552 74.648 0)
+			(at 228.092 74.648 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15549,7 +15549,7 @@
 			)
 		)
 		(property "MANUFACTURER" "Diodes"
-			(at 225.552 74.648 0)
+			(at 228.092 74.648 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15559,7 +15559,7 @@
 			)
 		)
 		(property "MANUFACTURER PART NUMBER" "DMN62D0UW-7"
-			(at 225.552 74.648 0)
+			(at 228.092 74.648 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15569,7 +15569,7 @@
 			)
 		)
 		(property "ALTIUM_VALUE" ""
-			(at 231.14 81.28 0)
+			(at 233.68 81.28 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15608,7 +15608,7 @@
 	)
 	(symbol
 		(lib_id "Thunderscope_Rev5:RES 10K OHM 1% 1/10W 0402")
-		(at 101.6 81.28 0)
+		(at 81.28 81.28 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -15616,7 +15616,7 @@
 		(dnp no)
 		(uuid "2868347d-d4a5-4e8d-aafa-0cd9d4c1833d")
 		(property "Reference" "R1029B1"
-			(at 98.6 80.224 0)
+			(at 78.28 80.224 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15625,7 +15625,7 @@
 			)
 		)
 		(property "Value" "10K"
-			(at 101.6 81.28 0)
+			(at 81.28 81.28 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15633,7 +15633,7 @@
 			)
 		)
 		(property "Footprint" "Thunderscope_Rev5:GEN_R_0402"
-			(at 101.6 81.28 0)
+			(at 81.28 81.28 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15642,7 +15642,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 101.6 81.28 0)
+			(at 81.28 81.28 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15651,7 +15651,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 101.6 81.28 0)
+			(at 81.28 81.28 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15660,7 +15660,7 @@
 			)
 		)
 		(property "TOLERANCE" "1%"
-			(at 96.012 80.224 0)
+			(at 75.692 80.224 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15669,7 +15669,7 @@
 			)
 		)
 		(property "PACKAGE" "0402"
-			(at 96.012 80.224 0)
+			(at 75.692 80.224 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15678,7 +15678,7 @@
 			)
 		)
 		(property "SUPPLIER 1" "Mouser"
-			(at 96.012 80.224 0)
+			(at 75.692 80.224 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15687,7 +15687,7 @@
 			)
 		)
 		(property "SUPPLIER PART NUMBER 1" "667-ERJ-2RKF1002X"
-			(at 96.012 80.224 0)
+			(at 75.692 80.224 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15696,7 +15696,7 @@
 			)
 		)
 		(property "HOUSE PART NUMBER" ""
-			(at 96.012 77.684 0)
+			(at 75.692 77.684 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15706,7 +15706,7 @@
 			)
 		)
 		(property "MANUFACTURER" "Panasonic"
-			(at 96.012 77.684 0)
+			(at 75.692 77.684 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15716,7 +15716,7 @@
 			)
 		)
 		(property "MANUFACTURER PART NUMBER" "ERJ-2RKF1002X"
-			(at 96.012 77.684 0)
+			(at 75.692 77.684 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15726,7 +15726,7 @@
 			)
 		)
 		(property "ALTIUM_VALUE" ""
-			(at 101.6 81.28 0)
+			(at 81.28 81.28 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15762,7 +15762,7 @@
 	)
 	(symbol
 		(lib_id "Thunderscope_Rev5:GND")
-		(at 259.08 66.04 0)
+		(at 264.16 66.04 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -15770,7 +15770,7 @@
 		(dnp no)
 		(uuid "28c5d560-6378-4585-9f6b-57e9b34c1e73")
 		(property "Reference" "#PWR062"
-			(at 259.08 72.39 0)
+			(at 264.16 72.39 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15779,7 +15779,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 259.08 69.85 0)
+			(at 264.16 69.85 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15787,7 +15787,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 259.08 66.04 0)
+			(at 264.16 66.04 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15796,7 +15796,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 259.08 66.04 0)
+			(at 264.16 66.04 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15805,7 +15805,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 259.08 66.04 0)
+			(at 264.16 66.04 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15839,7 +15839,7 @@
 	)
 	(symbol
 		(lib_id "Thunderscope_Rev5:RES 30 OHM 1% 1/3W 0603")
-		(at 171.45 38.1 0)
+		(at 152.4 38.1 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -15847,7 +15847,7 @@
 		(dnp no)
 		(uuid "2f44c2ce-4cfc-4d1b-a07a-f238cea1997b")
 		(property "Reference" "R1021B1"
-			(at 171.45 35.56 0)
+			(at 152.4 35.56 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15855,7 +15855,7 @@
 			)
 		)
 		(property "Value" "30"
-			(at 171.45 38.1 0)
+			(at 152.4 38.1 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15863,7 +15863,7 @@
 			)
 		)
 		(property "Footprint" "Thunderscope_Rev5:GEN_R_0603"
-			(at 171.45 38.1 0)
+			(at 152.4 38.1 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15872,7 +15872,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 171.45 38.1 0)
+			(at 152.4 38.1 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15881,7 +15881,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 171.45 38.1 0)
+			(at 152.4 38.1 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15890,7 +15890,7 @@
 			)
 		)
 		(property "TOLERANCE" "1%"
-			(at 168.402 46.736 0)
+			(at 149.352 46.736 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15899,7 +15899,7 @@
 			)
 		)
 		(property "PACKAGE" "0603"
-			(at 168.91 40.64 0)
+			(at 149.86 40.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15908,7 +15908,7 @@
 			)
 		)
 		(property "SUPPLIER 1" "Mouser"
-			(at 165.862 34.584 0)
+			(at 146.812 34.584 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15918,7 +15918,7 @@
 			)
 		)
 		(property "SUPPLIER PART NUMBER 1" "660-SG73P1JTTD30R0F"
-			(at 165.862 34.584 0)
+			(at 146.812 34.584 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15928,7 +15928,7 @@
 			)
 		)
 		(property "HOUSE PART NUMBER" ""
-			(at 165.862 34.29 0)
+			(at 146.812 34.29 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15938,7 +15938,7 @@
 			)
 		)
 		(property "MANUFACTURER" "KOA Speer"
-			(at 165.862 34.29 0)
+			(at 146.812 34.29 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15948,7 +15948,7 @@
 			)
 		)
 		(property "MANUFACTURER PART NUMBER" "SG73P1JTTD30R0F"
-			(at 165.862 34.29 0)
+			(at 146.812 34.29 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15958,7 +15958,7 @@
 			)
 		)
 		(property "ALTIUM_VALUE" ""
-			(at 171.45 38.1 0)
+			(at 152.4 38.1 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15994,7 +15994,7 @@
 	)
 	(symbol
 		(lib_id "Thunderscope_Rev5:GND")
-		(at 48.26 50.8 0)
+		(at 27.94 50.8 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -16002,7 +16002,7 @@
 		(dnp no)
 		(uuid "2f9afb9a-138b-472d-ab77-b00ba6b24681")
 		(property "Reference" "#PWR018"
-			(at 48.26 57.15 0)
+			(at 27.94 57.15 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16011,7 +16011,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 48.26 54.61 0)
+			(at 27.94 54.61 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16019,7 +16019,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 48.26 50.8 0)
+			(at 27.94 50.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16028,7 +16028,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 48.26 50.8 0)
+			(at 27.94 50.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16037,7 +16037,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 48.26 50.8 0)
+			(at 27.94 50.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16228,7 +16228,7 @@
 	)
 	(symbol
 		(lib_id "Thunderscope_Rev5:RES 10K OHM 1% 1/10W 0402")
-		(at 218.44 81.28 0)
+		(at 220.98 81.28 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -16236,7 +16236,7 @@
 		(dnp no)
 		(uuid "3143bd6e-6e2c-4274-a413-6fe5915360bf")
 		(property "Reference" "R1030B1"
-			(at 215.44 80.224 0)
+			(at 217.98 80.224 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16245,7 +16245,7 @@
 			)
 		)
 		(property "Value" "10K"
-			(at 218.44 81.28 0)
+			(at 220.98 81.28 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16253,7 +16253,7 @@
 			)
 		)
 		(property "Footprint" "Thunderscope_Rev5:GEN_R_0402"
-			(at 218.44 81.28 0)
+			(at 220.98 81.28 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16262,7 +16262,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 218.44 81.28 0)
+			(at 220.98 81.28 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16271,7 +16271,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 218.44 81.28 0)
+			(at 220.98 81.28 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16280,7 +16280,7 @@
 			)
 		)
 		(property "TOLERANCE" "1%"
-			(at 212.852 80.224 0)
+			(at 215.392 80.224 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16289,7 +16289,7 @@
 			)
 		)
 		(property "PACKAGE" "0402"
-			(at 212.852 80.224 0)
+			(at 215.392 80.224 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16298,7 +16298,7 @@
 			)
 		)
 		(property "SUPPLIER 1" "Mouser"
-			(at 212.852 80.224 0)
+			(at 215.392 80.224 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16307,7 +16307,7 @@
 			)
 		)
 		(property "SUPPLIER PART NUMBER 1" "667-ERJ-2RKF1002X"
-			(at 212.852 80.224 0)
+			(at 215.392 80.224 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16316,7 +16316,7 @@
 			)
 		)
 		(property "HOUSE PART NUMBER" ""
-			(at 212.852 77.684 0)
+			(at 215.392 77.684 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16326,7 +16326,7 @@
 			)
 		)
 		(property "MANUFACTURER" "Panasonic"
-			(at 212.852 77.684 0)
+			(at 215.392 77.684 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16336,7 +16336,7 @@
 			)
 		)
 		(property "MANUFACTURER PART NUMBER" "ERJ-2RKF1002X"
-			(at 212.852 77.684 0)
+			(at 215.392 77.684 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16346,7 +16346,7 @@
 			)
 		)
 		(property "ALTIUM_VALUE" ""
-			(at 218.44 81.28 0)
+			(at 220.98 81.28 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16382,7 +16382,7 @@
 	)
 	(symbol
 		(lib_id "Thunderscope_Rev5:TP PCB 1mm")
-		(at 208.28 81.28 90)
+		(at 210.82 81.28 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom no)
@@ -16390,7 +16390,7 @@
 		(dnp no)
 		(uuid "3978aa44-5cd5-4e50-bb26-4dae22102b06")
 		(property "Reference" "TP1015B1"
-			(at 212.1696 74.3079 90)
+			(at 214.7096 74.3079 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16399,7 +16399,7 @@
 			)
 		)
 		(property "Value" "PCB"
-			(at 203.2 82.55 0)
+			(at 205.74 82.55 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16409,7 +16409,7 @@
 			)
 		)
 		(property "Footprint" "Thunderscope_Rev5:GEN_TP_PCB"
-			(at 208.28 81.28 0)
+			(at 210.82 81.28 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16418,7 +16418,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 208.28 81.28 0)
+			(at 210.82 81.28 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16427,7 +16427,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 208.28 81.28 0)
+			(at 210.82 81.28 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16436,7 +16436,7 @@
 			)
 		)
 		(property "HOUSE PART NUMBER" ""
-			(at 200.66 83.82 0)
+			(at 203.2 83.82 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16446,7 +16446,7 @@
 			)
 		)
 		(property "MANUFACTURER" ""
-			(at 200.66 83.82 0)
+			(at 203.2 83.82 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16456,7 +16456,7 @@
 			)
 		)
 		(property "MANUFACTURER PART NUMBER" ""
-			(at 200.66 83.82 0)
+			(at 203.2 83.82 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16466,7 +16466,7 @@
 			)
 		)
 		(property "ALTIUM_VALUE" ""
-			(at 208.28 81.28 0)
+			(at 210.82 81.28 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16499,7 +16499,7 @@
 	)
 	(symbol
 		(lib_id "Thunderscope_Rev5:CAP 10uF 10V X5R 0603")
-		(at 83.82 60.96 0)
+		(at 63.5 60.96 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -16507,7 +16507,7 @@
 		(dnp no)
 		(uuid "3a28e424-29f0-413c-9cca-dbb7ae20ec57")
 		(property "Reference" "C1027B1"
-			(at 86.36 60.96 0)
+			(at 66.04 60.96 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16516,7 +16516,7 @@
 			)
 		)
 		(property "Value" "10uF"
-			(at 86.36 63.5 0)
+			(at 66.04 63.5 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16525,7 +16525,7 @@
 			)
 		)
 		(property "Footprint" "Thunderscope_Rev5:GEN_C_0603"
-			(at 83.82 60.96 0)
+			(at 63.5 60.96 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16534,7 +16534,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 83.82 60.96 0)
+			(at 63.5 60.96 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16543,7 +16543,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 83.82 60.96 0)
+			(at 63.5 60.96 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16552,7 +16552,7 @@
 			)
 		)
 		(property "PACKAGE" "0402"
-			(at 66.692 72.39 0)
+			(at 46.372 72.39 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16562,7 +16562,7 @@
 			)
 		)
 		(property "VOLTAGE RATING" "10V"
-			(at 84.32 65.96 0)
+			(at 64 65.96 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16572,7 +16572,7 @@
 			)
 		)
 		(property "SUPPLIER 1" "Mouser"
-			(at 81.566 55.372 0)
+			(at 61.246 55.372 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16582,7 +16582,7 @@
 			)
 		)
 		(property "SUPPLIER PART NUMBER 1" "81-GRM188R61A106ME9D"
-			(at 81.566 55.372 0)
+			(at 61.246 55.372 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16592,7 +16592,7 @@
 			)
 		)
 		(property "HOUSE PART NUMBER" "C-10uF-0603-002"
-			(at 81.566 55.372 0)
+			(at 61.246 55.372 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16602,7 +16602,7 @@
 			)
 		)
 		(property "MANUFACTURER" "Murata"
-			(at 81.566 55.372 0)
+			(at 61.246 55.372 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16612,7 +16612,7 @@
 			)
 		)
 		(property "MANUFACTURER PART NUMBER" "GRM188R61A106ME69D"
-			(at 81.566 55.372 0)
+			(at 61.246 55.372 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16622,7 +16622,7 @@
 			)
 		)
 		(property "ALTIUM_VALUE" ""
-			(at 83.82 60.96 0)
+			(at 63.5 60.96 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17845,7 +17845,7 @@
 	)
 	(symbol
 		(lib_id "Thunderscope_Rev5:CAP 12pF 50V C0G 0402")
-		(at 259.08 58.42 0)
+		(at 264.16 58.42 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -17853,7 +17853,7 @@
 		(dnp no)
 		(uuid "4814b0a2-d6b9-4d1c-9dc7-ed9531fbf52f")
 		(property "Reference" "C1025B1"
-			(at 261.62 62.23 90)
+			(at 266.7 62.23 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17862,7 +17862,7 @@
 			)
 		)
 		(property "Value" "12pF"
-			(at 265.43 60.96 90)
+			(at 270.51 60.96 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17871,7 +17871,7 @@
 			)
 		)
 		(property "Footprint" "Thunderscope_Rev5:GEN_C_0402"
-			(at 259.08 58.42 0)
+			(at 264.16 58.42 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17880,7 +17880,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 259.08 58.42 0)
+			(at 264.16 58.42 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17889,7 +17889,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 259.08 58.42 0)
+			(at 264.16 58.42 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17898,7 +17898,7 @@
 			)
 		)
 		(property "PACKAGE" "0402"
-			(at 241.952 69.85 0)
+			(at 247.032 69.85 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17908,7 +17908,7 @@
 			)
 		)
 		(property "SUPPLIER 1" "Mouser"
-			(at 256.826 53.912 0)
+			(at 261.906 53.912 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17918,7 +17918,7 @@
 			)
 		)
 		(property "SUPPLIER PART NUMBER 1" "80-CBR04C120F5G"
-			(at 256.826 53.912 0)
+			(at 261.906 53.912 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17928,7 +17928,7 @@
 			)
 		)
 		(property "VOLTAGE RATING" "50V"
-			(at 261.62 63.5 0)
+			(at 266.7 63.5 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17938,7 +17938,7 @@
 			)
 		)
 		(property "TEMPERATURE COEFFICIENT" "C0G"
-			(at 256.826 52.832 0)
+			(at 261.906 52.832 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17948,7 +17948,7 @@
 			)
 		)
 		(property "MANUFACTURER" "KEMET"
-			(at 256.826 52.832 0)
+			(at 261.906 52.832 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17958,7 +17958,7 @@
 			)
 		)
 		(property "HOUSE PART NUMBER" ""
-			(at 256.826 52.832 0)
+			(at 261.906 52.832 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17968,7 +17968,7 @@
 			)
 		)
 		(property "MANUFACTURER PART NUMBER" "CBR04C120F5GAC"
-			(at 256.826 52.832 0)
+			(at 261.906 52.832 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17978,7 +17978,7 @@
 			)
 		)
 		(property "ALTIUM_VALUE" ""
-			(at 259.08 58.42 0)
+			(at 264.16 58.42 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18014,7 +18014,7 @@
 	)
 	(symbol
 		(lib_id "Thunderscope_Rev5:GND")
-		(at 71.12 66.04 0)
+		(at 48.26 66.04 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -18022,7 +18022,7 @@
 		(dnp no)
 		(uuid "4baf55e3-a553-45d9-8600-49e162fae77e")
 		(property "Reference" "#PWR022"
-			(at 71.12 72.39 0)
+			(at 48.26 72.39 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18031,7 +18031,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 71.12 69.85 0)
+			(at 48.26 69.85 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18039,7 +18039,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 71.12 66.04 0)
+			(at 48.26 66.04 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18048,7 +18048,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 71.12 66.04 0)
+			(at 48.26 66.04 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18057,7 +18057,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 71.12 66.04 0)
+			(at 48.26 66.04 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18168,7 +18168,7 @@
 	)
 	(symbol
 		(lib_id "Thunderscope_Rev5:CAP 10uF 10V X5R 0603")
-		(at 200.66 60.96 0)
+		(at 203.2 60.96 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -18176,7 +18176,7 @@
 		(dnp no)
 		(uuid "4d40bb03-d961-4199-b029-0ce836425a4d")
 		(property "Reference" "C1029B1"
-			(at 203.2 60.96 0)
+			(at 205.74 60.96 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18185,7 +18185,7 @@
 			)
 		)
 		(property "Value" "10uF"
-			(at 203.2 63.5 0)
+			(at 205.74 63.5 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18194,7 +18194,7 @@
 			)
 		)
 		(property "Footprint" "Thunderscope_Rev5:GEN_C_0603"
-			(at 200.66 60.96 0)
+			(at 203.2 60.96 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18203,7 +18203,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 200.66 60.96 0)
+			(at 203.2 60.96 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18212,7 +18212,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 200.66 60.96 0)
+			(at 203.2 60.96 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18221,7 +18221,7 @@
 			)
 		)
 		(property "PACKAGE" "0402"
-			(at 183.532 72.39 0)
+			(at 186.072 72.39 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18231,7 +18231,7 @@
 			)
 		)
 		(property "VOLTAGE RATING" "10V"
-			(at 201.16 65.96 0)
+			(at 203.7 65.96 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18241,7 +18241,7 @@
 			)
 		)
 		(property "SUPPLIER 1" "Mouser"
-			(at 198.406 55.372 0)
+			(at 200.946 55.372 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18251,7 +18251,7 @@
 			)
 		)
 		(property "SUPPLIER PART NUMBER 1" "81-GRM188R61A106ME9D"
-			(at 198.406 55.372 0)
+			(at 200.946 55.372 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18261,7 +18261,7 @@
 			)
 		)
 		(property "HOUSE PART NUMBER" "C-10uF-0603-002"
-			(at 198.406 55.372 0)
+			(at 200.946 55.372 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18271,7 +18271,7 @@
 			)
 		)
 		(property "MANUFACTURER" "Murata"
-			(at 198.406 55.372 0)
+			(at 200.946 55.372 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18281,7 +18281,7 @@
 			)
 		)
 		(property "MANUFACTURER PART NUMBER" "GRM188R61A106ME69D"
-			(at 198.406 55.372 0)
+			(at 200.946 55.372 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18291,7 +18291,7 @@
 			)
 		)
 		(property "ALTIUM_VALUE" ""
-			(at 200.66 60.96 0)
+			(at 203.2 60.96 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19261,7 +19261,7 @@
 	)
 	(symbol
 		(lib_id "Thunderscope_Rev5:DIODE 1N4148")
-		(at 222.25 63.5 0)
+		(at 226.06 63.5 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -19269,7 +19269,7 @@
 		(dnp no)
 		(uuid "62779ba9-00b1-4832-ad34-2060b50dc092")
 		(property "Reference" "D1001B1"
-			(at 220.496 61.246 0)
+			(at 224.306 61.246 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19278,7 +19278,7 @@
 			)
 		)
 		(property "Value" "1N4148"
-			(at 217.17 68.294 0)
+			(at 220.98 68.294 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19287,7 +19287,7 @@
 			)
 		)
 		(property "Footprint" "Thunderscope_Rev5:GEN_SOD_323"
-			(at 222.25 63.5 0)
+			(at 226.06 63.5 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19296,7 +19296,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 222.25 63.5 0)
+			(at 226.06 63.5 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19305,7 +19305,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 222.25 63.5 0)
+			(at 226.06 63.5 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19314,7 +19314,7 @@
 			)
 		)
 		(property "SUPPLIER 1" "Mouser"
-			(at 216.662 61.246 0)
+			(at 220.472 61.246 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19324,7 +19324,7 @@
 			)
 		)
 		(property "SUPPLIER PART NUMBER 1" "621-1N4148WS-F"
-			(at 216.662 61.246 0)
+			(at 220.472 61.246 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19334,7 +19334,7 @@
 			)
 		)
 		(property "HOUSE PART NUMBER" ""
-			(at 216.662 58.706 0)
+			(at 220.472 58.706 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19344,7 +19344,7 @@
 			)
 		)
 		(property "MANUFACTURER" "Diodes"
-			(at 216.662 58.706 0)
+			(at 220.472 58.706 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19354,7 +19354,7 @@
 			)
 		)
 		(property "MANUFACTURER PART NUMBER" "1N4148WS-7-F"
-			(at 216.662 58.706 0)
+			(at 220.472 58.706 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19364,7 +19364,7 @@
 			)
 		)
 		(property "ALTIUM_VALUE" ""
-			(at 222.25 63.5 0)
+			(at 226.06 63.5 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19533,7 +19533,7 @@
 	)
 	(symbol
 		(lib_id "Thunderscope_Rev5:RELAY DPDT-NO FTR-B3SA4.5Z")
-		(at 186.69 40.64 0)
+		(at 167.64 40.64 0)
 		(unit 2)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -19541,7 +19541,7 @@
 		(dnp no)
 		(uuid "6664ea9b-8697-4c46-b851-767d8bc55315")
 		(property "Reference" "K1000B1"
-			(at 187.96 38.1 0)
+			(at 168.91 38.1 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19550,7 +19550,7 @@
 			)
 		)
 		(property "Value" "FTR-B3SA4.5Z"
-			(at 186.69 40.64 0)
+			(at 167.64 40.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19559,7 +19559,7 @@
 			)
 		)
 		(property "Footprint" "Thunderscope_Rev5:FUJ_FTR-B3SA"
-			(at 186.69 40.64 0)
+			(at 167.64 40.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19568,7 +19568,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 186.69 40.64 0)
+			(at 167.64 40.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19577,7 +19577,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 186.69 40.64 0)
+			(at 167.64 40.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19586,7 +19586,7 @@
 			)
 		)
 		(property "HOUSE PART NUMBER" ""
-			(at 186.69 40.64 0)
+			(at 167.64 40.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19595,7 +19595,7 @@
 			)
 		)
 		(property "MANUFACTURER" "Fujitsu"
-			(at 186.69 40.64 0)
+			(at 167.64 40.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19604,7 +19604,7 @@
 			)
 		)
 		(property "MANUFACTURER PART NUMBER" "FTR-B3SA4.5Z-B10"
-			(at 186.69 40.64 0)
+			(at 167.64 40.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19613,7 +19613,7 @@
 			)
 		)
 		(property "ALTIUM_VALUE" ""
-			(at 186.69 40.64 0)
+			(at 167.64 40.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20301,7 +20301,7 @@
 	)
 	(symbol
 		(lib_id "Thunderscope_Rev5:CAP 12pF 50V C0G 0402")
-		(at 297.18 50.8 0)
+		(at 302.26 50.8 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -20309,7 +20309,7 @@
 		(dnp no)
 		(uuid "6f510615-729c-4eb3-a906-8b710af4af8b")
 		(property "Reference" "C1021B1"
-			(at 299.72 54.61 90)
+			(at 304.8 54.61 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20318,7 +20318,7 @@
 			)
 		)
 		(property "Value" "12pF"
-			(at 303.53 53.34 90)
+			(at 308.61 53.34 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20327,7 +20327,7 @@
 			)
 		)
 		(property "Footprint" "Thunderscope_Rev5:GEN_C_0402"
-			(at 297.18 50.8 0)
+			(at 302.26 50.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20336,7 +20336,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 297.18 50.8 0)
+			(at 302.26 50.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20345,7 +20345,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 297.18 50.8 0)
+			(at 302.26 50.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20354,7 +20354,7 @@
 			)
 		)
 		(property "PACKAGE" "0402"
-			(at 280.052 62.23 0)
+			(at 285.132 62.23 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20364,7 +20364,7 @@
 			)
 		)
 		(property "SUPPLIER 1" "Mouser"
-			(at 294.926 46.292 0)
+			(at 300.006 46.292 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20374,7 +20374,7 @@
 			)
 		)
 		(property "SUPPLIER PART NUMBER 1" "80-CBR04C120F5G"
-			(at 294.926 46.292 0)
+			(at 300.006 46.292 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20384,7 +20384,7 @@
 			)
 		)
 		(property "VOLTAGE RATING" "50V"
-			(at 299.72 55.88 0)
+			(at 304.8 55.88 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20394,7 +20394,7 @@
 			)
 		)
 		(property "TEMPERATURE COEFFICIENT" "C0G"
-			(at 294.926 45.212 0)
+			(at 300.006 45.212 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20404,7 +20404,7 @@
 			)
 		)
 		(property "MANUFACTURER" "KEMET"
-			(at 294.926 45.212 0)
+			(at 300.006 45.212 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20414,7 +20414,7 @@
 			)
 		)
 		(property "HOUSE PART NUMBER" ""
-			(at 294.926 45.212 0)
+			(at 300.006 45.212 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20424,7 +20424,7 @@
 			)
 		)
 		(property "MANUFACTURER PART NUMBER" "CBR04C120F5GAC"
-			(at 294.926 45.212 0)
+			(at 300.006 45.212 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20434,7 +20434,7 @@
 			)
 		)
 		(property "ALTIUM_VALUE" ""
-			(at 297.18 50.8 0)
+			(at 302.26 50.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20623,7 +20623,7 @@
 	)
 	(symbol
 		(lib_id "Thunderscope_Rev5:RES 10 OHM 1% 1/3W 0603")
-		(at 124.46 43.18 0)
+		(at 106.68 43.18 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -20631,7 +20631,7 @@
 		(dnp no)
 		(uuid "71b4dac7-232a-429e-85b2-9334b1ce42ba")
 		(property "Reference" "R1022B1"
-			(at 124.46 40.64 0)
+			(at 106.68 40.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20639,7 +20639,7 @@
 			)
 		)
 		(property "Value" "10"
-			(at 124.46 43.18 0)
+			(at 106.68 43.18 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20647,7 +20647,7 @@
 			)
 		)
 		(property "Footprint" "Thunderscope_Rev5:GEN_R_0603"
-			(at 124.46 43.18 0)
+			(at 106.68 43.18 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20656,7 +20656,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 124.46 43.18 0)
+			(at 106.68 43.18 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20665,7 +20665,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 124.46 43.18 0)
+			(at 106.68 43.18 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20674,7 +20674,7 @@
 			)
 		)
 		(property "TOLERANCE" "1%"
-			(at 121.412 51.816 0)
+			(at 103.632 51.816 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20683,7 +20683,7 @@
 			)
 		)
 		(property "PACKAGE" "0603"
-			(at 121.92 45.72 0)
+			(at 104.14 45.72 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20692,7 +20692,7 @@
 			)
 		)
 		(property "SUPPLIER 1" "Mouser"
-			(at 118.872 39.664 0)
+			(at 101.092 39.664 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20702,7 +20702,7 @@
 			)
 		)
 		(property "SUPPLIER PART NUMBER 1" "660-SG73P1JTTD10R0F"
-			(at 118.872 39.664 0)
+			(at 101.092 39.664 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20712,7 +20712,7 @@
 			)
 		)
 		(property "MANUFACTURER" "KOA Speer"
-			(at 118.872 39.664 0)
+			(at 101.092 39.664 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20722,7 +20722,7 @@
 			)
 		)
 		(property "HOUSE PART NUMBER" ""
-			(at 118.872 39.664 0)
+			(at 101.092 39.664 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20732,7 +20732,7 @@
 			)
 		)
 		(property "MANUFACTURER PART NUMBER" "SG73P1JTTD10R0F"
-			(at 118.872 39.664 0)
+			(at 101.092 39.664 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20742,7 +20742,7 @@
 			)
 		)
 		(property "ALTIUM_VALUE" ""
-			(at 124.46 43.18 0)
+			(at 106.68 43.18 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20778,7 +20778,7 @@
 	)
 	(symbol
 		(lib_id "Thunderscope_Rev5:+VUSB")
-		(at 66.04 50.8 180)
+		(at 45.72 50.8 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -20786,7 +20786,7 @@
 		(dnp no)
 		(uuid "77a8636e-14fa-48e9-9441-d305e7279f21")
 		(property "Reference" "#PWR0180"
-			(at 66.04 50.8 0)
+			(at 45.72 50.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20795,7 +20795,7 @@
 			)
 		)
 		(property "Value" "+VUSB"
-			(at 66.04 46.99 0)
+			(at 45.72 46.99 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20803,7 +20803,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 66.04 50.8 0)
+			(at 45.72 50.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20812,7 +20812,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 66.04 50.8 0)
+			(at 45.72 50.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20821,7 +20821,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name '+VUSB'"
-			(at 66.04 50.8 0)
+			(at 45.72 50.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20855,7 +20855,7 @@
 	)
 	(symbol
 		(lib_id "Thunderscope_Rev5:RES 976k OHM 1% 1/10W 0603")
-		(at 259.08 43.18 0)
+		(at 264.16 43.18 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -20863,7 +20863,7 @@
 		(dnp no)
 		(uuid "78eb7294-4971-421e-9e2a-e20d2055c211")
 		(property "Reference" "R1024B1"
-			(at 256.08 42.204 0)
+			(at 261.16 42.204 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20872,7 +20872,7 @@
 			)
 		)
 		(property "Value" "976k"
-			(at 259.08 43.18 0)
+			(at 264.16 43.18 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20880,7 +20880,7 @@
 			)
 		)
 		(property "Footprint" "Thunderscope_Rev5:GEN_R_0603"
-			(at 259.08 43.18 0)
+			(at 264.16 43.18 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20889,7 +20889,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 259.08 43.18 0)
+			(at 264.16 43.18 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20898,7 +20898,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 259.08 43.18 0)
+			(at 264.16 43.18 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20907,7 +20907,7 @@
 			)
 		)
 		(property "PACKAGE" "0603"
-			(at 256.032 51.816 0)
+			(at 261.112 51.816 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20916,7 +20916,7 @@
 			)
 		)
 		(property "MANUFACTURER" "KOA Speer"
-			(at 253.492 39.664 0)
+			(at 258.572 39.664 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20926,7 +20926,7 @@
 			)
 		)
 		(property "HOUSE PART NUMBER" ""
-			(at 253.492 39.664 0)
+			(at 258.572 39.664 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20936,7 +20936,7 @@
 			)
 		)
 		(property "MANUFACTURER PART NUMBER" "RK73H1JTTD9763F"
-			(at 253.492 39.664 0)
+			(at 258.572 39.664 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20946,7 +20946,7 @@
 			)
 		)
 		(property "TOLERANCE" "1%"
-			(at 253.492 42.204 0)
+			(at 258.572 42.204 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20956,7 +20956,7 @@
 			)
 		)
 		(property "SUPPLIER 1" "Mouser"
-			(at 253.492 39.664 0)
+			(at 258.572 39.664 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20966,7 +20966,7 @@
 			)
 		)
 		(property "SUPPLIER PART NUMBER 1" "660-RK73H1JTTD9763F"
-			(at 253.492 39.664 0)
+			(at 258.572 39.664 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20976,7 +20976,7 @@
 			)
 		)
 		(property "ALTIUM_VALUE" ""
-			(at 259.08 43.18 0)
+			(at 264.16 43.18 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -21304,7 +21304,7 @@
 	)
 	(symbol
 		(lib_id "Thunderscope_Rev5:GND")
-		(at 287.02 58.42 0)
+		(at 292.1 58.42 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -21312,7 +21312,7 @@
 		(dnp no)
 		(uuid "7eecd0d6-f7b4-4e7a-b3dd-cbedd953cefe")
 		(property "Reference" "#PWR066"
-			(at 287.02 64.77 0)
+			(at 292.1 64.77 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -21321,7 +21321,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 287.02 62.23 0)
+			(at 292.1 62.23 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -21329,7 +21329,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 287.02 58.42 0)
+			(at 292.1 58.42 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -21338,7 +21338,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 287.02 58.42 0)
+			(at 292.1 58.42 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -21347,7 +21347,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 287.02 58.42 0)
+			(at 292.1 58.42 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -21688,7 +21688,7 @@
 	)
 	(symbol
 		(lib_id "Thunderscope_Rev5:RELAY DPDT-NO FTR-B3SA4.5Z")
-		(at 222.25 53.34 0)
+		(at 226.06 53.34 0)
 		(unit 3)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -21696,7 +21696,7 @@
 		(dnp no)
 		(uuid "82993e0a-1a96-4b47-8233-39b66e558b5d")
 		(property "Reference" "K1001B1"
-			(at 220.98 49.53 0)
+			(at 224.79 49.53 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -21705,7 +21705,7 @@
 			)
 		)
 		(property "Value" "FTR-B3SA4.5Z"
-			(at 222.25 57.15 0)
+			(at 226.06 57.15 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -21714,7 +21714,7 @@
 			)
 		)
 		(property "Footprint" "Thunderscope_Rev5:FUJ_FTR-B3SA"
-			(at 222.25 53.34 0)
+			(at 226.06 53.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -21723,7 +21723,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 222.25 53.34 0)
+			(at 226.06 53.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -21732,7 +21732,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 222.25 53.34 0)
+			(at 226.06 53.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -21741,7 +21741,7 @@
 			)
 		)
 		(property "HOUSE PART NUMBER" ""
-			(at 222.25 53.34 0)
+			(at 226.06 53.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -21750,7 +21750,7 @@
 			)
 		)
 		(property "MANUFACTURER" "Fujitsu"
-			(at 222.25 53.34 0)
+			(at 226.06 53.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -21759,7 +21759,7 @@
 			)
 		)
 		(property "MANUFACTURER PART NUMBER" "FTR-B3SA4.5Z-B10"
-			(at 222.25 53.34 0)
+			(at 226.06 53.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -21768,7 +21768,7 @@
 			)
 		)
 		(property "ALTIUM_VALUE" ""
-			(at 222.25 53.34 0)
+			(at 226.06 53.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -22129,7 +22129,7 @@
 	)
 	(symbol
 		(lib_id "Thunderscope_Rev5:GND")
-		(at 210.82 96.52 0)
+		(at 213.36 96.52 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -22137,7 +22137,7 @@
 		(dnp no)
 		(uuid "8b0a1b5d-8a26-43d1-94db-aea115b28af0")
 		(property "Reference" "#PWR054"
-			(at 210.82 102.87 0)
+			(at 213.36 102.87 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -22146,7 +22146,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 210.82 100.33 0)
+			(at 213.36 100.33 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -22154,7 +22154,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 210.82 96.52 0)
+			(at 213.36 96.52 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -22163,7 +22163,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 210.82 96.52 0)
+			(at 213.36 96.52 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -22172,7 +22172,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 210.82 96.52 0)
+			(at 213.36 96.52 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -22206,7 +22206,7 @@
 	)
 	(symbol
 		(lib_id "Thunderscope_Rev5:CAP 8pF 250V C0G 0603")
-		(at 134.62 50.8 0)
+		(at 116.84 50.8 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -22214,7 +22214,7 @@
 		(dnp no)
 		(uuid "8eb6be85-f699-4be6-bb28-83be334c8aa9")
 		(property "Reference" "C1022B1"
-			(at 136.874 50.546 0)
+			(at 119.094 50.546 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -22223,7 +22223,7 @@
 			)
 		)
 		(property "Value" "8pF"
-			(at 136.874 53.086 0)
+			(at 119.094 53.086 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -22232,7 +22232,7 @@
 			)
 		)
 		(property "Footprint" "Thunderscope_Rev5:GEN_C_0603"
-			(at 134.62 50.8 0)
+			(at 116.84 50.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -22241,7 +22241,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 134.62 50.8 0)
+			(at 116.84 50.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -22250,7 +22250,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 134.62 50.8 0)
+			(at 116.84 50.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -22259,7 +22259,7 @@
 			)
 		)
 		(property "SUPPLIER 1" "Mouser"
-			(at 132.366 45.212 0)
+			(at 114.586 45.212 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -22269,7 +22269,7 @@
 			)
 		)
 		(property "SUPPLIER PART NUMBER 1" "80-CBR06C809BAGAC"
-			(at 132.366 45.212 0)
+			(at 114.586 45.212 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -22279,7 +22279,7 @@
 			)
 		)
 		(property "MANUFACTURER" "KEMET"
-			(at 132.366 45.212 0)
+			(at 114.586 45.212 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -22289,7 +22289,7 @@
 			)
 		)
 		(property "HOUSE PART NUMBER" ""
-			(at 132.366 45.212 0)
+			(at 114.586 45.212 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -22299,7 +22299,7 @@
 			)
 		)
 		(property "MANUFACTURER PART NUMBER" "CBR06C809BAGAC"
-			(at 132.366 45.212 0)
+			(at 114.586 45.212 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -22309,7 +22309,7 @@
 			)
 		)
 		(property "PACKAGE" "0603"
-			(at 132.366 45.212 0)
+			(at 114.586 45.212 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -22319,7 +22319,7 @@
 			)
 		)
 		(property "VOLTAGE RATING" "250V"
-			(at 136.874 55.626 0)
+			(at 119.094 55.626 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -22329,7 +22329,7 @@
 			)
 		)
 		(property "ALTIUM_VALUE" ""
-			(at 134.62 50.8 0)
+			(at 116.84 50.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -22519,7 +22519,7 @@
 	)
 	(symbol
 		(lib_id "Thunderscope_Rev5:RES 20K OHM 1% 1/16W 0402")
-		(at 287.02 50.8 0)
+		(at 292.1 50.8 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -22527,7 +22527,7 @@
 		(dnp no)
 		(uuid "9146f990-4918-4c4a-9a52-28c2f77b1560")
 		(property "Reference" "R1026B1"
-			(at 289.56 50.8 90)
+			(at 294.64 50.8 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -22535,7 +22535,7 @@
 			)
 		)
 		(property "Value" "20k"
-			(at 287.02 50.8 90)
+			(at 292.1 50.8 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -22543,7 +22543,7 @@
 			)
 		)
 		(property "Footprint" "Thunderscope_Rev5:GEN_R_0402"
-			(at 287.02 50.8 0)
+			(at 292.1 50.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -22552,7 +22552,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 287.02 50.8 0)
+			(at 292.1 50.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -22561,7 +22561,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 287.02 50.8 0)
+			(at 292.1 50.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -22570,7 +22570,7 @@
 			)
 		)
 		(property "TOLERANCE" "1%"
-			(at 286.044 45.212 0)
+			(at 291.124 45.212 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -22579,7 +22579,7 @@
 			)
 		)
 		(property "PACKAGE" "0402"
-			(at 286.044 45.212 0)
+			(at 291.124 45.212 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -22588,7 +22588,7 @@
 			)
 		)
 		(property "SUPPLIER 1" "Mouser"
-			(at 286.044 45.212 0)
+			(at 291.124 45.212 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -22597,7 +22597,7 @@
 			)
 		)
 		(property "SUPPLIER PART NUMBER 1" "603-RC0402FR-0720KL"
-			(at 286.044 45.212 0)
+			(at 291.124 45.212 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -22606,7 +22606,7 @@
 			)
 		)
 		(property "MANUFACTURER" "Yageo"
-			(at 281.432 47.284 0)
+			(at 286.512 47.284 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -22616,7 +22616,7 @@
 			)
 		)
 		(property "HOUSE PART NUMBER" ""
-			(at 281.432 47.284 0)
+			(at 286.512 47.284 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -22626,7 +22626,7 @@
 			)
 		)
 		(property "MANUFACTURER PART NUMBER" "RC0402FR-0720KL"
-			(at 281.432 47.284 0)
+			(at 286.512 47.284 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -22636,7 +22636,7 @@
 			)
 		)
 		(property "ALTIUM_VALUE" ""
-			(at 287.02 50.8 0)
+			(at 292.1 50.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -22824,7 +22824,7 @@
 	)
 	(symbol
 		(lib_id "Thunderscope_Rev5:+VUSB")
-		(at 182.88 50.8 180)
+		(at 185.42 50.8 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -22832,7 +22832,7 @@
 		(dnp no)
 		(uuid "96fc690c-52b8-4ebd-b8d0-331017da7061")
 		(property "Reference" "#PWR0184"
-			(at 182.88 50.8 0)
+			(at 185.42 50.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -22841,7 +22841,7 @@
 			)
 		)
 		(property "Value" "+VUSB"
-			(at 182.88 46.99 0)
+			(at 185.42 46.99 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -22849,7 +22849,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 182.88 50.8 0)
+			(at 185.42 50.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -22858,7 +22858,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 182.88 50.8 0)
+			(at 185.42 50.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -22867,7 +22867,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name '+VUSB'"
-			(at 182.88 50.8 0)
+			(at 185.42 50.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -23426,7 +23426,7 @@
 	)
 	(symbol
 		(lib_id "Thunderscope_Rev5:GND")
-		(at 116.84 96.52 0)
+		(at 96.52 96.52 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -23434,7 +23434,7 @@
 		(dnp no)
 		(uuid "9dd976c2-d468-42a0-9b82-1278363a1658")
 		(property "Reference" "#PWR030"
-			(at 116.84 102.87 0)
+			(at 96.52 102.87 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -23443,7 +23443,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 116.84 100.33 0)
+			(at 96.52 100.33 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -23451,7 +23451,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 116.84 96.52 0)
+			(at 96.52 96.52 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -23460,7 +23460,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 116.84 96.52 0)
+			(at 96.52 96.52 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -23469,7 +23469,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 116.84 96.52 0)
+			(at 96.52 96.52 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -23739,7 +23739,7 @@
 	)
 	(symbol
 		(lib_id "Thunderscope_Rev5:TP PCB 1mm")
-		(at 91.44 81.28 90)
+		(at 71.12 81.28 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom no)
@@ -23747,7 +23747,7 @@
 		(dnp no)
 		(uuid "a339dfe4-4252-4a73-bdcc-dc03132eb00f")
 		(property "Reference" "TP1014B1"
-			(at 95.4996 74.4955 90)
+			(at 75.1796 74.4955 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -23756,7 +23756,7 @@
 			)
 		)
 		(property "Value" "PCB"
-			(at 86.36 82.55 0)
+			(at 66.04 82.55 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -23766,7 +23766,7 @@
 			)
 		)
 		(property "Footprint" "Thunderscope_Rev5:GEN_TP_PCB"
-			(at 91.44 81.28 0)
+			(at 71.12 81.28 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -23775,7 +23775,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 91.44 81.28 0)
+			(at 71.12 81.28 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -23784,7 +23784,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 91.44 81.28 0)
+			(at 71.12 81.28 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -23793,7 +23793,7 @@
 			)
 		)
 		(property "HOUSE PART NUMBER" ""
-			(at 83.82 83.82 0)
+			(at 63.5 83.82 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -23803,7 +23803,7 @@
 			)
 		)
 		(property "MANUFACTURER" ""
-			(at 83.82 83.82 0)
+			(at 63.5 83.82 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -23813,7 +23813,7 @@
 			)
 		)
 		(property "MANUFACTURER PART NUMBER" ""
-			(at 83.82 83.82 0)
+			(at 63.5 83.82 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -23823,7 +23823,7 @@
 			)
 		)
 		(property "ALTIUM_VALUE" ""
-			(at 91.44 81.28 0)
+			(at 71.12 81.28 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -24183,7 +24183,7 @@
 	)
 	(symbol
 		(lib_id "Thunderscope_Rev5:GND")
-		(at 233.68 96.52 0)
+		(at 236.22 96.52 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -24191,7 +24191,7 @@
 		(dnp no)
 		(uuid "a5366f3a-1d46-4804-88e5-ddffb8c383d5")
 		(property "Reference" "#PWR058"
-			(at 233.68 102.87 0)
+			(at 236.22 102.87 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -24200,7 +24200,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 233.68 100.33 0)
+			(at 236.22 100.33 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -24208,7 +24208,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 233.68 96.52 0)
+			(at 236.22 96.52 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -24217,7 +24217,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 233.68 96.52 0)
+			(at 236.22 96.52 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -24226,7 +24226,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 233.68 96.52 0)
+			(at 236.22 96.52 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -24337,7 +24337,7 @@
 	)
 	(symbol
 		(lib_id "Thunderscope_Rev5:BNC JACK R/A")
-		(at 48.26 40.64 0)
+		(at 27.94 40.64 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -24345,7 +24345,7 @@
 		(dnp no)
 		(uuid "a7fecb28-f312-456c-8106-dceee754f7b1")
 		(property "Reference" "J1002B1"
-			(at 45.72 38.1 0)
+			(at 25.4 38.1 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -24354,7 +24354,7 @@
 			)
 		)
 		(property "Value" "BNC"
-			(at 50.8 45.72 0)
+			(at 30.48 45.72 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -24363,7 +24363,7 @@
 			)
 		)
 		(property "Footprint" "Thunderscope_Rev5:MOL_0731000105"
-			(at 48.26 40.64 0)
+			(at 27.94 40.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -24372,7 +24372,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 48.26 40.64 0)
+			(at 27.94 40.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -24381,7 +24381,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 48.26 40.64 0)
+			(at 27.94 40.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -24390,7 +24390,7 @@
 			)
 		)
 		(property "SUPPLIER 1" "Mouser"
-			(at 46.26 36.83 0)
+			(at 25.94 36.83 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -24400,7 +24400,7 @@
 			)
 		)
 		(property "SUPPLIER PART NUMBER 1" "538-73100-0105"
-			(at 46.26 36.83 0)
+			(at 25.94 36.83 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -24410,7 +24410,7 @@
 			)
 		)
 		(property "HOUSE PART NUMBER" ""
-			(at 45.72 35.56 0)
+			(at 25.4 35.56 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -24420,7 +24420,7 @@
 			)
 		)
 		(property "MANUFACTURER" "Molex"
-			(at 45.72 35.56 0)
+			(at 25.4 35.56 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -24430,7 +24430,7 @@
 			)
 		)
 		(property "MANUFACTURER PART NUMBER" "73100-0105"
-			(at 45.72 35.56 0)
+			(at 25.4 35.56 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -24440,7 +24440,7 @@
 			)
 		)
 		(property "ALTIUM_VALUE" ""
-			(at 48.26 40.64 0)
+			(at 27.94 40.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -25154,7 +25154,7 @@
 	)
 	(symbol
 		(lib_id "Thunderscope_Rev5:RES 30 OHM 1% 1/3W 0603")
-		(at 194.31 53.34 0)
+		(at 195.58 53.34 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -25162,7 +25162,7 @@
 		(dnp no)
 		(uuid "afd59023-9b6f-4b6e-a169-653e1995b1d3")
 		(property "Reference" "R1028B1"
-			(at 191.31 52.364 0)
+			(at 192.58 52.364 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -25171,7 +25171,7 @@
 			)
 		)
 		(property "Value" "30"
-			(at 194.31 53.34 0)
+			(at 195.58 53.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -25179,7 +25179,7 @@
 			)
 		)
 		(property "Footprint" "Thunderscope_Rev5:GEN_R_0603"
-			(at 194.31 53.34 0)
+			(at 195.58 53.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -25188,7 +25188,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 194.31 53.34 0)
+			(at 195.58 53.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -25197,7 +25197,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 194.31 53.34 0)
+			(at 195.58 53.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -25206,7 +25206,7 @@
 			)
 		)
 		(property "PACKAGE" "0603"
-			(at 194.31 53.34 0)
+			(at 195.58 53.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -25215,7 +25215,7 @@
 			)
 		)
 		(property "SUPPLIER 1" "Mouser"
-			(at 194.31 53.34 0)
+			(at 195.58 53.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -25224,7 +25224,7 @@
 			)
 		)
 		(property "SUPPLIER PART NUMBER 1" "660-SG73P1JTTD30R0F"
-			(at 194.31 53.34 0)
+			(at 195.58 53.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -25233,7 +25233,7 @@
 			)
 		)
 		(property "TOLERANCE" "1%"
-			(at 194.31 53.34 0)
+			(at 195.58 53.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -25242,7 +25242,7 @@
 			)
 		)
 		(property "MANUFACTURER" "KOA Speer"
-			(at 194.31 53.34 0)
+			(at 195.58 53.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -25251,7 +25251,7 @@
 			)
 		)
 		(property "HOUSE PART NUMBER" ""
-			(at 194.31 53.34 0)
+			(at 195.58 53.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -25260,7 +25260,7 @@
 			)
 		)
 		(property "MANUFACTURER PART NUMBER" "SG73P1JTTD30R0F"
-			(at 194.31 53.34 0)
+			(at 195.58 53.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -25269,7 +25269,7 @@
 			)
 		)
 		(property "ALTIUM_VALUE" ""
-			(at 194.31 53.34 0)
+			(at 195.58 53.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -25968,7 +25968,7 @@
 	)
 	(symbol
 		(lib_id "Thunderscope_Rev5:GND")
-		(at 83.82 66.04 0)
+		(at 63.5 66.04 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -25976,7 +25976,7 @@
 		(dnp no)
 		(uuid "be8a9d09-9df6-4a07-a87f-e2dc56ed2b37")
 		(property "Reference" "#PWR026"
-			(at 83.82 72.39 0)
+			(at 63.5 72.39 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -25985,7 +25985,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 83.82 69.85 0)
+			(at 63.5 69.85 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -25993,7 +25993,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 83.82 66.04 0)
+			(at 63.5 66.04 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -26002,7 +26002,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 83.82 66.04 0)
+			(at 63.5 66.04 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -26011,7 +26011,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 83.82 66.04 0)
+			(at 63.5 66.04 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -26045,7 +26045,7 @@
 	)
 	(symbol
 		(lib_id "Thunderscope_Rev5:CAP 10uF 10V X5R 0603")
-		(at 71.12 60.96 0)
+		(at 48.26 60.96 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -26053,7 +26053,7 @@
 		(dnp no)
 		(uuid "bf04de63-4579-4096-a4b1-5a81aa7a29d9")
 		(property "Reference" "C1026B1"
-			(at 73.66 60.96 0)
+			(at 50.8 60.96 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -26062,7 +26062,7 @@
 			)
 		)
 		(property "Value" "10uF"
-			(at 73.66 63.5 0)
+			(at 50.8 63.5 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -26071,7 +26071,7 @@
 			)
 		)
 		(property "Footprint" "Thunderscope_Rev5:GEN_C_0603"
-			(at 71.12 60.96 0)
+			(at 48.26 60.96 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -26080,7 +26080,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 71.12 60.96 0)
+			(at 48.26 60.96 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -26089,7 +26089,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 71.12 60.96 0)
+			(at 48.26 60.96 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -26098,7 +26098,7 @@
 			)
 		)
 		(property "PACKAGE" "0402"
-			(at 53.992 72.39 0)
+			(at 31.132 72.39 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -26108,7 +26108,7 @@
 			)
 		)
 		(property "VOLTAGE RATING" "10V"
-			(at 71.62 65.96 0)
+			(at 48.76 65.96 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -26118,7 +26118,7 @@
 			)
 		)
 		(property "SUPPLIER 1" "Mouser"
-			(at 68.866 55.372 0)
+			(at 46.006 55.372 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -26128,7 +26128,7 @@
 			)
 		)
 		(property "SUPPLIER PART NUMBER 1" "81-GRM188R61A106ME9D"
-			(at 68.866 55.372 0)
+			(at 46.006 55.372 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -26138,7 +26138,7 @@
 			)
 		)
 		(property "HOUSE PART NUMBER" "C-10uF-0603-002"
-			(at 68.866 55.372 0)
+			(at 46.006 55.372 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -26148,7 +26148,7 @@
 			)
 		)
 		(property "MANUFACTURER" "Murata"
-			(at 68.866 55.372 0)
+			(at 46.006 55.372 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -26158,7 +26158,7 @@
 			)
 		)
 		(property "MANUFACTURER PART NUMBER" "GRM188R61A106ME69D"
-			(at 68.866 55.372 0)
+			(at 46.006 55.372 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -26168,7 +26168,7 @@
 			)
 		)
 		(property "ALTIUM_VALUE" ""
-			(at 71.12 60.96 0)
+			(at 48.26 60.96 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -26599,7 +26599,7 @@
 	)
 	(symbol
 		(lib_id "Thunderscope_Rev5:CAP 2.4pF 250V C0G 0603")
-		(at 246.38 50.8 0)
+		(at 251.46 50.8 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -26607,7 +26607,7 @@
 		(dnp no)
 		(uuid "c5b6e99a-0f04-4a57-a670-4e846fbde799")
 		(property "Reference" "C1023B1"
-			(at 242.57 54.61 0)
+			(at 247.65 54.61 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -26616,7 +26616,7 @@
 			)
 		)
 		(property "Value" "2.4pF"
-			(at 243.84 57.15 0)
+			(at 248.92 57.15 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -26625,7 +26625,7 @@
 			)
 		)
 		(property "Footprint" "Thunderscope_Rev5:GEN_C_0603"
-			(at 246.38 50.8 0)
+			(at 251.46 50.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -26634,7 +26634,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 246.38 50.8 0)
+			(at 251.46 50.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -26643,7 +26643,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 246.38 50.8 0)
+			(at 251.46 50.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -26652,7 +26652,7 @@
 			)
 		)
 		(property "PACKAGE" "0603"
-			(at 243.84 59.69 0)
+			(at 248.92 59.69 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -26662,7 +26662,7 @@
 			)
 		)
 		(property "SUPPLIER 1" "Mouser"
-			(at 240.792 48.546 0)
+			(at 245.872 48.546 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -26672,7 +26672,7 @@
 			)
 		)
 		(property "SUPPLIER PART NUMBER 1" "80-CBR06C249BAGAC"
-			(at 240.792 48.546 0)
+			(at 245.872 48.546 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -26682,7 +26682,7 @@
 			)
 		)
 		(property "VOLTAGE RATING" "250V"
-			(at 243.84 62.23 0)
+			(at 248.92 62.23 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -26692,7 +26692,7 @@
 			)
 		)
 		(property "MANUFACTURER" "KEMET"
-			(at 244.126 45.212 0)
+			(at 249.206 45.212 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -26702,7 +26702,7 @@
 			)
 		)
 		(property "HOUSE PART NUMBER" ""
-			(at 244.126 45.212 0)
+			(at 249.206 45.212 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -26712,7 +26712,7 @@
 			)
 		)
 		(property "MANUFACTURER PART NUMBER" "CBR06C249BAGAC"
-			(at 244.126 45.212 0)
+			(at 249.206 45.212 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -26722,7 +26722,7 @@
 			)
 		)
 		(property "ALTIUM_VALUE" ""
-			(at 246.38 50.8 0)
+			(at 251.46 50.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -26758,7 +26758,7 @@
 	)
 	(symbol
 		(lib_id "Thunderscope_Rev5:RES 10K OHM 1% 1/10W 0402")
-		(at 210.82 88.9 90)
+		(at 213.36 88.9 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -26766,7 +26766,7 @@
 		(dnp no)
 		(uuid "c952ee4c-f1fc-480b-bb3e-21308020396a")
 		(property "Reference" "R1032B1"
-			(at 213.36 88.9 0)
+			(at 215.9 88.9 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -26774,7 +26774,7 @@
 			)
 		)
 		(property "Value" "10K"
-			(at 210.82 88.9 0)
+			(at 213.36 88.9 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -26782,7 +26782,7 @@
 			)
 		)
 		(property "Footprint" "Thunderscope_Rev5:GEN_R_0402"
-			(at 210.82 88.9 0)
+			(at 213.36 88.9 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -26791,7 +26791,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 210.82 88.9 0)
+			(at 213.36 88.9 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -26800,7 +26800,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 210.82 88.9 0)
+			(at 213.36 88.9 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -26809,7 +26809,7 @@
 			)
 		)
 		(property "TOLERANCE" "1%"
-			(at 205.232 89.876 0)
+			(at 207.772 89.876 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -26818,7 +26818,7 @@
 			)
 		)
 		(property "PACKAGE" "0402"
-			(at 205.232 89.876 0)
+			(at 207.772 89.876 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -26827,7 +26827,7 @@
 			)
 		)
 		(property "SUPPLIER 1" "Mouser"
-			(at 205.232 89.876 0)
+			(at 207.772 89.876 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -26836,7 +26836,7 @@
 			)
 		)
 		(property "SUPPLIER PART NUMBER 1" "667-ERJ-2RKF1002X"
-			(at 205.232 89.876 0)
+			(at 207.772 89.876 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -26845,7 +26845,7 @@
 			)
 		)
 		(property "HOUSE PART NUMBER" ""
-			(at 203.708 90.17 0)
+			(at 206.248 90.17 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -26855,7 +26855,7 @@
 			)
 		)
 		(property "MANUFACTURER" "Panasonic"
-			(at 203.708 90.17 0)
+			(at 206.248 90.17 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -26865,7 +26865,7 @@
 			)
 		)
 		(property "MANUFACTURER PART NUMBER" "ERJ-2RKF1002X"
-			(at 203.708 90.17 0)
+			(at 206.248 90.17 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -26875,7 +26875,7 @@
 			)
 		)
 		(property "ALTIUM_VALUE" ""
-			(at 210.82 88.9 0)
+			(at 213.36 88.9 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -28137,7 +28137,7 @@
 	)
 	(symbol
 		(lib_id "Thunderscope_Rev5:RELAY DPDT-NO FTR-B3SA4.5Z")
-		(at 308.61 40.64 0)
+		(at 314.96 40.64 0)
 		(unit 2)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -28145,7 +28145,7 @@
 		(dnp no)
 		(uuid "db0f4f50-428b-4276-89be-ddc43740bce5")
 		(property "Reference" "K1001B1"
-			(at 308.61 38.1 0)
+			(at 314.96 38.1 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -28154,7 +28154,7 @@
 			)
 		)
 		(property "Value" "FTR-B3SA4.5Z"
-			(at 308.61 40.64 0)
+			(at 314.96 40.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -28163,7 +28163,7 @@
 			)
 		)
 		(property "Footprint" "Thunderscope_Rev5:FUJ_FTR-B3SA"
-			(at 308.61 40.64 0)
+			(at 314.96 40.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -28172,7 +28172,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 308.61 40.64 0)
+			(at 314.96 40.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -28181,7 +28181,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 308.61 40.64 0)
+			(at 314.96 40.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -28190,7 +28190,7 @@
 			)
 		)
 		(property "HOUSE PART NUMBER" ""
-			(at 308.61 40.64 0)
+			(at 314.96 40.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -28199,7 +28199,7 @@
 			)
 		)
 		(property "MANUFACTURER" "Fujitsu"
-			(at 308.61 40.64 0)
+			(at 314.96 40.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -28208,7 +28208,7 @@
 			)
 		)
 		(property "MANUFACTURER PART NUMBER" "FTR-B3SA4.5Z-B10"
-			(at 308.61 40.64 0)
+			(at 314.96 40.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -28217,7 +28217,7 @@
 			)
 		)
 		(property "ALTIUM_VALUE" ""
-			(at 308.61 40.64 0)
+			(at 314.96 40.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -28349,7 +28349,7 @@
 	)
 	(symbol
 		(lib_id "Thunderscope_Rev5:RELAY DPDT-NO FTR-B3SA4.5Z")
-		(at 222.25 40.64 0)
+		(at 226.06 40.64 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -28357,7 +28357,7 @@
 		(dnp no)
 		(uuid "df03911c-e7c4-45c5-ba3e-6630cba2273f")
 		(property "Reference" "K1001B1"
-			(at 220.98 38.1 0)
+			(at 224.79 38.1 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -28366,7 +28366,7 @@
 			)
 		)
 		(property "Value" "FTR-B3SA4.5Z"
-			(at 222.25 40.64 0)
+			(at 226.06 40.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -28375,7 +28375,7 @@
 			)
 		)
 		(property "Footprint" "Thunderscope_Rev5:FUJ_FTR-B3SA"
-			(at 222.25 40.64 0)
+			(at 226.06 40.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -28384,7 +28384,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 222.25 40.64 0)
+			(at 226.06 40.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -28393,7 +28393,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 222.25 40.64 0)
+			(at 226.06 40.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -28402,7 +28402,7 @@
 			)
 		)
 		(property "HOUSE PART NUMBER" ""
-			(at 222.25 40.64 0)
+			(at 226.06 40.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -28411,7 +28411,7 @@
 			)
 		)
 		(property "MANUFACTURER" "Fujitsu"
-			(at 222.25 40.64 0)
+			(at 226.06 40.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -28420,7 +28420,7 @@
 			)
 		)
 		(property "MANUFACTURER PART NUMBER" "FTR-B3SA4.5Z-B10"
-			(at 222.25 40.64 0)
+			(at 226.06 40.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -28429,7 +28429,7 @@
 			)
 		)
 		(property "ALTIUM_VALUE" ""
-			(at 222.25 40.64 0)
+			(at 226.06 40.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -28874,7 +28874,7 @@
 	)
 	(symbol
 		(lib_id "Thunderscope_Rev5:RES 10K OHM 1% 1/10W 0402")
-		(at 93.98 88.9 90)
+		(at 73.66 88.9 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -28882,7 +28882,7 @@
 		(dnp no)
 		(uuid "e33613bd-c4bb-4f11-a017-6c1acc02a327")
 		(property "Reference" "R1031B1"
-			(at 96.52 88.9 0)
+			(at 76.2 88.9 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -28890,7 +28890,7 @@
 			)
 		)
 		(property "Value" "10K"
-			(at 93.98 88.9 0)
+			(at 73.66 88.9 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -28898,7 +28898,7 @@
 			)
 		)
 		(property "Footprint" "Thunderscope_Rev5:GEN_R_0402"
-			(at 93.98 88.9 0)
+			(at 73.66 88.9 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -28907,7 +28907,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 93.98 88.9 0)
+			(at 73.66 88.9 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -28916,7 +28916,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 93.98 88.9 0)
+			(at 73.66 88.9 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -28925,7 +28925,7 @@
 			)
 		)
 		(property "TOLERANCE" "1%"
-			(at 88.392 89.876 0)
+			(at 68.072 89.876 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -28934,7 +28934,7 @@
 			)
 		)
 		(property "PACKAGE" "0402"
-			(at 88.392 89.876 0)
+			(at 68.072 89.876 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -28943,7 +28943,7 @@
 			)
 		)
 		(property "SUPPLIER 1" "Mouser"
-			(at 88.392 89.876 0)
+			(at 68.072 89.876 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -28952,7 +28952,7 @@
 			)
 		)
 		(property "SUPPLIER PART NUMBER 1" "667-ERJ-2RKF1002X"
-			(at 88.392 89.876 0)
+			(at 68.072 89.876 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -28961,7 +28961,7 @@
 			)
 		)
 		(property "HOUSE PART NUMBER" ""
-			(at 86.86 90.17 0)
+			(at 66.54 90.17 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -28971,7 +28971,7 @@
 			)
 		)
 		(property "MANUFACTURER" "Panasonic"
-			(at 86.86 90.17 0)
+			(at 66.54 90.17 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -28981,7 +28981,7 @@
 			)
 		)
 		(property "MANUFACTURER PART NUMBER" "ERJ-2RKF1002X"
-			(at 86.86 90.17 0)
+			(at 66.54 90.17 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -28991,7 +28991,7 @@
 			)
 		)
 		(property "ALTIUM_VALUE" ""
-			(at 93.98 88.9 0)
+			(at 73.66 88.9 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -29027,7 +29027,7 @@
 	)
 	(symbol
 		(lib_id "Thunderscope_Rev5:GND")
-		(at 93.98 96.52 0)
+		(at 73.66 96.52 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -29035,7 +29035,7 @@
 		(dnp no)
 		(uuid "e45bd13c-0267-488f-89e5-1915cf3f25ba")
 		(property "Reference" "#PWR034"
-			(at 93.98 102.87 0)
+			(at 73.66 102.87 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -29044,7 +29044,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 93.98 100.33 0)
+			(at 73.66 100.33 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -29052,7 +29052,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 93.98 96.52 0)
+			(at 73.66 96.52 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -29061,7 +29061,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 93.98 96.52 0)
+			(at 73.66 96.52 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -29070,7 +29070,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 93.98 96.52 0)
+			(at 73.66 96.52 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -30241,7 +30241,7 @@
 	)
 	(symbol
 		(lib_id "Thunderscope_Rev5:GND")
-		(at 200.66 66.04 0)
+		(at 203.2 66.04 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -30249,7 +30249,7 @@
 		(dnp no)
 		(uuid "ee387f36-1432-4f19-9914-1d98fbd2a2a0")
 		(property "Reference" "#PWR050"
-			(at 200.66 72.39 0)
+			(at 203.2 72.39 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -30258,7 +30258,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 200.66 69.85 0)
+			(at 203.2 69.85 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -30266,7 +30266,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 200.66 66.04 0)
+			(at 203.2 66.04 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -30275,7 +30275,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 200.66 66.04 0)
+			(at 203.2 66.04 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -30284,7 +30284,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 200.66 66.04 0)
+			(at 203.2 66.04 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -30934,7 +30934,7 @@
 	)
 	(symbol
 		(lib_id "Thunderscope_Rev5:GND")
-		(at 134.62 58.42 0)
+		(at 116.84 58.42 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -30942,7 +30942,7 @@
 		(dnp no)
 		(uuid "f5de5294-c85b-4d7d-a47e-b0b6f487dd0c")
 		(property "Reference" "#PWR038"
-			(at 134.62 64.77 0)
+			(at 116.84 64.77 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -30951,7 +30951,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 134.62 62.23 0)
+			(at 116.84 62.23 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -30959,7 +30959,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 134.62 58.42 0)
+			(at 116.84 58.42 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -30968,7 +30968,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 134.62 58.42 0)
+			(at 116.84 58.42 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -30977,7 +30977,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 134.62 58.42 0)
+			(at 116.84 58.42 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -31088,7 +31088,7 @@
 	)
 	(symbol
 		(lib_id "Thunderscope_Rev5:NMOS DMN62D0UW")
-		(at 114.3 81.28 0)
+		(at 93.98 81.28 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -31096,7 +31096,7 @@
 		(dnp no)
 		(uuid "f77f51a1-09b3-4d89-9e94-67f83de54bab")
 		(property "Reference" "Q1002B1"
-			(at 117.602 81.026 0)
+			(at 97.282 81.026 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -31105,7 +31105,7 @@
 			)
 		)
 		(property "Value" "DMN62D0UW"
-			(at 117.602 83.566 0)
+			(at 97.282 83.566 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -31114,7 +31114,7 @@
 			)
 		)
 		(property "Footprint" "Thunderscope_Rev5:GEN_SOT_323"
-			(at 114.3 81.28 0)
+			(at 93.98 81.28 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -31123,7 +31123,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 114.3 81.28 0)
+			(at 93.98 81.28 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -31132,7 +31132,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 114.3 81.28 0)
+			(at 93.98 81.28 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -31141,7 +31141,7 @@
 			)
 		)
 		(property "VDSS" "60V"
-			(at 104.872 91.328 0)
+			(at 84.552 91.328 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -31151,7 +31151,7 @@
 			)
 		)
 		(property "SUPPLIER 1" "Mouser"
-			(at 104.872 73.772 0)
+			(at 84.552 73.772 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -31161,7 +31161,7 @@
 			)
 		)
 		(property "SUPPLIER PART NUMBER 1" "621-DMN62D0UW-7"
-			(at 104.872 73.772 0)
+			(at 84.552 73.772 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -31171,7 +31171,7 @@
 			)
 		)
 		(property "HOUSE PART NUMBER" "DMN62D0UW-7"
-			(at 108.712 75.692 0)
+			(at 88.392 75.692 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -31181,7 +31181,7 @@
 			)
 		)
 		(property "MANUFACTURER" "Diodes"
-			(at 108.712 75.692 0)
+			(at 88.392 75.692 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -31191,7 +31191,7 @@
 			)
 		)
 		(property "MANUFACTURER PART NUMBER" "DMN62D0UW-7"
-			(at 108.712 75.692 0)
+			(at 88.392 75.692 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -31201,7 +31201,7 @@
 			)
 		)
 		(property "ALTIUM_VALUE" ""
-			(at 114.3 81.28 0)
+			(at 93.98 81.28 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -31240,7 +31240,7 @@
 	)
 	(symbol
 		(lib_id "Thunderscope_Rev5:RES 30 OHM 1% 1/3W 0603")
-		(at 144.78 43.18 0)
+		(at 127 43.18 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -31248,7 +31248,7 @@
 		(dnp no)
 		(uuid "fde8416a-5a76-47f0-9291-027af21a494c")
 		(property "Reference" "R1023B1"
-			(at 144.78 40.64 0)
+			(at 127 40.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -31256,7 +31256,7 @@
 			)
 		)
 		(property "Value" "30"
-			(at 144.78 43.18 0)
+			(at 127 43.18 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -31264,7 +31264,7 @@
 			)
 		)
 		(property "Footprint" "Thunderscope_Rev5:GEN_R_0603"
-			(at 144.78 43.18 0)
+			(at 127 43.18 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -31273,7 +31273,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 144.78 43.18 0)
+			(at 127 43.18 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -31282,7 +31282,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 144.78 43.18 0)
+			(at 127 43.18 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -31291,7 +31291,7 @@
 			)
 		)
 		(property "TOLERANCE" "1%"
-			(at 141.732 51.816 0)
+			(at 123.952 51.816 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -31300,7 +31300,7 @@
 			)
 		)
 		(property "PACKAGE" "0603"
-			(at 142.24 45.72 0)
+			(at 124.46 45.72 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -31309,7 +31309,7 @@
 			)
 		)
 		(property "SUPPLIER 1" "Mouser"
-			(at 139.192 39.664 0)
+			(at 121.412 39.664 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -31319,7 +31319,7 @@
 			)
 		)
 		(property "SUPPLIER PART NUMBER 1" "660-SG73P1JTTD30R0F"
-			(at 139.192 39.664 0)
+			(at 121.412 39.664 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -31329,7 +31329,7 @@
 			)
 		)
 		(property "MANUFACTURER" "KOA Speer"
-			(at 139.192 39.664 0)
+			(at 121.412 39.664 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -31339,7 +31339,7 @@
 			)
 		)
 		(property "HOUSE PART NUMBER" ""
-			(at 139.192 39.664 0)
+			(at 121.412 39.664 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -31349,7 +31349,7 @@
 			)
 		)
 		(property "MANUFACTURER PART NUMBER" "SG73P1JTTD30R0F"
-			(at 139.192 39.664 0)
+			(at 121.412 39.664 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -31359,7 +31359,7 @@
 			)
 		)
 		(property "ALTIUM_VALUE" ""
-			(at 144.78 43.18 0)
+			(at 127 43.18 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -31395,7 +31395,7 @@
 	)
 	(symbol
 		(lib_id "Thunderscope_Rev5:RES 49.9 OHM 1% 1W 0508")
-		(at 160.02 50.8 0)
+		(at 142.24 50.8 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -31403,7 +31403,7 @@
 		(dnp no)
 		(uuid "fe6abf6c-e628-497d-9350-243d5e6ea391")
 		(property "Reference" "R1025B1"
-			(at 157.48 50.8 90)
+			(at 139.7 50.8 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -31411,7 +31411,7 @@
 			)
 		)
 		(property "Value" "49.9"
-			(at 160.02 50.8 90)
+			(at 142.24 50.8 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -31419,7 +31419,7 @@
 			)
 		)
 		(property "Footprint" "Thunderscope_Rev5:GEN_R_0508"
-			(at 160.02 50.8 0)
+			(at 142.24 50.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -31428,7 +31428,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 160.02 50.8 0)
+			(at 142.24 50.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -31437,7 +31437,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 160.02 50.8 0)
+			(at 142.24 50.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -31446,7 +31446,7 @@
 			)
 		)
 		(property "TOLERANCE" "1%"
-			(at 159.044 45.212 0)
+			(at 141.264 45.212 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -31456,7 +31456,7 @@
 			)
 		)
 		(property "PACKAGE" "0508"
-			(at 162.56 53.34 90)
+			(at 144.78 53.34 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -31465,7 +31465,7 @@
 			)
 		)
 		(property "SUPPLIER 1" "Mouser"
-			(at 154.432 47.284 0)
+			(at 136.652 47.284 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -31475,7 +31475,7 @@
 			)
 		)
 		(property "SUPPLIER PART NUMBER 1" "660-WK73R2ATTD49R9F"
-			(at 154.432 47.284 0)
+			(at 136.652 47.284 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -31485,7 +31485,7 @@
 			)
 		)
 		(property "HOUSE PART NUMBER" ""
-			(at 156.21 45.212 0)
+			(at 138.43 45.212 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -31495,7 +31495,7 @@
 			)
 		)
 		(property "MANUFACTURER" "KOA Speer"
-			(at 156.21 45.212 0)
+			(at 138.43 45.212 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -31505,7 +31505,7 @@
 			)
 		)
 		(property "MANUFACTURER PART NUMBER" "WK73R2ATTD49R9F"
-			(at 156.21 45.212 0)
+			(at 138.43 45.212 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -31515,7 +31515,7 @@
 			)
 		)
 		(property "POWER RATING" "1W"
-			(at 162.56 48.26 90)
+			(at 144.78 48.26 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -31524,7 +31524,7 @@
 			)
 		)
 		(property "ALTIUM_VALUE" ""
-			(at 160.02 50.8 0)
+			(at 142.24 50.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -31560,7 +31560,7 @@
 	)
 	(symbol
 		(lib_id "Thunderscope_Rev5:DIODE 1N4148")
-		(at 105.41 63.5 0)
+		(at 86.36 63.5 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -31568,7 +31568,7 @@
 		(dnp no)
 		(uuid "fe6b9b8f-116d-45b8-91b4-3b20f607e35d")
 		(property "Reference" "D1000B1"
-			(at 103.656 61.246 0)
+			(at 84.606 61.246 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -31577,7 +31577,7 @@
 			)
 		)
 		(property "Value" "1N4148"
-			(at 100.33 68.294 0)
+			(at 81.28 68.294 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -31586,7 +31586,7 @@
 			)
 		)
 		(property "Footprint" "Thunderscope_Rev5:GEN_SOD_323"
-			(at 105.41 63.5 0)
+			(at 86.36 63.5 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -31595,7 +31595,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 105.41 63.5 0)
+			(at 86.36 63.5 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -31604,7 +31604,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 105.41 63.5 0)
+			(at 86.36 63.5 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -31613,7 +31613,7 @@
 			)
 		)
 		(property "SUPPLIER 1" "Mouser"
-			(at 99.822 61.246 0)
+			(at 80.772 61.246 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -31623,7 +31623,7 @@
 			)
 		)
 		(property "SUPPLIER PART NUMBER 1" "621-1N4148WS-F"
-			(at 99.822 61.246 0)
+			(at 80.772 61.246 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -31633,7 +31633,7 @@
 			)
 		)
 		(property "HOUSE PART NUMBER" ""
-			(at 99.822 58.706 0)
+			(at 80.772 58.706 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -31643,7 +31643,7 @@
 			)
 		)
 		(property "MANUFACTURER" "Diodes"
-			(at 99.822 58.706 0)
+			(at 80.772 58.706 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -31653,7 +31653,7 @@
 			)
 		)
 		(property "MANUFACTURER PART NUMBER" "1N4148WS-7-F"
-			(at 99.822 58.706 0)
+			(at 80.772 58.706 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -31663,7 +31663,7 @@
 			)
 		)
 		(property "ALTIUM_VALUE" ""
-			(at 105.41 63.5 0)
+			(at 86.36 63.5 0)
 			(effects
 				(font
 					(size 1.27 1.27)
