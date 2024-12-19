@@ -1,0 +1,92 @@
+(footprint "M.2 Mounting Hole"
+	(version 20241030)
+	(generator "pcbnew")
+	(generator_version "8.99")
+	(layer "F.Cu")
+	(property "Reference" "REF**"
+		(at 0 -0.5 0)
+		(unlocked yes)
+		(layer "Rescue")
+		(uuid "f121b4ee-c4f8-4b50-8af5-772f7d966ebc")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "M.2 Mounting Hole"
+		(at 0 1 0)
+		(unlocked yes)
+		(layer "User.6")
+		(uuid "70e0ba3e-9e41-41fe-80a6-8e9a8b7521e9")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Footprint" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "1f0583d6-50fb-42ef-a0ec-620c04aaed75")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "799085d7-a02a-446c-9e88-46314e05ff5c")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "eacb33bd-59ad-46fc-98ba-d3f2e5ff31d4")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr through_hole)
+	(fp_text user "${REFERENCE}"
+		(at 0 2.5 0)
+		(unlocked yes)
+		(layer "User.6")
+		(uuid "98767139-c352-4dda-b58e-7d090aa23eb0")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "MOUNTING-HOLE" thru_hole circle
+		(at 0 0)
+		(size 5.5 5.5)
+		(drill 3.5)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(solder_mask_margin 0.1016)
+		(uuid "38fda91f-7adc-4df9-9a18-f3c0ca999089")
+	)
+	(embedded_fonts no)
+)
