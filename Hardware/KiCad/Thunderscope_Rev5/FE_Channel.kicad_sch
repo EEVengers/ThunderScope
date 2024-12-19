@@ -742,17 +742,6 @@
 			(symbol "BNC JACK R/A_1_0"
 				(circle
 					(center 0 0)
-					(radius 0.635)
-					(stroke
-						(width -0.0001)
-						(type solid)
-					)
-					(fill
-						(type outline)
-					)
-				)
-				(circle
-					(center 0 0)
 					(radius 2.54)
 					(stroke
 						(width 0)
@@ -760,6 +749,17 @@
 					)
 					(fill
 						(type none)
+					)
+				)
+				(circle
+					(center 0 0)
+					(radius 0.635)
+					(stroke
+						(width -0.0001)
+						(type solid)
+					)
+					(fill
+						(type outline)
 					)
 				)
 				(pin passive line
@@ -5166,7 +5166,7 @@
 				)
 				(polyline
 					(pts
-						(xy 2.54 0) (xy 2.54 -2.54)
+						(xy 2.54 0) (xy 0.246 0)
 					)
 					(stroke
 						(width 0)
@@ -5178,7 +5178,7 @@
 				)
 				(polyline
 					(pts
-						(xy 2.54 0) (xy 0.246 0)
+						(xy 2.54 0) (xy 2.54 -2.54)
 					)
 					(stroke
 						(width 0)
