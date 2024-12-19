@@ -7860,9 +7860,8 @@
 		)
 	)
 	(bus_alias "MGT_TX"
-		(members "D4B_N" "D4B_P" "D4A_N" "D4A_P" "D3B_N" "D3B_P" "D3A_N" "D3A_P"
-			"FCLK_N" "FCLK_P" "LCLK_N" "LCLK_P" "D2B_N" "D2B_P" "D2A_N" "D2A_P" "D1B_N"
-			"D1B_P" "D1A_N" "D1A_P"
+		(members "MGT_TX0_N" "MGT_TX0_P" "MGT_TX1_N" "MGT_TX1_P" "MGT_TX2_N" "MGT_TX2_P"
+			"MGT_TX3_N" "MGT_TX3_P"
 		)
 	)
 	(text "DONE: Pullups on CS, DQ2, DQ3"
@@ -8037,6 +8036,14 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "fb612e0b-9da1-488e-9a3b-3fb887edcaff")
+	)
+	(no_connect
+		(at 119.38 162.56)
+		(uuid "4901d3ac-2a6c-46d6-8fb2-0d7eb5fd7b61")
+	)
+	(no_connect
+		(at 119.38 160.02)
+		(uuid "5dda6a84-d46e-4d6e-a021-c393745abb2f")
 	)
 	(bus_entry
 		(at 170.18 71.12)
@@ -8627,16 +8634,6 @@
 			(type default)
 		)
 		(uuid "5cc2da18-8a59-4444-8aec-8e2d54de9c0b")
-	)
-	(wire
-		(pts
-			(xy 99.06 160.02) (xy 119.38 160.02)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "5e2b920e-afb3-4458-8721-f7c326caedbf")
 	)
 	(wire
 		(pts
@@ -9237,16 +9234,6 @@
 			(type default)
 		)
 		(uuid "f106f51d-7064-46d4-96a9-3c476cc19d52")
-	)
-	(wire
-		(pts
-			(xy 99.06 162.56) (xy 119.38 162.56)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "f1d7c5a1-046c-45cf-a7c8-af5fc4ab922f")
 	)
 	(wire
 		(pts
@@ -23196,16 +23183,6 @@
 		)
 		(uuid "07df9a00-0bca-48d1-92b4-a4cd629cdf7e")
 	)
-	(label "MGT_CLK0_N"
-		(at 101.6 160.02 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "0c003297-cfce-4da4-a3b4-00a143ebc939")
-	)
 	(label "MGT_RX2_P"
 		(at 101.6 139.7 0)
 		(effects
@@ -23315,16 +23292,6 @@
 			(justify left bottom)
 		)
 		(uuid "a17adedc-d2f0-4e9c-8cf3-b1f86a03a6c9")
-	)
-	(label "MGT_CLK0_P"
-		(at 101.6 162.56 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "a30f3d0e-c800-4b80-8ca3-04fb4f1961fc")
 	)
 	(label "QSPI_DQ0"
 		(at 187.96 63.5 0)
@@ -23563,17 +23530,6 @@
 		)
 		(uuid "ac029afb-6941-4303-985f-b79297e86d72")
 	)
-	(hierarchical_label "MGT_CLK0_P"
-		(shape input)
-		(at 99.06 162.56 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "c98b1f47-7dc3-4950-af0b-051477ffe45a")
-	)
 	(hierarchical_label "{MGT_TX}"
 		(shape output)
 		(at 208.28 124.46 0)
@@ -23595,17 +23551,6 @@
 			(justify left)
 		)
 		(uuid "f2eb6f58-a603-4e85-a9d8-4d1b95284eb5")
-	)
-	(hierarchical_label "MGT_CLK0_N"
-		(shape input)
-		(at 99.06 160.02 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "f660c2a0-22b2-459d-bcc2-ed52a88c55fa")
 	)
 	(hierarchical_label "TDI"
 		(shape input)

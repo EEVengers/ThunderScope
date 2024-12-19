@@ -4433,6 +4433,13 @@
 			(embedded_fonts no)
 		)
 	)
+	(bus_alias "USRIO"
+		(members "USRIO_1_P" "USRIO_1_N" "USRIO_2_P" "USRIO_2_N" "USRIO_3_P" "USRIO_3_N"
+			"USRIO_4_P" "USRIO_4_N" "USRIO_5_P" "USRIO_5_N" "USRIO_6_P" "USRIO_6_N"
+			"USRIO_7_P" "USRIO_7_N" "USRIO_8_P" "USRIO_8_N" "USRIO_9_P" "USRIO_9_N"
+			"USRIO_10_P" "USRIO_10_N" "USRIO_11_P" "USRIO_11_N" "USRIO_12_P" "USRIO_12_N"
+		)
+	)
 	(text "Always On Clock"
 		(exclude_from_sim no)
 		(at 179.07 15.24 0)
@@ -5191,6 +5198,16 @@
 		)
 		(uuid "2d547aa7-d7cc-4eec-b5eb-c58741f12f19")
 	)
+	(wire
+		(pts
+			(xy 91.44 182.88) (xy 104.14 182.88)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2e0a35be-30ac-4d34-bb62-2495f8ac3d0e")
+	)
 	(bus
 		(pts
 			(xy 50.8 45.72) (xy 50.8 48.26)
@@ -5413,16 +5430,6 @@
 	)
 	(wire
 		(pts
-			(xy 91.44 121.92) (xy 104.14 121.92)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "50e58f7d-3c61-4a8e-bef1-64d2f3f913b8")
-	)
-	(wire
-		(pts
 			(xy 48.26 63.5) (xy 30.48 63.5)
 		)
 		(stroke
@@ -5470,16 +5477,6 @@
 			(type default)
 		)
 		(uuid "56e47ebc-3693-425f-a74d-1f8957adb7ed")
-	)
-	(wire
-		(pts
-			(xy 91.44 177.8) (xy 104.14 177.8)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "5857cdbb-8f41-46ad-ab73-2e5faf7c1ede")
 	)
 	(wire
 		(pts
@@ -5573,23 +5570,13 @@
 	)
 	(wire
 		(pts
-			(xy 91.44 175.26) (xy 104.14 175.26)
+			(xy 91.44 180.34) (xy 104.14 180.34)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
 		(uuid "62663dfc-56ca-482d-bb09-4d72608f3c63")
-	)
-	(bus
-		(pts
-			(xy 139.7 170.18) (xy 152.4 170.18)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "6289a770-aa77-466e-84b4-805070a5cfde")
 	)
 	(wire
 		(pts
@@ -5730,6 +5717,16 @@
 			(type default)
 		)
 		(uuid "750ae137-5c9d-4f8f-9773-bc4af0f18210")
+	)
+	(bus
+		(pts
+			(xy 139.7 175.26) (xy 152.4 175.26)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "751c610a-6829-459f-a5d3-18b1a05f8587")
 	)
 	(wire
 		(pts
@@ -6183,16 +6180,6 @@
 	)
 	(wire
 		(pts
-			(xy 91.44 180.34) (xy 104.14 180.34)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "9e59b673-c260-4ef6-a0b1-e4d122ca28f4")
-	)
-	(wire
-		(pts
 			(xy 238.76 73.66) (xy 238.76 88.9)
 		)
 		(stroke
@@ -6320,16 +6307,6 @@
 			(type default)
 		)
 		(uuid "acc1fa3e-4e28-4ea8-993b-77237801eafb")
-	)
-	(wire
-		(pts
-			(xy 91.44 182.88) (xy 104.14 182.88)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "ad6a179f-e705-4364-bc33-1abd852c570d")
 	)
 	(bus
 		(pts
@@ -6470,6 +6447,16 @@
 			(type default)
 		)
 		(uuid "bbfca673-66ff-4b2d-bc0e-cf4daa5345b5")
+	)
+	(wire
+		(pts
+			(xy 99.06 93.98) (xy 104.14 93.98)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "bf4267ea-e9b2-4723-924e-48736e0b2e2c")
 	)
 	(wire
 		(pts
@@ -6623,7 +6610,7 @@
 	)
 	(bus
 		(pts
-			(xy 91.44 170.18) (xy 104.14 170.18)
+			(xy 91.44 175.26) (xy 104.14 175.26)
 		)
 		(stroke
 			(width 0)
@@ -7531,17 +7518,6 @@
 		)
 		(uuid "fb0f4cf7-9256-4519-b61a-b0aadeee1300")
 	)
-	(hierarchical_label "M2_PERST#_R"
-		(shape input)
-		(at 91.44 121.92 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "05db45a7-4822-4a5a-9c4a-c07695370201")
-	)
 	(hierarchical_label "PLL_SDA"
 		(shape bidirectional)
 		(at 144.78 40.64 0)
@@ -7588,7 +7564,7 @@
 	)
 	(hierarchical_label "MGT_CLK1_P"
 		(shape input)
-		(at 91.44 177.8 180)
+		(at 91.44 182.88 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -7598,7 +7574,7 @@
 		(uuid "26113cb1-3f8f-42c4-a8f0-590291f3700d")
 	)
 	(hierarchical_label "SYNC"
-		(shape input)
+		(shape bidirectional)
 		(at 274.32 96.52 0)
 		(effects
 			(font
@@ -7643,7 +7619,7 @@
 	)
 	(hierarchical_label "{MGT_TX}"
 		(shape output)
-		(at 152.4 170.18 0)
+		(at 152.4 175.26 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -7663,20 +7639,9 @@
 		)
 		(uuid "66d25c0d-b485-4861-8ac2-d827b6489808")
 	)
-	(hierarchical_label "MGT_CLK0_N"
-		(shape input)
-		(at 91.44 180.34 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "73f4f0e2-021b-4c0d-ba42-c3cb9febee14")
-	)
 	(hierarchical_label "{MGT_RX}"
 		(shape input)
-		(at 91.44 170.18 180)
+		(at 91.44 175.26 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -7773,7 +7738,7 @@
 		)
 		(uuid "cca67c39-a268-4d68-8f32-fdf73e8a28a2")
 	)
-	(hierarchical_label "PCIe_PERST#_R"
+	(hierarchical_label "PERST#"
 		(shape input)
 		(at 91.44 111.76 180)
 		(effects
@@ -7795,20 +7760,20 @@
 		)
 		(uuid "e4d1c602-54db-48e5-a499-3e5be21ff5d0")
 	)
-	(hierarchical_label "MGT_CLK0_P"
+	(hierarchical_label "VARIANT"
 		(shape input)
-		(at 91.44 182.88 180)
+		(at 99.06 93.98 180)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
 			(justify right)
 		)
-		(uuid "efc80a8b-260d-492d-ab4a-dc5841b4aa18")
+		(uuid "eb7a0b52-fd81-404c-9647-b24eaac5a95d")
 	)
 	(hierarchical_label "MGT_CLK1_N"
 		(shape input)
-		(at 91.44 175.26 180)
+		(at 91.44 180.34 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -12049,7 +12014,7 @@
 	)
 	(sheet
 		(at 20.32 147.32)
-		(size 22.86 12.7)
+		(size 30.48 12.7)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
@@ -12204,7 +12169,7 @@
 				(justify right)
 			)
 		)
-		(pin "PCIe_PERST#_R" input
+		(pin "PERST#" input
 			(at 104.14 111.76 180)
 			(uuid "fda9c100-13c9-4ddb-8f0e-23d2a7592c9c")
 			(effects
@@ -12464,9 +12429,9 @@
 				(justify right)
 			)
 		)
-		(pin "M2_PERST#_R" input
-			(at 104.14 121.92 180)
-			(uuid "7ae0db9b-e4bb-44c4-9793-c465df13ef52")
+		(pin "VARIANT" input
+			(at 104.14 93.98 180)
+			(uuid "2826ee79-d8dd-414d-bf2a-36eca74e61e9")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12484,7 +12449,7 @@
 	)
 	(sheet
 		(at 20.32 172.72)
-		(size 22.86 12.7)
+		(size 30.48 12.7)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
@@ -12620,18 +12585,8 @@
 				(justify right)
 			)
 		)
-		(pin "MGT_CLK0_P" input
-			(at 104.14 182.88 180)
-			(uuid "557fedaa-7ad8-40b6-914b-92d002559ad3")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
 		(pin "MGT_CLK1_N" input
-			(at 104.14 175.26 180)
+			(at 104.14 180.34 180)
 			(uuid "fc5c322c-e857-4a2c-85d9-38b11acc4bb7")
 			(effects
 				(font
@@ -12640,18 +12595,8 @@
 				(justify left)
 			)
 		)
-		(pin "MGT_CLK0_N" input
-			(at 104.14 180.34 180)
-			(uuid "0308b5e5-aad6-4a7c-8550-6e5d7498d454")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
 		(pin "MGT_CLK1_P" input
-			(at 104.14 177.8 180)
+			(at 104.14 182.88 180)
 			(uuid "6208b4cf-a545-474c-9fab-6384e1533153")
 			(effects
 				(font
@@ -12661,8 +12606,8 @@
 			)
 		)
 		(pin "{MGT_TX}" output
-			(at 139.7 170.18 0)
-			(uuid "dd68c119-6fc5-4751-85a9-3ce6d4c8440b")
+			(at 139.7 175.26 0)
+			(uuid "ed4635e6-bdba-4cc1-a89e-8e7f8ba2ba5d")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12671,8 +12616,8 @@
 			)
 		)
 		(pin "{MGT_RX}" input
-			(at 104.14 170.18 180)
-			(uuid "6d887f8d-44dd-4447-b500-30ed6f837630")
+			(at 104.14 175.26 180)
+			(uuid "7a529ee1-c72e-4680-89a1-389f5e1bd449")
 			(effects
 				(font
 					(size 1.27 1.27)

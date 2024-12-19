@@ -94,9 +94,9 @@
 			(symbol "FID 1mm_1_0"
 				(circle
 					(center 0 0)
-					(radius 2.54)
+					(radius 0.635)
 					(stroke
-						(width 0)
+						(width 0.762)
 						(type solid)
 						(color 0 0 0 1)
 					)
@@ -106,9 +106,9 @@
 				)
 				(circle
 					(center 0 0)
-					(radius 0.635)
+					(radius 2.54)
 					(stroke
-						(width 0.762)
+						(width 0)
 						(type solid)
 						(color 0 0 0 1)
 					)
@@ -467,6 +467,16 @@
 	)
 	(wire
 		(pts
+			(xy 223.52 83.82) (xy 236.22 83.82)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2208d23f-45f6-48f8-88c1-ae8f283e8047")
+	)
+	(wire
+		(pts
 			(xy 83.82 157.48) (xy 83.82 104.14)
 		)
 		(stroke
@@ -627,6 +637,16 @@
 	)
 	(wire
 		(pts
+			(xy 223.52 71.12) (xy 236.22 71.12)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "466f91bd-e3d0-434b-9296-eedf2b990446")
+	)
+	(wire
+		(pts
 			(xy 147.32 142.24) (xy 160.02 142.24)
 		)
 		(stroke
@@ -634,6 +654,16 @@
 			(type default)
 		)
 		(uuid "498e717f-1a09-499b-80f1-464ca4c38c87")
+	)
+	(wire
+		(pts
+			(xy 215.9 139.7) (xy 236.22 139.7)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "499d86ed-ce8d-4bfb-91e3-b26c56dd8a5c")
 	)
 	(wire
 		(pts
@@ -1107,16 +1137,6 @@
 	)
 	(wire
 		(pts
-			(xy 215.9 83.82) (xy 236.22 83.82)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "bb6782d6-da22-47e9-9c89-d8bb7fef53b8")
-	)
-	(wire
-		(pts
 			(xy 71.12 71.12) (xy 71.12 88.9)
 		)
 		(stroke
@@ -1127,6 +1147,16 @@
 	)
 	(wire
 		(pts
+			(xy 236.22 88.9) (xy 223.52 88.9)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "bcb8792b-b748-407b-aeea-029c4c485db6")
+	)
+	(wire
+		(pts
 			(xy 50.8 175.26) (xy 63.5 175.26)
 		)
 		(stroke
@@ -1134,16 +1164,6 @@
 			(type default)
 		)
 		(uuid "bdb129bb-d490-467c-ae11-45ee054b412f")
-	)
-	(wire
-		(pts
-			(xy 215.9 91.44) (xy 236.22 91.44)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "c2d2de84-eaec-4b02-bb6f-5e3d218e4806")
 	)
 	(wire
 		(pts
@@ -1297,16 +1317,6 @@
 	)
 	(wire
 		(pts
-			(xy 215.9 88.9) (xy 236.22 88.9)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "e7470cb6-2938-40e4-a8b5-1bbb0487e301")
-	)
-	(wire
-		(pts
 			(xy 50.8 185.42) (xy 63.5 185.42)
 		)
 		(stroke
@@ -1357,6 +1367,16 @@
 	)
 	(wire
 		(pts
+			(xy 236.22 91.44) (xy 223.52 91.44)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f5eb2121-42a3-4580-b643-ad98f3177e86")
+	)
+	(wire
+		(pts
 			(xy 50.8 73.66) (xy 63.5 73.66)
 		)
 		(stroke
@@ -1404,6 +1424,16 @@
 			(type default)
 		)
 		(uuid "ff2f4587-738c-4a92-89da-935aa682e520")
+	)
+	(label "MGT_CLK1_N"
+		(at 223.52 119.38 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "002cb314-79d6-4fd1-8815-2d80a8403ab2")
 	)
 	(label "PGA_SCLK"
 		(at 63.5 35.56 180)
@@ -1515,6 +1545,16 @@
 		)
 		(uuid "2e9e5e73-b46a-4f37-af30-ceb1082bacbc")
 	)
+	(label "PERST#"
+		(at 223.52 127 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "306f8f16-7cd1-4d84-a07b-11bcd938c83e")
+	)
 	(label "VCM"
 		(at 63.5 116.84 180)
 		(effects
@@ -1595,6 +1635,16 @@
 		)
 		(uuid "508ef34b-7727-4db2-b061-9e05c6bd050d")
 	)
+	(label "PERST#"
+		(at 223.52 83.82 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "5873aade-7790-4050-90f9-9c874ead2963")
+	)
 	(label "TERM_3"
 		(at 63.5 132.08 180)
 		(effects
@@ -1664,6 +1714,26 @@
 			(justify right bottom)
 		)
 		(uuid "7a621080-09fe-400d-86f5-027e8ec19c81")
+	)
+	(label "MGT_CLK1_N"
+		(at 223.52 88.9 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "7b0576e7-e104-46e9-92e7-a3e90e792d34")
+	)
+	(label "MGT_CLK1_P"
+		(at 223.52 121.92 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "7bc5e68d-9361-45ed-8aba-b920a67f7611")
 	)
 	(label "TRIM_[4..1]"
 		(at 91.44 63.5 0)
@@ -1805,6 +1875,16 @@
 		)
 		(uuid "a7bf0f55-0b48-4a32-a150-ebec432f1699")
 	)
+	(label "MGT_CLK1_P"
+		(at 223.52 91.44 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "aaa9f3f1-a2d0-444c-a2dc-478b84e8b75a")
+	)
 	(label "PGA_CSn_2"
 		(at 63.5 83.82 180)
 		(effects
@@ -1925,6 +2005,16 @@
 		)
 		(uuid "c952fe25-b227-4374-aff1-6ab63a68a477")
 	)
+	(label "VARIANT"
+		(at 223.52 71.12 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "c9d2f277-c24c-4219-9117-cbbf769f747f")
+	)
 	(label "CH4_P"
 		(at 63.5 154.94 180)
 		(effects
@@ -1994,6 +2084,16 @@
 			(justify right bottom)
 		)
 		(uuid "ef98fb63-9ea7-474b-82a0-3cd9124ddbf8")
+	)
+	(label "VARIANT"
+		(at 223.52 139.7 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "f2952a7b-e8dc-4add-b901-2a0ae4e0f098")
 	)
 	(label "PGA_CSn_[4..1]"
 		(at 149.86 43.18 0)
@@ -3587,39 +3687,9 @@
 				(justify right)
 			)
 		)
-		(pin "PCIe_PERST#_R" input
-			(at 215.9 83.82 0)
-			(uuid "8d902600-85bf-4daa-aec9-1b31361215e9")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(pin "M2_PERST#_R" input
+		(pin "PERST#" input
 			(at 215.9 127 0)
 			(uuid "f2766ed0-4577-47ca-bb84-d3dacfe83491")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(pin "MGT_CLK0_N" input
-			(at 215.9 88.9 0)
-			(uuid "922644bc-2b87-434e-ab7e-fff12124dc13")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(pin "MGT_CLK0_P" input
-			(at 215.9 91.44 0)
-			(uuid "02d9f058-ce30-4ddc-9825-fd0c53803d58")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3667,6 +3737,16 @@
 				(justify right)
 			)
 		)
+		(pin "VARIANT" input
+			(at 215.9 139.7 0)
+			(uuid "d012e4f5-2240-4b5a-a738-0e591b590204")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
 		(instances
 			(project "Thunderscope_Rev5"
 				(path "/031d3e2c-42e0-4016-8c32-579d45c83e09"
@@ -3677,7 +3757,7 @@
 	)
 	(sheet
 		(at 236.22 109.22)
-		(size 27.94 27.94)
+		(size 27.94 33.02)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
@@ -3692,7 +3772,7 @@
 			(color 0 0 0 0.0000)
 		)
 		(uuid "1740d22d-1854-48db-a246-157789f9c7e2")
-		(property "Sheetname" "M.2_Key_M"
+		(property "Sheetname" "TS-USB4 Components"
 			(at 236.22 108.5084 0)
 			(effects
 				(font
@@ -3702,7 +3782,7 @@
 			)
 		)
 		(property "Sheetfile" "M2_KEY_M.kicad_sch"
-			(at 236.22 137.7446 0)
+			(at 236.22 142.8246 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3730,7 +3810,7 @@
 				(justify left)
 			)
 		)
-		(pin "M2_PERST#_R" output
+		(pin "PERST#" output
 			(at 236.22 127 180)
 			(uuid "43f69bea-9415-4a49-87d8-3df7b38e4464")
 			(effects
@@ -3773,6 +3853,16 @@
 		(pin "MGT_CLK1_P" output
 			(at 236.22 119.38 180)
 			(uuid "c3133c7d-5389-4168-8a1b-3a5f9fa58c0b")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "VARIANT" output
+			(at 236.22 139.7 180)
+			(uuid "a420ab07-f2db-4dac-bedf-8f20f08941b7")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3886,14 +3976,14 @@
 		(instances
 			(project "Thunderscope_Rev5"
 				(path "/031d3e2c-42e0-4016-8c32-579d45c83e09"
-					(page "4")
+					(page "5")
 				)
 			)
 		)
 	)
 	(sheet
-		(at 236.22 73.66)
-		(size 27.94 27.94)
+		(at 236.22 68.58)
+		(size 27.94 33.02)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
@@ -3907,8 +3997,8 @@
 			(color 0 0 0 0.0000)
 		)
 		(uuid "95dd7985-f010-4388-84bb-3ad8f1a365a2")
-		(property "Sheetname" "PCIe_x4"
-			(at 236.22 72.9484 0)
+		(property "Sheetname" "TS-PCIe Components"
+			(at 236.22 67.8684 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3945,27 +4035,7 @@
 				(justify left)
 			)
 		)
-		(pin "MGT_CLK0_P" output
-			(at 236.22 91.44 180)
-			(uuid "4b64f8ef-2440-4e61-adee-e8e30dc3360f")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(pin "MGT_CLK0_N" output
-			(at 236.22 88.9 180)
-			(uuid "cfb64199-3469-4cee-9daf-250f6d0221a2")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(pin "PCIe_PERST#_R" output
+		(pin "PERST#" output
 			(at 236.22 83.82 180)
 			(uuid "140e107b-5ce3-4e23-9a33-97a653cf2195")
 			(effects
@@ -3988,6 +4058,36 @@
 		(pin "SYNC" bidirectional
 			(at 236.22 76.2 180)
 			(uuid "9fe7045b-cda4-4509-8843-c3839c19e105")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "MGT_CLK1_N" output
+			(at 236.22 88.9 180)
+			(uuid "733622a3-cb26-42ef-ba9a-ecda79d7708e")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "MGT_CLK1_P" output
+			(at 236.22 91.44 180)
+			(uuid "e607c838-fc71-4782-b5bc-269a8b4121ac")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "VARIANT" output
+			(at 236.22 71.12 180)
+			(uuid "c8431302-965e-40df-b8bb-52a77d6e64b3")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4191,7 +4291,7 @@
 		(instances
 			(project "Thunderscope_Rev5"
 				(path "/031d3e2c-42e0-4016-8c32-579d45c83e09"
-					(page "5")
+					(page "4")
 				)
 			)
 		)
