@@ -1,5 +1,5 @@
 sudo apt install git gzip libftdi1-2 libftdi1-dev libhidapi-hidraw0 libhidapi-dev libudev-dev zlib1g-dev cmake pkg-config make g++
-git clone https://github.com/trabucayre/openFPGALoader
+git clone https://github.com/EEVengers/openFPGALoader
 cd openFPGALoader
 mkdir build
 cd build

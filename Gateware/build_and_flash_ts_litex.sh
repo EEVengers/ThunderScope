@@ -1,9 +1,9 @@
-git clone https://github.com/EEVengers/thunderscope_litex.git
+git clone -b ota_support https://github.com/NateMeyer/thunderscope_litex.git
 cd thunderscope_litex
 
 #https://adaptivesupport.amd.com/s/article/76585?language=en_US
-sudo apt install libtinfo-dev
-sudo ln -s /lib/x86_64-linux-gnu/libtinfo.so.6 /lib/x86_64-linux-gnu/libtinfo.so.5
+#sudo apt install libtinfo-dev
+#sudo ln -s /lib/x86_64-linux-gnu/libtinfo.so.6 /lib/x86_64-linux-gnu/libtinfo.so.5
 
 source ~/Xilinx/Vivado/2024.1/settings64.sh 
 export LITEX_ENV_VIVADO=~/Xilinx/Vivado/2024.1
