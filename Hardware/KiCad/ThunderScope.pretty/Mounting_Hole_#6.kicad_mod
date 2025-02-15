@@ -1,0 +1,79 @@
+(footprint "Mounting_Hole_#6"
+	(version 20241228)
+	(generator "pcbnew")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(property "Reference" "REF**"
+		(at 0 -0.5 0)
+		(unlocked yes)
+		(layer "Cmts.User")
+		(hide yes)
+		(uuid "6502f628-43a7-4078-9755-9e02b008cfc5")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "MountingHole_Pad"
+		(at 0 4 0)
+		(unlocked yes)
+		(layer "User.6")
+		(uuid "c3b6c9b4-97ad-4cf7-a331-c65b579d2540")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "12193587-5324-4aee-944a-108ef0d49b19")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" "Mounting Hole with connection"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "f473b92e-13dc-4e87-aa7d-0f1551bcd9c1")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr through_hole exclude_from_bom)
+	(fp_text user "${REFERENCE}"
+		(at 0 5.5 0)
+		(unlocked yes)
+		(layer "User.6")
+		(uuid "411cde8d-ef08-49f6-b348-4c97ce559d51")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "1" thru_hole circle
+		(at 0 0)
+		(size 5.25 5.25)
+		(drill 4.191)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "92dd796c-b2ac-40ba-8018-7e969d3de0fc")
+	)
+	(embedded_fonts no)
+)
