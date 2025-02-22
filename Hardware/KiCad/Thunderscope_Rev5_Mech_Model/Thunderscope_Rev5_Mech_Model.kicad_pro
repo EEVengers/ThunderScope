@@ -464,7 +464,7 @@
   },
   "meta": {
     "filename": "Thunderscope_Rev5_Mech_Model.kicad_pro",
-    "version": 2
+    "version": 3
   },
   "net_settings": {
     "classes": [
@@ -499,10 +499,10 @@
       "gencad": "",
       "idf": "",
       "netlist": "",
-      "plot": "Fabrication Outputs/",
+      "plot": "C:/Users/Aleksa/Documents/KiCad/9.0/projects/Thunderscope_Rev5_Mech_Model/Fabrication Outputs/",
       "pos_files": "",
       "specctra_dsn": "",
-      "step": "",
+      "step": "../../../../ThunderScope/Hardware/Mechanical/Thunderscope_Rev5_Mech_Model.step",
       "svg": "",
       "vrml": ""
     },
@@ -544,19 +544,19 @@
           "show": true
         },
         {
-          "group_by": true,
+          "group_by": false,
           "label": "DNP",
           "name": "${DNP}",
           "show": true
         },
         {
-          "group_by": true,
+          "group_by": false,
           "label": "Exclude from BOM",
           "name": "${EXCLUDE_FROM_BOM}",
           "show": true
         },
         {
-          "group_by": true,
+          "group_by": false,
           "label": "Exclude from Board",
           "name": "${EXCLUDE_FROM_BOARD}",
           "show": true
@@ -601,13 +601,13 @@
           "group_by": false,
           "label": "MANUFACTURER",
           "name": "MANUFACTURER",
-          "show": false
+          "show": true
         },
         {
-          "group_by": false,
+          "group_by": true,
           "label": "MANUFACTURER PART NUMBER",
           "name": "MANUFACTURER PART NUMBER",
-          "show": false
+          "show": true
         },
         {
           "group_by": false,
@@ -643,13 +643,13 @@
           "group_by": false,
           "label": "SUPPLIER 1",
           "name": "SUPPLIER 1",
-          "show": false
+          "show": true
         },
         {
           "group_by": false,
           "label": "SUPPLIER PART NUMBER 1",
           "name": "SUPPLIER PART NUMBER 1",
-          "show": false
+          "show": true
         },
         {
           "group_by": false,
@@ -696,7 +696,7 @@
       ],
       "filter_string": "",
       "group_symbols": true,
-      "include_excluded_from_bom": true,
+      "include_excluded_from_bom": false,
       "name": "",
       "sort_asc": true,
       "sort_field": "Reference"
