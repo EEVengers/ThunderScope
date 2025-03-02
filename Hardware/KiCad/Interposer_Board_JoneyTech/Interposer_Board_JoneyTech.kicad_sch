@@ -1,7 +1,7 @@
 (kicad_sch
-	(version 20241004)
+	(version 20250114)
 	(generator "eeschema")
-	(generator_version "8.99")
+	(generator_version "9.0")
 	(uuid "75699fd7-67dc-40c9-88c9-9718af22fd51")
 	(paper "A4")
 	(lib_symbols
@@ -1522,6 +1522,113 @@
 						)
 					)
 					(number "75"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "Mechanical:MountingHole_Pad"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 1.016)
+				(hide yes)
+			)
+			(exclude_from_sim yes)
+			(in_bom no)
+			(on_board yes)
+			(property "Reference" "H"
+				(at 0 6.35 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "MountingHole_Pad"
+				(at 0 4.445 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Mounting Hole with connection"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "mounting hole"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "MountingHole*Pad*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "MountingHole_Pad_0_1"
+				(circle
+					(center 0 1.27)
+					(radius 1.27)
+					(stroke
+						(width 1.27)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "MountingHole_Pad_1_1"
+				(pin input line
+					(at 0 -2.54 90)
+					(length 2.54)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -3389,7 +3496,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "08b4edd3-3c4e-4ccd-b68b-0d6b74218ccf")
-		(property "Reference" "#PWR?"
+		(property "Reference" "#PWR0103"
 			(at 124.46 159.2072 0)
 			(effects
 				(font
@@ -3436,7 +3543,203 @@
 		(instances
 			(project ""
 				(path "/75699fd7-67dc-40c9-88c9-9718af22fd51"
-					(reference "#PWR?")
+					(reference "#PWR0103")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Adaptor_Board_JoneyTech-altium-import:GND_POWER_GROUND")
+		(at 109.22 35.56 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "14a29262-1578-4f6e-8637-5361ac59a57b")
+		(property "Reference" "#PWR0106"
+			(at 109.22 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 109.22 41.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 109.22 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 109.22 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 109.22 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin ""
+			(uuid "b8735348-6b89-4e29-a62b-3c7b6ea055b1")
+		)
+		(instances
+			(project "Interposer_Board_JoneyTech"
+				(path "/75699fd7-67dc-40c9-88c9-9718af22fd51"
+					(reference "#PWR0106")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Mechanical:MountingHole_Pad")
+		(at 180.34 33.02 0)
+		(unit 1)
+		(exclude_from_sim yes)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "16942e68-5f75-4b5c-b6a4-c38efbc38d9a")
+		(property "Reference" "H2"
+			(at 182.88 30.4799 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "MountingHole"
+			(at 182.88 33.0199 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "ThunderScope:MountingHole_2.2mm_M2_Pad_Via"
+			(at 180.34 33.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 180.34 33.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Mounting Hole with connection"
+			(at 180.34 33.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "54a615b5-067e-42de-85d9-77b8bb70b53d")
+		)
+		(instances
+			(project "Interposer_Board_JoneyTech"
+				(path "/75699fd7-67dc-40c9-88c9-9718af22fd51"
+					(reference "H2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Mechanical:MountingHole_Pad")
+		(at 195.58 20.32 0)
+		(unit 1)
+		(exclude_from_sim yes)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "24244fbf-b362-4c26-a0ba-352f84cfa78a")
+		(property "Reference" "H4"
+			(at 198.12 17.7799 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "MountingHole"
+			(at 198.12 20.3199 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "ThunderScope:MountingHole_2.2mm_M2_Pad_Via"
+			(at 195.58 20.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 195.58 20.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Mounting Hole with connection"
+			(at 195.58 20.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "93ce2240-eceb-447a-afb5-61cbfc71b9c7")
+		)
+		(instances
+			(project "Interposer_Board_JoneyTech"
+				(path "/75699fd7-67dc-40c9-88c9-9718af22fd51"
+					(reference "H4")
 					(unit 1)
 				)
 			)
@@ -3451,7 +3754,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "2c326cef-7737-4d5c-acc9-81efccf38ed0")
-		(property "Reference" "#PWR?"
+		(property "Reference" "#PWR0104"
 			(at 165.1 159.2072 0)
 			(effects
 				(font
@@ -3498,7 +3801,69 @@
 		(instances
 			(project ""
 				(path "/75699fd7-67dc-40c9-88c9-9718af22fd51"
-					(reference "#PWR?")
+					(reference "#PWR0104")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Adaptor_Board_JoneyTech-altium-import:GND_POWER_GROUND")
+		(at 195.58 22.86 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "2d813666-bcf3-4f4b-8243-ea8e1904d473")
+		(property "Reference" "#PWR0109"
+			(at 195.58 22.86 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 195.58 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 195.58 22.86 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 195.58 22.86 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 195.58 22.86 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin ""
+			(uuid "84462ff3-db37-4f62-9886-6c7a4a1a037a")
+		)
+		(instances
+			(project "Interposer_Board_JoneyTech"
+				(path "/75699fd7-67dc-40c9-88c9-9718af22fd51"
+					(reference "#PWR0109")
 					(unit 1)
 				)
 			)
@@ -3531,7 +3896,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Footprint" "PCB EDGE M.2 Key M"
+		(property "Footprint" "ThunderScope:PCB EDGE M.2 Key M"
 			(at 109.22 105.8672 0)
 			(effects
 				(font
@@ -3777,7 +4142,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "3c5ed20d-fe98-4567-9f73-761c27f4edbf")
-		(property "Reference" "#PWR?"
+		(property "Reference" "#PWR0105"
 			(at 81.28 159.2072 0)
 			(effects
 				(font
@@ -3824,7 +4189,141 @@
 		(instances
 			(project ""
 				(path "/75699fd7-67dc-40c9-88c9-9718af22fd51"
-					(reference "#PWR?")
+					(reference "#PWR0105")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Mechanical:MountingHole_Pad")
+		(at 109.22 33.02 0)
+		(unit 1)
+		(exclude_from_sim yes)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "56b7e4d5-c136-4246-9d81-02349b79465c")
+		(property "Reference" "H1"
+			(at 111.76 30.4799 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "MountingHole"
+			(at 111.76 33.0199 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "ThunderScope:MountingHole_2.2mm_M2_Pad_Via"
+			(at 109.22 33.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 109.22 33.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Mounting Hole with connection"
+			(at 109.22 33.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "6f3b9cda-baf1-419e-8956-ebb5176a350f")
+		)
+		(instances
+			(project ""
+				(path "/75699fd7-67dc-40c9-88c9-9718af22fd51"
+					(reference "H1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Mechanical:MountingHole_Pad")
+		(at 165.1 20.32 0)
+		(unit 1)
+		(exclude_from_sim yes)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "658110bc-4148-478f-be06-ea8d707605ac")
+		(property "Reference" "H3"
+			(at 167.64 17.7799 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "MountingHole"
+			(at 167.64 20.3199 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "ThunderScope:MountingHole_2.2mm_M2_Pad_Via"
+			(at 165.1 20.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 165.1 20.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Mounting Hole with connection"
+			(at 165.1 20.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "f1b9f005-561b-49c0-9b42-f22f16a65eac")
+		)
+		(instances
+			(project "Interposer_Board_JoneyTech"
+				(path "/75699fd7-67dc-40c9-88c9-9718af22fd51"
+					(reference "H3")
 					(unit 1)
 				)
 			)
@@ -3839,7 +4338,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "8c8dd653-d089-448f-a22c-4ba77807dcbe")
-		(property "Reference" "#PWR?"
+		(property "Reference" "#PWR0102"
 			(at 93.98 57.6072 0)
 			(effects
 				(font
@@ -3886,7 +4385,69 @@
 		(instances
 			(project ""
 				(path "/75699fd7-67dc-40c9-88c9-9718af22fd51"
-					(reference "#PWR?")
+					(reference "#PWR0102")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Adaptor_Board_JoneyTech-altium-import:GND_POWER_GROUND")
+		(at 180.34 35.56 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "a1872a15-a372-45a8-abd0-3191c3ea4e4c")
+		(property "Reference" "#PWR0107"
+			(at 180.34 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 180.34 41.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 180.34 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 180.34 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 180.34 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin ""
+			(uuid "4662c87a-9c00-4f2a-a2f4-93c26c255b52")
+		)
+		(instances
+			(project "Interposer_Board_JoneyTech"
+				(path "/75699fd7-67dc-40c9-88c9-9718af22fd51"
+					(reference "#PWR0107")
 					(unit 1)
 				)
 			)
@@ -3901,7 +4462,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "a5ab4c1e-62bb-4ab1-a28d-5c96a4ed0685")
-		(property "Reference" "#PWR?"
+		(property "Reference" "#PWR0101"
 			(at 195.58 57.6072 0)
 			(effects
 				(font
@@ -3948,7 +4509,69 @@
 		(instances
 			(project ""
 				(path "/75699fd7-67dc-40c9-88c9-9718af22fd51"
-					(reference "#PWR?")
+					(reference "#PWR0101")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Adaptor_Board_JoneyTech-altium-import:GND_POWER_GROUND")
+		(at 165.1 22.86 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "a62d92c4-4116-4d3f-b58a-12690c85a485")
+		(property "Reference" "#PWR0108"
+			(at 165.1 22.86 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 165.1 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 165.1 22.86 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 165.1 22.86 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 165.1 22.86 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin ""
+			(uuid "40bd1917-5f13-4642-8fa5-0d5eacae304b")
+		)
+		(instances
+			(project "Interposer_Board_JoneyTech"
+				(path "/75699fd7-67dc-40c9-88c9-9718af22fd51"
+					(reference "#PWR0108")
 					(unit 1)
 				)
 			)
@@ -3981,7 +4604,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Footprint" "PCB EDGE M.2 Key M"
+		(property "Footprint" "ThunderScope:PCB EDGE M.2 Key M"
 			(at 180.34 105.8672 0)
 			(effects
 				(font

@@ -1,6 +1,6 @@
 {
   "board": {
-    "active_layer": 1,
+    "active_layer": 25,
     "active_layer_preset": "",
     "auto_track_width": true,
     "hidden_netclasses": [],
@@ -22,50 +22,34 @@
       "keepouts": true,
       "lockedItems": true,
       "otherItems": true,
-      "pads": true,
+      "pads": false,
       "text": true,
       "tracks": true,
       "vias": true,
       "zones": true
     },
     "visible_items": [
-      0,
-      1,
-      2,
-      3,
-      4,
-      5,
-      8,
-      11,
-      12,
-      13,
-      15,
-      16,
-      17,
-      18,
-      19,
-      21,
-      22,
-      23,
-      24,
-      25,
-      26,
-      27,
-      28,
-      29,
-      30,
-      32,
-      33,
-      34,
-      35,
-      36,
-      39,
-      40,
-      41,
-      42,
-      43
+      "vias",
+      "footprint_text",
+      "footprint_anchors",
+      "ratsnest",
+      "grid",
+      "footprints_front",
+      "footprints_back",
+      "footprint_values",
+      "footprint_references",
+      "tracks",
+      "drc_errors",
+      "drawing_sheet",
+      "bitmaps",
+      "pads",
+      "zones",
+      "drc_warnings",
+      "locked_item_shadows",
+      "conflict_shadows",
+      "shapes"
     ],
-    "visible_layers": "ffffffff_fffffffa",
+    "visible_layers": "00000000_02000005",
     "zone_display_mode": 0
   },
   "git": {
@@ -76,7 +60,7 @@
   },
   "meta": {
     "filename": "Thunderscope_Rev5_Mech_Model.kicad_prl",
-    "version": 4
+    "version": 5
   },
   "net_inspector_panel": {
     "col_hidden": [
@@ -127,6 +111,7 @@
     "sort_ascending": true,
     "sorting_column": 0
   },
+  "open_jobsets": [],
   "project": {
     "files": []
   },
