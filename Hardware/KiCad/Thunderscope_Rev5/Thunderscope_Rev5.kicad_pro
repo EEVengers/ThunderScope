@@ -91,9 +91,11 @@
         "lib_footprint_mismatch": "warning",
         "malformed_courtyard": "error",
         "microvia_drill_out_of_range": "error",
+        "mirrored_text_on_front_layer": "warning",
         "missing_courtyard": "ignore",
         "missing_footprint": "warning",
         "net_conflict": "warning",
+        "nonmirrored_text_on_back_layer": "warning",
         "npth_inside_courtyard": "ignore",
         "padstack": "warning",
         "pth_inside_courtyard": "ignore",
@@ -487,7 +489,7 @@
   },
   "meta": {
     "filename": "Thunderscope_Rev5.kicad_pro",
-    "version": 2
+    "version": 3
   },
   "net_settings": {
     "classes": [
@@ -533,7 +535,7 @@
   },
   "schematic": {
     "annotate_start_num": 0,
-    "bom_export_filename": "${PROJECTNAME}.csv",
+    "bom_export_filename": "TS-PCIE.csv",
     "bom_fmt_presets": [],
     "bom_fmt_settings": {
       "field_delimiter": ",",
@@ -715,6 +717,12 @@
           "label": "Description",
           "name": "Description",
           "show": false
+        },
+        {
+          "group_by": false,
+          "label": "SUPPLIER PART NUMBER",
+          "name": "SUPPLIER PART NUMBER",
+          "show": false
         }
       ],
       "filter_string": "",
@@ -722,7 +730,7 @@
       "include_excluded_from_bom": false,
       "name": "",
       "sort_asc": true,
-      "sort_field": "${EXCLUDE_FROM_BOARD}"
+      "sort_field": "Reference"
     },
     "connection_grid_size": 50.0,
     "drawing": {
@@ -806,20 +814,20 @@
       "FPGA"
     ],
     [
-      "038472ca-999a-4bdd-b362-e2f5a3e05e32",
-      "FPGA Power Inputs"
-    ],
-    [
-      "578d4253-e95a-4587-beab-a07f275c1e48",
-      "FPGA Voltage Regs"
-    ],
-    [
       "3dc749f1-bb54-4961-a356-74c6bb9263ea",
       "FPGA IO Banks"
     ],
     [
       "9e3a6ae2-4fbe-4717-950b-8a09c623e35a",
       "FPGA Config and Transceivers"
+    ],
+    [
+      "038472ca-999a-4bdd-b362-e2f5a3e05e32",
+      "FPGA Power Inputs"
+    ],
+    [
+      "578d4253-e95a-4587-beab-a07f275c1e48",
+      "FPGA Voltage Regs"
     ],
     [
       "95dd7985-f010-4388-84bb-3ad8f1a365a2",

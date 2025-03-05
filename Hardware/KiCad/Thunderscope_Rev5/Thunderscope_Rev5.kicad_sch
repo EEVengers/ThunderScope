@@ -1,7 +1,7 @@
 (kicad_sch
-	(version 20241209)
+	(version 20250114)
 	(generator "eeschema")
-	(generator_version "8.99")
+	(generator_version "9.0")
 	(uuid "031d3e2c-42e0-4016-8c32-579d45c83e09")
 	(paper "A4")
 	(title_block
@@ -497,6 +497,16 @@
 	)
 	(wire
 		(pts
+			(xy 223.52 63.5) (xy 236.22 63.5)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2b56d46f-5332-4093-a335-8c207fb1ce8f")
+	)
+	(wire
+		(pts
 			(xy 83.82 25.4) (xy 83.82 78.74)
 		)
 		(stroke
@@ -714,6 +724,16 @@
 			(type default)
 		)
 		(uuid "54a15832-abbb-4c1d-b975-c25972c200d4")
+	)
+	(wire
+		(pts
+			(xy 223.52 66.04) (xy 236.22 66.04)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "57192180-88a7-4ed3-b4fc-8505bbb4491a")
 	)
 	(bus
 		(pts
@@ -1085,6 +1105,16 @@
 		)
 		(uuid "9dd9631c-6a06-4c15-83c8-6bd681130d90")
 	)
+	(wire
+		(pts
+			(xy 215.9 144.78) (xy 236.22 144.78)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9f9cd6fe-e9e7-4f00-b5f3-3c74ab383374")
+	)
 	(bus
 		(pts
 			(xy 167.64 50.8) (xy 149.86 50.8)
@@ -1374,6 +1404,16 @@
 			(type default)
 		)
 		(uuid "f5eb2121-42a3-4580-b643-ad98f3177e86")
+	)
+	(wire
+		(pts
+			(xy 215.9 147.32) (xy 236.22 147.32)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f929679a-914e-4390-b293-f03a9a87d52d")
 	)
 	(wire
 		(pts
@@ -1745,6 +1785,16 @@
 		)
 		(uuid "7d1def9c-e5d2-4de7-9c4f-3e45e022293c")
 	)
+	(label "COMP"
+		(at 223.52 66.04 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "86f8764d-82ef-4baa-847f-d35f0dbe6cad")
+	)
 	(label "TRIM_2"
 		(at 63.5 99.06 180)
 		(effects
@@ -1814,6 +1864,16 @@
 			(justify left bottom)
 		)
 		(uuid "96ebf172-5909-473b-a46b-0fc280beb9f6")
+	)
+	(label "SPRING"
+		(at 223.52 63.5 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "98c236ed-ebe9-4fd5-ad8d-29ae402e6567")
 	)
 	(label "CH3_N"
 		(at 63.5 114.3 180)
@@ -1955,6 +2015,16 @@
 		)
 		(uuid "c0492a03-62bf-4e3a-a7c5-e0507689e49a")
 	)
+	(label "COMP"
+		(at 223.52 144.78 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "c10f510b-e652-4506-97b5-0ddd40d07ca0")
+	)
 	(label "SYNC"
 		(at 223.52 134.62 0)
 		(effects
@@ -2074,6 +2144,16 @@
 			(justify right bottom)
 		)
 		(uuid "e5318b7a-f0ce-4009-861b-e94a47a8b51f")
+	)
+	(label "SPRING"
+		(at 223.52 147.32 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "eb184fdd-e6cf-4399-bf67-1518f6b52c53")
 	)
 	(label "VCM"
 		(at 63.5 73.66 180)
@@ -3747,6 +3827,26 @@
 				(justify right)
 			)
 		)
+		(pin "COMP" output
+			(at 215.9 144.78 0)
+			(uuid "a4151f73-70dc-4d12-8061-6434237cfeaa")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "SPRING" input
+			(at 215.9 147.32 0)
+			(uuid "d665ed4e-32bf-447c-970f-4929a2b38de0")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
 		(instances
 			(project "Thunderscope_Rev5"
 				(path "/031d3e2c-42e0-4016-8c32-579d45c83e09"
@@ -3757,7 +3857,7 @@
 	)
 	(sheet
 		(at 236.22 109.22)
-		(size 27.94 33.02)
+		(size 27.94 40.64)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
@@ -3782,7 +3882,7 @@
 			)
 		)
 		(property "Sheetfile" "M2_KEY_M.kicad_sch"
-			(at 236.22 142.8246 0)
+			(at 236.22 150.4446 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3863,6 +3963,26 @@
 		(pin "VARIANT" output
 			(at 236.22 139.7 180)
 			(uuid "a420ab07-f2db-4dac-bedf-8f20f08941b7")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "SPRING" output
+			(at 236.22 147.32 180)
+			(uuid "ae174397-a3db-411a-bc75-468485bbd8cc")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "COMP" input
+			(at 236.22 144.78 180)
+			(uuid "1a24a9dc-4413-4ccb-8cd5-9bc625b82696")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3982,8 +4102,8 @@
 		)
 	)
 	(sheet
-		(at 236.22 68.58)
-		(size 27.94 33.02)
+		(at 236.22 60.96)
+		(size 27.94 40.64)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
@@ -3998,7 +4118,7 @@
 		)
 		(uuid "95dd7985-f010-4388-84bb-3ad8f1a365a2")
 		(property "Sheetname" "TS-PCIe Components"
-			(at 236.22 67.8684 0)
+			(at 236.22 60.2484 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4088,6 +4208,26 @@
 		(pin "VARIANT" output
 			(at 236.22 71.12 180)
 			(uuid "c8431302-965e-40df-b8bb-52a77d6e64b3")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "COMP" input
+			(at 236.22 66.04 180)
+			(uuid "10dd7057-3e70-4618-b830-771f944159fe")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "SPRING" output
+			(at 236.22 63.5 180)
+			(uuid "9ae95f8a-045a-4ec1-a1af-93881c54a358")
 			(effects
 				(font
 					(size 1.27 1.27)
