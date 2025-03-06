@@ -2203,17 +2203,6 @@
 		(symbol "BNC JACK R/A_1_0"
 			(circle
 				(center 0 0)
-				(radius 2.54)
-				(stroke
-					(width 0)
-					(type solid)
-				)
-				(fill
-					(type none)
-				)
-			)
-			(circle
-				(center 0 0)
 				(radius 0.635)
 				(stroke
 					(width -0.0001)
@@ -2221,6 +2210,17 @@
 				)
 				(fill
 					(type outline)
+				)
+			)
+			(circle
+				(center 0 0)
+				(radius 2.54)
+				(stroke
+					(width 0)
+					(type solid)
+				)
+				(fill
+					(type none)
 				)
 			)
 			(pin passive line
@@ -4746,6 +4746,210 @@
 		)
 		(embedded_fonts no)
 	)
+	(symbol "CAP 22nF 100V C0G 0805"
+		(pin_numbers
+			(hide yes)
+		)
+		(pin_names
+			(hide yes)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(property "Reference" "C"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "22nF"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Thunderscope_Rev5:GEN_C_0805"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "PACKAGE" "0805"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "VOLTAGE RATING" "100V"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER 1" "Mouser"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER PART NUMBER 1" "81-GRM21B5C2A223JA1L"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "HOUSE PART NUMBER" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "Murata"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" "GRM21B5C2A223JA01L"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(symbol "CAP 22nF 100V C0G 0805_1_0"
+			(polyline
+				(pts
+					(xy 0 2.54) (xy 0 0.5)
+				)
+				(stroke
+					(width 0)
+					(type solid)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 0 -2.54) (xy 0 -0.5)
+				)
+				(stroke
+					(width 0)
+					(type solid)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 2 0.5) (xy -2 0.5)
+				)
+				(stroke
+					(width 0)
+					(type solid)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 2 -0.5) (xy -2 -0.5)
+				)
+				(stroke
+					(width 0)
+					(type solid)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(pin passive line
+				(at 0 5.08 270)
+				(length 2.54)
+				(name "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 0 -5.08 90)
+				(length 2.54)
+				(name "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
 	(symbol "CAP 22nF 100V X7R 0603"
 		(pin_numbers
 			(hide yes)
@@ -6387,6 +6591,219 @@
 		)
 		(embedded_fonts no)
 	)
+	(symbol "CAP 8pF 50V C0G 0402"
+		(pin_numbers
+			(hide yes)
+		)
+		(pin_names
+			(hide yes)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(property "Reference" "C"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "8pF"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Thunderscope_Rev5:GEN_C_0402"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "PACKAGE" "0402"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER 1" "Mouser"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER PART NUMBER 1" "80-CBR04C809B5GAC"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "VOLTAGE RATING" "50V"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "TEMPERATURE COEFFICIENT" "C0G"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "KEMET"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "HOUSE PART NUMBER" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" "CBR04C809B5GAC"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(symbol "CAP 8pF 50V C0G 0402_1_0"
+			(polyline
+				(pts
+					(xy -2 0.5) (xy 2 0.5)
+				)
+				(stroke
+					(width 0)
+					(type solid)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy -2 -0.5) (xy 2 -0.5)
+				)
+				(stroke
+					(width 0)
+					(type solid)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 0 2.54) (xy 0 0.5)
+				)
+				(stroke
+					(width 0)
+					(type solid)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 0 -2.54) (xy 0 -0.5)
+				)
+				(stroke
+					(width 0)
+					(type solid)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(pin passive line
+				(at 0 5.08 270)
+				(length 2.54)
+				(name "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 0 -5.08 90)
+				(length 2.54)
+				(name "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
 	(symbol "CAP TRIMMER 2-6PF 100V"
 		(pin_numbers
 			(hide yes)
@@ -6415,7 +6832,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Footprint" "EW_TRIMCAP"
+		(property "Footprint" "Thunderscope_Rev5:EW_TRIMCAP"
 			(at 8.128 3.81 0)
 			(effects
 				(font
@@ -14640,18 +15057,6 @@
 		(symbol "IC DIGIPOT QUAD MCP4452-104E_1_0"
 			(polyline
 				(pts
-					(xy 11.43 -7.62) (xy 12.7 -8.89) (xy 13.97 -6.35) (xy 15.24 -8.89) (xy 16.51 -6.35) (xy 17.78 -8.89)
-				)
-				(stroke
-					(width 0)
-					(type solid)
-				)
-				(fill
-					(type none)
-				)
-			)
-			(polyline
-				(pts
 					(xy 11.43 -7.62) (xy 8.89 -7.62)
 				)
 				(stroke
@@ -14664,7 +15069,7 @@
 			)
 			(polyline
 				(pts
-					(xy 11.43 -12.7) (xy 12.7 -13.97) (xy 13.97 -11.43) (xy 15.24 -13.97) (xy 16.51 -11.43) (xy 17.78 -13.97)
+					(xy 11.43 -7.62) (xy 12.7 -8.89) (xy 13.97 -6.35) (xy 15.24 -8.89) (xy 16.51 -6.35) (xy 17.78 -8.89)
 				)
 				(stroke
 					(width 0)
@@ -14688,7 +15093,7 @@
 			)
 			(polyline
 				(pts
-					(xy 11.43 -17.78) (xy 12.7 -19.05) (xy 13.97 -16.51) (xy 15.24 -19.05) (xy 16.51 -16.51) (xy 17.78 -19.05)
+					(xy 11.43 -12.7) (xy 12.7 -13.97) (xy 13.97 -11.43) (xy 15.24 -13.97) (xy 16.51 -11.43) (xy 17.78 -13.97)
 				)
 				(stroke
 					(width 0)
@@ -14701,6 +15106,18 @@
 			(polyline
 				(pts
 					(xy 11.43 -17.78) (xy 8.89 -17.78)
+				)
+				(stroke
+					(width 0)
+					(type solid)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 11.43 -17.78) (xy 12.7 -19.05) (xy 13.97 -16.51) (xy 15.24 -19.05) (xy 16.51 -16.51) (xy 17.78 -19.05)
 				)
 				(stroke
 					(width 0)
@@ -24209,9 +24626,9 @@
 				)
 			)
 			(arc
-				(start 1.27 1.27)
-				(mid 2.168 0.898)
-				(end 2.54 0)
+				(start 0 0)
+				(mid 0.372 0.898)
+				(end 1.27 1.27)
 				(stroke
 					(width 0)
 					(type solid)
@@ -24221,9 +24638,9 @@
 				)
 			)
 			(arc
-				(start 0 0)
-				(mid 0.372 0.898)
-				(end 1.27 1.27)
+				(start 1.27 1.27)
+				(mid 2.168 0.898)
+				(end 2.54 0)
 				(stroke
 					(width 0)
 					(type solid)
@@ -24467,18 +24884,6 @@
 				)
 			)
 			(arc
-				(start 1.27 1.27)
-				(mid 2.168 0.898)
-				(end 2.54 0)
-				(stroke
-					(width 0)
-					(type solid)
-				)
-				(fill
-					(type none)
-				)
-			)
-			(arc
 				(start 0 0)
 				(mid 0.372 0.898)
 				(end 1.27 1.27)
@@ -24491,9 +24896,9 @@
 				)
 			)
 			(arc
-				(start 3.81 1.27)
-				(mid 4.708 0.898)
-				(end 5.08 0)
+				(start 1.27 1.27)
+				(mid 2.168 0.898)
+				(end 2.54 0)
 				(stroke
 					(width 0)
 					(type solid)
@@ -24506,6 +24911,18 @@
 				(start 2.54 0)
 				(mid 2.912 0.898)
 				(end 3.81 1.27)
+				(stroke
+					(width 0)
+					(type solid)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(arc
+				(start 3.81 1.27)
+				(mid 4.708 0.898)
+				(end 5.08 0)
 				(stroke
 					(width 0)
 					(type solid)
@@ -35126,7 +35543,7 @@
 			)
 			(polyline
 				(pts
-					(xy -1.27 0) (xy 1.27 0)
+					(xy -1.27 0) (xy -2.54 -1.27)
 				)
 				(stroke
 					(width 0)
@@ -35138,7 +35555,7 @@
 			)
 			(polyline
 				(pts
-					(xy -1.27 0) (xy -2.54 -1.27)
+					(xy -1.27 0) (xy 1.27 0)
 				)
 				(stroke
 					(width 0)
@@ -35312,17 +35729,6 @@
 		(symbol "UFL Jack SMD_1_0"
 			(circle
 				(center 0 0)
-				(radius 2.54)
-				(stroke
-					(width 0)
-					(type solid)
-				)
-				(fill
-					(type none)
-				)
-			)
-			(circle
-				(center 0 0)
 				(radius 0.635)
 				(stroke
 					(width -0.0001)
@@ -35330,6 +35736,17 @@
 				)
 				(fill
 					(type outline)
+				)
+			)
+			(circle
+				(center 0 0)
+				(radius 2.54)
+				(stroke
+					(width 0)
+					(type solid)
+				)
+				(fill
+					(type none)
 				)
 			)
 			(pin passive line

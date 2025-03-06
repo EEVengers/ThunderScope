@@ -2469,7 +2469,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "Thunderscope_Rev5:CAP 22nF 100V X7R 0603"
+		(symbol "Thunderscope_Rev5:CAP 22nF 100V C0G 0805"
 			(pin_numbers
 				(hide yes)
 			)
@@ -2495,7 +2495,7 @@
 					)
 				)
 			)
-			(property "Footprint" "Thunderscope_Rev5:GEN_C_0603"
+			(property "Footprint" "Thunderscope_Rev5:GEN_C_0805"
 				(at 0 0 0)
 				(effects
 					(font
@@ -2522,7 +2522,7 @@
 					(hide yes)
 				)
 			)
-			(property "PACKAGE" "0603"
+			(property "PACKAGE" "0805"
 				(at 0 0 0)
 				(effects
 					(font
@@ -2549,7 +2549,7 @@
 					(hide yes)
 				)
 			)
-			(property "SUPPLIER PART NUMBER 1" "81-GCM188R72A223KA7D"
+			(property "SUPPLIER PART NUMBER 1" "81-GRM21B5C2A223JA1L"
 				(at 0 0 0)
 				(effects
 					(font
@@ -2576,7 +2576,7 @@
 					(hide yes)
 				)
 			)
-			(property "MANUFACTURER PART NUMBER" "GCM188R72A223KA37D"
+			(property "MANUFACTURER PART NUMBER" "GRM21B5C2A223JA01L"
 				(at 0 0 0)
 				(effects
 					(font
@@ -2585,7 +2585,7 @@
 					(hide yes)
 				)
 			)
-			(symbol "CAP 22nF 100V X7R 0603_1_0"
+			(symbol "CAP 22nF 100V C0G 0805_1_0"
 				(polyline
 					(pts
 						(xy 0 2.54) (xy 0 0.5)
@@ -2877,6 +2877,219 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "Thunderscope_Rev5:CAP 8pF 50V C0G 0402"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "C"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "8pF"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "Thunderscope_Rev5:GEN_C_0402"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "PACKAGE" "0402"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "SUPPLIER 1" "Mouser"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "SUPPLIER PART NUMBER 1" "80-CBR04C809B5GAC"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "VOLTAGE RATING" "50V"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "TEMPERATURE COEFFICIENT" "C0G"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MANUFACTURER" "KEMET"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "HOUSE PART NUMBER" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MANUFACTURER PART NUMBER" "CBR04C809B5GAC"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "CAP 8pF 50V C0G 0402_1_0"
+				(polyline
+					(pts
+						(xy -2 0.5) (xy 2 0.5)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2 -0.5) (xy 2 -0.5)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 2.54) (xy 0 0.5)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 -2.54) (xy 0 -0.5)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin passive line
+					(at 0 5.08 270)
+					(length 2.54)
+					(name "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -5.08 90)
+					(length 2.54)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "Thunderscope_Rev5:CAP TRIMMER 2-6PF 100V"
 			(pin_numbers
 				(hide yes)
@@ -2905,7 +3118,7 @@
 					(justify left bottom)
 				)
 			)
-			(property "Footprint" "EW_TRIMCAP"
+			(property "Footprint" "Thunderscope_Rev5:EW_TRIMCAP"
 				(at 8.128 3.81 0)
 				(effects
 					(font
@@ -8771,7 +8984,7 @@
 		)
 		(uuid "1e4c8f71-8ed6-42b3-ad79-8d434c79bc85")
 	)
-	(text "TODO: Change Coupling Cap to 0805 C0G (GRM21B5C2A223JA01L)"
+	(text "DONE: Change Coupling Cap to 0805 C0G (GRM21B5C2A223JA01L)"
 		(exclude_from_sim no)
 		(at 25.4 220.98 0)
 		(effects
@@ -8779,7 +8992,7 @@
 				(size 1.27 1.27)
 				(thickness 0.254)
 				(bold yes)
-				(color 255 0 0 1)
+				(color 0 194 194 1)
 			)
 			(justify left bottom)
 		)
@@ -8944,15 +9157,15 @@
 		)
 		(uuid "86434921-938d-456d-94b0-faefdce322b5")
 	)
-	(text "TODO: Change second 12pF to something lower and add trimcap in parallel\n"
+	(text "DONE: Change second 12pF to something lower and add trimcap in parallel\n"
 		(exclude_from_sim no)
-		(at 302.26 68.58 0)
+		(at 293.37 67.31 0)
 		(effects
 			(font
 				(size 1.27 1.27)
 				(thickness 0.254)
 				(bold yes)
-				(color 255 0 0 1)
+				(color 0 194 194 1)
 			)
 			(justify left)
 		)
@@ -16383,7 +16596,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "EW_TRIMCAP"
+		(property "Footprint" "Thunderscope_Rev5:EW_TRIMCAP"
 			(at 323.088 46.99 0)
 			(effects
 				(font
@@ -20368,7 +20581,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Thunderscope_Rev5:CAP 12pF 50V C0G 0402")
+		(lib_id "Thunderscope_Rev5:CAP 8pF 50V C0G 0402")
 		(at 304.8 50.8 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -20385,13 +20598,13 @@
 				(justify left top)
 			)
 		)
-		(property "Value" "12pF"
-			(at 311.15 53.34 90)
+		(property "Value" "8pF"
+			(at 311.15 50.8 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left bottom)
+				(justify bottom)
 			)
 		)
 		(property "Footprint" "Thunderscope_Rev5:GEN_C_0402"
@@ -20441,7 +20654,7 @@
 				(hide yes)
 			)
 		)
-		(property "SUPPLIER PART NUMBER 1" "80-CBR04C120F5G"
+		(property "SUPPLIER PART NUMBER 1" "80-CBR04C809B5GAC"
 			(at 302.546 46.292 0)
 			(effects
 				(font
@@ -20491,7 +20704,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUFACTURER PART NUMBER" "CBR04C120F5GAC"
+		(property "MANUFACTURER PART NUMBER" "CBR04C809B5GAC"
 			(at 302.546 45.212 0)
 			(effects
 				(font
@@ -26666,7 +26879,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Thunderscope_Rev5:CAP 22nF 100V X7R 0603")
+		(lib_id "Thunderscope_Rev5:CAP 22nF 100V C0G 0805")
 		(at 68.58 182.88 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -26692,7 +26905,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Footprint" "Thunderscope_Rev5:GEN_C_0603"
+		(property "Footprint" "Thunderscope_Rev5:GEN_C_0805"
 			(at 68.58 182.88 0)
 			(effects
 				(font
@@ -26719,7 +26932,7 @@
 				(hide yes)
 			)
 		)
-		(property "PACKAGE" "0603"
+		(property "PACKAGE" "0805"
 			(at 66.326 177.292 0)
 			(effects
 				(font
@@ -26749,7 +26962,7 @@
 				(hide yes)
 			)
 		)
-		(property "SUPPLIER PART NUMBER 1" "81-GCM188R72A223KA7D"
+		(property "SUPPLIER PART NUMBER 1" "81-GRM21B5C2A223JA1L"
 			(at 66.326 177.292 0)
 			(effects
 				(font
@@ -26779,7 +26992,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUFACTURER PART NUMBER" "GCM188R72A223KA37D"
+		(property "MANUFACTURER PART NUMBER" "GRM21B5C2A223JA01L"
 			(at 66.326 177.292 0)
 			(effects
 				(font
