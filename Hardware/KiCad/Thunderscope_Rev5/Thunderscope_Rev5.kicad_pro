@@ -48,7 +48,7 @@
         "silk_text_thickness": 0.1,
         "silk_text_upright": false,
         "zones": {
-          "min_clearance": 0.5
+          "min_clearance": 0.0
         }
       },
       "diff_pair_dimensions": [
@@ -514,6 +514,42 @@
         "via_diameter": 0.4064,
         "via_drill": 0.2032,
         "wire_width": 6
+      },
+      {
+        "clearance": 0.1524,
+        "name": "FE_50Z",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "priority": 3,
+        "schematic_color": "rgba(0, 0, 0, 0.000)",
+        "track_width": 0.213,
+        "via_diameter": 2.0,
+        "via_drill": 1.0
+      },
+      {
+        "name": "LVDS",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "priority": 0,
+        "schematic_color": "rgba(0, 0, 0, 0.000)",
+        "via_diameter": 0.4064,
+        "via_drill": 0.2032
+      },
+      {
+        "name": "PCIe",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "priority": 2,
+        "schematic_color": "rgba(0, 0, 0, 0.000)",
+        "via_diameter": 0.4064,
+        "via_drill": 0.2032
+      },
+      {
+        "clearance": 0.1524,
+        "name": "PWR",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "priority": 1,
+        "schematic_color": "rgba(0, 0, 0, 0.000)",
+        "track_width": 0.254,
+        "via_diameter": 0.4064,
+        "via_drill": 0.2032
       }
     ],
     "meta": {
@@ -521,7 +557,76 @@
     },
     "net_colors": null,
     "netclass_assignments": null,
-    "netclass_patterns": []
+    "netclass_patterns": [
+      {
+        "netclass": "FE_50Z",
+        "pattern": "*/TERM_1M*"
+      },
+      {
+        "netclass": "FE_50Z",
+        "pattern": "*/BNC_IN"
+      },
+      {
+        "netclass": "FE_50Z",
+        "pattern": "*/TERM_50Z*"
+      },
+      {
+        "netclass": "FE_50Z",
+        "pattern": "*/ATTEN_IN"
+      },
+      {
+        "netclass": "FE_50Z",
+        "pattern": "*/ATTEN_1X"
+      },
+      {
+        "netclass": "FE_50Z",
+        "pattern": "*/ATTEN_50X*"
+      },
+      {
+        "netclass": "FE_50Z",
+        "pattern": "*/ATTEN_OUT*"
+      },
+      {
+        "netclass": "FE_50Z",
+        "pattern": "*/BUF_IN"
+      },
+      {
+        "netclass": "PCIe",
+        "pattern": "*_PER*"
+      },
+      {
+        "netclass": "PCIe",
+        "pattern": "*_PET*"
+      },
+      {
+        "netclass": "PCIe",
+        "pattern": "*_REFCLK*"
+      },
+      {
+        "netclass": "PWR",
+        "pattern": "+*"
+      },
+      {
+        "netclass": "PWR",
+        "pattern": "-*"
+      },
+      {
+        "netclass": "PWR",
+        "pattern": "GND"
+      },
+      {
+        "netclass": "LVDS",
+        "pattern": "/ADC/*_N"
+      },
+      {
+        "netclass": "LVDS",
+        "pattern": "/ADC/*_P"
+      },
+      {
+        "netclass": "LVDS",
+        "pattern": "*USRIO*"
+      }
+    ]
   },
   "pcbnew": {
     "last_paths": {
