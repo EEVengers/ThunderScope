@@ -740,6 +740,210 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "Thunderscope_Rev5:CAP 1uF 25V X5R 0402"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "C"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "1uF"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "Thunderscope_Rev5:GEN_C_0402"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "PACKAGE" "0402"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "VOLTAGE RATING" "25V"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "SUPPLIER 1" "Mouser"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "SUPPLIER PART NUMBER 1" "81-GRM155R61E105KA2D"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "HOUSE PART NUMBER" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MANUFACTURER" "Murata"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MANUFACTURER PART NUMBER" "GRM155R61E105KA12D"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "CAP 1uF 25V X5R 0402_1_0"
+				(polyline
+					(pts
+						(xy 0 2.54) (xy 0 0.5)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 -2.54) (xy 0 -0.5)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2 0.5) (xy -2 0.5)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2 -0.5) (xy -2 -0.5)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin passive line
+					(at 0 5.08 270)
+					(length 2.54)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -5.08 90)
+					(length 2.54)
+					(name "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "Thunderscope_Rev5:GND"
 			(power)
 			(pin_numbers
@@ -2355,7 +2559,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "Thunderscope_Rev5:RES 10K OHM 1% 1/10W 0402"
+		(symbol "Thunderscope_Rev5:RES 4.7K OHM 1% 1/10W 0402"
 			(pin_numbers
 				(hide yes)
 			)
@@ -2373,7 +2577,7 @@
 					)
 				)
 			)
-			(property "Value" "10K"
+			(property "Value" "4.7K"
 				(at 0 0 0)
 				(effects
 					(font
@@ -2435,7 +2639,7 @@
 					(hide yes)
 				)
 			)
-			(property "SUPPLIER PART NUMBER 1" "667-ERJ-2RKF1002X"
+			(property "SUPPLIER PART NUMBER 1" "667-ERJ-2RKF4701X"
 				(at 0 0 0)
 				(effects
 					(font
@@ -2462,7 +2666,7 @@
 					(hide yes)
 				)
 			)
-			(property "MANUFACTURER PART NUMBER" "ERJ-2RKF1002X"
+			(property "MANUFACTURER PART NUMBER" "ERJ-2RKF4701X"
 				(at 0 0 0)
 				(effects
 					(font
@@ -2471,7 +2675,7 @@
 					(hide yes)
 				)
 			)
-			(symbol "RES 10K OHM 1% 1/10W 0402_1_0"
+			(symbol "RES 4.7K OHM 1% 1/10W 0402_1_0"
 				(rectangle
 					(start 3 1.056)
 					(end -3 -0.976)
@@ -2486,14 +2690,14 @@
 				(pin passive line
 					(at -5.08 0 0)
 					(length 2)
-					(name "2"
+					(name "1"
 						(effects
 							(font
 								(size 1.27 1.27)
 							)
 						)
 					)
-					(number "2"
+					(number "1"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -2504,14 +2708,14 @@
 				(pin passive line
 					(at 5.08 0 180)
 					(length 2)
-					(name "1"
+					(name "2"
 						(effects
 							(font
 								(size 1.27 1.27)
 							)
 						)
 					)
-					(number "1"
+					(number "2"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -4866,7 +5070,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Thunderscope_Rev5:RES 10K OHM 1% 1/10W 0402")
+		(lib_id "Thunderscope_Rev5:RES 4.7K OHM 1% 1/10W 0402")
 		(at 81.28 55.88 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -4882,7 +5086,7 @@
 				)
 			)
 		)
-		(property "Value" "10K"
+		(property "Value" "4.7K"
 			(at 81.28 55.88 0)
 			(effects
 				(font
@@ -4947,7 +5151,7 @@
 				(hide yes)
 			)
 		)
-		(property "SUPPLIER PART NUMBER 1" "667-ERJ-2RKF1002X"
+		(property "SUPPLIER PART NUMBER 1" "667-ERJ-2RKF4701X"
 			(at 75.692 56.856 0)
 			(effects
 				(font
@@ -4977,7 +5181,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUFACTURER PART NUMBER" "ERJ-2RKF1002X"
+		(property "MANUFACTURER PART NUMBER" "ERJ-2RKF4701X"
 			(at 75.692 57.15 0)
 			(effects
 				(font
@@ -4985,14 +5189,6 @@
 				)
 				(justify left bottom)
 				(hide yes)
-			)
-		)
-		(property "ALTIUM_VALUE" ""
-			(at 81.28 55.88 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
 			)
 		)
 		(pin "1"
@@ -5224,7 +5420,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Thunderscope_Rev5:RES 10K OHM 1% 1/10W 0402")
+		(lib_id "Thunderscope_Rev5:RES 4.7K OHM 1% 1/10W 0402")
 		(at 50.8 55.88 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -5240,7 +5436,7 @@
 				)
 			)
 		)
-		(property "Value" "10K"
+		(property "Value" "4.7K"
 			(at 50.8 55.88 0)
 			(effects
 				(font
@@ -5305,7 +5501,7 @@
 				(hide yes)
 			)
 		)
-		(property "SUPPLIER PART NUMBER 1" "667-ERJ-2RKF1002X"
+		(property "SUPPLIER PART NUMBER 1" "667-ERJ-2RKF4701X"
 			(at 45.212 56.856 0)
 			(effects
 				(font
@@ -5335,7 +5531,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUFACTURER PART NUMBER" "ERJ-2RKF1002X"
+		(property "MANUFACTURER PART NUMBER" "ERJ-2RKF4701X"
 			(at 45.212 57.15 0)
 			(effects
 				(font
@@ -5343,14 +5539,6 @@
 				)
 				(justify left bottom)
 				(hide yes)
-			)
-		)
-		(property "ALTIUM_VALUE" ""
-			(at 50.8 55.88 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
 			)
 		)
 		(pin "2"
@@ -5375,7 +5563,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Thunderscope_Rev5:CAP 100nF 16V X7R 0402")
+		(lib_id "Thunderscope_Rev5:CAP 1uF 25V X5R 0402")
 		(at 111.76 139.7 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -5392,7 +5580,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Value" "100nF"
+		(property "Value" "1uF"
 			(at 114.014 141.986 0)
 			(effects
 				(font
@@ -5438,7 +5626,7 @@
 				(hide yes)
 			)
 		)
-		(property "VOLTAGE RATING" "16V"
+		(property "VOLTAGE RATING" "25V"
 			(at 109.506 134.112 0)
 			(effects
 				(font
@@ -5458,7 +5646,7 @@
 				(hide yes)
 			)
 		)
-		(property "SUPPLIER PART NUMBER 1" "81-GCM155R71C104KA5D"
+		(property "SUPPLIER PART NUMBER 1" "81-GRM155R61E105KA2D"
 			(at 109.506 134.112 0)
 			(effects
 				(font
@@ -5468,7 +5656,7 @@
 				(hide yes)
 			)
 		)
-		(property "HOUSE PART NUMBER" "C-100nF-0402-002"
+		(property "HOUSE PART NUMBER" ""
 			(at 109.506 134.112 0)
 			(effects
 				(font
@@ -5488,7 +5676,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUFACTURER PART NUMBER" "GCM155R71C104KA55D"
+		(property "MANUFACTURER PART NUMBER" "GRM155R61E105KA12D"
 			(at 109.506 134.112 0)
 			(effects
 				(font
@@ -5496,14 +5684,6 @@
 				)
 				(justify left bottom)
 				(hide yes)
-			)
-		)
-		(property "ALTIUM_VALUE" ""
-			(at 111.76 139.7 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
 			)
 		)
 		(pin "1"
@@ -5528,7 +5708,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Thunderscope_Rev5:RES 10K OHM 1% 1/10W 0402")
+		(lib_id "Thunderscope_Rev5:RES 4.7K OHM 1% 1/10W 0402")
 		(at 76.2 55.88 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -5544,7 +5724,7 @@
 				)
 			)
 		)
-		(property "Value" "10K"
+		(property "Value" "4.7K"
 			(at 76.2 55.88 0)
 			(effects
 				(font
@@ -5609,7 +5789,7 @@
 				(hide yes)
 			)
 		)
-		(property "SUPPLIER PART NUMBER 1" "667-ERJ-2RKF1002X"
+		(property "SUPPLIER PART NUMBER 1" "667-ERJ-2RKF4701X"
 			(at 70.612 56.856 0)
 			(effects
 				(font
@@ -5639,7 +5819,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUFACTURER PART NUMBER" "ERJ-2RKF1002X"
+		(property "MANUFACTURER PART NUMBER" "ERJ-2RKF4701X"
 			(at 70.612 57.15 0)
 			(effects
 				(font
@@ -5647,14 +5827,6 @@
 				)
 				(justify left bottom)
 				(hide yes)
-			)
-		)
-		(property "ALTIUM_VALUE" ""
-			(at 76.2 55.88 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
 			)
 		)
 		(pin "1"
@@ -6253,7 +6425,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Thunderscope_Rev5:RES 10K OHM 1% 1/10W 0402")
+		(lib_id "Thunderscope_Rev5:RES 4.7K OHM 1% 1/10W 0402")
 		(at 45.72 55.88 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -6269,7 +6441,7 @@
 				)
 			)
 		)
-		(property "Value" "10K"
+		(property "Value" "4.7K"
 			(at 45.72 55.88 0)
 			(effects
 				(font
@@ -6334,7 +6506,7 @@
 				(hide yes)
 			)
 		)
-		(property "SUPPLIER PART NUMBER 1" "667-ERJ-2RKF1002X"
+		(property "SUPPLIER PART NUMBER 1" "667-ERJ-2RKF4701X"
 			(at 40.132 56.856 0)
 			(effects
 				(font
@@ -6364,7 +6536,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUFACTURER PART NUMBER" "ERJ-2RKF1002X"
+		(property "MANUFACTURER PART NUMBER" "ERJ-2RKF4701X"
 			(at 40.132 57.15 0)
 			(effects
 				(font
@@ -6372,14 +6544,6 @@
 				)
 				(justify left bottom)
 				(hide yes)
-			)
-		)
-		(property "ALTIUM_VALUE" ""
-			(at 45.72 55.88 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
 			)
 		)
 		(pin "2"
@@ -7421,7 +7585,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Thunderscope_Rev5:CAP 100nF 16V X7R 0402")
+		(lib_id "Thunderscope_Rev5:CAP 1uF 25V X5R 0402")
 		(at 121.92 134.62 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -7438,7 +7602,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Value" "100nF"
+		(property "Value" "1uF"
 			(at 124.174 136.906 0)
 			(effects
 				(font
@@ -7484,7 +7648,7 @@
 				(hide yes)
 			)
 		)
-		(property "VOLTAGE RATING" "16V"
+		(property "VOLTAGE RATING" "25V"
 			(at 119.666 129.032 0)
 			(effects
 				(font
@@ -7504,7 +7668,7 @@
 				(hide yes)
 			)
 		)
-		(property "SUPPLIER PART NUMBER 1" "81-GCM155R71C104KA5D"
+		(property "SUPPLIER PART NUMBER 1" "81-GRM155R61E105KA2D"
 			(at 119.666 129.032 0)
 			(effects
 				(font
@@ -7514,7 +7678,7 @@
 				(hide yes)
 			)
 		)
-		(property "HOUSE PART NUMBER" "C-100nF-0402-002"
+		(property "HOUSE PART NUMBER" ""
 			(at 119.666 129.032 0)
 			(effects
 				(font
@@ -7534,7 +7698,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUFACTURER PART NUMBER" "GCM155R71C104KA55D"
+		(property "MANUFACTURER PART NUMBER" "GRM155R61E105KA12D"
 			(at 119.666 129.032 0)
 			(effects
 				(font
@@ -7542,14 +7706,6 @@
 				)
 				(justify left bottom)
 				(hide yes)
-			)
-		)
-		(property "ALTIUM_VALUE" ""
-			(at 121.92 134.62 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
 			)
 		)
 		(pin "2"
@@ -7704,7 +7860,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Thunderscope_Rev5:CAP 100nF 16V X7R 0402")
+		(lib_id "Thunderscope_Rev5:CAP 1uF 25V X5R 0402")
 		(at 233.68 139.7 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -7721,7 +7877,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Value" "100nF"
+		(property "Value" "1uF"
 			(at 235.934 141.986 0)
 			(effects
 				(font
@@ -7767,7 +7923,7 @@
 				(hide yes)
 			)
 		)
-		(property "VOLTAGE RATING" "16V"
+		(property "VOLTAGE RATING" "25V"
 			(at 231.426 134.112 0)
 			(effects
 				(font
@@ -7787,7 +7943,7 @@
 				(hide yes)
 			)
 		)
-		(property "SUPPLIER PART NUMBER 1" "81-GCM155R71C104KA5D"
+		(property "SUPPLIER PART NUMBER 1" "81-GRM155R61E105KA2D"
 			(at 231.426 134.112 0)
 			(effects
 				(font
@@ -7797,7 +7953,7 @@
 				(hide yes)
 			)
 		)
-		(property "HOUSE PART NUMBER" "C-100nF-0402-002"
+		(property "HOUSE PART NUMBER" ""
 			(at 231.426 134.112 0)
 			(effects
 				(font
@@ -7817,7 +7973,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUFACTURER PART NUMBER" "GCM155R71C104KA55D"
+		(property "MANUFACTURER PART NUMBER" "GRM155R61E105KA12D"
 			(at 231.426 134.112 0)
 			(effects
 				(font
@@ -7825,14 +7981,6 @@
 				)
 				(justify left bottom)
 				(hide yes)
-			)
-		)
-		(property "ALTIUM_VALUE" ""
-			(at 233.68 139.7 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
 			)
 		)
 		(pin "1"
@@ -8469,7 +8617,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Thunderscope_Rev5:CAP 100nF 16V X7R 0402")
+		(lib_id "Thunderscope_Rev5:CAP 1uF 25V X5R 0402")
 		(at 63.5 134.62 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -8486,7 +8634,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Value" "100nF"
+		(property "Value" "1uF"
 			(at 65.754 136.906 0)
 			(effects
 				(font
@@ -8532,7 +8680,7 @@
 				(hide yes)
 			)
 		)
-		(property "VOLTAGE RATING" "16V"
+		(property "VOLTAGE RATING" "25V"
 			(at 61.246 129.032 0)
 			(effects
 				(font
@@ -8552,7 +8700,7 @@
 				(hide yes)
 			)
 		)
-		(property "SUPPLIER PART NUMBER 1" "81-GCM155R71C104KA5D"
+		(property "SUPPLIER PART NUMBER 1" "81-GRM155R61E105KA2D"
 			(at 61.246 129.032 0)
 			(effects
 				(font
@@ -8562,7 +8710,7 @@
 				(hide yes)
 			)
 		)
-		(property "HOUSE PART NUMBER" "C-100nF-0402-002"
+		(property "HOUSE PART NUMBER" ""
 			(at 61.246 129.032 0)
 			(effects
 				(font
@@ -8582,7 +8730,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUFACTURER PART NUMBER" "GCM155R71C104KA55D"
+		(property "MANUFACTURER PART NUMBER" "GRM155R61E105KA12D"
 			(at 61.246 129.032 0)
 			(effects
 				(font
@@ -8590,14 +8738,6 @@
 				)
 				(justify left bottom)
 				(hide yes)
-			)
-		)
-		(property "ALTIUM_VALUE" ""
-			(at 63.5 134.62 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
 			)
 		)
 		(pin "2"
@@ -8733,7 +8873,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Thunderscope_Rev5:CAP 100nF 16V X7R 0402")
+		(lib_id "Thunderscope_Rev5:CAP 1uF 25V X5R 0402")
 		(at 88.9 48.26 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -8750,7 +8890,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Value" "100nF"
+		(property "Value" "1uF"
 			(at 91.44 50.8 0)
 			(effects
 				(font
@@ -8796,7 +8936,7 @@
 				(hide yes)
 			)
 		)
-		(property "VOLTAGE RATING" "16V"
+		(property "VOLTAGE RATING" "25V"
 			(at 86.646 42.672 0)
 			(effects
 				(font
@@ -8816,7 +8956,7 @@
 				(hide yes)
 			)
 		)
-		(property "SUPPLIER PART NUMBER 1" "81-GCM155R71C104KA5D"
+		(property "SUPPLIER PART NUMBER 1" "81-GRM155R61E105KA2D"
 			(at 86.646 42.672 0)
 			(effects
 				(font
@@ -8826,7 +8966,7 @@
 				(hide yes)
 			)
 		)
-		(property "HOUSE PART NUMBER" "C-100nF-0402-002"
+		(property "HOUSE PART NUMBER" ""
 			(at 86.646 42.672 0)
 			(effects
 				(font
@@ -8846,7 +8986,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUFACTURER PART NUMBER" "GCM155R71C104KA55D"
+		(property "MANUFACTURER PART NUMBER" "GRM155R61E105KA12D"
 			(at 86.646 42.672 0)
 			(effects
 				(font
@@ -8854,14 +8994,6 @@
 				)
 				(justify left bottom)
 				(hide yes)
-			)
-		)
-		(property "ALTIUM_VALUE" ""
-			(at 88.9 48.26 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
 			)
 		)
 		(pin "2"
@@ -9185,7 +9317,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Thunderscope_Rev5:CAP 100nF 16V X7R 0402")
+		(lib_id "Thunderscope_Rev5:CAP 1uF 25V X5R 0402")
 		(at 233.68 154.94 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -9202,7 +9334,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Value" "100nF"
+		(property "Value" "1uF"
 			(at 235.934 157.226 0)
 			(effects
 				(font
@@ -9248,7 +9380,7 @@
 				(hide yes)
 			)
 		)
-		(property "VOLTAGE RATING" "16V"
+		(property "VOLTAGE RATING" "25V"
 			(at 231.426 149.352 0)
 			(effects
 				(font
@@ -9268,7 +9400,7 @@
 				(hide yes)
 			)
 		)
-		(property "SUPPLIER PART NUMBER 1" "81-GCM155R71C104KA5D"
+		(property "SUPPLIER PART NUMBER 1" "81-GRM155R61E105KA2D"
 			(at 231.426 149.352 0)
 			(effects
 				(font
@@ -9278,7 +9410,7 @@
 				(hide yes)
 			)
 		)
-		(property "HOUSE PART NUMBER" "C-100nF-0402-002"
+		(property "HOUSE PART NUMBER" ""
 			(at 231.426 149.352 0)
 			(effects
 				(font
@@ -9298,7 +9430,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUFACTURER PART NUMBER" "GCM155R71C104KA55D"
+		(property "MANUFACTURER PART NUMBER" "GRM155R61E105KA12D"
 			(at 231.426 149.352 0)
 			(effects
 				(font
@@ -9306,14 +9438,6 @@
 				)
 				(justify left bottom)
 				(hide yes)
-			)
-		)
-		(property "ALTIUM_VALUE" ""
-			(at 233.68 154.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
 			)
 		)
 		(pin "1"
@@ -9338,7 +9462,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Thunderscope_Rev5:CAP 100nF 16V X7R 0402")
+		(lib_id "Thunderscope_Rev5:CAP 1uF 25V X5R 0402")
 		(at 190.5 45.72 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -9355,7 +9479,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Value" "100nF"
+		(property "Value" "1uF"
 			(at 193.04 48.26 0)
 			(effects
 				(font
@@ -9401,7 +9525,7 @@
 				(hide yes)
 			)
 		)
-		(property "VOLTAGE RATING" "16V"
+		(property "VOLTAGE RATING" "25V"
 			(at 188.246 40.132 0)
 			(effects
 				(font
@@ -9421,7 +9545,7 @@
 				(hide yes)
 			)
 		)
-		(property "SUPPLIER PART NUMBER 1" "81-GCM155R71C104KA5D"
+		(property "SUPPLIER PART NUMBER 1" "81-GRM155R61E105KA2D"
 			(at 188.246 40.132 0)
 			(effects
 				(font
@@ -9431,7 +9555,7 @@
 				(hide yes)
 			)
 		)
-		(property "HOUSE PART NUMBER" "C-100nF-0402-002"
+		(property "HOUSE PART NUMBER" ""
 			(at 188.246 40.132 0)
 			(effects
 				(font
@@ -9451,7 +9575,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUFACTURER PART NUMBER" "GCM155R71C104KA55D"
+		(property "MANUFACTURER PART NUMBER" "GRM155R61E105KA12D"
 			(at 188.246 40.132 0)
 			(effects
 				(font
@@ -9459,14 +9583,6 @@
 				)
 				(justify left bottom)
 				(hide yes)
-			)
-		)
-		(property "ALTIUM_VALUE" ""
-			(at 190.5 45.72 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
 			)
 		)
 		(pin "1"
