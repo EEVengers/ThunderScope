@@ -134,10 +134,10 @@
         "min_silk_clearance": 0.0,
         "min_text_height": 0.8,
         "min_text_thickness": 0.08,
-        "min_through_hole_diameter": 0.3,
+        "min_through_hole_diameter": 0.2032,
         "min_track_width": 0.127,
         "min_via_annular_width": 0.1016,
-        "min_via_diameter": 0.2032,
+        "min_via_diameter": 0.4064,
         "solder_mask_to_copper_clearance": 0.0,
         "use_height_for_length_calcs": true
       },
@@ -504,8 +504,8 @@
         "diff_pair_via_gap": 0.25,
         "diff_pair_width": 0.2,
         "line_style": 0,
-        "microvia_diameter": 0.3,
-        "microvia_drill": 0.1,
+        "microvia_diameter": 1.0,
+        "microvia_drill": 1.0,
         "name": "Default",
         "pcb_color": "rgba(0, 0, 0, 0.000)",
         "priority": 2147483647,
@@ -518,10 +518,8 @@
       {
         "name": "FE_100Z_Diff",
         "pcb_color": "rgba(0, 0, 0, 0.000)",
-        "priority": 0,
-        "schematic_color": "rgba(0, 0, 0, 0.000)",
-        "via_diameter": 0.4064,
-        "via_drill": 0.2032
+        "priority": 4,
+        "schematic_color": "rgba(0, 0, 0, 0.000)"
       },
       {
         "clearance": 0.1524,
@@ -536,40 +534,32 @@
       {
         "name": "LVDS_ADC",
         "pcb_color": "rgba(0, 0, 0, 0.000)",
-        "priority": 3,
-        "schematic_color": "rgba(0, 0, 0, 0.000)",
-        "via_diameter": 0.4064,
-        "via_drill": 0.2032
+        "priority": 1,
+        "schematic_color": "rgba(0, 0, 0, 0.000)"
       },
       {
         "name": "LVDS_SYNC",
         "pcb_color": "rgba(0, 0, 0, 0.000)",
-        "priority": 1,
-        "schematic_color": "rgba(0, 0, 0, 0.000)",
-        "via_diameter": 0.4064,
-        "via_drill": 0.2032
+        "priority": 3,
+        "schematic_color": "rgba(0, 0, 0, 0.000)"
       },
       {
         "name": "LVDS_USRIO",
         "pcb_color": "rgba(0, 0, 0, 0.000)",
         "priority": 2,
-        "schematic_color": "rgba(0, 0, 0, 0.000)",
-        "via_diameter": 0.4064,
-        "via_drill": 0.2032
+        "schematic_color": "rgba(0, 0, 0, 0.000)"
       },
       {
         "name": "PCIe",
         "pcb_color": "rgba(0, 0, 0, 0.000)",
-        "priority": 5,
-        "schematic_color": "rgba(0, 0, 0, 0.000)",
-        "via_diameter": 0.4064,
-        "via_drill": 0.2032
+        "priority": 0,
+        "schematic_color": "rgba(0, 0, 0, 0.000)"
       },
       {
         "clearance": 0.1524,
         "name": "PWR",
         "pcb_color": "rgba(0, 0, 0, 0.000)",
-        "priority": 4,
+        "priority": 5,
         "schematic_color": "rgba(0, 0, 0, 0.000)",
         "track_width": 0.254,
         "via_diameter": 0.4064,
