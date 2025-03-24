@@ -1,75 +1,97 @@
 (version 1)
 (rule FE_100Z_Diff_Inner
 	(layer inner)
-	(condition "A.NetClass == 'FE_100Z_Diff'")
-	(constraint diff_pair_gap (opt 0.23035mm))
-	(constraint track_width (opt 0.127mm)))
+	(condition "A.hasNetclass('FE_100Z_Diff')")
+	(constraint disallow track))
 (rule FE_100Z_Diff_Outer
 	(layer outer)
-	(condition "A.NetClass == 'FE_100Z_Diff'")
-	(constraint diff_pair_gap (opt 0.13022mm))
-	(constraint track_width (opt 0.127mm)))
+	(condition "A.hasNetclass('FE_100Z_Diff')")
+	(constraint diff_pair_gap (min 0.13022mm)(opt 0.13022mm)(max 0.13022mm))
+	(constraint track_width (min 0.127mm)(opt 0.127mm)(max 0.127mm)))
 (rule FE_100Z_Diff_Vias
-	(condition "A.NetClass == 'FE_100Z_Diff'")
+	(condition "A.hasNetclass('FE_100Z_Diff')")
 	(constraint via_count (min 0) (opt 0) (max 0)))
+(rule "FE_100Z_Diff_Skew"
+	(condition "A.hasNetclass('FE_100Z_Diff')")
+	(constraint skew (min -0.1mm)(opt 0mm)(max 0.1mm)))
 
 (rule LVDS_SYNC_Inner
 	(layer inner)
-	(condition "A.NetClass == 'LVDS_SYNC'")
-	(constraint diff_pair_gap (opt 0.23035mm))
-	(constraint track_width (opt 0.127mm)))
+	(condition "A.hasNetclass('LVDS_SYNC')")
+	(constraint diff_pair_gap (min 0.23035mm)(opt 0.23035mm)(max 0.23035mm))
+	(constraint track_width (min 0.127mm)(opt 0.127mm)(max 0.127mm)))
 (rule LVDS_SYNC_Outer
 	(layer outer)
-	(condition "A.NetClass == 'LVDS_SYNC'")
-	(constraint diff_pair_gap (opt 0.13022mm))
-	(constraint track_width (opt 0.127mm)))
+	(condition "A.hasNetclass('LVDS_SYNC')")
+	(constraint diff_pair_gap (min 0.13022mm)(opt 0.13022mm)(max 0.13022mm))
+	(constraint track_width (min 0.127mm)(opt 0.127mm)(max 0.127mm)))
+(rule "LVDS_SYNC_Skew"
+	(condition "A.hasNetclass('LVDS_SYNC')")
+	(constraint skew (min -0.1mm)(opt 0mm)(max 0.1mm)))
 
 (rule LVDS_USRIO_Inner
 	(layer inner)
-	(condition "A.NetClass == 'LVDS_USRIO'")
-	(constraint diff_pair_gap (opt 0.23035mm))
-	(constraint track_width (opt 0.127mm)))
+	(condition "A.hasNetclass('LVDS_USRIO')")
+	(constraint diff_pair_gap (min 0.23035mm)(opt 0.23035mm)(max 0.23035mm))
+	(constraint track_width (min 0.127mm)(opt 0.127mm)(max 0.127mm)))
 (rule LVDS_USRIO_Outer
 	(layer outer)
-	(condition "A.NetClass == 'LVDS_USRIO'")
-	(constraint diff_pair_gap (opt 0.13022mm))
-	(constraint track_width (opt 0.127mm)))
+	(condition "A.hasNetclass('LVDS_USRIO')")
+	(constraint diff_pair_gap (min 0.13022mm)(opt 0.13022mm)(max 0.13022mm))
+	(constraint track_width (min 0.127mm)(opt 0.127mm)(max 0.127mm)))
+(rule "LVDS_USRIO_Skew"
+	(condition "A.hasNetclass('LVDS_USRIO')")
+	(constraint skew (min -0.1mm)(opt 0mm)(max 0.1mm)))
 
 (rule LVDS_ADC_Inner
 	(layer inner)
 	(condition "A.hasNetclass('LVDS_ADC')")
-	(constraint diff_pair_gap (opt 0.23035mm))
-	(constraint track_width (opt 0.127mm)))
+	(constraint diff_pair_gap (min 0.23035mm)(opt 0.23035mm)(max 0.23035mm))
+	(constraint track_width (min 0.127mm)(opt 0.127mm)(max 0.127mm)))
 (rule LVDS_ADC_Outer
 	(layer outer)
 	(condition "A.hasNetclass('LVDS_ADC')")
-	(constraint diff_pair_gap (opt 0.13022mm))
-	(constraint track_width (opt 0.127mm)))
+	(constraint diff_pair_gap (min 0.13022mm)(opt 0.13022mm)(max 0.13022mm))
+	(constraint track_width (min 0.127mm)(opt 0.127mm)(max 0.127mm)))
+(rule "LVDS_ADC_Skew"
+	(condition "A.hasNetclass('LVDS_ADC')")
+	(constraint skew (min -0.1mm)(opt 0mm)(max 0.1mm)))
 
 (rule PCIe_Inner
 	(layer inner)
-	(condition "A.NetClass == 'PCIe'")
-	(constraint diff_pair_gap (opt 0.127mm))
-	(constraint track_width (opt 0.14789mm)))
+	(condition "A.hasNetclass('PCIe')")
+	(constraint diff_pair_gap (min 0.127mm)(opt 0.127mm)(max 0.127mm))
+	(constraint track_width (min 0.14789mm)(opt 0.14789mm)(max 0.14789mm)))
 (rule PCIe_Outer
 	(layer outer)
-	(condition "A.NetClass == 'PCIe'")
-	(constraint diff_pair_gap (opt 0.127mm))
-	(constraint track_width (opt 0.19079mm)))
+	(condition "A.hasNetclass('PCIe')")
+	(constraint diff_pair_gap (min 0.127mm)(opt 0.127mm)(max 0.127mm))
+	(constraint track_width (min 0.19079mm)(opt 0.19079mm)(max 0.19079mm)))
+(rule "PCIe_Skew"
+	(condition "A.hasNetclass('PCIe')")
+	(constraint skew (min -0.1mm)(opt 0mm)(max 0.1mm)))
 
 (rule FE_50Z_Inner
 	(layer inner)
-	(condition "A.NetClass == 'FE_50Z'")
+	(condition "A.hasNetclass('FE_50Z')")
 	(constraint disallow track))
 (rule FE_50Z_Outer
 	(layer outer)
-	(condition "A.NetClass == 'FE_50Z'")
-	(constraint track_width (opt 0.213mm)))
+	(condition "A.hasNetclass('FE_50Z')")
+	(constraint track_width (min 0.213mm)(opt 0.213mm)(max 0.213mm)))
 (rule FE_50Z_Vias
-	(condition "A.NetClass == 'FE_50Z'")
+	(condition "A.hasNetclass('FE_50Z')")
 	(constraint via_count (min 0) (opt 0) (max 0)))
-
 
 (rule GND_Planes
 	(condition "A.Layer == 'In1.Cu' || A.Layer == 'In4.Cu'")
 	(constraint disallow track))
+
+(rule "Allow connector silk to intersect board edge"
+    (constraint silk_clearance)
+    (severity ignore)
+    (condition "A.memberOfFootprint('J*') && B.Layer=='Edge.Cuts'"))
+
+(rule "Distance between test points"
+    (constraint courtyard_clearance (min 0.5mm))
+    (condition "A.Reference =='TP*' && B.Reference == 'TP*"))
