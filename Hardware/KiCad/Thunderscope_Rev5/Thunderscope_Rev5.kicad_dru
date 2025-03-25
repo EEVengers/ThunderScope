@@ -51,7 +51,7 @@
 (rule LVDS_ADC_Outer
 	(layer outer)
 	(condition "A.hasNetclass('LVDS_ADC')")
-	(constraint diff_pair_gap (min 0.13022mm)(opt 0.13022mm)(max 0.13022mm))
+	(constraint diff_pair_gap (opt 0.13022mm))
 	(constraint track_width (min 0.127mm)(opt 0.127mm)(max 0.127mm)))
 (rule "LVDS_ADC_Skew"
 	(condition "A.hasNetclass('LVDS_ADC')")
