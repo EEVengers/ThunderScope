@@ -17,7 +17,7 @@ def main():
     rules_file = "Thunderscope_Rev5.kicad_dru"
     vivado_io_csv_file = "impl_1.csv"
     
-    refresh = False
+    refresh_on_save = False
     time_modified_old = 0
     time_modified_new = 0
     
@@ -31,7 +31,7 @@ def main():
 
     pad_delay_dict = get_pad_delays(vivado_io_csv_file)
     
-    if (refresh == False):
+    if (refresh_on_save == False):
         equiv_len_max,per_net_delay_dict = calc_net_delays(kicad,"LVDS_ADC",pad_delay_dict)
         print ("Max Equiv Length: " + str(equiv_len_max))
         user_write_prompt = input("Write Rules File (y/n): ")
