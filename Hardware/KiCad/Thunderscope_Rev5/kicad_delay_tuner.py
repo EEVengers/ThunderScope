@@ -1,6 +1,4 @@
-import os.path
 import sys
-import time
 import math
 from kipy import KiCad
 from kipy.util.units import to_mm
@@ -13,44 +11,29 @@ s_per_ps = 1e-12
 c = 2.998e8
 
 def main():
-    board_file = "Thunderscope_Rev5.kicad_pcb"
-    rules_file = "Thunderscope_Rev5.kicad_dru"
-    vivado_io_csv_file = "impl_1.csv"
-    
-    refresh_on_save = False
-    time_modified_old = 0
-    time_modified_new = 0
-    
-    equiv_len_max = 0
 
     try:
         kicad = KiCad()
     except BaseException as e:
         print(f"Not connected to KiCad: {e}")
         exit()
-
-    pad_delay_dict = get_pad_delays(vivado_io_csv_file)
     
-    if (refresh_on_save == False):
-        equiv_len_max,per_net_delay_dict = calc_net_delays(kicad,"LVDS_ADC",pad_delay_dict)
-        print ("Max Equiv Length: " + str(equiv_len_max))
+    pad_delay_dict = {}
+
+    if (len(sys.argv) == 4):
+        vivado_io_csv_file = sys.argv[3]
+        pad_delay_dict = get_pad_delays(vivado_io_csv_file)
+    
+    if (len(sys.argv) > 1):
+        netclass = sys.argv[1]
+        equiv_len_max_net,per_net_delay_dict = calc_net_delays(kicad,netclass,pad_delay_dict)
+        print ("\nNet With Max Delay: " + equiv_len_max_net+"\n")
+
+    if (len(sys.argv) > 2):    
         user_write_prompt = input("Write Rules File (y/n): ")
         if (user_write_prompt == "y"):
+            rules_file = sys.argv[2]
             write_rule_file(per_net_delay_dict,rules_file)
-    else:
-        if (os.path.isfile(board_file)):
-            try:
-                while True: 
-                    time_modified_new = os.path.getmtime(board_file)
-                    if (time_modified_new > time_modified_old):
-                        equiv_len_max_new,per_net_delay_dict = calc_net_delays(kicad,"LVDS_ADC",pad_delay_dict)
-                        if (equiv_len_max_new <= equiv_len_max_old):
-                            write_rule_file(per_net_delay_dict,rules_file)
-                        time_modified_old = time_modified_new
-                    time.sleep(1)
-                            
-            except KeyboardInterrupt:
-                pass
 
 
 def get_pad_delays(vivado_io_csv_file):
@@ -180,9 +163,8 @@ def calc_net_delays(kicad,netclass,pad_delay_dict):
         # Pad Delay
         per_net_delay += per_net_stats[net_index][num_cu_layers + 1]
         
-        # Convert Pad Delay to Length for Equiv
-        per_net_length_equiv = per_net_stats[net_index][num_cu_layers + 1] / ps_per_mm_by_layer[0]
-        per_net_length_equiv += per_net_length_kicad
+        # Convert Net Delay to Length for Equiv
+        per_net_length_equiv = per_net_delay / ps_per_mm_by_layer[0]
 
         # Dictionary
         per_net_delay_dict[nets[net_index].name] = [per_net_length_kicad,per_net_delay,per_net_length_equiv]
@@ -192,22 +174,36 @@ def calc_net_delays(kicad,netclass,pad_delay_dict):
     # For each net: Length Rule = Kicad Length + (Equiv Length of max delay net  - Equiv Length)
 
     equiv_len_max = 0
+    equiv_len_max_net = ""
 
-    for x in per_net_delay_dict.values():
-        if x[2] > equiv_len_max:
-            equiv_len_max = x[2]
+    for x,y in per_net_delay_dict.items():
+        if y[2] > equiv_len_max:
+            equiv_len_max = y[2]
+            equiv_len_max_net = x
 
     for x in per_net_delay_dict.values():
         x.append(x[0] + equiv_len_max - x[2])
 
-    print ("-"*113)
-    print ("| Net\t\t| Kicad Length (mm)\t| Total Delay (ps)\t| Equiv. Length (mm)\t| Rule Length (mm)\t|")
-    print ("-"*113)
-    for x, y in per_net_delay_dict.items():
-        print("| " + x + "\t| " + str(y[0]) + "\t| " + str(y[1]) + "\t| " + str(y[2]) + "\t| " + str(y[3]) + "\t|" )
-    print ("-"*113)
+    net_name_length = 0
+    for x in per_net_delay_dict.keys():
+        if len(x) > net_name_length:
+            net_name_length = len(x)
 
-    return equiv_len_max,per_net_delay_dict
+    print ("-"*(94+net_name_length))
+    
+    print ("| Net" + " " * (net_name_length) \
+           + "| Kicad Length (mm)   | Total Delay (ps)    | Equiv. Length (mm)  | Rule Length (mm)    |")
+    
+    print ("-"*(94+net_name_length))
+    
+    for x, y in per_net_delay_dict.items():
+        print("| " + x + " " * (net_name_length-len(x)+3) \
+            + "| " + str(y[0])[0:10] + " " * 10 + "| " + str(y[1])[0:10] + " " * 10 \
+            + "| " + str(y[2])[0:10] + " " * 10 + "| " + str(y[3])[0:10] + " " * 10 + "|")
+    
+    print ("-"*(94+net_name_length))
+
+    return equiv_len_max_net,per_net_delay_dict
 
 
 def write_rule_file(per_net_delay_dict,rules_file):

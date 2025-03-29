@@ -172,7 +172,7 @@
         "min_via_annular_width": 0.1016,
         "min_via_diameter": 0.4064,
         "solder_mask_to_copper_clearance": 0.0,
-        "use_height_for_length_calcs": true
+        "use_height_for_length_calcs": false
       },
       "teardrop_options": [
         {
@@ -684,7 +684,7 @@
         "pattern": "*USRIO*"
       },
       {
-        "netclass": "Default",
+        "netclass": "PCIe",
         "pattern": "*MGT_*"
       },
       {
@@ -713,7 +713,7 @@
       },
       {
         "netclass": "LVDS_ADC_CLK",
-        "pattern": "/ADC/ADC_CLK*"
+        "pattern": "*ADC_CLK*"
       },
       {
         "netclass": "LVDS_ADC",

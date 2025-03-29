@@ -45,6 +45,17 @@
 	(constraint diff_pair_gap (opt 0.13022mm))
 	(constraint track_width (min 0.127mm)(opt 0.127mm)(max 0.127mm)))
 
+(rule LVDS_ADC_CLK_Inner
+	(layer inner)
+	(condition "A.hasNetclass('LVDS_ADC_CLK')")
+	(constraint diff_pair_gap (min 0.23035mm)(opt 0.23035mm)(max 0.23035mm))
+	(constraint track_width (min 0.127mm)(opt 0.127mm)(max 0.127mm)))
+(rule LVDS_ADC_CLK_Outer
+	(layer outer)
+	(condition "A.hasNetclass('LVDS_ADC_CLK')")
+	(constraint diff_pair_gap (opt 0.13022mm))
+	(constraint track_width (min 0.127mm)(opt 0.127mm)(max 0.127mm)))
+
 (rule PCIe_Inner
 	(layer inner)
 	(condition "A.hasNetclass('PCIe')")
@@ -88,61 +99,61 @@
 
 (rule "/ADC/D1A_N length"
 	(condition "A.NetName == '/ADC/D1A_N'")
-	(constraint length (min 34.82806759315393mm) (opt 34.82806759315393mm) (max 34.82806759315393mm)))
+	(constraint length (min 33.295058767606434mm) (opt 33.295058767606434mm) (max 33.295058767606434mm)))
 (rule "/ADC/D1A_P length"
 	(condition "A.NetName == '/ADC/D1A_P'")
-	(constraint length (min 36.89469188869957mm) (opt 36.89469188869957mm) (max 36.89469188869957mm)))
+	(constraint length (min 35.382456497208025mm) (opt 35.382456497208025mm) (max 35.382456497208025mm)))
 (rule "/ADC/D1B_N length"
 	(condition "A.NetName == '/ADC/D1B_N'")
-	(constraint length (min 37.06227302964431mm) (opt 37.06227302964431mm) (max 37.06227302964431mm)))
+	(constraint length (min 36.05615853823038mm) (opt 36.05615853823038mm) (max 36.05615853823038mm)))
 (rule "/ADC/D1B_P length"
 	(condition "A.NetName == '/ADC/D1B_P'")
-	(constraint length (min 36.71416456519255mm) (opt 36.71416456519255mm) (max 36.71416456519255mm)))
+	(constraint length (min 35.482676367467775mm) (opt 35.482676367467775mm) (max 35.482676367467775mm)))
 (rule "/ADC/D2A_N length"
 	(condition "A.NetName == '/ADC/D2A_N'")
-	(constraint length (min 42.020571046942656mm) (opt 42.020571046942656mm) (max 42.020571046942656mm)))
+	(constraint length (min 49.450862183981755mm) (opt 49.450862183981755mm) (max 49.450862183981755mm)))
 (rule "/ADC/D2A_P length"
 	(condition "A.NetName == '/ADC/D2A_P'")
-	(constraint length (min 41.35842775131061mm) (opt 41.35842775131061mm) (max 41.35842775131061mm)))
+	(constraint length (min 48.78871888834973mm) (opt 48.78871888834973mm) (max 48.78871888834973mm)))
 (rule "/ADC/D2B_N length"
 	(condition "A.NetName == '/ADC/D2B_N'")
-	(constraint length (min 41.29252808590692mm) (opt 41.29252808590692mm) (max 41.29252808590692mm)))
+	(constraint length (min 48.72281922294602mm) (opt 48.72281922294602mm) (max 48.72281922294602mm)))
 (rule "/ADC/D2B_P length"
 	(condition "A.NetName == '/ADC/D2B_P'")
-	(constraint length (min 42.03297780523148mm) (opt 42.03297780523148mm) (max 42.03297780523148mm)))
+	(constraint length (min 49.46326894227059mm) (opt 49.46326894227059mm) (max 49.46326894227059mm)))
 (rule "/ADC/D3A_N length"
 	(condition "A.NetName == '/ADC/D3A_N'")
-	(constraint length (min 41.6693159408959mm) (opt 41.6693159408959mm) (max 41.6693159408959mm)))
+	(constraint length (min 39.71918793470924mm) (opt 39.71918793470924mm) (max 39.71918793470924mm)))
 (rule "/ADC/D3A_P length"
 	(condition "A.NetName == '/ADC/D3A_P'")
-	(constraint length (min 41.86207021460058mm) (opt 41.86207021460058mm) (max 41.86207021460058mm)))
+	(constraint length (min 40.15877013081274mm) (opt 40.15877013081274mm) (max 40.15877013081274mm)))
 (rule "/ADC/D3B_N length"
 	(condition "A.NetName == '/ADC/D3B_N'")
-	(constraint length (min 38.44886312448925mm) (opt 38.44886312448925mm) (max 38.44886312448925mm)))
+	(constraint length (min 45.87915426152834mm) (opt 45.87915426152834mm) (max 45.87915426152834mm)))
 (rule "/ADC/D3B_P length"
 	(condition "A.NetName == '/ADC/D3B_P'")
-	(constraint length (min 37.88444552639311mm) (opt 37.88444552639311mm) (max 37.88444552639311mm)))
+	(constraint length (min 45.31473666343223mm) (opt 45.31473666343223mm) (max 45.31473666343223mm)))
 (rule "/ADC/D4A_N length"
 	(condition "A.NetName == '/ADC/D4A_N'")
-	(constraint length (min 37.35392175347736mm) (opt 37.35392175347736mm) (max 37.35392175347736mm)))
+	(constraint length (min 44.78421289051647mm) (opt 44.78421289051647mm) (max 44.78421289051647mm)))
 (rule "/ADC/D4A_P length"
 	(condition "A.NetName == '/ADC/D4A_P'")
-	(constraint length (min 38.16009133011448mm) (opt 38.16009133011448mm) (max 38.16009133011448mm)))
+	(constraint length (min 45.59038246715358mm) (opt 45.59038246715358mm) (max 45.59038246715358mm)))
 (rule "/ADC/D4B_N length"
 	(condition "A.NetName == '/ADC/D4B_N'")
-	(constraint length (min 41.093570433057806mm) (opt 41.093570433057806mm) (max 41.093570433057806mm)))
+	(constraint length (min 48.523861570096905mm) (opt 48.523861570096905mm) (max 48.523861570096905mm)))
 (rule "/ADC/D4B_P length"
 	(condition "A.NetName == '/ADC/D4B_P'")
-	(constraint length (min 43.79806393193124mm) (opt 43.79806393193124mm) (max 43.79806393193124mm)))
+	(constraint length (min 51.228355068970345mm) (opt 51.228355068970345mm) (max 51.228355068970345mm)))
 (rule "/ADC/FCLK_N length"
 	(condition "A.NetName == '/ADC/FCLK_N'")
-	(constraint length (min 40.077205197875166mm) (opt 40.077205197875166mm) (max 40.077205197875166mm)))
+	(constraint length (min 39.14784735520945mm) (opt 39.14784735520945mm) (max 39.14784735520945mm)))
 (rule "/ADC/FCLK_P length"
 	(condition "A.NetName == '/ADC/FCLK_P'")
-	(constraint length (min 39.56034683988622mm) (opt 39.56034683988622mm) (max 39.56034683988622mm)))
+	(constraint length (min 38.75307512230329mm) (opt 38.75307512230329mm) (max 38.75307512230329mm)))
 (rule "/ADC/LCLK_N length"
 	(condition "A.NetName == '/ADC/LCLK_N'")
-	(constraint length (min 41.051585243776046mm) (opt 41.051585243776046mm) (max 41.051585243776046mm)))
+	(constraint length (min 40.636869236612654mm) (opt 40.636869236612654mm) (max 40.636869236612654mm)))
 (rule "/ADC/LCLK_P length"
 	(condition "A.NetName == '/ADC/LCLK_P'")
-	(constraint length (min 42.10714864282774mm) (opt 42.10714864282774mm) (max 42.10714864282774mm)))
+	(constraint length (min 41.630656438841505mm) (opt 41.630656438841505mm) (max 41.630656438841505mm)))
