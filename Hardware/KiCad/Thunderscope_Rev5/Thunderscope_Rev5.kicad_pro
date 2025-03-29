@@ -550,16 +550,24 @@
       },
       {
         "clearance": 0.127,
+        "name": "50Z",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "priority": 0,
+        "schematic_color": "rgba(0, 0, 0, 0.000)",
+        "track_width": 0.213
+      },
+      {
+        "clearance": 0.127,
         "name": "FE_100Z_Diff",
         "pcb_color": "rgba(0, 0, 0, 0.000)",
-        "priority": 5,
+        "priority": 6,
         "schematic_color": "rgba(0, 0, 0, 0.000)"
       },
       {
         "clearance": 0.127,
         "name": "FE_50Z",
         "pcb_color": "rgba(0, 0, 0, 0.000)",
-        "priority": 7,
+        "priority": 8,
         "schematic_color": "rgba(0, 0, 0, 0.000)",
         "track_width": 0.213,
         "via_diameter": 2.0,
@@ -569,40 +577,40 @@
         "clearance": 0.127,
         "name": "LVDS_ADC",
         "pcb_color": "rgba(0, 0, 0, 0.000)",
-        "priority": 2,
-        "schematic_color": "rgba(0, 0, 0, 0.000)"
-      },
-      {
-        "name": "LVDS_ADC_CLK",
-        "pcb_color": "rgba(0, 0, 0, 0.000)",
-        "priority": 0,
-        "schematic_color": "rgba(0, 0, 0, 0.000)"
-      },
-      {
-        "clearance": 0.127,
-        "name": "LVDS_SYNC",
-        "pcb_color": "rgba(0, 0, 0, 0.000)",
-        "priority": 4,
-        "schematic_color": "rgba(0, 0, 0, 0.000)"
-      },
-      {
-        "clearance": 0.127,
-        "name": "LVDS_USRIO",
-        "pcb_color": "rgba(0, 0, 0, 0.000)",
         "priority": 3,
         "schematic_color": "rgba(0, 0, 0, 0.000)"
       },
       {
-        "name": "PCIe",
+        "name": "LVDS_ADC_CLK",
         "pcb_color": "rgba(0, 0, 0, 0.000)",
         "priority": 1,
         "schematic_color": "rgba(0, 0, 0, 0.000)"
       },
       {
         "clearance": 0.127,
+        "name": "LVDS_SYNC",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "priority": 5,
+        "schematic_color": "rgba(0, 0, 0, 0.000)"
+      },
+      {
+        "clearance": 0.127,
+        "name": "LVDS_USRIO",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "priority": 4,
+        "schematic_color": "rgba(0, 0, 0, 0.000)"
+      },
+      {
+        "name": "PCIe",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "priority": 2,
+        "schematic_color": "rgba(0, 0, 0, 0.000)"
+      },
+      {
+        "clearance": 0.127,
         "name": "PWR",
         "pcb_color": "rgba(0, 0, 0, 0.000)",
-        "priority": 6,
+        "priority": 7,
         "schematic_color": "rgba(0, 0, 0, 0.000)",
         "track_width": 0.254,
         "via_diameter": 0.4064,
@@ -722,6 +730,30 @@
       {
         "netclass": "LVDS_ADC",
         "pattern": "/ADC/LCLK*"
+      },
+      {
+        "netclass": "50Z",
+        "pattern": "*s/SYNC*"
+      },
+      {
+        "netclass": "50Z",
+        "pattern": "/SYNC"
+      },
+      {
+        "netclass": "50Z",
+        "pattern": "*s/REFINOUT*"
+      },
+      {
+        "netclass": "50Z",
+        "pattern": "/REFINOUT"
+      },
+      {
+        "netclass": "50Z",
+        "pattern": "*U7-*C1P*"
+      },
+      {
+        "netclass": "50Z",
+        "pattern": "*U10-R*"
       }
     ]
   },
