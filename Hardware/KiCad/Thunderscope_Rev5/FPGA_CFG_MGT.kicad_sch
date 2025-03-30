@@ -7866,7 +7866,7 @@
 	)
 	(text "DONE: Pullups on CS, DQ2, DQ3"
 		(exclude_from_sim no)
-		(at 195.58 39.37 0)
+		(at 198.12 39.37 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -7917,7 +7917,7 @@
 	)
 	(text "DONE: Replace QSPI with 3V3 capable part"
 		(exclude_from_sim no)
-		(at 189.23 78.74 0)
+		(at 191.77 78.74 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -7936,16 +7936,40 @@
 		(uuid "033f824a-148c-4c2f-8362-57af9b62f531")
 	)
 	(junction
+		(at 172.72 63.5)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "0412be1a-a6b2-4aca-8899-2b036cf1550a")
+	)
+	(junction
 		(at 185.42 53.34)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "06df241c-ebd9-4430-b183-d4256a843406")
 	)
 	(junction
+		(at 182.88 68.58)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "08bc36fe-3731-4a1f-8140-336fdc1aa52b")
+	)
+	(junction
+		(at 177.8 66.04)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "2b19697a-f1f1-44da-80ad-54d7e54e21b0")
+	)
+	(junction
 		(at 180.34 68.58)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "3338b0f1-382e-4a3e-a589-d6c952316382")
+	)
+	(junction
+		(at 187.96 71.12)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "3c028f65-890a-4164-ad88-28ca9ea55772")
 	)
 	(junction
 		(at 104.14 71.12)
@@ -7958,6 +7982,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "6b5472ee-7de9-4c0f-9a3a-e282cd410678")
+	)
+	(junction
+		(at 167.64 53.34)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "6cadd15b-3f32-4d47-9df6-9c647f215494")
 	)
 	(junction
 		(at 119.38 93.98)
@@ -7978,13 +8008,13 @@
 		(uuid "9b71348c-3b0a-4a17-a343-9e69a2ac06a5")
 	)
 	(junction
-		(at 241.3 68.58)
+		(at 243.84 68.58)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "9bcc5f9f-c936-4624-a80e-e78ef32d1484")
 	)
 	(junction
-		(at 241.3 53.34)
+		(at 243.84 53.34)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "a58b902f-a2f1-44f9-bd5b-ab9a930a5223")
@@ -7996,7 +8026,7 @@
 		(uuid "bb4f67b3-8dcd-47ec-bd34-861f38bb4583")
 	)
 	(junction
-		(at 241.3 71.12)
+		(at 243.84 71.12)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "d0cb5b7f-0a58-4116-905d-737a97acf6a9")
@@ -8046,7 +8076,7 @@
 		(uuid "5dda6a84-d46e-4d6e-a021-c393745abb2f")
 	)
 	(bus_entry
-		(at 170.18 71.12)
+		(at 167.64 71.12)
 		(size -2.54 2.54)
 		(stroke
 			(width 0)
@@ -8100,7 +8130,7 @@
 		(uuid "68975340-3704-4a68-9031-fa5e893ffada")
 	)
 	(bus_entry
-		(at 170.18 68.58)
+		(at 167.64 68.58)
 		(size -2.54 2.54)
 		(stroke
 			(width 0)
@@ -8127,7 +8157,7 @@
 		(uuid "84cce0fa-8c7d-43e8-bb4a-c89f2471ffa3")
 	)
 	(bus_entry
-		(at 170.18 66.04)
+		(at 167.64 66.04)
 		(size -2.54 2.54)
 		(stroke
 			(width 0)
@@ -8181,7 +8211,7 @@
 		(uuid "a6b77d36-b52f-4c19-9ab0-709424a6aa22")
 	)
 	(bus_entry
-		(at 170.18 63.5)
+		(at 167.64 63.5)
 		(size -2.54 2.54)
 		(stroke
 			(width 0)
@@ -8267,6 +8297,16 @@
 	)
 	(wire
 		(pts
+			(xy 167.64 53.34) (xy 185.42 53.34)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0505f512-dc12-4336-af11-c95e8890eda8")
+	)
+	(wire
+		(pts
 			(xy 180.34 50.8) (xy 180.34 68.58)
 		)
 		(stroke
@@ -8294,6 +8334,16 @@
 			(type default)
 		)
 		(uuid "08e489c3-5d2c-436f-93d3-7fe0a59acf8f")
+	)
+	(wire
+		(pts
+			(xy 177.8 66.04) (xy 200.66 66.04)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "094c697e-6721-4d06-9b6e-df1772b0c99a")
 	)
 	(wire
 		(pts
@@ -8377,7 +8427,7 @@
 	)
 	(wire
 		(pts
-			(xy 180.34 68.58) (xy 198.12 68.58)
+			(xy 180.34 68.58) (xy 182.88 68.58)
 		)
 		(stroke
 			(width 0)
@@ -8417,7 +8467,7 @@
 	)
 	(wire
 		(pts
-			(xy 170.18 68.58) (xy 180.34 68.58)
+			(xy 167.64 68.58) (xy 180.34 68.58)
 		)
 		(stroke
 			(width 0)
@@ -8427,7 +8477,7 @@
 	)
 	(wire
 		(pts
-			(xy 160.02 58.42) (xy 198.12 58.42)
+			(xy 160.02 58.42) (xy 200.66 58.42)
 		)
 		(stroke
 			(width 0)
@@ -8457,7 +8507,7 @@
 	)
 	(bus
 		(pts
-			(xy 162.56 78.74) (xy 167.64 78.74)
+			(xy 160.02 78.74) (xy 165.1 78.74)
 		)
 		(stroke
 			(width 0)
@@ -8467,7 +8517,7 @@
 	)
 	(bus
 		(pts
-			(xy 167.64 73.66) (xy 167.64 78.74)
+			(xy 165.1 73.66) (xy 165.1 78.74)
 		)
 		(stroke
 			(width 0)
@@ -8497,7 +8547,7 @@
 	)
 	(wire
 		(pts
-			(xy 238.76 68.58) (xy 241.3 68.58)
+			(xy 241.3 68.58) (xy 243.84 68.58)
 		)
 		(stroke
 			(width 0)
@@ -8527,7 +8577,7 @@
 	)
 	(wire
 		(pts
-			(xy 238.76 71.12) (xy 241.3 71.12)
+			(xy 241.3 71.12) (xy 243.84 71.12)
 		)
 		(stroke
 			(width 0)
@@ -8547,7 +8597,7 @@
 	)
 	(wire
 		(pts
-			(xy 241.3 66.04) (xy 241.3 68.58)
+			(xy 243.84 66.04) (xy 243.84 68.58)
 		)
 		(stroke
 			(width 0)
@@ -8597,7 +8647,27 @@
 	)
 	(wire
 		(pts
-			(xy 238.76 53.34) (xy 241.3 53.34)
+			(xy 187.96 71.12) (xy 187.96 78.74)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4a7613f5-ea5d-46e5-b038-0bf3e57d74b5")
+	)
+	(wire
+		(pts
+			(xy 172.72 63.5) (xy 172.72 78.74)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4fea31dc-364e-4571-9f50-0f8b9e4a3911")
+	)
+	(wire
+		(pts
+			(xy 241.3 53.34) (xy 243.84 53.34)
 		)
 		(stroke
 			(width 0)
@@ -8607,7 +8677,7 @@
 	)
 	(bus
 		(pts
-			(xy 167.64 68.58) (xy 167.64 71.12)
+			(xy 165.1 68.58) (xy 165.1 71.12)
 		)
 		(stroke
 			(width 0)
@@ -8657,7 +8727,7 @@
 	)
 	(wire
 		(pts
-			(xy 170.18 66.04) (xy 198.12 66.04)
+			(xy 167.64 66.04) (xy 177.8 66.04)
 		)
 		(stroke
 			(width 0)
@@ -8677,7 +8747,7 @@
 	)
 	(wire
 		(pts
-			(xy 241.3 55.88) (xy 241.3 53.34)
+			(xy 243.84 55.88) (xy 243.84 53.34)
 		)
 		(stroke
 			(width 0)
@@ -8704,6 +8774,16 @@
 			(type default)
 		)
 		(uuid "6e5ae457-eab7-4e0e-ba53-b4e3665345fc")
+	)
+	(wire
+		(pts
+			(xy 182.88 68.58) (xy 200.66 68.58)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6e8d1a17-b0ee-4b74-aae1-30ce962c8b47")
 	)
 	(wire
 		(pts
@@ -8737,7 +8817,7 @@
 	)
 	(bus
 		(pts
-			(xy 167.64 71.12) (xy 167.64 73.66)
+			(xy 165.1 71.12) (xy 165.1 73.66)
 		)
 		(stroke
 			(width 0)
@@ -8777,7 +8857,7 @@
 	)
 	(bus
 		(pts
-			(xy 167.64 66.04) (xy 167.64 68.58)
+			(xy 165.1 66.04) (xy 165.1 68.58)
 		)
 		(stroke
 			(width 0)
@@ -8787,7 +8867,7 @@
 	)
 	(wire
 		(pts
-			(xy 241.3 53.34) (xy 243.84 53.34)
+			(xy 243.84 53.34) (xy 246.38 53.34)
 		)
 		(stroke
 			(width 0)
@@ -8807,7 +8887,7 @@
 	)
 	(wire
 		(pts
-			(xy 167.64 53.34) (xy 185.42 53.34)
+			(xy 160.02 53.34) (xy 167.64 53.34)
 		)
 		(stroke
 			(width 0)
@@ -8834,6 +8914,16 @@
 			(type default)
 		)
 		(uuid "86eec3bf-4006-4911-a297-63aed4290d75")
+	)
+	(wire
+		(pts
+			(xy 182.88 68.58) (xy 182.88 78.74)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8749cc1c-3182-4bc6-8234-5e3728cd565c")
 	)
 	(bus
 		(pts
@@ -8907,7 +8997,7 @@
 	)
 	(wire
 		(pts
-			(xy 241.3 71.12) (xy 241.3 73.66)
+			(xy 243.84 71.12) (xy 243.84 73.66)
 		)
 		(stroke
 			(width 0)
@@ -8917,7 +9007,7 @@
 	)
 	(wire
 		(pts
-			(xy 170.18 63.5) (xy 198.12 63.5)
+			(xy 167.64 63.5) (xy 172.72 63.5)
 		)
 		(stroke
 			(width 0)
@@ -8937,7 +9027,17 @@
 	)
 	(wire
 		(pts
-			(xy 175.26 71.12) (xy 198.12 71.12)
+			(xy 172.72 63.5) (xy 200.66 63.5)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ac6e08ab-e0d2-4093-855c-f39e1c46d0f2")
+	)
+	(wire
+		(pts
+			(xy 175.26 71.12) (xy 187.96 71.12)
 		)
 		(stroke
 			(width 0)
@@ -9017,7 +9117,7 @@
 	)
 	(wire
 		(pts
-			(xy 170.18 71.12) (xy 175.26 71.12)
+			(xy 167.64 71.12) (xy 175.26 71.12)
 		)
 		(stroke
 			(width 0)
@@ -9115,6 +9215,16 @@
 		)
 		(uuid "d98dcd68-7744-4542-98af-fd09c9114e1f")
 	)
+	(wire
+		(pts
+			(xy 167.64 50.8) (xy 167.64 53.34)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "dd8e99de-1aa4-4637-b969-889b18235fd8")
+	)
 	(bus
 		(pts
 			(xy 203.2 144.78) (xy 203.2 147.32)
@@ -9177,7 +9287,7 @@
 	)
 	(wire
 		(pts
-			(xy 241.3 68.58) (xy 241.3 71.12)
+			(xy 243.84 68.58) (xy 243.84 71.12)
 		)
 		(stroke
 			(width 0)
@@ -9237,7 +9347,7 @@
 	)
 	(wire
 		(pts
-			(xy 185.42 53.34) (xy 198.12 53.34)
+			(xy 185.42 53.34) (xy 200.66 53.34)
 		)
 		(stroke
 			(width 0)
@@ -9257,13 +9367,23 @@
 	)
 	(wire
 		(pts
-			(xy 243.84 53.34) (xy 243.84 50.8)
+			(xy 246.38 53.34) (xy 246.38 50.8)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
 		(uuid "f636e5fd-3eaf-4083-bd69-ae18478492b2")
+	)
+	(wire
+		(pts
+			(xy 187.96 71.12) (xy 200.66 71.12)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f7a818f3-b933-4c31-8402-3d18884d732f")
 	)
 	(wire
 		(pts
@@ -9284,6 +9404,16 @@
 			(type default)
 		)
 		(uuid "fae41831-19aa-4f10-97d0-5148b1b69cea")
+	)
+	(wire
+		(pts
+			(xy 177.8 66.04) (xy 177.8 78.74)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fbf5fb68-f4eb-4c18-880b-be0da11949b9")
 	)
 	(wire
 		(pts
@@ -10786,6 +10916,24 @@
 			"ZQAgAHMAaQBnAG4AYQBsACAAcgBlAGwAYQB5ACwAIABLAGUAbQBlAHQAIABFAEMAMgAgAFMAZQBy"
 			"AGkAZQBzACwAIABEAFAARABUACAAKAAyACAARgBvAHIAbQAgAEMAKQAsACAAcwBpAG4AZwBsAGUA"
 			"IABjAG8AaQBsACAAbABhAHQAYwBoAGkAbgBnACwAIAB0AGgAcgBvAHUAZwBoACAAaABvAGwAZQAA"
+			"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+			"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+			"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+			"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+			"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+			"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+			"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+			"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+			"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+			"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+			"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+			"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+			"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+			"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+			"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+			"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+			"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+			"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
 			"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
 			"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
 			"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
@@ -12427,7 +12575,25 @@
 			"Ly8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8v"
 			"Ly8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8v"
 			"Ly8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8v"
-			"Ly8vLy8vLw=="
+			"Ly8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8v"
+			"Ly8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8v"
+			"Ly8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8v"
+			"Ly8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8v"
+			"Ly8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8v"
+			"Ly8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8v"
+			"Ly8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8v"
+			"Ly8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8v"
+			"Ly8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8v"
+			"Ly8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8v"
+			"Ly8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8v"
+			"Ly8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8v"
+			"Ly8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8v"
+			"Ly8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8v"
+			"Ly8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8v"
+			"Ly8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8v"
+			"Ly8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8v"
+			"Ly8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vOEFBQUFBQUFBQUFBQUFBQUFBQUFB"
+			"QUFBQUFBQQ=="
 		)
 	)
 	(image
@@ -14300,6 +14466,24 @@
 			"AC8ALwAvAFUALwA5AFQALwAvAC8AOABBAEwANABuAC8AWABRAEEAQQAvAC8ALwAvAHMAUAAvAC8A"
 			"LwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAv"
 			"AC8AOQBkAHMAUAAvAC8AQQBBAEEAQQAvADkAUwBKAEwALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8A"
+			"LwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAv"
+			"AC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8A"
+			"LwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAv"
+			"AC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8A"
+			"LwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAv"
+			"AC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8A"
+			"LwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAv"
+			"AC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8A"
+			"LwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAv"
+			"AC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8A"
+			"LwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAv"
+			"AC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8A"
+			"LwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAv"
+			"AC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8A"
+			"LwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAv"
+			"AC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8A"
+			"LwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAv"
+			"AC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8A"
 			"LwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAA=="
 		)
 	)
@@ -17508,6 +17692,24 @@
 			"LwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAv"
 			"AC8ALwAvAC8ALwAvAC8ALwAvADgALwBQAHoALwArAC8AdgA3AC8ALwB6ADgALwBQAC8ANwArAC8A"
 			"dgAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAv"
+			"AC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8A"
+			"LwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAv"
+			"AC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8A"
+			"LwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAv"
+			"AC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8A"
+			"LwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAv"
+			"AC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8A"
+			"LwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAv"
+			"AC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8A"
+			"LwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAv"
+			"AC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8A"
+			"LwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAv"
+			"AC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8A"
+			"LwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAv"
+			"AC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8A"
+			"LwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAv"
+			"AC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8A"
+			"LwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAv"
 			"AC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAA=="
 		)
 	)
@@ -19332,7 +19534,25 @@
 			"LwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAv"
 			"AC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8A"
 			"LwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvADcARAAvAC8ALwA4AEEAQQBGADMALwBI"
-			"AFEAQQBBAC8ALwAvAEgAZQB2AC8ALwAvAA=="
+			"AFEAQQBBAC8ALwAvAEgAZQB2AC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8A"
+			"LwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAv"
+			"ADkAZABzAFAALwAvAEEAQQBBAEEALwAzAG8AZABBAFAALwAvAC8AOABmAC8ALwAvAC8ALwAvAC8A"
+			"LwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAv"
+			"AC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8A"
+			"LwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAv"
+			"AC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8A"
+			"LwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAv"
+			"AC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8A"
+			"LwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvADUAKwBmAG4ALwAvAC8ALwAv"
+			"AC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8A"
+			"LwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAv"
+			"AC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8A"
+			"LwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAv"
+			"AC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8A"
+			"LwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAHMAUAAvAC8ALwB3AEEAQQBY"
+			"AGYAOABBAEEAQQBEAC8AQQBBAEEAQQAvADUANQBIAEEAUAAvAC8ALwArAGoALwAvAC8ALwAvAC8A"
+			"OQBIAC8ALwAvADgAQQBLADQAWAAvAEEAQQBBAEEALwB3AEEAQQBBAFAAOQA2AEgAUQBEAC8ALwAv"
+			"AC8ASAAvADcARAAvAC8ALwA4AEEAQQBGAA=="
 		)
 	)
 	(image
@@ -25212,6 +25432,24 @@
 			"LwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAv"
 			"AC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8A"
 			"LwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAv"
+			"AC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8A"
+			"LwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAv"
+			"AC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8A"
+			"LwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAv"
+			"AC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8A"
+			"LwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAv"
+			"AC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8A"
+			"LwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAv"
+			"AC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8A"
+			"LwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAv"
+			"AC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8A"
+			"LwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAv"
+			"AC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8A"
+			"LwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAv"
+			"AC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8A"
+			"LwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAv"
+			"AC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8A"
+			"LwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAvAC8ALwAv"
 			"AA=="
 		)
 	)
@@ -25246,7 +25484,7 @@
 		(uuid "1d7d8b8d-db7e-4eb9-a7b7-0086c3a9ed33")
 	)
 	(label "QSPI_DQ1"
-		(at 187.96 66.04 0)
+		(at 190.5 66.04 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -25346,7 +25584,7 @@
 		(uuid "a17adedc-d2f0-4e9c-8cf3-b1f86a03a6c9")
 	)
 	(label "QSPI_DQ0"
-		(at 187.96 63.5 0)
+		(at 190.5 63.5 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -25366,7 +25604,7 @@
 		(uuid "aba7c1f9-1c44-436d-bcac-49132e480302")
 	)
 	(label "QSPI_DQ3"
-		(at 187.96 71.12 0)
+		(at 190.5 71.12 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -25416,7 +25654,7 @@
 		(uuid "b5d21275-a99a-45f9-b5c3-195e62a7afaf")
 	)
 	(label "QSPI_CLK"
-		(at 187.96 58.42 0)
+		(at 190.5 58.42 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -25456,7 +25694,7 @@
 		(uuid "dbc58fe4-41f8-47ea-a6a7-a46077cdcefe")
 	)
 	(label "QSPI_CS"
-		(at 187.96 53.34 0)
+		(at 190.5 53.34 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -25496,7 +25734,7 @@
 		(uuid "fbe8b3cb-3736-456e-9bc8-74b57d4b9aae")
 	)
 	(label "QSPI_DQ2"
-		(at 187.96 68.58 0)
+		(at 190.5 68.58 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -25518,7 +25756,7 @@
 	)
 	(hierarchical_label "QSPI_DQ[3..0]"
 		(shape bidirectional)
-		(at 162.56 78.74 180)
+		(at 160.02 78.74 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -25540,7 +25778,7 @@
 	)
 	(hierarchical_label "QSPI_CS"
 		(shape input)
-		(at 167.64 53.34 180)
+		(at 160.02 53.34 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -25617,7 +25855,7 @@
 	)
 	(symbol
 		(lib_id "Thunderscope_Rev5:IC FLASH MX25L6433FZNI-08G")
-		(at 218.44 60.96 0)
+		(at 220.98 60.96 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -25625,7 +25863,7 @@
 		(dnp no)
 		(uuid "02486534-dd77-4345-8298-2d4c72a026a4")
 		(property "Reference" "U19"
-			(at 205.74 49.53 0)
+			(at 208.28 49.53 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -25634,7 +25872,7 @@
 			)
 		)
 		(property "Value" "MX25L6433FZNI-08G"
-			(at 205.74 74.93 0)
+			(at 208.28 74.93 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -25643,7 +25881,7 @@
 			)
 		)
 		(property "Footprint" "Thunderscope_Rev5:MX_WSON8"
-			(at 218.44 75.184 0)
+			(at 220.98 75.184 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -25652,7 +25890,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 218.44 60.96 0)
+			(at 220.98 60.96 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -25661,7 +25899,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 218.44 60.96 0)
+			(at 220.98 60.96 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -25670,7 +25908,7 @@
 			)
 		)
 		(property "SUPPLIER 1" "Mouser"
-			(at 218.44 75.184 0)
+			(at 220.98 75.184 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -25679,7 +25917,7 @@
 			)
 		)
 		(property "SUPPLIER PART NUMBER 1" "95-25L6433FZNI08TR"
-			(at 218.44 75.184 0)
+			(at 220.98 75.184 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -25688,7 +25926,7 @@
 			)
 		)
 		(property "HOUSE PART NUMBER" "MX25L6433FZNI-08G-TR"
-			(at 218.44 75.184 0)
+			(at 220.98 75.184 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -25697,7 +25935,7 @@
 			)
 		)
 		(property "MANUFACTURER" "Macronix"
-			(at 218.44 75.184 0)
+			(at 220.98 75.184 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -25706,7 +25944,7 @@
 			)
 		)
 		(property "MANUFACTURER PART NUMBER" "MX25L6433FZNI-08G-TR"
-			(at 218.44 75.184 0)
+			(at 220.98 75.184 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -26990,7 +27228,7 @@
 	)
 	(symbol
 		(lib_id "Thunderscope_Rev5:GND")
-		(at 241.3 73.66 0)
+		(at 243.84 73.66 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -26998,7 +27236,7 @@
 		(dnp no)
 		(uuid "1994b0cd-3388-498a-96ab-27f8d94ce0ab")
 		(property "Reference" "#PWR0261"
-			(at 241.3 80.01 0)
+			(at 243.84 80.01 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -27007,7 +27245,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 241.3 77.47 0)
+			(at 243.84 77.47 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -27015,7 +27253,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 241.3 73.66 0)
+			(at 243.84 73.66 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -27024,7 +27262,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 241.3 73.66 0)
+			(at 243.84 73.66 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -27033,7 +27271,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 241.3 73.66 0)
+			(at 243.84 73.66 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -27194,6 +27432,111 @@
 			(project "Thunderscope_Rev5"
 				(path "/031d3e2c-42e0-4016-8c32-579d45c83e09/0f922f52-a6e9-41f0-8991-df4889546a95/9e3a6ae2-4fbe-4717-950b-8a09c623e35a"
 					(reference "R113")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Thunderscope_Rev5:TP PCB 1mm")
+		(at 177.8 78.74 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(uuid "27e63717-c21b-44bf-b2b8-4a1cb0b85e47")
+		(property "Reference" "TP46"
+			(at 175.368 85.7771 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "PCB"
+			(at 182.88 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "Thunderscope_Rev5:GEN_TP_PCB"
+			(at 177.8 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 177.8 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 177.8 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "HOUSE PART NUMBER" ""
+			(at 182.88 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" ""
+			(at 182.88 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" ""
+			(at 182.88 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" ""
+			(at 177.8 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "06ef2ec5-5e78-48e0-bc02-6692527c795f")
+		)
+		(instances
+			(project "Thunderscope_Rev5"
+				(path "/031d3e2c-42e0-4016-8c32-579d45c83e09/0f922f52-a6e9-41f0-8991-df4889546a95/9e3a6ae2-4fbe-4717-950b-8a09c623e35a"
+					(reference "TP46")
 					(unit 1)
 				)
 			)
@@ -27444,6 +27787,111 @@
 			(project "Thunderscope_Rev5"
 				(path "/031d3e2c-42e0-4016-8c32-579d45c83e09/0f922f52-a6e9-41f0-8991-df4889546a95/9e3a6ae2-4fbe-4717-950b-8a09c623e35a"
 					(reference "R68")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Thunderscope_Rev5:TP PCB 1mm")
+		(at 167.64 50.8 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(uuid "41ddca00-7978-473c-8f48-7682b63d1807")
+		(property "Reference" "TP53"
+			(at 170.072 43.7629 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "PCB"
+			(at 162.56 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "Thunderscope_Rev5:GEN_TP_PCB"
+			(at 167.64 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 167.64 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 167.64 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "HOUSE PART NUMBER" ""
+			(at 162.56 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" ""
+			(at 162.56 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" ""
+			(at 162.56 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" ""
+			(at 167.64 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "4f80bc6f-ac22-4b8e-b376-05e6a659a113")
+		)
+		(instances
+			(project "Thunderscope_Rev5"
+				(path "/031d3e2c-42e0-4016-8c32-579d45c83e09/0f922f52-a6e9-41f0-8991-df4889546a95/9e3a6ae2-4fbe-4717-950b-8a09c623e35a"
+					(reference "TP53")
 					(unit 1)
 				)
 			)
@@ -27812,6 +28260,216 @@
 		)
 	)
 	(symbol
+		(lib_id "Thunderscope_Rev5:TP PCB 1mm")
+		(at 182.88 78.74 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(uuid "74c54d35-4e94-403f-b17f-010b38458d96")
+		(property "Reference" "TP48"
+			(at 180.448 85.7771 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "PCB"
+			(at 187.96 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "Thunderscope_Rev5:GEN_TP_PCB"
+			(at 182.88 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 182.88 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 182.88 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "HOUSE PART NUMBER" ""
+			(at 187.96 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" ""
+			(at 187.96 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" ""
+			(at 187.96 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" ""
+			(at 182.88 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "788e5336-30dc-4992-969b-e5e3464b5852")
+		)
+		(instances
+			(project "Thunderscope_Rev5"
+				(path "/031d3e2c-42e0-4016-8c32-579d45c83e09/0f922f52-a6e9-41f0-8991-df4889546a95/9e3a6ae2-4fbe-4717-950b-8a09c623e35a"
+					(reference "TP48")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Thunderscope_Rev5:TP PCB 1mm")
+		(at 187.96 78.74 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(uuid "74d01388-dccd-43c4-a9cd-6b674057fc29")
+		(property "Reference" "TP52"
+			(at 185.528 85.7771 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "PCB"
+			(at 193.04 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "Thunderscope_Rev5:GEN_TP_PCB"
+			(at 187.96 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 187.96 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 187.96 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "HOUSE PART NUMBER" ""
+			(at 193.04 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" ""
+			(at 193.04 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" ""
+			(at 193.04 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" ""
+			(at 187.96 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "31907ea8-6ecc-4d33-8fc8-424f9e45cd36")
+		)
+		(instances
+			(project "Thunderscope_Rev5"
+				(path "/031d3e2c-42e0-4016-8c32-579d45c83e09/0f922f52-a6e9-41f0-8991-df4889546a95/9e3a6ae2-4fbe-4717-950b-8a09c623e35a"
+					(reference "TP52")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Thunderscope_Rev5:+3V3_IO_BAR")
 		(at 175.26 38.1 180)
 		(unit 1)
@@ -28049,7 +28707,7 @@
 	)
 	(symbol
 		(lib_id "Thunderscope_Rev5:CAP 100nF 16V X7R 0402")
-		(at 241.3 60.96 0)
+		(at 243.84 60.96 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -28057,7 +28715,7 @@
 		(dnp no)
 		(uuid "9f260567-5476-47e0-81a9-2f89ef962e31")
 		(property "Reference" "C129"
-			(at 243.554 60.706 0)
+			(at 246.094 60.706 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -28066,7 +28724,7 @@
 			)
 		)
 		(property "Value" "100nF"
-			(at 243.554 63.246 0)
+			(at 246.094 63.246 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -28075,7 +28733,7 @@
 			)
 		)
 		(property "Footprint" "Thunderscope_Rev5:GEN_C_0402"
-			(at 241.3 60.96 0)
+			(at 243.84 60.96 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -28084,7 +28742,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 241.3 60.96 0)
+			(at 243.84 60.96 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -28093,7 +28751,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 241.3 60.96 0)
+			(at 243.84 60.96 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -28102,7 +28760,7 @@
 			)
 		)
 		(property "PACKAGE" "0402"
-			(at 239.046 55.372 0)
+			(at 241.586 55.372 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -28112,7 +28770,7 @@
 			)
 		)
 		(property "VOLTAGE RATING" "16V"
-			(at 239.046 55.372 0)
+			(at 241.586 55.372 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -28122,7 +28780,7 @@
 			)
 		)
 		(property "SUPPLIER 1" "Mouser"
-			(at 239.046 55.372 0)
+			(at 241.586 55.372 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -28132,7 +28790,7 @@
 			)
 		)
 		(property "SUPPLIER PART NUMBER 1" "81-GCM155R71C104KA5D"
-			(at 239.046 55.372 0)
+			(at 241.586 55.372 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -28142,7 +28800,7 @@
 			)
 		)
 		(property "HOUSE PART NUMBER" "C-100nF-0402-002"
-			(at 239.046 55.372 0)
+			(at 241.586 55.372 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -28152,7 +28810,7 @@
 			)
 		)
 		(property "MANUFACTURER" "Murata"
-			(at 239.046 55.372 0)
+			(at 241.586 55.372 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -28162,7 +28820,7 @@
 			)
 		)
 		(property "MANUFACTURER PART NUMBER" "GCM155R71C104KA55D"
-			(at 239.046 55.372 0)
+			(at 241.586 55.372 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -28172,7 +28830,7 @@
 			)
 		)
 		(property "ALTIUM_VALUE" ""
-			(at 241.3 60.96 0)
+			(at 243.84 60.96 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -29354,7 +30012,7 @@
 	)
 	(symbol
 		(lib_id "Thunderscope_Rev5:+3V3_IO_BAR")
-		(at 243.84 50.8 180)
+		(at 246.38 50.8 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -29362,7 +30020,7 @@
 		(dnp no)
 		(uuid "cc13dc4d-a551-4890-ba14-ee2df0b7ea5f")
 		(property "Reference" "#PWR0345"
-			(at 243.84 50.8 0)
+			(at 246.38 50.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -29371,7 +30029,7 @@
 			)
 		)
 		(property "Value" "+3V3"
-			(at 243.84 46.99 0)
+			(at 246.38 46.99 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -29379,7 +30037,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 243.84 50.8 0)
+			(at 246.38 50.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -29388,7 +30046,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 243.84 50.8 0)
+			(at 246.38 50.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -29397,7 +30055,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name '+3V3_IO'"
-			(at 243.84 50.8 0)
+			(at 246.38 50.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -29899,6 +30557,111 @@
 			(project "Thunderscope_Rev5"
 				(path "/031d3e2c-42e0-4016-8c32-579d45c83e09/0f922f52-a6e9-41f0-8991-df4889546a95/9e3a6ae2-4fbe-4717-950b-8a09c623e35a"
 					(reference "R66")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Thunderscope_Rev5:TP PCB 1mm")
+		(at 172.72 78.74 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(uuid "f337198e-3236-4821-a18a-2b7694b74ab2")
+		(property "Reference" "TP47"
+			(at 170.288 85.7771 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "PCB"
+			(at 177.8 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "Thunderscope_Rev5:GEN_TP_PCB"
+			(at 172.72 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 172.72 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 172.72 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "HOUSE PART NUMBER" ""
+			(at 177.8 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" ""
+			(at 177.8 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" ""
+			(at 177.8 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" ""
+			(at 172.72 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "52adc279-a3d5-4123-8e23-5b61addab602")
+		)
+		(instances
+			(project "Thunderscope_Rev5"
+				(path "/031d3e2c-42e0-4016-8c32-579d45c83e09/0f922f52-a6e9-41f0-8991-df4889546a95/9e3a6ae2-4fbe-4717-950b-8a09c623e35a"
+					(reference "TP47")
 					(unit 1)
 				)
 			)
