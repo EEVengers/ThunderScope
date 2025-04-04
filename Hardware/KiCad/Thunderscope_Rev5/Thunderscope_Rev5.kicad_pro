@@ -60,14 +60,6 @@
       ],
       "drc_exclusions": [
         [
-          "copper_edge_clearance|132301095|152403600|9ad64d92-58cc-4f00-bbd5-3054ac26ab3b|744389cf-6ab9-4cc8-8227-1aa11e78cc41",
-          "PCIe Edge Connector"
-        ],
-        [
-          "copper_edge_clearance|132301095|153403600|9ad64d92-58cc-4f00-bbd5-3054ac26ab3b|2ffec885-2238-4a6f-a55d-026323383ed8",
-          "PCIe Edge Connector"
-        ],
-        [
           "copper_edge_clearance|143001095|153403600|8078e05e-01c2-49e1-b2d8-abbeebfcda18|5f51daae-7289-4599-9d78-a13a19ed2676",
           "PCIe Edge Connector"
         ],
@@ -81,14 +73,6 @@
         ],
         [
           "copper_edge_clearance|145301095|153403600|e4cc6f3a-352a-4e91-9bfe-a4b5b4fe8684|ea99a628-7d6e-4019-a088-e249cacb79d7",
-          "PCIe Edge Connector"
-        ],
-        [
-          "copper_edge_clearance|166001095|153403600|6848bbb7-c218-419d-b363-2f4822a47dd4|e637e05c-219a-4046-a70e-1b950ad17851",
-          "PCIe Edge Connector"
-        ],
-        [
-          "copper_edge_clearance|166001095|153403600|6848bbb7-c218-419d-b363-2f4822a47dd4|f3e7bccb-8e6a-4cfd-b672-e5150864a5f0",
           "PCIe Edge Connector"
         ]
       ],
@@ -159,8 +143,8 @@
         "min_connection": 0.127,
         "min_copper_edge_clearance": 0.3,
         "min_groove_width": 0.0,
-        "min_hole_clearance": 0.25,
-        "min_hole_to_hole": 0.25,
+        "min_hole_clearance": 0.127,
+        "min_hole_to_hole": 0.127,
         "min_microvia_diameter": 0.2,
         "min_microvia_drill": 0.1,
         "min_resolved_spokes": 2,
@@ -518,7 +502,7 @@
         "pcb_color": "rgba(0, 0, 0, 0.000)",
         "priority": 2147483647,
         "schematic_color": "rgba(0, 0, 0, 0.000)",
-        "track_width": 0.1524,
+        "track_width": 0.127,
         "via_diameter": 0.4064,
         "via_drill": 0.2032,
         "wire_width": 6
@@ -527,7 +511,7 @@
         "clearance": 0.127,
         "name": "50Z",
         "pcb_color": "rgba(0, 0, 0, 0.000)",
-        "priority": 0,
+        "priority": 1,
         "schematic_color": "rgba(0, 0, 0, 0.000)",
         "track_width": 0.213
       },
@@ -535,14 +519,14 @@
         "clearance": 0.127,
         "name": "FE_100Z_Diff",
         "pcb_color": "rgba(0, 0, 0, 0.000)",
-        "priority": 6,
+        "priority": 7,
         "schematic_color": "rgba(0, 0, 0, 0.000)"
       },
       {
         "clearance": 0.127,
         "name": "FE_50Z",
         "pcb_color": "rgba(0, 0, 0, 0.000)",
-        "priority": 8,
+        "priority": 9,
         "schematic_color": "rgba(0, 0, 0, 0.000)",
         "track_width": 0.213,
         "via_diameter": 2.0,
@@ -550,42 +534,50 @@
       },
       {
         "clearance": 0.127,
+        "name": "FE_50Z_INPUT",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "priority": 0,
+        "schematic_color": "rgba(0, 0, 0, 0.000)",
+        "track_width": 0.213
+      },
+      {
+        "clearance": 0.127,
         "name": "LVDS_ADC",
-        "pcb_color": "rgba(0, 0, 0, 0.000)",
-        "priority": 3,
-        "schematic_color": "rgba(0, 0, 0, 0.000)"
-      },
-      {
-        "name": "LVDS_ADC_CLK",
-        "pcb_color": "rgba(0, 0, 0, 0.000)",
-        "priority": 1,
-        "schematic_color": "rgba(0, 0, 0, 0.000)"
-      },
-      {
-        "clearance": 0.127,
-        "name": "LVDS_SYNC",
-        "pcb_color": "rgba(0, 0, 0, 0.000)",
-        "priority": 5,
-        "schematic_color": "rgba(0, 0, 0, 0.000)"
-      },
-      {
-        "clearance": 0.127,
-        "name": "LVDS_USRIO",
         "pcb_color": "rgba(0, 0, 0, 0.000)",
         "priority": 4,
         "schematic_color": "rgba(0, 0, 0, 0.000)"
       },
       {
-        "name": "PCIe",
+        "name": "LVDS_ADC_CLK",
         "pcb_color": "rgba(0, 0, 0, 0.000)",
         "priority": 2,
         "schematic_color": "rgba(0, 0, 0, 0.000)"
       },
       {
         "clearance": 0.127,
+        "name": "LVDS_SYNC",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "priority": 6,
+        "schematic_color": "rgba(0, 0, 0, 0.000)"
+      },
+      {
+        "clearance": 0.127,
+        "name": "LVDS_USRIO",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "priority": 5,
+        "schematic_color": "rgba(0, 0, 0, 0.000)"
+      },
+      {
+        "name": "PCIe",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "priority": 3,
+        "schematic_color": "rgba(0, 0, 0, 0.000)"
+      },
+      {
+        "clearance": 0.127,
         "name": "PWR",
         "pcb_color": "rgba(0, 0, 0, 0.000)",
-        "priority": 7,
+        "priority": 8,
         "schematic_color": "rgba(0, 0, 0, 0.000)",
         "track_width": 0.254,
         "via_diameter": 0.4064,
@@ -603,7 +595,7 @@
         "pattern": "*/TERM_1M*"
       },
       {
-        "netclass": "FE_50Z",
+        "netclass": "FE_50Z_INPUT",
         "pattern": "*/BNC_IN"
       },
       {
@@ -644,7 +636,7 @@
       },
       {
         "netclass": "PWR",
-        "pattern": "+*"
+        "pattern": "*+*V*"
       },
       {
         "netclass": "PWR",

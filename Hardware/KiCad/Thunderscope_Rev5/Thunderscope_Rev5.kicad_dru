@@ -82,6 +82,10 @@
 	(condition "A.hasNetclass('FE_50Z')")
 	(constraint via_count (min 0) (opt 0) (max 0)))
 
+(rule "FE_50Z_Input Length"
+	(condition "A.hasNetclass('FE_50Z_INPUT')")
+	(constraint length (min 9.108mm) (opt 9.1085mm) (max 9.109mm)))
+
 (rule GND_Planes
 	(condition "A.Layer == 'In1.Cu' || A.Layer == 'In4.Cu'")
 	(constraint disallow track))
@@ -94,6 +98,10 @@
 (rule "Distance between test points"
     (constraint courtyard_clearance (min 0.5mm))
     (condition "A.Reference =='TP*' && B.Reference == 'TP*"))
+
+(rule "Through Hole Pad to Plane Clearence"
+    (condition "A.Pad_Type == 'Through-hole' && B.Type == 'Zone'")
+	(constraint clearance (min 0.5mm)))
 
 # DELAY TUNER RULES
 

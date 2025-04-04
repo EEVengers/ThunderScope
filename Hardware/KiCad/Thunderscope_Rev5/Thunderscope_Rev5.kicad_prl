@@ -1,6 +1,6 @@
 {
   "board": {
-    "active_layer": 8,
+    "active_layer": 0,
     "active_layer_preset": "",
     "auto_track_width": false,
     "hidden_netclasses": [
@@ -8,6 +8,10 @@
       "PWR"
     ],
     "hidden_nets": [
+      "/ADC/+1V8A",
+      "/ADC/+1V8D",
+      "/ACQ and FE Voltage Regs/+5V_R_PGA",
+      "/CH4/+VPGA",
       "+2V5",
       "+3V3",
       "+1V8",
@@ -24,7 +28,15 @@
       "GND",
       "+5V",
       "+VUSB",
-      "+3V3_ACQ"
+      "+3V3_ACQ",
+      "/TS-PCIe Components/+12V_PCIe_R",
+      "/TS-USB4 Components/+VUSB_M2",
+      "/TS-PCIe Components/+12V_PCIe",
+      "/ACQ and FE Voltage Regs/+VUSB_R_ACQ",
+      "/ACQ and FE Voltage Regs/+2V5_R_ACQ",
+      "/CH1/+VPGA",
+      "/CH2/+VPGA",
+      "/CH3/+VPGA"
     ],
     "high_contrast_mode": 0,
     "net_color_mode": 1,
@@ -40,8 +52,8 @@
       "dimensions": true,
       "footprints": true,
       "graphics": true,
-      "keepouts": false,
-      "lockedItems": false,
+      "keepouts": true,
+      "lockedItems": true,
       "otherItems": true,
       "pads": true,
       "text": true,
@@ -52,6 +64,7 @@
     "visible_items": [
       "vias",
       "footprint_text",
+      "footprint_anchors",
       "ratsnest",
       "grid",
       "footprints_front",
@@ -68,7 +81,7 @@
       "conflict_shadows",
       "shapes"
     ],
-    "visible_layers": "00000000_00000000_00000000_02000000",
+    "visible_layers": "00000000_00000000_00000000_02000001",
     "zone_display_mode": 0
   },
   "git": {
