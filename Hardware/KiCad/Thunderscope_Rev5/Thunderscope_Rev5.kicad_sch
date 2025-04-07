@@ -630,20 +630,6 @@
 			(embedded_fonts no)
 		)
 	)
-	(text "TODO: \nChange 5V2 to 5V3"
-		(exclude_from_sim no)
-		(at 104.14 20.32 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-				(thickness 0.254)
-				(bold yes)
-				(color 194 0 0 1)
-			)
-			(justify left)
-		)
-		(uuid "e2b9fc16-0aca-4bd8-a0dd-0f6b8197d62c")
-	)
 	(junction
 		(at 231.14 104.14)
 		(diameter 0)
@@ -4294,7 +4280,7 @@
 				(justify left top)
 			)
 		)
-		(pin "OSC_OE" output
+		(pin "PLL_RSTn" output
 			(at 167.64 134.62 180)
 			(uuid "796dd7db-9459-442e-af3c-bc4889dece81")
 			(effects
@@ -4394,7 +4380,7 @@
 				(justify left)
 			)
 		)
-		(pin "ADC_SDIO" output
+		(pin "ADC_SDATA" output
 			(at 167.64 111.76 180)
 			(uuid "59797ff8-3d1c-4481-b09c-f3cc3dedcb73")
 			(effects
