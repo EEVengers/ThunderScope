@@ -2,7 +2,7 @@
 input_filename = "FE_Channel.kicad_sch"
 output_filename = "FE_Channel_Copy.kicad_sch"
 
-designator_suffix_order = ["2","1","3","4"]
+designator_suffix_order = ["3","4","2","1"]
 designator = ""
 is_valid = False
 num_channels = 4
@@ -17,7 +17,7 @@ with open(output_filename, "w") as output_file:
                     reference_old = line.split('"')[3]
                     print(reference_old)
                     if "#PWR" not in reference_old:
-                        reference_new = reference_old[:-2] + "_1"
+                        reference_new = reference_old[:-2] + "_4"
                         print (reference_new)
                         line = line.split(reference_old)[0] + reference_new +  line.split(reference_old)[1]
                         channel_count = num_channels
