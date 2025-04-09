@@ -3757,7 +3757,7 @@
 	)
 	(text "Vout = 0.6 * (R1/R2 + 1)"
 		(exclude_from_sim no)
-		(at 203.2 60.96 0)
+		(at 203.2 63.5 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -3768,7 +3768,7 @@
 	)
 	(text "Vout = 1.8V"
 		(exclude_from_sim no)
-		(at 203.2 66.04 0)
+		(at 203.2 68.58 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -3792,7 +3792,7 @@
 	)
 	(text "Vout = 0.6 * (20/10 + 1)"
 		(exclude_from_sim no)
-		(at 203.2 63.5 0)
+		(at 203.2 66.04 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -3914,7 +3914,7 @@
 	)
 	(text "The recommended power-on sequence is VCCINT, VCCBRAM, VCCAUX, and VCCO"
 		(exclude_from_sim no)
-		(at 33.02 30.48 0)
+		(at 58.42 30.48 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -3925,7 +3925,7 @@
 	)
 	(text "Vout = 0.6 * (R1/R2 + 1)"
 		(exclude_from_sim no)
-		(at 58.42 60.96 0)
+		(at 58.42 63.5 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -3936,7 +3936,7 @@
 	)
 	(text "Vout = 1.008V"
 		(exclude_from_sim no)
-		(at 58.42 66.04 0)
+		(at 58.42 68.58 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -3947,7 +3947,7 @@
 	)
 	(text "1V,1V,1.8V,2.5V and 3.3V"
 		(exclude_from_sim no)
-		(at 71.12 33.02 0)
+		(at 96.52 33.02 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -3958,7 +3958,7 @@
 	)
 	(text "Vout = 0.6 * (3.197/4.7 + 1)"
 		(exclude_from_sim no)
-		(at 58.42 63.5 0)
+		(at 58.42 66.04 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4094,6 +4094,12 @@
 		(uuid "5a8ca3a9-82f7-4a55-9f2f-ceec7a841d3b")
 	)
 	(junction
+		(at 48.26 45.72)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "5b78b655-4d21-4d2e-9d64-baef152f68e0")
+	)
+	(junction
 		(at 66.04 142.24)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -4110,6 +4116,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "709ebc9e-4351-4540-9f34-f33968005585")
+	)
+	(junction
+		(at 228.6 50.8)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "712b8fc7-d70e-4efd-a7f5-a6d5afb2a069")
 	)
 	(junction
 		(at 106.68 40.64)
@@ -4160,12 +4172,6 @@
 		(uuid "9412ca8e-1a4c-4770-84f4-a2bcd4197455")
 	)
 	(junction
-		(at 30.48 40.64)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "973f3a6d-de67-4826-8663-ce59f3e4f387")
-	)
-	(junction
 		(at 276.86 40.64)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -4208,6 +4214,12 @@
 		(uuid "a3004fbd-8d9f-437a-b28c-ed03bf54452a")
 	)
 	(junction
+		(at 27.94 40.64)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "a72c4284-fb11-4e78-a41c-170ed12b7c79")
+	)
+	(junction
 		(at 33.02 142.24)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -4230,6 +4242,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "b90c672c-8454-413f-a39d-78b58e4ec2aa")
+	)
+	(junction
+		(at 83.82 50.8)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "b98d4607-8cb0-4b77-b6b5-433326770117")
 	)
 	(junction
 		(at 129.54 40.64)
@@ -4443,7 +4461,7 @@
 	)
 	(wire
 		(pts
-			(xy 20.32 40.64) (xy 30.48 40.64)
+			(xy 20.32 40.64) (xy 27.94 40.64)
 		)
 		(stroke
 			(width 0)
@@ -4470,16 +4488,6 @@
 			(type default)
 		)
 		(uuid "0bb27d2e-990c-42f4-b48e-70c9ade3ad87")
-	)
-	(wire
-		(pts
-			(xy 35.56 45.72) (xy 38.1 45.72)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "0dd84ebd-adb4-4737-8fcc-9b590074da18")
 	)
 	(wire
 		(pts
@@ -4583,16 +4591,6 @@
 	)
 	(wire
 		(pts
-			(xy 48.26 50.8) (xy 50.8 50.8)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "17f169ad-cd39-4ecc-96d2-843643dfd01c")
-	)
-	(wire
-		(pts
 			(xy 187.96 45.72) (xy 195.58 45.72)
 		)
 		(stroke
@@ -4640,6 +4638,16 @@
 			(type default)
 		)
 		(uuid "1c25ecf6-984c-4539-a248-cbb5948725d6")
+	)
+	(wire
+		(pts
+			(xy 116.84 91.44) (xy 124.46 91.44)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1ecf05de-2d7f-4401-863b-d8244f52d6e3")
 	)
 	(wire
 		(pts
@@ -4723,7 +4731,7 @@
 	)
 	(wire
 		(pts
-			(xy 48.26 55.88) (xy 48.26 50.8)
+			(xy 50.8 55.88) (xy 50.8 50.8)
 		)
 		(stroke
 			(width 0)
@@ -4903,13 +4911,13 @@
 	)
 	(wire
 		(pts
-			(xy 254 91.44) (xy 246.38 91.44)
+			(xy 246.38 40.64) (xy 254 40.64)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "3cdf422a-37b8-4b3b-9bb2-0a52bcfae62d")
+		(uuid "3c404f0b-e60d-4ed4-8658-12b2224ba508")
 	)
 	(wire
 		(pts
@@ -4940,16 +4948,6 @@
 			(type default)
 		)
 		(uuid "3f073a23-fbea-4cff-b035-710b3b743d00")
-	)
-	(wire
-		(pts
-			(xy 30.48 40.64) (xy 35.56 40.64)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "42421e9a-2308-43ad-8bdf-82a66d22a0b7")
 	)
 	(wire
 		(pts
@@ -5083,6 +5081,16 @@
 	)
 	(wire
 		(pts
+			(xy 38.1 50.8) (xy 48.26 50.8)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "50563700-8b6e-4ece-92e6-adcb37e42478")
+	)
+	(wire
+		(pts
 			(xy 99.06 96.52) (xy 88.9 96.52)
 		)
 		(stroke
@@ -5160,16 +5168,6 @@
 			(type default)
 		)
 		(uuid "59354726-840d-4d51-b592-df3ff5f3ce8a")
-	)
-	(wire
-		(pts
-			(xy 254 40.64) (xy 246.38 40.64)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "5a2bf35b-a9c3-4538-ab40-6fbf8f80fd19")
 	)
 	(wire
 		(pts
@@ -5303,13 +5301,23 @@
 	)
 	(wire
 		(pts
-			(xy 30.48 40.64) (xy 30.48 43.18)
+			(xy 27.94 40.64) (xy 27.94 43.18)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
 		(uuid "734025fa-cb36-4564-a54e-cea1cdc43c30")
+	)
+	(wire
+		(pts
+			(xy 83.82 50.8) (xy 91.44 50.8)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "752a7852-dc5f-4274-8fe8-028cd1ed117f")
 	)
 	(wire
 		(pts
@@ -5340,6 +5348,16 @@
 			(type default)
 		)
 		(uuid "78043674-b67c-41c0-a5cc-91c3b938da9a")
+	)
+	(wire
+		(pts
+			(xy 246.38 91.44) (xy 254 91.44)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "78938958-e90f-4264-9770-8ca06e26da6a")
 	)
 	(wire
 		(pts
@@ -5423,6 +5441,16 @@
 	)
 	(wire
 		(pts
+			(xy 48.26 50.8) (xy 48.26 45.72)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8304ce9c-8fd1-42d9-ad40-6c39b7c311fa")
+	)
+	(wire
+		(pts
 			(xy 254 119.38) (xy 254 121.92)
 		)
 		(stroke
@@ -5463,7 +5491,7 @@
 	)
 	(wire
 		(pts
-			(xy 226.06 50.8) (xy 236.22 50.8)
+			(xy 226.06 50.8) (xy 228.6 50.8)
 		)
 		(stroke
 			(width 0)
@@ -5473,7 +5501,7 @@
 	)
 	(wire
 		(pts
-			(xy 81.28 50.8) (xy 91.44 50.8)
+			(xy 81.28 50.8) (xy 83.82 50.8)
 		)
 		(stroke
 			(width 0)
@@ -5600,6 +5628,16 @@
 			(type default)
 		)
 		(uuid "953d97ba-be4c-4e67-999e-9b649f496ca3")
+	)
+	(wire
+		(pts
+			(xy 48.26 45.72) (xy 50.8 45.72)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "998e9079-999e-4b1e-9657-ccd3c30ebf6c")
 	)
 	(wire
 		(pts
@@ -5913,7 +5951,7 @@
 	)
 	(wire
 		(pts
-			(xy 48.26 45.72) (xy 50.8 45.72)
+			(xy 45.72 45.72) (xy 48.26 45.72)
 		)
 		(stroke
 			(width 0)
@@ -6063,6 +6101,16 @@
 	)
 	(wire
 		(pts
+			(xy 38.1 50.8) (xy 38.1 53.34)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d4fdf4eb-75b0-4c88-948a-810bf19c6d16")
+	)
+	(wire
+		(pts
 			(xy 119.38 43.18) (xy 119.38 40.64)
 		)
 		(stroke
@@ -6123,7 +6171,7 @@
 	)
 	(wire
 		(pts
-			(xy 30.48 55.88) (xy 30.48 53.34)
+			(xy 27.94 55.88) (xy 27.94 53.34)
 		)
 		(stroke
 			(width 0)
@@ -6333,6 +6381,26 @@
 	)
 	(wire
 		(pts
+			(xy 228.6 50.8) (xy 236.22 50.8)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f772021a-5201-429c-bd99-d3361fb81356")
+	)
+	(wire
+		(pts
+			(xy 27.94 40.64) (xy 35.56 40.64)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f7a8ad46-2fef-4ebc-aaf7-174dcb077b66")
+	)
+	(wire
+		(pts
 			(xy 254 93.98) (xy 254 91.44)
 		)
 		(stroke
@@ -6340,16 +6408,6 @@
 			(type default)
 		)
 		(uuid "f7e8ed49-f16a-4630-b7ba-3d69a2222a35")
-	)
-	(wire
-		(pts
-			(xy 116.84 91.44) (xy 124.46 91.44)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "f82629fc-4ebe-432e-9640-2dd8d926801e")
 	)
 	(image
 		(at 50.8 121.92)
@@ -7106,7 +7164,61 @@
 			"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"
-			"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"
+			"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"
+			"5iLBM/egvbAUSEFYJiLBM/egvViUR0FYJiLBM/egvViUR0GwpiLBM/egvViUR0GwpiLBM/egvbAU"
+			"SEGwpiLBM/egvbAUSEFYJiLBM/egvSxUR0GEZiLBM/egvSxUR0Hd5iLBM/egvYTUR0Hd5iLBM/eg"
+			"vYTUR0Hd5iLBM/egvYTUR0GEZiLBM/egvSxUR0GEZiLBM/egvViUR0EJJyPBM/egvbAUSEEJJyPB"
+			"M/egvbAUSEGxpiLBM/egvbAUSEGxpiLBM/egvViUR0GxpiLBM/egvViUR0EJJyPBM/egvbAUSEHc"
+			"5iLBM/egvbAUSEGEZiLBM/egvViUR0GEZiLBM/egvViUR0GEZiLBM/egvViUR0Hc5iLBM/egvbAU"
+			"SEHc5iLBM/egvdPTRkHd5iLBM/egvdPTRkGEZiLBM/egvXtTRkGEZiLBM/egvXtTRkGEZiLBM/eg"
+			"vXtTRkHd5iLBM/egvdPTRkHd5iLBM/egvaeTRkFYJiLBM/egvU8TRkFYJiLBM/egvU8TRkGwpiLB"
+			"M/egvU8TRkGwpiLBM/egvaeTRkGwpiLBM/egvaeTRkFYJiLBM/egvSPTRUGEZiLBM/egvSPTRUHd"
+			"5iLBM/egvXtTRkHd5iLBM/egvXtTRkHd5iLBM/egvXtTRkGEZiLBM/egvSPTRUGEZiLBM/egvSD4"
+			"gBwRAgAACgAACuxgOgAwD+oLEQIAAPCriNIQAgAAmH4AAJp+AAAIAAAI7mA6ADDgJKEQAgAA8E5L"
+			"0BACAACdfgAAnX4AAAYAAAYrazoAcM96DRECAACAbJPSEAIAAJ1+AACcfgD/AAAAAAAAAAAIqYY/"
+			"0mMAPwAAgD4AAAAAAP8A/wD/AP8AAAAAAAAAAAiphj/SYwA/XI+CPgAAAAAA/wD/AP8A/wAAAAAA"
+			"AAAAdb+ZP9JjAD9cj4I+AAAAAAD/AP8A/wD/AAAAAAAAAAB1v5k/0mMAP1yPgj4AAAAAAP8A/wD/"
+			"AP8AAAAAAAAAAAiphj/SYwA/XI+CPgAAAAAA/wD/AP8A/wAAAAAAAAAAdb+ZP9JjAD8AAIA+AAAA"
+			"AAD/AP8A/wD/AAAAAAAAAAB1v5k/0mMAPwAAgD4AAAAAAP8A/wD/AP8AAAAAAAAAAHW/mT+VLyc/"
+			"AACAPgAAAAAA/wD/AP8A/wAAAAAAAAAAdb+ZP5UvJz8AAIA+AAAAAAD/AP8A/wD/AAAAAAAAAAB1"
+			"v5k/0mMAP1yPgj4AAAAAAP8A/wD/AP8AAAAAAAAAAHW/mT/SYwA/XI+CPgAAAAAA/wD/AP8A/wAA"
+			"AAAAAAAAdb+ZP5UvJz9cj4I+AAAAAAD/AP8A/wD/AAAAAAAAAAB1v5k/lS8nP1yPgj4AAAAAAP8A"
+			"/wD/AP8AAAAAAAAAAAiphj+VLyc/AACAPgAAAAAA/wD/AP8A/wAAAAAAAAAAdb+ZP5UvJz8AAIA+"
+			"AAAAAAD/AP8A/wD/AAAAAAAAAAB1v5k/lS8nPwAAgD4AAAAAAP8A/wD/AP8AAAAAAAAAAAiphj+V"
+			"Lyc/AACAPgAAAAAA/wD/AP8A/wAAAAAAAAAACKmGP5UvJz9cj4I+AAAAAAD/AP8A/wD/AAAAAAAA"
+			"AAB1v5k/lS8nP1yPgj4AAAAAAP8A/wD/AP8AAAAAAAAAAHW/mT+VLyc/XI+CPgAAAAAA/wD/AP8A"
+			"/wAAAAAAAAAACKmGP5UvJz9cj4I+AAAAAAD/AP8A/wD/AAAAAAAAAAAIqYY/0mMAPwAAgD4AAAAA"
+			"AP8A/wD/AP8AAAAAAAAAAHW/mT/SYwA/AACAPgAAAAAA/wD/AP8A/wAAAAAAAAAAdb+ZP5UvJz8A"
+			"AIA+AAAAAAD/AP8A/wD/AAAAAAAAAAAIqYY/lS8nPwAAgD4AAAAAAP8A/wD/AP8AAAAAAAAAAAip"
+			"hj/SYwA/AACAPgAAAAAA/wD/AP8A/wAAAAAAAAAAdb+ZP9JjAD8AAIA+AAAAAAD/AP8A/wD/AAAA"
+			"AAAAAAB1v5k/lS8nPwAAgD4AAAAAAP8A/wD/AP8AAAAAAAAAAAiphj+VLyc/AACAPgAAAAAA/wD/"
+			"AP8A/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABwAABy5h/QBgkAcSEQIAAAAIStAQ"
+			"AgAAAAAAAAAAAAAFAAAFKGH9ALAOlWYRAgAAEFZL0BACAAAAAAAAAAAAAA=="
 		)
 	)
 	(label "PG_1V0"
@@ -7118,6 +7230,16 @@
 			(justify right bottom)
 		)
 		(uuid "269552a4-f466-46bb-8b25-f8327ec58eba")
+	)
+	(label "+1V8_R_LDO"
+		(at 50.8 142.24 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "324c1054-cbbf-4fd1-a2d5-abbdbbc9939b")
 	)
 	(label "PG_1V8"
 		(at 53.34 96.52 0)
@@ -7139,6 +7261,16 @@
 		)
 		(uuid "4c51234d-1f5d-4b2e-bf5c-5b458cf46c46")
 	)
+	(label "+3V3_R"
+		(at 248.92 91.44 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "6878c317-5914-47f9-bb9c-ca3c243110e8")
+	)
 	(label "PG_1V8"
 		(at 190.5 96.52 0)
 		(effects
@@ -7148,6 +7280,16 @@
 			(justify left bottom)
 		)
 		(uuid "85944b4a-39de-4721-838b-ff7f6e40792a")
+	)
+	(label "+2V5_R"
+		(at 119.38 91.44 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "cd0cff8f-8397-45cd-9126-21171061ea4b")
 	)
 	(label "PG_1V8"
 		(at 236.22 50.8 180)
@@ -7159,6 +7301,26 @@
 		)
 		(uuid "e216e130-eb13-4b67-b8b3-8086a604c8c3")
 	)
+	(label "+1V8_R"
+		(at 248.92 40.64 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "e7c04534-662c-485c-a507-24a3df748bd3")
+	)
+	(label "+1V0_R"
+		(at 119.38 40.64 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "f07a5e7b-d801-45fc-8a96-2402c51cc84b")
+	)
 	(label "PG_1V0"
 		(at 190.5 45.72 0)
 		(effects
@@ -7168,6 +7330,16 @@
 			(justify left bottom)
 		)
 		(uuid "f7bbfd65-a520-447f-aec5-b8445927ea5c")
+	)
+	(label "FPGA_EN"
+		(at 38.1 50.8 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "f97d6d07-b7f1-4acf-83a5-5b9b8df2d8b7")
 	)
 	(symbol
 		(lib_id "Thunderscope_Rev5:GND")
@@ -7674,7 +7846,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Thunderscope_Rev5:RES 90.9K OHM 1% 1/16W 0402")
+		(lib_id "Thunderscope_Rev5:RES 10K OHM 1% 1/10W 0402")
 		(at 45.72 96.52 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -7690,7 +7862,7 @@
 				)
 			)
 		)
-		(property "Value" "90.9k"
+		(property "Value" "10K"
 			(at 45.72 96.52 0)
 			(effects
 				(font
@@ -7752,7 +7924,7 @@
 				(hide yes)
 			)
 		)
-		(property "SUPPLIER PART NUMBER 1" "603-RC0402FR-0790K9L"
+		(property "SUPPLIER PART NUMBER 1" "667-ERJ-2RKF1002X"
 			(at 45.72 96.52 0)
 			(effects
 				(font
@@ -7770,7 +7942,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUFACTURER" "Yageo"
+		(property "MANUFACTURER" "Panasonic"
 			(at 45.72 96.52 0)
 			(effects
 				(font
@@ -7779,7 +7951,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUFACTURER PART NUMBER" "RC0402FR-0790K9L"
+		(property "MANUFACTURER PART NUMBER" "ERJ-2RKF1002X"
 			(at 45.72 96.52 0)
 			(effects
 				(font
@@ -10063,6 +10235,111 @@
 		)
 	)
 	(symbol
+		(lib_id "Thunderscope_Rev5:TP PCB 1mm")
+		(at 38.1 53.34 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(uuid "3cf9a61d-42a5-4f2b-8d94-8de274c874f2")
+		(property "Reference" "TP81"
+			(at 35.56 60.96 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "PCB"
+			(at 38.608 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "Thunderscope_Rev5:GEN_TP_PCB"
+			(at 38.1 53.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 38.1 53.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 38.1 53.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "HOUSE PART NUMBER" ""
+			(at 38.608 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" ""
+			(at 38.608 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" ""
+			(at 38.608 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" ""
+			(at 38.1 53.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "2c058a5c-c93f-4712-89bf-6463da6c0bf6")
+		)
+		(instances
+			(project "Thunderscope_Rev5"
+				(path "/031d3e2c-42e0-4016-8c32-579d45c83e09/0f922f52-a6e9-41f0-8991-df4889546a95/578d4253-e95a-4587-beab-a07f275c1e48"
+					(reference "TP81")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Thunderscope_Rev5:CAP 10uF 25V X5R 0603")
 		(at 48.26 149.86 0)
 		(unit 1)
@@ -10409,7 +10686,7 @@
 	)
 	(symbol
 		(lib_id "Thunderscope_Rev5:GND")
-		(at 48.26 55.88 0)
+		(at 50.8 55.88 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -10417,7 +10694,7 @@
 		(dnp no)
 		(uuid "49255f18-869e-4730-a4f8-965cd0f42cbd")
 		(property "Reference" "#PWR0471"
-			(at 48.26 62.23 0)
+			(at 50.8 62.23 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10426,7 +10703,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 48.26 59.69 0)
+			(at 50.8 59.69 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10434,7 +10711,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 48.26 55.88 0)
+			(at 50.8 55.88 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10443,7 +10720,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 48.26 55.88 0)
+			(at 50.8 55.88 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10452,7 +10729,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 48.26 55.88 0)
+			(at 50.8 55.88 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11082,7 +11359,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Thunderscope_Rev5:RES 90.9K OHM 1% 1/16W 0402")
+		(lib_id "Thunderscope_Rev5:RES 10K OHM 1% 1/10W 0402")
 		(at 182.88 96.52 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -11098,7 +11375,7 @@
 				)
 			)
 		)
-		(property "Value" "90.9k"
+		(property "Value" "10K"
 			(at 182.88 96.52 0)
 			(effects
 				(font
@@ -11160,7 +11437,7 @@
 				(hide yes)
 			)
 		)
-		(property "SUPPLIER PART NUMBER 1" "603-RC0402FR-0790K9L"
+		(property "SUPPLIER PART NUMBER 1" "667-ERJ-2RKF1002X"
 			(at 182.88 96.52 0)
 			(effects
 				(font
@@ -11178,7 +11455,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUFACTURER" "Yageo"
+		(property "MANUFACTURER" "Panasonic"
 			(at 182.88 96.52 0)
 			(effects
 				(font
@@ -11187,7 +11464,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUFACTURER PART NUMBER" "RC0402FR-0790K9L"
+		(property "MANUFACTURER PART NUMBER" "ERJ-2RKF1002X"
 			(at 182.88 96.52 0)
 			(effects
 				(font
@@ -11286,7 +11563,7 @@
 		(dnp no)
 		(uuid "5ade0512-37f3-4970-93a2-3a03968958a4")
 		(property "Reference" "C9"
-			(at 22.86 48.26 0)
+			(at 21.59 50.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11295,7 +11572,7 @@
 			)
 		)
 		(property "Value" "10uF"
-			(at 22.86 50.8 0)
+			(at 21.59 53.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12259,8 +12536,8 @@
 		)
 	)
 	(symbol
-		(lib_id "Thunderscope_Rev5:RES 90.9K OHM 1% 1/16W 0402")
-		(at 43.18 45.72 0)
+		(lib_id "Thunderscope_Rev5:RES 10K OHM 1% 1/10W 0402")
+		(at 40.64 45.72 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -12268,15 +12545,15 @@
 		(dnp no)
 		(uuid "6acbf98a-c375-47e3-880a-5469aad769c7")
 		(property "Reference" "R117"
-			(at 43.18 43.18 0)
+			(at 40.64 43.18 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Value" "90.9k"
-			(at 43.18 45.72 0)
+		(property "Value" "10K"
+			(at 40.64 45.72 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12284,7 +12561,7 @@
 			)
 		)
 		(property "Footprint" "Thunderscope_Rev5:GEN_R_0402"
-			(at 43.18 45.72 0)
+			(at 40.64 45.72 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12293,7 +12570,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 43.18 45.72 0)
+			(at 40.64 45.72 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12302,7 +12579,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 43.18 45.72 0)
+			(at 40.64 45.72 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12311,7 +12588,7 @@
 			)
 		)
 		(property "TOLERANCE" "1%"
-			(at 43.18 45.72 0)
+			(at 40.64 45.72 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12320,7 +12597,7 @@
 			)
 		)
 		(property "PACKAGE" "0402"
-			(at 43.18 45.72 0)
+			(at 40.64 45.72 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12329,7 +12606,7 @@
 			)
 		)
 		(property "SUPPLIER 1" "Mouser"
-			(at 43.18 45.72 0)
+			(at 40.64 45.72 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12337,8 +12614,8 @@
 				(hide yes)
 			)
 		)
-		(property "SUPPLIER PART NUMBER 1" "603-RC0402FR-0790K9L"
-			(at 43.18 45.72 0)
+		(property "SUPPLIER PART NUMBER 1" "667-ERJ-2RKF1002X"
+			(at 40.64 45.72 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12347,7 +12624,7 @@
 			)
 		)
 		(property "HOUSE PART NUMBER" ""
-			(at 43.18 45.72 0)
+			(at 40.64 45.72 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12355,8 +12632,8 @@
 				(hide yes)
 			)
 		)
-		(property "MANUFACTURER" "Yageo"
-			(at 43.18 45.72 0)
+		(property "MANUFACTURER" "Panasonic"
+			(at 40.64 45.72 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12364,8 +12641,8 @@
 				(hide yes)
 			)
 		)
-		(property "MANUFACTURER PART NUMBER" "RC0402FR-0790K9L"
-			(at 43.18 45.72 0)
+		(property "MANUFACTURER PART NUMBER" "ERJ-2RKF1002X"
+			(at 40.64 45.72 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12740,6 +13017,111 @@
 		)
 	)
 	(symbol
+		(lib_id "Thunderscope_Rev5:TP PCB 1mm")
+		(at 83.82 50.8 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(uuid "739f3223-b190-42c7-a6cc-8aab8e641548")
+		(property "Reference" "TP79"
+			(at 81.28 58.42 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "PCB"
+			(at 84.328 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "Thunderscope_Rev5:GEN_TP_PCB"
+			(at 83.82 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 83.82 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 83.82 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "HOUSE PART NUMBER" ""
+			(at 84.328 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" ""
+			(at 84.328 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" ""
+			(at 84.328 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" ""
+			(at 83.82 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "d98f808f-9432-4006-8f7f-7474604dddc5")
+		)
+		(instances
+			(project "Thunderscope_Rev5"
+				(path "/031d3e2c-42e0-4016-8c32-579d45c83e09/0f922f52-a6e9-41f0-8991-df4889546a95/578d4253-e95a-4587-beab-a07f275c1e48"
+					(reference "TP79")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Thunderscope_Rev5:GND")
 		(at 157.48 106.68 0)
 		(unit 1)
@@ -12871,7 +13253,7 @@
 	)
 	(symbol
 		(lib_id "Thunderscope_Rev5:GND")
-		(at 30.48 55.88 0)
+		(at 27.94 55.88 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -12879,7 +13261,7 @@
 		(dnp no)
 		(uuid "76719404-ade4-476b-8e40-eeaad5ff9e5b")
 		(property "Reference" "#PWR0472"
-			(at 30.48 62.23 0)
+			(at 27.94 62.23 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12888,7 +13270,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 30.48 59.69 0)
+			(at 27.94 59.69 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12896,7 +13278,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 30.48 55.88 0)
+			(at 27.94 55.88 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12905,7 +13287,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 30.48 55.88 0)
+			(at 27.94 55.88 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12914,7 +13296,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 30.48 55.88 0)
+			(at 27.94 55.88 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14591,7 +14973,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Thunderscope_Rev5:RES 90.9K OHM 1% 1/16W 0402")
+		(lib_id "Thunderscope_Rev5:RES 10K OHM 1% 1/10W 0402")
 		(at 182.88 45.72 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -14607,7 +14989,7 @@
 				)
 			)
 		)
-		(property "Value" "90.9k"
+		(property "Value" "10K"
 			(at 182.88 45.72 0)
 			(effects
 				(font
@@ -14669,7 +15051,7 @@
 				(hide yes)
 			)
 		)
-		(property "SUPPLIER PART NUMBER 1" "603-RC0402FR-0790K9L"
+		(property "SUPPLIER PART NUMBER 1" "667-ERJ-2RKF1002X"
 			(at 182.88 45.72 0)
 			(effects
 				(font
@@ -14687,7 +15069,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUFACTURER" "Yageo"
+		(property "MANUFACTURER" "Panasonic"
 			(at 182.88 45.72 0)
 			(effects
 				(font
@@ -14696,7 +15078,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUFACTURER PART NUMBER" "RC0402FR-0790K9L"
+		(property "MANUFACTURER PART NUMBER" "ERJ-2RKF1002X"
 			(at 182.88 45.72 0)
 			(effects
 				(font
@@ -17403,7 +17785,7 @@
 	)
 	(symbol
 		(lib_id "Thunderscope_Rev5:CAP 10uF 25V X5R 0603")
-		(at 30.48 48.26 0)
+		(at 27.94 48.26 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -17411,7 +17793,7 @@
 		(dnp no)
 		(uuid "e858ae5c-e780-464b-88e9-c958f35a781e")
 		(property "Reference" "C175"
-			(at 33.02 48.26 0)
+			(at 29.21 50.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17420,7 +17802,7 @@
 			)
 		)
 		(property "Value" "10uF"
-			(at 33.02 50.8 0)
+			(at 29.21 53.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17429,7 +17811,7 @@
 			)
 		)
 		(property "Footprint" "Thunderscope_Rev5:GEN_C_0603"
-			(at 30.48 48.26 0)
+			(at 27.94 48.26 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17438,7 +17820,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 30.48 48.26 0)
+			(at 27.94 48.26 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17447,7 +17829,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 30.48 48.26 0)
+			(at 27.94 48.26 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17456,7 +17838,7 @@
 			)
 		)
 		(property "PACKAGE" "0402"
-			(at 13.352 59.69 0)
+			(at 10.812 59.69 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17466,7 +17848,7 @@
 			)
 		)
 		(property "VOLTAGE RATING" "25V"
-			(at 30.98 53.26 0)
+			(at 28.44 53.26 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17476,7 +17858,7 @@
 			)
 		)
 		(property "SUPPLIER 1" "Mouser"
-			(at 28.226 42.672 0)
+			(at 25.686 42.672 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17486,7 +17868,7 @@
 			)
 		)
 		(property "SUPPLIER PART NUMBER 1" "81-GRM188R61E106MA3D"
-			(at 28.226 42.672 0)
+			(at 25.686 42.672 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17496,7 +17878,7 @@
 			)
 		)
 		(property "HOUSE PART NUMBER" ""
-			(at 28.226 42.672 0)
+			(at 25.686 42.672 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17506,7 +17888,7 @@
 			)
 		)
 		(property "MANUFACTURER" "Murata"
-			(at 28.226 42.672 0)
+			(at 25.686 42.672 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17516,7 +17898,7 @@
 			)
 		)
 		(property "MANUFACTURER PART NUMBER" "GRM188R61E106MA73D"
-			(at 28.226 42.672 0)
+			(at 25.686 42.672 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17886,6 +18268,111 @@
 			(project "Thunderscope_Rev5"
 				(path "/031d3e2c-42e0-4016-8c32-579d45c83e09/0f922f52-a6e9-41f0-8991-df4889546a95/578d4253-e95a-4587-beab-a07f275c1e48"
 					(reference "C72")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Thunderscope_Rev5:TP PCB 1mm")
+		(at 228.6 50.8 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(uuid "f0d83765-f96f-4319-bdfb-268c8ad29f46")
+		(property "Reference" "TP80"
+			(at 226.06 58.42 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "PCB"
+			(at 229.108 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "Thunderscope_Rev5:GEN_TP_PCB"
+			(at 228.6 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 228.6 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 228.6 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "HOUSE PART NUMBER" ""
+			(at 229.108 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" ""
+			(at 229.108 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" ""
+			(at 229.108 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" ""
+			(at 228.6 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "09ffefd1-1bb7-4558-a97f-0e85d33b8b37")
+		)
+		(instances
+			(project "Thunderscope_Rev5"
+				(path "/031d3e2c-42e0-4016-8c32-579d45c83e09/0f922f52-a6e9-41f0-8991-df4889546a95/578d4253-e95a-4587-beab-a07f275c1e48"
+					(reference "TP80")
 					(unit 1)
 				)
 			)

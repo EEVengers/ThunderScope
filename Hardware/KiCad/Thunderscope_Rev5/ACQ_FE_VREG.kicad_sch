@@ -4858,6 +4858,16 @@
 	)
 	(wire
 		(pts
+			(xy 233.68 99.06) (xy 243.84 99.06)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "42ee6d00-463b-4ac5-86ba-af9e8cac254a")
+	)
+	(wire
+		(pts
 			(xy 60.96 109.22) (xy 68.58 109.22)
 		)
 		(stroke
@@ -5468,7 +5478,7 @@
 	)
 	(wire
 		(pts
-			(xy 190.5 101.6) (xy 198.12 101.6)
+			(xy 193.04 101.6) (xy 198.12 101.6)
 		)
 		(stroke
 			(width 0)
@@ -6138,16 +6148,6 @@
 	)
 	(wire
 		(pts
-			(xy 233.68 99.06) (xy 243.84 99.06)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "eb2e0cd6-19b7-47c8-a22c-23958e892b0c")
-	)
-	(wire
-		(pts
 			(xy 238.76 33.02) (xy 241.3 33.02)
 		)
 		(stroke
@@ -6336,6 +6336,16 @@
 		)
 		(uuid "5f832e86-1fa5-42e4-8b0c-c3d2c55e8006")
 	)
+	(label "+5V3_R_CP"
+		(at 187.96 99.06 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "6823b0b3-1ba3-4ae6-8245-35574921d875")
+	)
 	(label "+2V5_R_ACQ"
 		(at 180.34 33.02 0)
 		(effects
@@ -6347,7 +6357,7 @@
 		(uuid "6bd5ea01-1c57-4c87-a32a-257547428cd9")
 	)
 	(label "FE_EN"
-		(at 190.5 101.6 0)
+		(at 193.04 101.6 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6365,6 +6375,26 @@
 			(justify left bottom)
 		)
 		(uuid "904b8332-bb3f-4709-9276-fad520c3d85c")
+	)
+	(label "-5V_R"
+		(at 236.22 99.06 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "945ec3fd-104f-47c8-9519-fef4ef7ccdf5")
+	)
+	(label "+5V3_R_LDO"
+		(at 53.34 99.06 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "9e898b00-9a19-4112-b60c-f8f16a5dd473")
 	)
 	(hierarchical_label "FE_PG"
 		(shape output)

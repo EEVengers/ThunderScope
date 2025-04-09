@@ -5269,6 +5269,12 @@
 		(uuid "8a75a169-3f0b-4185-8cbc-b7d253d434ae")
 	)
 	(junction
+		(at 203.2 139.7)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "8b76fd29-bca0-4919-95bb-0a6c74fc0e8f")
+	)
+	(junction
 		(at 66.04 55.88)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -5297,12 +5303,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "baa10f49-d74c-45a7-9ed8-19f5544942c7")
-	)
-	(junction
-		(at 200.66 139.7)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "bd804f97-b0d8-48a3-887c-bef5e2a1dcea")
 	)
 	(junction
 		(at 33.02 45.72)
@@ -5874,6 +5874,16 @@
 	)
 	(wire
 		(pts
+			(xy 203.2 139.7) (xy 205.74 139.7)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "25138411-14c8-48d1-8a4a-2bb6ddae2c53")
+	)
+	(wire
+		(pts
 			(xy 66.04 93.98) (xy 66.04 101.6)
 		)
 		(stroke
@@ -6311,16 +6321,6 @@
 			(type default)
 		)
 		(uuid "6f4dcb05-6ebe-41f6-bc30-484f0e0efa2f")
-	)
-	(wire
-		(pts
-			(xy 200.66 139.7) (xy 205.74 139.7)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "735850ff-5658-4414-8dd2-38ea94032e2f")
 	)
 	(wire
 		(pts
@@ -6804,7 +6804,7 @@
 	)
 	(wire
 		(pts
-			(xy 195.58 139.7) (xy 200.66 139.7)
+			(xy 195.58 139.7) (xy 203.2 139.7)
 		)
 		(stroke
 			(width 0)
@@ -7531,6 +7531,16 @@
 			(justify right bottom)
 		)
 		(uuid "a1f2007c-69ad-4b8e-bcd8-964e4ea0ac94")
+	)
+	(label "+VUSB_R"
+		(at 190.5 139.7 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "a3b7af67-879a-4b33-ae57-265272fee49c")
 	)
 	(label "M2_PET2_P"
 		(at 88.9 60.96 180)
@@ -8274,7 +8284,7 @@
 	)
 	(symbol
 		(lib_id "power:PWR_FLAG")
-		(at 200.66 139.7 0)
+		(at 203.2 139.7 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -8282,7 +8292,7 @@
 		(dnp no)
 		(uuid "271845be-b646-4f18-9cf5-47586936b3d5")
 		(property "Reference" "#FLG019"
-			(at 200.66 137.795 0)
+			(at 203.2 137.795 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8291,7 +8301,7 @@
 			)
 		)
 		(property "Value" "PWR_FLAG"
-			(at 200.66 135.89 0)
+			(at 203.2 135.89 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8299,7 +8309,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 200.66 139.7 0)
+			(at 203.2 139.7 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8308,7 +8318,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 200.66 139.7 0)
+			(at 203.2 139.7 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8317,7 +8327,7 @@
 			)
 		)
 		(property "Description" "Special symbol for telling ERC where power comes from"
-			(at 200.66 139.7 0)
+			(at 203.2 139.7 0)
 			(effects
 				(font
 					(size 1.27 1.27)

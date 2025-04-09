@@ -104,7 +104,18 @@
 	)
 	(fp_circle
 		(center 0 0)
-		(end -0.7 0)
+		(end 1 0)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(fill yes)
+		(layer "F.Mask")
+		(uuid "b10d15f4-1f51-48d3-ae04-275289a05dba")
+	)
+	(fp_circle
+		(center 0 0)
+		(end 1.2 0)
 		(stroke
 			(width 0.05)
 			(type solid)
@@ -116,7 +127,7 @@
 	(pad "1" smd circle
 		(at 0 0)
 		(size 1 1)
-		(layers "F.Cu" "F.Mask")
+		(layers "F.Cu")
 		(solder_mask_margin 0.5)
 		(solder_paste_margin -1)
 		(thermal_bridge_angle 90)
