@@ -66,9 +66,6 @@
 	(condition "A.hasNetclass('PCIe')")
 	(constraint diff_pair_gap (min 0.127mm)(opt 0.127mm)(max 0.130mm))
 	(constraint track_width (min 0.19079mm)(opt 0.19079mm)(max 0.19079mm)))
-(rule PCIe_Outer
-	(condition "A.hasNetclass('PCIe')")
-	(constraint skew (min -1mm)(max 1mm)))
 
 (rule FE_50Z_Inner
 	(layer inner)
