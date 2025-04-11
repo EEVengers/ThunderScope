@@ -58,7 +58,24 @@
           "width": 0.0
         }
       ],
-      "drc_exclusions": [],
+      "drc_exclusions": [
+        [
+          "copper_edge_clearance|143001095|153403600|8078e05e-01c2-49e1-b2d8-abbeebfcda18|5f51daae-7289-4599-9d78-a13a19ed2676",
+          "PCIe edge connector"
+        ],
+        [
+          "copper_edge_clearance|143001095|153403600|8078e05e-01c2-49e1-b2d8-abbeebfcda18|7634b583-5371-41b7-a524-f9e67a113785",
+          "PCIe edge connector"
+        ],
+        [
+          "copper_edge_clearance|145301095|153403600|e4cc6f3a-352a-4e91-9bfe-a4b5b4fe8684|5e68d350-74b0-461a-afd3-351614883e81",
+          "PCIe edge connector"
+        ],
+        [
+          "copper_edge_clearance|145301095|153403600|e4cc6f3a-352a-4e91-9bfe-a4b5b4fe8684|ea99a628-7d6e-4019-a088-e249cacb79d7",
+          "PCIe edge connector"
+        ]
+      ],
       "meta": {
         "version": 2
       },
@@ -207,7 +224,7 @@
           "max_amplitude": 1.0,
           "min_amplitude": 0.2,
           "single_sided": false,
-          "spacing": 0.6
+          "spacing": 0.5
         },
         "single_track_defaults": {
           "corner_radius_percentage": 80,
@@ -625,7 +642,7 @@
       },
       {
         "netclass": "PCIe",
-        "pattern": "*_PER*"
+        "pattern": "*_PER*_*"
       },
       {
         "netclass": "PCIe",

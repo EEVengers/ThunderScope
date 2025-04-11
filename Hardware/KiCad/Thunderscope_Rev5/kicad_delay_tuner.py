@@ -9,6 +9,7 @@ board_height_mm = 1.6
 mm_per_m = 1000.0
 s_per_ps = 1e-12
 c = 2.998e8
+delay_tolerance_ps = 1
 
 def main():
 
@@ -17,7 +18,7 @@ def main():
     except BaseException as e:
         print(f"Not connected to KiCad: {e}")
         exit()
-    
+
     pad_delay_dict = {}
 
     if (len(sys.argv) == 4):
@@ -26,14 +27,13 @@ def main():
     
     if (len(sys.argv) > 1):
         netclass = sys.argv[1]
-        equiv_len_max_net,per_net_delay_dict = calc_net_delays(kicad,netclass,pad_delay_dict)
-        print ("\nNet With Max Delay: " + equiv_len_max_net+"\n")
+        length_tolerance,per_net_delay_dict = calc_net_delays(kicad,netclass,pad_delay_dict)
 
     if (len(sys.argv) > 2):    
         user_write_prompt = input("Write Rules File (y/n): ")
         if (user_write_prompt == "y"):
             rules_file = sys.argv[2]
-            write_rule_file(per_net_delay_dict,rules_file)
+            write_rule_file(per_net_delay_dict,rules_file,length_tolerance)
 
 
 def get_pad_delays(vivado_io_csv_file):
@@ -100,7 +100,7 @@ def calc_net_delays(kicad,netclass,pad_delay_dict):
         for net_index in range (num_nets):
             if (track.net == nets[net_index]):
                 for layer_index in range (num_cu_layers):
-                    if (track.layer == cu_layer_ids[layer_index]):
+                    if (track.layer == cu_layer_ids[layer_index]):          
                         per_net_stats[net_index][layer_index] += to_mm(track.length())
 
     # Step 5
@@ -172,42 +172,49 @@ def calc_net_delays(kicad,netclass,pad_delay_dict):
     # Step 9
     # Find net with greatest delay, then make use equivalent length deltas to set Length Rules  
     # For each net: Length Rule = Kicad Length + (Equiv Length of max delay net  - Equiv Length)
-
+    delay_max = 0
     equiv_len_max = 0
     equiv_len_max_net = ""
 
     for x,y in per_net_delay_dict.items():
-        if y[2] > equiv_len_max:
+        if y[1] > delay_max:
+            delay_max = y[1]
             equiv_len_max = y[2]
             equiv_len_max_net = x
 
     for x in per_net_delay_dict.values():
         x.append(x[0] + equiv_len_max - x[2])
+        x.append(x[1] - delay_max)
 
     net_name_length = 0
     for x in per_net_delay_dict.keys():
         if len(x) > net_name_length:
             net_name_length = len(x)
 
-    print ("-"*(94+net_name_length))
+    print ("-"*(101+net_name_length))
     
     print ("| Net" + " " * (net_name_length) \
-           + "| Kicad Length (mm)   | Total Delay (ps)    | Equiv. Length (mm)  | Rule Length (mm)    |")
+           + "| Kicad Len (mm)   | Total Delay (ps) | Delay Diff (ps)  | Equiv Len (mm)   | Rule Len (mm)    |")
     
-    print ("-"*(94+net_name_length))
+    print ("-"*(101+net_name_length))
     
     for x, y in per_net_delay_dict.items():
-        print("| " + x + " " * (net_name_length-len(x)+3) \
-            + "| " + str(y[0])[0:10] + " " * 10 + "| " + str(y[1])[0:10] + " " * 10 \
-            + "| " + str(y[2])[0:10] + " " * 10 + "| " + str(y[3])[0:10] + " " * 10 + "|")
+        print("| " + x + " " * (net_name_length-len(x)+3) + "| " \
+            + f'{y[0]:.3f}' + " " * (17 - len(f'{y[0]:.3f}')) + "| " \
+            + f'{y[1]:.3f}' + " " * (17 - len(f'{y[1]:.3f}')) + "| " \
+            + f'{y[4]:.3f}' + " " * (17 - len(f'{y[4]:.3f}')) + "| " \
+            + f'{y[2]:.3f}' + " " * (17 - len(f'{y[2]:.3f}')) + "| " \
+            + f'{y[3]:.3f}' + " " * (17 - len(f'{y[3]:.3f}')) + "|")
     
-    print ("-"*(94+net_name_length))
+    print ("-"*(101+net_name_length))
 
-    return equiv_len_max_net,per_net_delay_dict
+    length_tolerance = delay_tolerance_ps / ps_per_mm_by_layer[0]
+
+    return length_tolerance,per_net_delay_dict
 
 
-def write_rule_file(per_net_delay_dict,rules_file):
-    
+def write_rule_file(per_net_delay_dict,rules_file,length_tolerance):
+
     with open(rules_file) as f:
         lines = f.readlines()
     
@@ -228,9 +235,9 @@ def write_rule_file(per_net_delay_dict,rules_file):
                 f.write('(rule "' + x + ' length"\n')
                 f.write('\t(condition "A.NetName == \'' + x + '\'")\n')
                 f.write("\t(constraint length ")
-                f.write("(min " +  str(y[3]) + "mm) ")
+                f.write("(min " +  str(y[3] - length_tolerance) + "mm) ")
                 f.write("(opt " +  str(y[3]) + "mm) ")
-                f.write("(max " +  str(y[3]) + "mm)))\n")
+                f.write("(max " +  str(y[3] + length_tolerance) + "mm)))\n")
                 
 if __name__ == '__main__':
     main()    
