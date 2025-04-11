@@ -66,6 +66,9 @@
 	(condition "A.hasNetclass('PCIe')")
 	(constraint diff_pair_gap (min 0.127mm)(opt 0.127mm)(max 0.130mm))
 	(constraint track_width (min 0.19079mm)(opt 0.19079mm)(max 0.19079mm)))
+(rule PCIe_Outer
+	(condition "A.hasNetclass('PCIe')")
+	(constraint skew (min -1mm)(max 1mm)))
 
 (rule FE_50Z_Inner
 	(layer inner)
@@ -109,8 +112,6 @@
 	(condition "A.NetName == '/CH4/BNC_IN'")
 	(constraint length (min 9.011649415608035mm) (opt 9.191457506750474mm) (max 9.371265597892913mm)))
 
-# DELAY TUNER RULES
-
 (rule "/CH1_N length"
 	(condition "A.NetName == '/CH1_N'")
 	(constraint length (min 61.896722342589264mm) (opt 62.076530433731705mm) (max 62.256338524874145mm)))
@@ -135,3 +136,5 @@
 (rule "/CH4_P length"
 	(condition "A.NetName == '/CH4_P'")
 	(constraint length (min 61.89672234258927mm) (opt 62.07653043373171mm) (max 62.25633852487415mm)))
+
+# DELAY TUNER RULES

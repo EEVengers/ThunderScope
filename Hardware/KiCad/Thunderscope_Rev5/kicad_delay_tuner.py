@@ -21,18 +21,19 @@ def main():
 
     pad_delay_dict = {}
 
-    if (len(sys.argv) == 4):
-        vivado_io_csv_file = sys.argv[3]
+    if (len(sys.argv) == 5):
+        vivado_io_csv_file = sys.argv[4]
         pad_delay_dict = get_pad_delays(vivado_io_csv_file)
     
-    if (len(sys.argv) > 1):
+    if (len(sys.argv) > 2):
         netclass = sys.argv[1]
-        length_tolerance,per_net_delay_dict = calc_net_delays(kicad,netclass,pad_delay_dict)
+        matching_type = sys.argv[2]
+        length_tolerance,per_net_delay_dict = calc_net_delays(kicad,netclass,matching_type,pad_delay_dict)
 
-    if (len(sys.argv) > 2):    
+    if (len(sys.argv) > 3):    
         user_write_prompt = input("Write Rules File (y/n): ")
         if (user_write_prompt == "y"):
-            rules_file = sys.argv[2]
+            rules_file = sys.argv[3]
             write_rule_file(per_net_delay_dict,rules_file,length_tolerance)
 
 
@@ -57,7 +58,7 @@ def get_pad_delays(vivado_io_csv_file):
     return pad_delay_dict
 
 
-def calc_net_delays(kicad,netclass,pad_delay_dict):
+def calc_net_delays(kicad,netclass,matching_type,pad_delay_dict):
 
     # Step 1
     # Get the nets to calc the delays for - filter by netclass
@@ -174,17 +175,49 @@ def calc_net_delays(kicad,netclass,pad_delay_dict):
     # For each net: Length Rule = Kicad Length + (Equiv Length of max delay net  - Equiv Length)
     delay_max = 0
     equiv_len_max = 0
-    equiv_len_max_net = ""
 
-    for x,y in per_net_delay_dict.items():
-        if y[1] > delay_max:
-            delay_max = y[1]
-            equiv_len_max = y[2]
-            equiv_len_max_net = x
 
-    for x in per_net_delay_dict.values():
-        x.append(x[0] + equiv_len_max - x[2])
-        x.append(x[1] - delay_max)
+    if (matching_type == "skew"):
+        
+        pair_counter = 2
+        delay_max_list = []
+        equiv_len_max_list = []
+        
+        for x in per_net_delay_dict.values():
+            if (pair_counter > 0):
+                if x[1] > delay_max:
+                    delay_max = x[1]
+                    equiv_len_max = x[2]
+                pair_counter -= 1
+            if (pair_counter == 0):
+                delay_max_list.append(delay_max)
+                equiv_len_max_list.append(equiv_len_max)
+                pair_counter = 2
+                delay_max = 0
+                equiv_len_max = 0
+        
+        print(delay_max_list)
+
+        pair_counter = 2
+        net_counter = 0
+        for x in per_net_delay_dict.values():
+            if (pair_counter > 0):
+                x.append(x[0] + equiv_len_max_list[net_counter] - x[2])
+                x.append(x[1] - delay_max_list[net_counter])
+                pair_counter -= 1
+            if (pair_counter == 0):
+                net_counter += 1
+                pair_counter = 2            
+        
+    else: 
+        for x in per_net_delay_dict.values():
+            if x[1] > delay_max:
+                delay_max = x[1]
+                equiv_len_max = x[2]
+
+        for x in per_net_delay_dict.values():
+            x.append(x[0] + equiv_len_max - x[2])
+            x.append(x[1] - delay_max)
 
     net_name_length = 0
     for x in per_net_delay_dict.keys():
@@ -198,15 +231,30 @@ def calc_net_delays(kicad,netclass,pad_delay_dict):
     
     print ("-"*(101+net_name_length))
     
-    for x, y in per_net_delay_dict.items():
-        print("| " + x + " " * (net_name_length-len(x)+3) + "| " \
-            + f'{y[0]:.3f}' + " " * (17 - len(f'{y[0]:.3f}')) + "| " \
-            + f'{y[1]:.3f}' + " " * (17 - len(f'{y[1]:.3f}')) + "| " \
-            + f'{y[4]:.3f}' + " " * (17 - len(f'{y[4]:.3f}')) + "| " \
-            + f'{y[2]:.3f}' + " " * (17 - len(f'{y[2]:.3f}')) + "| " \
-            + f'{y[3]:.3f}' + " " * (17 - len(f'{y[3]:.3f}')) + "|")
     
-    print ("-"*(101+net_name_length))
+    if (matching_type == "skew"):
+        pair_counter = 2
+        for x, y in per_net_delay_dict.items():
+            pair_counter -= 1
+            print("| " + x + " " * (net_name_length-len(x)+3) + "| " \
+                + f'{y[0]:.3f}' + " " * (17 - len(f'{y[0]:.3f}')) + "| " \
+                + f'{y[1]:.3f}' + " " * (17 - len(f'{y[1]:.3f}')) + "| " \
+                + f'{y[4]:.3f}' + " " * (17 - len(f'{y[4]:.3f}')) + "| " \
+                + f'{y[2]:.3f}' + " " * (17 - len(f'{y[2]:.3f}')) + "| " \
+                + f'{y[3]:.3f}' + " " * (17 - len(f'{y[3]:.3f}')) + "|")
+            if (pair_counter == 0):
+                print ("-"*(101+net_name_length))
+                pair_counter = 2  
+    
+    else:
+        for x, y in per_net_delay_dict.items():
+            print("| " + x + " " * (net_name_length-len(x)+3) + "| " \
+                + f'{y[0]:.3f}' + " " * (17 - len(f'{y[0]:.3f}')) + "| " \
+                + f'{y[1]:.3f}' + " " * (17 - len(f'{y[1]:.3f}')) + "| " \
+                + f'{y[4]:.3f}' + " " * (17 - len(f'{y[4]:.3f}')) + "| " \
+                + f'{y[2]:.3f}' + " " * (17 - len(f'{y[2]:.3f}')) + "| " \
+                + f'{y[3]:.3f}' + " " * (17 - len(f'{y[3]:.3f}')) + "|")
+        print ("-"*(101+net_name_length))
 
     length_tolerance = delay_tolerance_ps / ps_per_mm_by_layer[0]
 
