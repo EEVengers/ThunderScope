@@ -1,0 +1,215 @@
+{
+  "Header": {
+    "GenerationSoftware": {
+      "Vendor": "KiCad",
+      "Application": "Pcbnew",
+      "Version": "9.0.0"
+    },
+    "CreationDate": "2025-04-15T14:45:55-04:00"
+  },
+  "GeneralSpecs": {
+    "ProjectId": {
+      "Name": "Thunderscope_Rev5",
+      "GUID": "5468756e-6465-4727-9363-6f70655f5265",
+      "Revision": "rev?"
+    },
+    "Size": {
+      "X": 122.55,
+      "Y": 103.55
+    },
+    "LayerNumber": 6,
+    "BoardThickness": 1.5354,
+    "Finish": "None",
+    "ImpedanceControlled": true
+  },
+  "DesignRules": [
+    {
+      "Layers": "Outer",
+      "PadToPad": 0.127,
+      "PadToTrack": 0.127,
+      "TrackToTrack": -0.0,
+      "MinLineWidth": 0.127,
+      "TrackToRegion": 0.127,
+      "RegionToRegion": 0.127
+    },
+    {
+      "Layers": "Inner",
+      "PadToPad": 0.127,
+      "PadToTrack": 0.127,
+      "TrackToTrack": -0.0,
+      "MinLineWidth": 0.127,
+      "TrackToRegion": 0.127,
+      "RegionToRegion": 0.127
+    }
+  ],
+  "FilesAttributes": [
+    {
+      "Path": "Thunderscope_Rev5-Top Layer.gbr",
+      "FileFunction": "Copper,L1,Top",
+      "FilePolarity": "Positive"
+    },
+    {
+      "Path": "Thunderscope_Rev5-Int1 (GND).gbr",
+      "FileFunction": "Copper,L5,Inr",
+      "FilePolarity": "Positive"
+    },
+    {
+      "Path": "Thunderscope_Rev5-Int2 (Sign).gbr",
+      "FileFunction": "Copper,L7,Inr",
+      "FilePolarity": "Positive"
+    },
+    {
+      "Path": "Thunderscope_Rev5-Int3 (Sign).gbr",
+      "FileFunction": "Copper,L9,Inr",
+      "FilePolarity": "Positive"
+    },
+    {
+      "Path": "Thunderscope_Rev5-Int4 (GND).gbr",
+      "FileFunction": "Copper,L11,Inr",
+      "FilePolarity": "Positive"
+    },
+    {
+      "Path": "Thunderscope_Rev5-Bottom Layer.gbr",
+      "FileFunction": "Copper,L6,Bot",
+      "FilePolarity": "Positive"
+    },
+    {
+      "Path": "Thunderscope_Rev5-TopPaste.gbr",
+      "FileFunction": "SolderPaste,Top",
+      "FilePolarity": "Positive"
+    },
+    {
+      "Path": "Thunderscope_Rev5-BottomPaste.gbr",
+      "FileFunction": "SolderPaste,Bot",
+      "FilePolarity": "Positive"
+    },
+    {
+      "Path": "Thunderscope_Rev5-Top Overlay.gbr",
+      "FileFunction": "Legend,Top",
+      "FilePolarity": "Positive"
+    },
+    {
+      "Path": "Thunderscope_Rev5-Bottom Overlay.gbr",
+      "FileFunction": "Legend,Bot",
+      "FilePolarity": "Positive"
+    },
+    {
+      "Path": "Thunderscope_Rev5-Top Solder.gbr",
+      "FileFunction": "SolderMask,Top",
+      "FilePolarity": "Negative"
+    },
+    {
+      "Path": "Thunderscope_Rev5-Bottom Solder.gbr",
+      "FileFunction": "SolderMask,Bot",
+      "FilePolarity": "Negative"
+    },
+    {
+      "Path": "Thunderscope_Rev5-Board Outline.gbr",
+      "FileFunction": "Profile",
+      "FilePolarity": "Positive"
+    }
+  ],
+  "MaterialStackup": [
+    {
+      "Type": "Legend",
+      "Name": "Top Silk Screen"
+    },
+    {
+      "Type": "SolderPaste",
+      "Name": "Top Solder Paste"
+    },
+    {
+      "Type": "SolderMask",
+      "Thickness": 0.0152,
+      "Name": "Top Solder Mask"
+    },
+    {
+      "Type": "Copper",
+      "Thickness": 0.0432,
+      "Name": "Top Layer"
+    },
+    {
+      "Type": "Dielectric",
+      "Thickness": 0.1107,
+      "Material": "FR4",
+      "DielectricConstant": "3.23",
+      "LossTangent": "0.02",
+      "Name": "Top Layer/Int1 (GND)",
+      "Notes": "Type: dielectric layer 1 (from Top Layer to Int1 (GND))"
+    },
+    {
+      "Type": "Copper",
+      "Thickness": 0.0175,
+      "Name": "Int1 (GND)"
+    },
+    {
+      "Type": "Dielectric",
+      "Thickness": 0.1016,
+      "Material": "FR4",
+      "DielectricConstant": "3.66",
+      "LossTangent": "0.02",
+      "Name": "Int1 (GND)/Int2 (Sign)",
+      "Notes": "Type: dielectric layer 2 (from Int1 (GND) to Int2 (Sign))"
+    },
+    {
+      "Type": "Copper",
+      "Thickness": 0.0175,
+      "Name": "Int2 (Sign)"
+    },
+    {
+      "Type": "Dielectric",
+      "Thickness": 0.9256,
+      "Material": "FR4",
+      "DielectricConstant": "4.5",
+      "LossTangent": "0.02",
+      "Name": "Int2 (Sign)/Int3 (Sign)",
+      "Notes": "Type: dielectric layer 3 (from Int2 (Sign) to Int3 (Sign))"
+    },
+    {
+      "Type": "Copper",
+      "Thickness": 0.0175,
+      "Name": "Int3 (Sign)"
+    },
+    {
+      "Type": "Dielectric",
+      "Thickness": 0.1107,
+      "Material": "FR4",
+      "DielectricConstant": "3.66",
+      "LossTangent": "0.02",
+      "Name": "Int3 (Sign)/Int4 (GND)",
+      "Notes": "Type: dielectric layer 4 (from Int3 (Sign) to Int4 (GND))"
+    },
+    {
+      "Type": "Copper",
+      "Thickness": 0.0175,
+      "Name": "Int4 (GND)"
+    },
+    {
+      "Type": "Dielectric",
+      "Thickness": 0.1,
+      "Material": "FR4",
+      "DielectricConstant": "3.23",
+      "LossTangent": "0.02",
+      "Name": "Int4 (GND)/Bottom Layer",
+      "Notes": "Type: dielectric layer 5 (from Int4 (GND) to Bottom Layer)"
+    },
+    {
+      "Type": "Copper",
+      "Thickness": 0.0432,
+      "Name": "Bottom Layer"
+    },
+    {
+      "Type": "SolderMask",
+      "Thickness": 0.0152,
+      "Name": "Bottom Solder Mask"
+    },
+    {
+      "Type": "SolderPaste",
+      "Name": "Bottom Solder Paste"
+    },
+    {
+      "Type": "Legend",
+      "Name": "Bottom Silk Screen"
+    }
+  ]
+}
