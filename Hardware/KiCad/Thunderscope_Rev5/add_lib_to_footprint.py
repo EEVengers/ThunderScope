@@ -7,7 +7,7 @@ with open(output_filename, "w") as output_file:
     with open(input_filename) as input_file:
         for line in input_file:
             match line:
-                case x if x.startswith('		(property "Footprint"'):
+                case x if x.startswith('		(property "Reference"'):
                     footprint_old = line.split('"')[3]
                     if footprint_old != "":
                         footprint_new = "Thunderscope_Rev5:" + footprint_old

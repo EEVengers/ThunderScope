@@ -1,7 +1,7 @@
 (footprint "GEN_TP_PCB"
-	(version 20241030)
+	(version 20241229)
 	(generator "pcbnew")
-	(generator_version "8.99")
+	(generator_version "9.0")
 	(layer "F.Cu")
 	(property "Reference" "REF**"
 		(at 3.935902 -9.118755 90)
@@ -27,19 +27,6 @@
 				(size 1.524 1.524)
 				(thickness 0.254)
 			)
-		)
-	)
-	(property "Footprint" ""
-		(at 0 0 180)
-		(layer "B.Fab")
-		(hide yes)
-		(uuid "688453d1-583c-49cf-9037-defd6883a68b")
-		(effects
-			(font
-				(size 1.27 1.27)
-				(thickness 0.15)
-			)
-			(justify mirror)
 		)
 	)
 	(property "Datasheet" ""
@@ -75,15 +62,15 @@
 			(width 0.05)
 			(type solid)
 		)
-		(fill none)
+		(fill no)
 		(layer "F.CrtYd")
 		(uuid "3bc318e6-aac3-4569-bcd1-d11ea49947e9")
 	)
 	(pad "1" smd circle
 		(at 0 0)
 		(size 1 1)
-		(layers "F.Cu" "F.Mask" "F.Paste")
-		(solder_paste_margin -1)
+		(property pad_prop_testpoint)
+		(layers "F.Cu" "F.Mask")
 		(thermal_bridge_angle 90)
 		(uuid "aba2b2be-fbd6-4e69-a700-39f4f588208f")
 	)

@@ -1,7 +1,7 @@
 (kicad_sch
-	(version 20241209)
+	(version 20250114)
 	(generator "eeschema")
-	(generator_version "8.99")
+	(generator_version "9.0")
 	(uuid "7f617bb4-8a80-4195-bb71-709eff343d51")
 	(paper "A4")
 	(title_block
@@ -11,7 +11,7 @@
 		(comment 1 "Aleksa Bjelogrlic")
 	)
 	(lib_symbols
-		(symbol "Thunderscope_Rev5:+5V2_BAR"
+		(symbol "Thunderscope_Rev5:+5V3_BAR"
 			(power)
 			(exclude_from_sim no)
 			(in_bom yes)
@@ -25,7 +25,7 @@
 					(hide yes)
 				)
 			)
-			(property "Value" "+5V2"
+			(property "Value" "+5V3"
 				(at 0 -3.81 0)
 				(effects
 					(font
@@ -51,7 +51,7 @@
 					(hide yes)
 				)
 			)
-			(property "Description" "Power symbol creates a global label with name '+5V2'"
+			(property "Description" "Power symbol creates a global label with name '+5V3'"
 				(at 0 0 0)
 				(effects
 					(font
@@ -69,7 +69,7 @@
 					(hide yes)
 				)
 			)
-			(symbol "+5V2_BAR_0_0"
+			(symbol "+5V3_BAR_0_0"
 				(polyline
 					(pts
 						(xy -1.27 -2.54) (xy 1.27 -2.54)
@@ -1130,6 +1130,150 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "Thunderscope_Rev5:CONN 5.08mm 2 Pin TH RA"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "J"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "TSW-101-16-G-Q-RA"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "Thunderscope_Rev5:GEN_5.08mm_1x2_Pin_TH_RA"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "SUPPLIER 1" "Mouser"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "SUPPLIER PART NUMBER 1" "200-TSW10116GQRA"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "HOUSE PART NUMBER" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MANUFACTURER" "Samtec"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MANUFACTURER PART NUMBER" "TSW-101-16-G-Q-RA"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "CONN 5.08mm 2 Pin TH RA_1_0"
+				(rectangle
+					(start 2.54 2.54)
+					(end -2.54 -5.08)
+					(stroke
+						(width 0.0254)
+						(type solid)
+						(color 128 0 0 1)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(pin passive line
+					(at 10.16 0 180)
+					(length 7.62)
+					(name "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 10.16 -2.54 180)
+					(length 7.62)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "Thunderscope_Rev5:GND"
 			(power)
 			(pin_numbers
@@ -1619,18 +1763,6 @@
 					)
 				)
 				(arc
-					(start 1.27 1.27)
-					(mid 2.168 0.898)
-					(end 2.54 0)
-					(stroke
-						(width 0)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(arc
 					(start 0 0)
 					(mid 0.372 0.898)
 					(end 1.27 1.27)
@@ -1643,9 +1775,9 @@
 					)
 				)
 				(arc
-					(start 3.81 1.27)
-					(mid 4.708 0.898)
-					(end 5.08 0)
+					(start 1.27 1.27)
+					(mid 2.168 0.898)
+					(end 2.54 0)
 					(stroke
 						(width 0)
 						(type solid)
@@ -1658,6 +1790,18 @@
 					(start 2.54 0)
 					(mid 2.912 0.898)
 					(end 3.81 1.27)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start 3.81 1.27)
+					(mid 4.708 0.898)
+					(end 5.08 0)
 					(stroke
 						(width 0)
 						(type solid)
@@ -4931,6 +5075,173 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "Thunderscope_Rev5:RES 100 OHM 1% 1/10W 0402"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "R"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "100"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "Thunderscope_Rev5:GEN_R_0402"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "TOLERANCE" "1%"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "PACKAGE" "0402"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "SUPPLIER 1" "Mouser"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "SUPPLIER PART NUMBER 1" "603-RC0402FR-07100RL"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "HOUSE PART NUMBER" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MANUFACTURER" "Yageo"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MANUFACTURER PART NUMBER" "RC0402FR-07100RL"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "RES 100 OHM 1% 1/10W 0402_1_0"
+				(rectangle
+					(start 3 0.976)
+					(end -3 -1.056)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin passive line
+					(at -5.08 0 0)
+					(length 2)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 5.08 0 180)
+					(length 2)
+					(name "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "Thunderscope_Rev5:RES 10K OHM 1% 1/10W 0402"
 			(pin_numbers
 				(hide yes)
@@ -5731,6 +6042,121 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "Thunderscope_Rev5:TP PCB 1mm"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "T"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "PCB"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Footprint" "Thunderscope_Rev5:GEN_TP_PCB"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "HOUSE PART NUMBER" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MANUFACTURER" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MANUFACTURER PART NUMBER" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "TP PCB 1mm_1_0"
+				(circle
+					(center 3.81 0)
+					(radius 1.27)
+					(stroke
+						(width 0)
+						(type solid)
+						(color 0 0 0 1)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin passive line
+					(at 0 0 0)
+					(length 2.54)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "Thunderscope_Rev5:TVS TPD1E1B04"
 			(pin_numbers
 				(hide yes)
@@ -6088,6 +6514,28 @@
 		)
 		(uuid "2025fa8c-c74a-4811-aa7c-94ad2f97ad10")
 	)
+	(text "+3V3_PCIe"
+		(exclude_from_sim no)
+		(at 68.58 53.34 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "2ca5a660-3015-4f85-8489-3416ffc21622")
+	)
+	(text "+3V3_PCIe"
+		(exclude_from_sim no)
+		(at 119.38 58.42 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "2e23ff46-3da3-45a0-8b72-54bed68a2411")
+	)
 	(text "PCIe bracket"
 		(exclude_from_sim no)
 		(at 248.92 15.24 0)
@@ -6103,7 +6551,7 @@
 	)
 	(text "AC Couple PER Lines with 100nF"
 		(exclude_from_sim no)
-		(at 215.9 99.06 0)
+		(at 182.88 121.92 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6184,7 +6632,7 @@
 		)
 		(uuid "bbdae7d1-7da6-4382-8886-0e915906af08")
 	)
-	(text "5V2 Buck Converter"
+	(text "5V3 Buck Converter"
 		(exclude_from_sim no)
 		(at 15.24 134.62 0)
 		(effects
@@ -6199,7 +6647,7 @@
 	)
 	(text "AC Couple REFCLK Lines with 100nF"
 		(exclude_from_sim no)
-		(at 215.9 101.6 0)
+		(at 182.88 124.46 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -6207,6 +6655,36 @@
 			(justify left bottom)
 		)
 		(uuid "dff7e3a5-125d-403c-b271-1e1750a536ef")
+	)
+	(text "Probe Comp"
+		(exclude_from_sim no)
+		(at 248.92 83.82 0)
+		(effects
+			(font
+				(size 1.905 1.905)
+				(thickness 0.381)
+				(bold yes)
+			)
+			(justify left top)
+		)
+		(uuid "e062c821-1020-4ed6-8bae-f15c975df2ab")
+	)
+	(text "+3V3_PCIe"
+		(exclude_from_sim no)
+		(at 119.38 55.88 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "fe65fc34-a6b8-4364-a5dc-22c009a08f79")
+	)
+	(junction
+		(at 149.86 144.78)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "01a25f7e-0517-4bf5-a5e9-30ab903d04fd")
 	)
 	(junction
 		(at 139.7 160.02)
@@ -6237,6 +6715,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "169191b7-e5db-451f-a1b1-9a4e5222b83f")
+	)
+	(junction
+		(at 134.62 144.78)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "17200024-9211-4ea5-a5d2-e541565481ab")
 	)
 	(junction
 		(at 33.02 160.02)
@@ -6285,6 +6769,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "8063b0af-9da0-4b21-ab4f-c8d206d1be66")
+	)
+	(junction
+		(at 266.7 109.22)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "8c5d62dc-a189-4483-9a91-7cf9c36f456c")
 	)
 	(junction
 		(at 165.1 160.02)
@@ -6343,6 +6833,10 @@
 		(uuid "1bca4eff-e368-47f7-9a07-cf3d6dcc8805")
 	)
 	(no_connect
+		(at 68.58 53.34)
+		(uuid "2978ed12-1fa6-4cbb-8f44-ff99d6cfc3e5")
+	)
+	(no_connect
 		(at 119.38 45.72)
 		(uuid "2eaa20b3-3cb4-4881-83ce-a9e0a839bae3")
 	)
@@ -6359,12 +6853,20 @@
 		(uuid "588383e8-2a72-4d0e-889a-d80155ebd03d")
 	)
 	(no_connect
+		(at 119.38 58.42)
+		(uuid "734ca1cb-6f33-4245-ae8f-230ddb842467")
+	)
+	(no_connect
 		(at 119.38 53.34)
 		(uuid "785fa138-0772-4f65-8692-c654f47995cf")
 	)
 	(no_connect
 		(at 68.58 60.96)
 		(uuid "85722890-6714-40b0-aa17-3b8871dcfe02")
+	)
+	(no_connect
+		(at 119.38 55.88)
+		(uuid "964c4d3e-8d3b-402f-90ef-963798c824a6")
 	)
 	(no_connect
 		(at 68.58 55.88)
@@ -6626,7 +7128,7 @@
 	)
 	(wire
 		(pts
-			(xy 132.08 144.78) (xy 137.16 144.78)
+			(xy 132.08 144.78) (xy 134.62 144.78)
 		)
 		(stroke
 			(width 0)
@@ -6953,6 +7455,16 @@
 			(type default)
 		)
 		(uuid "315d8bc1-9f30-4016-9005-244cc910eeb6")
+	)
+	(wire
+		(pts
+			(xy 149.86 144.78) (xy 152.4 144.78)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "31b4d8d1-5dad-4b59-bef1-de8ac7efd274")
 	)
 	(wire
 		(pts
@@ -7316,6 +7828,16 @@
 	)
 	(wire
 		(pts
+			(xy 266.7 101.6) (xy 266.7 109.22)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6cb24dbd-100f-4ae4-906b-833ddc35840d")
+	)
+	(wire
+		(pts
 			(xy 144.78 175.26) (xy 144.78 177.8)
 		)
 		(stroke
@@ -7616,7 +8138,7 @@
 	)
 	(wire
 		(pts
-			(xy 261.62 68.58) (xy 264.16 68.58)
+			(xy 259.08 68.58) (xy 261.62 68.58)
 		)
 		(stroke
 			(width 0)
@@ -7676,6 +8198,16 @@
 	)
 	(wire
 		(pts
+			(xy 271.78 121.92) (xy 276.86 121.92)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "923470ef-ff5a-4500-b508-8b6334ad73a9")
+	)
+	(wire
+		(pts
 			(xy 45.72 160.02) (xy 48.26 160.02)
 		)
 		(stroke
@@ -7683,6 +8215,16 @@
 			(type default)
 		)
 		(uuid "93f82953-8c09-4175-96c7-416860dc2547")
+	)
+	(wire
+		(pts
+			(xy 259.08 121.92) (xy 261.62 121.92)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "94ebe074-6fb8-4329-a110-4d34a9844535")
 	)
 	(wire
 		(pts
@@ -7964,6 +8506,16 @@
 		)
 		(uuid "c2907408-5aef-477e-b0da-7abc20565149")
 	)
+	(wire
+		(pts
+			(xy 134.62 144.78) (xy 137.16 144.78)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c2b8792e-7399-4df7-ab58-0b0924eb0fe8")
+	)
 	(bus
 		(pts
 			(xy 208.28 55.88) (xy 208.28 60.96)
@@ -8164,6 +8716,16 @@
 		)
 		(uuid "db91d1b1-d7c7-4144-9d81-218895423ddb")
 	)
+	(polyline
+		(pts
+			(xy 246.38 81.28) (xy 246.38 132.08)
+		)
+		(stroke
+			(width 0.127)
+			(type dash)
+		)
+		(uuid "dc03e4fd-c452-4357-ab26-9c04e0d2fa1c")
+	)
 	(wire
 		(pts
 			(xy 233.68 154.94) (xy 233.68 147.32)
@@ -8176,7 +8738,7 @@
 	)
 	(wire
 		(pts
-			(xy 147.32 144.78) (xy 152.4 144.78)
+			(xy 147.32 144.78) (xy 149.86 144.78)
 		)
 		(stroke
 			(width 0)
@@ -8316,13 +8878,23 @@
 	)
 	(wire
 		(pts
-			(xy 274.32 68.58) (xy 276.86 68.58)
+			(xy 271.78 68.58) (xy 276.86 68.58)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
 		(uuid "e976684d-d538-4f5f-bea0-9f43b7db7087")
+	)
+	(wire
+		(pts
+			(xy 266.7 111.76) (xy 266.7 109.22)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ea075fdc-c818-4e45-9bc1-d05a3f41b028")
 	)
 	(bus
 		(pts
@@ -8503,6 +9075,16 @@
 			(type default)
 		)
 		(uuid "fc198d59-c402-4d9c-8232-26334c64bd3b")
+	)
+	(wire
+		(pts
+			(xy 276.86 121.92) (xy 276.86 124.46)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fd37de87-eba4-4fb2-b043-b424ca60fa67")
 	)
 	(wire
 		(pts
@@ -8803,16 +9385,6 @@
 			(justify left bottom)
 		)
 		(uuid "4312cc92-16da-4d81-8262-cf32ee1c34d4")
-	)
-	(label "+3V3_PCIe"
-		(at 68.58 53.34 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "44d97f59-71cb-42c6-9ba1-262255529dcc")
 	)
 	(label "MGT_CLK1_N"
 		(at 205.74 111.76 180)
@@ -9194,16 +9766,6 @@
 		)
 		(uuid "9c95090e-7677-490d-bdce-c446693d36b7")
 	)
-	(label "+3V3_PCIe"
-		(at 119.38 55.88 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "9fd4dc65-2c22-4fc6-87c6-e9460878c547")
-	)
 	(label "PCIe_PET2_N"
 		(at 154.94 48.26 0)
 		(effects
@@ -9313,6 +9875,16 @@
 			(justify left bottom)
 		)
 		(uuid "b84d7d56-5073-423e-aad0-9f2cbc6aaca3")
+	)
+	(label "+12V_PCIe_R"
+		(at 66.04 160.02 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "b8e47a5f-fcf2-4f4f-a407-c15403d2a9fc")
 	)
 	(label "PCIe_REFCLK_P"
 		(at 154.94 114.3 0)
@@ -9524,16 +10096,6 @@
 		)
 		(uuid "fc571bcd-0235-4962-bcac-29eacac8c521")
 	)
-	(label "+3V3_PCIe"
-		(at 119.38 58.42 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "fc5a3be8-2810-4ad0-86d1-b14373f84a59")
-	)
 	(label "MGT_TX3_N"
 		(at 205.74 99.06 180)
 		(effects
@@ -9554,9 +10116,20 @@
 		)
 		(uuid "fd6dae80-ef5c-40a7-90b5-f13f6868054e")
 	)
+	(hierarchical_label "SPRING"
+		(shape output)
+		(at 259.08 121.92 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "273f60ed-4919-4cab-9fe0-6bbad7a1f3ea")
+	)
 	(hierarchical_label "VARIANT"
 		(shape output)
-		(at 261.62 68.58 180)
+		(at 259.08 68.58 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9564,6 +10137,17 @@
 			(justify right)
 		)
 		(uuid "523c99a0-100d-4ad3-aee5-2c489660447a")
+	)
+	(hierarchical_label "COMP"
+		(shape input)
+		(at 256.54 99.06 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "983b30d6-b259-4c5d-8d86-e8ff9dcda3ea")
 	)
 	(hierarchical_label "MGT_CLK1_P"
 		(shape output)
@@ -9641,6 +10225,111 @@
 			(justify left)
 		)
 		(uuid "e7caf369-6c15-4578-b362-b4f6fb2f35a5")
+	)
+	(symbol
+		(lib_id "Thunderscope_Rev5:TP PCB 1mm")
+		(at 134.62 144.78 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(uuid "025ded10-7ae0-4569-b009-235054079cff")
+		(property "Reference" "TP71"
+			(at 132.08 152.4 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "PCB"
+			(at 135.128 143.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "Thunderscope_Rev5:GEN_TP_PCB"
+			(at 134.62 144.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 134.62 144.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 134.62 144.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "HOUSE PART NUMBER" ""
+			(at 135.128 143.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" ""
+			(at 135.128 143.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" ""
+			(at 135.128 143.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" ""
+			(at 134.62 144.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "bc6b0419-4615-4393-ba95-331189f8dabb")
+		)
+		(instances
+			(project "Thunderscope_Rev5"
+				(path "/031d3e2c-42e0-4016-8c32-579d45c83e09/95dd7985-f010-4388-84bb-3ad8f1a365a2"
+					(reference "TP71")
+					(unit 1)
+				)
+			)
+		)
 	)
 	(symbol
 		(lib_id "Thunderscope_Rev5:RES 0 OHM 1/16W 0402")
@@ -11212,7 +11901,7 @@
 	)
 	(symbol
 		(lib_id "Thunderscope_Rev5:RES 10K OHM 1% 1/10W 0402")
-		(at 269.24 68.58 0)
+		(at 266.7 68.58 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -11220,7 +11909,7 @@
 		(dnp no)
 		(uuid "4b7a015a-07e1-4987-b816-bc0c9f418838")
 		(property "Reference" "R81"
-			(at 269.24 71.12 0)
+			(at 266.7 71.12 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11228,7 +11917,7 @@
 			)
 		)
 		(property "Value" "10K"
-			(at 269.24 68.58 0)
+			(at 266.7 68.58 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11236,7 +11925,7 @@
 			)
 		)
 		(property "Footprint" "Thunderscope_Rev5:GEN_R_0402"
-			(at 269.24 68.58 0)
+			(at 266.7 68.58 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11245,7 +11934,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 269.24 68.58 0)
+			(at 266.7 68.58 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11254,7 +11943,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 269.24 68.58 0)
+			(at 266.7 68.58 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11263,7 +11952,7 @@
 			)
 		)
 		(property "TOLERANCE" "1%"
-			(at 268.184 62.992 0)
+			(at 265.644 62.992 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11273,7 +11962,7 @@
 			)
 		)
 		(property "PACKAGE" "0402"
-			(at 268.184 62.992 0)
+			(at 265.644 62.992 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11283,7 +11972,7 @@
 			)
 		)
 		(property "SUPPLIER 1" "Mouser"
-			(at 268.184 62.992 0)
+			(at 265.644 62.992 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11293,7 +11982,7 @@
 			)
 		)
 		(property "SUPPLIER PART NUMBER 1" "667-ERJ-2RKF1002X"
-			(at 268.184 62.992 0)
+			(at 265.644 62.992 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11303,7 +11992,7 @@
 			)
 		)
 		(property "HOUSE PART NUMBER" ""
-			(at 268.184 62.992 0)
+			(at 265.644 62.992 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11313,7 +12002,7 @@
 			)
 		)
 		(property "MANUFACTURER" "Panasonic"
-			(at 268.184 62.992 0)
+			(at 265.644 62.992 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11323,7 +12012,7 @@
 			)
 		)
 		(property "MANUFACTURER PART NUMBER" "ERJ-2RKF1002X"
-			(at 268.184 62.992 0)
+			(at 265.644 62.992 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11333,7 +12022,7 @@
 			)
 		)
 		(property "ALTIUM_VALUE" ""
-			(at 269.24 68.58 0)
+			(at 266.7 68.58 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11641,6 +12330,111 @@
 			(project "Thunderscope_Rev5"
 				(path "/031d3e2c-42e0-4016-8c32-579d45c83e09/95dd7985-f010-4388-84bb-3ad8f1a365a2"
 					(reference "R71")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Thunderscope_Rev5:TP PCB 1mm")
+		(at 149.86 144.78 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(uuid "5571cd97-40b2-4b5a-9483-e4519ec91b77")
+		(property "Reference" "TP72"
+			(at 147.32 152.4 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "PCB"
+			(at 154.94 143.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "Thunderscope_Rev5:GEN_TP_PCB"
+			(at 149.86 144.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 149.86 144.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 149.86 144.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "HOUSE PART NUMBER" ""
+			(at 157.48 143.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" ""
+			(at 157.48 143.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" ""
+			(at 157.48 143.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" ""
+			(at 149.86 144.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "2533a33d-b12e-41a6-8169-601f494a5a40")
+		)
+		(instances
+			(project "Thunderscope_Rev5"
+				(path "/031d3e2c-42e0-4016-8c32-579d45c83e09/95dd7985-f010-4388-84bb-3ad8f1a365a2"
+					(reference "TP72")
 					(unit 1)
 				)
 			)
@@ -13364,6 +14158,137 @@
 		)
 	)
 	(symbol
+		(lib_id "Thunderscope_Rev5:GND")
+		(at 266.7 111.76 0)
+		(mirror y)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "8c0710c3-ff35-4db8-8f46-a084a5b837ef")
+		(property "Reference" "#PWR0113"
+			(at 266.7 118.11 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 266.7 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 266.7 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 266.7 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 266.7 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "bbd22c8c-9f8c-417c-bb55-85df733344d4")
+		)
+		(instances
+			(project "Thunderscope_Rev5"
+				(path "/031d3e2c-42e0-4016-8c32-579d45c83e09/95dd7985-f010-4388-84bb-3ad8f1a365a2"
+					(reference "#PWR0113")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Thunderscope_Rev5:GND")
+		(at 276.86 124.46 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "8cb0bdb5-9601-4319-9540-0aeeb4ccd5ec")
+		(property "Reference" "#PWR0379"
+			(at 276.86 130.81 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 276.86 128.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 276.86 124.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 276.86 124.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 276.86 124.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "03aab47c-642f-44a0-80ab-f9f4a0db914d")
+		)
+		(instances
+			(project "Thunderscope_Rev5"
+				(path "/031d3e2c-42e0-4016-8c32-579d45c83e09/95dd7985-f010-4388-84bb-3ad8f1a365a2"
+					(reference "#PWR0379")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Thunderscope_Rev5:CAP 100nF 16V X7R 0402")
 		(at 182.88 111.76 270)
 		(mirror x)
@@ -13504,7 +14429,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Thunderscope_Rev5:+5V2_BAR")
+		(lib_id "Thunderscope_Rev5:+5V3_BAR")
 		(at 152.4 142.24 180)
 		(unit 1)
 		(exclude_from_sim no)
@@ -13521,7 +14446,7 @@
 				(hide yes)
 			)
 		)
-		(property "Value" "+5V2"
+		(property "Value" "+5V3"
 			(at 152.4 138.43 0)
 			(effects
 				(font
@@ -13547,7 +14472,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Power symbol creates a global label with name '+5V2'"
+		(property "Description" "Power symbol creates a global label with name '+5V3'"
 			(at 152.4 142.24 0)
 			(effects
 				(font
@@ -13976,6 +14901,133 @@
 			(project "Thunderscope_Rev5"
 				(path "/031d3e2c-42e0-4016-8c32-579d45c83e09/95dd7985-f010-4388-84bb-3ad8f1a365a2"
 					(reference "C40")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Thunderscope_Rev5:RES 0 OHM 1/16W 0402")
+		(at 266.7 121.92 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "a2c18c35-a1f5-4e2d-878b-d4a447b96f5a")
+		(property "Reference" "R83"
+			(at 266.7 124.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "0"
+			(at 266.7 121.92 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Thunderscope_Rev5:GEN_R_0402"
+			(at 266.7 121.92 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 266.7 121.92 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 266.7 121.92 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "PACKAGE" "0402"
+			(at 265.644 116.332 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER 1" "Mouser"
+			(at 265.644 116.332 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER PART NUMBER 1" "603-RC0402JR-070RL"
+			(at 265.644 116.332 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "HOUSE PART NUMBER" ""
+			(at 265.644 116.332 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "Yageo"
+			(at 265.644 116.332 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" "RC0402JR-070RL"
+			(at 265.644 116.332 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "f04350ae-65a0-4c06-8284-04f2d4fd953c")
+		)
+		(pin "1"
+			(uuid "0c7d141e-74a1-42f1-af8e-7d65e5a87343")
+		)
+		(instances
+			(project "Thunderscope_Rev5"
+				(path "/031d3e2c-42e0-4016-8c32-579d45c83e09/95dd7985-f010-4388-84bb-3ad8f1a365a2"
+					(reference "R83")
 					(unit 1)
 				)
 			)
@@ -14598,6 +15650,133 @@
 			(project "Thunderscope_Rev5"
 				(path "/031d3e2c-42e0-4016-8c32-579d45c83e09/95dd7985-f010-4388-84bb-3ad8f1a365a2"
 					(reference "C81")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Thunderscope_Rev5:CONN 5.08mm 2 Pin TH RA")
+		(at 276.86 99.06 0)
+		(mirror y)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "bc5d2969-368e-4fc6-abe5-5cb7150464db")
+		(property "Reference" "J4"
+			(at 274.32 95.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "TSW-101-16-G-Q-RA"
+			(at 280.67 104.14 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Thunderscope_Rev5:GEN_5.08mm_1x2_Pin_TH_RA"
+			(at 276.86 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 276.86 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 276.86 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER 1" "Mouser"
+			(at 279.4 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER PART NUMBER 1" "200-TSW10116GQRA"
+			(at 279.4 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "HOUSE PART NUMBER" ""
+			(at 279.4 93.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "Samtec"
+			(at 279.4 93.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" "TSW-101-16-G-Q-RA"
+			(at 279.4 93.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" ""
+			(at 276.86 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "2bd35b9e-79d9-436c-93a8-c8782e545b34")
+		)
+		(pin "1"
+			(uuid "0910f1b7-5849-40b6-9a91-f256c64bfc9a")
+		)
+		(instances
+			(project "Thunderscope_Rev5"
+				(path "/031d3e2c-42e0-4016-8c32-579d45c83e09/95dd7985-f010-4388-84bb-3ad8f1a365a2"
+					(reference "J4")
 					(unit 1)
 				)
 			)
@@ -15350,6 +16529,153 @@
 			(project "Thunderscope_Rev5"
 				(path "/031d3e2c-42e0-4016-8c32-579d45c83e09/95dd7985-f010-4388-84bb-3ad8f1a365a2"
 					(reference "#PWR0358")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Thunderscope_Rev5:RES 100 OHM 1% 1/10W 0402")
+		(at 261.62 99.06 0)
+		(mirror y)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "d20bfc6c-d815-49e0-9ca4-f318762662b8")
+		(property "Reference" "R7"
+			(at 261.62 97.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+			)
+		)
+		(property "Value" "100"
+			(at 261.62 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Thunderscope_Rev5:GEN_R_0402"
+			(at 261.62 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 261.62 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 261.62 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "PACKAGE" "0402"
+			(at 267.208 98.084 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER 1" "Mouser"
+			(at 267.208 98.084 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER PART NUMBER 1" "603-RC0402FR-07100RL"
+			(at 267.208 98.084 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "HOUSE PART NUMBER" ""
+			(at 267.208 95.544 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "Yageo"
+			(at 267.208 95.544 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER PART NUMBER" "RC0402FR-07100RL"
+			(at 267.208 95.544 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "TOLERANCE" "1%"
+			(at 267.208 98.084 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+				(hide yes)
+			)
+		)
+		(property "ALTIUM_VALUE" ""
+			(at 261.62 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "379ed70d-01f4-4daa-9879-fcebbd3b919b")
+		)
+		(pin "2"
+			(uuid "7047321b-764d-4c31-bdb0-3e6472a481b2")
+		)
+		(instances
+			(project "Thunderscope_Rev5"
+				(path "/031d3e2c-42e0-4016-8c32-579d45c83e09/95dd7985-f010-4388-84bb-3ad8f1a365a2"
+					(reference "R7")
 					(unit 1)
 				)
 			)
@@ -16485,6 +17811,73 @@
 			(project "Thunderscope_Rev5"
 				(path "/031d3e2c-42e0-4016-8c32-579d45c83e09/95dd7985-f010-4388-84bb-3ad8f1a365a2"
 					(reference "C29")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:PWR_FLAG")
+		(at 266.7 109.22 270)
+		(mirror x)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "fbbdcd26-8979-4c5a-bb8a-b1a7be32ebff")
+		(property "Reference" "#FLG09"
+			(at 268.605 109.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "PWR_FLAG"
+			(at 256.54 109.22 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 266.7 109.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 266.7 109.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Special symbol for telling ERC where power comes from"
+			(at 266.7 109.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "11796691-409c-464d-8eb0-ed8ea4ef6622")
+		)
+		(instances
+			(project "Thunderscope_Rev5"
+				(path "/031d3e2c-42e0-4016-8c32-579d45c83e09/95dd7985-f010-4388-84bb-3ad8f1a365a2"
+					(reference "#FLG09")
 					(unit 1)
 				)
 			)
