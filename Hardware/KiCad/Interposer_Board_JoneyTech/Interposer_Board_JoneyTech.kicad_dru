@@ -1,0 +1,6 @@
+(version 1)
+(rule "Diff Pair"
+    (condition "A.inDiffPair('*')")
+    (constraint track_width (opt 0.188mm))
+	(constraint diff_pair_gap (opt 0.1397mm))
+	(constraint skew (within_diff_pairs) (max 0.01mm)))
