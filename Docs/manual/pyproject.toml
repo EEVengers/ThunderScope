@@ -1,0 +1,22 @@
+#Copied from https://github.com/GlasgowEmbedded/glasgow/blob/main/docs/manual/pyproject.toml
+[project]
+requires-python = "~=3.8"
+dependencies = [
+    "sphinx",
+    "myst-parser",
+    "sphinx-autobuild",
+    "sphinx-inline-tabs",
+    "sphinx-copybutton",
+    # If you change the version of Furo, check out the repository, apply the following patch
+    # to `src/furo/assets/styles/variables/_layout.scss`:
+    #   -$sidebar-width: 15em;
+    #   +$sidebar-width: 16em;
+    # then rebuild it and place the build product `src/furo/theme/furo/static/styles/furo.css`
+    # into `docs/manual/src/_static/styles/furo.css`.
+    "furo",
+]
+
+[tool.pdm.scripts]
+live.cmd = "sphinx-autobuild src build"
+build.cmd = "sphinx-build src build -b html"
+check.cmd = "sphinx-build src check -b linkcheck"
