@@ -1,7 +1,5 @@
-.. _Board-Assembly:
-
-Board Assembly
-========
+TS-PCIe Box Build
+=================
 
 .. todo::
 
