@@ -4,10 +4,10 @@ TS-USB4 Box Build
 This guide assumes you have a tested and calibrated TS-USB4 variant mainboard, as shown below: 
 
 .. image:: ./_images/TS-USB4-PCBA-Front.webp
-  :width: 49%
+  :width: 49.6%
   :alt: Front side of an assembled TS-USB4 mainboard
 .. image:: ./_images/TS-USB4-PCBA-Back.webp
-  :width: 49%
+  :width: 49.6%
   :alt: Back side of an assembled TS-USB4 mainboard
     
 
@@ -190,10 +190,10 @@ Align the remaining interposer M.2 edge connector into the mainboard M.2 connect
 Screw the interposer into the mainboard through interposer mounting holes (2-4).
 
 .. image:: ./_images/JoneyTech-Interposer-Mainboard-Install.webp
-  :width: 49%
+  :width: 49.6%
   :alt: Front side of a JoneyTech Interposer with adaptor
 .. image:: ./_images/JoneyTech-Interposer-Mainboard-Install.webp
-  :width: 49%
+  :width: 49.6%
   :alt: Back side of a JoneyTech Interposer with adaptor installed. 
         A screwdriver is shown with a screw through mounting hole (1)
 
@@ -211,27 +211,38 @@ Step 6: Assemble the Front Endcap
 Step 7: Install the Front Endcap
 --------------------------------
 
-Blah
+.. note::
+  The extruded aluminium enclosure used for TS-USB4 is the Hammond Manufacturing 1455L1201BK. 
+  If bought individually from distributors this part number includes the extrusion, 
+  belly plate, screws, plastic bezels and a metal endcap.
+  The plastic bezels can be used in place of the silicone bezels shown in the step below.  
+
+With the belly plate of the extrusion 
+(the belly plate is the metal part that slides into the bottommost slot of the extrusion, by the screws) 
+facing towards you, place a bezel on one side of the extrusion. 
+For silicone bezels, choose the side with less flash (the extra material around the seam in the part) to face away from you.
 
 .. image:: ./_images/Extrusion-Front.webp
-  :width: 49%
+  :width: 49.6%
   :alt: TODO
 .. image:: ./_images/Extrusion-Front-Bezel.webp
-  :width: 49%
+  :width: 49.6%
   :alt: TODO
 
-Blah Blah
+Place the assembled front endcap onto the bezel, the text on the endcap should be facing towards you. 
+Drive the self-tapping screws into the extrusion through the endcap and bezel.
 
 .. image:: ./_images/Extrusion-Front-Endcap.webp
-  :width: 49%
+  :width: 49.6%
   :alt: TODO
 .. image:: ./_images/Extrusion-Front-Endcap-Installed.webp
-  :width: 49%
+  :width: 49.6%
   :alt: TODO
 
 .. warning::
   
-  Do not overtighten the screws if using a silicone bezel. The bezel will bow out if the screw is overtightened, as shown on the right side of the photo below:
+  Do not overtighten the screws if using a silicone bezel. The bezel will bow out if the screw is overtightened, 
+  as shown on the right side of the photo below:
   
   .. image:: ./_images/Extrusion-Front-Endcap-Overtightened.webp
     :alt: TODO
@@ -239,23 +250,97 @@ Blah Blah
 Step 8: Install the Boards in the Enclosure
 -------------------------------------------
 
-.. todo::
+Line the boards up with the 2nd and 3rd board guides from the bottom (not counting the slot for the belly plate) 
+as shown below and slide them into the enclosure.
 
-  Write this section
+.. image:: ./_images/Enclosure-Board-Guides.webp
+  :width: 49.6%
+  :alt: TODO
+.. image:: ./_images/Enclosure-Boards-Installed.webp
+  :width: 49.6%
+  :alt: TODO
 
 Step 9: Assemble the Back Endcap
 --------------------------------
 
-.. todo::
+Using a flush cutter, snip off the L-shaped plastic part next to the fan wires. The fan used is the Same Sky Devices CFM-2010CF-060-066.
 
-  Write this section
+.. image:: ./_images/Fan-Mod-1.webp
+  :width: 49.6%
+  :alt: TODO
+.. image:: ./_images/Fan-Mod-2.webp
+  :width: 49.6%
+  :alt: TODO
+
+Line up the fan with the three endcap fan mounting holes, the fan wires should be on the top right. 
+Drive three self tapping screws (McMaster-Carr PN 95836A103) into the fan through the endcap.
+
+.. image:: ./_images/Fan-Install-1.webp
+  :width: 32.9%
+  :alt: TODO
+.. image:: ./_images/Fan-Install-2.webp
+  :width: 32.9%
+  :alt: TODO
+.. image:: ./_images/Fan-Install-3.webp
+  :width: 32.9%
+  :alt: TODO
+
+Using a flush cutter, cut the fan wires to the length of the copper pads and 
+strip the remaining length of insulation from the wires.
+
+.. image:: ./_images/Fan-Install-4.webp
+  :width: 24.5%
+  :alt: TODO
+.. image:: ./_images/Fan-Install-5.webp
+  :width: 24.5%
+  :alt: TODO
+.. image:: ./_images/Fan-Install-6.webp
+  :width: 24.5%
+  :alt: TODO
+.. image:: ./_images/Fan-Install-7.webp
+  :width: 24.5%
+  :alt: TODO
+
+Solder the wires to the pads on the endcap.
+
+.. image:: ./_images/Fan-Install-8.webp
+  :width: 49.6%
+  :alt: TODO
+.. image:: ./_images/Fan-Install-9.webp
+  :width: 49.6%
+  :alt: TODO
 
 Step 10: Install the Back Endcap
 --------------------------------
 
-.. todo::
+With the belly plate of the extrusion facing towards you, place a bezel on the side of the extrusion opposite the front endcap. 
+For silicone bezels, choose the side with less flash (the extra material around the seam in the part) to face away from you.
 
-  Write this section
+.. image:: ./_images/Enclosure-Boards-Installed.webp
+  :width: 49.6%
+  :alt: TODO
+.. image:: ./_images/Extrusion-Back-Bezel.webp
+  :width: 49.6%
+  :alt: TODO
+
+Place the assembled back endcap onto the bezel through the BNC connectors, the text on the endcap should be facing towards you. 
+Drive the self-tapping screws into the extrusion through the endcap and bezel, 
+then drive an M4 screw through the endcap into the grounding lug. 
+
+.. image:: ./_images/Extrusion-Back-Endcap.webp
+  :width: 49.6%
+  :alt: TODO
+.. image:: ./_images/Extrusion-Back-Endcap-Installed.webp
+  :width: 49.6%
+  :alt: TODO
+
+.. warning::
+  
+  Do not overtighten the screws if using a silicone bezel. The bezel will bow out if the screw is overtightened, 
+  as shown on the right side of the photo below:
+  
+  .. image:: ./_images/Extrusion-Front-Endcap-Overtightened.webp
+    :alt: TODO
 
 Step 11: Engrave the Enclosure
 ------------------------------
