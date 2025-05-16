@@ -1,7 +1,7 @@
 .. _Mainboard-Assembly:
 
 Mainboard Assembly
-========
+==================
 
 .. todo::
 
