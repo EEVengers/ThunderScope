@@ -1,0 +1,93 @@
+on:
+  push:
+  pull_request:
+  merge_group:
+
+name: CI
+jobs:
+
+  build-manual:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: Docs/manual
+    steps:
+      - name: Check out source code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Set up PDM
+        uses: pdm-project/setup-pdm@v4
+      - name: Install dependencies
+        run: pdm install
+      - name: Check for dead links
+        run: pdm run check
+      - name: Build documentation
+        env:
+          DOCS_IS_PRODUCTION: ${{ (github.repository == 'EEVengers/ThunderScope' && github.event.ref == 'refs/heads/master') && 'yes' || 'no' }}
+        run: pdm run build
+      - name: Upload documentation archive
+        uses: actions/upload-artifact@v4
+        with:
+          name: Docs
+          path: Docs/manual/build
+
+  required: # group all required workflows into one to avoid reconfiguring this in Actions settings
+    needs:
+      - build-manual
+    if: ${{ always() && !contains(needs.*.result, 'cancelled') }}
+    runs-on: ubuntu-latest
+    steps:
+      - run: ${{ contains(needs.*.result, 'failure') && 'false' || 'true' }}
+
+  publish-manual:
+    needs: build-manual
+    if: ${{ (github.repository == 'EEVengers/ThunderScope' && github.event.ref == 'refs/heads/master') || github.repository != 'EEVengers/ThunderScope' }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Check out source code
+        uses: actions/checkout@v4
+      - if: ${{ github.repository == 'EEVengers/ThunderScope' && github.event.ref == 'refs/heads/master' }}
+        name: Inject documentation from artifact under latest/
+        uses: actions/download-artifact@v4
+        with:
+          name: Docs
+          path: pages/latest/
+      - if: ${{ github.repository == 'EEVengers/ThunderScope' && github.event.ref == 'refs/heads/master' }}
+        name: Add CNAME and redirect from the root to latest/
+        run: |
+          echo >pages/CNAME 'docs.eevengers.com'
+          cat >pages/index.html <<END
+          <!DOCTYPE html>
+          <html lang="en-US">
+            <meta charset="utf-8">
+            <title>Redirecting&hellip;</title>
+            <link rel="canonical" href="latest/Introduction.html">
+            <script>location="latest/Introduction.html"</script>
+            <meta http-equiv="refresh" content="0; url=latest/Introduction.html">
+            <meta content="ThunderScope" name="og:title" />
+            <meta content="website" name="og:type" />
+            <meta content="https://docs.eevengers.com/" name="og:url" />
+            <meta content="A new type of oscilloscope that’s fast, flexible, and completely open " name="og:description" />
+            <meta content="https://www.crowdsupply.com/img/9d74/8230e761-8c87-4b42-8770-8e8c815c9d74/thunderscope-tb-and-pcie-01_jpg_gallery-lg.jpg" name="og:image" />
+            <meta content="A ThunderScope PCIe Unit and a ThunderScope USB4 Unit" name="og:image:alt" />
+            <h1>Redirecting&hellip;</h1>
+            <a href="latest/Introduction.html">Click here if you are not redirected.</a>
+          </html>
+          END
+      - if: ${{ github.repository != 'EEVengers/ThunderScope' }}
+        name: Inject documentation from artifact under {branch}/
+        uses: actions/download-artifact@v4
+        with:
+          name: Docs
+          path: pages/${{ github.ref_name }}/
+      - name: Disable Jekyll
+        run: touch pages/.nojekyll
+      - name: Publish documentation for a branch
+        uses: JamesIves/github-pages-deploy-action@releases/v4
+        with:
+          folder: pages/
+          clean: ${{ github.repository == 'EEVengers/ThunderScope' && github.event.ref == 'refs/heads/master' }}
+          single-commit: true
