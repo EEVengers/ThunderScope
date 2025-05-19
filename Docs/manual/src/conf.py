@@ -4,7 +4,7 @@ is_production = True if os.getenv("DOCS_IS_PRODUCTION", "").lower() in ('1', 'ye
 
 html_title = project = "ThunderScope"
 release = version = ""
-copyright = time.strftime("2020—%Y, EEVengers Inc.")
+copyright = time.strftime("%Y, EEVengers Inc.")
 
 extensions = [
     "myst_parser",

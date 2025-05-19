@@ -362,6 +362,26 @@ then drive an M4 screw through the endcap into the grounding lug.
 Step 11: Engrave the Enclosure
 ------------------------------
 
+.. danger::
+  This step is optional and the instructions below are for internal use. 
+  If you wish to replicate this step, do so at your own risk and observe proper laser safety precautions!
+
+Slide the unit into the fixture on the bed of the laser engraver. 
+Turn on the air filtration system and put on the laser safety glasses.
+Plug the unit in and run the engraving and end of line script on the engraving station computer.
+
+.. image:: ./_images/Engraving-1.webp
+  :width: 49%
+  :alt: TODO
+.. image:: ./_images/Engraving-2.webp
+  :width: 49%
+  :alt: TODO
+
 .. todo::
 
-  Write this section
+  Update photos to match text and add info about script once it is made
+
+This completes the box-build for TS-USB4!
+
+.. image:: ./_images/TS-USB4.webp
+  :alt: TODO
