@@ -194,10 +194,10 @@ Screw the interposer into the mainboard through interposer mounting holes (2-4).
 
 Step 6: Assemble the Front Endcap
 ---------------------------------
-
-The front endcap is a 2-layer PCB, design files for it can be found in the `ThunderScope repo <ts_front_endcap_repo_>`__. 
-In order to solder the probe compensation terminals (Keystone Electronics 1046) with proper alignment, a 3d printed jig is used. 
-The STL file for the jig can be found in the `ThunderScope repo <ts_mechanical_repo_>`__.
+.. note::
+  The front endcap is a 2-layer 1.6mm thick PCB, design files for it can be found in the `ThunderScope repo <ts_front_endcap_repo_>`__. 
+  In order to solder the probe compensation terminals (Keystone Electronics 1046) with proper alignment, a 3d printed jig is used. 
+  The STL file for the jig can be found in the `ThunderScope repo <ts_mechanical_repo_>`__.
 
 .. _ts_front_endcap_repo: https://github.com/EEVengers/ThunderScope/tree/master/Hardware/KiCad/TS_Front_Endcap
 .. _ts_mechanical_repo: https://github.com/EEVengers/ThunderScope/tree/master/Hardware/Mechanical
@@ -274,6 +274,11 @@ as shown below and slide them into the enclosure.
 
 Step 9: Assemble the Back Endcap
 --------------------------------
+
+.. note::
+  The back endcap is a 2-layer 1.6mm thick PCB, design files for it can be found in the `ThunderScope repo <ts_back_endcap_repo_>`__. 
+
+.. _ts_back_endcap_repo: https://github.com/EEVengers/ThunderScope/tree/master/Hardware/KiCad/TS_Back_Endcap
 
 Using a flush cutter, snip off the L-shaped plastic part next to the fan wires. The fan used is the Same Sky Devices CFM-2010CF-060-066.
 
