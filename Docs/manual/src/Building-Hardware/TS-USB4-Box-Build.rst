@@ -195,9 +195,30 @@ Screw the interposer into the mainboard through interposer mounting holes (2-4).
 Step 6: Assemble the Front Endcap
 ---------------------------------
 
-.. todo::
+The front endcap is a 2-layer PCB, design files for it can be found in the `ThunderScope repo <ts_front_endcap_repo_>`__. 
+In order to solder the probe compensation terminals (Keystone Electronics 1046) with proper alignment, a 3d printed jig is used. 
+The STL file for the jig can be found in the `ThunderScope repo <ts_mechanical_repo_>`__.
 
-  Write this section
+.. _ts_front_endcap_repo: https://github.com/EEVengers/ThunderScope/tree/master/Hardware/KiCad/TS_Front_Endcap
+.. _ts_mechanical_repo: https://github.com/EEVengers/ThunderScope/tree/master/Hardware/Mechanical
+
+Place the jig with the rectangular slots on the right side. Load a terminal into each slot, with the round pins facing up.
+
+.. image:: ./_images/Back-Endcap-Assembly-1.webp
+  :width: 49%
+  :alt: TODO
+.. image:: ./_images/Back-Endcap-Assembly-2.webp
+  :width: 49%
+  :alt: TODO
+
+Place the endcap onto the jig with channel numbers facing down, making sure the terminal pins go through the two through-holes on the right side of the PCB. Solder the pins to the PCB and remove the endcap from the jig.
+
+.. image:: ./_images/Back-Endcap-Assembly-3.webp
+  :width: 49%
+  :alt: TODO
+.. image:: ./_images/Back-Endcap-Assembly-4.webp
+  :width: 49%
+  :alt: TODO
 
 Step 7: Install the Front Endcap
 --------------------------------
