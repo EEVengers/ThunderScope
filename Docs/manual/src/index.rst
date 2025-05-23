@@ -6,7 +6,7 @@ ThunderScope manual
 
     Introduction
     Hardware-Revisions
-    Theory-of-Operation
+    Theory-of-Operation/index
     Purchasing-Hardware
     Building-Hardware/index
     Installing-Drivers
