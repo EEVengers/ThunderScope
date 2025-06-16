@@ -1,7 +1,7 @@
 if cd libtslitex; then 
 	git pull
 else 
-    git clone -b ota_support https://github.com/EEVengers/libtslitex.git
+    git clone -b dev_updates https://github.com/EEVengers/libtslitex.git
 	cd libtslitex
 fi
 mkdir build
