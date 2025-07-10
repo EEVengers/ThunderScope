@@ -6813,7 +6813,13 @@
 		(at 99.06 91.44)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "16410b24-2d26-4ba2-b856-4a5fd6bda320")
+		(uuid "04687339-20b0-4b10-a4c4-96dcb36d5f5f")
+	)
+	(junction
+		(at 99.06 78.74)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "4784f60d-b582-4a3d-8032-14d6342adc33")
 	)
 	(junction
 		(at 99.06 127)
@@ -6862,12 +6868,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "dde1e343-19bb-43d3-a800-439bb5c6caff")
-	)
-	(junction
-		(at 88.9 78.74)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "f0e7af82-9809-473c-97d4-054fd5673d66")
 	)
 	(no_connect
 		(at 274.32 63.5)
@@ -7533,16 +7533,6 @@
 	)
 	(wire
 		(pts
-			(xy 88.9 78.74) (xy 93.98 78.74)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "06af6f8d-dfc4-40b3-a351-9d56342333e6")
-	)
-	(wire
-		(pts
 			(xy 66.04 124.46) (xy 83.82 124.46)
 		)
 		(stroke
@@ -7910,6 +7900,16 @@
 			(type default)
 		)
 		(uuid "3335555e-0cb2-4f14-bdff-b3ef919bb15a")
+	)
+	(wire
+		(pts
+			(xy 99.06 78.74) (xy 104.14 78.74)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3416f293-9467-45f3-be24-921d30817202")
 	)
 	(wire
 		(pts
@@ -8303,6 +8303,16 @@
 	)
 	(wire
 		(pts
+			(xy 99.06 91.44) (xy 104.14 91.44)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "709aad3a-bddb-4323-a4d9-9169f3bb85ec")
+	)
+	(wire
+		(pts
 			(xy 180.34 40.64) (xy 182.88 40.64)
 		)
 		(stroke
@@ -8370,16 +8380,6 @@
 			(type default)
 		)
 		(uuid "7313386f-ab4f-455e-ba5d-463f708f77ca")
-	)
-	(wire
-		(pts
-			(xy 66.04 91.44) (xy 99.06 91.44)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "73f80e40-ef2e-4ced-b83e-85a64e69c86b")
 	)
 	(wire
 		(pts
@@ -8813,13 +8813,13 @@
 	)
 	(wire
 		(pts
-			(xy 99.06 91.44) (xy 104.14 91.44)
+			(xy 66.04 78.74) (xy 99.06 78.74)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "b4ec9ea6-ad64-4ea1-8880-bb157c925d74")
+		(uuid "b0666ce2-e672-46a3-a49e-4cecf83a1872")
 	)
 	(bus
 		(pts
@@ -8850,16 +8850,6 @@
 			(type default)
 		)
 		(uuid "b7788fd4-df5e-4de7-b4b5-d01839da3dee")
-	)
-	(wire
-		(pts
-			(xy 66.04 78.74) (xy 88.9 78.74)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "b7d6e94b-0b68-4e59-a197-ece847e59ce2")
 	)
 	(bus
 		(pts
@@ -9220,6 +9210,16 @@
 			(type default)
 		)
 		(uuid "e41a4f65-a6fb-4091-b289-b52978d1f361")
+	)
+	(wire
+		(pts
+			(xy 66.04 91.44) (xy 99.06 91.44)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e6997230-f06a-40c4-8a5e-42382bb51eea")
 	)
 	(wire
 		(pts
@@ -22870,16 +22870,6 @@
 		)
 		(uuid "1abb7a3f-89e5-4c4d-ac23-56606cc977d4")
 	)
-	(label "PGA_SCLK"
-		(at 81.28 91.44 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "204e3803-b0c0-494c-8a11-143dbd30d820")
-	)
 	(label "CLK25"
 		(at 81.28 101.6 180)
 		(effects
@@ -23182,6 +23172,16 @@
 			(justify right bottom)
 		)
 		(uuid "650cc915-17f2-42eb-bf90-ae6f61d6dd3a")
+	)
+	(label "PGA_SDIO"
+		(at 81.28 91.44 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "69dbe5c5-6256-43ee-891f-7cd6ec22c79d")
 	)
 	(label "D3A_P"
 		(at 198.12 76.2 180)
@@ -23534,6 +23534,16 @@
 		)
 		(uuid "a7398411-dad4-4972-940b-679bd0449d57")
 	)
+	(label "PGA_SCLK"
+		(at 81.28 78.74 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "aada0835-269e-4a1c-a56b-f5e4da05d1f4")
+	)
 	(label "LCLK_N"
 		(at 198.12 99.06 180)
 		(effects
@@ -23624,16 +23634,6 @@
 			(justify right bottom)
 		)
 		(uuid "e067195f-0e35-4ae6-9bc7-7863869c4d5e")
-	)
-	(label "PGA_SDIO"
-		(at 81.28 78.74 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "e078ae98-90b8-4875-9228-960872d75368")
 	)
 	(label "ATTEN_3"
 		(at 81.28 58.42 180)
@@ -23910,14 +23910,14 @@
 	)
 	(hierarchical_label "PGA_SCLK"
 		(shape output)
-		(at 104.14 91.44 0)
+		(at 104.14 78.74 0)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
 			(justify left)
 		)
-		(uuid "5955f868-7389-43ea-bff6-376f1cafbf4e")
+		(uuid "634ed5bb-d93a-436c-8fa4-370afc6468a2")
 	)
 	(hierarchical_label "PLL_RSTn"
 		(shape output)
@@ -24084,6 +24084,17 @@
 		)
 		(uuid "bc807ad1-9120-4ec7-ac04-5cedde31b692")
 	)
+	(hierarchical_label "PGA_SDIO"
+		(shape output)
+		(at 104.14 91.44 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "c129fc68-ff69-4c40-97db-08e32c641062")
+	)
 	(hierarchical_label "CLK25"
 		(shape input)
 		(at 83.82 101.6 0)
@@ -24138,17 +24149,6 @@
 			(justify left)
 		)
 		(uuid "f34b98c5-bcc6-45b7-855f-db7aa5a641ed")
-	)
-	(hierarchical_label "PGA_SDIO"
-		(shape output)
-		(at 93.98 78.74 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "f6ca46ba-ec5f-4312-818f-71385505b79f")
 	)
 	(symbol
 		(lib_id "Thunderscope_Rev5:TP PCB 1mm")
@@ -27089,7 +27089,7 @@
 	)
 	(symbol
 		(lib_id "Thunderscope_Rev5:TP PCB 1mm")
-		(at 88.9 78.74 90)
+		(at 99.06 78.74 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom no)
@@ -27097,7 +27097,7 @@
 		(dnp no)
 		(uuid "5ef27061-7e8e-4861-930c-0e01a5729cb8")
 		(property "Reference" "TP25"
-			(at 91.44 71.12 90)
+			(at 101.6 71.12 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -27106,7 +27106,7 @@
 			)
 		)
 		(property "Value" "PCB"
-			(at 83.82 80.01 0)
+			(at 93.98 80.01 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -27116,7 +27116,7 @@
 			)
 		)
 		(property "Footprint" "Thunderscope_Rev5:GEN_TP_PCB"
-			(at 88.9 78.74 0)
+			(at 99.06 78.74 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -27125,7 +27125,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 88.9 78.74 0)
+			(at 99.06 78.74 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -27134,7 +27134,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 88.9 78.74 0)
+			(at 99.06 78.74 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -27143,7 +27143,7 @@
 			)
 		)
 		(property "HOUSE PART NUMBER" ""
-			(at 83.82 80.01 0)
+			(at 93.98 80.01 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -27153,7 +27153,7 @@
 			)
 		)
 		(property "MANUFACTURER" ""
-			(at 83.82 80.01 0)
+			(at 93.98 80.01 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -27163,7 +27163,7 @@
 			)
 		)
 		(property "MANUFACTURER PART NUMBER" ""
-			(at 83.82 80.01 0)
+			(at 93.98 80.01 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -27173,7 +27173,7 @@
 			)
 		)
 		(property "ALTIUM_VALUE" ""
-			(at 88.9 78.74 0)
+			(at 99.06 78.74 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -27184,7 +27184,7 @@
 			(uuid "2eb3680c-5b50-49ed-8575-d8798fb7b355")
 		)
 		(instances
-			(project "Thunderscope_Rev5"
+			(project "Thunderscope_Rev5.1"
 				(path "/031d3e2c-42e0-4016-8c32-579d45c83e09/0f922f52-a6e9-41f0-8991-df4889546a95/3dc749f1-bb54-4961-a356-74c6bb9263ea"
 					(reference "TP25")
 					(unit 1)
@@ -28721,7 +28721,7 @@
 			(uuid "cc6a5603-8899-4c65-9da5-bc9064c664c0")
 		)
 		(instances
-			(project "Thunderscope_Rev5"
+			(project "Thunderscope_Rev5.1"
 				(path "/031d3e2c-42e0-4016-8c32-579d45c83e09/0f922f52-a6e9-41f0-8991-df4889546a95/3dc749f1-bb54-4961-a356-74c6bb9263ea"
 					(reference "TP42")
 					(unit 1)
