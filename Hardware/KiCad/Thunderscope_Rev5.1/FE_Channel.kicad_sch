@@ -4773,7 +4773,7 @@
 					)
 				)
 			)
-			(property "Value" "OPA140AIDR"
+			(property "Value" "OPA140AIDBVR"
 				(at 0 0 0)
 				(effects
 					(font
@@ -4781,7 +4781,7 @@
 					)
 				)
 			)
-			(property "Footprint" "Thunderscope_Rev5:TI_SOIC8_D0008A"
+			(property "Footprint" "Thunderscope_Rev5:GEN_SOT23_5_950_2900X1600X1450"
 				(at 0 0 0)
 				(effects
 					(font
@@ -4817,7 +4817,7 @@
 					(hide yes)
 				)
 			)
-			(property "SUPPLIER PART NUMBER 1" "OPA140AIDR"
+			(property "SUPPLIER PART NUMBER 1" "OPA140AIDBVR"
 				(at 0 0 0)
 				(effects
 					(font
@@ -4844,7 +4844,7 @@
 					(hide yes)
 				)
 			)
-			(property "MANUFACTURER PART NUMBER" "OPA140AIDR"
+			(property "MANUFACTURER PART NUMBER" "OPA140AIDBVR"
 				(at 0 0 0)
 				(effects
 					(font
@@ -4896,7 +4896,7 @@
 							)
 						)
 					)
-					(number "2"
+					(number "4"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -4914,7 +4914,7 @@
 							)
 						)
 					)
-					(number "7"
+					(number "5"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -4932,43 +4932,7 @@
 							)
 						)
 					)
-					(number "4"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 0 -12.7 90)
-					(length 7.62)
-					(name "N1"
-						(effects
-							(font
-								(size 0 0)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 5.08 -10.16 90)
-					(length 7.62)
-					(name "N2"
-						(effects
-							(font
-								(size 0 0)
-							)
-						)
-					)
-					(number "8"
+					(number "2"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -4986,7 +4950,7 @@
 							)
 						)
 					)
-					(number "6"
+					(number "1"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -11045,16 +11009,8 @@
 		(uuid "5f22f2e8-3a6e-40c7-8293-08b714b2283e")
 	)
 	(no_connect
-		(at 114.3 200.66)
-		(uuid "a2bc93be-984d-4f92-9f7e-9071866ce64d")
-	)
-	(no_connect
 		(at 365.76 182.88)
 		(uuid "d823d5bf-7de4-4fdf-9d23-85741632f05a")
-	)
-	(no_connect
-		(at 109.22 203.2)
-		(uuid "f8e705e7-e374-420e-a189-09101ed4fda7")
 	)
 	(wire
 		(pts
@@ -18640,15 +18596,6 @@
 		(dnp no)
 		(uuid "0a08b4c0-034b-4641-9d3f-645ae24a5b4a")
 		(property "Reference" "U1011_4"
-			(at 109.22 180.34 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-			)
-		)
-		(property "Value" "OPA140AIDR"
 			(at 109.22 182.88 0)
 			(effects
 				(font
@@ -18657,7 +18604,16 @@
 				(justify left bottom)
 			)
 		)
-		(property "Footprint" "Thunderscope_Rev5:TI_SOIC8_D0008A"
+		(property "Value" "OPA140AIDBVR"
+			(at 106.68 200.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Footprint" "Thunderscope_Rev5:GEN_SOT23_5_950_2900X1600X1450"
 			(at 109.22 190.5 0)
 			(effects
 				(font
@@ -18694,7 +18650,7 @@
 				(hide yes)
 			)
 		)
-		(property "SUPPLIER PART NUMBER 1" "OPA140AIDR"
+		(property "SUPPLIER PART NUMBER 1" "OPA140AIDBVR"
 			(at 90.932 174.752 0)
 			(effects
 				(font
@@ -18724,7 +18680,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUFACTURER PART NUMBER" "OPA140AIDR"
+		(property "MANUFACTURER PART NUMBER" "OPA140AIDBVR"
 			(at 90.932 174.752 0)
 			(effects
 				(font
@@ -18748,14 +18704,8 @@
 		(pin "2"
 			(uuid "c729562d-1303-42a4-9075-585ada49ee61")
 		)
-		(pin "6"
+		(pin "5"
 			(uuid "231e80ec-a057-4157-a2a6-76bfdacc3d08")
-		)
-		(pin "7"
-			(uuid "e0a5094c-1284-4f4f-ad59-fd388d14e1b2")
-		)
-		(pin "8"
-			(uuid "97326749-959f-4c5f-a576-077141fb6e84")
 		)
 		(pin "1"
 			(uuid "07af2bee-f346-43b7-a919-32b4ed43148d")
