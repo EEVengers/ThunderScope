@@ -1,6 +1,6 @@
 {
   "board": {
-    "active_layer": 0,
+    "active_layer": 2,
     "active_layer_preset": "",
     "auto_track_width": false,
     "hidden_netclasses": [
@@ -25,7 +25,6 @@
       "+5V3",
       "-VBIAS",
       "+1V8_ACQ",
-      "/DC_CPL_1",
       "GND",
       "+5V",
       "+VUSB",
@@ -62,13 +61,13 @@
       "footprints": true,
       "graphics": false,
       "keepouts": false,
-      "lockedItems": false,
+      "lockedItems": true,
       "otherItems": false,
       "pads": false,
-      "text": false,
+      "text": true,
       "tracks": true,
       "vias": true,
-      "zones": true
+      "zones": false
     },
     "visible_items": [
       "vias",
@@ -90,7 +89,7 @@
       "conflict_shadows",
       "shapes"
     ],
-    "visible_layers": "00000000_00000000_00000008_82002223",
+    "visible_layers": "00000000_00000000_00000002_2200888d",
     "zone_display_mode": 0
   },
   "git": {
