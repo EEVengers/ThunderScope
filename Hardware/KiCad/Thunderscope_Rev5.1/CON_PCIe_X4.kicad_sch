@@ -6990,12 +6990,6 @@
 		(uuid "3f905b2b-8238-4039-a3fa-98896d529fa8")
 	)
 	(junction
-		(at 139.7 160.02)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "50f44a64-4ac3-4d16-8483-eba7261ef94d")
-	)
-	(junction
 		(at 276.86 154.94)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -7060,6 +7054,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "85a3a84a-33c5-4d5f-bb56-7019e4dabf34")
+	)
+	(junction
+		(at 139.7 157.48)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "86184c92-0b77-46f4-8ea8-1515a40eddef")
 	)
 	(junction
 		(at 129.54 142.24)
@@ -8199,6 +8199,16 @@
 	)
 	(wire
 		(pts
+			(xy 139.7 157.48) (xy 139.7 165.1)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "53ce8748-b008-407c-915f-a238e0e200fb")
+	)
+	(wire
+		(pts
 			(xy 93.98 170.18) (xy 93.98 172.72)
 		)
 		(stroke
@@ -9289,7 +9299,7 @@
 	)
 	(wire
 		(pts
-			(xy 139.7 152.4) (xy 139.7 160.02)
+			(xy 139.7 152.4) (xy 139.7 157.48)
 		)
 		(stroke
 			(width 0)
@@ -9406,16 +9416,6 @@
 			(type default)
 		)
 		(uuid "d745db63-e86d-47b6-a352-896415aefe3c")
-	)
-	(wire
-		(pts
-			(xy 139.7 160.02) (xy 139.7 165.1)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "d77a5d2c-3972-40a3-85f2-cf6a78b80e8b")
 	)
 	(bus
 		(pts
@@ -10457,6 +10457,16 @@
 		)
 		(uuid "7b38071f-a52a-4853-80f5-9497a44301ed")
 	)
+	(label "+VUSB_PG"
+		(at 137.16 165.1 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "7d9435c8-6cf5-444f-b74f-5b95a8239b55")
+	)
 	(label "GND"
 		(at 109.22 93.98 180)
 		(effects
@@ -11029,7 +11039,7 @@
 	)
 	(symbol
 		(lib_id "Thunderscope_Rev5:TP PCB 1mm")
-		(at 139.7 160.02 180)
+		(at 139.7 157.48 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom no)
@@ -11037,7 +11047,7 @@
 		(dnp no)
 		(uuid "01950724-c065-4e73-8c8f-d119444a4a70")
 		(property "Reference" "TP86"
-			(at 135.89 162.56 0)
+			(at 135.89 160.02 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11045,7 +11055,7 @@
 			)
 		)
 		(property "Value" "PCB"
-			(at 140.97 165.1 0)
+			(at 140.97 162.56 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11055,7 +11065,7 @@
 			)
 		)
 		(property "Footprint" "Thunderscope_Rev5:GEN_TP_PCB"
-			(at 139.7 160.02 0)
+			(at 139.7 157.48 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11064,7 +11074,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 139.7 160.02 0)
+			(at 139.7 157.48 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11073,7 +11083,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 139.7 160.02 0)
+			(at 139.7 157.48 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11082,7 +11092,7 @@
 			)
 		)
 		(property "HOUSE PART NUMBER" ""
-			(at 140.97 167.64 0)
+			(at 140.97 165.1 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11092,7 +11102,7 @@
 			)
 		)
 		(property "MANUFACTURER" ""
-			(at 140.97 167.64 0)
+			(at 140.97 165.1 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11102,7 +11112,7 @@
 			)
 		)
 		(property "MANUFACTURER PART NUMBER" ""
-			(at 140.97 167.64 0)
+			(at 140.97 165.1 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11112,7 +11122,7 @@
 			)
 		)
 		(property "ALTIUM_VALUE" ""
-			(at 139.7 160.02 0)
+			(at 139.7 157.48 0)
 			(effects
 				(font
 					(size 1.27 1.27)
