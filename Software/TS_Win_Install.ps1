@@ -126,8 +126,9 @@ Copy-Item .\libtslitex\build\artifacts\libtslitex\tslitex.dll .\TS.NET\builds\wi
 # Enable use of test-signed code
 Bcdedit.exe -set TESTSIGNING ON
 
+# Make a RunOnce registry entry to install driver on next boot
+$driver_inf_path = Join-Path -Path $PWD -ChildPath "ts_litex_driver_win\x64\Release\thunderscopedrv\thunderscopedrv.inf"
+reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnce" /v RunScript /t REG_SZ /d "pnputil /add-driver $driver_inf_path /install"
+
 # Ask user to restart their computer for testsigning mode to take effect
 Write-Host "Install Complete, Please Restart Your Computer" -ForegroundColor green
-
-# Below is the command to run after restart
-#pnputil /add-driver .\ts_litex_driver_win\x64\Release\thunderscopedrv\thunderscopedrv.inf /install
