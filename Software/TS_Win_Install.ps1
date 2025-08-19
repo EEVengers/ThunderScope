@@ -17,7 +17,7 @@ try
 }
 catch [System.Management.Automation.CommandNotFoundException]
 {
-    winget install --accept-package-agreements --accept-source-agreements Kitware.CMake
+    winget install --accept-package-agreements --accept-source-agreements --id Kitware.CMake --source winget
 }
 
 # Check if .NET 9 SDK is installed and if not, install it
@@ -27,19 +27,19 @@ try
         ".NET 9 SDK is installed"
     }
     else {
-        winget install Microsoft.DotNet.SDK.9
+        winget install --id Microsoft.DotNet.SDK.9 --source winget
     }    
 }
 catch [System.Management.Automation.CommandNotFoundException]
 {
-    winget install Microsoft.DotNet.SDK.9
+    winget install --id Microsoft.DotNet.SDK.9 --source winget
 }
 
 # Check if python is installed and if not, install it
 try
 {
     if (py -0p | Select-String -Pattern "No installed Pythons found!" -Quiet) {
-        winget install Python.Python.3.13
+        winget install --id Python.Python.3.13 --source winget
     }
     else {
         "Python is installed"
@@ -47,7 +47,7 @@ try
 }
 catch [System.Management.Automation.CommandNotFoundException]
 {
-    winget install Python.Python.3.13
+    winget install --id Python.Python.3.13 --source winget
 }
 
 # Update Path to be able to use what we installed
