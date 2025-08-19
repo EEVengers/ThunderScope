@@ -36,6 +36,7 @@ catch [System.Management.Automation.CommandNotFoundException]
 }
 
 # Check if python is installed and if not, install it
+<# 
 try
 {
     if (py -0p | Select-String -Pattern "No installed Pythons found!" -Quiet) {
@@ -48,7 +49,12 @@ try
 catch [System.Management.Automation.CommandNotFoundException]
 {
     winget install --id Python.Python.3.13 --source winget
-}
+} 
+#>
+
+
+winget install --id Microsoft.VCRedist.2015+.x64 --source winget
+winget install --source winget --exact --id Microsoft.WindowsSDK.10.0.26100
 
 # Update Path to be able to use what we installed
 $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User") 
@@ -58,8 +64,7 @@ if (-not(Test-Path ./ts_litex_driver_win)) {
     git clone -b dev https://github.com/EEVengers/ts_litex_driver_win.git
 }
 if (-not(Test-Path ./libtslitex)) {
-    git clone https://github.com/EEVengers/libtslitex.git
-    git switch dev_updates
+    git clone -b dev_updates https://github.com/EEVengers/libtslitex.git
 }
 if (-not(Test-Path ./TS.NET)) {
     git clone https://github.com/EEVengers/TS.NET.git
@@ -119,6 +124,10 @@ mountvol W: $volumeInfo.UniqueId
 
 # Run the .bat file in the EWDK environment
 echo "EWDK_Commands.bat" | W:\LaunchBuildEnv.cmd
+
+if (-not(Test-Path C:\Windows\System32\concrt140d.dll)) {
+    Copy-Item -Path "W:Program Files\Microsoft Visual Studio\2022\BuildTools\VC\Redist\MSVC\14.40.33807\debug_nonredist\x64\Microsoft.VC143.DebugCRT\*.dll" -Destination C:\Windows\System32\
+}
 
 # Clean up after ourselves, deleting the .bat file and unmounting EWDK
 Remove-Item EWDK_Commands.bat
