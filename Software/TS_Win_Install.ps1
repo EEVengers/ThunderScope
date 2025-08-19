@@ -17,7 +17,7 @@ try
 }
 catch [System.Management.Automation.CommandNotFoundException]
 {
-    winget install --accept-package-agreements --accept-source-agreements cmake
+    winget install --accept-package-agreements --accept-source-agreements Kitware.CMake
 }
 
 # Check if .NET 9 SDK is installed and if not, install it
@@ -35,6 +35,21 @@ catch [System.Management.Automation.CommandNotFoundException]
     winget install Microsoft.DotNet.SDK.9
 }
 
+# Check if .NET 9 SDK is installed and if not, install it
+try
+{
+    if (py -0p | Select-String -Pattern "No installed Pythons found!" -Quiet) {
+        winget install Python.Python.3.13
+    }
+    else {
+        "Python is installed"
+    }    
+}
+catch [System.Management.Automation.CommandNotFoundException]
+{
+    winget install Python.Python.3.13
+}
+
 # Update Path to be able to use what we installed
 $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User") 
 
@@ -43,7 +58,8 @@ if (-not(Test-Path ./ts_litex_driver_win)) {
     git clone -b dev https://github.com/EEVengers/ts_litex_driver_win.git
 }
 if (-not(Test-Path ./libtslitex)) {
-    git clone -b dev_updates https://github.com/EEVengers/libtslitex.git
+    git clone https://github.com/EEVengers/libtslitex.git
+    git switch dev_updates
 }
 if (-not(Test-Path ./TS.NET)) {
     git clone https://github.com/EEVengers/TS.NET.git
