@@ -143,6 +143,13 @@ Set-Location ../TS.NET/build-scripts
 Set-Location ../..
 Copy-Item .\libtslitex\build\artifacts\libtslitex\tslitex.dll .\TS.NET\builds\win-x64\TS.NET.Engine\0.1.0\tslitex.dll
 
+# Add a ThunderScope entry to ngscopeclient recent.yml
+$recent_yml_path = Join-Path -Path $env:USERPROFILE -ChildPath "AppData\Roaming\ngscopeclient\recent.yml"
+New-Item -Path $recent_yml_path -ItemType File -Force
+"scope:" | Out-File $recent_yml_path -encoding ascii -Append
+"    path: `"ThunderScope:thunderscope:twinlan:localhost:5025:5026`"" | Out-File $recent_yml_path -encoding ascii -Append
+"    timestamp: 0" | Out-File $recent_yml_path -encoding ascii -Append
+
 # Make a ThunderScope.bat file to launch both ngscopeclient and TS.NET
 "start /b .\ngscopeclient\ngscopeclient.exe" | Out-File ThunderScope.bat -encoding ascii
 "cd .\TS.NET\builds\win-x64\TS.NET.Engine\0.1.0" | Out-File ThunderScope.bat -encoding ascii -Append
