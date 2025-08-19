@@ -35,7 +35,7 @@ catch [System.Management.Automation.CommandNotFoundException]
     winget install Microsoft.DotNet.SDK.9
 }
 
-# Check if .NET 9 SDK is installed and if not, install it
+# Check if python is installed and if not, install it
 try
 {
     if (py -0p | Select-String -Pattern "No installed Pythons found!" -Quiet) {
