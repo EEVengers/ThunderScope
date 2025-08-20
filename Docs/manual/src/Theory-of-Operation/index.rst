@@ -1,4 +1,4 @@
-Theory-of-Operation
+Theory of Operation
 ===================
 
 .. toctree::

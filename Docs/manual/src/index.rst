@@ -9,6 +9,5 @@ ThunderScope manual
     Theory-of-Operation/index
     Purchasing-Hardware
     Building-Hardware/index
-    Installing-Drivers
-    Installing-Software
+    Getting-Started
     Using-ThunderScope
