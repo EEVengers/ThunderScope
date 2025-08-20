@@ -45,15 +45,23 @@ Follow the instructions below to download and install the driver and software re
     With ThunderScope connected, run ThunderScope.bat in the Software folder of the install directory.
     This should launch a terminal running the triggering software and an ngscopeclient window.
 
-    .. todo::
+    .. image:: ./_images/ts-launch-script-win.webp
+        :alt: The result of running the launch script, as described above
 
-        Add screencapture of ngscopeclient launched from the launch script  
- 
     In the ngscopeclient window, select Add->Oscilliscope->ThunderScope
 
-    .. todo::
+    .. image:: ./_images/ng-add-ts.webp
+        :alt: Adding ThunderScope in ngscopeclient through the Add->Oscilliscope menu 
 
-        Add screencapture of adding ThunderScope to ngscopeclient     
+    Once ThunderScope is added, you will see a blank waveform view
+
+    .. image:: ./_images/ng-ts-added.webp
+        :alt: ngscopeclient waveform view with no waveform displayed
+    
+    Click on the play button on the top left side of the window to start triggering and display a waveform
+
+    .. image:: ./_images/ng-ts-added-running.webp
+        :alt: ngscopeclient waveform view with a waveform displayed
 
 .. tab:: macOS
     
