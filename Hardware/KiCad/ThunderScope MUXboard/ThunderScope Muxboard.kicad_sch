@@ -5,7 +5,133 @@
 	(uuid "3d7ac0e6-5143-4201-bc1e-b57518b36e5b")
 	(paper "A3")
 	(lib_symbols
-		(symbol "74xx:74HC238"
+		(symbol "Device:NetTie_2"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom no)
+			(on_board yes)
+			(property "Reference" "NT"
+				(at 0 1.27 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "NetTie_2"
+				(at 0 -1.27 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Net tie, 2 pins"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "net tie short"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "Net*Tie*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "NetTie_2_0_1"
+				(polyline
+					(pts
+						(xy -1.27 0) (xy 1.27 0)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "NetTie_2_1_1"
+				(pin passive line
+					(at -2.54 0 0)
+					(length 2.54)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 2.54 0 180)
+					(length 2.54)
+					(name "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "ThunderScope:MC74HC238ADTR2G"
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -18,7 +144,7 @@
 					(justify left bottom)
 				)
 			)
-			(property "Value" "74HC238"
+			(property "Value" "MC74HC238ADTR2G"
 				(at 2.54 -11.43 0)
 				(effects
 					(font
@@ -27,7 +153,7 @@
 					(justify left top)
 				)
 			)
-			(property "Footprint" ""
+			(property "Footprint" "Package_SO:TSSOP-16_4.4x5mm_P0.65mm"
 				(at 0 0 0)
 				(effects
 					(font
@@ -54,6 +180,15 @@
 					(hide yes)
 				)
 			)
+			(property "LCSC" "C904037"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
 			(property "ki_keywords" "demux"
 				(at 0 0 0)
 				(effects
@@ -72,7 +207,7 @@
 					(hide yes)
 				)
 			)
-			(symbol "74HC238_0_1"
+			(symbol "MC74HC238ADTR2G_0_1"
 				(rectangle
 					(start -7.62 12.7)
 					(end 7.62 -10.16)
@@ -85,7 +220,7 @@
 					)
 				)
 			)
-			(symbol "74HC238_1_1"
+			(symbol "MC74HC238ADTR2G_1_1"
 				(pin input line
 					(at -10.16 10.16 0)
 					(length 2.54)
@@ -377,137 +512,11 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "Device:NetTie_2"
-			(pin_numbers
-				(hide yes)
-			)
-			(pin_names
-				(offset 0)
-				(hide yes)
-			)
-			(exclude_from_sim no)
-			(in_bom no)
-			(on_board yes)
-			(property "Reference" "NT"
-				(at 0 1.27 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "NetTie_2"
-				(at 0 -1.27 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" "~"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" "Net tie, 2 pins"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_keywords" "net tie short"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_fp_filters" "Net*Tie*"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "NetTie_2_0_1"
-				(polyline
-					(pts
-						(xy -1.27 0) (xy 1.27 0)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "NetTie_2_1_1"
-				(pin passive line
-					(at -2.54 0 0)
-					(length 2.54)
-					(name "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 2.54 0 180)
-					(length 2.54)
-					(name "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
-		(symbol "PCM_JLCPCB-ICs:Gate, AND, 4 Channel, 74HC08D,653"
+		(symbol "ThunderScope:SN74HC32DR"
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
-			(property "Reference" "U137"
+			(property "Reference" "U8"
 				(at 5.334 12.7 0)
 				(effects
 					(font
@@ -523,7 +532,7 @@
 					)
 				)
 			)
-			(property "Footprint" "PCM_JLCPCB:SOIC-14_L8.7-W3.9-P1.27-LS6.0-BL"
+			(property "Footprint" "ThunderScope:SOIC-14_L8.7-W3.9-P1.27-LS6.0-BL"
 				(at 0 -10.16 0)
 				(effects
 					(font
@@ -552,6 +561,15 @@
 					(hide yes)
 				)
 			)
+			(property "LCSC" "C6838"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
 			(property "ki_keywords" "C5593"
 				(at 0 0 0)
 				(effects
@@ -561,7 +579,7 @@
 					(hide yes)
 				)
 			)
-			(symbol "Gate, AND, 4 Channel, 74HC08D,653_0_1"
+			(symbol "SN74HC32DR_0_1"
 				(rectangle
 					(start -7.62 8.89)
 					(end 7.62 -19.05)
@@ -826,7 +844,7 @@
 					)
 				)
 			)
-			(symbol "Gate, AND, 4 Channel, 74HC08D,653_1_1"
+			(symbol "SN74HC32DR_1_1"
 				(text "OR\n"
 					(at 0 -5.08 0)
 					(effects
@@ -2570,22 +2588,10 @@
 		(uuid "d594e326-5db1-42bc-a12a-9fc1a05cc8cb")
 	)
 	(junction
-		(at 175.26 250.19)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "d87423f5-a68d-4eeb-be91-ad3034e6057a")
-	)
-	(junction
 		(at 29.21 220.98)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "e0991c73-5f30-4523-a6f8-0289e3c2408d")
-	)
-	(junction
-		(at 175.26 245.11)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "f5e0306a-d1ed-4bfe-9ae5-90e5337d89a2")
 	)
 	(junction
 		(at 29.21 265.43)
@@ -2620,16 +2626,6 @@
 	(no_connect
 		(at 118.11 41.91)
 		(uuid "eeae85c3-9dc9-4b28-baa0-96236d5cc0bc")
-	)
-	(wire
-		(pts
-			(xy 175.26 245.11) (xy 175.26 247.65)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "039f2c16-a706-48da-8a94-4a30db00c1d5")
 	)
 	(wire
 		(pts
@@ -3173,17 +3169,7 @@
 	)
 	(wire
 		(pts
-			(xy 175.26 247.65) (xy 175.26 250.19)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "83cd7247-10fd-4c6a-b2a9-3e4c1a169ac0")
-	)
-	(wire
-		(pts
-			(xy 175.26 250.19) (xy 175.26 252.73)
+			(xy 175.26 247.65) (xy 175.26 252.73)
 		)
 		(stroke
 			(width 0)
@@ -3473,7 +3459,7 @@
 	)
 	(wire
 		(pts
-			(xy 175.26 242.57) (xy 175.26 245.11)
+			(xy 175.26 242.57) (xy 175.26 247.65)
 		)
 		(stroke
 			(width 0)
@@ -8805,7 +8791,7 @@
 		)
 	)
 	(symbol
-		(lib_id "PCM_JLCPCB-ICs:Gate, AND, 4 Channel, 74HC08D,653")
+		(lib_id "ThunderScope:SN74HC32DR")
 		(at 185.42 143.51 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -8829,7 +8815,7 @@
 				)
 			)
 		)
-		(property "Footprint" "PCM_JLCPCB:SOIC-14_L8.7-W3.9-P1.27-LS6.0-BL"
+		(property "Footprint" "ThunderScope:SOIC-14_L8.7-W3.9-P1.27-LS6.0-BL"
 			(at 185.42 153.67 0)
 			(effects
 				(font
@@ -8851,6 +8837,15 @@
 		)
 		(property "Description" "OR"
 			(at 181.102 124.968 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C6838"
+			(at 185.42 143.51 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9446,7 +9441,7 @@
 		)
 	)
 	(symbol
-		(lib_id "PCM_JLCPCB-ICs:Gate, AND, 4 Channel, 74HC08D,653")
+		(lib_id "ThunderScope:SN74HC32DR")
 		(at 107.95 175.26 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -9470,7 +9465,7 @@
 				)
 			)
 		)
-		(property "Footprint" "PCM_JLCPCB:SOIC-14_L8.7-W3.9-P1.27-LS6.0-BL"
+		(property "Footprint" "ThunderScope:SOIC-14_L8.7-W3.9-P1.27-LS6.0-BL"
 			(at 107.95 185.42 0)
 			(effects
 				(font
@@ -9492,6 +9487,15 @@
 		)
 		(property "Description" "OR"
 			(at 103.632 156.718 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C6838"
+			(at 107.95 175.26 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9551,7 +9555,7 @@
 		)
 	)
 	(symbol
-		(lib_id "PCM_JLCPCB-ICs:Gate, AND, 4 Channel, 74HC08D,653")
+		(lib_id "ThunderScope:SN74HC32DR")
 		(at 107.95 222.25 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -9575,7 +9579,7 @@
 				)
 			)
 		)
-		(property "Footprint" "PCM_JLCPCB:SOIC-14_L8.7-W3.9-P1.27-LS6.0-BL"
+		(property "Footprint" "ThunderScope:SOIC-14_L8.7-W3.9-P1.27-LS6.0-BL"
 			(at 107.95 232.41 0)
 			(effects
 				(font
@@ -9597,6 +9601,15 @@
 		)
 		(property "Description" "OR"
 			(at 103.632 203.708 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C6838"
+			(at 107.95 222.25 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10266,7 +10279,7 @@
 		)
 	)
 	(symbol
-		(lib_id "PCM_JLCPCB-ICs:Gate, AND, 4 Channel, 74HC08D,653")
+		(lib_id "ThunderScope:SN74HC32DR")
 		(at 107.95 81.28 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -10290,7 +10303,7 @@
 				)
 			)
 		)
-		(property "Footprint" "PCM_JLCPCB:SOIC-14_L8.7-W3.9-P1.27-LS6.0-BL"
+		(property "Footprint" "ThunderScope:SOIC-14_L8.7-W3.9-P1.27-LS6.0-BL"
 			(at 107.95 91.44 0)
 			(effects
 				(font
@@ -10312,6 +10325,15 @@
 		)
 		(property "Description" "OR"
 			(at 103.632 62.738 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C6838"
+			(at 107.95 81.28 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10371,7 +10393,7 @@
 		)
 	)
 	(symbol
-		(lib_id "74xx:74HC238")
+		(lib_id "ThunderScope:MC74HC238ADTR2G")
 		(at 107.95 36.83 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -10417,6 +10439,15 @@
 			)
 		)
 		(property "Description" "3-to-8 line decoder/multiplexer, DIP-16/SOIC-16/SSOP-16"
+			(at 107.95 36.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C904037"
 			(at 107.95 36.83 0)
 			(effects
 				(font
@@ -11018,7 +11049,7 @@
 		)
 	)
 	(symbol
-		(lib_id "74xx:74HC238")
+		(lib_id "ThunderScope:MC74HC238ADTR2G")
 		(at 39.37 172.72 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -11064,6 +11095,15 @@
 			)
 		)
 		(property "Description" "3-to-8 line decoder/multiplexer, DIP-16/SOIC-16/SSOP-16"
+			(at 39.37 172.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C904037"
 			(at 39.37 172.72 0)
 			(effects
 				(font
@@ -11467,7 +11507,7 @@
 		)
 	)
 	(symbol
-		(lib_id "PCM_JLCPCB-ICs:Gate, AND, 4 Channel, 74HC08D,653")
+		(lib_id "ThunderScope:SN74HC32DR")
 		(at 260.35 160.02 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -11491,7 +11531,7 @@
 				)
 			)
 		)
-		(property "Footprint" "PCM_JLCPCB:SOIC-14_L8.7-W3.9-P1.27-LS6.0-BL"
+		(property "Footprint" "ThunderScope:SOIC-14_L8.7-W3.9-P1.27-LS6.0-BL"
 			(at 260.35 170.18 0)
 			(effects
 				(font
@@ -11513,6 +11553,15 @@
 		)
 		(property "Description" "OR"
 			(at 256.032 141.478 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C6838"
+			(at 260.35 160.02 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11971,7 +12020,7 @@
 		)
 	)
 	(symbol
-		(lib_id "PCM_JLCPCB-ICs:Gate, AND, 4 Channel, 74HC08D,653")
+		(lib_id "ThunderScope:SN74HC32DR")
 		(at 107.95 128.27 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -11995,7 +12044,7 @@
 				)
 			)
 		)
-		(property "Footprint" "PCM_JLCPCB:SOIC-14_L8.7-W3.9-P1.27-LS6.0-BL"
+		(property "Footprint" "ThunderScope:SOIC-14_L8.7-W3.9-P1.27-LS6.0-BL"
 			(at 107.95 138.43 0)
 			(effects
 				(font
@@ -12017,6 +12066,15 @@
 		)
 		(property "Description" "OR"
 			(at 103.632 109.728 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C6838"
+			(at 107.95 128.27 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12283,7 +12341,7 @@
 		)
 	)
 	(symbol
-		(lib_id "PCM_JLCPCB-ICs:Gate, AND, 4 Channel, 74HC08D,653")
+		(lib_id "ThunderScope:SN74HC32DR")
 		(at 228.6 189.23 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -12307,7 +12365,7 @@
 				)
 			)
 		)
-		(property "Footprint" "PCM_JLCPCB:SOIC-14_L8.7-W3.9-P1.27-LS6.0-BL"
+		(property "Footprint" "ThunderScope:SOIC-14_L8.7-W3.9-P1.27-LS6.0-BL"
 			(at 228.6 199.39 0)
 			(effects
 				(font
@@ -12329,6 +12387,15 @@
 		)
 		(property "Description" "OR"
 			(at 224.282 170.688 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C6838"
+			(at 228.6 189.23 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12388,7 +12455,7 @@
 		)
 	)
 	(symbol
-		(lib_id "74xx:74HC238")
+		(lib_id "ThunderScope:MC74HC238ADTR2G")
 		(at 39.37 217.17 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -12434,6 +12501,15 @@
 			)
 		)
 		(property "Description" "3-to-8 line decoder/multiplexer, DIP-16/SOIC-16/SSOP-16"
+			(at 39.37 217.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C904037"
 			(at 39.37 217.17 0)
 			(effects
 				(font
@@ -12900,7 +12976,7 @@
 		)
 	)
 	(symbol
-		(lib_id "PCM_JLCPCB-ICs:Gate, AND, 4 Channel, 74HC08D,653")
+		(lib_id "ThunderScope:SN74HC32DR")
 		(at 297.18 163.83 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -12924,7 +13000,7 @@
 				)
 			)
 		)
-		(property "Footprint" "PCM_JLCPCB:SOIC-14_L8.7-W3.9-P1.27-LS6.0-BL"
+		(property "Footprint" "ThunderScope:SOIC-14_L8.7-W3.9-P1.27-LS6.0-BL"
 			(at 297.18 173.99 0)
 			(effects
 				(font
@@ -12946,6 +13022,15 @@
 		)
 		(property "Description" "OR"
 			(at 292.862 145.288 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C6838"
+			(at 297.18 163.83 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13005,7 +13090,7 @@
 		)
 	)
 	(symbol
-		(lib_id "PCM_JLCPCB-ICs:Gate, AND, 4 Channel, 74HC08D,653")
+		(lib_id "ThunderScope:SN74HC32DR")
 		(at 185.42 234.95 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -13029,7 +13114,7 @@
 				)
 			)
 		)
-		(property "Footprint" "PCM_JLCPCB:SOIC-14_L8.7-W3.9-P1.27-LS6.0-BL"
+		(property "Footprint" "ThunderScope:SOIC-14_L8.7-W3.9-P1.27-LS6.0-BL"
 			(at 185.42 245.11 0)
 			(effects
 				(font
@@ -13051,6 +13136,15 @@
 		)
 		(property "Description" "OR"
 			(at 181.102 216.408 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C6838"
+			(at 185.42 234.95 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13447,7 +13541,7 @@
 		)
 	)
 	(symbol
-		(lib_id "74xx:74HC238")
+		(lib_id "ThunderScope:MC74HC238ADTR2G")
 		(at 39.37 83.82 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -13493,6 +13587,15 @@
 			)
 		)
 		(property "Description" "3-to-8 line decoder/multiplexer, DIP-16/SOIC-16/SSOP-16"
+			(at 39.37 83.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C904037"
 			(at 39.37 83.82 0)
 			(effects
 				(font
@@ -13694,7 +13797,7 @@
 		)
 	)
 	(symbol
-		(lib_id "PCM_JLCPCB-ICs:Gate, AND, 4 Channel, 74HC08D,653")
+		(lib_id "ThunderScope:SN74HC32DR")
 		(at 228.6 143.51 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -13718,7 +13821,7 @@
 				)
 			)
 		)
-		(property "Footprint" "PCM_JLCPCB:SOIC-14_L8.7-W3.9-P1.27-LS6.0-BL"
+		(property "Footprint" "ThunderScope:SOIC-14_L8.7-W3.9-P1.27-LS6.0-BL"
 			(at 228.6 153.67 0)
 			(effects
 				(font
@@ -13740,6 +13843,15 @@
 		)
 		(property "Description" "OR"
 			(at 224.282 124.968 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C6838"
+			(at 228.6 143.51 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13937,7 +14049,7 @@
 		)
 	)
 	(symbol
-		(lib_id "74xx:74HC238")
+		(lib_id "ThunderScope:MC74HC238ADTR2G")
 		(at 39.37 261.62 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -13983,6 +14095,15 @@
 			)
 		)
 		(property "Description" "3-to-8 line decoder/multiplexer, DIP-16/SOIC-16/SSOP-16"
+			(at 39.37 261.62 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C904037"
 			(at 39.37 261.62 0)
 			(effects
 				(font
@@ -14181,7 +14302,7 @@
 		)
 	)
 	(symbol
-		(lib_id "74xx:74HC238")
+		(lib_id "ThunderScope:MC74HC238ADTR2G")
 		(at 39.37 128.27 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -14227,6 +14348,15 @@
 			)
 		)
 		(property "Description" "3-to-8 line decoder/multiplexer, DIP-16/SOIC-16/SSOP-16"
+			(at 39.37 128.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C904037"
 			(at 39.37 128.27 0)
 			(effects
 				(font
@@ -14362,7 +14492,7 @@
 		)
 	)
 	(symbol
-		(lib_id "PCM_JLCPCB-ICs:Gate, AND, 4 Channel, 74HC08D,653")
+		(lib_id "ThunderScope:SN74HC32DR")
 		(at 185.42 97.79 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -14386,7 +14516,7 @@
 				)
 			)
 		)
-		(property "Footprint" "PCM_JLCPCB:SOIC-14_L8.7-W3.9-P1.27-LS6.0-BL"
+		(property "Footprint" "ThunderScope:SOIC-14_L8.7-W3.9-P1.27-LS6.0-BL"
 			(at 185.42 107.95 0)
 			(effects
 				(font
@@ -14408,6 +14538,15 @@
 		)
 		(property "Description" "OR"
 			(at 181.102 79.248 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C6838"
+			(at 185.42 97.79 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14668,7 +14807,7 @@
 		)
 	)
 	(symbol
-		(lib_id "PCM_JLCPCB-ICs:Gate, AND, 4 Channel, 74HC08D,653")
+		(lib_id "ThunderScope:SN74HC32DR")
 		(at 185.42 189.23 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -14692,7 +14831,7 @@
 				)
 			)
 		)
-		(property "Footprint" "PCM_JLCPCB:SOIC-14_L8.7-W3.9-P1.27-LS6.0-BL"
+		(property "Footprint" "ThunderScope:SOIC-14_L8.7-W3.9-P1.27-LS6.0-BL"
 			(at 185.42 199.39 0)
 			(effects
 				(font
@@ -14714,6 +14853,15 @@
 		)
 		(property "Description" "OR"
 			(at 181.102 170.688 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C6838"
+			(at 185.42 189.23 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15236,7 +15384,7 @@
 		)
 	)
 	(symbol
-		(lib_id "74xx:74HC238")
+		(lib_id "ThunderScope:MC74HC238ADTR2G")
 		(at 39.37 36.83 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -15282,6 +15430,15 @@
 			)
 		)
 		(property "Description" "3-to-8 line decoder/multiplexer, DIP-16/SOIC-16/SSOP-16"
+			(at 39.37 36.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C904037"
 			(at 39.37 36.83 0)
 			(effects
 				(font
