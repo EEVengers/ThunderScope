@@ -48,7 +48,7 @@
         "silk_text_thickness": 0.1,
         "silk_text_upright": false,
         "zones": {
-          "min_clearance": 0.5
+          "min_clearance": 0.1524
         }
       },
       "diff_pair_dimensions": [
@@ -107,6 +107,7 @@
         "solder_mask_bridge": "error",
         "starved_thermal": "error",
         "text_height": "warning",
+        "text_on_edge_cuts": "error",
         "text_thickness": "warning",
         "through_hole_pad_without_hole": "error",
         "too_many_vias": "error",
@@ -122,8 +123,8 @@
       },
       "rules": {
         "max_error": 0.005,
-        "min_clearance": 0.0,
-        "min_connection": 0.0,
+        "min_clearance": 0.127,
+        "min_connection": 0.127,
         "min_copper_edge_clearance": 0.5,
         "min_groove_width": 0.0,
         "min_hole_clearance": 0.25,
@@ -135,10 +136,10 @@
         "min_text_height": 0.8,
         "min_text_thickness": 0.08,
         "min_through_hole_diameter": 0.3,
-        "min_track_width": 0.0,
+        "min_track_width": 0.127,
         "min_via_annular_width": 0.1,
         "min_via_diameter": 0.5,
-        "solder_mask_to_copper_clearance": 0.0,
+        "solder_mask_to_copper_clearance": 0.005,
         "use_height_for_length_calcs": true
       },
       "teardrop_options": [
@@ -550,25 +551,25 @@
           "show": true
         },
         {
-          "group_by": true,
+          "group_by": false,
           "label": "DNP",
           "name": "${DNP}",
           "show": true
         },
         {
-          "group_by": true,
+          "group_by": false,
           "label": "Exclude from BOM",
           "name": "${EXCLUDE_FROM_BOM}",
           "show": true
         },
         {
-          "group_by": true,
+          "group_by": false,
           "label": "Exclude from Board",
           "name": "${EXCLUDE_FROM_BOARD}",
           "show": true
         },
         {
-          "group_by": true,
+          "group_by": false,
           "label": "Footprint",
           "name": "Footprint",
           "show": true
@@ -577,13 +578,139 @@
           "group_by": false,
           "label": "Datasheet",
           "name": "Datasheet",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Capacitance",
+          "name": "Capacitance",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Category",
+          "name": "Category",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Class",
+          "name": "Class",
+          "show": false
+        },
+        {
+          "group_by": true,
+          "label": "LCSC",
+          "name": "LCSC",
           "show": true
+        },
+        {
+          "group_by": false,
+          "label": "Manufacturer",
+          "name": "Manufacturer",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Minimum Qty",
+          "name": "Minimum Qty",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Operating Temperature Range",
+          "name": "Operating Temperature Range",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Overload Voltage (Max)",
+          "name": "Overload Voltage (Max)",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Part",
+          "name": "Part",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Power(Watts)",
+          "name": "Power(Watts)",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Price",
+          "name": "Price",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Process",
+          "name": "Process",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Resistance",
+          "name": "Resistance",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Stock",
+          "name": "Stock",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Temperature Coefficient",
+          "name": "Temperature Coefficient",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Tolerance",
+          "name": "Tolerance",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Type",
+          "name": "Type",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Voltage Rated",
+          "name": "Voltage Rated",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Attrition Qty",
+          "name": "Attrition Qty",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Description",
+          "name": "Description",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "#",
+          "name": "${ITEM_NUMBER}",
+          "show": false
         }
       ],
       "filter_string": "",
       "group_symbols": true,
-      "include_excluded_from_bom": true,
-      "name": "Default Editing",
+      "include_excluded_from_bom": false,
+      "name": "",
       "sort_asc": true,
       "sort_field": "Reference"
     },
