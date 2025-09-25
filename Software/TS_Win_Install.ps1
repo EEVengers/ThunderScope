@@ -152,7 +152,7 @@ New-Item -Path $recent_yml_path -ItemType File -Force
 
 # Make a ThunderScope.bat file to launch both ngscopeclient and TS.NET
 "start /b .\ngscopeclient\ngscopeclient.exe" | Out-File ThunderScope.bat -encoding ascii
-"cd .\TS.NET\builds\win-x64\TS.NET.Engine\0.1.0" | Out-File ThunderScope.bat -encoding ascii -Append
+"cd .\TS.NET\builds\TS.NET.Engine\win-x64" | Out-File ThunderScope.bat -encoding ascii -Append
 "TS.NET.Engine.exe" | Out-File ThunderScope.bat -encoding ascii -Append
 
 # Enable use of test-signed code
