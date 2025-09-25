@@ -141,7 +141,7 @@ Set-Location ../TS.NET/build-scripts
 
 # Copy the libtslitex DLL into the same directory as the TS.NET executable
 Set-Location ../..
-Copy-Item .\libtslitex\build\artifacts\libtslitex\tslitex.dll .\TS.NET\builds\win-x64\TS.NET.Engine\0.1.0\tslitex.dll
+Copy-Item .\libtslitex\build\artifacts\libtslitex\tslitex.dll .\TS.NET\builds\TS.NET.Engine\win-x64\tslitex.dll
 
 # Add a ThunderScope entry to ngscopeclient recent.yml
 $recent_yml_path = Join-Path -Path $env:USERPROFILE -ChildPath "AppData\Roaming\ngscopeclient\recent.yml"
