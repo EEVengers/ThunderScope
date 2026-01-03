@@ -1258,6 +1258,210 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "Thunderscope_Rev5:CAP 220nF 16V X7R 0402"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "C"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "220nF"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "Thunderscope_Rev5:GEN_C_0402"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "PACKAGE" "0402"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "VOLTAGE RATING" "16V"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "SUPPLIER 1" "Mouser"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "SUPPLIER PART NUMBER 1" "81-GCM155R71C224KE2D"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "HOUSE PART NUMBER" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MANUFACTURER" "Murata"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MANUFACTURER PART NUMBER" "GCM155R71C224KE02D"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "CAP 220nF 16V X7R 0402_1_0"
+				(polyline
+					(pts
+						(xy -2 0.5) (xy 2 0.5)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2 -0.5) (xy 2 -0.5)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 2.54) (xy 0 0.5)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 -2.54) (xy 0 -0.5)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin passive line
+					(at 0 5.08 270)
+					(length 2.54)
+					(name "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -5.08 90)
+					(length 2.54)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "Thunderscope_Rev5:CAP 22uF 25V X5R 0805"
 			(pin_numbers
 				(hide yes)
@@ -8634,7 +8838,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Thunderscope_Rev5:CAP 100nF 16V X7R 0402")
+		(lib_id "Thunderscope_Rev5:CAP 220nF 16V X7R 0402")
 		(at 88.9 38.1 270)
 		(mirror x)
 		(unit 1)
@@ -8652,7 +8856,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "100nF"
+		(property "Value" "220nF"
 			(at 87.63 39.37 90)
 			(effects
 				(font
@@ -8718,7 +8922,7 @@
 				(hide yes)
 			)
 		)
-		(property "SUPPLIER PART NUMBER 1" "81-GCM155R71C104KA5D"
+		(property "SUPPLIER PART NUMBER 1" "81-GCM155R71C224KE2D"
 			(at 91.154 43.688 0)
 			(effects
 				(font
@@ -8748,7 +8952,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUFACTURER PART NUMBER" "GCM155R71C104KA55D"
+		(property "MANUFACTURER PART NUMBER" "GCM155R71C224KE02D"
 			(at 91.44 45.72 0)
 			(effects
 				(font
@@ -8971,7 +9175,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Thunderscope_Rev5:CAP 100nF 16V X7R 0402")
+		(lib_id "Thunderscope_Rev5:CAP 220nF 16V X7R 0402")
 		(at 93.98 50.8 270)
 		(mirror x)
 		(unit 1)
@@ -8989,7 +9193,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "100nF"
+		(property "Value" "220nF"
 			(at 95.25 52.07 90)
 			(effects
 				(font
@@ -9055,7 +9259,7 @@
 				(hide yes)
 			)
 		)
-		(property "SUPPLIER PART NUMBER 1" "81-GCM155R71C104KA5D"
+		(property "SUPPLIER PART NUMBER 1" "81-GCM155R71C224KE2D"
 			(at 96.234 56.388 0)
 			(effects
 				(font
@@ -9085,7 +9289,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUFACTURER PART NUMBER" "GCM155R71C104KA55D"
+		(property "MANUFACTURER PART NUMBER" "GCM155R71C224KE02D"
 			(at 96.52 58.42 0)
 			(effects
 				(font
@@ -9509,7 +9713,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Thunderscope_Rev5:CAP 100nF 16V X7R 0402")
+		(lib_id "Thunderscope_Rev5:CAP 220nF 16V X7R 0402")
 		(at 88.9 68.58 270)
 		(mirror x)
 		(unit 1)
@@ -9527,7 +9731,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "100nF"
+		(property "Value" "220nF"
 			(at 87.63 69.85 90)
 			(effects
 				(font
@@ -9593,7 +9797,7 @@
 				(hide yes)
 			)
 		)
-		(property "SUPPLIER PART NUMBER 1" "81-GCM155R71C104KA5D"
+		(property "SUPPLIER PART NUMBER 1" "81-GCM155R71C224KE2D"
 			(at 91.154 74.168 0)
 			(effects
 				(font
@@ -9623,7 +9827,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUFACTURER PART NUMBER" "GCM155R71C104KA55D"
+		(property "MANUFACTURER PART NUMBER" "GCM155R71C224KE02D"
 			(at 91.44 76.2 0)
 			(effects
 				(font
@@ -9841,7 +10045,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Thunderscope_Rev5:CAP 100nF 16V X7R 0402")
+		(lib_id "Thunderscope_Rev5:CAP 220nF 16V X7R 0402")
 		(at 93.98 66.04 270)
 		(mirror x)
 		(unit 1)
@@ -9859,7 +10063,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "100nF"
+		(property "Value" "220nF"
 			(at 95.25 67.31 90)
 			(effects
 				(font
@@ -9925,7 +10129,7 @@
 				(hide yes)
 			)
 		)
-		(property "SUPPLIER PART NUMBER 1" "81-GCM155R71C104KA5D"
+		(property "SUPPLIER PART NUMBER 1" "81-GCM155R71C224KE2D"
 			(at 96.234 71.628 0)
 			(effects
 				(font
@@ -9955,7 +10159,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUFACTURER PART NUMBER" "GCM155R71C104KA55D"
+		(property "MANUFACTURER PART NUMBER" "GCM155R71C224KE02D"
 			(at 96.52 73.66 0)
 			(effects
 				(font
@@ -10320,7 +10524,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Thunderscope_Rev5:CAP 100nF 16V X7R 0402")
+		(lib_id "Thunderscope_Rev5:CAP 220nF 16V X7R 0402")
 		(at 88.9 53.34 270)
 		(mirror x)
 		(unit 1)
@@ -10338,7 +10542,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "100nF"
+		(property "Value" "220nF"
 			(at 87.63 54.61 90)
 			(effects
 				(font
@@ -10404,7 +10608,7 @@
 				(hide yes)
 			)
 		)
-		(property "SUPPLIER PART NUMBER 1" "81-GCM155R71C104KA5D"
+		(property "SUPPLIER PART NUMBER 1" "81-GCM155R71C224KE2D"
 			(at 91.154 58.928 0)
 			(effects
 				(font
@@ -10434,7 +10638,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUFACTURER PART NUMBER" "GCM155R71C104KA55D"
+		(property "MANUFACTURER PART NUMBER" "GCM155R71C224KE02D"
 			(at 91.44 60.96 0)
 			(effects
 				(font
@@ -13569,7 +13773,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Thunderscope_Rev5:CAP 100nF 16V X7R 0402")
+		(lib_id "Thunderscope_Rev5:CAP 220nF 16V X7R 0402")
 		(at 88.9 83.82 270)
 		(mirror x)
 		(unit 1)
@@ -13587,7 +13791,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "100nF"
+		(property "Value" "220nF"
 			(at 87.63 85.09 90)
 			(effects
 				(font
@@ -13653,7 +13857,7 @@
 				(hide yes)
 			)
 		)
-		(property "SUPPLIER PART NUMBER 1" "81-GCM155R71C104KA5D"
+		(property "SUPPLIER PART NUMBER 1" "81-GCM155R71C224KE2D"
 			(at 91.154 89.408 0)
 			(effects
 				(font
@@ -13683,7 +13887,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUFACTURER PART NUMBER" "GCM155R71C104KA55D"
+		(property "MANUFACTURER PART NUMBER" "GCM155R71C224KE02D"
 			(at 91.44 91.44 0)
 			(effects
 				(font
@@ -14216,7 +14420,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Thunderscope_Rev5:CAP 100nF 16V X7R 0402")
+		(lib_id "Thunderscope_Rev5:CAP 220nF 16V X7R 0402")
 		(at 93.98 35.56 270)
 		(mirror x)
 		(unit 1)
@@ -14234,7 +14438,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "100nF"
+		(property "Value" "220nF"
 			(at 95.25 36.83 90)
 			(effects
 				(font
@@ -14300,7 +14504,7 @@
 				(hide yes)
 			)
 		)
-		(property "SUPPLIER PART NUMBER 1" "81-GCM155R71C104KA5D"
+		(property "SUPPLIER PART NUMBER 1" "81-GCM155R71C224KE2D"
 			(at 96.234 41.148 0)
 			(effects
 				(font
@@ -14330,7 +14534,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUFACTURER PART NUMBER" "GCM155R71C104KA55D"
+		(property "MANUFACTURER PART NUMBER" "GCM155R71C224KE02D"
 			(at 96.52 43.18 0)
 			(effects
 				(font
@@ -14615,7 +14819,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Thunderscope_Rev5:CAP 100nF 16V X7R 0402")
+		(lib_id "Thunderscope_Rev5:CAP 220nF 16V X7R 0402")
 		(at 93.98 81.28 270)
 		(mirror x)
 		(unit 1)
@@ -14633,7 +14837,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "100nF"
+		(property "Value" "220nF"
 			(at 95.25 82.55 90)
 			(effects
 				(font
@@ -14699,7 +14903,7 @@
 				(hide yes)
 			)
 		)
-		(property "SUPPLIER PART NUMBER 1" "81-GCM155R71C104KA5D"
+		(property "SUPPLIER PART NUMBER 1" "81-GCM155R71C224KE2D"
 			(at 96.234 86.868 0)
 			(effects
 				(font
@@ -14729,7 +14933,7 @@
 				(hide yes)
 			)
 		)
-		(property "MANUFACTURER PART NUMBER" "GCM155R71C104KA55D"
+		(property "MANUFACTURER PART NUMBER" "GCM155R71C224KE02D"
 			(at 96.52 88.9 0)
 			(effects
 				(font
