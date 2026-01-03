@@ -32289,8 +32289,8 @@
 		)
 	)
 	(symbol
-		(lib_id "Thunderscope_Rev5:RES 0 OHM 1/16W 0402")
-		(at 119.38 91.44 0)
+		(lib_id "Thunderscope_Rev5:CAP 100nF 16V X7R 0402")
+		(at 119.38 91.44 270)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -32298,22 +32298,24 @@
 		(dnp no)
 		(uuid "85d221b3-0eae-459a-a1b8-bf3672da5d60")
 		(property "Reference" "C65"
-			(at 119.38 93.98 0)
+			(at 120.65 90.17 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
 			)
 		)
-		(property "Value" "0"
-			(at 119.38 91.44 0)
+		(property "Value" "100nF"
+			(at 120.65 92.71 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
 			)
 		)
-		(property "Footprint" "Thunderscope_Rev5:GEN_R_0402"
+		(property "Footprint" "Thunderscope_Rev5:GEN_C_0402"
 			(at 119.38 91.44 0)
 			(effects
 				(font
@@ -32341,62 +32343,56 @@
 			)
 		)
 		(property "PACKAGE" "0402"
-			(at 113.792 90.384 0)
+			(at 119.38 91.44 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left bottom)
 				(hide yes)
 			)
 		)
 		(property "SUPPLIER 1" "Mouser"
-			(at 113.792 90.384 0)
+			(at 119.38 91.44 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left bottom)
 				(hide yes)
 			)
 		)
-		(property "SUPPLIER PART NUMBER 1" "603-RC0402JR-070RL"
-			(at 113.792 90.384 0)
+		(property "SUPPLIER PART NUMBER 1" "81-GCM155R71C104KA5D"
+			(at 119.38 91.44 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left bottom)
 				(hide yes)
 			)
 		)
-		(property "MANUFACTURER" "Yageo"
-			(at 113.792 90.384 0)
+		(property "MANUFACTURER" "Murata"
+			(at 119.38 91.44 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left bottom)
 				(hide yes)
 			)
 		)
-		(property "HOUSE PART NUMBER" ""
-			(at 113.792 90.384 0)
+		(property "HOUSE PART NUMBER" "C-100nF-0402-002"
+			(at 119.38 91.44 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left bottom)
 				(hide yes)
 			)
 		)
-		(property "MANUFACTURER PART NUMBER" "RC0402JR-070RL"
-			(at 113.792 90.384 0)
+		(property "MANUFACTURER PART NUMBER" "GCM155R71C104KA55D"
+			(at 119.38 91.44 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left bottom)
 				(hide yes)
 			)
 		)
@@ -32406,6 +32402,15 @@
 				(font
 					(size 1.27 1.27)
 				)
+			)
+		)
+		(property "VOLTAGE RATING" "16V"
+			(at 119.38 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
 			)
 		)
 		(pin "2"
