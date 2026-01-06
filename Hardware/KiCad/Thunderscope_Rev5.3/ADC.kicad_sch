@@ -2408,6 +2408,155 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "Thunderscope_Rev5:RES DNP 0402"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "R"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "DNP"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "Thunderscope_Rev5:GEN_R_0402"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "PACKAGE" "0402"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "TOLERANCE" "1%"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "HOUSE PART NUMBER" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MANUFACTURER" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MANUFACTURER PART NUMBER" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "RES DNP 0402_1_0"
+				(rectangle
+					(start 1.056 3)
+					(end -0.976 -3)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin passive line
+					(at 0 5.08 270)
+					(length 2)
+					(name "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -5.08 90)
+					(length 2)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "Thunderscope_Rev5:TP PCB 1mm"
 			(pin_numbers
 				(hide yes)
@@ -2769,12 +2918,6 @@
 		(uuid "454e17d7-f9b7-43ca-b6c3-e22f9599110e")
 	)
 	(junction
-		(at 114.3 106.68)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "45dca613-75a3-4d38-8b3f-af488c6cd356")
-	)
-	(junction
 		(at 129.54 30.48)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -2793,10 +2936,28 @@
 		(uuid "564d059a-def9-4821-92ab-8e940fadf2ad")
 	)
 	(junction
+		(at 114.3 137.16)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "570e442a-e5ef-4afc-a3d6-b4af23b443d1")
+	)
+	(junction
+		(at 114.3 106.68)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "581ad4e5-aca7-4cb7-b80b-96402c743592")
+	)
+	(junction
 		(at 63.5 83.82)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "589ffc57-fa89-4a0c-817e-84ca55f720c7")
+	)
+	(junction
+		(at 114.3 142.24)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "5a390421-96b7-4fb1-bdf4-be614cd3c162")
 	)
 	(junction
 		(at 139.7 30.48)
@@ -2817,12 +2978,6 @@
 		(uuid "6d33ec42-7346-42ce-b4b3-00b47b3ff910")
 	)
 	(junction
-		(at 114.3 142.24)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "6d993ab0-3397-48e1-a884-694e861e84dc")
-	)
-	(junction
 		(at 144.78 172.72)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -2833,18 +2988,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "71a3784b-9d2f-4405-a019-b7252b3a2e85")
-	)
-	(junction
-		(at 114.3 137.16)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "7c9a5635-013c-4400-8ba4-24e9ffdfe104")
-	)
-	(junction
-		(at 114.3 127)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "7cf778a0-486b-4610-916b-311d96d427e8")
 	)
 	(junction
 		(at 193.04 30.48)
@@ -2871,10 +3014,10 @@
 		(uuid "95c232cd-dc37-47cb-b0a6-49ae4d504a39")
 	)
 	(junction
-		(at 114.3 152.4)
+		(at 114.3 121.92)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "9cbbdb21-0f8c-4fc8-9081-e6b1129a2d46")
+		(uuid "9d987b3b-bac9-4d2d-bcef-8d4679671a7f")
 	)
 	(junction
 		(at 55.88 81.28)
@@ -2895,22 +3038,16 @@
 		(uuid "a3f7b189-53d3-44d3-8310-d274a74189e6")
 	)
 	(junction
+		(at 114.3 152.4)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "a8f8c894-39db-4c61-af1b-42d0b448a8d7")
+	)
+	(junction
 		(at 167.64 30.48)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "ac49b7c9-2377-454b-9720-d3220fe24d01")
-	)
-	(junction
-		(at 114.3 121.92)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "ae52000d-6f87-4158-8afa-bccbe1e33909")
-	)
-	(junction
-		(at 114.3 96.52)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "b5c85089-74a6-47f2-b845-785f87305cbb")
 	)
 	(junction
 		(at 88.9 81.28)
@@ -2919,10 +3056,22 @@
 		(uuid "b75358c5-3014-4d42-ac0c-25120ac2f43e")
 	)
 	(junction
+		(at 114.3 127)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "c2db5863-c6df-479f-837c-46a634fb3083")
+	)
+	(junction
 		(at 149.86 172.72)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "c2e8af2d-7ce3-4502-ae43-6727ec0e4f7a")
+	)
+	(junction
+		(at 114.3 111.76)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "ddc02848-e845-4fe2-a131-d4562cc4c266")
 	)
 	(junction
 		(at 167.64 50.8)
@@ -2943,10 +3092,10 @@
 		(uuid "f019e9ad-df32-415f-9f22-96f5c3b2e906")
 	)
 	(junction
-		(at 114.3 111.76)
+		(at 114.3 96.52)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "fe3230e0-1435-470c-adce-228504aede23")
+		(uuid "f380951e-0482-4f57-a6d9-7bf47e48c92e")
 	)
 	(bus_entry
 		(at 195.58 139.7)
@@ -3240,16 +3389,6 @@
 	)
 	(wire
 		(pts
-			(xy 114.3 152.4) (xy 119.38 152.4)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "20f0ac4f-f659-4206-90bc-c7c3f9c6db6a")
-	)
-	(wire
-		(pts
 			(xy 88.9 81.28) (xy 119.38 81.28)
 		)
 		(stroke
@@ -3287,6 +3426,16 @@
 			(type default)
 		)
 		(uuid "2979c9b8-5de7-4085-b77e-82f915dacea8")
+	)
+	(wire
+		(pts
+			(xy 114.3 111.76) (xy 119.38 111.76)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2b50adec-d0d0-4ff0-8bc9-c2b0ff6a4d34")
 	)
 	(wire
 		(pts
@@ -3368,6 +3517,16 @@
 		)
 		(uuid "3a63632a-15bd-4eb4-8547-ee921ca8a129")
 	)
+	(wire
+		(pts
+			(xy 114.3 152.4) (xy 119.38 152.4)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3c447776-dde5-49dc-912f-d4db1daed127")
+	)
 	(bus
 		(pts
 			(xy 198.12 129.54) (xy 198.12 134.62)
@@ -3427,16 +3586,6 @@
 			(type default)
 		)
 		(uuid "4898a69b-2c19-47bb-ba9f-952d67106cff")
-	)
-	(wire
-		(pts
-			(xy 114.3 121.92) (xy 119.38 121.92)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "4a31a67a-810c-4a20-b7a3-b308f333118f")
 	)
 	(wire
 		(pts
@@ -3537,6 +3686,16 @@
 			(type default)
 		)
 		(uuid "60a401f5-5cae-4fa8-bbe9-39ef12f42e8a")
+	)
+	(wire
+		(pts
+			(xy 114.3 127) (xy 119.38 127)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "64fd4f13-045a-4bae-95e6-c4ca8b12a407")
 	)
 	(wire
 		(pts
@@ -3670,6 +3829,16 @@
 	)
 	(wire
 		(pts
+			(xy 114.3 106.68) (xy 119.38 106.68)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "74da4f8d-fad3-49d4-a2f6-403ae40ff076")
+	)
+	(wire
+		(pts
 			(xy 195.58 137.16) (xy 182.88 137.16)
 		)
 		(stroke
@@ -3677,16 +3846,6 @@
 			(type default)
 		)
 		(uuid "7752c375-9c1e-4b20-be32-602c4a11a32f")
-	)
-	(wire
-		(pts
-			(xy 114.3 142.24) (xy 119.38 142.24)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "77efa940-d7f8-4dd6-a257-c04b5a97d370")
 	)
 	(wire
 		(pts
@@ -3970,6 +4129,16 @@
 	)
 	(wire
 		(pts
+			(xy 114.3 121.92) (xy 119.38 121.92)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a1c19dea-7bef-4ae0-a91e-37eae0829043")
+	)
+	(wire
+		(pts
 			(xy 147.32 63.5) (xy 147.32 66.04)
 		)
 		(stroke
@@ -4030,16 +4199,6 @@
 	)
 	(wire
 		(pts
-			(xy 114.3 106.68) (xy 119.38 106.68)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "b46f24c8-579e-4c5e-945f-46f50264db27")
-	)
-	(wire
-		(pts
 			(xy 83.82 30.48) (xy 88.9 30.48)
 		)
 		(stroke
@@ -4077,16 +4236,6 @@
 			(type default)
 		)
 		(uuid "b7edc709-acda-402b-8b0f-df9a4b636bc8")
-	)
-	(wire
-		(pts
-			(xy 114.3 127) (xy 119.38 127)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "b84b2cea-26fc-452e-9715-32fe30e11dad")
 	)
 	(wire
 		(pts
@@ -4198,6 +4347,16 @@
 		)
 		(uuid "bea3d4f4-9425-490d-9402-ef226efc7277")
 	)
+	(wire
+		(pts
+			(xy 114.3 137.16) (xy 119.38 137.16)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "bfdc1a89-1214-48db-bd16-1f6c78060a86")
+	)
 	(bus
 		(pts
 			(xy 198.12 96.52) (xy 198.12 99.06)
@@ -4270,16 +4429,6 @@
 	)
 	(wire
 		(pts
-			(xy 114.3 137.16) (xy 119.38 137.16)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "cc38d35c-fb3b-4e81-8014-14f22eea7f69")
-	)
-	(wire
-		(pts
 			(xy 129.54 30.48) (xy 119.38 30.48)
 		)
 		(stroke
@@ -4287,6 +4436,16 @@
 			(type default)
 		)
 		(uuid "ccb6f379-535a-4aeb-a554-1f39a476f084")
+	)
+	(wire
+		(pts
+			(xy 114.3 142.24) (xy 119.38 142.24)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ce24cabb-393b-4a7e-8a47-4ea0d0204eb0")
 	)
 	(wire
 		(pts
@@ -4310,6 +4469,16 @@
 	)
 	(wire
 		(pts
+			(xy 114.3 96.52) (xy 119.38 96.52)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d36b2088-3c50-4075-b949-f39fc533720a")
+	)
+	(wire
+		(pts
 			(xy 218.44 30.48) (xy 218.44 27.94)
 		)
 		(stroke
@@ -4327,16 +4496,6 @@
 			(type default)
 		)
 		(uuid "d9196968-3ac4-4ab4-869c-5637c239a369")
-	)
-	(wire
-		(pts
-			(xy 114.3 111.76) (xy 119.38 111.76)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "e125aa57-2ab1-47d3-9729-35d905369011")
 	)
 	(bus
 		(pts
@@ -4417,16 +4576,6 @@
 			(type default)
 		)
 		(uuid "f6a9c720-3baa-4a9a-a164-ee9634def209")
-	)
-	(wire
-		(pts
-			(xy 114.3 96.52) (xy 119.38 96.52)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "fbc67bd8-4fe8-4b30-96e3-785c682256f1")
 	)
 	(wire
 		(pts
@@ -4884,24 +5033,24 @@
 		(uuid "e27f2f20-444a-46ea-a551-bef6af9b632f")
 	)
 	(symbol
-		(lib_id "Thunderscope_Rev5:RES 100 OHM 1% 1/10W 0402")
-		(at 114.3 101.6 90)
+		(lib_id "Thunderscope_Rev5:RES DNP 0402")
+		(at 114.3 101.6 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "00b08587-f101-426a-ad7f-282fbdc61b98")
 		(property "Reference" "R18"
-			(at 116.84 101.6 0)
+			(at 116.84 101.6 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Value" "100"
-			(at 114.3 101.6 0)
+		(property "Value" "DNP"
+			(at 114.3 101.6 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4936,7 +5085,7 @@
 			)
 		)
 		(property "TOLERANCE" "1%"
-			(at 108.712 102.576 0)
+			(at 115.276 107.188 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4945,7 +5094,7 @@
 			)
 		)
 		(property "PACKAGE" "0402"
-			(at 108.712 102.576 0)
+			(at 115.276 107.188 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4954,7 +5103,7 @@
 			)
 		)
 		(property "SUPPLIER 1" "Mouser"
-			(at 108.712 102.576 0)
+			(at 115.276 107.188 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4963,7 +5112,7 @@
 			)
 		)
 		(property "SUPPLIER PART NUMBER 1" "603-RC0402FR-07100RL"
-			(at 108.712 102.576 0)
+			(at 115.276 107.188 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4972,7 +5121,7 @@
 			)
 		)
 		(property "HOUSE PART NUMBER" ""
-			(at 108.712 102.87 0)
+			(at 115.57 107.188 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4982,7 +5131,7 @@
 			)
 		)
 		(property "MANUFACTURER" "Yageo"
-			(at 108.712 102.87 0)
+			(at 115.57 107.188 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4992,7 +5141,7 @@
 			)
 		)
 		(property "MANUFACTURER PART NUMBER" "RC0402FR-07100RL"
-			(at 108.712 102.87 0)
+			(at 115.57 107.188 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6466,24 +6615,24 @@
 		)
 	)
 	(symbol
-		(lib_id "Thunderscope_Rev5:RES 100 OHM 1% 1/10W 0402")
-		(at 114.3 116.84 90)
+		(lib_id "Thunderscope_Rev5:RES DNP 0402")
+		(at 114.3 116.84 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "3a4a5eaf-a532-4fd8-80fe-0f8eb7b8a20e")
 		(property "Reference" "R19"
-			(at 116.84 116.84 0)
+			(at 116.84 116.84 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Value" "100"
-			(at 114.3 116.84 0)
+		(property "Value" "DNP"
+			(at 114.3 116.84 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6518,7 +6667,7 @@
 			)
 		)
 		(property "TOLERANCE" "1%"
-			(at 108.712 117.816 0)
+			(at 115.276 122.428 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6527,7 +6676,7 @@
 			)
 		)
 		(property "PACKAGE" "0402"
-			(at 108.712 117.816 0)
+			(at 115.276 122.428 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6536,7 +6685,7 @@
 			)
 		)
 		(property "SUPPLIER 1" "Mouser"
-			(at 108.712 117.816 0)
+			(at 115.276 122.428 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6545,7 +6694,7 @@
 			)
 		)
 		(property "SUPPLIER PART NUMBER 1" "603-RC0402FR-07100RL"
-			(at 108.712 117.816 0)
+			(at 115.276 122.428 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6554,7 +6703,7 @@
 			)
 		)
 		(property "HOUSE PART NUMBER" ""
-			(at 108.712 118.11 0)
+			(at 115.57 122.428 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6564,7 +6713,7 @@
 			)
 		)
 		(property "MANUFACTURER" "Yageo"
-			(at 108.712 118.11 0)
+			(at 115.57 122.428 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6574,7 +6723,7 @@
 			)
 		)
 		(property "MANUFACTURER PART NUMBER" "RC0402FR-07100RL"
-			(at 108.712 118.11 0)
+			(at 115.57 122.428 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8934,24 +9083,24 @@
 		)
 	)
 	(symbol
-		(lib_id "Thunderscope_Rev5:RES 100 OHM 1% 1/10W 0402")
-		(at 114.3 132.08 90)
+		(lib_id "Thunderscope_Rev5:RES DNP 0402")
+		(at 114.3 132.08 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "b82bb6c6-2fc3-4738-888c-b0f074e2800e")
 		(property "Reference" "R20"
-			(at 116.84 132.08 0)
+			(at 116.84 132.08 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Value" "100"
-			(at 114.3 132.08 0)
+		(property "Value" "DNP"
+			(at 114.3 132.08 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8986,7 +9135,7 @@
 			)
 		)
 		(property "TOLERANCE" "1%"
-			(at 108.712 133.056 0)
+			(at 115.276 137.668 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8995,7 +9144,7 @@
 			)
 		)
 		(property "PACKAGE" "0402"
-			(at 108.712 133.056 0)
+			(at 115.276 137.668 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9004,7 +9153,7 @@
 			)
 		)
 		(property "SUPPLIER 1" "Mouser"
-			(at 108.712 133.056 0)
+			(at 115.276 137.668 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9013,7 +9162,7 @@
 			)
 		)
 		(property "SUPPLIER PART NUMBER 1" "603-RC0402FR-07100RL"
-			(at 108.712 133.056 0)
+			(at 115.276 137.668 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9022,7 +9171,7 @@
 			)
 		)
 		(property "HOUSE PART NUMBER" ""
-			(at 108.712 133.35 0)
+			(at 115.57 137.668 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9032,7 +9181,7 @@
 			)
 		)
 		(property "MANUFACTURER" "Yageo"
-			(at 108.712 133.35 0)
+			(at 115.57 137.668 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9042,7 +9191,7 @@
 			)
 		)
 		(property "MANUFACTURER PART NUMBER" "RC0402FR-07100RL"
-			(at 108.712 133.35 0)
+			(at 115.57 137.668 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9572,24 +9721,24 @@
 		)
 	)
 	(symbol
-		(lib_id "Thunderscope_Rev5:RES 100 OHM 1% 1/10W 0402")
-		(at 114.3 147.32 90)
+		(lib_id "Thunderscope_Rev5:RES DNP 0402")
+		(at 114.3 147.32 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "d5b83c72-706b-40e4-8dce-16cf5d091e30")
 		(property "Reference" "R21"
-			(at 116.84 147.32 0)
+			(at 116.84 147.32 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Value" "100"
-			(at 114.3 147.32 0)
+		(property "Value" "DNP"
+			(at 114.3 147.32 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9624,7 +9773,7 @@
 			)
 		)
 		(property "TOLERANCE" "1%"
-			(at 108.712 148.296 0)
+			(at 115.276 152.908 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9633,7 +9782,7 @@
 			)
 		)
 		(property "PACKAGE" "0402"
-			(at 108.712 148.296 0)
+			(at 115.276 152.908 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9642,7 +9791,7 @@
 			)
 		)
 		(property "SUPPLIER 1" "Mouser"
-			(at 108.712 148.296 0)
+			(at 115.276 152.908 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9651,7 +9800,7 @@
 			)
 		)
 		(property "SUPPLIER PART NUMBER 1" "603-RC0402FR-07100RL"
-			(at 108.712 148.296 0)
+			(at 115.276 152.908 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9660,7 +9809,7 @@
 			)
 		)
 		(property "HOUSE PART NUMBER" ""
-			(at 108.712 148.59 0)
+			(at 115.57 152.908 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9670,7 +9819,7 @@
 			)
 		)
 		(property "MANUFACTURER" "Yageo"
-			(at 108.712 148.59 0)
+			(at 115.57 152.908 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9680,7 +9829,7 @@
 			)
 		)
 		(property "MANUFACTURER PART NUMBER" "RC0402FR-07100RL"
-			(at 108.712 148.59 0)
+			(at 115.57 152.908 0)
 			(effects
 				(font
 					(size 1.27 1.27)
