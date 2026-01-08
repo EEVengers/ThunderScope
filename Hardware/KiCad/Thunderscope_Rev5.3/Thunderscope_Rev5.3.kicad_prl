@@ -1,6 +1,6 @@
 {
   "board": {
-    "active_layer": 5,
+    "active_layer": 4,
     "active_layer_preset": "",
     "auto_track_width": false,
     "hidden_netclasses": [
@@ -57,17 +57,17 @@
       "zones": 1.0
     },
     "selection_filter": {
-      "dimensions": false,
+      "dimensions": true,
       "footprints": true,
-      "graphics": false,
-      "keepouts": false,
-      "lockedItems": true,
-      "otherItems": false,
-      "pads": false,
-      "text": false,
-      "tracks": false,
-      "vias": false,
-      "zones": false
+      "graphics": true,
+      "keepouts": true,
+      "lockedItems": false,
+      "otherItems": true,
+      "pads": true,
+      "text": true,
+      "tracks": true,
+      "vias": true,
+      "zones": true
     },
     "visible_items": [
       "vias",
@@ -89,7 +89,7 @@
       "conflict_shadows",
       "shapes"
     ],
-    "visible_layers": "00000000_00000000_00000000_00000001",
+    "visible_layers": "00000000_00000000_00000000_00000021",
     "zone_display_mode": 0
   },
   "git": {

@@ -48,7 +48,7 @@
         "silk_text_thickness": 0.1,
         "silk_text_upright": false,
         "zones": {
-          "min_clearance": 0.127
+          "min_clearance": 0.0
         }
       },
       "diff_pair_dimensions": [
@@ -1061,6 +1061,14 @@
       {
         "netclass": "50Z",
         "pattern": "*U10-R*"
+      },
+      {
+        "netclass": "FE_100Z_Diff",
+        "pattern": "*/OUT_P"
+      },
+      {
+        "netclass": "FE_100Z_Diff",
+        "pattern": "*/OUT_N"
       }
     ]
   },
