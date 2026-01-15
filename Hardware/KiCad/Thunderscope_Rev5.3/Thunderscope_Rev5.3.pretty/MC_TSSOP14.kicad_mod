@@ -1,7 +1,7 @@
 (footprint "MC_TSSOP14"
-	(version 20241030)
+	(version 20241229)
 	(generator "pcbnew")
-	(generator_version "8.99")
+	(generator_version "9.0")
 	(layer "F.Cu")
 	(property "Reference" "REF**"
 		(at -5.358308 0.56162 90)
@@ -26,18 +26,6 @@
 			(font
 				(size 1.524 1.524)
 				(thickness 0.254)
-			)
-		)
-	)
-	(property "Footprint" ""
-		(at 0 0 0)
-		(layer "F.Fab")
-		(hide yes)
-		(uuid "ae366e92-5938-4d55-8b16-86bd8603e049")
-		(effects
-			(font
-				(size 1.27 1.27)
-				(thickness 0.15)
 			)
 		)
 	)
@@ -112,7 +100,7 @@
 			(width 0.25)
 			(type solid)
 		)
-		(fill none)
+		(fill no)
 		(layer "F.SilkS")
 		(uuid "99f4cd87-c329-46fd-a640-ebcff36e429a")
 	)
@@ -123,7 +111,7 @@
 			(width 0.6)
 			(type solid)
 		)
-		(fill none)
+		(fill no)
 		(layer "F.SilkS")
 		(uuid "ee3f65a7-ab77-40ae-b625-1dd22f47ddd9")
 	)
@@ -215,29 +203,9 @@
 			(width 0)
 			(type default)
 		)
-		(fill solid)
+		(fill yes)
 		(layer "F.Fab")
 		(uuid "d41eac56-a360-4412-bb70-0652587aa40a")
-	)
-	(fp_line
-		(start 0 0.5)
-		(end 0 -0.5)
-		(stroke
-			(width 0.1)
-			(type solid)
-		)
-		(layer "User.1")
-		(uuid "83bc9ac4-e03c-43e4-86a2-647c5450e011")
-	)
-	(fp_line
-		(start 0.5 0)
-		(end -0.5 0)
-		(stroke
-			(width 0.1)
-			(type solid)
-		)
-		(layer "User.1")
-		(uuid "10f199a8-9e2e-43a9-a037-b8f5c16ec682")
 	)
 	(fp_text user "${REFERENCE}"
 		(at 0 0 90)

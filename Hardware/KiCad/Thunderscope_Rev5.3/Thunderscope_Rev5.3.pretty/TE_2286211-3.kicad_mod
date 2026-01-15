@@ -19,6 +19,7 @@
 		(at 0 2.1 0)
 		(unlocked yes)
 		(layer "F.Fab")
+		(hide yes)
 		(uuid "6284b73f-4166-4fee-90c5-854fe60a72ac")
 		(effects
 			(font
@@ -65,26 +66,6 @@
 		(uuid "98787f90-3d36-4f80-8095-d2b81b5ed374")
 	)
 	(fp_line
-		(start -2 -1)
-		(end -2 1)
-		(stroke
-			(width 0.05)
-			(type default)
-		)
-		(layer "Dwgs.User")
-		(uuid "829b1e01-8159-48ac-adb8-6c3f5dd0e106")
-	)
-	(fp_line
-		(start 2 1)
-		(end 2 -1)
-		(stroke
-			(width 0.05)
-			(type default)
-		)
-		(layer "Dwgs.User")
-		(uuid "0d414e62-ca6a-4be6-bd04-7d565e1c34db")
-	)
-	(fp_line
 		(start -2.2 -1.1)
 		(end -2.199999 1.1)
 		(stroke
@@ -125,6 +106,16 @@
 		(uuid "5043dc00-993d-428f-bb8e-cb5a2b8fffb9")
 	)
 	(fp_line
+		(start -2 -1)
+		(end -2 1)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(layer "F.Fab")
+		(uuid "829b1e01-8159-48ac-adb8-6c3f5dd0e106")
+	)
+	(fp_line
 		(start -2 1)
 		(end 2 1)
 		(stroke
@@ -145,27 +136,17 @@
 		(uuid "f85a5172-626e-4da8-a838-fe99ef600236")
 	)
 	(fp_line
-		(start 0 0.5)
-		(end 0 -0.5)
+		(start 2 1)
+		(end 2 -1)
 		(stroke
-			(width 0.1)
-			(type solid)
+			(width 0.05)
+			(type default)
 		)
-		(layer "User.2")
-		(uuid "f50cd55a-35c2-41e2-83e2-1a42ebd434fd")
-	)
-	(fp_line
-		(start 0.5 0)
-		(end -0.5 0)
-		(stroke
-			(width 0.1)
-			(type solid)
-		)
-		(layer "User.2")
-		(uuid "bbc55b91-9cef-47d7-ab9b-f1c0eed5aec1")
+		(layer "F.Fab")
+		(uuid "0d414e62-ca6a-4be6-bd04-7d565e1c34db")
 	)
 	(fp_text user "${REFERENCE}"
-		(at 0 3.6 0)
+		(at 0 0 0)
 		(unlocked yes)
 		(layer "F.Fab")
 		(uuid "54c84134-a93a-4504-8bdd-018cb602c906")

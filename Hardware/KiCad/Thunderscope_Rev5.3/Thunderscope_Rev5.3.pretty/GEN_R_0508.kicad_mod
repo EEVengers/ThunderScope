@@ -1,10 +1,10 @@
 (footprint "GEN_R_0508"
-	(version 20241030)
+	(version 20241229)
 	(generator "pcbnew")
-	(generator_version "8.99")
+	(generator_version "9.0")
 	(layer "F.Cu")
 	(property "Reference" "REF**"
-		(at 2.279198 1.628525 -90)
+		(at 2.279198 1.628525 270)
 		(unlocked yes)
 		(layer "F.SilkS")
 		(hide yes)
@@ -17,7 +17,7 @@
 		)
 	)
 	(property "Value" "49.9"
-		(at -3.537402 2.51724 -90)
+		(at -3.537402 2.51724 270)
 		(unlocked yes)
 		(layer "F.SilkS")
 		(hide yes)
@@ -26,18 +26,6 @@
 			(font
 				(size 1.524 1.524)
 				(thickness 0.254)
-			)
-		)
-	)
-	(property "Footprint" ""
-		(at 0 0 0)
-		(layer "F.Fab")
-		(hide yes)
-		(uuid "83b14f9b-c849-4139-81e7-361551819e66")
-		(effects
-			(font
-				(size 1.27 1.27)
-				(thickness 0.15)
 			)
 		)
 	)
@@ -184,26 +172,6 @@
 		)
 		(layer "F.Fab")
 		(uuid "2cf21c98-1c2c-49f7-9442-c2e1c3b7ea66")
-	)
-	(fp_line
-		(start -0.50001 0)
-		(end 0.49999 0)
-		(stroke
-			(width 0.1)
-			(type solid)
-		)
-		(layer "User.1")
-		(uuid "b2a5acc9-0cb2-484f-87e9-a755ca5ac471")
-	)
-	(fp_line
-		(start 0 -0.5)
-		(end 0 0.5)
-		(stroke
-			(width 0.1)
-			(type solid)
-		)
-		(layer "User.1")
-		(uuid "f0abfa1f-2319-4772-ad51-ba1ff8a4f3f5")
 	)
 	(pad "1" smd roundrect
 		(at -0.575 0 90)

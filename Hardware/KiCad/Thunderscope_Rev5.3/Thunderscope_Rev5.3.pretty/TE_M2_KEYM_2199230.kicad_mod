@@ -1,10 +1,10 @@
 (footprint "TE_M2_KEYM_2199230"
-	(version 20241129)
+	(version 20241229)
 	(generator "pcbnew")
-	(generator_version "8.99")
+	(generator_version "9.0")
 	(layer "F.Cu")
 	(property "Reference" "J8"
-		(at 12.753348 -3.90688 -90)
+		(at 12.753348 -3.90688 270)
 		(unlocked yes)
 		(layer "F.SilkS")
 		(hide yes)
@@ -17,7 +17,7 @@
 		)
 	)
 	(property "Value" "M.2 Key M"
-		(at -12.843002 9.812045 -90)
+		(at -12.843002 9.812045 270)
 		(unlocked yes)
 		(layer "F.SilkS")
 		(hide yes)
@@ -26,18 +26,6 @@
 			(font
 				(size 1.524 1.524)
 				(thickness 0.254)
-			)
-		)
-	)
-	(property "Footprint" ""
-		(at 0 0 0)
-		(layer "F.Fab")
-		(hide yes)
-		(uuid "00326b92-ed6d-472a-951d-56ead232370c")
-		(effects
-			(font
-				(size 1.27 1.27)
-				(thickness 0.15)
 			)
 		)
 	)
@@ -201,46 +189,6 @@
 		)
 		(layer "F.SilkS")
 		(uuid "54f35b25-9d9d-43ef-b809-2092e5e331b4")
-	)
-	(fp_line
-		(start 0 0.8)
-		(end -0.5 1.3)
-		(stroke
-			(width 0.1)
-			(type default)
-		)
-		(layer "Cmts.User")
-		(uuid "f7eda0b1-3506-430e-b0fb-189862c4687c")
-	)
-	(fp_line
-		(start 0 0.8)
-		(end 0.5 1.3)
-		(stroke
-			(width 0.1)
-			(type default)
-		)
-		(layer "Cmts.User")
-		(uuid "a08828e2-576f-4b69-bb1f-aab7b1672d25")
-	)
-	(fp_line
-		(start 0 2.3)
-		(end 0 0.8)
-		(stroke
-			(width 0.1)
-			(type default)
-		)
-		(layer "Cmts.User")
-		(uuid "4ad9ea39-dd86-40ea-be2c-a3ae03272f8c")
-	)
-	(fp_line
-		(start 11.2 -0.25)
-		(end -11.2 -0.25)
-		(stroke
-			(width 0.1)
-			(type dash)
-		)
-		(layer "Cmts.User")
-		(uuid "7ce527cc-f2c7-4f97-bd2a-0cb5a1285635")
 	)
 	(fp_line
 		(start -11.2014 -1.3744)
@@ -522,26 +470,6 @@
 		(layer "F.Fab")
 		(uuid "522ccf84-e83a-431e-9a70-0326c00bdd9a")
 	)
-	(fp_line
-		(start -0.3 0)
-		(end 0.3 0)
-		(stroke
-			(width 0.1)
-			(type solid)
-		)
-		(layer "User.2")
-		(uuid "2db4df21-8aa0-4920-b3f9-e5b9597a6947")
-	)
-	(fp_line
-		(start 0 0.3)
-		(end 0 -0.3)
-		(stroke
-			(width 0.1)
-			(type solid)
-		)
-		(layer "User.2")
-		(uuid "edef634a-e011-46ce-be96-f19df0e3d2ce")
-	)
 	(fp_text user "1"
 		(at -9.825 -5.075 0)
 		(unlocked yes)
@@ -554,19 +482,6 @@
 				(bold yes)
 			)
 			(justify left bottom)
-		)
-	)
-	(fp_text user "M.2 Edge Location"
-		(at 0 -0.8 0)
-		(unlocked yes)
-		(layer "Cmts.User")
-		(uuid "4c79db19-2074-4edc-a1ad-3a187d7c9f78")
-		(effects
-			(font
-				(size 1 1)
-				(thickness 0.15)
-			)
-			(justify bottom)
 		)
 	)
 	(fp_text user "1"
