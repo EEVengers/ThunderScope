@@ -17,6 +17,7 @@
 	(property "Value" "AMPHENOL_F300-1B7H1-11036-E100"
 		(at 7.985 3.5075 0)
 		(layer "F.Fab")
+		(hide yes)
 		(uuid "acb05ab3-25ae-4df8-9702-12442cca3990")
 		(effects
 			(font
@@ -221,6 +222,19 @@
 		(fill no)
 		(layer "F.Fab")
 		(uuid "ddc42d1d-2c26-4daf-9781-d5e2dbf31641")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "b8b8fb50-e302-47e0-a2d9-fa4f94027bd9")
+		(effects
+			(font
+				(size 1.5 1.5)
+				(thickness 0.3)
+				(bold yes)
+			)
+		)
 	)
 	(pad "1" smd roundrect
 		(at -8.75 -2.975)
