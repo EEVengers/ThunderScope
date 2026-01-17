@@ -1,0 +1,368 @@
+** Drc report for Thunderscope_Rev5.3.kicad_pcb **
+** Created on 2026-01-16T21:49:11-0500 **
+
+** Found 86 DRC violations **
+[silk_edge_clearance]: Silkscreen clipped by board edge
+    Rule: board setup constraints silk; warning (excluded)
+    @(177.7511 mm, 56.8036 mm): NPTH pad of 
+    @(183.7511 mm, 58.5486 mm): Segment of J3 on Top Overlay
+[silk_edge_clearance]: Silkscreen clipped by board edge
+    Rule: board setup constraints silk; warning (excluded)
+    @(198.7011 mm, 142.5536 mm): NPTH pad of 
+    @(198.3011 mm, 138.5286 mm): Segment of J11 on Top Overlay
+[copper_edge_clearance]: Board edge clearance violation (board setup constraints edge clearance 0.3000 mm; actual 0.2000 mm)
+    Rule: board setup constraints edge; error (excluded)
+    @(143.2011 mm, 154.3036 mm): Segment on Board Outline
+    @(142.6511 mm, 151.3036 mm): Pad A11 [/TS-PCIe Components/PCIe_PERST#] of P1 on Bottom Layer
+    PCIe edge connector
+[copper_edge_clearance]: Board edge clearance violation (board setup constraints edge clearance 0.3000 mm; actual 0.2000 mm)
+    Rule: board setup constraints edge; error (excluded)
+    @(145.1011 mm, 154.3036 mm): Segment on Board Outline
+    @(145.6511 mm, 151.3036 mm): Pad A12 [GND] of P1 on Bottom Layer
+    PCIe edge connector
+[copper_edge_clearance]: Board edge clearance violation (board setup constraints edge clearance 0.3000 mm; actual 0.2000 mm)
+    Rule: board setup constraints edge; error (excluded)
+    @(143.2011 mm, 154.3036 mm): Segment on Board Outline
+    @(142.6511 mm, 151.3036 mm): Pad B11 [/TS-PCIe Components/WAKE#] of P1 on Top Layer
+    PCIe edge connector
+[copper_edge_clearance]: Board edge clearance violation (board setup constraints edge clearance 0.3000 mm; actual 0.2000 mm)
+    Rule: board setup constraints edge; error (excluded)
+    @(145.1011 mm, 154.3036 mm): Segment on Board Outline
+    @(145.6511 mm, 151.3036 mm): Pad B12 [/TS-PCIe Components/CLKREQ#] of P1 on Top Layer
+    PCIe edge connector
+[padstack]: Padstack is questionable (negative solder paste margin is larger than pad; no solder paste mask will be generated)
+    Local override; warning (excluded)
+    @(184.2061 mm, 68.0286 mm): Pad 11 [GND] of U15 on Top Layer
+    Split Paste Pad
+[padstack]: Padstack is questionable (negative solder paste margin is larger than pad; no solder paste mask will be generated)
+    Local override; warning (excluded)
+    @(154.1011 mm, 120.9536 mm): Pad 11 [GND] of U22 on Top Layer
+    Split Paste Pad
+[padstack]: Padstack is questionable (negative solder paste margin is larger than pad; no solder paste mask will be generated)
+    Local override; warning (excluded)
+    @(175.2311 mm, 64.4186 mm): Pad 9 [GND] of U13 on Top Layer
+    Solder paste window separate from pad
+[padstack]: Padstack is questionable (negative solder paste margin is larger than pad; no solder paste mask will be generated)
+    Local override; warning (excluded)
+    @(163.1691 mm, 95.2286 mm): Pad 49 [GND] of U6 on Top Layer
+    Split Paste Pad
+[padstack]: Padstack is questionable (negative solder paste margin is larger than pad; no solder paste mask will be generated)
+    Local override; warning (excluded)
+    @(151.4511 mm, 99.0036 mm): Pad 11 [GND] of U14 on Top Layer
+    Split Paste Pad
+[padstack]: Padstack is questionable (negative solder paste margin is larger than pad; no solder paste mask will be generated)
+    Local override; warning (excluded)
+    @(176.1011 mm, 94.2036 mm): Pad 57 [GND] of U7 on Top Layer
+    Split Paste Pad
+[padstack]: Padstack is questionable (negative solder paste margin is larger than pad; no solder paste mask will be generated)
+    Local override; warning (excluded)
+    @(208.0011 mm, 155.3036 mm): Pad 1 [<no net>] of FID5 on Top Layer
+    Fiducial
+[padstack]: Padstack is questionable (negative solder paste margin is larger than pad; no solder paste mask will be generated)
+    Local override; warning (excluded)
+    @(88.5011 mm, 54.8036 mm): Pad 1 [<no net>] of FID4 on Top Layer
+    Fiducial
+[padstack]: Padstack is questionable (negative solder paste margin is larger than pad; no solder paste mask will be generated)
+    Local override; warning (excluded)
+    @(88.5011 mm, 155.3036 mm): Pad 1 [<no net>] of FID3 on Top Layer
+    Fiducial
+[padstack]: Padstack is questionable (negative solder paste margin is larger than pad; no solder paste mask will be generated)
+    Local override; warning (excluded)
+    @(132.6511 mm, 150.8036 mm): Pad A1 [/TS-PCIe Components/PRSNT1#] of P1 on Bottom Layer
+    PCIe Edge Connector
+[padstack]: Padstack is questionable (negative solder paste margin is larger than pad; no solder paste mask will be generated)
+    Local override; warning (excluded)
+    @(133.6511 mm, 151.3036 mm): Pad A2 [/TS-PCIe Components/+12V_PCIe] of P1 on Bottom Layer
+    PCIe Edge Connector
+[padstack]: Padstack is questionable (negative solder paste margin is larger than pad; no solder paste mask will be generated)
+    Local override; warning (excluded)
+    @(134.6511 mm, 151.3036 mm): Pad A3 [/TS-PCIe Components/+12V_PCIe] of P1 on Bottom Layer
+    PCIe Edge Connector
+[padstack]: Padstack is questionable (negative solder paste margin is larger than pad; no solder paste mask will be generated)
+    Local override; warning (excluded)
+    @(135.6511 mm, 151.3036 mm): Pad A4 [GND] of P1 on Bottom Layer
+    PCIe Edge Connector
+[padstack]: Padstack is questionable (negative solder paste margin is larger than pad; no solder paste mask will be generated)
+    Local override; warning (excluded)
+    @(136.6511 mm, 151.3036 mm): Pad A5 [/TS-PCIe Components/JTAG2] of P1 on Bottom Layer
+    PCIe Edge Connector
+[padstack]: Padstack is questionable (negative solder paste margin is larger than pad; no solder paste mask will be generated)
+    Local override; warning (excluded)
+    @(137.6511 mm, 151.3036 mm): Pad A6 [/TS-PCIe Components/JTAG3] of P1 on Bottom Layer
+    PCIe Edge Connector
+[padstack]: Padstack is questionable (negative solder paste margin is larger than pad; no solder paste mask will be generated)
+    Local override; warning (excluded)
+    @(138.6511 mm, 151.3036 mm): Pad A7 [/TS-PCIe Components/JTAG4] of P1 on Bottom Layer
+    PCIe Edge Connector
+[padstack]: Padstack is questionable (negative solder paste margin is larger than pad; no solder paste mask will be generated)
+    Local override; warning (excluded)
+    @(139.6511 mm, 151.3036 mm): Pad A8 [/TS-PCIe Components/JTAG5] of P1 on Bottom Layer
+    PCIe Edge Connector
+[padstack]: Padstack is questionable (negative solder paste margin is larger than pad; no solder paste mask will be generated)
+    Local override; warning (excluded)
+    @(140.6511 mm, 151.3036 mm): Pad A9 [unconnected-(P1-PadA9)] of P1 on Bottom Layer
+    PCIe Edge Connector
+[padstack]: Padstack is questionable (negative solder paste margin is larger than pad; no solder paste mask will be generated)
+    Local override; warning (excluded)
+    @(141.6511 mm, 151.3036 mm): Pad A10 [unconnected-(P1-PadA10)] of P1 on Bottom Layer
+    PCIe Edge Connector
+[padstack]: Padstack is questionable (negative solder paste margin is larger than pad; no solder paste mask will be generated)
+    Local override; warning (excluded)
+    @(142.6511 mm, 151.3036 mm): Pad A11 [/TS-PCIe Components/PCIe_PERST#] of P1 on Bottom Layer
+    PCIe Edge Connector
+[padstack]: Padstack is questionable (negative solder paste margin is larger than pad; no solder paste mask will be generated)
+    Local override; warning (excluded)
+    @(145.6511 mm, 151.3036 mm): Pad A12 [GND] of P1 on Bottom Layer
+    PCIe Edge Connector
+[padstack]: Padstack is questionable (negative solder paste margin is larger than pad; no solder paste mask will be generated)
+    Local override; warning (excluded)
+    @(146.6511 mm, 151.3036 mm): Pad A13 [/TS-PCIe Components/PCIe_REFCLK_P] of P1 on Bottom Layer
+    PCIe Edge Connector
+[padstack]: Padstack is questionable (negative solder paste margin is larger than pad; no solder paste mask will be generated)
+    Local override; warning (excluded)
+    @(147.6511 mm, 151.3036 mm): Pad A14 [/TS-PCIe Components/PCIe_REFCLK_N] of P1 on Bottom Layer
+    PCIe Edge Connector
+[padstack]: Padstack is questionable (negative solder paste margin is larger than pad; no solder paste mask will be generated)
+    Local override; warning (excluded)
+    @(148.6511 mm, 151.3036 mm): Pad A15 [GND] of P1 on Bottom Layer
+    PCIe Edge Connector
+[padstack]: Padstack is questionable (negative solder paste margin is larger than pad; no solder paste mask will be generated)
+    Local override; warning (excluded)
+    @(149.6511 mm, 151.3036 mm): Pad A16 [/TS-PCIe Components/PCIe_PER0_P] of P1 on Bottom Layer
+    PCIe Edge Connector
+[padstack]: Padstack is questionable (negative solder paste margin is larger than pad; no solder paste mask will be generated)
+    Local override; warning (excluded)
+    @(150.6511 mm, 151.3036 mm): Pad A17 [/TS-PCIe Components/PCIe_PER0_N] of P1 on Bottom Layer
+    PCIe Edge Connector
+[padstack]: Padstack is questionable (negative solder paste margin is larger than pad; no solder paste mask will be generated)
+    Local override; warning (excluded)
+    @(151.6511 mm, 151.3036 mm): Pad A18 [GND] of P1 on Bottom Layer
+    PCIe Edge Connector
+[padstack]: Padstack is questionable (negative solder paste margin is larger than pad; no solder paste mask will be generated)
+    Local override; warning (excluded)
+    @(152.6511 mm, 151.3036 mm): Pad A19 [unconnected-(P1-PadA19)] of P1 on Bottom Layer
+    PCIe Edge Connector
+[padstack]: Padstack is questionable (negative solder paste margin is larger than pad; no solder paste mask will be generated)
+    Local override; warning (excluded)
+    @(153.6511 mm, 151.3036 mm): Pad A20 [GND] of P1 on Bottom Layer
+    PCIe Edge Connector
+[padstack]: Padstack is questionable (negative solder paste margin is larger than pad; no solder paste mask will be generated)
+    Local override; warning (excluded)
+    @(154.6511 mm, 151.3036 mm): Pad A21 [/TS-PCIe Components/PCIe_PER1_P] of P1 on Bottom Layer
+    PCIe Edge Connector
+[padstack]: Padstack is questionable (negative solder paste margin is larger than pad; no solder paste mask will be generated)
+    Local override; warning (excluded)
+    @(155.6511 mm, 151.3036 mm): Pad A22 [/TS-PCIe Components/PCIe_PER1_N] of P1 on Bottom Layer
+    PCIe Edge Connector
+[padstack]: Padstack is questionable (negative solder paste margin is larger than pad; no solder paste mask will be generated)
+    Local override; warning (excluded)
+    @(156.6511 mm, 151.3036 mm): Pad A23 [GND] of P1 on Bottom Layer
+    PCIe Edge Connector
+[padstack]: Padstack is questionable (negative solder paste margin is larger than pad; no solder paste mask will be generated)
+    Local override; warning (excluded)
+    @(157.6511 mm, 151.3036 mm): Pad A24 [GND] of P1 on Bottom Layer
+    PCIe Edge Connector
+[padstack]: Padstack is questionable (negative solder paste margin is larger than pad; no solder paste mask will be generated)
+    Local override; warning (excluded)
+    @(158.6511 mm, 151.3036 mm): Pad A25 [/TS-PCIe Components/PCIe_PER2_P] of P1 on Bottom Layer
+    PCIe Edge Connector
+[padstack]: Padstack is questionable (negative solder paste margin is larger than pad; no solder paste mask will be generated)
+    Local override; warning (excluded)
+    @(159.6511 mm, 151.3036 mm): Pad A26 [/TS-PCIe Components/PCIe_PER2_N] of P1 on Bottom Layer
+    PCIe Edge Connector
+[padstack]: Padstack is questionable (negative solder paste margin is larger than pad; no solder paste mask will be generated)
+    Local override; warning (excluded)
+    @(160.6511 mm, 151.3036 mm): Pad A27 [GND] of P1 on Bottom Layer
+    PCIe Edge Connector
+[padstack]: Padstack is questionable (negative solder paste margin is larger than pad; no solder paste mask will be generated)
+    Local override; warning (excluded)
+    @(161.6511 mm, 151.3036 mm): Pad A28 [GND] of P1 on Bottom Layer
+    PCIe Edge Connector
+[padstack]: Padstack is questionable (negative solder paste margin is larger than pad; no solder paste mask will be generated)
+    Local override; warning (excluded)
+    @(162.6511 mm, 151.3036 mm): Pad A29 [/TS-PCIe Components/PCIe_PER3_P] of P1 on Bottom Layer
+    PCIe Edge Connector
+[padstack]: Padstack is questionable (negative solder paste margin is larger than pad; no solder paste mask will be generated)
+    Local override; warning (excluded)
+    @(163.6511 mm, 151.3036 mm): Pad A30 [/TS-PCIe Components/PCIe_PER3_N] of P1 on Bottom Layer
+    PCIe Edge Connector
+[padstack]: Padstack is questionable (negative solder paste margin is larger than pad; no solder paste mask will be generated)
+    Local override; warning (excluded)
+    @(164.6511 mm, 151.3036 mm): Pad A31 [GND] of P1 on Bottom Layer
+    PCIe Edge Connector
+[padstack]: Padstack is questionable (negative solder paste margin is larger than pad; no solder paste mask will be generated)
+    Local override; warning (excluded)
+    @(165.6511 mm, 151.3036 mm): Pad A32 [unconnected-(P1-PadA32)] of P1 on Bottom Layer
+    PCIe Edge Connector
+[padstack]: Padstack is questionable (negative solder paste margin is larger than pad; no solder paste mask will be generated)
+    Local override; warning (excluded)
+    @(132.6511 mm, 151.3036 mm): Pad B1 [/TS-PCIe Components/+12V_PCIe] of P1 on Top Layer
+    PCIe Edge Connector
+[padstack]: Padstack is questionable (negative solder paste margin is larger than pad; no solder paste mask will be generated)
+    Local override; warning (excluded)
+    @(133.6511 mm, 151.3036 mm): Pad B2 [/TS-PCIe Components/+12V_PCIe] of P1 on Top Layer
+    PCIe Edge Connector
+[padstack]: Padstack is questionable (negative solder paste margin is larger than pad; no solder paste mask will be generated)
+    Local override; warning (excluded)
+    @(134.6511 mm, 151.3036 mm): Pad B3 [/TS-PCIe Components/+12V_PCIe] of P1 on Top Layer
+    PCIe Edge Connector
+[padstack]: Padstack is questionable (negative solder paste margin is larger than pad; no solder paste mask will be generated)
+    Local override; warning (excluded)
+    @(135.6511 mm, 151.3036 mm): Pad B4 [GND] of P1 on Top Layer
+    PCIe Edge Connector
+[padstack]: Padstack is questionable (negative solder paste margin is larger than pad; no solder paste mask will be generated)
+    Local override; warning (excluded)
+    @(136.6511 mm, 151.3036 mm): Pad B5 [/TS-PCIe Components/SMCLK] of P1 on Top Layer
+    PCIe Edge Connector
+[padstack]: Padstack is questionable (negative solder paste margin is larger than pad; no solder paste mask will be generated)
+    Local override; warning (excluded)
+    @(137.6511 mm, 151.3036 mm): Pad B6 [/TS-PCIe Components/SMDAT] of P1 on Top Layer
+    PCIe Edge Connector
+[padstack]: Padstack is questionable (negative solder paste margin is larger than pad; no solder paste mask will be generated)
+    Local override; warning (excluded)
+    @(138.6511 mm, 151.3036 mm): Pad B7 [GND] of P1 on Top Layer
+    PCIe Edge Connector
+[padstack]: Padstack is questionable (negative solder paste margin is larger than pad; no solder paste mask will be generated)
+    Local override; warning (excluded)
+    @(139.6511 mm, 151.3036 mm): Pad B8 [unconnected-(P1-PadB8)] of P1 on Top Layer
+    PCIe Edge Connector
+[padstack]: Padstack is questionable (negative solder paste margin is larger than pad; no solder paste mask will be generated)
+    Local override; warning (excluded)
+    @(140.6511 mm, 151.3036 mm): Pad B9 [/TS-PCIe Components/JTAG1] of P1 on Top Layer
+    PCIe Edge Connector
+[padstack]: Padstack is questionable (negative solder paste margin is larger than pad; no solder paste mask will be generated)
+    Local override; warning (excluded)
+    @(141.6511 mm, 151.3036 mm): Pad B10 [/TS-PCIe Components/3.3Vaux] of P1 on Top Layer
+    PCIe Edge Connector
+[padstack]: Padstack is questionable (negative solder paste margin is larger than pad; no solder paste mask will be generated)
+    Local override; warning (excluded)
+    @(142.6511 mm, 151.3036 mm): Pad B11 [/TS-PCIe Components/WAKE#] of P1 on Top Layer
+    PCIe Edge Connector
+[padstack]: Padstack is questionable (negative solder paste margin is larger than pad; no solder paste mask will be generated)
+    Local override; warning (excluded)
+    @(145.6511 mm, 151.3036 mm): Pad B12 [/TS-PCIe Components/CLKREQ#] of P1 on Top Layer
+    PCIe Edge Connector
+[padstack]: Padstack is questionable (negative solder paste margin is larger than pad; no solder paste mask will be generated)
+    Local override; warning (excluded)
+    @(146.6511 mm, 151.3036 mm): Pad B13 [GND] of P1 on Top Layer
+    PCIe Edge Connector
+[padstack]: Padstack is questionable (negative solder paste margin is larger than pad; no solder paste mask will be generated)
+    Local override; warning (excluded)
+    @(147.6511 mm, 151.3036 mm): Pad B14 [/TS-PCIe Components/PCIe_PET0_P] of P1 on Top Layer
+    PCIe Edge Connector
+[padstack]: Padstack is questionable (negative solder paste margin is larger than pad; no solder paste mask will be generated)
+    Local override; warning (excluded)
+    @(148.6511 mm, 151.3036 mm): Pad B15 [/TS-PCIe Components/PCIe_PET0_N] of P1 on Top Layer
+    PCIe Edge Connector
+[padstack]: Padstack is questionable (negative solder paste margin is larger than pad; no solder paste mask will be generated)
+    Local override; warning (excluded)
+    @(149.6511 mm, 151.3036 mm): Pad B16 [GND] of P1 on Top Layer
+    PCIe Edge Connector
+[padstack]: Padstack is questionable (negative solder paste margin is larger than pad; no solder paste mask will be generated)
+    Local override; warning (excluded)
+    @(150.6511 mm, 150.8036 mm): Pad B17 [/TS-PCIe Components/PRSNT2#_1] of P1 on Top Layer
+    PCIe Edge Connector
+[padstack]: Padstack is questionable (negative solder paste margin is larger than pad; no solder paste mask will be generated)
+    Local override; warning (excluded)
+    @(151.6511 mm, 151.3036 mm): Pad B18 [GND] of P1 on Top Layer
+    PCIe Edge Connector
+[padstack]: Padstack is questionable (negative solder paste margin is larger than pad; no solder paste mask will be generated)
+    Local override; warning (excluded)
+    @(152.6511 mm, 151.3036 mm): Pad B19 [/TS-PCIe Components/PCIe_PET1_P] of P1 on Top Layer
+    PCIe Edge Connector
+[padstack]: Padstack is questionable (negative solder paste margin is larger than pad; no solder paste mask will be generated)
+    Local override; warning (excluded)
+    @(153.6511 mm, 151.3036 mm): Pad B20 [/TS-PCIe Components/PCIe_PET1_N] of P1 on Top Layer
+    PCIe Edge Connector
+[padstack]: Padstack is questionable (negative solder paste margin is larger than pad; no solder paste mask will be generated)
+    Local override; warning (excluded)
+    @(154.6511 mm, 151.3036 mm): Pad B21 [GND] of P1 on Top Layer
+    PCIe Edge Connector
+[padstack]: Padstack is questionable (negative solder paste margin is larger than pad; no solder paste mask will be generated)
+    Local override; warning (excluded)
+    @(155.6511 mm, 151.3036 mm): Pad B22 [GND] of P1 on Top Layer
+    PCIe Edge Connector
+[padstack]: Padstack is questionable (negative solder paste margin is larger than pad; no solder paste mask will be generated)
+    Local override; warning (excluded)
+    @(156.6511 mm, 151.3036 mm): Pad B23 [/TS-PCIe Components/PCIe_PET2_P] of P1 on Top Layer
+    PCIe Edge Connector
+[padstack]: Padstack is questionable (negative solder paste margin is larger than pad; no solder paste mask will be generated)
+    Local override; warning (excluded)
+    @(157.6511 mm, 151.3036 mm): Pad B24 [/TS-PCIe Components/PCIe_PET2_N] of P1 on Top Layer
+    PCIe Edge Connector
+[padstack]: Padstack is questionable (negative solder paste margin is larger than pad; no solder paste mask will be generated)
+    Local override; warning (excluded)
+    @(158.6511 mm, 151.3036 mm): Pad B25 [GND] of P1 on Top Layer
+    PCIe Edge Connector
+[padstack]: Padstack is questionable (negative solder paste margin is larger than pad; no solder paste mask will be generated)
+    Local override; warning (excluded)
+    @(159.6511 mm, 151.3036 mm): Pad B26 [GND] of P1 on Top Layer
+    PCIe Edge Connector
+[padstack]: Padstack is questionable (negative solder paste margin is larger than pad; no solder paste mask will be generated)
+    Local override; warning (excluded)
+    @(160.6511 mm, 151.3036 mm): Pad B27 [/TS-PCIe Components/PCIe_PET3_P] of P1 on Top Layer
+    PCIe Edge Connector
+[padstack]: Padstack is questionable (negative solder paste margin is larger than pad; no solder paste mask will be generated)
+    Local override; warning (excluded)
+    @(161.6511 mm, 151.3036 mm): Pad B28 [/TS-PCIe Components/PCIe_PET3_N] of P1 on Top Layer
+    PCIe Edge Connector
+[padstack]: Padstack is questionable (negative solder paste margin is larger than pad; no solder paste mask will be generated)
+    Local override; warning (excluded)
+    @(162.6511 mm, 151.3036 mm): Pad B29 [GND] of P1 on Top Layer
+    PCIe Edge Connector
+[padstack]: Padstack is questionable (negative solder paste margin is larger than pad; no solder paste mask will be generated)
+    Local override; warning (excluded)
+    @(163.6511 mm, 151.3036 mm): Pad B30 [/TS-PCIe Components/PWRBRK#] of P1 on Top Layer
+    PCIe Edge Connector
+[padstack]: Padstack is questionable (negative solder paste margin is larger than pad; no solder paste mask will be generated)
+    Local override; warning (excluded)
+    @(164.6511 mm, 150.8036 mm): Pad B31 [/TS-PCIe Components/PRSNT2#_4] of P1 on Top Layer
+    PCIe Edge Connector
+[padstack]: Padstack is questionable (negative solder paste margin is larger than pad; no solder paste mask will be generated)
+    Local override; warning (excluded)
+    @(165.6511 mm, 151.3036 mm): Pad B32 [GND] of P1 on Top Layer
+    PCIe Edge Connector
+[padstack]: Padstack is questionable (negative solder paste margin is larger than pad; no solder paste mask will be generated)
+    Local override; warning (excluded)
+    @(181.4761 mm, 85.7286 mm): Pad 1 [<no net>] of FID2 on Top Layer
+    Fiducial
+[padstack]: Padstack is questionable (negative solder paste margin is larger than pad; no solder paste mask will be generated)
+    Local override; warning (excluded)
+    @(155.5011 mm, 128.3036 mm): Pad 1 [<no net>] of FID1 on Top Layer
+    Fiducial
+[padstack]: Padstack is questionable (negative solder paste margin is larger than pad; no solder paste mask will be generated)
+    Local override; warning (excluded)
+    @(195.0011 mm, 54.8036 mm): Pad 1 [<no net>] of FID6 on Bottom Layer
+    Fiducial
+[padstack]: Padstack is questionable (negative solder paste margin is larger than pad; no solder paste mask will be generated)
+    Local override; warning (excluded)
+    @(208.0011 mm, 155.3036 mm): Pad 1 [<no net>] of FID8 on Bottom Layer
+    Fiducial
+[padstack]: Padstack is questionable (negative solder paste margin is larger than pad; no solder paste mask will be generated)
+    Local override; warning (excluded)
+    @(88.5011 mm, 155.3036 mm): Pad 1 [<no net>] of FID7 on Bottom Layer
+    Fiducial
+[starved_thermal]: Thermal relief connection to zone incomplete (layer Top Layer; zone min spoke count 2; actual 1)
+    Local override; error (excluded)
+    @(87.0011 mm, 57.8036 mm): Zone [GND] on Top Layer, Bottom Layer and 3 more, priority 0
+    @(190.1011 mm, 61.0886 mm): PTH pad 5 [GND] of J3
+[starved_thermal]: Thermal relief connection to zone incomplete (layer Bottom Layer; 1 spokes connected to isolated island)
+    Local override; error (excluded)
+    @(87.0011 mm, 57.8036 mm): Zone [GND] on Top Layer, Bottom Layer and 3 more, priority 0
+    @(190.1011 mm, 61.0886 mm): PTH pad 5 [GND] of J3
+
+** Found 2 unconnected pads **
+[unconnected_items]: Missing connection between items
+    Local override; error (excluded)
+    @(199.7011 mm, 147.1536 mm): PTH pad 1 [GND] of J11
+    @(204.7011 mm, 147.1536 mm): PTH pad 1 [GND] of J11
+    Connection Not Required
+[unconnected_items]: Missing connection between items
+    Local override; error (excluded)
+    @(204.7011 mm, 147.1536 mm): PTH pad 1 [GND] of J11
+    @(87.0011 mm, 57.8036 mm): Zone [GND] on Top Layer, Bottom Layer and 3 more, priority 0
+    Connection Not Required
+
+** Found 0 Footprint errors **
+
+** End of Report **
