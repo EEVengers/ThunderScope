@@ -266,7 +266,7 @@
         "crossout_dnp_footprints_on_fab_layers": true,
         "description": "",
         "drawing_sheet": "",
-        "drill_shape": "full",
+        "drill_shape": "none",
         "front_fp_property_popups": false,
         "hide_dnp_footprints_on_fab_layers": false,
         "layers": [
@@ -328,7 +328,7 @@
         "crossout_dnp_footprints_on_fab_layers": true,
         "description": "",
         "drawing_sheet": "",
-        "drill_shape": "full",
+        "drill_shape": "none",
         "front_fp_property_popups": false,
         "hide_dnp_footprints_on_fab_layers": false,
         "layers": [
@@ -384,7 +384,7 @@
       "description": "Export 3D Render Top",
       "id": "473fe877-aaac-470d-afdd-96c86e8c21e0",
       "settings": {
-        "bg_style": "default",
+        "bg_style": "opaque",
         "description": "",
         "floor": false,
         "format": "png",
@@ -432,7 +432,7 @@
       "description": "Export 3D Render Bottom",
       "id": "e9b1dc87-3000-41d5-afab-5dee354cf366",
       "settings": {
-        "bg_style": "default",
+        "bg_style": "opaque",
         "description": "",
         "floor": false,
         "format": "png",
@@ -482,11 +482,11 @@
   },
   "outputs": [
     {
-      "description": "",
+      "description": "Outputs",
       "id": "090f6e7a-d53d-4d0d-b485-d9f58d23626f",
       "only": [],
       "settings": {
-        "output_path": ".\\Fabrication Outputs\\"
+        "output_path": ".\\Outputs\\${VARIANT}"
       },
       "type": "folder"
     }
