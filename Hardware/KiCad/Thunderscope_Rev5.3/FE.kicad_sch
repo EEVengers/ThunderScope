@@ -3793,20 +3793,6 @@
 		)
 		(uuid "a14197d7-0524-4ccd-aae1-267af9d23a19")
 	)
-	(text "DONE: Use 100kOhm digipot"
-		(exclude_from_sim no)
-		(at 226.06 88.9 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-				(thickness 0.254)
-				(bold yes)
-				(color 0 194 194 1)
-			)
-			(justify left bottom)
-		)
-		(uuid "cff88db3-7418-41c8-aca0-77ef5c247d5a")
-	)
 	(text "VBIAS Pin is 1/2 of 2.5V VREF"
 		(exclude_from_sim no)
 		(at 78.74 147.32 0)
@@ -3818,28 +3804,6 @@
 			(justify left bottom)
 		)
 		(uuid "ed01da67-9738-47ba-a26e-ca8e5c865eb1")
-	)
-	(text_box "Use 2.5V VREF Instead of U8 opamp, change remaining opamps to opa140\n  -Max resistance is (575/4 // 10k) = 141.7 Ohm\n  -Worst case current is 17.64mA\n  -Use REF2025, has max current of 20mA\n  -Change U5 divider to matched resistor network\n  -ACASN1002S1002P1AT"
-		(exclude_from_sim no)
-		(at 15.24 177.8 0)
-		(size 88.9 17.78)
-		(margins 0.9525 0.9525 0.9525 0.9525)
-		(stroke
-			(width 0)
-			(type default)
-			(color 56 118 29 1)
-		)
-		(fill
-			(type color)
-			(color 255 255 255 1)
-		)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left top)
-		)
-		(uuid "cefc9d8e-d7fc-4db4-ac5b-f5a65a0c618c")
 	)
 	(junction
 		(at 203.2 152.4)
