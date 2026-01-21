@@ -1129,14 +1129,14 @@
         },
         {
           "group_by": false,
-          "label": "Reference",
-          "name": "Reference",
+          "label": "Qty",
+          "name": "${QUANTITY}",
           "show": true
         },
         {
           "group_by": false,
-          "label": "Qty",
-          "name": "${QUANTITY}",
+          "label": "Reference",
+          "name": "Reference",
           "show": true
         },
         {
@@ -1150,6 +1150,18 @@
           "label": "ALTIUM_VALUE",
           "name": "ALTIUM_VALUE",
           "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Description",
+          "name": "Description",
+          "show": true
+        },
+        {
+          "group_by": false,
+          "label": "PACKAGE",
+          "name": "PACKAGE",
+          "show": true
         },
         {
           "group_by": false,
@@ -1225,12 +1237,6 @@
         },
         {
           "group_by": false,
-          "label": "PACKAGE",
-          "name": "PACKAGE",
-          "show": false
-        },
-        {
-          "group_by": false,
           "label": "PACKAGE REFERENCE",
           "name": "PACKAGE REFERENCE",
           "show": false
@@ -1282,12 +1288,6 @@
           "label": "VOLTAGE RATING",
           "name": "VOLTAGE RATING",
           "show": false
-        },
-        {
-          "group_by": false,
-          "label": "Description",
-          "name": "Description",
-          "show": false
         }
       ],
       "filter_string": "",
@@ -1295,7 +1295,7 @@
       "include_excluded_from_bom": false,
       "name": "",
       "sort_asc": true,
-      "sort_field": "Reference"
+      "sort_field": "PACKAGE"
     },
     "connection_grid_size": 50.0,
     "drawing": {
