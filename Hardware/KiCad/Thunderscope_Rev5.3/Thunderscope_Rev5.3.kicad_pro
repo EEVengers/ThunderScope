@@ -1135,21 +1135,9 @@
         },
         {
           "group_by": false,
-          "label": "Reference",
-          "name": "Reference",
-          "show": true
-        },
-        {
-          "group_by": false,
           "label": "Value",
           "name": "Value",
           "show": true
-        },
-        {
-          "group_by": false,
-          "label": "ALTIUM_VALUE",
-          "name": "ALTIUM_VALUE",
-          "show": false
         },
         {
           "group_by": false,
@@ -1165,27 +1153,39 @@
         },
         {
           "group_by": false,
+          "label": "Reference",
+          "name": "Reference",
+          "show": true
+        },
+        {
+          "group_by": false,
+          "label": "ALTIUM_VALUE",
+          "name": "ALTIUM_VALUE",
+          "show": false
+        },
+        {
+          "group_by": false,
           "label": "DNP",
           "name": "${DNP}",
-          "show": true
+          "show": false
         },
         {
           "group_by": false,
           "label": "Exclude from BOM",
           "name": "${EXCLUDE_FROM_BOM}",
-          "show": true
+          "show": false
         },
         {
           "group_by": false,
           "label": "Exclude from Board",
           "name": "${EXCLUDE_FROM_BOARD}",
-          "show": true
+          "show": false
         },
         {
           "group_by": false,
           "label": "Footprint",
           "name": "Footprint",
-          "show": true
+          "show": false
         },
         {
           "group_by": false,
@@ -1257,13 +1257,13 @@
           "group_by": false,
           "label": "SUPPLIER 1",
           "name": "SUPPLIER 1",
-          "show": true
+          "show": false
         },
         {
           "group_by": false,
           "label": "SUPPLIER PART NUMBER 1",
           "name": "SUPPLIER PART NUMBER 1",
-          "show": true
+          "show": false
         },
         {
           "group_by": false,
@@ -1288,6 +1288,12 @@
           "label": "VOLTAGE RATING",
           "name": "VOLTAGE RATING",
           "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Substitutions Policy",
+          "name": "Substitutions Policy",
+          "show": true
         }
       ],
       "filter_string": "",
@@ -1295,7 +1301,7 @@
       "include_excluded_from_bom": false,
       "name": "",
       "sort_asc": true,
-      "sort_field": "PACKAGE"
+      "sort_field": "ALTIUM_VALUE"
     },
     "connection_grid_size": 50.0,
     "drawing": {
