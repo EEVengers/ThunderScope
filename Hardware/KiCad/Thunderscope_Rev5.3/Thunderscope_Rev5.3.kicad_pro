@@ -76,6 +76,18 @@
           "PCIe edge connector"
         ],
         [
+          "footprint_type_mismatch|184476095|79278600|90ac433b-a543-4ba3-9343-f5593fc6ef83|00000000-0000-0000-0000-000000000000",
+          "Assembled with SMT pick and place process, so type should be SMD to show up in output position file"
+        ],
+        [
+          "footprint_type_mismatch|97001095|128703600|c060821d-342e-4bbd-b7f4-a328a479e1b2|00000000-0000-0000-0000-000000000000",
+          "Assembled with SMT pick and place process, so type should be SMD to show up in output position file"
+        ],
+        [
+          "footprint_type_mismatch|97001095|85403600|15049901-3c14-4808-9f29-8c368c30aeab|00000000-0000-0000-0000-000000000000",
+          "Assembled with SMT pick and place process, so type should be SMD to show up in output position file"
+        ],
+        [
           "padstack|132651095|150803600|744389cf-6ab9-4cc8-8227-1aa11e78cc41|00000000-0000-0000-0000-000000000000",
           "PCIe Edge Connector"
         ],
@@ -413,9 +425,9 @@
         "duplicate_footprints": "warning",
         "extra_footprint": "warning",
         "footprint": "error",
-        "footprint_filters_mismatch": "ignore",
+        "footprint_filters_mismatch": "warning",
         "footprint_symbol_mismatch": "warning",
-        "footprint_type_mismatch": "ignore",
+        "footprint_type_mismatch": "warning",
         "hole_clearance": "error",
         "hole_to_hole": "warning",
         "holes_co_located": "warning",
@@ -429,13 +441,13 @@
         "malformed_courtyard": "error",
         "microvia_drill_out_of_range": "error",
         "mirrored_text_on_front_layer": "warning",
-        "missing_courtyard": "ignore",
+        "missing_courtyard": "warning",
         "missing_footprint": "warning",
         "net_conflict": "warning",
         "nonmirrored_text_on_back_layer": "warning",
-        "npth_inside_courtyard": "ignore",
+        "npth_inside_courtyard": "warning",
         "padstack": "warning",
-        "pth_inside_courtyard": "ignore",
+        "pth_inside_courtyard": "warning",
         "shorting_items": "error",
         "silk_edge_clearance": "warning",
         "silk_over_copper": "ignore",
