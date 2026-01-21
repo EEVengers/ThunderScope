@@ -1,12 +1,12 @@
 %TF.GenerationSoftware,KiCad,Pcbnew,9.0.3*%
-%TF.CreationDate,2026-01-19T16:31:04-05:00*%
+%TF.CreationDate,2026-01-21T13:12:08-05:00*%
 %TF.ProjectId,Thunderscope_Rev5.3,5468756e-6465-4727-9363-6f70655f5265,rev?*%
 %TF.SameCoordinates,Original*%
 %TF.FileFunction,Copper,L5,Inr*%
 %TF.FilePolarity,Positive*%
 %FSLAX45Y45*%
 G04 Gerber Fmt 4.5, Leading zero omitted, Abs format (unit mm)*
-G04 Created by KiCad (PCBNEW 9.0.3) date 2026-01-19 16:31:04*
+G04 Created by KiCad (PCBNEW 9.0.3) date 2026-01-21 13:12:08*
 %MOMM*%
 %LPD*%
 G01*
