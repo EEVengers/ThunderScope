@@ -7,7 +7,7 @@
         "description": "",
         "fail_on_error": false,
         "format": "report",
-        "output_filename": "./Reports/Schematic_ERC.rpt",
+        "output_filename": "./Schematic_ERC.rpt",
         "severity": 48,
         "units": "mm"
       },
@@ -26,7 +26,7 @@
         "hpgl_pen_size": 1.016,
         "hpgl_plot_origin": "A3",
         "min_pen_width": 847,
-        "output_dir": "./Schematic/",
+        "output_dir": "./",
         "page_size": "auto",
         "pdf_hierarchical_links": true,
         "pdf_metadata": true,
@@ -109,7 +109,7 @@
         "include_excluded_from_bom": false,
         "keep_line_breaks": false,
         "keep_tabs": false,
-        "output_filename": "./BOM/Thunderscope_Rev5.3.csv",
+        "output_filename": "./Thunderscope_Rev5.3_${VARIANT}_BOM.csv",
         "ref_delimiter": ",",
         "ref_range_delimiter": "",
         "sort_asc": true,
@@ -125,7 +125,7 @@
         "description": "",
         "fail_on_error": false,
         "format": "report",
-        "output_filename": "./Reports/PCB_DRC.rpt",
+        "output_filename": "./PCB_DRC.rpt",
         "parity": true,
         "report_all_track_errors": true,
         "severity": 48,
@@ -138,7 +138,7 @@
       "id": "600d5b1b-599e-43cd-9e40-3a1b6d265286",
       "settings": {
         "black_and_white": true,
-        "create_gerber_job_file": true,
+        "create_gerber_job_file": false,
         "crossout_dnp_footprints_on_fab_layers": false,
         "description": "",
         "disable_aperture_macros": false,
@@ -191,7 +191,7 @@
         "layers_to_include_on_all_layers": [],
         "mirror": false,
         "negative": false,
-        "output_filename": "./Gerber",
+        "output_filename": "./",
         "plot_drawing_sheet": false,
         "plot_footprint_values": true,
         "plot_pad_numbers": false,
@@ -220,7 +220,7 @@
         "generate_map": false,
         "gerber_precision": 5,
         "map_format": "pdf",
-        "output_dir": "./NC Drill",
+        "output_dir": "./",
         "units": "in",
         "zero_format": "decimal"
       },
@@ -249,9 +249,9 @@
         "format": "ascii",
         "gerber_board_edge": true,
         "negate_bottom_x": false,
-        "output_filename": "./Pick and Place/Thunderscope_Rev5.3",
+        "output_filename": "./Thunderscope_Rev5.3_Positions",
         "side": "both",
-        "single_file": false,
+        "single_file": true,
         "smd_only": true,
         "units": "mm",
         "use_drill_place_file_origin": true
@@ -305,7 +305,7 @@
         ],
         "mirror": false,
         "negative": false,
-        "output_filename": "./Assembly Drawings/",
+        "output_filename": "./",
         "pdf_gen_mode": "all-layers-separate-files",
         "pdf_metadata": false,
         "plot_drawing_sheet": false,
@@ -367,7 +367,7 @@
         ],
         "mirror": true,
         "negative": false,
-        "output_filename": "./Assembly Drawings/",
+        "output_filename": "./",
         "pdf_gen_mode": "all-layers-separate-files",
         "pdf_metadata": false,
         "plot_drawing_sheet": false,
@@ -412,7 +412,7 @@
           0.0,
           0.0
         ],
-        "output_filename": "./3D Renders/Top.png",
+        "output_filename": "./Thunderscope_Rev5.3_${VARIANT}_Top_Render.png",
         "pan_x": 0.0,
         "pan_y": 0.0,
         "pan_z": 0.0,
@@ -460,7 +460,7 @@
           0.0,
           0.0
         ],
-        "output_filename": "./3D Renders/Bottom.png",
+        "output_filename": "./Thunderscope_Rev5.3_${VARIANT}_Bottom_Render.png",
         "pan_x": 0.0,
         "pan_y": 0.0,
         "pan_z": 0.0,
@@ -484,11 +484,44 @@
   },
   "outputs": [
     {
-      "description": "Outputs",
+      "description": "ERC and DRC Reports",
       "id": "090f6e7a-d53d-4d0d-b485-d9f58d23626f",
-      "only": [],
+      "only": [
+        "9d17b685-2cb2-405e-822e-f23542db0f57",
+        "edf5134e-1701-4f0e-99a3-acab34c16bd2"
+      ],
       "settings": {
-        "output_path": ".\\Outputs\\${VARIANT}"
+        "output_path": ".\\Outputs\\ERC and DRC Reports"
+      },
+      "type": "folder"
+    },
+    {
+      "description": "PCB",
+      "id": "4cd37ffc-d015-410a-89bd-d538c1c36810",
+      "only": [
+        "600d5b1b-599e-43cd-9e40-3a1b6d265286",
+        "69c581b0-5a0f-43ba-a028-57f14054d8bb"
+      ],
+      "settings": {
+        "output_path": "./Outputs/PCB Fabrication"
+      },
+      "type": "folder"
+    },
+    {
+      "description": "Assembly",
+      "id": "8ce1ad05-2ebf-4c4a-aebc-261f169cb074",
+      "only": [
+        "3f2a2320-8402-4ecd-841c-8e817513a089",
+        "ca27e379-0f4c-4d6a-ae38-9fda70596030",
+        "cd1e2de6-6cf0-457d-a6b6-4063e2bf6f24",
+        "0156a58c-33a0-45ea-b9fe-cc31185d6dea",
+        "71ed16f8-3ce9-40e7-8cb7-b8f105214bcf",
+        "d2f6b8f1-0ec5-45ea-b158-b15b6c6eac5e",
+        "473fe877-aaac-470d-afdd-96c86e8c21e0",
+        "e9b1dc87-3000-41d5-afab-5dee354cf366"
+      ],
+      "settings": {
+        "output_path": "./Outputs/${VARIANT} Assembly"
       },
       "type": "folder"
     }
