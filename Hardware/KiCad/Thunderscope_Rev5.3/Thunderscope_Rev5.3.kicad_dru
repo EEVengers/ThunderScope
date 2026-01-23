@@ -1,0 +1,140 @@
+(version 1)
+(rule FE_100Z_Diff_Inner
+	(layer inner)
+	(condition "A.hasNetclass('FE_100Z_Diff')")
+	(constraint disallow track))
+(rule FE_100Z_Diff_Outer
+	(layer outer)
+	(condition "A.hasNetclass('FE_100Z_Diff')")
+	(constraint diff_pair_gap (opt 0.13022mm))
+	(constraint track_width (min 0.127mm)(opt 0.127mm)(max 0.127mm)))
+(rule FE_100Z_Diff_Vias
+	(condition "A.hasNetclass('FE_100Z_Diff')")
+	(constraint via_count (min 0) (opt 0) (max 0)))
+
+(rule LVDS_SYNC_Inner
+	(layer inner)
+	(condition "A.hasNetclass('LVDS_SYNC')")
+	(constraint diff_pair_gap (opt 0.23035mm))
+	(constraint track_width (min 0.127mm)(opt 0.127mm)(max 0.127mm)))
+(rule LVDS_SYNC_Outer
+	(layer outer)
+	(condition "A.hasNetclass('LVDS_SYNC')")
+	(constraint diff_pair_gap (opt 0.13022mm))
+	(constraint track_width (min 0.127mm)(opt 0.127mm)(max 0.127mm)))
+
+(rule LVDS_USRIO_Inner
+	(layer inner)
+	(condition "A.hasNetclass('LVDS_USRIO')")
+	(constraint diff_pair_gap (opt 0.23035mm))
+	(constraint track_width (min 0.127mm)(opt 0.127mm)(max 0.127mm)))
+(rule LVDS_USRIO_Outer
+	(layer outer)
+	(condition "A.hasNetclass('LVDS_USRIO')")
+	(constraint diff_pair_gap (opt 0.13022mm))
+	(constraint track_width (min 0.127mm)(opt 0.127mm)(max 0.127mm)))
+
+(rule LVDS_ADC_Inner
+	(layer inner)
+	(condition "A.hasNetclass('LVDS_ADC')")
+	(constraint diff_pair_gap (opt 0.23035mm))
+	(constraint track_width (min 0.127mm)(opt 0.127mm)(max 0.127mm)))
+(rule LVDS_ADC_Outer
+	(layer outer)
+	(condition "A.hasNetclass('LVDS_ADC')")
+	(constraint diff_pair_gap (opt 0.13022mm))
+	(constraint track_width (min 0.127mm)(opt 0.127mm)(max 0.127mm)))
+
+(rule LVDS_ADC_CLK_Inner
+	(layer inner)
+	(condition "A.hasNetclass('LVDS_ADC_CLK')")
+	(constraint diff_pair_gap (opt 0.23035mm))
+	(constraint track_width (min 0.127mm)(opt 0.127mm)(max 0.127mm)))
+(rule LVDS_ADC_CLK_Outer
+	(layer outer)
+	(condition "A.hasNetclass('LVDS_ADC_CLK')")
+	(constraint diff_pair_gap (opt 0.13022mm))
+	(constraint track_width (min 0.127mm)(opt 0.127mm)(max 0.127mm)))
+
+(rule PCIe_Inner
+	(layer inner)
+	(condition "A.hasNetclass('PCIe')")
+	(constraint diff_pair_gap (opt 0.127mm))
+	(constraint track_width (min 0.14789mm)(opt 0.14789mm)(max 0.14789mm)))
+(rule PCIe_Outer
+	(layer outer)
+	(condition "A.hasNetclass('PCIe')")
+	(constraint diff_pair_gap (opt 0.127mm))
+	(constraint track_width (min 0.19079mm)(opt 0.19079mm)(max 0.19079mm)))
+
+(rule FE_50Z_Inner
+	(layer inner)
+	(condition "A.hasNetclass('FE_50Z')")
+	(constraint disallow track))
+(rule FE_50Z_Outer
+	(layer outer)
+	(condition "A.hasNetclass('FE_50Z')")
+	(constraint track_width (min 0.213mm)(opt 0.213mm)(max 0.213mm)))
+(rule FE_50Z_Vias
+	(condition "A.hasNetclass('FE_50Z')")
+	(constraint via_count (min 0) (opt 0) (max 0)))
+
+(rule GND_Planes
+	(condition "A.Layer == 'In1.Cu' || A.Layer == 'In4.Cu'")
+	(constraint disallow track))
+
+(rule "Allow connector silk to intersect board edge"
+    (constraint silk_clearance)
+    (severity ignore)
+    (condition "A.memberOfFootprint('J*') && B.Layer=='Edge.Cuts'"))
+
+(rule "Distance between test points"
+    (constraint courtyard_clearance (min 0.5mm))
+    (condition "A.Reference =='TP*' && B.Reference == 'TP*"))
+
+(rule "Through Hole Pad to Plane Clearence"
+    (condition "A.Pad_Type == 'Through-hole' && B.Type == 'Zone'")
+	(constraint clearance (min 0.5mm)))
+
+(rule "FE_100Z_Diff to GND Plane Clearence"
+    (condition "A.hasNetclass('FE_100Z_Diff') && A.Type == 'Track' && B.Type == 'Zone' && B.NetName == 'GND'")
+    (constraint clearance (min 0.4mm)))
+
+(rule "LVDS_ADC_CLK to GND Plane Clearence"
+    (condition "A.hasNetclass('LVDS_ADC_CLK') && A.Type == 'Track' && B.Type == 'Zone' && B.NetName == 'GND'")
+    (constraint clearance (min 0.4mm)))
+
+(rule "FE_50Z_INPUT to GND Plane Clearence"
+    (condition "A.hasNetclass('FE_50Z_INPUT') && A.Type == 'Track' && B.Type == 'Zone' && B.NetName == 'GND'")
+    (constraint clearance (min 0.5mm)))
+
+(rule "LVDS_USRIO to GND Plane Clearence"
+    (condition "A.hasNetclass('LVDS_USRIO') && A.Type == 'Track' && B.Type == 'Zone' && B.NetName == 'GND'")
+    (constraint clearance (min 0.4mm)))
+
+(rule "50Z to GND Plane Clearence"
+    (condition "A.hasNetclass('50Z') && A.Type == 'Track' && B.Type == 'Zone' && B.NetName == 'GND'")
+    (constraint clearance (min 0.4mm)))
+
+(rule "PCIe to GND Plane Clearence"
+    (condition "A.hasNetclass('PCIe') && A.Type == 'Track' && B.Type == 'Zone' && B.NetName == 'GND'")
+    (constraint clearance (min 0.4mm)))
+
+(rule "LVDS_SYNC to GND Plane Clearence"
+    (condition "A.hasNetclass('LVDS_SYNC') && A.Type == 'Track' && B.Type == 'Zone' && B.NetName == 'GND'")
+    (constraint clearance (min 0.4mm)))
+
+(rule "/CH1/BNC_IN length"
+	(condition "A.NetName == '/CH1/BNC_IN'")
+	(constraint length (min 9.011649415608034mm) (opt 9.191457506750472mm) (max 9.371265597892911mm)))
+(rule "/CH2/BNC_IN length"
+	(condition "A.NetName == '/CH2/BNC_IN'")
+	(constraint length (min 9.011649415608035mm) (opt 9.191457506750474mm) (max 9.371265597892913mm)))
+(rule "/CH3/BNC_IN length"
+	(condition "A.NetName == '/CH3/BNC_IN'")
+	(constraint length (min 9.011649415608035mm) (opt 9.191457506750474mm) (max 9.371265597892913mm)))
+(rule "/CH4/BNC_IN length"
+	(condition "A.NetName == '/CH4/BNC_IN'")
+	(constraint length (min 9.011649415608035mm) (opt 9.191457506750474mm) (max 9.371265597892913mm)))
+
+# DELAY TUNER RULES
