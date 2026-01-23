@@ -1,0 +1,403 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="search" title="Search" href="../search.html" /><link rel="next" title="Purchasing Hardware" href="../Purchasing-Hardware.html" /><link rel="prev" title="Theory of Operation" href="index.html" />
+        <link rel="canonical" href="https://eevengers.com/docs/thunderscope/latest/Theory-of-Operation/Calibration.html" />
+
+    <!-- Generated with Sphinx 7.1.2 and Furo 2023.09.10 -->
+        <title>Calibration - ThunderScope</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=5f2c338f" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/tabs.css?v=4c969af8" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=36a5483c" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/fontawesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/solid.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/brands.min.css" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">ThunderScope</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
+  
+  
+  <span class="sidebar-brand-text">ThunderScope</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Hardware-Revisions.html">Hardware Revisions</a></li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">Theory of Operation</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Theory of Operation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Calibration</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Purchasing-Hardware.html">Purchasing Hardware</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Building-Hardware/index.html">Building Hardware</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Building Hardware</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Building-Hardware/Mainboard-Assembly.html">Mainboard Assembly</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Building-Hardware/Testing-and-Calibration.html">Testing and Calibration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Building-Hardware/TS-USB4-Box-Build.html">TS-USB4 Box Build</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Building-Hardware/TS-PCIe-Box-Build.html">TS-PCIe Box Build</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Building-Hardware/Changing-Variants.html">Changing Variants</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Getting-Started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Using-ThunderScope.html">Using ThunderScope</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="edit-this-page">
+  <a class="muted-link" href="https://github.com/EEVengers/ThunderScope/edit/master/docs/manual/src/Theory-of-Operation/Calibration.rst" title="Edit this page">
+    <svg aria-hidden="true" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <path d="M4 20h4l10.5 -10.5a1.5 1.5 0 0 0 -4 -4l-10.5 10.5v4" />
+      <line x1="13.5" y1="6.5" x2="17.5" y2="10.5" />
+    </svg>
+    <span class="visually-hidden">Edit this page</span>
+  </a>
+</div><div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          <section id="calibration">
+<span id="id1"></span><h1>Calibration<a class="headerlink" href="#calibration" title="Permalink to this heading">#</a></h1>
+<p>All of the components in the signal chain have non-ideal properties.
+Calibration aims to compensate for these non-ideal properties
+so that the signal shown to the user is as close as possible to the signal at the input.
+Calibration can involve physically changing the signal chain or changing the interpretation of it’s output.
+The types of calibration relevant to ThunderScope are discussed in the sections below in the order they are performed.</p>
+<section id="buffer-low-frequency-response">
+<h2>1. Buffer Low Frequency Response<a class="headerlink" href="#buffer-low-frequency-response" title="Permalink to this heading">#</a></h2>
+<p>The ThunderScope front-end uses a BUF802 in composite loop mode as an input buffer.
+Composite loop mode splits the input signal into a low frequency path which is handled by the OPA140 opamp,
+and a high frequency path which goes to the BUF802 input.
+The frequency range covered by both parts is called the crossover region.</p>
+<img alt="TODO" class="align-center" src="../_images/BUF802_CL_Response.webp" />
+<p>The gain applied to the high frequency path by the BUF802 can vary and is slightly less than 1x (0dB),
+as described in the datasheet excerpt below:</p>
+<img alt="TODO" src="../_images/BUF802_Gain.webp" />
+<p>The crossover region is governed primarily by C1035, connected across the opamp.
+This cap has a fixed value in this design, which was determined to provide good crossover flatness.</p>
+<img alt="TODO" src="../_images/BUF802_Crossover_Cap.webp" />
+<p>In order to make the overall response flat, the gain applied to the low frequency path by the opamp
+must be adjusted to match that of the gain applied to the high frequency path by the BUF802.
+This is done using the R1049 trimpot.</p>
+<a class="reference internal image-reference" href="../_images/BUF802_Trimpot.webp"><img alt="TODO" src="../_images/BUF802_Trimpot.webp" style="width: 49%;" /></a>
+<a class="reference internal image-reference" href="../_images/BUF802_Trimpot_PCB.webp"><img alt="TODO" src="../_images/BUF802_Trimpot_PCB.webp" style="width: 49%;" /></a>
+<p>The procedure for calibrating the buffer low frequency response is as follows:</p>
+<ol class="arabic simple">
+<li><p>In 50 Ohm mode, measure the peak to peak value of a 500mVpp 10 MHz sine input at the 800mV range setting</p></li>
+<li><p>With a 500mVpp 100 Hz sine input at the 800mV range setting,
+tweak the trimpot until the unit measures the same value as the step above</p></li>
+</ol>
+<p>An alternate procedure for calibrating the buffer low frequency response is as follows:</p>
+<ol class="arabic simple">
+<li><p>In 50 Ohm mode, measure a 500mVpp 100 Hz square input at the 800mV range setting</p></li>
+<li><p>Tweak the trimpot until the square wave is square</p></li>
+</ol>
+<div class="admonition-todo admonition" id="id2">
+<p class="admonition-title">Todo</p>
+<p>Add image showing adjustment</p>
+</div>
+</section>
+<section id="attenuator-high-frequency-response">
+<h2>2. Attenuator High Frequency Response<a class="headerlink" href="#attenuator-high-frequency-response" title="Permalink to this heading">#</a></h2>
+<p>ThunderScope uses a compensated attenuator in order to sample signals above the ADC input range.
+A compensated attenuator consists of a resistive divider in parallel with a capacitive divider.
+This is the same principle used in standard 10x oscilloscope probes.</p>
+<img alt="TODO" src="../_images/Rev5_Atten.webp" />
+<p>A resistive divider alone will always have some parasitic capacitance that dominates the response at higher frequencies,
+so the capacitive divider is added in parallel to “drown out” the parasitics
+and make sure the attenuation holds constant at higher frequencies.</p>
+<a class="reference internal image-reference" href="../_images/Atten_R_Parasitics.webp"><img alt="TODO" src="../_images/Atten_R_Parasitics.webp" style="width: 49%;" /></a>
+<a class="reference internal image-reference" href="../_images/Atten_Compensated.webp"><img alt="TODO" src="../_images/Atten_Compensated.webp" style="width: 49%;" /></a>
+<p>At very high frequencies, another parasitic effect comes into play.
+The equivalent series resistance and inductance of the larger lower leg capacitor,
+combined with the inductance in the return path, creates a RLC circuit, causing a resonant dip in the response.
+This dip is inevitable, as long as there is inductance in the circuit. ThunderScope splits the capacitive divider
+into two in order to use smaller capacitors, pushing this dip outside of the front end bandwidth.</p>
+<a class="reference internal image-reference" href="../_images/Atten_C_Parasitics.webp"><img alt="TODO" src="../_images/Atten_C_Parasitics.webp" style="width: 49%;" /></a>
+<a class="reference internal image-reference" href="../_images/Rev5_Atten_Sim.webp"><img alt="TODO" src="../_images/Rev5_Atten_Sim.webp" style="width: 49%;" /></a>
+<p>As with every aspect of this design that requires calibration, there is some uncertainty in this circuit.
+The input capacitance of the BUF802 (Cbuf) can vary slightly, in about a 1pF range. Since the capacitive dividers
+use smaller values than previous revisions this variation can significantly impact the frequency response.
+Therefore, a trimcap (C1059) was added to calibrate the capacitive attenuation factor
+to match the resistive attenuation factor.</p>
+<a class="reference internal image-reference" href="../_images/Rev5_Atten_Annotated.webp"><img alt="TODO" src="../_images/Rev5_Atten_Annotated.webp" style="width: 49%;" /></a>
+<a class="reference internal image-reference" href="../_images/Trimcap.webp"><img alt="TODO" src="../_images/Trimcap.webp" style="width: 49%;" /></a>
+<p>The procedure for calibrating the attenuator high frequency response is as follows:</p>
+<ol class="arabic simple">
+<li><p>In 50 Ohm mode, measure the peak to peak value of a 5Vpp 100 Hz sine input at the 10V range setting</p></li>
+<li><p>With a 5Vpp 10 MHz sine input at the 10V range setting,
+tweak the trimcap until the unit measures the same value as the step above</p></li>
+</ol>
+<p>An alternate procedure for calibrating the attenuator high frequency is as follows:</p>
+<ol class="arabic simple">
+<li><p>In 50 Ohm mode, measure a 5Vpp 100 Hz square input at the 10V range setting</p></li>
+<li><p>Tweak the trimcap until the square wave is square</p></li>
+</ol>
+<div class="admonition-todo admonition" id="id3">
+<p class="admonition-title">Todo</p>
+<p>Add image showing adjustment</p>
+</div>
+</section>
+<section id="passband-gains">
+<h2>3. Passband Gains<a class="headerlink" href="#passband-gains" title="Permalink to this heading">#</a></h2>
+<div class="admonition-todo admonition" id="id4">
+<p class="admonition-title">Todo</p>
+<p>Write this section</p>
+</div>
+</section>
+<section id="dc-offsets">
+<h2>4. DC Offsets<a class="headerlink" href="#dc-offsets" title="Permalink to this heading">#</a></h2>
+<div class="admonition-todo admonition" id="id5">
+<p class="admonition-title">Todo</p>
+<p>Write this section</p>
+</div>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="../Purchasing-Hardware.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Purchasing Hardware</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="index.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Theory of Operation</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2026, EEVengers Inc.
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            <div class="icons">
+              <a class="muted-link fa-brands fa-solid fa-github fa-2x" href="https://github.com/EEVengers/ThunderScope" aria-label="GitHub"></a>
+              
+            </div>
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Calibration</a><ul>
+<li><a class="reference internal" href="#buffer-low-frequency-response">1. Buffer Low Frequency Response</a></li>
+<li><a class="reference internal" href="#attenuator-high-frequency-response">2. Attenuator High Frequency Response</a></li>
+<li><a class="reference internal" href="#passband-gains">3. Passband Gains</a></li>
+<li><a class="reference internal" href="#dc-offsets">4. DC Offsets</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=b3ba4146"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../_static/scripts/furo.js?v=32e29ea5"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=50ba5bf0"></script>
+    <script src="../_static/tabs.js?v=3ee01567"></script>
+    </body>
+</html>

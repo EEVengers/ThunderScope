@@ -1,0 +1,600 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="search" title="Search" href="../search.html" /><link rel="next" title="TS-PCIe Box Build" href="TS-PCIe-Box-Build.html" /><link rel="prev" title="Testing and Calibration" href="Testing-and-Calibration.html" />
+        <link rel="canonical" href="https://eevengers.com/docs/thunderscope/latest/Building-Hardware/TS-USB4-Box-Build.html" />
+
+    <!-- Generated with Sphinx 7.1.2 and Furo 2023.09.10 -->
+        <title>TS-USB4 Box Build - ThunderScope</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=5f2c338f" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/tabs.css?v=4c969af8" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=36a5483c" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/fontawesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/solid.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/brands.min.css" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">ThunderScope</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
+  
+  
+  <span class="sidebar-brand-text">ThunderScope</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Hardware-Revisions.html">Hardware Revisions</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Theory-of-Operation/index.html">Theory of Operation</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Theory of Operation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Theory-of-Operation/Calibration.html">Calibration</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Purchasing-Hardware.html">Purchasing Hardware</a></li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">Building Hardware</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Building Hardware</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Mainboard-Assembly.html">Mainboard Assembly</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Testing-and-Calibration.html">Testing and Calibration</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">TS-USB4 Box Build</a></li>
+<li class="toctree-l2"><a class="reference internal" href="TS-PCIe-Box-Build.html">TS-PCIe Box Build</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Changing-Variants.html">Changing Variants</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Getting-Started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Using-ThunderScope.html">Using ThunderScope</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="edit-this-page">
+  <a class="muted-link" href="https://github.com/EEVengers/ThunderScope/edit/master/docs/manual/src/Building-Hardware/TS-USB4-Box-Build.rst" title="Edit this page">
+    <svg aria-hidden="true" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <path d="M4 20h4l10.5 -10.5a1.5 1.5 0 0 0 -4 -4l-10.5 10.5v4" />
+      <line x1="13.5" y1="6.5" x2="17.5" y2="10.5" />
+    </svg>
+    <span class="visually-hidden">Edit this page</span>
+  </a>
+</div><div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          <section id="ts-usb4-box-build">
+<h1>TS-USB4 Box Build<a class="headerlink" href="#ts-usb4-box-build" title="Permalink to this heading">#</a></h1>
+<p>This guide assumes you have a tested and calibrated TS-USB4 variant mainboard, as shown below:</p>
+<a class="reference internal image-reference" href="../_images/TS-USB4-PCBA-Front.webp"><img alt="Front side of an assembled TS-USB4 mainboard" src="../_images/TS-USB4-PCBA-Front.webp" style="width: 49%;" /></a>
+<a class="reference internal image-reference" href="../_images/TS-USB4-PCBA-Back.webp"><img alt="Back side of an assembled TS-USB4 mainboard" src="../_images/TS-USB4-PCBA-Back.webp" style="width: 49%;" /></a>
+<p>If you do not have a tested and calibrated TS-USB4 mainboard, check out the <a class="reference internal" href="Mainboard-Assembly.html#mainboard-assembly"><span class="std std-ref">Mainboard Assembly Guide</span></a>
+and then the <a class="reference internal" href="Testing-and-Calibration.html#testing-and-calibration"><span class="std std-ref">Testing and Calibration Guide</span></a>.</p>
+<p>If you wish to convert your existing TS-PCIe variant PCBA, use the <a class="reference internal" href="Changing-Variants.html#changing-variants"><span class="std std-ref">Changing Variants Guide</span></a>.</p>
+<section id="step-1-source-a-usb4-tbt-adaptor">
+<h2>Step 1: Source a USB4/TBT Adaptor<a class="headerlink" href="#step-1-source-a-usb4-tbt-adaptor" title="Permalink to this heading">#</a></h2>
+<p>The USB4 variant of ThunderScope is designed to work with any M.2 NVME adaptor that:</p>
+<ol class="arabic simple">
+<li><p>Provides 4-lane PCIe tunneling to the host</p></li>
+<li><p>Can be modified to output the USB voltage (VUSB) on the M.2 3V3 rail.</p></li>
+</ol>
+<p>The following is a table of chipsets that support 4-lane PCIe tunneling:</p>
+<div class="table-wrapper colwidths-given docutils container" id="id2">
+<table class="docutils align-default" id="id2">
+<caption><span class="caption-text">Chipsets with 4-lane PCIe tunneling support</span><a class="headerlink" href="#id2" title="Permalink to this table">#</a></caption>
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 25.0%" />
+<col style="width: 50.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Vendor</p></th>
+<th class="head"><p>Part Number</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>ASMedia</p></td>
+<td><p>ASM2464PD</p></td>
+<td><p>USB4, Poor support for older TBT3 hosts</p></td>
+</tr>
+<tr class="row-odd"><td><p>ASMedia</p></td>
+<td><p>ASM2464PDX</p></td>
+<td><p>Similar to above but has an internal PCIe switch</p></td>
+</tr>
+<tr class="row-even"><td><p>Intel</p></td>
+<td><p>JHL9480</p></td>
+<td><p>TBT5</p></td>
+</tr>
+<tr class="row-odd"><td><p>Intel</p></td>
+<td><p>JHL9440</p></td>
+<td><p>TBT4 only version of above</p></td>
+</tr>
+<tr class="row-even"><td><p>Intel</p></td>
+<td><p>JHL7440</p></td>
+<td><p>TBT4</p></td>
+</tr>
+<tr class="row-odd"><td><p>Intel</p></td>
+<td><p>JHL6x40</p></td>
+<td><p>TBT3</p></td>
+</tr>
+<tr class="row-even"><td><p>Intel</p></td>
+<td><p>DSL6x40</p></td>
+<td><p>TBT3</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Your adaptor must use one of these to work with TS-USB4.</p>
+</div>
+<p>As designs with these chipsets may vary, this guide will not go in depth on determining if specific adaptors
+can be modified to output VUSB on the M.2 3V3 rail. Instead, a table of adaptors that are known
+to be modifiable to work with TS-USB4 is provided below:</p>
+<div class="table-wrapper colwidths-given docutils container" id="id3">
+<span id="adaptor-table"></span><span id="adaptor-table"></span><table class="docutils align-default" id="id3">
+<caption><span class="caption-text">Adaptor boards known to work with TS-USB4</span><a class="headerlink" href="#id3" title="Permalink to this table">#</a></caption>
+<colgroup>
+<col style="width: 10.0%" />
+<col style="width: 50.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Vendor</p></th>
+<th class="head"><p>Notes</p></th>
+<th class="head"><p>Photo</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference external" href="https://www.alibaba.com/product-detail/MAC-Compatible-Thunderbolt-3-Type-C_62255630952.html">JoneyTech</a></p></td>
+<td><p>The black board shown in the listing, link only for documentation as they currently sell their JHL7440 solution
+from the same link, which may not work with the step below!</p></td>
+<td><img alt="JoneyTech TBT3 to NVME adaptor, uses JHL6540 chipset on a black PCB" src="../_images/JoneyTech-Adaptor.webp" />
+</td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://www.alibaba.com/product-detail/IOCREST-Certified-SSD-Enclosure-Thunderbolt-3_62400127925.html">IOCrest</a></p></td>
+<td><p>You can ask them to sell you only the PCBA</p></td>
+<td><img alt="IOCrest TBT3 to NVME adaptor, uses JHL6540 chipset on a green PCB" src="../_images/IOCrest-Adaptor.webp" />
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="step-2-modify-the-usb4-tbt-adaptor">
+<h2>Step 2: Modify the USB4/TBT Adaptor<a class="headerlink" href="#step-2-modify-the-usb4-tbt-adaptor" title="Permalink to this heading">#</a></h2>
+<div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--0-input--1" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--1">JoneyTech</label><div class="tab-content docutils">
+<p>Below is a photo of the JoneyTech adaptor, with components of interest annotated.</p>
+<img alt="JoneyTech TBT3 to NVME adaptor. It is annotated as described below." src="../_images/JoneyTech-Adaptor-Annotated.webp" />
+<p>The procedure for this modification is as follows:</p>
+<ol class="arabic simple">
+<li><p>Remove the ferrite bead (1) from the board. This will disconnect 3V3 from the M.2 connector.</p></li>
+<li><p>Solder one end of a wire to the (-) terminal of the VUSB current shunt (2).
+The (-) terminal is the terminal with the lower voltage during operation.
+We solder to this terminal so that our current draw can still be monitored by the PD controller.</p></li>
+<li><p>Solder the other end of the wire to the (+) terminal of the M.2 bulk capacitor (3).
+This will connect the USB voltage (VUSB) to the 3V3 pins of the M.2 connector.</p></li>
+</ol>
+<p>Once completed, your adaptor should look like the following photo:</p>
+<img alt="JoneyTech TBT3 to NVME adaptor. It is modified according to the instructions above." src="../_images/JoneyTech-Adaptor-Modified.webp" />
+</div>
+<input class="tab-input" id="tab-set--0-input--2" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--2">IOCrest</label><div class="tab-content docutils">
+<p>Below is a photo of the IOCrest adaptor, with components of interest annotated:</p>
+<img alt="IOCrest TBT3 to NVME adaptor. It is annotated as described below." src="../_images/IOCrest-Adaptor-Annotated.webp" />
+<p>The procedure for this modification is as follows:</p>
+<ol class="arabic simple">
+<li><p>Remove the ferrite bead (1) from the board. This will disconnect 3V3 from the M.2 connector.</p></li>
+<li><p>Solder one end of a wire to the (-) terminal of the VUSB current shunt (2).
+The (-) terminal is the terminal with the lower voltage during operation.
+We solder to this terminal so that our current draw can still be monitored by the PD controller.</p></li>
+<li><p>Solder the other end of the wire to the (+) terminal of the M.2 bulk capacitor (3).
+This will connect the USB voltage (VUSB) to the 3V3 pins of the M.2 connector.</p></li>
+</ol>
+<p>Once completed, your adaptor should look like the following photo:</p>
+<img alt="IOCrest TBT3 to NVME adaptor. It is modified according to the instructions above." src="../_images/IOCrest-Adaptor-Modified.webp" />
+</div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This modification violates the M.2 specification, do not use this modified adaptor with anything other than
+a TS-USB4 without reverting the modification. Failure to do so will result in damage to the device it is used with.</p>
+</div>
+</section>
+<section id="step-3-design-and-or-source-an-interposer">
+<h2>Step 3: Design and/or Source an Interposer<a class="headerlink" href="#step-3-design-and-or-source-an-interposer" title="Permalink to this heading">#</a></h2>
+<p>The TS-USB4 mainboard is designed with a custom pinout M.2 connector in a fixed location on the board,
+while adaptors have variable dimensions between their USB connector and their M.2 connector.</p>
+<p>The connection between the adaptor and the mainboard has two requirements:</p>
+<ul class="simple">
+<li><p>The PCIe signals need to be connected from the adaptor M.2 connector to the mainboard M.2 connector</p></li>
+<li><p>The adaptor’s USB-C port needs to be centered along the edge of the mainboard.</p></li>
+</ul>
+<p>An interposer board is used to accomplish these goals in a way where no changes are needed on the mainboard,
+essentially “soaking up” any changes in adaptor dimensions.
+Therefore, a new interposer will need to be designed in order to use a new adaptor.</p>
+<p>If you are using one of the adaptors from the <a class="reference internal" href="#adaptor-table"><span class="std std-ref">table above</span></a>,
+the associated interposer design is available from the <a class="reference external" href="https://github.com/EEVengers/ThunderScope/tree/master/Hardware/KiCad">ThunderScope repo</a>.
+These must be made on a 4-layer process with 0.8mm thick PCB and impedence control.</p>
+<p>When designing an interposer, the board outline must match that of the mainboard
+and include three mounting holes that match up with standoffs on the mainboard,
+as well as clearance holes for the heatsink. Cutouts around the M.2 edge connectors must be added to fit the M.2 connector,
+with space to slide the M.2 edge connector into the M.2 connector on the mainboard/adaptor.
+It is helpful to label the mounting holes with assembly order and label which side of the board faces the adaptor/mainboard.
+The <a class="reference external" href="https://github.com/EEVengers/ThunderScope/tree/master/Hardware/KiCad">existing interposer boards</a> can be used as a reference for new designs.</p>
+</section>
+<section id="step-4-install-the-adaptor-on-the-interposer">
+<h2>Step 4: Install the Adaptor on the Interposer<a class="headerlink" href="#step-4-install-the-adaptor-on-the-interposer" title="Permalink to this heading">#</a></h2>
+<p>Place the adaptor into the rightmost M.2 slot, aligning it with the edge connector and slotting it in at an angle.
+Flip the board over and screw the adaptor in through interposer mounting hole (1).</p>
+<a class="reference internal image-reference" href="../_images/JoneyTech-Interposer-and-Adaptor.webp"><img alt="Front side of a JoneyTech Interposer with adaptor" src="../_images/JoneyTech-Interposer-and-Adaptor.webp" style="width: 45%;" /></a>
+<a class="reference internal image-reference" href="../_images/JoneyTech-Interposer-Adaptor-Install.webp"><img alt="Back side of a JoneyTech Interposer with adaptor installed. A screwdriver is shown with a screw through mounting hole (1)" src="../_images/JoneyTech-Interposer-Adaptor-Install.webp" style="width: 54%;" /></a>
+</section>
+<section id="step-5-install-the-interposer-on-the-mainboard">
+<h2>Step 5: Install the Interposer on the Mainboard<a class="headerlink" href="#step-5-install-the-interposer-on-the-mainboard" title="Permalink to this heading">#</a></h2>
+<p>At this point you should have a mainboard and an interposer with the adaptor installed.</p>
+<img alt="A TS-USB4 variant mainboard (left) and a JoneyTech interposer with adaptor installed." src="../_images/JoneyTech-Interposer-and-Mainboard.webp" />
+<p>Align the remaining interposer M.2 edge connector into the mainboard M.2 connector, slotting it in at an angle.
+Screw the interposer into the mainboard through interposer mounting holes (2-4).</p>
+<a class="reference internal image-reference" href="../_images/JoneyTech-Interposer-Mainboard-Install.webp"><img alt="TODO" src="../_images/JoneyTech-Interposer-Mainboard-Install.webp" style="width: 49%;" /></a>
+<a class="reference internal image-reference" href="../_images/JoneyTech-Interposer-Mainboard-Installed.webp"><img alt="TODO" src="../_images/JoneyTech-Interposer-Mainboard-Installed.webp" style="width: 49%;" /></a>
+</section>
+<section id="step-6-assemble-the-front-endcap">
+<h2>Step 6: Assemble the Front Endcap<a class="headerlink" href="#step-6-assemble-the-front-endcap" title="Permalink to this heading">#</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The front endcap is a 2-layer 1.6mm thick PCB, design files for it can be found in the <a class="reference external" href="https://github.com/EEVengers/ThunderScope/tree/master/Hardware/KiCad/TS_Front_Endcap">ThunderScope repo</a>.
+In order to solder the probe compensation terminals (Keystone Electronics 1046) with proper alignment, a 3d printed jig is used.
+The STL file for the jig can be found in the <a class="reference external" href="https://github.com/EEVengers/ThunderScope/tree/master/Hardware/Mechanical">ThunderScope repo</a>.</p>
+</div>
+<p>Place the jig with the rectangular slots on the right side. Load a terminal into each slot, with the round pins facing up.</p>
+<a class="reference internal image-reference" href="../_images/Back-Endcap-Assembly-1.webp"><img alt="TODO" src="../_images/Back-Endcap-Assembly-1.webp" style="width: 49%;" /></a>
+<a class="reference internal image-reference" href="../_images/Back-Endcap-Assembly-2.webp"><img alt="TODO" src="../_images/Back-Endcap-Assembly-2.webp" style="width: 49%;" /></a>
+<p>Place the endcap onto the jig with channel numbers facing down, making sure the terminal pins go through the two through-holes on the right side of the PCB. Solder the pins to the PCB and remove the endcap from the jig.</p>
+<a class="reference internal image-reference" href="../_images/Back-Endcap-Assembly-3.webp"><img alt="TODO" src="../_images/Back-Endcap-Assembly-3.webp" style="width: 49%;" /></a>
+<a class="reference internal image-reference" href="../_images/Back-Endcap-Assembly-4.webp"><img alt="TODO" src="../_images/Back-Endcap-Assembly-4.webp" style="width: 49%;" /></a>
+</section>
+<section id="step-7-install-the-front-endcap">
+<h2>Step 7: Install the Front Endcap<a class="headerlink" href="#step-7-install-the-front-endcap" title="Permalink to this heading">#</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The extruded aluminium enclosure used for TS-USB4 is the Hammond Manufacturing 1455L1201BK.
+If bought individually from distributors this part number includes the extrusion,
+belly plate, screws, plastic bezels and a metal endcap.
+The plastic bezels can be used in place of the silicone bezels shown in the step below.</p>
+</div>
+<p>With the belly plate of the extrusion
+(the belly plate is the metal part that slides into the bottommost slot of the extrusion, by the screws)
+facing towards you, place a bezel on one side of the extrusion.
+For silicone bezels, choose the side with less flash (the extra material around the seam in the part) to face away from you.</p>
+<a class="reference internal image-reference" href="../_images/Extrusion-Front.webp"><img alt="TODO" src="../_images/Extrusion-Front.webp" style="width: 49%;" /></a>
+<a class="reference internal image-reference" href="../_images/Extrusion-Front-Bezel.webp"><img alt="TODO" src="../_images/Extrusion-Front-Bezel.webp" style="width: 49%;" /></a>
+<p>Place the assembled front endcap onto the bezel, the text on the endcap should be facing towards you.
+Drive the self-tapping screws into the extrusion through the endcap and bezel.</p>
+<a class="reference internal image-reference" href="../_images/Extrusion-Front-Endcap.webp"><img alt="TODO" src="../_images/Extrusion-Front-Endcap.webp" style="width: 49%;" /></a>
+<a class="reference internal image-reference" href="../_images/Extrusion-Front-Endcap-Installed.webp"><img alt="TODO" src="../_images/Extrusion-Front-Endcap-Installed.webp" style="width: 49%;" /></a>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Do not overtighten the screws if using a silicone bezel. The bezel will bow out if the screw is overtightened,
+as shown on the right side of the photo below:</p>
+<img alt="TODO" src="../_images/Extrusion-Front-Endcap-Overtightened.webp" />
+</div>
+</section>
+<section id="step-8-install-the-boards-in-the-enclosure">
+<h2>Step 8: Install the Boards in the Enclosure<a class="headerlink" href="#step-8-install-the-boards-in-the-enclosure" title="Permalink to this heading">#</a></h2>
+<p>Line the boards up with the 2nd and 3rd board guides from the bottom (not counting the slot for the belly plate)
+as shown below and slide them into the enclosure.</p>
+<a class="reference internal image-reference" href="../_images/Enclosure-Board-Guides.webp"><img alt="TODO" src="../_images/Enclosure-Board-Guides.webp" style="width: 49%;" /></a>
+<a class="reference internal image-reference" href="../_images/Enclosure-Boards-Installed.webp"><img alt="TODO" src="../_images/Enclosure-Boards-Installed.webp" style="width: 49%;" /></a>
+</section>
+<section id="step-9-assemble-the-back-endcap">
+<h2>Step 9: Assemble the Back Endcap<a class="headerlink" href="#step-9-assemble-the-back-endcap" title="Permalink to this heading">#</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The back endcap is a 2-layer 1.6mm thick PCB, design files for it can be found in the <a class="reference external" href="https://github.com/EEVengers/ThunderScope/tree/master/Hardware/KiCad/TS_Back_Endcap">ThunderScope repo</a>.</p>
+</div>
+<p>Using a flush cutter, snip off the L-shaped plastic part next to the fan wires. The fan used is the Same Sky Devices CFM-2010CF-060-066.</p>
+<a class="reference internal image-reference" href="../_images/Fan-Mod-1.webp"><img alt="TODO" src="../_images/Fan-Mod-1.webp" style="width: 49%;" /></a>
+<a class="reference internal image-reference" href="../_images/Fan-Mod-2.webp"><img alt="TODO" src="../_images/Fan-Mod-2.webp" style="width: 49%;" /></a>
+<p>Line up the fan with the three endcap fan mounting holes, the fan wires should be on the top right.
+Drive three self tapping screws (McMaster-Carr PN 95836A103) into the fan through the endcap.</p>
+<a class="reference internal image-reference" href="../_images/Fan-Install-1.webp"><img alt="TODO" src="../_images/Fan-Install-1.webp" style="width: 32.9%;" /></a>
+<a class="reference internal image-reference" href="../_images/Fan-Install-2.webp"><img alt="TODO" src="../_images/Fan-Install-2.webp" style="width: 32.9%;" /></a>
+<a class="reference internal image-reference" href="../_images/Fan-Install-3.webp"><img alt="TODO" src="../_images/Fan-Install-3.webp" style="width: 32.9%;" /></a>
+<p>Using a flush cutter, cut the fan wires to the length of the copper pads and
+strip the remaining length of insulation from the wires.</p>
+<a class="reference internal image-reference" href="../_images/Fan-Install-4.webp"><img alt="TODO" src="../_images/Fan-Install-4.webp" style="width: 24.5%;" /></a>
+<a class="reference internal image-reference" href="../_images/Fan-Install-5.webp"><img alt="TODO" src="../_images/Fan-Install-5.webp" style="width: 24.5%;" /></a>
+<a class="reference internal image-reference" href="../_images/Fan-Install-6.webp"><img alt="TODO" src="../_images/Fan-Install-6.webp" style="width: 24.5%;" /></a>
+<a class="reference internal image-reference" href="../_images/Fan-Install-7.webp"><img alt="TODO" src="../_images/Fan-Install-7.webp" style="width: 24.5%;" /></a>
+<p>Solder the wires to the pads on the endcap.</p>
+<a class="reference internal image-reference" href="../_images/Fan-Install-8.webp"><img alt="TODO" src="../_images/Fan-Install-8.webp" style="width: 49%;" /></a>
+<a class="reference internal image-reference" href="../_images/Fan-Install-9.webp"><img alt="TODO" src="../_images/Fan-Install-9.webp" style="width: 49%;" /></a>
+</section>
+<section id="step-10-install-the-back-endcap">
+<h2>Step 10: Install the Back Endcap<a class="headerlink" href="#step-10-install-the-back-endcap" title="Permalink to this heading">#</a></h2>
+<p>With the belly plate of the extrusion facing towards you, place a bezel on the side of the extrusion opposite the front endcap.
+For silicone bezels, choose the side with less flash (the extra material around the seam in the part) to face away from you.</p>
+<a class="reference internal image-reference" href="../_images/Enclosure-Boards-Installed.webp"><img alt="TODO" src="../_images/Enclosure-Boards-Installed.webp" style="width: 49%;" /></a>
+<a class="reference internal image-reference" href="../_images/Extrusion-Back-Bezel.webp"><img alt="TODO" src="../_images/Extrusion-Back-Bezel.webp" style="width: 49%;" /></a>
+<p>Place the assembled back endcap onto the bezel through the BNC connectors, the text on the endcap should be facing towards you.
+Drive the self-tapping screws into the extrusion through the endcap and bezel,
+then drive an M4 screw through the endcap into the grounding lug.</p>
+<a class="reference internal image-reference" href="../_images/Extrusion-Back-Endcap.webp"><img alt="TODO" src="../_images/Extrusion-Back-Endcap.webp" style="width: 49%;" /></a>
+<a class="reference internal image-reference" href="../_images/Extrusion-Back-Endcap-Installed.webp"><img alt="TODO" src="../_images/Extrusion-Back-Endcap-Installed.webp" style="width: 49%;" /></a>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Do not overtighten the screws if using a silicone bezel. The bezel will bow out if the screw is overtightened,
+as shown on the right side of the photo below:</p>
+<img alt="TODO" src="../_images/Extrusion-Front-Endcap-Overtightened.webp" />
+</div>
+</section>
+<section id="step-11-engrave-the-enclosure">
+<h2>Step 11: Engrave the Enclosure<a class="headerlink" href="#step-11-engrave-the-enclosure" title="Permalink to this heading">#</a></h2>
+<div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<p>This step is optional and the instructions below are for internal use.
+If you wish to replicate this step, do so at your own risk and observe proper laser safety precautions!</p>
+</div>
+<p>Slide the unit into the fixture on the bed of the laser engraver.
+Turn on the air filtration system and put on the laser safety glasses.
+Plug the unit in and run the engraving and end of line script on the engraving station computer.</p>
+<a class="reference internal image-reference" href="../_images/Engraving-1.webp"><img alt="TODO" src="../_images/Engraving-1.webp" style="width: 49%;" /></a>
+<a class="reference internal image-reference" href="../_images/Engraving-2.webp"><img alt="TODO" src="../_images/Engraving-2.webp" style="width: 49%;" /></a>
+<div class="admonition-todo admonition" id="id1">
+<p class="admonition-title">Todo</p>
+<p>Update photos to match text and add info about script once it is made</p>
+</div>
+<p>This completes the box-build for TS-USB4!</p>
+<img alt="TODO" src="../_images/TS-USB4.webp" />
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="TS-PCIe-Box-Build.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">TS-PCIe Box Build</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="Testing-and-Calibration.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Testing and Calibration</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2026, EEVengers Inc.
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            <div class="icons">
+              <a class="muted-link fa-brands fa-solid fa-github fa-2x" href="https://github.com/EEVengers/ThunderScope" aria-label="GitHub"></a>
+              
+            </div>
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">TS-USB4 Box Build</a><ul>
+<li><a class="reference internal" href="#step-1-source-a-usb4-tbt-adaptor">Step 1: Source a USB4/TBT Adaptor</a></li>
+<li><a class="reference internal" href="#step-2-modify-the-usb4-tbt-adaptor">Step 2: Modify the USB4/TBT Adaptor</a></li>
+<li><a class="reference internal" href="#step-3-design-and-or-source-an-interposer">Step 3: Design and/or Source an Interposer</a></li>
+<li><a class="reference internal" href="#step-4-install-the-adaptor-on-the-interposer">Step 4: Install the Adaptor on the Interposer</a></li>
+<li><a class="reference internal" href="#step-5-install-the-interposer-on-the-mainboard">Step 5: Install the Interposer on the Mainboard</a></li>
+<li><a class="reference internal" href="#step-6-assemble-the-front-endcap">Step 6: Assemble the Front Endcap</a></li>
+<li><a class="reference internal" href="#step-7-install-the-front-endcap">Step 7: Install the Front Endcap</a></li>
+<li><a class="reference internal" href="#step-8-install-the-boards-in-the-enclosure">Step 8: Install the Boards in the Enclosure</a></li>
+<li><a class="reference internal" href="#step-9-assemble-the-back-endcap">Step 9: Assemble the Back Endcap</a></li>
+<li><a class="reference internal" href="#step-10-install-the-back-endcap">Step 10: Install the Back Endcap</a></li>
+<li><a class="reference internal" href="#step-11-engrave-the-enclosure">Step 11: Engrave the Enclosure</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=b3ba4146"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="../_static/scripts/furo.js?v=32e29ea5"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=50ba5bf0"></script>
+    <script src="../_static/tabs.js?v=3ee01567"></script>
+    </body>
+</html>
