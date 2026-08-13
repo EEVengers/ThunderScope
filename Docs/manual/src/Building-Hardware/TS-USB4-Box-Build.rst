@@ -276,7 +276,7 @@ Step 9: Assemble the Back Endcap
 .. note::
   The back endcap is a 2-layer 1.6mm thick PCB, design files for it can be found in the `ThunderScope repo <ts_back_endcap_repo_>`__. 
 
-.. _ts_back_endcap_repo: https://github.com/EEVengers/ThunderScope/tree/master/Hardware/KiCad/TS_Back_Endcap
+.. _ts_back_endcap_repo: https://github.com/EEVengers/ThunderScope/tree/master/Hardware/TS_Back_Endcap
 
 Using a flush cutter, snip off the L-shaped plastic part next to the fan wires. The fan used is the Same Sky Devices CFM-2010CF-060-066.
 
