@@ -158,7 +158,7 @@ with space to slide the M.2 edge connector into the M.2 connector on the mainboa
 It is helpful to label the mounting holes with assembly order and label which side of the board faces the adaptor/mainboard. 
 The `existing interposer boards <ts_hardware_repo_>`__ can be used as a reference for new designs.
 
-.. _ts_hardware_repo: https://github.com/EEVengers/ThunderScope/tree/master/Hardware/KiCad
+.. _ts_hardware_repo: https://github.com/EEVengers/ThunderScope/tree/master/Hardware
 
 Step 4: Install the Adaptor on the Interposer
 ---------------------------------------------
@@ -196,11 +196,9 @@ Step 6: Assemble the Front Endcap
 ---------------------------------
 .. note::
   The front endcap is a 2-layer 1.6mm thick PCB, design files for it can be found in the `ThunderScope repo <ts_front_endcap_repo_>`__. 
-  In order to solder the probe compensation terminals (Keystone Electronics 1046) with proper alignment, a 3d printed jig is used. 
-  The STL file for the jig can be found in the `ThunderScope repo <ts_mechanical_repo_>`__.
+  In order to solder the probe compensation terminals (Keystone Electronics 1046) with proper alignment, a 3d printed jig is used.
 
-.. _ts_front_endcap_repo: https://github.com/EEVengers/ThunderScope/tree/master/Hardware/KiCad/TS_Front_Endcap
-.. _ts_mechanical_repo: https://github.com/EEVengers/ThunderScope/tree/master/Hardware/Mechanical
+.. _ts_front_endcap_repo: https://github.com/EEVengers/ThunderScope/tree/master/Hardware/TS_Front_Endcap
 
 Place the jig with the rectangular slots on the right side. Load a terminal into each slot, with the round pins facing up.
 
