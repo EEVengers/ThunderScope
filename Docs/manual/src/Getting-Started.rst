@@ -5,63 +5,108 @@ Getting Started
 
 Follow the instructions below to download and install the driver and software required to use ThunderScope.
 
-.. tab:: Linux
+.. tab:: Ubuntu
 
-    .. todo::
+    Install the dependances
 
-    This section needs to be written.
+    .. code::
+
+        $ sudo apt install build-essential git cmake pkgconf libgtkmm-3.0-dev \
+        libcairomm-1.0-dev libsigc++-2.0-dev libyaml-cpp-dev catch2 libglfw3-dev curl \
+        xzip libhidapi-dev libvulkan-dev glslang-dev glslang-tools spirv-tools glslc
+
+    Install .NET 10 SDK by following their `install instructions <https://dotnet.microsoft.com/en-us/download/dotnet/10.0>`_     
+    
+    Clone the ThunderScope repo and navigate to the Software directory
+
+    .. code::
+
+        git clone --depth 1 https://github.com/EEVengers/ThunderScope.git
+        cd ThunderScope/Software
 
 .. tab:: Windows
 
-    Run powershell as administrator and install git if needed:
+    Run a powershell prompt and install git if needed:
 
     .. code::
 
         $ winget install --id Git.Git --source winget
     
-    Clone the ThunderScope repo in the directory where you wish to install the software. 
-    For example, here it is installed in the root of the user directory.
+    Clone the ThunderScope repo and then navigate to the Software directory.
 
     .. code::
 
-        $ cd $env:USERPROFILE
-        $ git clone https://github.com/EEVengers/ThunderScope.git
+        $ git clone --depth 1 https://github.com/EEVengers/ThunderScope.git
+        $ cd ThunderScope\Software\
+
+.. tab:: macOS
     
-    Navigate to the Software folder and run the install script
+    .. todo::
+
+    This section needs to be written.
+
+Driver Install
+--------------
+
+.. tab:: Ubuntu
+    
+    Check if secure boot is enabled
 
     .. code::
 
-        $ cd .\ThunderScope\Software\
-        $ powershell -ExecutionPolicy Bypass -File "TS_Win_Install.ps1"
-    
-    When the script is finished executing, restart your computer. 
-    You will be prompted to install the driver when you log in after the reboot.
-    Select "Install this driver software anyway". 
+        $ mokutil --sb-state
+
+    If the command returns "SecureBoot enabled", you can either disable secure boot in your BIOS settings and proceed, or run the following commands to generate an MOK key so that DKMS can sign the driver for you.
+
+    .. code::
+        
+        $ sudo update-secureboot-policy --new-key
+        $ sudo update-secureboot-policy --enroll-key
+
+    Reboot your computer. At boot you'll see the MOK Manager EFI interface. Hit any key to enter the menu, select "Enroll MOK", "Continue", then "Yes". After this, enter the password you set in the previous step and then select the "Reboot" option to complete the MOK key install.
+
+    Pull the driver repo and install it with DKMS, then install the udev rules file
+
+    .. code::
+
+        git clone https://github.com/EEVengers/ts_litex_driver_linux.git
+        cd ts_litex_driver_linux
+        sudo make dkms
+        sudo make udev-install
+
+
+.. tab:: Windows
 
     .. todo::
 
-        Add screencapture of driver install prompt
+    This section needs to be written.
+
+.. tab:: macOS
     
-    With ThunderScope connected, run ThunderScope.bat in the Software folder of the install directory.
-    This should launch a terminal running the triggering software and an ngscopeclient window.
+    .. todo::
 
-    .. image:: ./_images/ts-launch-script-win.webp
-        :alt: The result of running the launch script, as described above
+    This section needs to be written.
 
-    In the ngscopeclient window, select Add->Oscilliscope->ThunderScope
+Software install
+----------------
 
-    .. image:: ./_images/ng-add-ts.webp
-        :alt: Adding ThunderScope in ngscopeclient through the Add->Oscilliscope menu 
-
-    Once ThunderScope is added, you will see a blank waveform view
-
-    .. image:: ./_images/ng-ts-added.webp
-        :alt: ngscopeclient waveform view with no waveform displayed
+.. tab:: Ubuntu
     
-    Click on the play button on the top left side of the window to start triggering and display a waveform
+    Run the install scripts
+    
+    .. code::
 
-    .. image:: ./_images/ng-ts-added-running.webp
-        :alt: ngscopeclient waveform view with a waveform displayed
+        $ ./build_libtslitex.sh
+        $ ./build_ts_net.sh
+        $ ./build_ngscopeclient.sh
+
+    
+
+.. tab:: Windows
+
+    .. todo::
+
+    This section needs to be written.
 
 .. tab:: macOS
     
