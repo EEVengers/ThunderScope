@@ -92,15 +92,18 @@ Software install
 
 .. tab:: Ubuntu
     
-    Run the install scripts
+    Run the install script, using the build argument if you wish to build from source
     
     .. code::
 
-        $ ./build_libtslitex.sh
-        $ ./build_ts_net.sh
-        $ ./build_ngscopeclient.sh
+        $ ./install_ts_software.sh # pulls binary releases
+        $ ./install_ts_software.sh build # builds from source   
+ 
+    This should create a launcher script in the directory, this will open an ngscopeclient session that is pre-connected to the TS.NET.Engine triggering software and ready to make masurements.
 
-    
+    .. code::
+
+        $ ./ThunderScope.sh    
 
 .. tab:: Windows
 
