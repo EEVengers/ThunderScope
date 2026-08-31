@@ -65,20 +65,7 @@ rm TS.NET.Testbench.UI-linux-x64-v0.1.0.zip
 cp libtslitex/libtslitex/libtslitex.so TS.NET.Engine/libtslitex.so
 cp libtslitex/libtslitex/libtslitex.so TS.NET.Testbench.UI/libtslitex.so
 
-if cd scopehal-apps; then 
-    git pull
-    git submodule update --recursive
-else 
-    git clone --recursive https://github.com/ngscopeclient/scopehal-apps.git 
-    cd scopehal-apps 
-fi
-
-mkdir build 
-cd build 
-cmake .. -DCMAKE_BUILD_TYPE=Release 
-make -j4
-
-echo "sleep 1 && ./scopehal-apps/build/src/ngscopeclient/ngscopeclient ThunderScope:thunderscope:twinlan:localhost:5025:5026 &" > ThunderScope.sh
+echo "sleep 1 && ngscopeclient ThunderScope:thunderscope:twinlan:localhost:5025:5026 &" > ThunderScope.sh
 echo "./TS.NET.Engine/TS.NET.Engine" >> ThunderScope.sh
 chmod +x ThunderScope.sh
 

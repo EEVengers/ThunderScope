@@ -5,17 +5,17 @@ Getting Started
 
 Follow the instructions below to download and install the driver and software required to use ThunderScope.
 
+Prerequisite Steps
+------------------
+
 .. tab:: Ubuntu
 
-    Install the dependances
+    Install the dependencies
 
     .. code::
 
-        $ sudo apt install build-essential git cmake pkgconf libgtkmm-3.0-dev \
-        libcairomm-1.0-dev libsigc++-2.0-dev libyaml-cpp-dev catch2 libglfw3-dev curl \
-        xzip libhidapi-dev libvulkan-dev glslang-dev glslang-tools spirv-tools glslc
+        $ sudo apt install build-essential git dkms
 
-    Install .NET 10 SDK by following their `install instructions <https://dotnet.microsoft.com/en-us/download/dotnet/10.0>`_     
     
     Clone the ThunderScope repo and navigate to the Software directory
 
@@ -26,18 +26,7 @@ Follow the instructions below to download and install the driver and software re
 
 .. tab:: Windows
 
-    Run a powershell prompt and install git if needed:
-
-    .. code::
-
-        $ winget install --id Git.Git --source winget
-    
-    Clone the ThunderScope repo and then navigate to the Software directory.
-
-    .. code::
-
-        $ git clone --depth 1 https://github.com/EEVengers/ThunderScope.git
-        $ cd ThunderScope\Software\
+    There are no prerequisites to install the ThunderScope software on Windows
 
 .. tab:: macOS
     
@@ -56,7 +45,7 @@ Driver Install
 
         $ mokutil --sb-state
 
-    If the command returns "SecureBoot enabled", you can either disable secure boot in your BIOS settings and proceed, or run the following commands to generate an MOK key so that DKMS can sign the driver for you.
+    If the command returns "SecureBoot enabled", you can either disable secure boot in your BIOS settings, or run the following commands to generate an MOK key so that DKMS can sign the driver for you.
 
     .. code::
         
@@ -65,7 +54,8 @@ Driver Install
 
     Reboot your computer. At boot you'll see the MOK Manager EFI interface. Hit any key to enter the menu, select "Enroll MOK", "Continue", then "Yes". After this, enter the password you set in the previous step and then select the "Reboot" option to complete the MOK key install.
 
-    Pull the driver repo and install it with DKMS, then install the udev rules file
+    Once you have disabled secure boot or installed your own MOK key, you can proceed with building and installing the driver.
+    Pull the driver repo, install the driver with DKMS and then install the udev rules file.
 
     .. code::
 
@@ -79,7 +69,9 @@ Driver Install
 
     .. todo::
 
-    This section needs to be written.
+    Download and run the `ThunderScope driver installer <https://github.com/EEVengers/ts_litex_driver_win/releases/download/v1.0.0/ThunderScope-driver-win-x64-v1.0.0.msi>`_, 
+    hit "Next" when prompted by the installer, select "Yes" on the Windows UAC prompt, 
+    then click "Finish" on the installer.
 
 .. tab:: macOS
     
@@ -90,16 +82,18 @@ Driver Install
 Software install
 ----------------
 
-.. tab:: Ubuntu
+.. tab:: Linux
     
     Run the install script, using the build argument if you wish to build from source
     
     .. code::
 
-        $ ./install_ts_software.sh # pulls binary releases
-        $ ./install_ts_software.sh build # builds from source   
+        $ ./install_ts_software.sh
  
-    This should create a launcher script in the directory, this will open an ngscopeclient session that is pre-connected to the TS.NET.Engine triggering software and ready to make masurements.
+
+    Download and install an ngscopeclient package suitable for your distro from the `latest tagged release <https://github.com/ngscopeclient/scopehal-apps/releases/tag/v0.2.2>`_
+    
+    The install script created a launcher script in the same directory, this will open an ngscopeclient session that is pre-connected to the TS.NET.Engine triggering software.
 
     .. code::
 
@@ -107,12 +101,16 @@ Software install
 
 .. tab:: Windows
 
-    .. todo::
-
-    This section needs to be written.
+    Download and run the `ThunderScope software installer <https://github.com/EEVengers/ts-windows-installer/releases/download/v1.0.0/ThunderScope-2026.08-win-x64.msi>`_, 
+    hit "Next" when prompted by the installer, then click "Finish" on the installer. 
+    
+    Now launch the ThunderScope application from the desktop shortcut or start menu.
 
 .. tab:: macOS
     
     .. todo::
 
     This section needs to be written.
+
+
+You are now ready to start :ref:`using ThunderScope! <Using-ThunderScope>` 
