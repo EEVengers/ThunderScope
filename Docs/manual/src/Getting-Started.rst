@@ -93,7 +93,7 @@ Software install
  
     Download and install an ngscopeclient package suitable for your distro from the `latest tagged release <https://github.com/ngscopeclient/scopehal-apps/releases/tag/v0.2.2>`_
     
-    The install script created a launcher script in the same directory, this will open an ngscopeclient session that is pre-connected to the TS.NET.Engine triggering software.
+    The install script created a launcher script in the same directory as itself, this will open an ngscopeclient session that is pre-connected to the TS.NET.Engine triggering software.
 
     .. code::
 
