@@ -50,7 +50,7 @@ Driver Install
     .. code::
         
         $ sudo mokutil --import /var/lib/dkms/mok.der
-        $ sudo mokutil --import /var/lib/shim-signed/mok/MOK.der # if on Ubuntu / Ubuntu-based distros
+        $ sudo mokutil --import /var/lib/shim-signed/mok/MOK.der # on Ubuntu / Ubuntu-based distros
 
     Reboot your computer. At boot you'll see the MOK Manager EFI interface. Hit any key to enter the menu, select "Enroll MOK", "Continue", then "Yes". After this, enter the password you set in the previous step and then select the "Reboot" option to complete the MOK key install.
 
