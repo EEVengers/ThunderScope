@@ -87,11 +87,10 @@ Software install
     Run the install script, using the build argument if you wish to build from source
     
     .. code::
-
+        
         $ cd ..
-        $ ./install_ts_software.sh
+        $ ./ThunderScope.sh
  
-
     Download and install an ngscopeclient package suitable for your distro from the `latest tagged release <https://github.com/ngscopeclient/scopehal-apps/releases/tag/v0.2.2>`_
     
     The install script created a launcher script in the same directory, this will open an ngscopeclient session that is pre-connected to the TS.NET.Engine triggering software.
