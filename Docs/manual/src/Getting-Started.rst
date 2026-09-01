@@ -90,7 +90,7 @@ Software install
 
 .. tab:: Linux
     
-    Run the install script, using the build argument if you wish to build from source
+    Navigate back to the software directory and run the install script
     
     .. code::
         
