@@ -88,6 +88,7 @@ Software install
     
     .. code::
 
+        $ cd ..
         $ ./install_ts_software.sh
  
 
