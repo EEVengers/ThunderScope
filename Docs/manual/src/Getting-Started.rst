@@ -45,11 +45,15 @@ Driver Install
 
         $ mokutil --sb-state
 
-    If the command returns "SecureBoot enabled", you can either disable secure boot in your BIOS settings, or run one of the following commands to generate an MOK key so that DKMS can sign the driver for you.
+    If the command returns "SecureBoot enabled", you can either disable secure boot in your BIOS settings, or run one of the following sets of commands to generate an MOK key so that DKMS can sign the driver for you.
 
     .. code::
         
+        $ sudo dkms generate_mok
         $ sudo mokutil --import /var/lib/dkms/mok.pub
+
+    .. code::
+
         $ sudo mokutil --import /var/lib/shim-signed/mok/MOK.der # on Ubuntu / Ubuntu-based distros
 
     Reboot your computer. At boot you'll see the MOK Manager EFI interface. Hit any key to enter the menu, select "Enroll MOK", "Continue", then "Yes". After this, enter the password you set in the previous step and then select the "Reboot" option to complete the MOK key install.
