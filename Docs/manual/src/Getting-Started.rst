@@ -52,7 +52,7 @@ Driver Install
         $ sudo dkms generate_mok
         $ sudo mokutil --import /var/lib/dkms/mok.pub
 
-    If you are on Ubuntu or a Ubuntu-based distro, run the following command instead
+    If you are on Ubuntu or a Ubuntu-based distro, run just the following command instead
 
     .. code::
 
