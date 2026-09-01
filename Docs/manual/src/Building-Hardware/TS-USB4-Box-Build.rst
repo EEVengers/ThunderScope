@@ -72,9 +72,8 @@ to be modifiable to work with TS-USB4 is provided below:
    * - Vendor
      - Notes
      - Photo
-   * - `JoneyTech <https://www.alibaba.com/product-detail/MAC-Compatible-Thunderbolt-3-Type-C_62255630952.html>`_
-     - The black board shown in the listing, link only for documentation as they currently sell their JHL7440 solution 
-       from the same link, which may not work with the step below! 
+   * - JoneyTech
+     - No longer sold by this vendor
      - .. image:: ./_images/JoneyTech-Adaptor.webp
         :alt: JoneyTech TBT3 to NVME adaptor, uses JHL6540 chipset on a black PCB
    * - `IOCrest <https://www.alibaba.com/product-detail/IOCREST-Certified-SSD-Enclosure-Thunderbolt-3_62400127925.html>`_
