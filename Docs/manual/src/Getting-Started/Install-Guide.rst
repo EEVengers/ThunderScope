@@ -1,7 +1,7 @@
-.. _Getting-Started:
+.. _Install-Guide:
 
-Getting Started
-===============
+Install Guide
+=============
 
 Follow the instructions below to download and install the driver and software required to use ThunderScope.
 
@@ -137,16 +137,10 @@ Software install
     
     The install script created a launcher script in the same directory as itself, this will open an ngscopeclient session that is pre-connected to the TS.NET.Engine triggering software.
 
-    .. code::
-
-        $ ./ThunderScope.sh    
-
 .. tab:: Windows
 
     Download and run the `ThunderScope software installer <https://github.com/EEVengers/ts-windows-installer/releases/download/v1.0.0/ThunderScope-2026.08-win-x64.msi>`_, 
     hit "Next" when prompted by the installer, then click "Finish" on the installer. 
-    
-    Now launch the ThunderScope application from the desktop shortcut or start menu.
 
 .. tab:: macOS
     
@@ -160,10 +154,5 @@ Software install
     Download and install the ngscopeclient mac ``.dmg`` package from the `latest tagged release <https://github.com/ngscopeclient/scopehal-apps/releases/tag/v0.2.2>`_
     
     The install script created a launcher script in the same directory as itself, this will open an ngscopeclient session that is pre-connected to the TS.NET.Engine triggering software.
-
-    .. code::
-
-        $ ./ThunderScope.sh    
-
 
 You are now ready to start :ref:`using ThunderScope! <Using-ThunderScope>` 

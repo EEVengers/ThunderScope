@@ -9,5 +9,4 @@ ThunderScope manual
     Theory-of-Operation/index
     Purchasing-Hardware
     Building-Hardware/index
-    Getting-Started
-    Using-ThunderScope
+    Getting-Started/index
