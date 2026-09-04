@@ -17,7 +17,7 @@ if [ "$(uname)" == "Darwin" ]; then
     cp libtslitex/libtslitex/libtslitex.dylib TS.NET.Engine/libtslitex.dylib
     cp libtslitex/libtslitex/libtslitex.dylib TS.NET.Testbench.UI/libtslitex.dylib
 
-    echo "sleep 1 && ngscopeclient ThunderScope:thunderscope:twinlan:localhost:5025:5026 &" > ThunderScope.sh
+    echo "sleep 1 && open -n /Applications/ngscopeclient.app --args ThunderScope:thunderscope:twinlan:localhost:5025:5026 &" > ThunderScope.sh
     echo "./TS.NET.Engine/TS.NET.Engine" >> ThunderScope.sh
     chmod +x ThunderScope.sh
 
