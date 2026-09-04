@@ -1,12 +1,29 @@
-.. _Install-Guide:
+.. _Getting-Started:
 
-Install Guide
-=============
+Getting Started
+===============
 
-Follow the instructions below to download and install the driver and software required to use ThunderScope.
+Follow the instructions below to get started with ThunderScope
 
-Prerequisite Steps
+Connect the Device
 ------------------
+
+.. tab:: TS-USB4
+
+    Connect the ThunderScope to a Thunderbolt 3/4/5 or USB4 port on your host computer
+
+    .. image:: ./_images/USB4-Connected.webp
+        :alt: ThunderScope connected to a host laptop
+
+.. tab:: TS-PCIe
+
+    Connect the ThunderScope to a x4 width or higher PCIe slot on your host computer
+
+    .. image:: ./_images/PCIe-Connected.webp
+        :alt: ThunderScope PCIe card installed in a motherboard's PCIe slot  
+
+Prerequisite Steps for Install
+------------------------------
 
 .. tab:: Linux
 
@@ -135,8 +152,6 @@ Software install
  
     Download and install an ngscopeclient package suitable for your distro from the `latest tagged release <https://github.com/ngscopeclient/scopehal-apps/releases/tag/v0.2.2>`_
     
-    The install script created a launcher script in the same directory as itself, this will open an ngscopeclient session that is pre-connected to the TS.NET.Engine triggering software.
-
 .. tab:: Windows
 
     Download and run the `ThunderScope software installer <https://github.com/EEVengers/ts-windows-installer/releases/download/v1.0.0/ThunderScope-2026.08-win-x64.msi>`_, 
@@ -153,6 +168,34 @@ Software install
  
     Download and install the ngscopeclient mac ``.dmg`` package from the `latest tagged release <https://github.com/ngscopeclient/scopehal-apps/releases/tag/v0.2.2>`_
     
-    The install script created a launcher script in the same directory as itself, this will open an ngscopeclient session that is pre-connected to the TS.NET.Engine triggering software.
+Start the Software
+------------------
 
-You are now ready to start :ref:`using ThunderScope! <Using-ThunderScope>` 
+.. tab:: Linux
+
+    Run the launch script in the Software directory of the cloned ThunderScope repo
+
+    .. code::
+
+        $ ./ThunderScope.sh   
+
+.. tab:: Windows
+
+    Launch the ThunderScope application from the desktop shortcut or start menu
+
+.. tab:: macOS
+
+    Run the launch script in the Software directory of the cloned ThunderScope repo
+
+    .. code::
+
+        $ ./ThunderScope.sh   
+
+This will launch an instance of ngscopeclient that is pre-connected to the TS.NET.Engine triggering software.
+
+.. todo::
+
+    Screenshot of ngscopeclient window that has just been connected
+
+
+You are now ready to start :ref:`using ThunderScope! <Using-ThunderScope>`

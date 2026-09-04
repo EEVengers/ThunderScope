@@ -1,28 +1,38 @@
-.. _Using-ThunderScope:
+.. _Capture-Modes:
 
-Using ThunderScope
-==================
+Capture Modes
+=============  
 
-This guide assumes you have installed the driver and software for ThunderScope. 
-If you have not already done do, please follow the :ref:`install guide <Install-Guide>`.
 
-.. tab:: Linux
+Run in Auto Trigger Mode
+------------------------
 
-    Run the launch script in the Software directory of the cloned ThunderScope repo
+.. todo::
 
-    .. code::
+    Screenshot of ngscopeclient window with an arrow pointing at the auto capture button
 
-        $ ./ThunderScope.sh   
+.. todo::
 
-.. tab:: Windows
+    Screenshot of ngscopeclient showing an unconnected channel in auto mode
+    
+.. todo::
 
-    Launch the ThunderScope application from the desktop shortcut or start menu
+    Note that it is currently much slower in auto mode
 
-.. tab:: macOS
+Run in Normal Trigger Mode
+--------------------------
 
-    Run the launch script in the Software directory of the cloned ThunderScope repo
+.. todo::
 
-    .. code::
+    Screenshot of ngscopeclient window with an arrow pointing at the normal capture button
 
-        $ ./ThunderScope.sh   
+.. todo::
 
+    Screenshot of ngscopeclient showing a signal in normal mode
+
+Acquire a Single Triggered Capture
+----------------------------------
+
+
+Acquire a Single Untriggered Capture
+------------------------------------
