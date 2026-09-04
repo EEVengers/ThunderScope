@@ -8,15 +8,29 @@ Follow the instructions below to download and install the driver and software re
 Prerequisite Steps
 ------------------
 
-.. tab:: Ubuntu
+.. tab:: Linux
 
     Install the dependencies
 
-    .. code::
+    .. tab:: Debian
 
-        $ sudo apt install build-essential git dkms
+        .. code::
 
+            $ sudo apt install build-essential git dkms
+
+    .. tab:: Arch
+
+        .. code::
+
+            $ sudo pacman -Syu base-devel git dkms
     
+    .. tab:: Fedora
+
+        .. code::
+
+            $ sudo dnf install make automake gcc gcc-c++ kernel-devel git dkms
+
+
     Clone the ThunderScope repo and navigate to the Software directory
 
     .. code::
