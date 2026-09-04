@@ -136,9 +136,20 @@ Software install
 
 .. tab:: macOS
     
-    .. todo::
+    Navigate back to the software directory and run the install script
+    
+    .. code::
+        
+        $ cd ..
+        $ ./install_ts_software.sh
+ 
+    Download and install the ngscopeclient mac ``.dmg`` package from the `latest tagged release <https://github.com/ngscopeclient/scopehal-apps/releases/tag/v0.2.2>`_
+    
+    The install script created a launcher script in the same directory as itself, this will open an ngscopeclient session that is pre-connected to the TS.NET.Engine triggering software.
 
-        This section needs to be written.
+    .. code::
+
+        $ ./ThunderScope.sh    
 
 
 You are now ready to start :ref:`using ThunderScope! <Using-ThunderScope>` 
