@@ -138,7 +138,7 @@ Driver Install
 
     Follow the system prompts to authorize the driver extension
 
-Software install
+Software Install
 ----------------
 
 .. tab:: Linux
