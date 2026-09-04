@@ -90,7 +90,7 @@ Driver Install
     
     Disable system integrity protection, instructions on how to do so are `here <https://developer.apple.com/documentation/security/disabling-and-enabling-system-integrity-protection>`_.
 
-    Turn on developer mode, this and disables some restrictions, like having to run from /Applications
+    Turn on developer mode, this disables some restrictions, like having to run from /Applications
 
     .. code::
 
@@ -105,7 +105,7 @@ Driver Install
         % ./build.sh
         % ./build.sh && ./reload.sh  
 
-
+    Follow the system prompts to authorize the driver extension
 
 Software install
 ----------------
