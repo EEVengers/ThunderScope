@@ -21,8 +21,8 @@ Prerequisite Steps
 
     .. code::
 
-        git clone --depth 1 https://github.com/EEVengers/ThunderScope.git
-        cd ThunderScope/Software
+        $ git clone --depth 1 https://github.com/EEVengers/ThunderScope.git
+        $ cd ThunderScope/Software
 
 .. tab:: Windows
 
@@ -30,9 +30,14 @@ Prerequisite Steps
 
 .. tab:: macOS
     
-    .. todo::
+    Install `Xcode <https://developer.apple.com/xcode/>`_
+    
+    Clone the ThunderScope repo and navigate to the Software directory
 
-    This section needs to be written.
+    .. code::
+
+        % git clone --depth 1 https://github.com/EEVengers/ThunderScope.git
+        % cd ThunderScope/Software
 
 Driver Install
 --------------
@@ -65,15 +70,13 @@ Driver Install
 
     .. code::
 
-        git clone https://github.com/EEVengers/ts_litex_driver_linux.git
-        cd ts_litex_driver_linux
-        sudo make dkms
-        sudo make udev-install
+        $ git clone https://github.com/EEVengers/ts_litex_driver_linux.git
+        $ cd ts_litex_driver_linux
+        $ sudo make dkms
+        $ sudo make udev-install
 
 
 .. tab:: Windows
-
-    .. todo::
 
     Download and run the `ThunderScope driver installer <https://github.com/EEVengers/ts_litex_driver_win/releases/download/v1.0.0/ThunderScope-driver-win-x64-v1.0.0.msi>`_, 
     hit "Next" when prompted by the installer, select "Yes" on the Windows UAC prompt, 
@@ -81,9 +84,28 @@ Driver Install
 
 .. tab:: macOS
     
-    .. todo::
+    .. note::
 
-    This section needs to be written.
+        This install procedure is a temporary solution until we can get the drivers signed and packaged for macOS.
+    
+    Disable system integrity protection, instructions on how to do so are `here <https://developer.apple.com/documentation/security/disabling-and-enabling-system-integrity-protection>`_.
+
+    Turn on developer mode, this and disables some restrictions, like having to run from /Applications
+
+    .. code::
+
+        % systemextensionsctl developer on
+    
+    Pull the driver repo, then build and reload client app and driverkit driver
+
+    .. code::
+
+        % git clone https://github.com/EEVengers/ts_litex_driver_macos.git
+        % cd ts_litex_driver_macos
+        % ./build.sh
+        % ./build.sh && ./reload.sh  
+
+
 
 Software install
 ----------------
@@ -116,7 +138,7 @@ Software install
     
     .. todo::
 
-    This section needs to be written.
+        This section needs to be written.
 
 
 You are now ready to start :ref:`using ThunderScope! <Using-ThunderScope>` 
