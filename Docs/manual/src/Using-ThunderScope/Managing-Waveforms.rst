@@ -11,7 +11,7 @@ Adding Channels to a Waveform View
 
 Drag a channel label from the stream browser over an existing waveform view to add the channel to an existing waveform view within its waveform group. 
 
-The channel will share a displayed vertical scale with every channel within the waveform view. This may differ from the channel's own vertical scale, in which case a warning will be displayed.
+The channel will share a displayed vertical scale and offset with every channel within the waveform view. This may differ from the channel's own vertical scale, in which case a warning will be displayed.
 
 .. image:: ./_images/ngscopeclient-ch2-mouse-over.webp
     :alt: TODO
@@ -27,7 +27,7 @@ Adding Channels to a New Waveform View
 
 Drag a channel label from the stream browser to either the top right or bottom right icon that appears over an existing waveform view to add the channel to a new waveform view above or below the existing waveform view. 
 
-The new waveform view will have a separate displayed vertical scale, which is shared by every channel within the waveform view.
+The new waveform view will have a separate displayed vertical scale and offset.
 
 .. image:: ./_images/ngscopeclient-ch2-mouse-over.webp
     :alt: TODO
