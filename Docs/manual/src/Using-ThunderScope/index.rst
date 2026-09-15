@@ -7,7 +7,8 @@ Using ThunderScope
     
     Capture-Modes
     Managing-Waveforms
-    Timebase-Controls
-    Acquisition-Controls
+    Horizontal-Controls
     Channel-Controls
     Trigger-Controls
+    Acquisition-Controls
+    
