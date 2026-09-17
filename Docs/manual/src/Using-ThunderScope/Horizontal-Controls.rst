@@ -48,28 +48,3 @@ To be able to pan across channels separately, place them in separate waveform gr
 
 .. image:: ./_images/ngscopeclient-horizontal-waveform-group-panned.webp
     :alt: TODO
-
-Horizontal Delay
-----------------
-
-To delay the capture relative to the point that it was triggered, click on the arrow on any horizontal scale and drag it left or right.
-
-.. image:: ./_images/ngscopeclient-horizontal-delay-1.webp
-    :alt: TODO
-
-.. image:: ./_images/ngscopeclient-horizontal-delay-2.webp
-    :alt: TODO
-
-.. image:: ./_images/ngscopeclient-horizontal-delay-3.webp
-    :alt: TODO
-
-.. image:: ./_images/ngscopeclient-horizontal-delay-4.webp
-    :alt: TODO
-
-This delay can also be adjusted on separate waveform groups. This will affect all waveform groups as there is only one trigger point that the delay is relative to.
-
-.. image:: ./_images/ngscopeclient-horizontal-waveform-group-delay-1.webp
-    :alt: TODO
-
-.. image:: ./_images/ngscopeclient-horizontal-waveform-group-delay-2.webp
-    :alt: TODO
