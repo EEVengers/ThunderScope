@@ -9,7 +9,7 @@ If you have not already done do, please follow the :ref:`getting started guide <
 Horizontal Scale / Zoom
 -----------------------
 
-To change the displayed horizontal scale for a waveform group, click on the horizontal scale of the waveform group and scroll up or down for higher or lower horizontal scales.
+To change the displayed horizontal scale for a waveform group, mouse over the horizontal scale of the waveform group and scroll up or down for higher or lower horizontal scales.
 This will change the horizontal scale for all waveform views in that waveform group.
 
 Most scopes have this control adjust the sample rate automatically to fit the desired horizontal scale into the memory depth available, changing the length of the capture. 

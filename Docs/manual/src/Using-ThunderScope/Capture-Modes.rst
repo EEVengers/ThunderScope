@@ -6,6 +6,9 @@ Capture Modes
 This guide assumes you have installed the driver and software for ThunderScope. 
 If you have not already done do, please follow the :ref:`getting started guide <Getting-Started>`.
 
+.. note::
+    If you are unsure of what capture mode to use, Auto Trigger is a good starting point
+
 Normal Trigger
 --------------
 

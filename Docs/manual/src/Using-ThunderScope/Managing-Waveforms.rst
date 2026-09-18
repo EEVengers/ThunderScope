@@ -32,12 +32,16 @@ The new waveform view will have a separate displayed vertical scale and offset.
 .. image:: ./_images/ngscopeclient-ch2-mouse-over.webp
     :alt: TODO
 
+Adding to a waveform view above an existing waveform view:
+
 .. image:: ./_images/ngscopeclient-add-to-new-waveform-view-above.webp
   :width: 49%
   :alt: TODO
 .. image:: ./_images/ngscopeclient-added-to-new-waveform-view-above.webp
   :width: 49%
   :alt: TODO
+
+Adding to a waveform view below an existing waveform view:
 
 .. image:: ./_images/ngscopeclient-add-to-new-waveform-view-below.webp
   :width: 49%
@@ -56,12 +60,16 @@ The new waveform group will have a separate displayed horizontal scale, which is
 .. image:: ./_images/ngscopeclient-ch2-mouse-over.webp
     :alt: TODO
 
+Adding to a waveform group above an existing waveform group:
+
 .. image:: ./_images/ngscopeclient-add-to-new-waveform-group-above.webp
   :width: 49%
   :alt: TODO
 .. image:: ./_images/ngscopeclient-added-to-new-waveform-group-above.webp
   :width: 49%
   :alt: TODO
+
+Adding to a waveform group below an existing waveform group:
 
 .. image:: ./_images/ngscopeclient-add-to-new-waveform-group-below.webp
   :width: 49%
@@ -70,12 +78,16 @@ The new waveform group will have a separate displayed horizontal scale, which is
   :width: 49%
   :alt: TODO
 
+Adding to a waveform group to the left of an existing waveform group:
+
 .. image:: ./_images/ngscopeclient-add-to-new-waveform-group-left.webp
   :width: 49%
   :alt: TODO
 .. image:: ./_images/ngscopeclient-added-to-new-waveform-group-left.webp
   :width: 49%
   :alt: TODO
+
+Adding to a waveform group to the right of an existing waveform group:
 
 .. image:: ./_images/ngscopeclient-add-to-new-waveform-group-right.webp
   :width: 49%

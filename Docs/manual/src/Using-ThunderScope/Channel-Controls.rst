@@ -9,7 +9,7 @@ If you have not already done do, please follow the :ref:`getting started guide <
 Channel Properties
 ------------------
 
-To open a channel's properties, left click on its channel label on the top left corner of its waveform view
+To open a channel's properties, double click on its channel label on the top left corner of its waveform view
 
 .. image:: ./_images/ngscopeclient-channel-label.webp
     :alt: TODO
@@ -95,7 +95,7 @@ If the channels need to have separate offsets, place them in separate waveform v
 .. image:: ./_images/ngscopeclient-vertical-waveform-view-offset-changed.webp
     :alt: TODO
 
-If an exact vertical scale is needed on a channel, it can be entered numerically on that channel's "Offset" setting under the "Vertical" tab in that channel's properties
+If an exact vertical offset is needed on a channel, it can be entered numerically on that channel's "Offset" setting under the "Vertical" tab in that channel's properties
 
 .. image:: ./_images/ngscopeclient-channel-menu-vertical.webp
     :alt: TODO
@@ -120,6 +120,9 @@ Click on the down arrow next to "Coupling" on the channel property menu and sele
     :alt: TODO
 .. image:: ./_images/ngscopeclient-channel-menu-coupling-2.webp
     :alt: TODO
+
+Observe that the waveform is now AC coupled once the coupling setting in the drop down menu has been clicked on
+
 .. image:: ./_images/ngscopeclient-channel-menu-coupling-3.webp
     :alt: TODO
 
@@ -127,6 +130,9 @@ This menu also holds the termination options for the channel
 
 .. image:: ./_images/ngscopeclient-channel-menu-termination-1.webp
     :alt: TODO
+
+Observe that the waveform has lost half of its amplitude as the 50 Ohm termination option has been selected
+
 .. image:: ./_images/ngscopeclient-channel-menu-termination-2.webp
     :alt: TODO
 
