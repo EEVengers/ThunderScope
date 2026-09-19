@@ -11,3 +11,4 @@ ThunderScope manual
     Building-Hardware/index
     Getting-Started
     Using-ThunderScope/index
+    Development-Guide

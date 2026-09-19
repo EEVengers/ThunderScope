@@ -9,13 +9,17 @@ If you have not already done do, please follow the :ref:`getting started guide <
 Trigger Menu
 ------------
 
-TODO
+To open the trigger menu, click on "Setup" on the main menu at the top of the window
 
 .. image:: ./_images/ngscopeclient-trigger-menu-1.webp
     :alt: TODO
 
+Then click on "Trigger"
+
 .. image:: ./_images/ngscopeclient-trigger-menu-2.webp
     :alt: TODO
+
+This will spawn a trigger menu element, which is shown docked to the sidebar below:
 
 .. image:: ./_images/ngscopeclient-trigger-menu-3.webp
     :alt: TODO
@@ -23,13 +27,19 @@ TODO
 Trigger Type
 ------------
 
-TODO
+To change the trigger type, click on the down arrow next to "Type" on the trigger menu
 
 .. image:: ./_images/ngscopeclient-trigger-type-1.webp
     :alt: TODO
 
+Then select the desired trigger type from the drop down menu
+
 .. image:: ./_images/ngscopeclient-trigger-type-2.webp
     :alt: TODO
+
+.. note::
+    At time of writing, only edge trigger is supported. 
+    We are working on adding new triggers, if you are interested in helping with new trigger development, check out the :ref:`Development Guide <Development-Guide>`.
 
 Trigger Delay
 -------------
@@ -70,13 +80,17 @@ The delay can also be adjusted exactly in the trigger menu
 Trigger Channel
 ---------------
 
-TODO
+To change the channel that is being triggered on, click on the down arrow next to "din" on the trigger menu 
 
 .. image:: ./_images/ngscopeclient-trigger-channel-1.webp
     :alt: TODO
 
+Then select the desired channel from the drop down menu
+
 .. image:: ./_images/ngscopeclient-trigger-channel-2.webp
     :alt: TODO
+
+Note that the trigger delay and level arrows now match the color of the new triggered channel
 
 .. image:: ./_images/ngscopeclient-trigger-channel-3.webp
     :alt: TODO
@@ -84,13 +98,17 @@ TODO
 Trigger Edge
 ------------
 
-TODO
+To change the edge that is being triggered on, click on the down arrow next to "Edge" on the trigger menu 
 
 .. image:: ./_images/ngscopeclient-trigger-edge-1.webp
     :alt: TODO
 
+Then select the desired type of edge from the drop down menu
+
 .. image:: ./_images/ngscopeclient-trigger-edge-2.webp
     :alt: TODO
+
+Note that the waveform below is now triggered on the falling edge
 
 .. image:: ./_images/ngscopeclient-trigger-edge-3.webp
     :alt: TODO
@@ -112,13 +130,17 @@ To change the trigger level, click on the arrow on the vertical scale of the tri
 .. image:: ./_images/ngscopeclient-trigger-level-4.webp
     :alt: TODO
 
-The trigger level can also be changed in the trigger menu
+The trigger level can also be changed in the trigger menu. Selecting the value next to "Lower Level"
 
 .. image:: ./_images/ngscopeclient-trigger-level-menu-1.webp
     :alt: TODO
 
+Then type in a new value
+
 .. image:: ./_images/ngscopeclient-trigger-level-menu-2.webp
     :alt: TODO
+
+Hit the "Enter" key to apply the change, now shown on the waveform below
 
 .. image:: ./_images/ngscopeclient-trigger-level-menu-3.webp
     :alt: TODO

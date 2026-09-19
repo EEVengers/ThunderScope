@@ -11,4 +11,5 @@ Using ThunderScope
     Channel-Controls
     Trigger-Controls
     Acquisition-Controls
-    
+    Filter-Intro
+    Advanced-Usage
