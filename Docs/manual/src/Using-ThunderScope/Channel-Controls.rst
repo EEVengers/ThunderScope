@@ -38,7 +38,7 @@ It can then be resized by clicking and dragging its border.
 Vertical Scale
 --------------
 
-To change the vertical scale for a waveform view, click on the vertical scale of the waveform view and scroll up or down for higher or lower vertical scales.
+To change the vertical scale for a waveform view, mouse over the vertical scale of the waveform view and scroll up or down for higher or lower vertical scales.
 This will change the vertical scale for all channels in that waveform view.
 
 .. image:: ./_images/ngscopeclient-vertical-scale-mouse-over.webp
@@ -78,8 +78,8 @@ After entering the value, click "Apply" to apply the change in vertical scale
 Vertical Offset
 ---------------
 
-To change the vertical offset for a waveform view, click on the vertical scale of the waveform view and scroll up or down for higher or lower vertical scales.
-This will change the vertical scale for all channels in that waveform view.
+To change the vertical offset for a waveform view, click on the vertical scale of the waveform view and drag up or down for higher or lower vertical offsets.
+This will change the vertical offset for all channels in that waveform view.
 
 .. image:: ./_images/ngscopeclient-vertical-offscale-mouse-over.webp
     :alt: TODO
