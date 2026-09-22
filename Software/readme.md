@@ -1,3 +1,1 @@
-Scripts tested on:
-
-Ubuntu 24.04 LTS
+https://docs.eevengers.com/ThunderScope/latest/Getting-Started.html
