@@ -119,6 +119,8 @@ Some filters have waveform outputs that are displayed the same way channels are.
 Protocol Decode Example
 -----------------------
 
+Protocol decode filters often have multiple inputs as well as parameters to be selected by the user.
+
 .. todo::
 
     This section needs to be written.
@@ -133,3 +135,9 @@ These can be constants, built-in waveforms, or waveforms imported by the user.
 
     This section needs to be written.
 
+List of Filters with Usage Examples
+-----------------------------------
+
+With these basic concepts of filters and how they are used, you are ready to use any of the filters offered by ngscopeclient.
+For a full list of filters with usage examples, check out the 
+`ngscopeclient Manual <https://www.ngscopeclient.org/downloads/ngscopeclient-manual.pdf>`_.
