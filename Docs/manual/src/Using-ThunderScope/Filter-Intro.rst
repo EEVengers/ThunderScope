@@ -65,30 +65,46 @@ The resulting filter graph is shown below
 Measurement Statistics
 ----------------------
 
-Statistics can be taken of a measurement by connecting the scalar output of the measurement filter to a math filer in the filter graph.
+Statistics can be taken of a measurement by connecting the scalar output of the measurement filter to a math filter in the filter graph.
 For example, to take an average, search for the average filter in the filter palette.
 
 .. image:: ./_images/ngscopeclient-stats-1.webp
     :alt: TODO
 
-Drag the average filter into the filter graph
+Click on the average filter and drag it into the filter graph
 
 .. image:: ./_images/ngscopeclient-stats-2.webp
     :alt: TODO
 
-Then connect the "minmax" output of the peak to peak filter to the "in" input of the average filter
-
 .. image:: ./_images/ngscopeclient-stats-3.webp
     :alt: TODO
 
-The "Average_1.cumulative" value in the "Measurements" UI will now start updating, this is the average peak to peak value of channel 1.
+This will create the filter, an error will be shown as it has no input
 
 .. image:: ./_images/ngscopeclient-stats-4.webp
     :alt: TODO
 
+Click and drag the "minmax" output of the peak to peak filter to the "in" input of the average filter
+
+.. image:: ./_images/ngscopeclient-stats-5.webp
+    :alt: TODO
+
+.. image:: ./_images/ngscopeclient-stats-6.webp
+    :alt: TODO
+
+The "Average_1.cumulative" value in the "Measurements" UI will now start updating, this is the average peak to peak value of channel 1.
+
+.. image:: ./_images/ngscopeclient-stats-7.webp
+    :alt: TODO
+
 To clear the accumulated filter block state and start taking a fresh average, click on the clear button on the main toolbar.
 
-.. image:: ./_images/ngscopeclient-stats-clear.webp
+.. image:: ./_images/ngscopeclient-stats-clear-1.webp
+    :alt: TODO
+
+Observe that the "Average_1.cumulative" value has now changed 
+
+.. image:: ./_images/ngscopeclient-stats-clear-2.webp
     :alt: TODO
 
 Filters with Waveform Inputs and Outputs

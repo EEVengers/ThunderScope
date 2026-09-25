@@ -38,7 +38,7 @@ html_theme_options = {
     "top_of_page_button": "edit",
     "source_repository": "https://github.com/EEVengers/ThunderScope",
     "source_branch": "master",
-    "source_directory": "docs/manual/src/",
+    "source_directory": "Docs/manual/src/",
     "footer_icons": [
         {
             "name": "GitHub",
