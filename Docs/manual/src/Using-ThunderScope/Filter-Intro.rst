@@ -112,9 +112,32 @@ Filters with Waveform Inputs and Outputs
 
 Some filters have waveform outputs that are displayed the same way channels are. For example, the upsample filter.
 
-.. todo::
+Shown below is a 40 MHz sine wave sampled at 250 MS/s, it looks jagged due to the straight line interpolation used by default.
+To see the waveform with sin(x)/x interpolation, which most benchtop scopes use by default, use the upsample filter.
+This is particularly useful at high frequencies or low sample rates.
 
-    This section needs to be written.
+.. image:: ./_images/ngscopeclient-upsample-1.webp
+    :alt: TODO
+
+Right click the channel label and select the "Upsample" filter under the "Math" category.
+
+.. image:: ./_images/ngscopeclient-upsample-2.webp
+    :alt: TODO
+
+This will generate a new waveform with a sample rate 10x higher than the input waveform.
+
+.. image:: ./_images/ngscopeclient-upsample-3.webp
+    :alt: TODO
+
+The upsampling factor can be changed in the filter's properties, which are accessed just like channel properties by double clicking the filter's label.
+
+.. image:: ./_images/ngscopeclient-upsample-4.webp
+    :alt: TODO
+
+The filter waveform can also be moved to other waveform views or waveform groups just like a channel.
+
+.. image:: ./_images/ngscopeclient-upsample-5.webp
+    :alt: TODO
 
 Protocol Decode Example
 -----------------------

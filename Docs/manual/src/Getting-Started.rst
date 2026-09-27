@@ -150,7 +150,7 @@ Software Install
         $ cd ..
         $ ./install_ts_software.sh
  
-    Download and install an ngscopeclient package suitable for your distro from the `latest tagged release <https://github.com/ngscopeclient/scopehal-apps/releases/tag/v0.2.2>`_
+    Download and install an ngscopeclient package suitable for your distro from the `latest tagged release <https://github.com/ngscopeclient/scopehal-apps/releases/tag/v0.3>`_
     
 .. tab:: Windows
 
@@ -166,7 +166,7 @@ Software Install
         $ cd ..
         $ ./install_ts_software.sh
  
-    Download and install the ngscopeclient mac ``.dmg`` package from the `latest tagged release <https://github.com/ngscopeclient/scopehal-apps/releases/tag/v0.2.2>`_
+    Download and install the ngscopeclient mac ``.dmg`` package from the `latest tagged release <https://github.com/ngscopeclient/scopehal-apps/releases/tag/v0.3>`_
     
 Start the Software
 ------------------
