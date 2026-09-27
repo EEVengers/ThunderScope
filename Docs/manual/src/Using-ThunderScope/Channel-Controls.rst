@@ -136,6 +136,25 @@ Observe that the waveform has lost half of its amplitude as the 50 Ohm terminati
 .. image:: ./_images/ngscopeclient-channel-menu-termination-2.webp
     :alt: TODO
 
+Bandwidth
+---------
+
+Click on the down arrow next to "Bandwidth" on the channel property menu and select the desired bandwidth setting from the drop-down menu
+
+.. image:: ./_images/ngscopeclient-channel-menu-bandwidth-1.webp
+    :alt: TODO
+
+For this example, a 20 MHz bandwidth is used on a very noisy 1 MHz sine signal.
+
+.. image:: ./_images/ngscopeclient-channel-menu-bandwidth-2.webp
+    :alt: TODO
+
+Observe that the high frequency noise has been filtered. The bandwidth setting applies a low pass filter directly to the analog signal chain. 
+Measurements that require the lowest possible noise should use the lowest possible bandwidth setting, as noise scales with bandwidth.
+
+.. image:: ./_images/ngscopeclient-channel-menu-bandwidth-3.webp
+    :alt: TODO
+
 Attenuation
 -----------
 

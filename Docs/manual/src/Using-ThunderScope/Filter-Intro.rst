@@ -148,6 +148,35 @@ Protocol decode filters often have multiple inputs as well as parameters to be s
 
     This section needs to be written.
 
+Waveform Export
+---------------
+
+Filters can be used to export waveform data as well. Take the "CSV Export" Filter as an example, 
+it has just a single waveform input and some user parameters to control the export.
+
+Right click the channel label and select the "CSV Export" filter under the "Export" category.
+
+.. image:: ./_images/ngscopeclient-export-1.webp
+    :alt: TODO
+
+The filter's properties can be accessed by double clicking its label in the stream browser. 
+All active filters will be shown here regardless of displayed output.
+
+.. image:: ./_images/ngscopeclient-export-2.webp
+    :alt: TODO
+
+In the filter properties menu, click on the button with three dots to launch your system's file save dialog.
+
+.. image:: ./_images/ngscopeclient-export-3.webp
+    :alt: TODO
+
+When you have selected a location to save the CSV export, click the "Export" button in the filter properties menu.
+There are many options to handle updating the exported CSV file. In this case the capture is stopped and the filter is in 
+"Overwrite (manual)" mode, so only the current capture will be written to the file, overwriting any previous contents.
+
+.. image:: ./_images/ngscopeclient-export-4.webp
+    :alt: TODO
+
 Reference Waveforms
 -------------------
 
