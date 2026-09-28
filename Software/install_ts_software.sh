@@ -2,17 +2,17 @@
 
 if [ "$(uname)" == "Darwin" ]; then
 
-    curl -L https://github.com/EEVengers/libtslitex/releases/download/v0.1.0/libtslitex-macos-latest-clang-artifacts.zip -o libtslitex-macos-latest-clang-artifacts.zip 
+    curl -L https://github.com/EEVengers/libtslitex/releases/download/v0.2.0/libtslitex-macos-latest-clang-artifacts.zip -o libtslitex-macos-latest-clang-artifacts.zip 
     unzip libtslitex-macos-latest-clang-artifacts.zip -d libtslitex
     rm libtslitex-macos-latest-clang-artifacts.zip
 
-    curl -L https://github.com/EEVengers/TS.NET/releases/download/v0.1.1/TS.NET.Engine-macos-arm64-v0.1.1.zip -o TS.NET.Engine-macos-arm64-v0.1.1.zip
-    unzip TS.NET.Engine-macos-arm64-v0.1.1.zip -d TS.NET.Engine
-    rm TS.NET.Engine-macos-arm64-v0.1.1.zip
+    curl -L https://github.com/EEVengers/TS.NET/releases/download/v0.2.0/TS.NET.Engine-macos-arm64-v0.2.0.zip -o TS.NET.Engine-macos-arm64-v0.2.0.zip
+    unzip TS.NET.Engine-macos-arm64-v0.2.0.zip -d TS.NET.Engine
+    rm TS.NET.Engine-macos-arm64-v0.2.0.zip
 
-    curl -L https://github.com/EEVengers/TS.NET/releases/download/v0.1.1/TS.NET.Testbench.UI-macos-arm64-v0.1.1.zip -o TS.NET.Testbench.UI-macos-arm64-v0.1.1.zip
-    unzip TS.NET.Testbench.UI-macos-arm64-v0.1.1.zip -d TS.NET.Testbench.UI
-    rm TS.NET.Testbench.UI-macos-arm64-v0.1.1.zip
+    curl -L https://github.com/EEVengers/TS.NET/releases/download/v0.2.0/TS.NET.Testbench.UI-macos-arm64-v0.2.0.zip -o TS.NET.Testbench.UI-macos-arm64-v0.2.0.zip
+    unzip TS.NET.Testbench.UI-macos-arm64-v0.2.0.zip -d TS.NET.Testbench.UI
+    rm TS.NET.Testbench.UI-macos-arm64-v0.2.0.zip
 
     cp libtslitex/libtslitex/libtslitex.dylib TS.NET.Engine/libtslitex.dylib
     cp libtslitex/libtslitex/libtslitex.dylib TS.NET.Testbench.UI/libtslitex.dylib
@@ -73,17 +73,17 @@ elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
         
     else
 
-    wget https://github.com/EEVengers/libtslitex/releases/download/v0.1.0/libtslitex-ubuntu-latest-clang-artifacts.zip
+    wget https://github.com/EEVengers/libtslitex/releases/download/v0.2.0/libtslitex-ubuntu-latest-clang-artifacts.zip
     unzip libtslitex-ubuntu-latest-clang-artifacts.zip -d libtslitex
     rm libtslitex-ubuntu-latest-clang-artifacts.zip
 
-    wget https://github.com/EEVengers/TS.NET/releases/download/v0.1.1/TS.NET.Engine-linux-x64-v0.1.1.zip
-    unzip TS.NET.Engine-linux-x64-v0.1.1.zip -d TS.NET.Engine
-    rm TS.NET.Engine-linux-x64-v0.1.1.zip
+    wget https://github.com/EEVengers/TS.NET/releases/download/v0.2.0/TS.NET.Engine-linux-x64-v0.2.0.zip
+    unzip TS.NET.Engine-linux-x64-v0.2.0.zip -d TS.NET.Engine
+    rm TS.NET.Engine-linux-x64-v0.2.0.zip
 
-    wget https://github.com/EEVengers/TS.NET/releases/download/v0.1.1/TS.NET.Testbench.UI-linux-x64-v0.1.1.zip
-    unzip TS.NET.Testbench.UI-linux-x64-v0.1.1.zip -d TS.NET.Testbench.UI
-    rm TS.NET.Testbench.UI-linux-x64-v0.1.1.zip
+    wget https://github.com/EEVengers/TS.NET/releases/download/v0.2.0/TS.NET.Testbench.UI-linux-x64-v0.2.0.zip
+    unzip TS.NET.Testbench.UI-linux-x64-v0.2.0.zip -d TS.NET.Testbench.UI
+    rm TS.NET.Testbench.UI-linux-x64-v0.2.0.zip
 
     cp libtslitex/libtslitex/libtslitex.so TS.NET.Engine/libtslitex.so
     cp libtslitex/libtslitex/libtslitex.so TS.NET.Testbench.UI/libtslitex.so

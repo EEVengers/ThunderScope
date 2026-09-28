@@ -154,7 +154,7 @@ Software Install
     
 .. tab:: Windows
 
-    Download and run the `ThunderScope software installer <https://github.com/EEVengers/ts-windows-installer/releases/download/v1.0.0/ThunderScope-2026.08-win-x64.msi>`_, 
+    Download and run the `ThunderScope software installer <https://github.com/EEVengers/ts-windows-installer/releases/download/v26.09/ThunderScope-2026.09-win-x64.msi>`_, 
     hit "Next" when prompted by the installer, then click "Finish" on the installer. 
 
 .. tab:: macOS
