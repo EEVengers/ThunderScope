@@ -139,15 +139,6 @@ The filter waveform can also be moved to other waveform views or waveform groups
 .. image:: ./_images/ngscopeclient-upsample-5.webp
     :alt: TODO
 
-Protocol Decode Example
------------------------
-
-Protocol decode filters often have multiple inputs as well as parameters to be selected by the user.
-
-.. todo::
-
-    This section needs to be written.
-
 Waveform Export
 ---------------
 
@@ -217,6 +208,67 @@ This will display the imported waveform and spawn a filter property menu, which 
 Shown below are the three waveforms placed in separate waveform views for better legibility.
 
 .. image:: ./_images/ngscopeclient-import-3.webp
+    :alt: TODO
+
+Protocol Decode Example
+-----------------------
+
+To tie everything in this users guide together, a SPI decode will be used as an example of a protocol decode. 
+Below is a capture containing SPI transactions on both MOSI and MISO lines where each channel has been labelled 
+with the SPI signal that is being probed on that channel.
+
+.. image:: ./_images/ngscopeclient-spi-decode-1.webp
+    :alt: TODO
+
+In the filter graph view, search for "Threshold" in the filter palette.
+
+.. image:: ./_images/ngscopeclient-spi-decode-2.webp
+    :alt: TODO
+
+Add four Threshold filters to the filter graph and connect the analog waveform output from each channel to the "din"
+input of the corresponding Threshold filter. The Threshold filter is used to convert an analog waveform output to a 
+digital waveform output, which is required by most protocol decode filters.  
+
+.. image:: ./_images/ngscopeclient-spi-decode-3.webp
+    :alt: TODO
+
+For each Threshold filter, set the "Hysteresis" and "Threshold" parameters to appropriate values. For the 3.3 V logic
+levels in this example, a threshold of 1.65 V is used with 50 mV of hysteresis.
+
+.. image:: ./_images/ngscopeclient-spi-decode-4.webp
+    :alt: TODO
+
+Search for "SPI" in the filter palette.
+
+.. image:: ./_images/ngscopeclient-spi-decode-5.webp
+    :alt: TODO
+
+Add two SPI filters to the filter graph and connect the thresholded SCLK and CS to both of them. Then connect the thresholded 
+MOSI to one of them and the thresholded MISO to the other. This will decode both sides of each SPI transaction and output the 
+decodes as a protocol waveform.  
+
+.. image:: ./_images/ngscopeclient-spi-decode-6.webp
+    :alt: TODO
+
+Search for "Export" in the filter palette. Any waveform type can be exported to a CSV, which can be useful for 
+higher level protocol analysis. Protocol waveforms can also be exported to PcapNG and analyzed in Wireshark, while S-Parameters 
+can be exported in Touchstone format.
+
+.. image:: ./_images/ngscopeclient-spi-decode-7.webp
+    :alt: TODO
+
+In this case to expand on the CSV export example, drag the CSV Export filter into the filter graph. Change the "Columns" parameter 
+to "2", this will add another input to the filter block. The decode filters can be renamed (in their filter properties, 
+just like for a channel) for clarity and their outputs should be routed to the column inputs of the CSV Export filter. Then 
+click on "Export" in the CSV Export filter properties.
+
+.. image:: ./_images/ngscopeclient-spi-decode-8.webp
+    :alt: TODO
+
+To take a look at the protocol waveforms, go to the "Waveform Group 1" view. All the digital and protocol waveforms have been 
+arranged into their own waveform view for legibility. These can also be arranged in any way a channel can.
+
+.. image:: ./_images/ngscopeclient-spi-decode-9.webp
     :alt: TODO
 
 List of Filters with Usage Examples
