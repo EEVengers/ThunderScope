@@ -13,10 +13,6 @@ via Thunderbolt/USB4 or PCIe.
   :width: 49%
   :alt: TS-PCIe Unit
 
-.. todo::
-
-    Replace TS-USB4 picture with a production unit
-
 ThunderScope is open source from volts to bits with the intention of serving as a foundation for 
 future open source test equipment. If we could make open source the standard for 3D printing, why not do the same for the tools 
 that make electrical hardware development possible?
