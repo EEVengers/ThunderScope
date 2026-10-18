@@ -28,7 +28,7 @@ for discussing ThunderScope, how you are using it, things you might want to use 
 and open source test equipment in general. 
 
 In short, if you want to talk shop or get some technical advice, this is where you should go. 
-If suspect you are encountering a bug, it is best to file a GitHub issue instead. 
+If you suspect you are encountering a bug, it is best to file a GitHub issue instead. 
 Anything serious is easily lost on discord and should go somewhere more openly searchable.
 
 Email Support
