@@ -15,5 +15,6 @@ check out the `ngscopeclient Manual <https://www.ngscopeclient.org/downloads/ngs
     Channel-Controls
     Trigger-Controls
     Acquisition-Controls
+    Cursors
     Filter-Intro
     Hardware-Setups
