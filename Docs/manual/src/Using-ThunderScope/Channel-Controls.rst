@@ -111,6 +111,17 @@ After entering the value, click "Apply" to apply the change in vertical offset
 .. image:: ./_images/ngscopeclient-channel-menu-offset-applied.webp
     :alt: TODO
 
+Automatic Vertical Scale and Offset
+-----------------------------------
+
+To automatically adjust the scale and offset of the waveform view, middle click on the vertical scale of the waveform view.
+
+.. image:: ./_images/ngscopeclient-vertical-autoscale-mouse-over.webp
+    :alt: TODO
+
+.. image:: ./_images/ngscopeclient-vertical-autoscale-changed.webp
+    :alt: TODO
+
 Termination and Coupling
 ------------------------
 
