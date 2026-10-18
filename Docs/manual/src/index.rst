@@ -12,3 +12,4 @@ ThunderScope manual
     Getting-Started
     Using-ThunderScope/index
     Development-Guide
+    Support
