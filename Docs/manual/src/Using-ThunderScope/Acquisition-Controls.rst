@@ -97,6 +97,62 @@ If you have a more capable host, you can change the ``MaxCaptureLength`` value i
 
         ~/Library/Application Support/ThunderScope/TS.NET.Engine/settings.yaml
 
+Waveform History
+----------------
+
+By default, ngscopeclient records 10 captures in history. This is similar to segmented memory features on other oscilloscopes. 
+The captures in history can be accessed in the "History" window. To open the "History" window, click on "Window" on the main menu at the top of the window. 
+
+.. image:: ./_images/ngscopeclient-history-1.webp
+    :alt: TODO
+
+Then click on "History"
+
+.. image:: ./_images/ngscopeclient-history-2.webp
+    :alt: TODO
+
+This will spawn the History window, here it is docked to the lower left corner.
+
+.. image:: ./_images/ngscopeclient-history-3.webp
+    :alt: TODO
+
+Clicking on a timestamp in the history view pauses acquisition and loads the historical waveform data for analysis.
+
+.. image:: ./_images/ngscopeclient-history-4.webp
+    :alt: TODO
+
+Older captures beyond the history limit are deleted automatically as new captures are acquired.
+A capture in history can be pinned, which saves it from deletion.
+A label can also be added to any capture in history, this will always pin that capture.
+
+.. image:: ./_images/ngscopeclient-history-5.webp
+    :alt: TODO
+
+Here the pinned capture is shown at the top of the list of captures after new captures were taken.
+
+.. image:: ./_images/ngscopeclient-history-6.webp
+    :alt: TODO
+
+The number of captures in history can be increased or decreased using the "-" or "+" buttons in the "History" window. 
+A number can also be entered directly into the "History Depth" field. All captures in history must fit in system RAM at time of writing, 
+spilling to disk is planned for the future. 
+
+.. tip::
+    If you are using very high memory depths, use the lowest history depth possible in order to allocate more RAM to each capture.
+
+.. image:: ./_images/ngscopeclient-history-7.webp
+    :alt: TODO
+
+If a capture in history is labelled, the label must be removed before unpinning it. Alternatively the capture may be deleted
+by right clicking it and selecting the "delete" option. 
+
+.. image:: ./_images/ngscopeclient-history-8.webp
+    :alt: TODO
+
+With the history depth now set to "1", every previous capture was deleted once more captures were taken and only the latest capture retained. 
+
+.. image:: ./_images/ngscopeclient-history-9.webp
+    :alt: TODO
 
 ADC Resolution
 --------------
