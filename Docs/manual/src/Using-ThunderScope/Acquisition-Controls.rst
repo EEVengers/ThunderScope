@@ -97,8 +97,8 @@ If you have a more capable host, you can change the ``MaxCaptureLength`` value i
 
         ~/Library/Application Support/ThunderScope/TS.NET.Engine/settings.yaml
 
-Waveform History
-----------------
+Capture History
+---------------
 
 By default, ngscopeclient records 10 captures in history. This is similar to segmented memory features on other oscilloscopes. 
 The captures in history can be accessed in the "History" window. To open the "History" window, click on "Window" on the main menu at the top of the window. 
